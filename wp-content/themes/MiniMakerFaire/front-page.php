@@ -61,8 +61,16 @@
 
   <?php
 
+  if ( FALSE === get_post_status( 22 ) ) {
+    $home_ID = 69;
+  } else {
+    $home_ID = 22;
+  }
+
+  echo $home_ID;
+
   // check if the flexible content field has rows of data
-  if( have_rows('home_page_panels', 22)):
+  if( have_rows('home_page_panels', $home_ID)):
 
     // loop through the rows of data
     while ( have_rows('home_page_panels', 22) ) : the_row();
