@@ -1,28 +1,34 @@
 <?php get_header(); ?>
 
-<?php get_template_part('template-part', 'header-home'); ?>
+<?php get_template_part('template-part', 'header-home');
+
+  if ( FALSE === get_post_status( 22 ) ) {
+    $home_ID = 69;
+  } else {
+    $home_ID = 22;
+  } ?>
 
   <div class="slideshow-panel">
 
     <div class="header-logo-div text-center" itemprop="event" itemscope itemtype="http://schema.org/Event">
-      <?php $faire_location = get_field('faire_location', 22);
+      <?php $faire_location = get_field('faire_location', $home_ID);
       if( $faire_location ): ?>
         <h2 class="event-location" itemprop="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $faire_location ?></h2> <?php
       endif;
 
-      $faire_date = get_field('faire_date', 22);
+      $faire_date = get_field('faire_date', $home_ID);
       if( $faire_date ): ?>
         <h2 class="event-date" itemprop="startDate"><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo $faire_date ?></h2> <?php
       endif; ?>
 
       <img class="img-responsive header-logo" src="<?php echo get_theme_mod( 'header_logo' ); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
-      <?php $call_to_action_text = get_field('call_to_action_text', 22);
+      <?php $call_to_action_text = get_field('call_to_action_text', $home_ID);
       if( $call_to_action_text ): ?>
         <h3 class="call_to_action_text"><?php echo $call_to_action_text ?></h3> <?php
       endif; ?>
     </div>
 
-    <?php $images = get_field('image_carousel', 22);
+    <?php $images = get_field('image_carousel', $home_ID);
     if( $images ): ?>
 
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -61,19 +67,13 @@
 
   <?php
 
-  if ( FALSE === get_post_status( 22 ) ) {
-    $home_ID = 69;
-  } else {
-    $home_ID = 22;
-  }
-
   echo $home_ID;
 
   // check if the flexible content field has rows of data
   if( have_rows('home_page_panels', $home_ID)):
 
     // loop through the rows of data
-    while ( have_rows('home_page_panels', 22) ) : the_row();
+    while ( have_rows('home_page_panels', $home_ID) ) : the_row();
 
 
 
@@ -267,7 +267,7 @@
         $sponsor_panel_field_3 = get_sub_field('become_a_sponsor_button');
 
         // check if the nested repeater field has rows of data
-        if( have_rows('sponsors', 147) ):
+        if( have_rows('sponsors', 74) ):
 
         echo '<div class="sponsor-slide">
                 <div class="container">
@@ -286,7 +286,7 @@
                         <div class="carousel-inner" role="listbox">';
 
           // loop through the rows of data
-          while ( have_rows('sponsors', 147) ) : the_row();
+          while ( have_rows('sponsors', 74) ) : the_row();
 
             $sponsor_group_title = get_sub_field('sponsor_group_title'); //Sponsor group title
 
