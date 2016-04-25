@@ -67,8 +67,6 @@
 
   <?php
 
-  echo $home_ID;
-
   // check if the flexible content field has rows of data
   if( have_rows('home_page_panels', $home_ID)):
 
