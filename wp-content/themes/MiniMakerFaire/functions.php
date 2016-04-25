@@ -33,10 +33,11 @@
 
     function devdmbootstrap3_theme_stylesheets()
     {
-        wp_register_style('bootstrap.css', get_template_directory_uri() . '/css/bootstrap.min.css', array(), null, 'all' );
-        wp_enqueue_style( 'bootstrap.css');
+        wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css', array(), null, 'all' );
         wp_enqueue_style( 'theme-css', get_stylesheet_directory_uri() . '/css/style.css' );
         wp_enqueue_style( 'font-awesome-css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css', array(), null, 'all' );
+        wp_enqueue_style( 'google-font-body', 'https://fonts.googleapis.com/css?family=Roboto:400,300,700,500', array(), null, 'all' );
+        wp_enqueue_style( 'google-font-heading', 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700', array(), null, 'all' );
     }
     add_action('wp_enqueue_scripts', 'devdmbootstrap3_theme_stylesheets');
 
@@ -142,16 +143,14 @@ if(!function_exists( '_wp_render_title_tag')) {
 ////////////////////////////////////////////////////////////////////
 
   function sponsors_slider() {
-    if( have_rows('goldsmith_sponsors', $id) || have_rows('silversmith_sponsors', $id) || have_rows('coppersmith_sponsors', $id) || have_rows('media_sponsors', $id) ): ?>
+    if( have_rows('sponsors') ): ?>
       <div class="sponsor-slide">
         <div class="container">
           <div class="row">
-            <div class="col-sm-7">
-              <h4 class="sponsor-slide-title">2016 Maker Faire Sponsors: <span class="sponsor-slide-cat"></span></h4>
-            </div>
-            <div class="col-sm-5">
-              <h5><a href="/sponsors">Become a sponsor</a></h5>
-              <h5><a href="/bay-area-2016/sponsors">All sponsors</a></h5>
+            <div class="col-xs-12">
+              <h3 class="sponsor-slide-title">2016 Maker Faire Sponsors: <span class="sponsor-slide-cat"></span></h4>
+              <hr />
+              <h5></h5>
             </div>
           </div>
           <div class="row">
@@ -192,6 +191,12 @@ if(!function_exists( '_wp_render_title_tag')) {
               </div>
             </div>
           </div>
+          <div class="row sponsor_panel_bottom">
+            <div class="col-xs-12 text-center">
+              <p><a href=""></a> <span>&middot;</span> <a href=""></a></p>
+            </div>
+          </div>
+
         </div>
       </div>
     <?php endif;
