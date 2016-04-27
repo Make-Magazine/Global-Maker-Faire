@@ -46,7 +46,7 @@
         </div>
         <?php endif; ?>
 
-        <div class="col-sm-6 footer-right hidden-xs">
+        <div class="col-sm-6 footer-right hidden-xs testing">
           <div class="footer-logo-div">
             <a href="http://makerfaire.com/" target="_blank">
               <img class="img-responsive footer-logos" src="<?php echo get_bloginfo('template_directory');?>/img/makerfaire.gif" alt="Maker Faire logo" />
