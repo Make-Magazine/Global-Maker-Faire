@@ -1,8 +1,4 @@
-<?php
-/*
-* Template name: Blank Page
-*/
-get_header(); ?>
+<?php get_header(); ?>
 
 <!-- start content container -->
 <div class="container">
@@ -16,6 +12,7 @@ get_header(); ?>
 
                 <h2 class="page-header"><?php the_title() ;?></h2>
                 <?php the_content(); ?>
+                <div class="clearfix padtop"></div>
                 <?php wp_link_pages(); ?>
                 <?php comments_template(); ?>
 

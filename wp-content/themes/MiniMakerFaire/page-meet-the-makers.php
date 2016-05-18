@@ -73,10 +73,8 @@ The category is: {{category}}
 
     <div class="mtm-results">
       <div class="mtm-results-cont">
-
         <article class="mtm-maker" ng-repeat="maker in makers | filter : makerSearch | byCategory:category | limitTo:24" style="background-image: url('{{ maker.large_img_url }}')">
           <h3>{{ maker.name }}</h3>
-          <!--<p>{{ maker.handle | limitTo:20 }}</p>-->
         </article>
 
         <div class="clearfix"></div>

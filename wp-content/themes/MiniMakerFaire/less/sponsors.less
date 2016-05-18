@@ -1,14 +1,10 @@
 .sponsors-landing {
   margin-top: 30px;
-  h2 {
-    font-weight: 300;
-  }
   .spnosors-row {
     border-top: 1px solid rgba(0,173,239,0.9);
     padding-bottom: 50px;
   }
   h3.sponsors-type {
-    font-weight: 300;
     font-size: 35px;
   }
   .sponsors-box {
@@ -49,7 +45,7 @@
             align-items: center;
   }
   .sponsors-box-lg {
-    width: 250px;
+    width: 230px;
     height: 180px;
     margin-top: 20px;
     padding-left: 25px;
@@ -176,7 +172,7 @@
     }
   }
   .carousel-inner {
-    min-height: 220px;
+    min-height: 155px;
     // display: flex;
     // flex-direction: column;
     // justify-content: center;
@@ -243,7 +239,8 @@
   .sponsors-box-lg {
     width: 200px;
     height: 100px;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
     padding-left: 15px;
     padding-right: 15px;
     border-left: 1px solid #D3D3D3;
@@ -268,7 +265,8 @@
   .sponsors-box-md {
     width: 120px;
     height: 75px;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     padding-left: 15px;
     padding-right: 15px;
     border-left: 1px solid #D3D3D3;
@@ -317,11 +315,15 @@
     }
   }
   .sponsor_panel_bottom {
-    a, a:focus, a:hover {
+    a {
       color: #666;
       @media (max-width: 767px) { 
         display: block;
       }
+    }
+    a:focus, a:hover {
+      color: #333;
+      text-decoration: none;
     }
     span {
       color: #666;
