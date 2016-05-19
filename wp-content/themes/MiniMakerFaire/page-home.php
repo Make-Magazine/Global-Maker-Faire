@@ -96,7 +96,7 @@ get_header();
 
 
 
-      // FEATURED MAKERS
+      // FEATURED MAKERS (SQUARE)
       if( get_row_layout() == 'featured_makers_panel' ):
 
         $activeinactive = get_sub_field('activeinactive');
@@ -157,6 +157,69 @@ get_header();
           endif;
 
         endif;
+
+
+
+
+
+      // FEATURED MAKERS (SCIRCLE)
+      if( get_row_layout() == 'featured_makers_panel_circle' ):
+
+        $activeinactive = get_sub_field('activeinactive');
+        if( $activeinactive == 'Active' ):
+
+          $makers_to_show = get_sub_field('makers_to_show');
+          $more_makers_button = get_sub_field('more_makers_button');
+          echo '<section class="featured-maker-panel-circle">
+                  <div class="container">';
+
+          if(get_sub_field('title')){
+            echo '<div class="row text-center">
+                    <div class="title-w-border-r">
+                      <h2>' . get_sub_field('title') . '</h2>
+                    </div>
+                  </div>';
+          }
+
+          // check if the nested repeater field has rows of data
+          if( have_rows('featured_makers') ):
+
+            echo '<div class="row padbottom">';
+
+            // loop through the rows of data
+            while ( have_rows('featured_makers') ) : the_row();
+
+              $image = get_sub_field('maker_image');
+              $maker = get_sub_field('maker_name');
+              $decription = get_sub_field('maker_short_description');
+
+              echo '<div class="featured-maker col-xs-6 col-sm-3">
+                      <div class="maker-img" style="background-image: url(' . $image["url"] . ');">
+                      </div>
+                      <div class="maker-panel-text">
+                        <h4>' . $maker . '</h4>
+                        <p class="hidden-xs">' . $decription . '</p>
+                      </div>
+                    </div>';
+
+            endwhile;
+
+            echo '</div>';
+
+            if(get_sub_field('more_makers_button')){
+              echo '<div class="row padbottom">
+                      <div class="col-xs-12 padbottom text-center">
+                        <a class="btn btn-w-ghost" href="' . $more_makers_button . '">More Makers</a>
+                      </div>
+                    </div>';
+            }
+
+            echo '</div><div class="flag-banner"></div></section>';
+
+          endif;
+
+        endif;
+
 
 
 
@@ -359,7 +422,7 @@ get_header();
           // check if the nested repeater field has rows of data
           if( have_rows('images') ):
 
-            echo '<section class="rectangle_image_carousel ';
+            echo '<section class="rectangle-image-carousel ';
             if ($width == 'Content Width') { echo 'container">'; } else { echo '">'; }
             echo     '<div id="carouselPanel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">';
@@ -430,7 +493,7 @@ get_header();
 
           if( have_rows('images') ): ?>
 
-            <section class="square_image_carousel">
+            <section class="square-image-carousel">
 
               <div class="mtm-carousel owl-carousel">
 
