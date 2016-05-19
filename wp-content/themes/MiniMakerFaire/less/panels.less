@@ -133,12 +133,6 @@
   .container {
     padding-bottom: 15px;
   }
-  .robot-head {
-    width: 60px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
   .recent-post-post {
     margin-bottom: 20px;
     &:nth-child(5) {
@@ -308,28 +302,26 @@
     padding: 15px;
     .maker-img {
       position: relative; // for borders
-      height: 150px;
-      height: 14vw;
-      @media (max-width:767px) {
-        height: 30vw;
+      height: 200px;
+      width: 200px;
+      @media (min-width:992px) and (max-width:1199px) {
+        height: 180px;
+        width: 180px;
       }
-      width: 100%;
+      @media (min-width:768px) and (max-width:991px) {
+        height: 150px;
+        width: 150px;
+      }
+      @media (max-width:767px) {
+        height: 40vw;
+        width: 40vw;
+      }
+      margin-right: auto;
+      margin-left: auto;
       background-size: cover;
       background-position: center center;
-      border: 2px solid #005980;
-      border-radius: 20px 20px 20px 0;
-      //outline: 5px solid rgba(255, 255, 255, 0.73);
-      &:before {
-        content: " ";
-        position: absolute;
-        z-index: 1;
-        top: -7px;
-        left: -7px;
-        right: -7px;
-        bottom: -7px;
-        border-radius: 25px 25px 25px 0;
-        border: 5px solid rgba(255, 255, 255, 0.73);
-      }
+      border: 1px solid #999;
+      border-radius: 50%;
     }
     .maker-panel-text {
       height: 126px;
@@ -338,7 +330,8 @@
         height: 52px;
       }
       h4 {
-        color: #fff;
+        color: #333;
+        text-align: center;
         font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
         font-size: 22px;
         font-weight: 300;
@@ -352,21 +345,14 @@
         }
       }
       p {
-        color: #e6e6e6;
+        color: #666;
+        text-align: center;
         font-size: 14px;
         line-height: 22px;
         max-height: 69px; // 3 lines of text
         overflow: hidden;
       }
     }
-  }
-}
-
-
-.content-panel {
-  padding-top: 20px;
-  .container {
-    padding-bottom: 30px;
   }
 }
 
@@ -518,5 +504,20 @@
       }
     }
   }
-
 }
+
+// Common elements
+.content-panel {
+  padding-top: 20px;
+  .container {
+    padding-bottom: 30px;
+  }
+}
+.robot-head {
+  width: 60px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
