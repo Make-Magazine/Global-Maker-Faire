@@ -5,11 +5,13 @@
 
 get_header();
 
-  // Get the home page ID
-  if ( FALSE === get_post_status( 22 ) ) {
-    $home_ID = 69;
-  } else {
-    $home_ID = 22;
+  // Get the home template page ID
+  $home_pages = get_pages(array(
+    'meta_key' => '_wp_page_template',
+    'meta_value' => 'page-home.php'
+  ));
+  foreach($home_pages as $home_page){
+    $home_ID = $home_page->ID;
   } 
 
   // Get the sponsors template page ID
@@ -335,7 +337,7 @@ get_header();
             echo  '     <div class="recent-post-text">
                           <h4>' . $recent["post_title"] . '</h4>
                           <p class="recent-post-date">' . mysql2date('M j, Y',  $recent["post_date"]) . '</p>
-                          <p class="recent-post-descripton">' . substr($recent["post_content"], 0 , 150) . '</p>
+                          <p class="recent-post-descripton">' . sanitize_text_field(substr($recent["post_content"], 0 , 150)) . '</p>
                         </div>
                       </a>
                     </article>
