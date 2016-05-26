@@ -5,11 +5,13 @@
 
 get_header();
 
-  // Get the home page ID
-  if ( FALSE === get_post_status( 22 ) ) {
-    $home_ID = 69;
-  } else {
-    $home_ID = 22;
+  // Get the home template page ID
+  $home_pages = get_pages(array(
+    'meta_key' => '_wp_page_template',
+    'meta_value' => 'page-home.php'
+  ));
+  foreach($home_pages as $home_page){
+    $home_ID = $home_page->ID;
   } 
 
   // Get the sponsors template page ID
@@ -69,7 +71,7 @@ get_header();
           endforeach; ?>
         </div>
 
-        <?php if( $images > 1 ): ?>
+        <?php if( $i > 1 ): ?>
           <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
             <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
             <span class="sr-only">Previous</span>
@@ -96,7 +98,7 @@ get_header();
 
 
 
-      // FEATURED MAKERS
+      // FEATURED MAKERS (SQUARE)
       if( get_row_layout() == 'featured_makers_panel' ):
 
         $activeinactive = get_sub_field('activeinactive');
@@ -161,6 +163,144 @@ get_header();
 
 
 
+
+      // FEATURED MAKERS (CIRCLE)
+      elseif( get_row_layout() == 'featured_makers_panel_circle' ):
+
+        $activeinactive = get_sub_field('activeinactive');
+        if( $activeinactive == 'Active' ):
+
+          $makers_to_show = get_sub_field('makers_to_show');
+          $more_makers_button = get_sub_field('more_makers_button');
+          echo '<section class="featured-maker-panel-circle">
+                  <div class="container">';
+
+          if(get_sub_field('title')){
+            echo '<div class="row padtop text-center">
+                    <img class="robot-head" src="' . get_bloginfo("template_directory") . '/img/news_robot.png" alt="Robot head icon" />
+                    <div class="title-w-border-r">
+                      <h2>' . get_sub_field('title') . '</h2>
+                    </div>
+                  </div>';
+          }
+
+          // check if the nested repeater field has rows of data
+          if( have_rows('featured_makers') ):
+
+            echo '<div class="row padbottom">';
+
+            // loop through the rows of data
+            while ( have_rows('featured_makers') ) : the_row();
+
+              $image = get_sub_field('maker_image');
+              $maker = get_sub_field('maker_name');
+              $decription = get_sub_field('maker_short_description');
+
+              echo '<div class="featured-maker col-xs-6 col-sm-3">
+                      <div class="maker-img" style="background-image: url(' . $image["url"] . ');">
+                      </div>
+                      <div class="maker-panel-text">
+                        <h4>' . $maker . '</h4>
+                        <p class="hidden-xs">' . $decription . '</p>
+                      </div>
+                    </div>';
+
+            endwhile;
+
+            echo '</div>';
+
+            if(get_sub_field('more_makers_button')){
+              echo '<div class="row padbottom">
+                      <div class="col-xs-12 padbottom text-center">
+                        <a class="btn btn-b-ghost" href="' . $more_makers_button . '">More Makers</a>
+                      </div>
+                    </div>';
+            }
+
+            echo '</div><div class="flag-banner"></div></section>';
+
+          endif;
+
+        endif;
+
+
+
+
+
+
+      // FEATURED EVENTS
+      elseif( get_row_layout() == 'featured_events' ):
+
+        $activeinactive = get_sub_field('activeinactive');
+        if( $activeinactive == 'Active' ):
+
+          $more_makers_button = get_sub_field('more_makers_button');
+          echo '<section class="featured-events-panel">
+                  <div class="container">';
+
+          if(get_sub_field('title')){
+            echo '<div class="row padtop text-center">
+                    <div class="title-w-border-r">
+                      <h2>' . get_sub_field('title') . '</h2>
+                    </div>
+                  </div>';
+          }
+
+          // check if the nested repeater field has rows of data
+          if( have_rows('featured_events') ):
+
+            echo '<div class="row padbottom">';
+
+            // loop through the rows of data
+            while ( have_rows('featured_events') ) : the_row();
+
+              $image = get_sub_field('event_image');
+              $event = get_sub_field('event_name');
+              $decription = get_sub_field('event_short_description');
+              $day = get_sub_field('day');     
+              $time = get_sub_field('time');
+              $location = get_sub_field('location');
+
+              echo '<div class="featured-event col-xs-6">
+                      <div class="col-xs-12 col-sm-4 nopad">
+                        <div class="event-img" style="background-image: url(' . $image["url"] . ');"></div>
+                      </div>
+                      <div class="col-xs-12 col-sm-8">
+                        <div class="event-description">
+                          <p class="event-day">' . $day . '</p>
+                          <h4>' . $event . '</h4>
+                          <p class="event-desc">' . $decription . '</p>
+                        </div>
+                        <div class="event-details">
+                          <p class="event-time">' . $time . '</p>
+                          <p class="event-location">' . $location . '</p>
+                        </div>
+                      </div>
+                    </div>';
+
+            endwhile;
+
+            echo '</div>';
+
+            if(get_sub_field('all_events_button')){
+              echo '<div class="row padbottom">
+                      <div class="col-xs-12 padbottom text-center">
+                        <a class="btn btn-b-ghost" href="' . $all_events_button . '">All Events</a>
+                      </div>
+                    </div>';
+            }
+
+            echo '</div><div class="flag-banner"></div></section>';
+
+          endif;
+
+        endif;
+
+
+
+
+
+
       // RECENT POSTS
       elseif( get_row_layout() == 'post_feed' ): 
 
@@ -197,7 +337,7 @@ get_header();
             echo  '     <div class="recent-post-text">
                           <h4>' . $recent["post_title"] . '</h4>
                           <p class="recent-post-date">' . mysql2date('M j, Y',  $recent["post_date"]) . '</p>
-                          <p class="recent-post-descripton">' . substr($recent["post_content"], 0 , 150) . '</p>
+                          <p class="recent-post-descripton">' . sanitize_text_field(substr($recent["post_content"], 0 , 150)) . '</p>
                         </div>
                       </a>
                     </article>
@@ -348,18 +488,20 @@ get_header();
 
 
 
-      // IMAGE/CAROUSEL PANEL
+      // IMAGE CAROUSEL (RECTANGLE)
       elseif( get_row_layout() == 'static_or_carousel' ):
 
         $activeinactive = get_sub_field('activeinactive');
+        $width = get_sub_field('width');
         if( $activeinactive == 'Active' ):
 
 
           // check if the nested repeater field has rows of data
           if( have_rows('images') ):
 
-            echo '<section class="static-or-carousel-panel container">
-                      <div id="carouselPanel" class="carousel slide" data-ride="carousel">
+            echo '<section class="rectangle-image-carousel ';
+            if ($width == 'Content Width') { echo 'container">'; } else { echo '">'; }
+            echo     '<div id="carouselPanel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">';
             $i = 0;
 
@@ -415,6 +557,85 @@ get_header();
           endif;
 
         endif;
+
+
+
+
+
+      // IMAGE CAROUSEL (SQUARE)
+      elseif( get_row_layout() == 'square_image_carousel' ):
+
+        $activeinactive = get_sub_field('activeinactive');
+        if( $activeinactive == 'Active' ):
+          $width = get_sub_field('width');
+
+            if( have_rows('images') ):
+
+              echo '<section class="square-image-carousel';
+              if ($width == 'Content Width') { 
+                echo ' container nopad">'; } 
+              else { echo '">'; } ?>
+
+              <div class="mtm-carousel owl-carousel">
+
+              <?php while ( have_rows('images') ) : the_row();
+
+                $text = get_sub_field('text');
+                $url = get_sub_field('url');
+                $image = get_sub_field('image'); ?>
+
+                <div class="mtm-car-image" style="background: url('<?php echo $image["url"]; ?>') no-repeat center center;background-size: cover;"></div>
+
+              <?php endwhile; ?>
+
+              </div>
+
+              <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
+                <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
+                <span class="sr-only">Previous</span>
+              </a>
+              <a id="right-trigger" class="right carousel-control" href="#" role="button" data-slide="next">
+                <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
+                <span class="sr-only">Next</span>
+              </a>
+              
+              <script>
+              jQuery( document ).ready(function() {
+                // Carousel init
+                jQuery('.mtm-carousel').owlCarousel({
+                  center: true,
+                  autoWidth:true,
+                  items:2,
+                  loop:true,
+                  margin:0,
+                  nav:true,
+                  //navContainer:true,
+                  autoplay:true,
+                  autoplayHoverPause:true,
+                  responsive:{
+                    600:{
+                      items:3
+                    }
+                  }
+                });
+                // Carousel left right
+                jQuery( "#right-trigger" ).click(function( event ) {
+                  event.preventDefault();
+                  jQuery( ".owl-next" ).click();
+                });
+                jQuery( "#left-trigger" ).click(function( event ) {
+                  event.preventDefault();
+                  jQuery( ".owl-prev" ).click();
+                });
+              });
+              </script>
+
+            </section>
+
+          <?php endif;
+
+        endif;
+
 
 
 

@@ -49,6 +49,7 @@
   function devdmbootstrap3_theme_js() {
     wp_enqueue_script('theme-js', get_template_directory_uri() . '/js/bootstrap.min.js',array( 'jquery' ),false,true );
     wp_enqueue_script('misc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ),false,true );
+    wp_enqueue_script('owl-carousel', get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ),false,true );
   }
   add_action('wp_enqueue_scripts', 'devdmbootstrap3_theme_js');
 
@@ -86,9 +87,41 @@ function angular_scripts() {
       get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',
       array( 'angularjs', 'dirPagination' )
     );
+
+////////////////////////////////////////////////////////////////////
+// Enqueue the AngularJS
+////////////////////////////////////////////////////////////////////
+  
+  function angular_scripts() {
+    if (is_page('meet-the-makers') || is_page('schedule')) {
+      wp_enqueue_script(
+        'angularjs',
+        get_stylesheet_directory_uri() . '/bower_components/angular/angular.min.js'
+      );
+
+      wp_enqueue_script(
+        'dirPagination',
+        get_stylesheet_directory_uri() . '/bower_components/angular/dirPagination.js',
+        array( 'angularjs')
+      );
+      wp_enqueue_script(
+        'carousel',
+        get_stylesheet_directory_uri().'/js/owl.carousel.min.js'
+      );
+      wp_enqueue_script(
+        'angular-mtm',
+        get_stylesheet_directory_uri() . '/js/angular/controller.js',
+        array( 'angularjs', 'dirPagination' )
+      );
+      wp_enqueue_script(
+        'schedule',
+        get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',
+        array( 'angularjs', 'dirPagination' )
+      );
+    }
   }
-}
-add_action( 'wp_enqueue_scripts', 'angular_scripts' );
+  add_action( 'wp_enqueue_scripts', 'angular_scripts' );
+
 
 ////////////////////////////////////////////////////////////////////
 // Add Title Tag Support with Regular Title Tag injection Fall back.
