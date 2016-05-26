@@ -21,22 +21,21 @@ app.controller('mtmMakers', function($scope, $http) {
 });
 
 app.filter('byCategory', function(){
-    return function(items, maker) {
-        var filtered = [];
+  return function(items, maker) {
+    var filtered = [];
 
-        if (!maker || !items.length) {
-          return items;
+    if (!maker || !items.length) {
+      return items;
+    }
+    items.forEach(function(itemElement, itemIndex) {
+      itemElement.category_id_refs.forEach(function(categoryElement, categoryIndex) {
+
+        if (categoryElement === maker) {
+          filtered.push(itemElement);
+          return false;
         }
-        items.forEach(function(itemElement, itemIndex) {
-          itemElement.category_id_refs.forEach(function(categoryElement, categoryIndex) {
-
-            if (categoryElement === maker) {
-              filtered.push(itemElement);
-              return false;
-            }
-          });
-        });
-
-        return filtered;
-    };
-  });
+      });
+    });
+    return filtered;
+  };
+});
