@@ -5,9 +5,7 @@
 get_header(); ?>
 
 
-
-<div id="page-schedule" class="container" ng-app="schedule">
-
+<div id="page-schedule" class="container">
   <div class="topic-nav">
     <div class="btn-group">
       <button type="button" class="btn btn-b-ghost dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,101 +58,68 @@ get_header(); ?>
     </div>
   </div>
 
-  <div class="day-nav">
-    <div class="day-nav-box activeDay">
-      <div class="day-nav-item">
-        <h2>Education Friday</h2>
+  <ul class="day-nav nav nav-tabs">
+    <li class="day-nav-box active">
+      <div class="day-nav-item active">
+        <a data-toggle="tab" href="#FridaySched">
+          <h2>Education Friday</h2>
+        </a>
       </div>
-    </div>
-    <div class="day-nav-box">
+    </li>
+    <li class="day-nav-box">
       <div class="day-nav-item">
-        <h2>DAY 1: SATURDAY</h2>
+        <a data-toggle="tab" href="#SaturdaySched">
+          <h2>DAY 1: SATURDAY</h2>
+        </a>
       </div>
-    </div>
-    <div class="day-nav-box">
+    </li>
+    <li class="day-nav-box">
       <div class="day-nav-item">
-        <h2>DAY 2: SUNDAY</h2>
+        <a data-toggle="tab" href="#SundaySched">
+          <h2>DAY 2: SUNDAY</h2>
+        </a>
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
 
-  <div class="table-responsive">
-    <table class="table schedule-table">
-      <thead>
-        <tr>
-          <th class="schedule-col-1"></th>
-          <th class="schedule-col-2">TITLE</th>
-          <th class="schedule-col-3">TIME</th>
-          <th class="schedule-col-4"><a href="#">STAGE: ALL <i class="fa fa-chevron-down" aria-hidden="true"></i></a></th>
-          <th class="schedule-col-5"><a href="#">TYPE <i class="fa fa-chevron-down" aria-hidden="true"></i></a></th>
-          <th class="schedule-col-6">TOPICS</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- FIRST ROW -->
-        <tr class="schedule-row">
-          <td class="schedule-col-1" scope="row">
-            <img src="http://lorempixel.com/400/400/sports/" alt="Maker Faire Exhibit Featured Image" class="img-responsive schedule-fixed-h" />
-          </td>
-          <td class="schedule-col-2">
-            <div class="schedule-fixed-h">
-              <h3>The Paper Airplane Guy</h3>
-              <p class="schedule-short-d">John Collins, CTO Company X</p>
-              <span><a class="quick-view-toggle" href="#">quick view <i class="fa fa-chevron-down" aria-hidden="true"></i></a></span>
+  <div class="container schedule-table"  ng-controller="scheduleCtrl" ng-app="scheduleApp">
+    <div class="row header">
+        <div class="col-lg-1">&nbsp;</div>
+        <div class="col-lg-4">Title</div>
+        <div class="col-lg-1">Time</div>
+        <div class="col-lg-2">Stage</div>
+        <div class="col-lg-2">Type</div>
+        <div class="col-lg-2">Topics</div>
+    </div>
+<div class="tab-content">
+    <div ng-repeat="day in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
+      <div ng-repeat="schedule in schedules | dayFilter:day | orderBy: 'time_start'">
+        <div class="row">
+          <div class="col-lg-1"><img src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></div>
+          <div class="col-lg-4"><h3>{{schedule.name}}</h3>
+            <p class="presenterList">{{schedule.maker_list}}</p>
+          </div>
+          <div class="col-lg-1">{{schedule.time_start | date: "shortTime"}} - <br/>{{schedule.time_end | date: "shortTime"}}<br/></div>
+          <div class="col-lg-2">{{schedule.nicename}}</div>
+          <div class="col-lg-2">
+            <div class="schedType">
+              <img ng-if="schedule.type == 'Demo'" src="<?php echo get_bloginfo('template_directory'); ?>/img/demo.png" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
+              <img ng-if="schedule.type == 'Talk'" src="<?php echo get_bloginfo('template_directory'); ?>/img/talk.png" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
+              <img ng-if="schedule.type == 'Workshop'" src="<?php echo get_bloginfo('template_directory'); ?>/img/workshop.png" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
+              <img ng-if="schedule.type == 'Performance'" src="<?php echo get_bloginfo('template_directory'); ?>/img/performance.png" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
             </div>
-          </td>
-          <td class="schedule-col-3">11:00 AM - 11:30 AM</td>
-          <td class="schedule-col-4">CENTER STAGE</td>
-          <td class="schedule-col-5">
-            <img src="<?php echo get_bloginfo('template_directory'); ?>/img/workshop.png" alt="Maker Exhibit Robot Topic Icon" class="img-responsive" />
-          </td>
-          <td class="schedule-col-6">Airplanes, Paper, Crafts</td>
-        </tr>
-        <!-- FIRST ROW - MORE INFO "QUICK VIEW" -->
-        <tr class="quick-view-tr">
-          <td class="table-no-border">
-          </td>
-          <td colspan="5" class="quick-view-td table-no-border">
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word</p>
-            <p><a href="#">full details</a></p>
-          </td>
-        </tr>
-
-        <!-- NEXT ROW -->
-        <tr class="schedule-row">
-          <td class="schedule-col-1" scope="row">
-            <img src="http://lorempixel.com/400/400/sports/" alt="Maker Faire Exhibit Featured Image" class="img-responsive schedule-fixed-h" />
-          </td>
-          <td class="schedule-col-2">
-            <div class="schedule-fixed-h">
-              <h3>The Paper Airplane Guy</h3>
-              <p class="schedule-short-d">John Collins, CTO Company X</p>
-              <span><a class="quick-view-toggle" href="#">quick view <i class="fa fa-chevron-down" aria-hidden="true"></i></a></span>
-            </div>
-          </td>
-          <td class="schedule-col-3">11:00 AM - 11:30 AM</td>
-          <td class="schedule-col-4">CENTER STAGE</td>
-          <td class="schedule-col-5">
-            <img src="<?php echo get_bloginfo('template_directory'); ?>/img/workshop.png" alt="Maker Exhibit Robot Topic Icon" class="img-responsive" />
-          </td>
-          <td class="schedule-col-6">Airplanes, Paper, Crafts</td>
-        </tr>
-        <!-- FIRST ROW - MORE INFO "QUICK VIEW" -->
-        <tr class="quick-view-tr">
-          <td class="table-no-border">
-          </td>
-          <td colspan="5" class="quick-view-td table-no-border">
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word</p>
-            <p><a href="#">full details</a></p>
-          </td>
-        </tr>
-
-      </tbody>
-    </table>
+          </div>
+          <div class="col-lg-2">{{schedule.category}}</div>
+        </div>
+      </div>
+    </div>
+</div>
   </div>
 
 
 </div>
+
+
 
 <script>
 jQuery( ".quick-view-toggle" ).click(function(event) {

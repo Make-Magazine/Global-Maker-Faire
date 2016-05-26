@@ -69,13 +69,20 @@ function angular_scripts() {
       'carousel',
       get_stylesheet_directory_uri().'/js/owl.carousel.min.js'
     );
-    wp_enqueue_script(
+
+
+  }
+  if (is_page('meet-the-makers')) {
+     wp_enqueue_script(
       'angular-mtm',
       get_stylesheet_directory_uri() . '/js/angular/controller.js',
       array( 'angularjs', 'dirPagination' )
     );
+  }
+
+  if (is_page('schedule')) {
     wp_enqueue_script(
-      'schedule',
+      'angular-schedule',
       get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',
       array( 'angularjs', 'dirPagination' )
     );

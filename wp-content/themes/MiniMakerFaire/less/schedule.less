@@ -133,7 +133,7 @@
       }
     }
   }
-  
+
 
   .day-nav {
     width: 100%;
@@ -166,7 +166,7 @@
         border-left: none;
         border-top: none;
       }
-      &.activeDay {
+      &.active {
         background: #00A3DA;
         .day-nav-item h2 {
           color: #fff;
@@ -190,45 +190,37 @@
   }
 
   .schedule-table {
-    thead {
-      tr {
-        th {
-          color: #888;
-          font-weight: 400;
-          font-size: 14px;
-          border-bottom: 1px solid #00A3DA;
-        }
+    vertical-align: middle;
+    color: #666;
+    .row {
+      div {
+        padding: 8px;
+        line-height: 1.42857143;
       }
     }
-    tbody {
-      tr {
-        td {
-          vertical-align: middle;
-          color: #666;
-          border-top: 1px solid #00A3DA;
-          &:first-child {
-            padding-left: 0;
-          }
-          .quick-view-toggle {
-            font-size: 12px;
-          }
-        }
-      }
-      tr.quick-view-tr {
-        display: none;
-        td.table-no-border {
-          border-top: none;
-          p {
-            @media (min-width:992px) {
-              width: 80%;
-            }
-          }
-          a {
-            font-size: 12px;
-          }
-        }
-      }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 2px;
+      font-family: Roboto,"Helvetica Neue",Helvetica,sans-serif;
+      font-size: 20px;
+      color: #00A3DA;
     }
+
+    .row {
+      color: #666;
+      font-size: 16px;
+      border-bottom: 1px solid #00A3DA;
+    }
+    .header {
+      color: #888;
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .quick-view-tr {
+      display: none;
+    }
+
     .schedule-col-1 {
       width: 10%;
       @media (min-width:992px) and (max-width:1199px) {
@@ -247,9 +239,8 @@
         border: 2px solid #ccc;
       }
     }
-    .schedule-col-2 {
-      width: 37%;
-      vertical-align: top;
+    .presenters {
+
       h3 {
         margin-top: 0;
         margin-bottom: 2px;
@@ -287,5 +278,10 @@
       position: relative;
     }
   }
-
+  .schedType {
+    vertical-align: middle;
+    img {
+      height: 50px;
+    }
+  }
 }
