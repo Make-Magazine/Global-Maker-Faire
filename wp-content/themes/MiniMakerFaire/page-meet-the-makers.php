@@ -54,13 +54,12 @@ get_header(); ?>
 
       <div class="dropdown">
         <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Filter by Topics
+          Filter by Topics: {{category}}
           <i class="fa fa-chevron-down" aria-hidden="true"></i>
         </button>
-The category is: {{category}}
+        
         <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
           <li ng-repeat="tag in tags | orderBy: tag"> <a ng-click="setTagFilter(tag)">{{ tag }}</a></li>
-
         </ul>
 
       </div>

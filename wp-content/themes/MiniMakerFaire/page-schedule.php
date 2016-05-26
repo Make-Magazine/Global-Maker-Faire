@@ -96,25 +96,32 @@ get_header(); ?>
     <div class="row header">
         <div class="col-lg-1">&nbsp;</div>
         <div class="col-lg-4">
-          <span ng-click="order('name')">Title</span>
+          <!--<span ng-click="order('name')">Title</span>
           <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+          -->
+          Title
         </div>
         <div class="col-lg-1">
-          <span ng-click="order('time_start')">Time</span>
+          <!--<span ng-click="order('time_start')">Time</span>
           <span class="sortorder" ng-show="predicate === 'time_start'" ng-class="{reverse:reverse}"></span>
+          -->
+          Time
         </div>
         <div class="col-lg-2">
-          <div class="dropdown">
+          <span class="dropdown">
             <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Stage
+              Stage: {{schedStage}}
               <i class="fa fa-chevron-down" aria-hidden="true"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
+              <li>
+                <a ng-click="setStage('All')">All</a>
+              </li>
               <li ng-repeat="schedule in schedules | unique:'nicename' | orderBy: nicename ">
-                <a >{{schedule.nicename}}</a>
+                <a ng-click="setStage(schedule.nicename)">{{schedule.nicename}}</a>
               </li>
             </ul>
-          </div>
+          </span>
         </div>
         <div class="col-lg-2">Type</div>
         <div class="col-lg-2">
@@ -123,7 +130,7 @@ get_header(); ?>
     </div>
 <div class="tab-content">
     <div ng-repeat="day in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
-      <div ng-repeat="schedule in schedules | dayFilter:day | typeFilter: schedType| filter:filterData | orderBy:predicate">
+      <div ng-repeat="schedule in schedules | dayFilter:day | typeFilter: schedType| stageFilter: schedStage | filter:filterData | orderBy:predicate">
         <div class="row">
           <div class="col-lg-1"><img src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></div>
           <div class="col-lg-4"><h3>{{schedule.name}}</h3>
