@@ -283,6 +283,7 @@ get_header();
             echo '</div>';
 
             if(get_sub_field('all_events_button')){
+              $all_events_button = get_sub_field('all_events_button');
               echo '<div class="row padbottom">
                       <div class="col-xs-12 padbottom text-center">
                         <a class="btn btn-b-ghost" href="' . $all_events_button . '">All Events</a>
@@ -645,24 +646,69 @@ get_header();
       elseif( get_row_layout() == 'newsletter_panel' ):
 
         $activeinactive = get_sub_field('activeinactive');
-        if( $activeinactive == 'Active' ):
+        if( $activeinactive == 'Active' ): ?>
 
-          echo '<section class="newsletter-panel">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-6">
-                        <p><strong>Stay in Touch:</strong> Get Local and Global Maker Faire Community updates.</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-6">
-                        <form class="form-inline">
-                          <input class="form-control nl-panel-input" name="email" placeholder="Enter your email" type="email" required>
-                          <input class="form-control btn-w-ghost" value="GO" type="submit">
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </section>';
-        endif;
+          <section class="newsletter-panel">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <p><strong>Stay in Touch:</strong> Get Local and Global Maker Faire Community updates.</p>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <form class="form-inline sub-form whatcounts-signup1" action="http://whatcounts.com/bin/listctrl" method="POST">
+                    <input type="hidden" name="slid_1" value="6B5869DC547D3D46E66DEF1987C64E7A" /><!-- Maker Faire Newsletter -->
+                    <input type="hidden" name="slid_2" value="6B5869DC547D3D46941051CC68679543" /><!-- Maker Media Newsletter -->
+                    <input type="hidden" name="multiadd" value="1" />
+                    <input type="hidden" name="cmd" value="subscribe" />
+                    <input type="hidden" name="custom_source" value="footer" />
+                    <input type="hidden" name="custom_incentive" value="none" />
+                    <input type="hidden" name="custom_url" value="<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>" />
+                    <input type="hidden" id="format_mime" name="format" value="mime" />
+                    <input type="hidden" name="custom_host" value="<?php echo $_SERVER["HTTP_HOST"]; ?>" />
+                    <input id="wc-email" class="form-control nl-panel-input" name="email" placeholder="Enter your Email" required type="email">
+                    <input class="form-control btn-w-ghost" value="GO" type="submit">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="fancybox-thx" style="display:none;">
+            <div class="col-sm-4 hidden-xs nl-modal">
+              <span class="fa-stack fa-4x">
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+              <i class="fa fa-thumbs-o-up fa-stack-1x"></i>
+              </span>
+            </div>
+            <div class="col-sm-8 col-xs-12 nl-modal">
+              <h3>Awesome!</h3>
+              <p>Thanks for signing up.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <script>
+            jQuery(document).ready(function(){
+              jQuery(".fancybox-thx").fancybox({
+                autoSize : false,
+                width  : 400,
+                autoHeight : true,
+                padding : 0,
+                afterLoad   : function() {
+                  this.content = this.content.html();
+                }
+              });
+              jQuery(document).on('submit', '.whatcounts-signup1', function (e) {
+                e.preventDefault();
+                var bla = jQuery('#wc-email').val();
+                jQuery.post('http://whatcounts.com/bin/listctrl', jQuery('.whatcounts-signup1').serialize());
+                jQuery('.fancybox-thx').trigger('click');
+                //jQuery('.nl-modal-email-address').text(bla);
+                //jQuery('.whatcounts-signup2 #email').val(bla);
+              });
+            });
+          </script>
+        <?php endif;
 
 
 
@@ -783,8 +829,7 @@ get_header();
 
   else :
 
-    // no layouts found
-    ?> no layout found<?php
+    ?><!-- no layout found--><?php
 
   endif;
 

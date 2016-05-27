@@ -706,8 +706,7 @@
 
     else :
 
-      // no layouts found
-      ?> no layout found<?php
+    ?><!-- no layout found--><?php
 
     endif;
 
