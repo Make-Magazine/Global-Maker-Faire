@@ -20,7 +20,7 @@ if( $page_title || $contentdecription ) { ?>
         echo '<h1>' . $page_title . '</h1>';
       }
 
-       if( $contentdecription ) {
+      if( $contentdecription ) {
         echo $contentdecription;
       } ?>
 
@@ -28,8 +28,14 @@ if( $page_title || $contentdecription ) { ?>
 
   </div>
 
-<?php } ?>
+<?php }
 
+$contact_address = get_field( "contact_address" );
+$phone = get_field( "phone" );
+$email = get_field( "email" );
+$contact_form_email_address = get_field( "contact_form_email_address" );
+
+if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
   <div class="row">
 
@@ -37,17 +43,34 @@ if( $page_title || $contentdecription ) { ?>
 
       <h3>Contact Info</h3>
 
+      <?pho if( $contact_address ) {
+        echo '<h4>Address:</h4>';
+        echo $contact_address;
+      } ?>
 
+      <?pho if( $phone ) {
+        echo '<h4>Phone:</h4>';
+        echo $phone;
+      } ?>
+
+      <?pho if( $email ) {
+        echo '<h4>Email:</h4>';
+        echo $email;
+      } ?>
 
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-8">
 
+      <h3>Contact Us</h3>
+
     </div>
 
   </div>
 
-  <?php // check if the nested repeater field has rows of data
+<?php }
+
+  // check if the nested repeater field has rows of data
   if( have_rows('list_of_team_members') ): ?>
 
     <div class="row">
