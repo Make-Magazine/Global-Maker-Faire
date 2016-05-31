@@ -106,19 +106,19 @@ function mmf_customizer_settings( $wp_customize ) {
         'type'     => 'url',
     ));
     // INSTAGRAM LINK
-    // $wp_customize->add_setting( 'instagram_link', array(
-    //     'default'           => '',
-    //     'sanitize_callback' => 'sanitize_instagram_link',
-    // ));
-    // function sanitize_instagram_link( $input ) {
-    //     return wp_kses_post( force_balance_tags( $input ) );
-    // }  
-    // $wp_customize->add_control( 'instagram_link', array(
-    //     'label'    => __( 'Instagram URL' ),
-    //     'section'  => 'footer_social_media',
-    //     'settings' => 'instagram_link',
-    //     'type'     => 'url',
-    // ));
+    $wp_customize->add_setting( 'instagram_link', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_instagram_link',
+    ));
+    function sanitize_instagram_link( $input ) {
+        return wp_kses_post( force_balance_tags( $input ) );
+    }  
+    $wp_customize->add_control( 'instagram_link', array(
+        'label'    => __( 'Instagram URL' ),
+        'section'  => 'footer_social_media',
+        'settings' => 'instagram_link',
+        'type'     => 'url',
+    ));
     // PINTREST LINK
     $wp_customize->add_setting( 'pintrest_link', array(
         'default'           => '',

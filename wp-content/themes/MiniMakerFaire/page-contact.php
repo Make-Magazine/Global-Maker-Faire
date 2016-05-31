@@ -107,7 +107,7 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-7">
+    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
 
       <h3>Contact Us</h3>
 
@@ -234,6 +234,7 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
           $pinterest = get_sub_field('pinterest');
           $googleplus = get_sub_field('googleplus');
           $email_address = get_sub_field('email_address');
+          $website = get_sub_field('website');
 
           echo '<div class="featured-maker col-xs-6 col-sm-3">
                   <div class="maker-img" style="background-image: url(' . $photo["url"] . ');">
@@ -283,6 +284,13 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
                           echo '<li>
                                   <a href="mailto:' . $email_address . '" target="_top" class="icoEmail" title="Email" target="_blank">
                                     <i class="fa fa-envelope"></i>
+                                  </a>
+                                </li>';
+                        endif;
+                        if( $website ):
+                          echo '<li>
+                                  <a href="' . $website . '" target="_top" class="icoEmail" title="Website" target="_blank">
+                                    <i class="fa fa-globe"></i>
                                   </a>
                                 </li>';
                         endif;

@@ -4,7 +4,7 @@
         <div class="col-sm-6 footer-right-border">
           <div class="footer-logo-div">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-              <img class="img-responsive footer-logos" src="<?php echo get_theme_mod( 'header_logo' ); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
+              <img class="img-responsive footer-logos footer-local-logo" src="<?php echo get_theme_mod( 'header_logo' ); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
             </a>
           </div>
           <?php
@@ -37,6 +37,15 @@
                 echo '<li>
                         <a href="' . $twitter_link . '" class="icoTwitter" title="Twitter" target="_blank">
                           <i class="fa fa-twitter"></i>
+                        </a>
+                      </li>';
+              }
+
+              $instagram_link = esc_url( get_theme_mod( 'instagram_link' ) );
+              if( $instagram_link != '' ) {
+                echo '<li>
+                        <a href="' . $instagram_link . '" class="icoInstagram" title="Instagram" target="_blank">
+                          <i class="fa fa-instagram"></i>
                         </a>
                       </li>';
               }
@@ -84,6 +93,35 @@
                   <a href="//help.makermedia.com/hc/en-us/categories/200333245-Maker-Faire" target="_blank">Maker Faire FAQs</a>
                 </li>
               </ul>
+              <div class="social-network-container">
+                <ul class="social-network social-circle">
+                  <li>
+                    <a href="//www.facebook.com/makerfaire" class="icoFacebook" title="Facebook" target="_blank">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//twitter.com/makerfaire" class="icoTwitter" title="Twitter" target="_blank">
+                      <i class="fa fa-twitter" target="_blank"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//www.instagram.com/makerfaire" class="icoInstagram" title="Instagram" target="_blank">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//www.pinterest.com/makemagazine/maker-faire/" class="icoPinterest" title="Pinterest" target="_blank">
+                      <i class="fa fa-pinterest-p" target="_blank"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//plus.google.com/104410464300110463062/posts" class="icoGoogle-plus" title="Google+" target="_blank">
+                      <i class="fa fa-google-plus" target="_blank"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div class="col-xs-6">
               <ul class="list-unstyled footer-right-col">
@@ -103,30 +141,6 @@
                   <a href="https://readerservices.makezine.com/mk/default.aspx" target="_blank">Subscribe to Make:</a>
                 </li>
               </ul>
-              <div class="social-network-container">
-                <ul class="social-network social-circle">
-                  <li>
-                    <a href="//www.facebook.com/makerfaire" class="icoFacebook" title="Facebook" target="_blank">
-                      <i class="fa fa-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="//twitter.com/makerfaire" class="icoTwitter" title="Twitter" target="_blank">
-                      <i class="fa fa-twitter" target="_blank"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="//www.pinterest.com/makemagazine/maker-faire/" class="icoPinterest" title="Pinterest" target="_blank">
-                      <i class="fa fa-pinterest-p" target="_blank"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="//plus.google.com/104410464300110463062/posts" class="icoGoogle-plus" title="Google+" target="_blank">
-                      <i class="fa fa-google-plus" target="_blank"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>

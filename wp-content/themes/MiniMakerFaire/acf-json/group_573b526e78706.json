@@ -360,7 +360,7 @@
             {
                 "param": "page_template",
                 "operator": "!=",
-                "value": "default"
+                "value": "page-schedule.php"
             },
             {
                 "param": "page_template",
@@ -377,5 +377,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1464551169
+    "modified": 1464735053
 }
