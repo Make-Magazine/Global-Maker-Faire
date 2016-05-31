@@ -37,32 +37,164 @@ $contact_form_email_address = get_field( "contact_form_email_address" );
 
 if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
-  <div class="row">
+  <div class="row contact-info">
 
-    <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-offset-1">
 
       <h3>Contact Info</h3>
 
       <?php if( $contact_address ) {
         echo '<h4>Address:</h4>';
-        echo $contact_address;
-      } ?>
+        echo '<div class="contact-info-p">' . $contact_address . '</div>';
+      }
 
-      <?php if( $phone ) {
+      if( $phone ) {
         echo '<h4>Phone:</h4>';
-        echo $phone;
-      } ?>
+        echo '<div class="contact-info-p">' . $phone . '</div>';
+      }
 
-      <?php if( $email ) {
+      if( $email ) {
         echo '<h4>Email:</h4>';
-        echo $email;
-      } ?>
+        echo '<div class="contact-info-p">' . $email . '</div>';
+      }
+
+      $facebook = get_field('facebook');
+      $twitter = get_field('twitter');
+      $instagram = get_field('instagram');
+      $pinterest = get_field('pinterest');
+      $googleplus = get_field('googleplus');
+
+      echo '<div class="social-network-container">
+              <ul class="social-network social-circle pull-left">';
+
+                if( $facebook ):
+                  echo '<li>
+                          <a href="' . $facebook . '" class="icoFacebook" title="Facebook" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                          </a>
+                        </li>';
+                endif;
+                if( $twitter ):
+                  echo '<li>
+                          <a href="' . $twitter . '" class="icoTwitter" title="Twitter" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                        </li>';
+                endif;
+                if( $pinterest ):
+                  echo '<li>
+                          <a href="' . $pinterest . '" class="icoPinterest" title="Pinterest" target="_blank">
+                            <i class="fa fa-pinterest-p"></i>
+                          </a>
+                        </li>';
+                endif;
+                if( $googleplus ):
+                  echo '<li>
+                          <a href="' . $googleplus . '" class="icoGoogle-plus" title="Google+" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                          </a>
+                        </li>';
+                endif;
+                if( $instagram ):
+                  echo '<li>
+                          <a href="' . $instagram . '" class="icoInstagram" title="Instagram" target="_blank">
+                            <i class="fa fa-instagram"></i>
+                          </a>
+                        </li>';
+                endif;
+      echo    '</ul>
+            </div>'; ?>
 
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-8">
+    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-7">
 
       <h3>Contact Us</h3>
+
+      <div class="contact-page-form">
+
+      <?php
+
+        //response generation function
+        $response = "";
+
+        //function to generate response
+        function my_contact_form_generate_response($type, $message){
+
+          global $response;
+
+          if($type == "success") $response = "<div class='success'>{$message}</div>";
+          else $response = "<div class='error'>{$message}</div>";
+
+        }
+
+        //response messages
+        $not_human       = "Human verification incorrect.";
+        $missing_content = "Please supply all information.";
+        $email_invalid   = "Email Address Invalid.";
+        $message_unsent  = "Message was not sent. Try Again.";
+        $message_sent    = "Thanks! Your message has been sent.";
+
+        //user posted variables
+        $name = $_POST['message_name'];
+        $email = $_POST['message_email'];
+        $message = $_POST['message_text'];
+        $human = $_POST['message_human'];
+
+        //php mailer variables
+        $to = get_option('admin_email');
+        $subject = "Someone sent a message from ".get_bloginfo('name');
+        $headers = 'From: '. $email . "\r\n" .
+          'Reply-To: ' . $email . "\r\n";
+
+        if(!$human == 0){
+          if($human != 2) my_contact_form_generate_response("error", $not_human); //not human!
+          else {
+
+            //validate email
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+              my_contact_form_generate_response("error", $email_invalid);
+            else //email is valid
+            {
+              //validate presence of name and message
+              if(empty($name) || empty($message)){
+                my_contact_form_generate_response("error", $missing_content);
+              }
+              else //ready to go!
+              {
+                $sent = wp_mail($to, $subject, strip_tags($message), $headers);
+                if($sent) my_contact_form_generate_response("success", $message_sent); //message sent!
+                else my_contact_form_generate_response("error", $message_unsent); //message wasn't sent
+              }
+            }
+          }
+        }
+        else if ($_POST['submitted']) my_contact_form_generate_response("error", $missing_content); ?>
+
+        <div id="respond">
+          <?php echo $response; ?>
+          <form action="<?php the_permalink(); ?>" method="post">
+            <div class="form-group">
+              <label for="name">Name <span>*</span></label>
+              <input type="text" class="form-control" name="message_name" value="<?php echo esc_attr($_POST['message_name']); ?>">
+            </div>
+            <div class="form-group">
+              <label for="message_email">Email <span>*</span></label>
+              <input type="text" class="form-control" name="message_email" value="<?php echo esc_attr($_POST['message_email']); ?>">
+            </div>
+            <div class="form-group">
+              <label for="message_text">Message <span>*</span></label>
+              <textarea type="text" class="form-control" rows="3" name="message_text"><?php echo esc_textarea($_POST['message_text']); ?></textarea>
+            </div>
+            <div class="form-group">
+              <label for="message_human">Human Verification <span>*</span> <br><input type="text" style="width: 60px;" name="message_human"> + 3 = 5</label>
+            </div>
+            <input type="hidden" name="submitted" value="1">
+            <p><input class="btn btn-primary" type="submit"></p>
+          </form>
+        </div>
+
+      </div>
 
     </div>
 
@@ -73,7 +205,7 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
   // check if the nested repeater field has rows of data
   if( have_rows('list_of_team_members') ): ?>
 
-    <div class="row">
+    <div class="row contact-team">
 
       <div class="col-xs-12">
 
