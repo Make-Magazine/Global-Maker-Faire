@@ -43,17 +43,17 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
       <h3>Contact Info</h3>
 
-      <?pho if( $contact_address ) {
+      <?php if( $contact_address ) {
         echo '<h4>Address:</h4>';
         echo $contact_address;
       } ?>
 
-      <?pho if( $phone ) {
+      <?php if( $phone ) {
         echo '<h4>Phone:</h4>';
         echo $phone;
       } ?>
 
-      <?pho if( $email ) {
+      <?php if( $email ) {
         echo '<h4>Email:</h4>';
         echo $email;
       } ?>
