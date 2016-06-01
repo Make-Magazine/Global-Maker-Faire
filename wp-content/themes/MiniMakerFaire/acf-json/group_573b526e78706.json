@@ -1493,6 +1493,11 @@
                 "param": "page_template",
                 "operator": "!=",
                 "value": "page-contact.php"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "blog.php"
             }
         ]
     ],
