@@ -498,9 +498,14 @@
   p {
     color: #fff;
     font-size: 20px;
-    line-height: 24px
+    line-height: 24px;
+    margin-bottom: 0;
   }
   form {
+    margin-top: 7px;
+    @media (max-width:1199px) {
+      margin-top: 18px;
+    }
     .nl-panel-input {
       width: 70%;
       max-width: 350px;

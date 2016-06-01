@@ -652,7 +652,7 @@ get_header();
             <div class="container">
               <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                  <p><strong>Stay in Touch:</strong> Get Local and Global Maker Faire Community updates.</p>
+                  <p><strong>Stay in Touch:</strong><br />Get Local and Global Maker Faire Community updates.</p>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <form class="form-inline sub-form whatcounts-signup1" action="http://whatcounts.com/bin/listctrl" method="POST">

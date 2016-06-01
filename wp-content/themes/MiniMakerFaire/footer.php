@@ -74,7 +74,7 @@
         <div class="col-sm-6 footer-right hidden-xs">
           <div class="footer-logo-div">
             <a href="http://makerfaire.com/" target="_blank">
-              <img class="img-responsive footer-logos" src="<?php echo get_bloginfo('template_directory');?>/img/makerfaire.gif" alt="Maker Faire logo" />
+              <img class="img-responsive footer-logos" src="<?php echo get_bloginfo('template_directory');?>/img/Maker-Faire-Logo.png" alt="Maker Faire logo" />
             </a>
           </div>
           <div class="row">
