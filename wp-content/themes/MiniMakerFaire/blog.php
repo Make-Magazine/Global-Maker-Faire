@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php
+/*
+* Template name: Post Feed
+*/
+get_header(); ?>
 
   <div class="container">
 

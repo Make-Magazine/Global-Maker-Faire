@@ -541,19 +541,19 @@ get_header();
 
                         </div>
 
-                      <?php if( $i > 1 ): ?>
-                        <a class="left carousel-control" href="#carouselPanel" role="button" data-slide="prev">
-                          <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#carouselPanel" role="button" data-slide="next">
-                          <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
-                          <span class="sr-only">Next</span>
-                        </a>
-                      <?php endif; ?>
-                      </div><!-- /.carousel -->
-                    </div>
-                  </section> <?php
+                <?php if( $i > 1 ): ?>
+                  <a class="left carousel-control" href="#carouselPanel" role="button" data-slide="prev">
+                    <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#carouselPanel" role="button" data-slide="next">
+                    <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
+                    <span class="sr-only">Next</span>
+                  </a>
+                <?php endif; ?>
+                </div><!-- /.carousel -->
+              </div>
+            </section> <?php
 
           endif;
 
