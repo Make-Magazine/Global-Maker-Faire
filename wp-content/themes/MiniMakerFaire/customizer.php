@@ -6,6 +6,7 @@ function mmf_customizer_settings( $wp_customize ) {
     $wp_customize->remove_section( 'static_front_page' );
     $wp_customize->remove_panel( 'widgets' );
 
+
 ////////////////////////////////////////////////////////////////////
 // Header Logo and CTA
 ////////////////////////////////////////////////////////////////////
@@ -20,7 +21,7 @@ function mmf_customizer_settings( $wp_customize ) {
             'label'       => __( 'Faire Logo' ),
             'section'     => 'header_controls',
             'settings'    => 'header_logo',
-            'description' => 'Make sure to use a large enough logo of at least 350px width.'
+            'description' => 'Use your rectangular Faire logo here.'
         )
     ));
 
@@ -106,19 +107,19 @@ function mmf_customizer_settings( $wp_customize ) {
         'type'     => 'url',
     ));
     // INSTAGRAM LINK
-    // $wp_customize->add_setting( 'instagram_link', array(
-    //     'default'           => '',
-    //     'sanitize_callback' => 'sanitize_instagram_link',
-    // ));
-    // function sanitize_instagram_link( $input ) {
-    //     return wp_kses_post( force_balance_tags( $input ) );
-    // }  
-    // $wp_customize->add_control( 'instagram_link', array(
-    //     'label'    => __( 'Instagram URL' ),
-    //     'section'  => 'footer_social_media',
-    //     'settings' => 'instagram_link',
-    //     'type'     => 'url',
-    // ));
+    $wp_customize->add_setting( 'instagram_link', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_instagram_link',
+    ));
+    function sanitize_instagram_link( $input ) {
+        return wp_kses_post( force_balance_tags( $input ) );
+    }  
+    $wp_customize->add_control( 'instagram_link', array(
+        'label'    => __( 'Instagram URL' ),
+        'section'  => 'footer_social_media',
+        'settings' => 'instagram_link',
+        'type'     => 'url',
+    ));
     // PINTREST LINK
     $wp_customize->add_setting( 'pintrest_link', array(
         'default'           => '',

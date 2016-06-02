@@ -16,15 +16,15 @@
 
     register_default_headers( array(
         'wheel' => array(
-            'url' => '%s/img/makerfaire.gif',
-            'thumbnail_url' => '%s/img/makerfaire.gif',
+            'url' => '%s/img/Maker-Faire-Logo.png',
+            'thumbnail_url' => '%s/img/Maker-Faire-Logo.png',
             'description' => __( 'Mini Maker Faire Theme', 'devdmbootstrap' )
         ))
 
     );
 
     $defaults = array(
-        'default-image'          => get_template_directory_uri() . '/img/makerfaire.gif',
+        'default-image'          => get_template_directory_uri() . '/img/Maker-Faire-Logo.png',
         'header-text'            => false,
         'uploads'                => true,
         'wp-head-callback'       => '',

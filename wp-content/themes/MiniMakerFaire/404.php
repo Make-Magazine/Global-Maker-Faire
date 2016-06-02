@@ -16,8 +16,7 @@
       <div class="col-xs-12">
         <p id="blue">
         <a href="javascript:history.back()">Go Back </a>/
-        <a href="/">Go to Home Page </a>/
-        <a href="/contact">Contact Us</a>
+        <a href="/">Go to Home Page </a>
         </p>
       </div>
     </div>

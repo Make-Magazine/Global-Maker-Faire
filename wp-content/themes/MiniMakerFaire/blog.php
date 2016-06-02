@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php
+/*
+* Template name: Post Feed
+*/
+get_header(); ?>
 
   <div class="container">
 
@@ -6,36 +10,92 @@
 
     <?php if( have_posts() ): ?>
 
-      <?php while( have_posts() ): the_post(); ?>
+      <div id="post-<?php get_the_ID(); ?>" <?php post_class(); ?>>
 
-        <div class="row">
+        <?php //Large first post 
 
-          <div id="post-<?php get_the_ID(); ?>" <?php post_class('col-xs-12 padbottom padtop'); ?>>
+          $args = array( 'numberposts' => '1' );
+          $recent_posts = wp_get_recent_posts( $args );
+          foreach( $recent_posts as $recent ){
+            echo '<div class="row">
+                    <div class="recent-post-post first-post col-xs-12">
+                      <article class="recent-post-inner">
+                        <a href="' . get_permalink($recent["ID"]) . '">';
+                        if ( get_the_post_thumbnail($recent['ID']) != '' ) {
+                          $thumb_id = get_post_thumbnail_id($recent['ID']);
+                          $url = wp_get_attachment_url($thumb_id);
+                          echo "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
+                        }
 
-            <div class="row">
+            echo  '       <div class="recent-post-text">
+                            <h4>' . $recent["post_title"] . '</h4>
+                            <p class="recent-post-date">' . mysql2date('M j, Y',  $recent["post_date"]) . '</p>
+                            <p class="recent-post-descripton">' . sanitize_text_field(substr($recent["post_content"], 0 , 300)) . '</p>
+                          </div>
+                        </a>
+                      </article>
+                    </div>
+                  </div>';
+          } ?>
 
-              <div class="col-sm-4">
-                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( array(400,420), array( 'class' => 'img-responsive' ) ); ?></a>
-              </div>
+          <div class="row">
 
-              <div class="col-sm-8">
-                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+            <?php //All the other posts after the 1st
 
-                <span class="meta">
-                  <strong><?php the_time('F jS, Y'); ?></strong>
-                </span>
+            $args = array( 'offset' => 1 );
+            $recent_posts = wp_get_recent_posts( $args );
+            foreach( $recent_posts as $recent ){
+              echo '<div class="recent-post-post col-xs-12 col-sm-3">
+                      <article class="recent-post-inner">
+                        <a href="' . get_permalink($recent["ID"]) . '">';
+                        if ( get_the_post_thumbnail($recent['ID']) != '' ) {
+                          $thumb_id = get_post_thumbnail_id($recent['ID']);
+                          $url = wp_get_attachment_url($thumb_id);
+                          echo "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
+                        }
 
-                <?php the_excerpt(__('Continue reading »','example')); ?>
-
-              </div>
-
-            </div>
+              echo '      <div class="recent-post-text">
+                            <h4>' . $recent["post_title"] . '</h4>
+                            <p class="recent-post-date">' . mysql2date('M j, Y',  $recent["post_date"]) . '</p>
+                            <p class="recent-post-descripton">' . sanitize_text_field(substr($recent["post_content"], 0 , 150)) . '</p>
+                          </div>
+                        </a>
+                      </article>
+                    </div>';
+            } ?>
 
           </div>
 
-        </div>
 
-      <?php endwhile; ?>
+
+          <?php //All other posts 4 column ?>
+          <div class="row">
+
+<!--           foreach( $recent_posts as $recent ){
+            echo '<div class="recent-post-post col-xs-12 col-sm-3">
+                    <article class="recent-post-inner">
+                      <a href="' . get_permalink($recent["ID"]) . '">';
+                      if ( get_the_post_thumbnail($recent['ID']) != '' ) {
+                        $thumb_id = get_post_thumbnail_id($recent['ID']);
+                        $url = wp_get_attachment_url($thumb_id);
+                        echo "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
+                      }
+
+            echo  '     <div class="recent-post-text">
+                          <h4>' . $recent["post_title"] . '</h4>
+                          <p class="recent-post-date">' . mysql2date('M j, Y',  $recent["post_date"]) . '</p>
+                          <p class="recent-post-descripton">' . sanitize_text_field(substr($recent["post_content"], 0 , 150)) . '</p>
+                        </div>
+                      </a>
+                    </article>
+                  </div>';
+          } -->
+
+          </div>    
+
+
+        </div> <?php //.blog ?>
+
 
       <div class="navigation">
         <span class="newer"><?php previous_posts_link(__('« Newer','example')) ?></span> <span class="older"><?php next_posts_link(__('Older »','example')) ?></span>

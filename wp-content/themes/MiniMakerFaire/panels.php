@@ -1,100 +1,10 @@
 <?php
-/*
-* Template name: Home Page
-*/
-
-get_header();
-
-  // Get the home template page ID
-  $home_pages = get_pages(array(
-    'meta_key' => '_wp_page_template',
-    'meta_value' => 'page-home.php'
-  ));
-  foreach($home_pages as $home_page){
-    $home_ID = $home_page->ID;
-  } 
-
-  // Get the sponsors template page ID
-  $sponsor_pages = get_pages(array(
-    'meta_key' => '_wp_page_template',
-    'meta_value' => 'page-sponsors.php'
-  ));
-  foreach($sponsor_pages as $sponsor_page){
-    $sponsor_ID = $sponsor_page->ID;
-  }
-?>
-
-  <section class="slideshow-panel">
-
-    <div class="header-logo-div text-center" itemprop="event" itemscope itemtype="http://schema.org/Event">
-      <?php $faire_location = get_field('faire_location', $home_ID);
-      if( $faire_location ): ?>
-        <h2 class="event-location" itemprop="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $faire_location ?></h2> <?php
-      endif;
-
-      $faire_date = get_field('faire_date', $home_ID);
-      if( $faire_date ): ?>
-        <h2 class="event-date" itemprop="startDate"><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo $faire_date ?></h2> <?php
-      endif; ?>
-
-      <img class="img-responsive header-logo" src="<?php echo get_theme_mod( 'header_logo' ); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
-      <?php $call_to_action_text = get_field('call_to_action_text', $home_ID);
-            $call_to_action_text_url = get_field('call_to_action_text_url', $home_ID);
-      if( $call_to_action_text ):
-        if( $call_to_action_text_url ): ?>
-          <a href="<?php echo $call_to_action_text_url ?>">
-        <?php endif; ?>
-        <h3 class="call_to_action_text"><?php echo $call_to_action_text ?></h3> <?php
-        if( $call_to_action_text_url ): ?>
-          </a>
-        <?php endif;
-      endif; ?>
-    </div>
-
-    <?php $images = get_field('image_carousel', $home_ID);
-    if( $images ): ?>
-
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-          <?php $i = 0;
-          foreach( $images as $image ):
-            if ($i == 0) { ?>
-              <div class="item active">
-                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-              </div> <?php
-            } else { ?>
-              <div class="item">
-                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-              </div> <?php
-            }
-            $i++;
-          endforeach; ?>
-        </div>
-
-        <?php if( $i > 1 ): ?>
-          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
-            <span class="sr-only">Next</span>
-          </a>
-        <?php endif; ?>
-      </div><!-- /.carousel -->
-
-    <?php endif; ?>
- 
-  </section>
-
-
-  <?php
 
   // check if the flexible content field has rows of data
-  if( have_rows('home_page_panels', $home_ID)):
+  if( have_rows('content_panels')):
 
     // loop through the rows of data
-    while ( have_rows('home_page_panels', $home_ID) ) : the_row();
+    while ( have_rows('content_panels') ) : the_row();
 
 
 
@@ -540,21 +450,21 @@ get_header();
               $i++;
             endwhile; ?>
 
-                        </div>
+            </div>
 
-                <?php if( $i > 1 ): ?>
-                  <a class="left carousel-control" href="#carouselPanel" role="button" data-slide="prev">
-                    <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="right carousel-control" href="#carouselPanel" role="button" data-slide="next">
-                    <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
-                    <span class="sr-only">Next</span>
-                  </a>
-                <?php endif; ?>
-                </div><!-- /.carousel -->
-              </div>
-            </section> <?php
+            <?php if( $i > 1 ): ?>
+              <a class="left carousel-control" href="#carouselPanel" role="button" data-slide="prev">
+                <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#carouselPanel" role="button" data-slide="next">
+                <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
+                <span class="sr-only">Next</span>
+              </a>
+            <?php endif; ?>
+            </div><!-- /.carousel -->
+          </div>
+        </section> <?php
 
           endif;
 
@@ -571,12 +481,12 @@ get_header();
         if( $activeinactive == 'Active' ):
           $width = get_sub_field('width');
 
-            if( have_rows('images') ):
+          if( have_rows('images') ):
 
-              echo '<section class="square-image-carousel';
-              if ($width == 'Content Width') { 
-                echo ' container nopad">'; } 
-              else { echo '">'; } ?>
+            echo '<section class="square-image-carousel';
+            if ($width == 'Content Width') { 
+              echo ' container nopad">'; } 
+            else { echo '">'; } ?>
 
               <div class="mtm-carousel owl-carousel">
 
@@ -643,73 +553,73 @@ get_header();
 
 
 
-      // NEWSLETTER PANEL
-      elseif( get_row_layout() == 'newsletter_panel' ):
+    // NEWSLETTER PANEL
+    elseif( get_row_layout() == 'newsletter_panel' ):
 
-        $activeinactive = get_sub_field('activeinactive');
-        if( $activeinactive == 'Active' ): ?>
+      $activeinactive = get_sub_field('activeinactive');
+      if( $activeinactive == 'Active' ): ?>
 
-          <section class="newsletter-panel">
-            <div class="container">
-              <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                  <p><strong>Stay in Touch:</strong><br />Get Local and Global Maker Faire Community updates.</p>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                  <form class="form-inline sub-form whatcounts-signup1" action="http://whatcounts.com/bin/listctrl" method="POST">
-                    <input type="hidden" name="slid_1" value="6B5869DC547D3D46E66DEF1987C64E7A" /><!-- Maker Faire Newsletter -->
-                    <input type="hidden" name="slid_2" value="6B5869DC547D3D46941051CC68679543" /><!-- Maker Media Newsletter -->
-                    <input type="hidden" name="multiadd" value="1" />
-                    <input type="hidden" name="cmd" value="subscribe" />
-                    <input type="hidden" name="custom_source" value="footer" />
-                    <input type="hidden" name="custom_incentive" value="none" />
-                    <input type="hidden" name="custom_url" value="<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>" />
-                    <input type="hidden" id="format_mime" name="format" value="mime" />
-                    <input type="hidden" name="custom_host" value="<?php echo $_SERVER["HTTP_HOST"]; ?>" />
-                    <input id="wc-email" class="form-control nl-panel-input" name="email" placeholder="Enter your Email" required type="email">
-                    <input class="form-control btn-w-ghost" value="GO" type="submit">
-                  </form>
-                </div>
+        <section class="newsletter-panel">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <p><strong>Stay in Touch:</strong> Get Local and Global Maker Faire Community updates.</p>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <form class="form-inline sub-form whatcounts-signup1" action="http://whatcounts.com/bin/listctrl" method="POST">
+                  <input type="hidden" name="slid_1" value="6B5869DC547D3D46E66DEF1987C64E7A" /><!-- Maker Faire Newsletter -->
+                  <input type="hidden" name="slid_2" value="6B5869DC547D3D46941051CC68679543" /><!-- Maker Media Newsletter -->
+                  <input type="hidden" name="multiadd" value="1" />
+                  <input type="hidden" name="cmd" value="subscribe" />
+                  <input type="hidden" name="custom_source" value="footer" />
+                  <input type="hidden" name="custom_incentive" value="none" />
+                  <input type="hidden" name="custom_url" value="<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>" />
+                  <input type="hidden" id="format_mime" name="format" value="mime" />
+                  <input type="hidden" name="custom_host" value="<?php echo $_SERVER["HTTP_HOST"]; ?>" />
+                  <input id="wc-email" class="form-control nl-panel-input" name="email" placeholder="Enter your Email" required type="email">
+                  <input class="form-control btn-w-ghost" value="GO" type="submit">
+                </form>
               </div>
             </div>
-          </section>
-
-          <div class="fancybox-thx" style="display:none;">
-            <div class="col-sm-4 hidden-xs nl-modal">
-              <span class="fa-stack fa-4x">
-              <i class="fa fa-circle-thin fa-stack-2x"></i>
-              <i class="fa fa-thumbs-o-up fa-stack-1x"></i>
-              </span>
-            </div>
-            <div class="col-sm-8 col-xs-12 nl-modal">
-              <h3>Awesome!</h3>
-              <p>Thanks for signing up.</p>
-            </div>
-            <div class="clearfix"></div>
           </div>
+        </section>
 
-          <script>
-            jQuery(document).ready(function(){
-              jQuery(".fancybox-thx").fancybox({
-                autoSize : false,
-                width  : 400,
-                autoHeight : true,
-                padding : 0,
-                afterLoad   : function() {
-                  this.content = this.content.html();
-                }
-              });
-              jQuery(document).on('submit', '.whatcounts-signup1', function (e) {
-                e.preventDefault();
-                var bla = jQuery('#wc-email').val();
-                jQuery.post('http://whatcounts.com/bin/listctrl', jQuery('.whatcounts-signup1').serialize());
-                jQuery('.fancybox-thx').trigger('click');
-                //jQuery('.nl-modal-email-address').text(bla);
-                //jQuery('.whatcounts-signup2 #email').val(bla);
-              });
+        <div class="fancybox-thx" style="display:none;">
+          <div class="col-sm-4 hidden-xs nl-modal">
+            <span class="fa-stack fa-4x">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-thumbs-o-up fa-stack-1x"></i>
+            </span>
+          </div>
+          <div class="col-sm-8 col-xs-12 nl-modal">
+            <h3>Awesome!</h3>
+            <p>Thanks for signing up.</p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <script>
+          jQuery(document).ready(function(){
+            jQuery(".fancybox-thx").fancybox({
+              autoSize : false,
+              width  : 400,
+              autoHeight : true,
+              padding : 0,
+              afterLoad   : function() {
+                this.content = this.content.html();
+              }
             });
-          </script>
-        <?php endif;
+            jQuery(document).on('submit', '.whatcounts-signup1', function (e) {
+              e.preventDefault();
+              var bla = jQuery('#wc-email').val();
+              jQuery.post('http://whatcounts.com/bin/listctrl', jQuery('.whatcounts-signup1').serialize());
+              jQuery('.fancybox-thx').trigger('click');
+              //jQuery('.nl-modal-email-address').text(bla);
+              //jQuery('.whatcounts-signup2 #email').val(bla);
+            });
+          });
+        </script>
+      <?php endif;
 
 
 
@@ -721,6 +631,15 @@ get_header();
         $activeinactive = get_sub_field('activeinactive');
         if( $activeinactive == 'Active' ):
 
+          // Get the sponsors template page ID
+          $sponsor_pages = get_pages(array(
+            'meta_key' => '_wp_page_template',
+            'meta_value' => 'page-sponsors.php'
+          ));
+          foreach($sponsor_pages as $sponsor_page){
+            $sponsor_ID = $sponsor_page->ID;
+          }
+
           $sponsor_panel_field_1 = get_sub_field('title_sponsor_panel');
           $sponsor_panel_field_2 = get_sub_field('sub_title_sponsor_panel');
           $sponsor_panel_field_3 = get_sub_field('become_a_sponsor_button');
@@ -728,22 +647,22 @@ get_header();
           // check if the nested repeater field has rows of data
           if( have_rows('sponsors', $sponsor_ID) ):
 
-          echo '<section class="sponsor-slide">
-                  <div class="container">
-                    <div class="row sponsor_panel_title">
-                      <div class="col-xs-12 text-center">
-                        <div class="title-w-border-r">
-                          <h2 class="sponsor-slide-title">' . $sponsor_panel_field_1 . '</h2>
+            echo '<section class="sponsor-slide">
+                    <div class="container">
+                      <div class="row sponsor_panel_title">
+                        <div class="col-xs-12 text-center">
+                          <div class="title-w-border-r">
+                            <h2 class="sponsor-slide-title">' . $sponsor_panel_field_1 . '</h2>
+                          </div>
+                          <p>' . $sponsor_panel_field_2 . ' <span class="sponsor-slide-cat"></span></p>
                         </div>
-                        <p>' . $sponsor_panel_field_2 . ' <span class="sponsor-slide-cat"></span></p>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-xs-12">
+                      <div class="row">
+                        <div class="col-xs-12">
 
-                        <div id="carousel-sponsors-slider" class="carousel slide" data-ride="carousel">
-                          <!-- Wrapper for slides -->
-                          <div class="carousel-inner" role="listbox">';
+                          <div id="carousel-sponsors-slider" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">';
 
             // loop through the rows of data
             while ( have_rows('sponsors', $sponsor_ID) ) : the_row();
@@ -830,41 +749,8 @@ get_header();
 
   else :
 
-    ?><!-- no layout found--><?php
+  ?><!-- no layout found--><?php
 
   endif;
 
-  ?>
-
-
-
-  <?php // FIND OUT MORE PANEL ?>
-  <aside class="fom-panel">
-    <div class="container">
-      <div class="row text-center">
-        <div class="title-w-border-y">
-          <h2 class="text-center">Find Out More</h2>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-4 text-center">
-          <a href="//help.makermedia.com/hc/en-us/categories/200341459-Make-Magazine" target="_blank">
-            <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Make-Subscriptions.jpg" alt="Click here to get subscritions to Make: Magazine" class="img-responsive" />
-            <p>Get Make: Magazine</p>
-          </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-4 text-center">
-          <a href="//makerfaire.com/map/" target="_blank">
-            <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Maker-Faire-map.png" alt="Click here to see our global Maker Faires" class="img-responsive" />
-            <p>Global Maker Faires</p>
-          </a>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 text-center house-ad">
-          <img src="<?php echo get_bloginfo('template_directory'); ?>/img/house-ad-placeholder.jpg" alt="House advertisement" class="img-responsive" />
-        </div>
-      </div>
-    </div>
-  </aside>
-
-<?php get_footer(); ?>
+?>
