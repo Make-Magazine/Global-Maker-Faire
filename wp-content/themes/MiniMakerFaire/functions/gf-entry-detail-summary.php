@@ -106,49 +106,49 @@ function get_summary_side($form, $lead) {
                 <?php
                 if(!empty($makerPhoto1)){?>
                   <a href="<?php echo $makerPhoto1;?>" class='thickbox'>
-                    <img width="30px" src="<?php echo legacy_get_resized_remote_image_url($makerPhoto1, 30,30);?>" alt="" />
+                    <img width="30px" src="<?php echo $makerPhoto1;?>" alt="" />
                   </a>
                 <?php  }?>
                 <?php echo !empty($makerfirstname1) ?  $makerfirstname1.' '.$makerlastname1.'</br>' : '' ;
                 if(!empty($makerPhoto2)){?>
                   <a href="<?php echo $makerPhoto2;?>" class='thickbox'>
-                    <img width="30px" src="<?php echo legacy_get_resized_remote_image_url($makerPhoto2, 30,30);?>" alt="" />
+                    <img width="30px" src="<?php echo $makerPhoto2;?>" alt="" />
                   </a>
                 <?php  }
                 echo !empty($makerfirstname2) ?  $makerfirstname2.' '.$makerlastname2.'</br>' : '' ;
                 if(!empty($makerPhoto3)){?>
                   <a href="<?php echo $makerPhoto3;?>" class='thickbox'>
-                    <img width="30px" src="<?php echo legacy_get_resized_remote_image_url($makerPhoto3, 30,30);?>" alt="" />
+                    <img width="30px" src="<?php echo $makerPhoto3;?>" alt="" />
                   </a>
                 <?php  }
                 echo !empty($makerfirstname3) ?  $makerfirstname3.' '.$makerlastname3.'</br>' : '' ; ?>
                 <?php if(!empty($makerPhoto4)){?>
                     <a href="<?php echo $makerPhoto4;?>" class='thickbox'>
-                    <img width="30px" src="<?php echo legacy_get_resized_remote_image_url($makerPhoto4, 30,30);?>" alt="" />
+                    <img width="30px" src="<?php echo $makerPhoto4;?>" alt="" />
                     </a>
                 <?php  }?>
                 <?php echo !empty($makerfirstname4) ?  $makerfirstname4.' '.$makerlastname4.'</br>' : '' ; ?>
                 <?php if(!empty($makerPhoto5)){?>
                     <a href="<?php echo $makerPhoto5;?>" class='thickbox'>
-                    <img width="30px" src="<?php echo legacy_get_resized_remote_image_url($makerPhoto5, 30,30);?>" alt="" />
+                    <img width="30px" src="<?php echo $makerPhoto5;?>" alt="" />
                     </a>
                 <?php  }?>
                 <?php echo !empty($makerfirstname5) ?  $makerfirstname5.' '.$makerlastname5.'</br>' : '' ; ?>
                 <?php if(!empty($makerPhoto6)){?>
                     <a href="<?php echo $makerPhoto6;?>" class='thickbox'>
-                    <img width="30px" src="<?php echo legacy_get_resized_remote_image_url($makerPhoto6, 30,30);?>" alt="" />
+                    <img width="30px" src="<?php echo $makerPhoto6;?>" alt="" />
                     </a>
                 <?php  }?>
                 <?php echo !empty($makerfirstname6) ?  $makerfirstname6.' '.$makerlastname6.'</br>' : '' ; ?>
                 <?php if(!empty($makerPhoto7)){?>
                     <a href="<?php echo $makerPhoto7;?>" class='thickbox'>
-                    <img width="30px" src="<?php echo legacy_get_resized_remote_image_url($makerPhoto7, 30,30);?>" alt="" />
+                    <img width="30px" src="<?php echo $makerPhoto7;?>" alt="" />
                     </a>
                 <?php  }?>
                 <?php if(!empty($makerGroupPhoto)){?>
                     Group Photo<br/>
                     <a href="<?php echo $makerGroupPhoto;?>" class='thickbox'>
-                    <img width="30px" src="<?php echo legacy_get_resized_remote_image_url($makerGroupPhoto, 30,30);?>" alt="" />
+                    <img width="30px" src="<?php echo $makerGroupPhoto;?>" alt="" />
                     </a>
                 <?php  }?>
 
