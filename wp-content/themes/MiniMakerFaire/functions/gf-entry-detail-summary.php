@@ -180,44 +180,42 @@ function get_summary_side($form, $lead) {
 
 //get summary notes section
 function get_summary_note_section($form, $lead) {
-  if ( !current_user_can( 'mf_can_send_entry_notes') ) {
-    return '';
+  if (current_user_can( 'mf_can_send_entry_notes') ) {
+    //get list of valid wp user emails
+    $args = array(
+      'blog_id'      => $GLOBALS['blog_id'],
+      'role'         => 'administrator',
+      'orderby'      => 'email',
+      'order'        => 'ASC'
+     );
+    $faireUsers = get_users( $args );
+    ?>
+    <table width="100%" class="entry-notes">
+      <tr>
+        <td>
+          <label >Email Note To:</label><br />
+          <div style="float:left">
+            <?php
+            foreach ( $faireUsers as $faireUser) {
+              //should be able to use user_can function, but it is always returning false
+              //if(!user_can( $faireUser->ID, 'mf_can_receive_entry_notes' )){
+              if(isset($faireUser->allcaps['mf_can_receive_entry_notes']) && $faireUser->allcaps['mf_can_receive_entry_notes']) {
+                echo('<input type="checkbox"  name="email_notes_to" style="margin: 3px;" value="'.$faireUser->user_email.'" /><strong>'.$faireUser->user_nicename.'</strong> <br />');
+              }
+            } ?>
+          </div>
+        </td>
+
+        <td style="vertical-align: top; padding: 10px;">
+          <textarea id="new_note" style="width: 90%; height: 140px;" cols="" rows=""></textarea>
+          <input type="submit" id="add_entry_note" value="Add Note" class="button"/>
+
+          <span style="padding-left:10px" id="addNoteResp"></span>
+        </td>
+      </tr>
+    </table>
+    <?php
   }
-
-  //get list of valid wp user emails
-  $args = array(
-    'blog_id'      => $GLOBALS['blog_id'],
-    'role'         => 'administrator',
-    'orderby'      => 'email',
-    'order'        => 'ASC'
-   );
-  $faireUsers = get_users( $args );
-  ?>
-  <table width="100%" class="entry-notes">
-    <tr>
-      <td>
-        <label >Email Note To:</label><br />
-        <div style="float:left">
-          <?php
-          foreach ( $faireUsers as $faireUser) {
-            //should be able to use user_can function, but it is always returning false
-            //if(!user_can( $faireUser->ID, 'mf_can_receive_entry_notes' )){
-            if(isset($faireUser->allcaps['mf_can_receive_entry_notes']) && $faireUser->allcaps['mf_can_receive_entry_notes']) {
-              echo('<input type="checkbox"  name="email_notes_to" style="margin: 3px;" value="'.$faireUser->user_email.'" /><strong>'.$faireUser->user_nicename.'</strong> <br />');
-            }
-          } ?>
-        </div>
-      </td>
-
-      <td style="vertical-align: top; padding: 10px;">
-        <textarea id="new_note" style="width: 90%; height: 140px;" cols="" rows=""></textarea>
-        <input type="submit" id="add_entry_note" value="Add Note" class="button"/>
-
-        <span style="padding-left:10px" id="addNoteResp"></span>
-      </td>
-    </tr>
-  </table>
-  <?php
 }
 
 
