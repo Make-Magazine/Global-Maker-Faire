@@ -62,6 +62,11 @@
   padding-top: 30px;
 }
 
+/* HIDE THE "ACTIVE THEME/CHANGE THEME" ITEM IN THE CUSTOMIZER */
+#accordion-section-themes {
+  display: none !important;
+}
+
 @media (max-width: 535px) {
   .dm-logo-wrap {
     width: 100%;

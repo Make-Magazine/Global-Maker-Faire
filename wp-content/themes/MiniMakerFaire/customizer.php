@@ -6,6 +6,7 @@ function mmf_customizer_settings( $wp_customize ) {
     $wp_customize->remove_section( 'static_front_page' );
     $wp_customize->remove_panel( 'widgets' );
 
+
 ////////////////////////////////////////////////////////////////////
 // Header Logo and CTA
 ////////////////////////////////////////////////////////////////////
@@ -20,7 +21,7 @@ function mmf_customizer_settings( $wp_customize ) {
             'label'       => __( 'Faire Logo' ),
             'section'     => 'header_controls',
             'settings'    => 'header_logo',
-            'description' => 'Make sure to use a large enough logo of at least 350px width.'
+            'description' => 'Use your rectangular Faire logo here.'
         )
     ));
 
