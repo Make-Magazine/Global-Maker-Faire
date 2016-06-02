@@ -242,22 +242,6 @@
                                     "maxlength": 100,
                                     "readonly": 0,
                                     "disabled": 0
-                                },
-                                {
-                                    "key": "field_574e13b8ff1ef",
-                                    "label": "Maker URL",
-                                    "name": "maker_url",
-                                    "type": "url",
-                                    "instructions": "External or internal Maker URL",
-                                    "required": 0,
-                                    "conditional_logic": "",
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": ""
                                 }
                             ]
                         },
@@ -461,22 +445,6 @@
                                     "maxlength": 100,
                                     "readonly": 0,
                                     "disabled": 0
-                                },
-                                {
-                                    "key": "field_574e144b04b30",
-                                    "label": "Maker URL",
-                                    "name": "maker_url",
-                                    "type": "url",
-                                    "instructions": "External or internal Maker URL",
-                                    "required": 0,
-                                    "conditional_logic": "",
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": ""
                                 }
                             ]
                         },
