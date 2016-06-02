@@ -197,18 +197,143 @@
 // Add new dashboard widget
 ////////////////////////////////////////////////////////////////////
 
-function add_dashboard_widgets() {
-  add_meta_box( 'dashboard_welcome', 'Welcome! Let’s get started:', 'add_welcome_widget', 'dashboard', 'side', 'high' );
-}
-function add_welcome_widget(){ ?>
- 
-  The left navigation bar is your control center for your site.
+  function add_dashboard_widgets() {
+    add_meta_box( 'dashboard_welcome', 'Welcome! Let’s get started:', 'add_welcome_widget', 'dashboard', 'side', 'high' );
+  }
+  function add_welcome_widget(){ ?>
+   
+    The left navigation bar is your control center for your site.
 
-<ol><li>General Site Setup</li></ol><p>Go to Appearance &gt; Customize</p><ol><li>Add / Update your logo</li><li>Update your Main Menu / Header</li><li>Add CTA (Call to Action) button to the right of the Main Menu</li><li>Update your Footer</li><li>...and more - look around!</li></ol><p></p><ol><li>Specific Page Setup</li></ol><p>Go to Pages &gt; All Pages</p><ol><li>Add, remove, or update pages</li><li>The Homepage it built with panels. Click on Pages &gt; Home to view, edit add or remove panels. You can also drag and drop what order they appear in. </li></ol><p></p><p><span>TIP: Explore panels and see how they work. You can use them throughout most your site. They are easy to use and will make your site look great!</p><p class="c2 c12"></p><ol><li>Some pages have pre-loaded templates (Contact, News, Meet the Makers, Schedule, etc). Each one is a little different. You can&rsquo;t add panels to these pages because they are pre-designed to look good.</li><li>The remainder of the pages are blank. You can choose to add panels or whatever text or image you would like. There are simple visual editors or HTML editing. These pages are wide open for you to use as needed. You can add more, by going to Pages &gt; Add New.</li></ol><p class="c2 c12"></p><ol><li>Header and Footer, including site navigation (aka: menus)</li></ol><ol><li>Menus can be edited in two places: </li></ol><ol><li>Appearance &gt; Customize</li></ol><p class="c5 c7">or</p><ol><li>Appearance &gt; Menu </li></ol><ol><li>There are 2 Menus</li></ol><ol><li>Main Menu (at the top in the Header)</li></ol><ol><li class="c9 c10">Add up to 6 main menu items</li><li class="c9 c10">Create as many submenu items as you choose</li></ol><ol class="c4 lst-kix_ef5etbd9n2g2-2" start="2"><li>Footer Menu (at the bottom, on the left side of the footer.)</li></ol><ol class="c4 lst-kix_ef5etbd9n2g2-3 start" start="1"><li class="c9 c10">Add up to 4 footer menu items</li><li class="c9 c10">Social icons are updated in Appearance &gt; Customize &gt; Footer Social Media Links</li></ol><p></p><ol class="c4 lst-kix_ef5etbd9n2g2-0" start="4"><li>Media Library (Images and Files)</li></ol><ol class="c4 lst-kix_ef5etbd9n2g2-1 start" start="1"><li>Optional: If you have a previous WordPress site, you can export your Media Library and Import into this site. Instructions here.<sup><a href="#cmnt1" id="cmnt_ref1">[a]</a></sup></li><li>If you don&rsquo;t have images from previous faires to use on your site, you can use any image in this dropbox:<sup><a href="#cmnt2" id="cmnt_ref2">[b]</a></sup>&nbsp;</li></ol><p></p><ol><li>News (aka: Posts or Blog)</li></ol><ol><li>To create news, go to Posts &gt; All Posts. </li></ol><ol><li>We have one sample post in there: Hello world! </li><li>To see how posts will look, check out the test site at <span class="c15"><a class="c18" href="http://global.makerfaire.com/">http://global.makerfaire.com/</a>. Click on News in the Header.</li></ol><ol class="c4 lst-kix_ef5etbd9n2g2-1" start="2"><li>Optional: If you have a previous WordPress site, you can export your Posts and Import them into this site. Instructions here.</li><li>Once you start creating blog posts, add the &ldquo;News&rdquo; Panel to your Homepage (Pages &gt; Home &gt; Post Feed) and a dynamic panel will start populating your News onto your Homepage. You can also see a sample of this here: <span class="c15"><a class="c18" href="http://global.makerfaire.com/">http://global.makerfaire.com/</a>.</li></ol><p></p><ol class="c4 lst-kix_ef5etbd9n2g2-0" start="6"><li>Call for Makers Form</li></ol><ol class="c4 lst-kix_ef5etbd9n2g2-1 start" start="1"><li>Your site comes with a Form creator and editor to create your Call for Makers Form. Go to Forms &gt; Forms</li><li>We&rsquo;ve provided a Sample Call for Makers Form you can copy and edit. </li><li>There are handful of fields we&rsquo;ve locked, because there&rsquo;s logic used in the site to display those fields dynamically on pages.</li><li>All of the other fields you can edit.</li><li>Feel free to add questions that are specific to your event or remove questions that are not relevant. </li><li>Many of the fields (questions) are conditional and appear only when the maker selects specific answers to questions in the form. To adjust conditional settings, in your form click on a question and go to the &ldquo;Advanced&rdquo; tab.</li><li>You can hide fields from the public (but still use them in the admin view) by marking them &ldquo;Admin Only&rdquo;. Click on a question and go to the &ldquo;Advanced&rdquo; tab.</li></ol><p class="c2 c12 c7"></p><p><span class="c13">TIP 1: To view the live version of your form go to Pages &gt; Call for Makers Form &gt; View Page. (You can keep the page Private until your form is ready.)</p><p class="c5 c14"><span class="c13"></p><p><span class="c13">TIP 2: Dive in. There&rsquo;s SO much you can do with Gravity Forms. The best way to learn is to start.</p><p></p><ol class="c4 lst-kix_ef5etbd9n2g2-0" start="7"><li>Reviewing Entries / Entry UI </li></ol><ol class="c4 lst-kix_ef5etbd9n2g2-1 start" start="1"><li>Go to Forms &gt; Forms &gt; Entries</li><li>The first view that appears is your Entry List.</li></ol><p class="c5 c14"><span class="c13"></p><p><span class="c13">TIP: Modify the columns that appear in your List View by clicking the gear icon at the top right of the list. We recommend these columns: Project Name or Title, Project Photo, Entry ID, Status, Type of Proposal, Maker 1 First Name, Maker 1 Last Name, Group Name, Entry Date</p><p></p><ol class="c4 lst-kix_ef5etbd9n2g2-1" start="3"><li>Click on the Project Name or Title to view the specific entry details.</li></ol><p class="c2 c12"></p><p class="c9 c12"><span class="c16">Important:&nbsp;Additional Entry UI features are coming within the next two weeks! Status updates, Rating entries, Comments, and more&hellip;. Stay tuned</p><p></p><ol class="c4 lst-kix_ef5etbd9n2g2-0" start="8"><li>Exporting Entries / Reports</li></ol><ol class="c4 lst-kix_ef5etbd9n2g2-1 start" start="1"><li>To Export Entries, go to Forms &gt; Import / Export</li><li>This feature will download a complete report of all entry fields.</li></ol><p></p><p>Look around and start clicking. </p><p>There&rsquo;s a lot you can do to customize your site. </p><p>Get started!</p>
-<img style="width:100%;height:auto;" src="/wp-content/themes/MiniMakerFaire/img/makey_panel-br.png" /> 
+  <ol>
+    <li>General Site Setup</li>
+  </ol>
+  <p>Go to Appearance &gt; Customize</p>
+  <ol>
+    <li>Add / Update your logo</li>
+    <li>Update your Main Menu / Header</li>
+    <li>Add CTA (Call to Action) button to the right of the Main Menu</li>
+    <li>Update your Footer</li>
+    <li>...and more - look around!</li>
+  </ol>
+  <p></p>
+  <ol>
+    <li>Specific Page Setup</li>
+  </ol>
+  <p>Go to Pages &gt; All Pages</p>
+  <ol>
+    <li>Add, remove, or update pages</li>
+    <li>The Homepage it built with panels. Click on Pages &gt; Home to view, edit add or remove panels. You can also drag and drop what order they appear in. </li>
+  </ol>
+  <p></p>
+  <p>TIP: Explore panels and see how they work. You can use them throughout most your site. They are easy to use and will make your site look great!</p>
+  <p></p>
+  <ol>
+    <li>Some pages have pre-loaded templates (Contact, News, Meet the Makers, Schedule, etc). Each one is a little different. You can&rsquo;t add panels to these pages because they are pre-designed to look good.</li>
+    <li>The remainder of the pages are blank. You can choose to add panels or whatever text or image you would like. There are simple visual editors or HTML editing. These pages are wide open for you to use as needed. You can add more, by going to Pages &gt; Add New.</li>
+  </ol>
+  <p></p>
+  <ol>
+    <li>Header and Footer, including site navigation (aka: menus)</li>
+  </ol>
+  <ol>
+    <li>Menus can be edited in two places: </li>
+  </ol>
+  <ol>
+    <li>Appearance &gt; Customize</li>
+  </ol>
+  <p>or</p>
+  <ol>
+    <li>Appearance &gt; Menu </li>
+  </ol>
+  <ol>
+    <li>There are 2 Menus</li>
+  </ol>
+  <ol>
+    <li>Main Menu (at the top in the Header)</li>
+  </ol>
+  <ol>
+    <li>Add up to 6 main menu items</li>
+    <li>Create as many submenu items as you choose</li>
+  </ol>
+  <ol>
+    <li>Footer Menu (at the bottom, on the left side of the footer.)</li>
+  </ol>
+  <ol>
+    <li>Add up to 4 footer menu items</li>
+    <li>Social icons are updated in Appearance &gt; Customize &gt; Footer Social Media Links</li>
+  </ol>
+  <p></p>
+  <ol>
+    <li>Media Library (Images and Files)</li>
+  </ol>
+  <ol>
+    <li>Optional: If you have a previous WordPress site, you can export your Media Library and Import into this site. Instructions here.</li>
+    <li>If you don&rsquo;t have images from previous faires to use on your site, you can use any image in this dropbox:<sup>[b]</sup>&nbsp;</li>
+  </ol>
+  <p></p>
+  <ol>
+    <li>News (aka: Posts or Blog)</li>
+  </ol>
+  <ol>
+    <li>To create news, go to Posts &gt; All Posts. </li>
+  </ol>
+  <ol>
+    <li>We have one sample post in there: Hello world! </li>
+    <li>To see how posts will look, check out the test site at <a href="http://global.makerfaire.com/">http://global.makerfaire.com/</a>. Click on News in the Header.</li>
+  </ol>
+  <ol>
+    <li>Optional: If you have a previous WordPress site, you can export your Posts and Import them into this site. Instructions here.</li>
+    <li>Once you start creating blog posts, add the &ldquo;News&rdquo; Panel to your Homepage (Pages &gt; Home &gt; Post Feed) and a dynamic panel will start populating your News onto your Homepage. You can also see a sample of this here: <a href="http://global.makerfaire.com/">http://global.makerfaire.com/</a>.</li>
+  </ol>
+  <p></p>
+  <ol>
+    <li>Call for Makers Form</li>
+  </ol>
+  <ol>
+    <li>Your site comes with a Form creator and editor to create your Call for Makers Form. Go to Forms &gt; Forms</li>
+    <li>We&rsquo;ve provided a Sample Call for Makers Form you can copy and edit. </li>
+    <li>There are handful of fields we&rsquo;ve locked, because there&rsquo;s logic used in the site to display those fields dynamically on pages.</li>
+    <li>All of the other fields you can edit.</li>
+    <li>Feel free to add questions that are specific to your event or remove questions that are not relevant. </li>
+    <li>Many of the fields (questions) are conditional and appear only when the maker selects specific answers to questions in the form. To adjust conditional settings, in your form click on a question and go to the &ldquo;Advanced&rdquo; tab.</li>
+    <li>You can hide fields from the public (but still use them in the admin view) by marking them &ldquo;Admin Only&rdquo;. Click on a question and go to the &ldquo;Advanced&rdquo; tab.</li>
+  </ol>
+  <p></p>
+  <p>TIP 1: To view the live version of your form go to Pages &gt; Call for Makers Form &gt; View Page. (You can keep the page Private until your form is ready.)</p>
+  <p></p>
+  <p>TIP 2: Dive in. There&rsquo;s SO much you can do with Gravity Forms. The best way to learn is to start.</p>
+  <p></p>
+  <ol>
+    <li>Reviewing Entries / Entry UI </li>
+  </ol>
+  <ol>
+    <li>Go to Forms &gt; Forms &gt; Entries</li>
+    <li>The first view that appears is your Entry List.</li>
+  </ol>
+  <p></p>
+  <p>TIP: Modify the columns that appear in your List View by clicking the gear icon at the top right of the list. We recommend these columns: Project Name or Title, Project Photo, Entry ID, Status, Type of Proposal, Maker 1 First Name, Maker 1 Last Name, Group Name, Entry Date</p>
+  <p></p>
+  <ol>
+    <li>Click on the Project Name or Title to view the specific entry details.</li>
+  </ol>
+  <p></p>
+  <p>Important:&nbsp;Additional Entry UI features are coming within the next two weeks! Status updates, Rating entries, Comments, and more&hellip;. Stay tuned</p>
+  <p></p>
+  <ol>
+    <li>Exporting Entries / Reports</li>
+  </ol>
+  <ol>
+    <li>To Export Entries, go to Forms &gt; Import / Export</li>
+    <li>This feature will download a complete report of all entry fields.</li>
+  </ol>
+  <p></p>
+  <p>Look around and start clicking.<br />
+  There&rsquo;s a lot you can do to customize your site. <br />
+  Get started!</p>
+  <img style="width:100%;height:auto;" src="/wp-content/themes/MiniMakerFaire/img/makey_panel-br.png" /> 
 
-<?php }
-add_action( 'wp_dashboard_setup', 'add_dashboard_widgets' );
+  <?php }
+  add_action( 'wp_dashboard_setup', 'add_dashboard_widgets' );
 
 
 ////////////////////////////////////////////////////////////////////
