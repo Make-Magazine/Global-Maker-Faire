@@ -849,7 +849,7 @@ get_header();
 
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-4 text-center">
-          <a href="//help.makermedia.com/hc/en-us/categories/200341459-Make-Magazine" target="_blank">
+          <a href="//readerservices.makezine.com/mk/default.aspx" target="_blank">
             <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Make-Subscriptions.jpg" alt="Click here to get subscritions to Make: Magazine" class="img-responsive" />
             <p>Get Make: Magazine</p>
           </a>

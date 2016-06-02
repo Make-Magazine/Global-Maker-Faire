@@ -147,7 +147,7 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
           $human = $_POST['message_human'];
 
           //php mailer variables
-          $to = $contact_form_email_address;
+          //$to = $contact_form_email_address;
           $subject = "Someone sent a message from ".get_bloginfo('name');
           $headers = 'From: '. $email . "\r\n" .
             'Reply-To: ' . $email . "\r\n";
@@ -167,7 +167,7 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
                 }
                 else //ready to go!
                 {
-                  $sent = wp_mail($to, $subject, strip_tags($message), $headers);
+                  $sent = wp_mail($contact_form_email_address, $subject, strip_tags($message), $headers);
                   if($sent) my_contact_form_generate_response("success", $message_sent); //message sent!
                   else my_contact_form_generate_response("error", $message_unsent); //message wasn't sent
                 }
