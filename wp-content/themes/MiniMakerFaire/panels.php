@@ -361,7 +361,8 @@
                     </div>
                     <div class="row">
                       <div class="col-md-10 col-md-offset-1">
-                        <p class="text-center">We call it the Greatest Show (& Tell) on Earth. Maker Faire is part science fair, part county fair, and part something entirely new! As a celebration of the Maker Movement, it’s a family-friendly showcase of invention, creativity, and resourcefulness. Faire gathers together tech enthusiasts, crafters, educators, tinkerers, food artisans, hobbyists, engineers, science clubs, artists, students, and commercial exhibitors. Makers come to show their creations and share their learnings. Attendees flock to Maker Faire to glimpse the future and find the inspiration to become Makers themselves.</p>
+                        <p class="text-center">Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do.  From artists to scientists to engineers to crafters, Maker Faire is a venue to for these “makers” to show hobbies, experiments, projects.</p>
+                        <p class="text-center">We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase of invention, creativity, and resourcefulness. Glimpse the future and get inspired!</p>
                       </div>
                     </div>
                   </div>
