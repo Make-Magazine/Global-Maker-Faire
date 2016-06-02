@@ -13,6 +13,30 @@
   <link rel="icon" href="<?php echo get_stylesheet_directory_uri(); ?>/img/cropped-big-logo-192x192.png" sizes="192x192" />
   <link rel="apple-touch-icon-precomposed" href="<?php echo get_stylesheet_directory_uri(); ?>/img/cropped-big-logo-180x180.png" />
   <meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory_uri(); ?>/img/cropped-big-logo-270x270.png" />
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/11548178/GlobalMakerFaire', [300, 250], 'div-gpt-ad-1464723042021-0').setTargeting('adPos', ['left']).addService(googletag.pubads());
+      googletag.defineSlot('/11548178/GlobalMakerFaire', [300, 250], 'div-gpt-ad-1464723042021-1').setTargeting('adPos', ['center']).addService(googletag.pubads());
+      googletag.defineSlot('/11548178/GlobalMakerFaire', [300, 250], 'div-gpt-ad-1464723042021-2').setTargeting('adPos', ['right']).addService(googletag.pubads());
+      googletag.pubads().setTargeting('Location', []);
+      googletag.enableServices();
+    });
+  </script>
 </head>
 <body <?php body_class(); ?>>
 
