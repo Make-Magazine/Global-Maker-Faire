@@ -27,6 +27,10 @@
 
   include 'customizer.php';
 
+  if ( !function_exists('get_editable_roles') ) {
+    require_once( ABSPATH . '/wp-admin/includes/user.php' );
+  }
+
 ////////////////////////////////////////////////////////////////////
 // Enqueue Styles (normal style.css and bootstrap.css)
 ////////////////////////////////////////////////////////////////////
@@ -42,6 +46,12 @@
   }
   add_action('wp_enqueue_scripts', 'devdmbootstrap3_theme_stylesheets');
 
+////////////////////////////////////////////////////////////////////
+// Include all function files in the /functions directory:
+////////////////////////////////////////////////////////////////////
+foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
+  include_once $file;
+}
 
 ////////////////////////////////////////////////////////////////////
 // Register Bootstrap JS with jquery
@@ -93,6 +103,18 @@
   }
   add_action( 'wp_enqueue_scripts', 'angular_scripts' );
 
+////////////////////////////////////////////////////////////////////
+// Load Admin scripts
+////////////////////////////////////////////////////////////////////
+  function load_admin_scripts() {
+    wp_enqueue_style( 'admin-btstrp', get_stylesheet_directory_uri() . '/css/admin-bootstrap.css' );
+    // jquery from Wordpress core (with no-conflict mode flag enabled):
+    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'datetimepicker', get_stylesheet_directory_uri() . '/js/admin/jquery.datetimepicker.js', array( 'jquery' ) );
+    wp_enqueue_script( 'GF-entry-detail', get_stylesheet_directory_uri() . '/js/admin/GF-entry-detail.js', array( 'jquery' ) );
+    wp_enqueue_script('bootstrap', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js', array( 'jquery' ),false,true );
+  }
+  add_action('admin_enqueue_scripts','load_admin_scripts');
 
 ////////////////////////////////////////////////////////////////////
 // Add Title Tag Support with Regular Title Tag injection Fall back.
@@ -187,7 +209,7 @@
         <div class="container">
           <div class="row">
             <div class="col-xs-12">
-              <h3 class="sponsor-slide-title">2016 Maker Faire Sponsors: <span class="sponsor-slide-cat"></span></h4>
+              <h3 class="sponsor-slide-title">2016 Maker Faire Sponsors: <span class="sponsor-slide-cat"></span></h3>
               <hr />
               <h5></h5>
             </div>
