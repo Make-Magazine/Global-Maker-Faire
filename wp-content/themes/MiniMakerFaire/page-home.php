@@ -861,7 +861,12 @@ get_header();
           </a>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 text-center house-ad">
-          <img src="<?php echo get_bloginfo('template_directory'); ?>/img/house-ad-placeholder.jpg" alt="House advertisement" class="img-responsive" />
+          <!-- /11548178/GlobalMakerFaire -->
+          <div id='div-gpt-ad-1464723042021-2'>
+            <script type='text/javascript'>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1464723042021-2'); });
+            </script>
+          </div>
         </div>
       </div>
     </div>
