@@ -702,6 +702,7 @@ get_header();
               jQuery(document).on('submit', '.whatcounts-signup1', function (e) {
                 e.preventDefault();
                 var bla = jQuery('#wc-email').val();
+                globalNewsletterSignup(bla);
                 jQuery.post('http://whatcounts.com/bin/listctrl', jQuery('.whatcounts-signup1').serialize());
                 jQuery('.fancybox-thx').trigger('click');
                 //jQuery('.nl-modal-email-address').text(bla);

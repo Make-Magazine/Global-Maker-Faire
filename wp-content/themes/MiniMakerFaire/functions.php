@@ -64,6 +64,15 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
     wp_enqueue_script('owl-carousel', get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ),false,true );
   }
   add_action('wp_enqueue_scripts', 'devdmbootstrap3_theme_js');
+  
+////////////////////////////////////////////////////////////////////
+// Register custom scripts
+////////////////////////////////////////////////////////////////////
+
+  function makerfaire_theme_js() {
+    wp_enqueue_script('newsletter-js', get_stylesheet_directory_uri() . '/js/dynamic/newsletter.php', array( 'jquery' ),time(),true );
+  }
+  add_action('wp_enqueue_scripts', 'makerfaire_theme_js');
 
 ////////////////////////////////////////////////////////////////////
 // Enqueue the AngularJS
