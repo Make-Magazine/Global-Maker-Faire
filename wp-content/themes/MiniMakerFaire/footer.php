@@ -154,6 +154,14 @@
   </footer>
 </div>
 <!-- end main container -->
+
 <?php wp_footer(); ?>
+
+<?php $footer_scripts = get_theme_mod( 'footer_scripts' );
+if( $footer_scripts != '' ) {
+  echo '<!-- Begin GMF custom scripts -->';
+  echo $footer_scripts;
+  echo '<!-- End GMF custom scripts -->';
+} ?>
 </body>
 </html>

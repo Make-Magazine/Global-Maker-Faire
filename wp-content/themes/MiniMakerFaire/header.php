@@ -37,6 +37,13 @@
       googletag.enableServices();
     });
   </script>
+
+  <?php $header_scripts = get_theme_mod( 'header_scripts' );
+  if( $header_scripts != '' ) {
+    echo '<!-- Begin GMF custom scripts -->';
+    echo $header_scripts;
+    echo '<!-- End GMF custom scripts -->';
+  } ?>
 </head>
 <body <?php body_class(); ?>>
 

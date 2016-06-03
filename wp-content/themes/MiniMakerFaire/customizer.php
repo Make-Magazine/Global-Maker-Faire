@@ -25,7 +25,7 @@ function mmf_customizer_settings( $wp_customize ) {
         )
     ));
 
-    // BUTTON TEXT
+    // BUTTON RADIO
     $wp_customize->add_setting('header_cta_radio', array(
         'default'        => 'value2',
     ));
@@ -40,7 +40,7 @@ function mmf_customizer_settings( $wp_customize ) {
             'value2' => 'Hide',
         ),
     ));
-
+    // BUTTON TEXT
     $wp_customize->add_setting( 'header_cta_text', array(
         'default'           => '',
         'sanitize_callback' => 'sanitize_header_cta_text'
@@ -147,6 +147,36 @@ function mmf_customizer_settings( $wp_customize ) {
         'section'  => 'footer_social_media',
         'settings' => 'google_plus_link',
         'type'     => 'url',
+    ));
+
+
+////////////////////////////////////////////////////////////////////
+// Additional Scripts
+////////////////////////////////////////////////////////////////////
+    $wp_customize->add_section( 'additional_scripts', array(
+        'title' => 'Additional Scripts',
+        'description'   => 'If you have 3rd party scripts, like Google Analytics, that require you to paste them into the header or footer, you can do that here. Be careful to copy and paste them correctly otherwise it could have negative affects on other parts of the site.',
+        'priority' => 300,
+    ));
+    // HEADER SCRIPTS
+    $wp_customize->add_setting( 'header_scripts', array(
+        'default'           => ''
+    ));
+    $wp_customize->add_control( 'header_scripts', array(
+        'label'         => __( 'Enter any scripts that need to be placed in the header here.' ),
+        'section'       => 'additional_scripts',
+        'settings'      => 'header_scripts',
+        'type'          => 'textarea'
+    ));
+    // FOOTER SCRIPTS
+    $wp_customize->add_setting( 'footer_scripts', array(
+        'default'           => ''
+    ));
+    $wp_customize->add_control( 'footer_scripts', array(
+        'label'         => __( 'Enter any scripts that need to be placed in the footer here.' ),
+        'section'       => 'additional_scripts',
+        'settings'      => 'footer_scripts',
+        'type'          => 'textarea'
     ));
 }
 add_action( 'customize_register', 'mmf_customizer_settings' );
