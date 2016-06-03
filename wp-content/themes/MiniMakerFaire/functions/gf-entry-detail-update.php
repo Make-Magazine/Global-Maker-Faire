@@ -207,3 +207,8 @@ function add_entry_note(){
 
 add_action('wp_ajax_add_entry_note','add_entry_note');
 
+add_filter( 'gform_notification_events', 'mf_custom_notification_event' );
+function mf_custom_notification_event( $events ) {
+  $events['mf_acceptance_status_changed'] = __( 'Acceptance Status Changed' );
+  return $events;
+} 
