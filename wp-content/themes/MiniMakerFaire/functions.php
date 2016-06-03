@@ -275,7 +275,7 @@ The left navigation bar is your control center for your site.
   <p></p>
     <li><strong>Media Library (Images and Files)</strong></li>
        <ul style="list-style: none;">
-           <li>Optional: If you have a previous WordPress site, you can export your Media Library and Import into this site. <a href="https://codex.wordpress.org/Tools_Export_Screen" target="_blank">Instructions here</a>.</li>
+           <li>Optional: If you have a previous WordPress site, you can export your Media Library and Import into this site. <a href="https://codex.wordpress.org/Tools_Export_Screen" target="_blank">Export instructions</a> and <a href="https://codex.wordpress.org/Tools_Import_Screen" target="_blank">Import instructions</a>(works best if you export everything all together in the export screen, then import that file).</li>
            <li>If you don&rsquo;t have images from previous faires to use on your site, you can use any image in <a href="https://www.dropbox.com/sh/4mul17k070tts66/AAAqx9W6k8dNY3YsJN7--Tfda" target="_blank">this Dropbox:</a></li>
        </ul>
   <p></p>
@@ -284,7 +284,7 @@ The left navigation bar is your control center for your site.
            <li>To create news, go to Posts &gt; All Posts. </li>
            <li>We have one sample post in there: Hello world! </li>
            <li>To see how posts will look, check out the test site at <a href="http://global.makerfaire.com/">http://global.makerfaire.com/</a>. Click on News in the Header.</li>
-           <li>Optional: If you have a previous WordPress site, you can export your Posts and Import them into this site. <a href="https://codex.wordpress.org/Tools_Import_Screen" target="_blank">Instructions here</a>.</li>
+           <li>Optional: If you have a previous WordPress site, you can export your Posts and Import them into this site. <a href="https://codex.wordpress.org/Tools_Export_Screen" target="_blank">Export instructions</a> and <a href="https://codex.wordpress.org/Tools_Import_Screen" target="_blank">Import instructions</a>(works best if you export everything all together in the export screen, then import that file).</li>
            <li>Once you start creating blog posts, add the &ldquo;News&rdquo; Panel to your Homepage (Pages &gt; Home &gt; Post Feed) and a dynamic panel will start populating your News onto your Homepage. You can also see a sample of this here: <a href="http://global.makerfaire.com/">http://global.makerfaire.com/</a>.</li>
          </ul>
   <p></p>
