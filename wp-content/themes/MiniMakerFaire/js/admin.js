@@ -9,5 +9,7 @@ jQuery(function() {
   jQuery( "#customize-control-site_icon .customize-control-description" ).after( "<span>Please upload your square Google+ logo here.</span>" );
   //Remove Menu section from customizer
   //jQuery( '.control-panel-nav_menus' ).hide();
-});
 
+  // Move the Yoast SEO panel to the last position
+  jQuery('#normal-sortables').append(jQuery('#wpseo_meta'));
+});
