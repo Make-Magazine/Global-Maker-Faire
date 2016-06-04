@@ -26,10 +26,10 @@ get_header(); ?>
               }
                
               echo   '<article class="recent-post-inner">
-                        <a href="' . get_permalink(["ID"]) . '">';
+                        <a href="' . get_permalink() . '">';
 
-              if ( get_the_post_thumbnail(['ID']) != '' ) {
-                $thumb_id = get_post_thumbnail_id(['ID']);
+              if ( get_the_post_thumbnail() != '' ) {
+                $thumb_id = get_post_thumbnail_id();
                 $url = wp_get_attachment_url($thumb_id);
                 echo "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
               }
