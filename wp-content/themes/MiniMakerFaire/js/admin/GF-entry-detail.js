@@ -99,15 +99,13 @@ jQuery( document ).ready(function() {
 
   //location/schedule info
   jQuery('#locationSel').change(function(){
-    var locText = '';
     if(jQuery(this).val()!='new'){
-      locText = ( jQuery(this).find(":selected").text() );
+      locText = jQuery(this).val();
       //hide entry location box
       jQuery('#update_entry_location_code').hide();
     } else{
       jQuery('#update_entry_location_code').show();
     }
-    jQuery('#update_entry_location_code').val(locText);
   });
 
   //update location information
@@ -127,24 +125,49 @@ jQuery( document ).ready(function() {
     }else{
       var dateStart = jQuery("#datetimepickerstart").val();
       var dateEnd   = jQuery("#datetimepickerend").val();
+      // check if the end date is before the startdate
+      edate = new Date(dateEnd);
+      sdate = new Date(dateStart);
+      if(edate < sdate){
+        alert('End Date/Time cannot be before Start Date/Time');
+      }else{
+        jQuery('#schedResp').html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>');
 
-      jQuery('#schedResp').html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>');
+        var entry_id = jQuery("input[name=entry_info_entry_id]").val();
+        var flags = jQuery('input[name=entry_info_flags]').map(function() {
+            return this.value + '_'+this.checked;
+        }).get();
 
-      var entry_id = jQuery("input[name=entry_info_entry_id]").val();
-      var flags = jQuery('input[name=entry_info_flags]').map(function() {
-          return this.value + '_'+this.checked;
-      }).get();
-
-      var data = {
-        'action': 'update_entry_schedule',
-        'entry_id': entry_id,
-        'location': location,
-        'dateStart': dateStart,
-        'dateEnd': dateEnd
-      };
-      jQuery.post(ajaxurl, data, function(response) {
-        jQuery('#schedResp').text(response.msg);
-      });
+        var data = {
+          'action': 'update_entry_schedule',
+          'entry_id': entry_id,
+          'location': location,
+          'dateStart': dateStart,
+          'dateEnd': dateEnd
+        };
+        jQuery.post(ajaxurl, data, function(response) {
+          jQuery('#schedResp').text(response.msg);
+          jQuery("#datetimepickerstart").val('');
+          jQuery("#datetimepickerend").val('');
+          var locID   = response.locID;
+          var schedID = response.schedID;
+          if(dateStart==''&&dateEnd==''){
+            //add location to the sidebar
+            var newLoc = '<div id="location'+locID+'" class="locBox"><input type="checkbox" value="'+locID+'" name="delete_location_id"> <span class="stageName">'+location+'</span></div>';
+          }else{
+            startD = formatDate(dateStart);
+            endD   = formatDate(dateEnd);
+            //put it all together now
+            var dispStart = startD.day+" " +startD.month+"/"+startD.date + "/" + startD.year + ":<br/>"+
+                    startD.hour+":"+startD.min+" "+startD.ampm+" - "+
+                    endD.hour+":"+endD.min+" "+endD.ampm;
+            var newLoc = '<div id="schedule'+schedID+'" class="schedBox">\n\
+                <input type="checkbox" value="'+schedID+'" name="delete_schedule">\n\
+                <span class="schedInfo">'+dispStart+'<br>'+location+'</span><div class="clear"></div></div>';
+          }
+          jQuery('#locationList').append(newLoc);
+        });
+      }
     }
   });
 
@@ -197,8 +220,36 @@ jQuery( document ).ready(function() {
     };
     jQuery.post(ajaxurl, data, function(response) {
       jQuery('#addNoteResp').text(response.msg);
+      location.reload();
     });
   });
 });
 
+function formatDate(date){
+  var formatD = new Date(date);
+  var d = formatD.getDate();
+  var m = formatD.getMonth();
+  m += 1;  // JavaScript months are 0-11
+  var y = formatD.getFullYear()-2000;
 
+  //format start date
+  var curr_hour = formatD.getHours();
+  if (curr_hour < 12){
+    a_p = "AM";
+  }else{
+    a_p = "PM";
+  }
+  if (curr_hour == 0){curr_hour = 12;}
+  if (curr_hour > 12){curr_hour = curr_hour - 12;}
+  var curr_min = formatD.getMinutes();
+  curr_min = curr_min + "";
+
+  if (curr_min.length == 1){
+    curr_min = "0" + curr_min;
+  }
+
+  //determine the name of the date
+  var d_names = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+  var day_name = formatD.getDay();
+  return {'day':d_names[day_name],'date':d,'month':m, 'year':y, 'hour':curr_hour,'min':curr_min,'ampm':a_p};
+}

@@ -244,7 +244,10 @@ function disp_sched( $form, $lead) {
   global $wpdb;
   $form_id = $form['id'];
   echo ('<link rel="stylesheet" type="text/css" href="'.get_stylesheet_directory_uri() . '/css/jquery.datetimepicker.css"/>');
+
   echo display_schedule($form_id,$lead);
+
+
   // Set up the Add to Schedule Section
   echo ('<h4 class="topBorder">Add New:</h4>');
 
@@ -263,9 +266,9 @@ function disp_sched( $form, $lead) {
     <option value="new">Add new</option>
   </select>
   <br/>
-  <input type="text" name="update_entry_location_code" <?php echo (empty($options)?"":'style="display:none"');?> id="update_entry_location_code" /><br/>
-
+  <input type="text" name="update_entry_location_code" <?php echo (empty($options)?"":'style="display:none"');?> id="update_entry_location_code" />
   <br/>
+
   Optional Schedule Start/End
   <div class="clear"></div>
   <div style="padding:10px 0;width:40px;float:left">Start: </div>
@@ -319,6 +322,7 @@ function display_schedule($form_id,$lead,$section='sidebar'){
 
   //make sure there is data to display
   if($wpdb->num_rows !=0){
+    echo '<div id="locationList">';
     //let's loop thru the schedule array now
     foreach($schedules as $location_id=>$data){
       $stage       = $data['location'];
@@ -326,8 +330,7 @@ function display_schedule($form_id,$lead,$section='sidebar'){
       if(is_array($scheduleArr)){
         foreach($scheduleArr as $date=>$schedule){
           if($date!=''){
-            echo '<div>'.date('l n/j/y',strtotime($date)).'<br/>';
-            echo '<div>';
+
             foreach($schedule as $schedule_id=>$schedData){
               $start_dt   = $schedData['start_dt'];
               $end_dt     = $schedData['end_dt'];
@@ -339,37 +342,38 @@ function display_schedule($form_id,$lead,$section='sidebar'){
               $dateTime->setTimeZone(new DateTimeZone($db_tz));
               $timeZone = $dateTime->format('T');*/
               if($section!='summary'){
-                echo '<span id="schedule'.$schedule_id.'">'
-                      . '<div class="stageName">'.$stage.'</div>'
-                      . '<input type="checkbox" value="'.$schedule_id.'" name="delete_schedule"></input>'
-                      . '<span class="schedDate">'.date("g:i A",$start_dt).' - '.date("g:i A",$end_dt).' ('.$timeZone.')</span><div class="clear"></div><br/>'
-                    . '</span>';
+                echo '<div id="schedule'.$schedule_id.'" class="schedBox">'
+                . '<input type="checkbox" value="'.$schedule_id.'" name="delete_schedule"></input>'
+                . '<span class="schedInfo">'
+                  . date('l n/j/y',strtotime($date)).':<br/>'
+                  . date("g:i A",$start_dt).' - ' .date("g:i A",$end_dt) .'<br/>'
+                  . $stage
+                . '</span>'
+                . '<div class="clear"></div></div>';
               }else{
                 //display the schedule only
-                echo '<span class="schedDate">'.date("g:i A",$start_dt).' - '.date("g:i A",$end_dt).' ('.$timeZone.')</span><div class="clear"></div>';
+                echo '<span class="schedDate">'.date("g:i A",$start_dt).' - '.date("g:i A",$end_dt).'</span><div class="clear"></div>';
               }
+
             }
-            echo '</div></div>';
+
           }
         }
       }else{ //if there is no schedule data
         //location only display checkbox to delete
         if($section!='summary'){
-          echo ('<span id="location'.$location_id.'">'
-                  . '<div class="stageName">'.$stage.'</div>'
+          echo ('<div id="location'.$location_id.'" class="locBox">'
                   . '<input type="checkbox" value="'.$location_id.'" name="delete_location_id" /> '
-                  . '<span class="schedDate">Remove Location</span>'
-                  . '<div class="clear"></div><br/>'
-              . '</span>');
+                  . '<span class="stageName">'.$stage.'</span>'
+              . '</div>');
         }
       }
     }
-
+    echo '</div>';// close #locationList
     if($section!='summary'){
       $entry_delete_button = '<input type="submit" id="delete_entry_schedule" value="Delete Selected" class="button");"/><br />';
       echo $entry_delete_button;
     }
-    echo '<br/>';
   }
 }
 

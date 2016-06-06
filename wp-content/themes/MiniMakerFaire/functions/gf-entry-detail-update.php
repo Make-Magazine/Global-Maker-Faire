@@ -133,15 +133,15 @@ function update_entry_schedule(){
     if($entry_schedule_start!='' && $entry_schedule_end!=''){
       $insert_query = "INSERT INTO `wp_mf_schedule` (`entry_id`, location_id, `start_dt`, `end_dt`) "
               . " VALUES ($entry_id,$location_id,'$entry_schedule_start','$entry_schedule_end')";
-
       $wpdb->get_results($insert_query);
-      $msg = 'Schedule/Location Added';
-    }else{
-      $msg = 'Location Empty';
+      $schedule_id = $wpdb->insert_id;
     }
+    $msg = 'Schedule/Location Added';
+  }else{
+    $msg = 'Location Empty';
   }
 
-  wp_send_json(array('msg'=>$msg));
+  wp_send_json(array('msg'=>$msg,'locID'=>$location_id,'sched_id'=>$schedule_id));
 }
 add_action( 'wp_ajax_update_entry_schedule', 'update_entry_schedule' );
 
@@ -211,4 +211,4 @@ add_filter( 'gform_notification_events', 'mf_custom_notification_event' );
 function mf_custom_notification_event( $events ) {
   $events['mf_acceptance_status_changed'] = __( 'Acceptance Status Changed' );
   return $events;
-} 
+}

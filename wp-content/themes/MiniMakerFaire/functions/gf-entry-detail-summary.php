@@ -14,8 +14,8 @@ function get_summary_side($form, $lead) {
   $size_request             = (isset($lead['60'])?$lead['60']:'');
   $size_request_heightwidth = ((isset($lead['344']) && strlen($lead['344']) > 0 ) ? $lead['344'].' X ':'').(isset($lead['345'])?$lead['345']:'');
   $size_request_other       = (isset($lead['61'])?$lead['61']:'');
-  $project_name = (isset($lead['151'])?$lead['151']:'');
-  $photo        = (isset($lead['22'])?$lead['22']:'');
+  $project_name             = (isset($lead['151'])?$lead['151']:'');
+  $photo                    = (isset($lead['22'])?$lead['22']:'');
   $short_description        = (isset($lead['16'])?$lead['16']:'');
   $long_description         = (isset($lead['21'])?$lead['21']:'');
   $entry_form_name          = $form['title'];
@@ -54,6 +54,19 @@ function get_summary_side($form, $lead) {
   } else if ( isset($short_description ) ) {
     $main_description = $short_description;
   }
+
+  // build contact info  	
+  $contactName = (isset($lead['96.3'])?$lead['96.3']:'').' '.(isset($lead['96.6'])?$lead['96.6']:'');
+  $street  = (isset($lead['101.1'])?$lead['101.1']:'');
+	$street2 = (!empty($lead["101.2"])) ? $lead["101.2"].'<br />' : '' ;
+	$city    = (isset($lead["101.3"])?$lead["101.3"]:'');
+	$state   = (isset($lead["101.4"])?$lead["101.4"]:'');
+	$zip     = (isset($lead["101.5"])?$lead["101.5"]:'');
+	$country = (isset($lead["101.6"])?$lead["101.6"]:'');
+	$email   = (isset($lead["98"])?$lead["98"]:'');
+	$phone   = (isset($lead["99"])?$lead["99"]:'');
+	$phonetype = (isset($lead["148"])?$lead["148"]:'');
+
   ?>
   <table id="entry-summary" class="fixed entry-detail-view">
     <thead>
@@ -98,6 +111,18 @@ function get_summary_side($form, $lead) {
               <td><?php
                 echo ( isset( $vkey ) ) ? '<a href="' . esc_url( $vkey ) . '" target="_blank">' . esc_url( $vkey ) . '</a><br/>' : '' ;
                   ?>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top"><strong>Contact:</strong></td>
+              <td valign="top">
+                <?php echo $contactName;  ?><br />
+                <?php echo $street; ?><br />
+                <?php echo $street2; ?>
+                <?php echo $city; ?>, <?php echo $state; ?>  <?php echo $zip; ?><br />
+                <?php echo $country; ?><br />
+                <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a><br />
+                <?php echo $phonetype; ?>:  <?php echo $phone; ?>
               </td>
             </tr>
             <tr>

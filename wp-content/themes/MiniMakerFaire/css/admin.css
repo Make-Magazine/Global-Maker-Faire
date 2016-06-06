@@ -171,12 +171,32 @@
   background-image: url(../img/gf-fieldnotification-header.jpg);
 }
 
+/* Add message to top of edit form view */
 .toplevel_page_gf_edit_forms .gforms_edit_form:before {
   content: 'Red fields are needed for your site to work properly and cannot be deleted. You may move these fields, but do not edit them. Thanks.';
   background-image: url(../img/gf-fieldnotification-header.jpg);
   width: 100%;
   display: block;
   text-align: center;
-  padding: 10px 0px;
+  margin: 10px 0px;
   font-weight: bold;
+}
+
+/* style gf entry detail view sidebar */
+.schedBox input {
+  margin-top: 3px;
+}
+.schedBox input,
+.schedBox .schedInfo {
+  float: left;
+}
+
+.schedBox,
+.locBox {
+  padding: 10px 0;
+  border-bottom: thin solid lightgray;
+}
+
+#locationList {
+  margin-bottom: 10px;
 }
