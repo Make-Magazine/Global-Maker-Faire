@@ -165,3 +165,18 @@
     width: 100%
 }
 /* End Entry Rating Styling*/
+
+/* admin gform display */
+.field_hover.lockedField {
+  background-image: url(../img/gf-fieldnotification-header.jpg);
+}
+
+.toplevel_page_gf_edit_forms #wpcontent:before {
+  content: 'Red fields are needed for your site to work properly and cannot be deleted. You may move these fields, but do not edit them. Thanks.';
+  background-image: url(../img/gf-fieldnotification-header.jpg);
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 10px 0px;
+  font-weight: bold;
+}
