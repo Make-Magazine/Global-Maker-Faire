@@ -171,7 +171,7 @@
   background-image: url(../img/gf-fieldnotification-header.jpg);
 }
 
-.toplevel_page_gf_edit_forms #wpcontent:before {
+.toplevel_page_gf_edit_forms .gforms_edit_form:before {
   content: 'Red fields are needed for your site to work properly and cannot be deleted. You may move these fields, but do not edit them. Thanks.';
   background-image: url(../img/gf-fieldnotification-header.jpg);
   width: 100%;
