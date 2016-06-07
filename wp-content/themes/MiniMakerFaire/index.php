@@ -27,12 +27,22 @@
         if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           // single post
-          if ( is_single() ) : ?>
+          if ( is_single() ) : 
+
+            // Get the blog/news page unique URL
+            $news_pages = get_pages(array(
+              'meta_key' => '_wp_page_template',
+              'meta_value' => 'blog.php'
+            ));
+            foreach($news_pages as $news_page){
+              $news_ID = $news_page->ID;
+            } 
+            $news_slug = get_post( $news_ID )->post_name; ?>
 
             <div <?php post_class(); ?>>
 
               <div class="all-posts-btn">
-                <a href="/blog"><i class="fa fa-chevron-left" aria-hidden="true"></i> All blog posts</a>
+                <a href="/<?php echo $news_slug; ?>"><i class="fa fa-chevron-left" aria-hidden="true"></i> All blog posts</a>
               </div>
 
               <?php if ( has_post_thumbnail() ) : ?>
