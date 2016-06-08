@@ -228,6 +228,8 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
     remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
     remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
     remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );
+    remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+
   }
   add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
 
@@ -237,7 +239,7 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
 ////////////////////////////////////////////////////////////////////
 
   function add_dashboard_widgets() {
-    add_meta_box( 'dashboard_welcome', 'Welcome! Let’s get started:', 'add_welcome_widget', 'dashboard', 'side', 'high' );
+    add_meta_box( 'dashboard_welcome', 'Welcome! Let’s get started:', 'add_welcome_widget', 'dashboard', 'normal', 'high' );
   }
   function add_welcome_widget(){ ?>
 
