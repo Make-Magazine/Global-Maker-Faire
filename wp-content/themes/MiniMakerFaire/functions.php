@@ -31,6 +31,14 @@
     require_once( ABSPATH . '/wp-admin/includes/user.php' );
   }
 
+// Define our current Version number using the stylesheet version
+function my_wp_default_styles($styles) {
+  $my_theme = wp_get_theme();
+  $my_version = $my_theme->get('Version');
+  $styles->default_version = $my_version;
+}
+
+add_action("wp_default_styles", "my_wp_default_styles");
 ////////////////////////////////////////////////////////////////////
 // Enqueue Styles (normal style.css and bootstrap.css)
 ////////////////////////////////////////////////////////////////////
@@ -64,7 +72,7 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
     wp_enqueue_script('owl-carousel', get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ),false,true );
   }
   add_action('wp_enqueue_scripts', 'devdmbootstrap3_theme_js');
-  
+
 ////////////////////////////////////////////////////////////////////
 // Register custom scripts
 ////////////////////////////////////////////////////////////////////
@@ -212,7 +220,7 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
 ////////////////////////////////////////////////////////////////////
 // Remove unwanted dashboard widgets for relevant users
 ////////////////////////////////////////////////////////////////////
-  
+
   function remove_dashboard_widgets() {
     remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
     remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
@@ -232,7 +240,7 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
     add_meta_box( 'dashboard_welcome', 'Welcome! Let’s get started:', 'add_welcome_widget', 'dashboard', 'side', 'high' );
   }
   function add_welcome_widget(){ ?>
-   
+
 <img style="float:right;" src="http://makerfaire.com/wp-content/uploads/2015/03/MF-Relations_Icon_SetUp.jpg" alt="MF-Relations_Icon_SetUp" width="75" height="75" align="left" hspace="10" />
 
 The left navigation bar is your control center for your site.
@@ -268,9 +276,9 @@ The left navigation bar is your control center for your site.
                     <li>Appearance &gt; Menu </li>
                </ul>
              <li>There are 2 Menus</li>
-                <ul>  
+                <ul>
                     <li>Main Menu (at the top in the Header)</li>
-                    <ul>  
+                    <ul>
                          <li>Add up to 6 main menu items</li>
                          <li>Create as many submenu items as you choose</li>
                     </ul>
@@ -334,7 +342,7 @@ The left navigation bar is your control center for your site.
   <p>Look around and start clicking.<br />
   There&rsquo;s a lot you can do to customize your site. <br />
   Get started!</p>
-  <img style="width:100%;height:auto;" src="/wp-content/themes/MiniMakerFaire/img/makey_panel-br.png" /> 
+  <img style="width:100%;height:auto;" src="/wp-content/themes/MiniMakerFaire/img/makey_panel-br.png" />
 
   <?php }
   add_action( 'wp_dashboard_setup', 'add_dashboard_widgets' );
