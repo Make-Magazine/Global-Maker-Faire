@@ -4,9 +4,7 @@
 jQuery(document).ready(function () {
 
     //stick in the fixed 100% height behind the navbar but don't wrap it
-    jQuery('#slide-nav.navbar-inverse').after(jQuery('<div class="inverse" id="navbar-height-col"></div>'));
-  
-    jQuery('#slide-nav.navbar-default').after(jQuery('<div id="navbar-height-col"></div>'));  
+    //jQuery('#slide-nav.navbar-default').after(jQuery('<div id="navbar-height-col"></div>'));  
 
     // Enter your ids or classes
     var toggler = '.navbar-toggle';
@@ -16,7 +14,7 @@ jQuery(document).ready(function () {
     var menuneg = '-100%';
     var slideneg = '-80%';
 
-    jQuery("#slide-nav").on("click", toggler, function (e) {
+    jQuery("#slide-nav").on("click", toggler, function () {
 
         var selected = jQuery(this).hasClass('slide-active');
 
@@ -51,6 +49,3 @@ jQuery(document).ready(function () {
         }
     });
 });
-
-
-

@@ -222,6 +222,16 @@
           $args = array( 'numberposts' => $post_feed_quantity, 'post_status' => 'publish' );
           $recent_posts = wp_get_recent_posts( $args );
 
+          // Get the blog template page ID
+          $news_pages = get_pages(array(
+            'meta_key' => '_wp_page_template',
+            'meta_value' => 'blog.php'
+          ));
+          foreach($news_pages as $news_page){
+            $news_ID = $news_page->ID;
+          }
+          $news_slug = get_post( $news_ID )->post_name;
+
           echo '<section class="recent-post-panel"><div class="container">';
 
           if(get_sub_field('title')){
@@ -256,7 +266,7 @@
           }
 
           echo '<div class="col-xs-12 padtop padbottom text-center">
-                  <a class="btn btn-b-ghost" href="/blog">More News</a>
+                  <a class="btn btn-b-ghost" href="/' . $news_slug . '">More News</a>
                 </div>';
 
           echo '</div></div><div class="flag-banner"></div></section>';

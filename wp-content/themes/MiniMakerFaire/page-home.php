@@ -12,17 +12,7 @@ get_header();
   ));
   foreach($home_pages as $home_page){
     $home_ID = $home_page->ID;
-  } 
-
-  // Get the sponsors template page ID
-  $sponsor_pages = get_pages(array(
-    'meta_key' => '_wp_page_template',
-    'meta_value' => 'page-sponsors.php'
-  ));
-  foreach($sponsor_pages as $sponsor_page){
-    $sponsor_ID = $sponsor_page->ID;
-  }
-?>
+  } ?>
 
   <section class="slideshow-panel">
 
@@ -312,6 +302,16 @@ get_header();
           $args = array( 'numberposts' => $post_feed_quantity, 'post_status' => 'publish' );
           $recent_posts = wp_get_recent_posts( $args );
 
+          // Get the blog template page ID
+          $news_pages = get_pages(array(
+            'meta_key' => '_wp_page_template',
+            'meta_value' => 'blog.php'
+          ));
+          foreach($news_pages as $news_page){
+            $news_ID = $news_page->ID;
+          }
+          $news_slug = get_post( $news_ID )->post_name;
+
           echo '<section class="recent-post-panel"><div class="container">';
 
           if(get_sub_field('title')){
@@ -346,7 +346,7 @@ get_header();
           }
 
           echo '<div class="col-xs-12 padtop padbottom text-center">
-                  <a class="btn btn-b-ghost" href="/blog">More News</a>
+                  <a class="btn btn-b-ghost" href="/' . $news_slug . '">More News</a>
                 </div>';
 
           echo '</div></div><div class="flag-banner"></div></section>';
@@ -721,6 +721,15 @@ get_header();
 
         $activeinactive = get_sub_field('activeinactive');
         if( $activeinactive == 'Active' ):
+
+          // Get the sponsors template page ID
+          $sponsor_pages = get_pages(array(
+            'meta_key' => '_wp_page_template',
+            'meta_value' => 'page-sponsors.php'
+          ));
+          foreach($sponsor_pages as $sponsor_page){
+            $sponsor_ID = $sponsor_page->ID;
+          }
 
           $sponsor_panel_field_1 = get_sub_field('title_sponsor_panel');
           $sponsor_panel_field_2 = get_sub_field('sub_title_sponsor_panel');
