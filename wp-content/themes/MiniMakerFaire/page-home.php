@@ -338,7 +338,7 @@ get_header();
             echo  '     <div class="recent-post-text">
                           <h4>' . $recent["post_title"] . '</h4>
                           <p class="recent-post-date">' . mysql2date('M j, Y',  $recent["post_date"]) . '</p>
-                          <p class="recent-post-descripton">' . sanitize_text_field(substr($recent["post_content"], 0 , 150)) . '</p>
+                          <p class="recent-post-descripton">' . substr(wp_strip_all_tags($recent["post_content"]), 0 , 150) . '</p>
                         </div>
                       </a>
                     </article>
