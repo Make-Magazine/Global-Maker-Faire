@@ -42,7 +42,7 @@
             <div <?php post_class(); ?>>
 
               <div class="all-posts-btn">
-                <a href="/<?php echo $news_slug; ?>"><i class="fa fa-chevron-left" aria-hidden="true"></i> All news</a>
+                <a href="/<?php echo $news_slug; ?>"><i class="fa fa-chevron-left" aria-hidden="true"></i> All News</a>
               </div>
 
               <?php if ( has_post_thumbnail() ) : ?>
