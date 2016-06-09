@@ -45,8 +45,18 @@
                 <a href="/<?php echo $news_slug; ?>"><i class="fa fa-chevron-left" aria-hidden="true"></i> All News</a>
               </div>
 
-              <?php if ( has_post_thumbnail() ) : ?>
-                <div class="post-thumb-hero" style="background-image: url( <?php the_post_thumbnail_url( 'full' ); ?> );"></div>
+              <?php if ( has_post_thumbnail() ) : 
+
+              if (get_field('post_featured_image_placement') == 'Top') {
+                $image_css = 'background-position: top;';
+              } else if (get_field('post_featured_image_placement') == 'Center') {
+                $image_css = '';
+              } else if (get_field('post_featured_image_placement') == 'Bottom') {
+                $image_css = 'background-position: bottom;';
+              } else if (get_field('post_featured_image_placement') == 'Contain') {
+                $image_css = 'background-size: contain;';
+              } ?>
+                <div class="post-thumb-hero" style="background-image: url( <?php the_post_thumbnail_url( 'full' ); ?> );<?php echo $image_css; ?>"></div>
               <?php endif; ?>
 
               <h2 class="page-header"><?php the_title() ;?></h2>
