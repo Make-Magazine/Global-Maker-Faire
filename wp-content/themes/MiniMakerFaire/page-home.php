@@ -122,6 +122,11 @@ get_header();
               $image = get_sub_field('maker_image');
               $maker = get_sub_field('maker_name');
               $decription = get_sub_field('maker_short_description');
+              $maker_url = get_sub_field('maker_url');
+
+              if(!empty($maker_url)){
+                echo '<a href="' . $maker_url . '">';
+              }
 
               echo '<div class="featured-maker col-xs-6 col-sm-3">
                       <div class="maker-img" style="background-image: url(' . $image["url"] . ');">
@@ -131,6 +136,10 @@ get_header();
                         <p class="hidden-xs">' . $decription . '</p>
                       </div>
                     </div>';
+
+              if(!empty($maker_url)){
+                echo '</a>';
+              }
 
             endwhile;
 
@@ -185,6 +194,11 @@ get_header();
               $image = get_sub_field('maker_image');
               $maker = get_sub_field('maker_name');
               $decription = get_sub_field('maker_short_description');
+              $maker_url = get_sub_field('maker_url');
+
+              if(!empty($maker_url)){
+                echo '<a href="' . $maker_url . '">';
+              }
 
               echo '<div class="featured-maker col-xs-6 col-sm-3">
                       <div class="maker-img" style="background-image: url(' . $image["url"] . ');">
@@ -194,6 +208,10 @@ get_header();
                         <p class="hidden-xs">' . $decription . '</p>
                       </div>
                     </div>';
+
+              if(!empty($maker_url)){
+                echo '</a>';
+              }
 
             endwhile;
 
