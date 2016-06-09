@@ -12,7 +12,7 @@ get_header(); ?>
 
       <?php
       if(get_field('become_sponsor_url')) {
-        echo '<a class="sponsors-btn-top" href="/sponsors">BECOME A SPONSOR</a>';
+        echo '<a class="sponsors-btn-top" href="' . get_field('become_sponsor_url') . '">BECOME A SPONSOR</a>';
       } ?>
 
     </div>
