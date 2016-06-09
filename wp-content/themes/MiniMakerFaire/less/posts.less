@@ -13,6 +13,20 @@
 
   .post-thumb-hero {
     width:100%;
+    height: 420px;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+    @media (min-width:992px) and (max-width:1199px) {
+      height: 350px;
+    }
+    @media (min-width:768px) and (max-width:991px) {
+      height: 275px;
+    }
+    @media (max-width:767px) {
+      height: 150px;
+      height: 35vw;
+    }
   }
 
   .page-header {

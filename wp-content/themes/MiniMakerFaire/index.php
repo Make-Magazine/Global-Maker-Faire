@@ -46,7 +46,7 @@
               </div>
 
               <?php if ( has_post_thumbnail() ) : ?>
-                <?php the_post_thumbnail('full', array( 'class' => 'img-responsive post-thumb-hero' )); ?>
+                <div class="post-thumb-hero" style="background-image: url( <?php the_post_thumbnail_url( 'full' ); ?> );"></div>
               <?php endif; ?>
 
               <h2 class="page-header"><?php the_title() ;?></h2>
