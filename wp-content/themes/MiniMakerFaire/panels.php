@@ -87,7 +87,7 @@
 
           if(get_sub_field('title')){
             echo '<div class="row padtop text-center">
-                    <img class="robot-head" src="' . get_bloginfo("template_directory") . '/img/news_robot.png" alt="Robot head icon" />
+                    <img class="robot-head" src="' . get_bloginfo("template_directory") . '/img/news-icon.png" alt="News icon" />
                     <div class="title-w-border-r">
                       <h2>' . get_sub_field('title') . '</h2>
                     </div>
@@ -236,7 +236,7 @@
 
           if(get_sub_field('title')){
             echo '<div class="row padbottom text-center">
-                    <img class="robot-head" src="' . get_bloginfo("template_directory") . '/img/news_robot.png" alt="Robot head icon" />
+                    <img class="robot-head" src="' . get_bloginfo("template_directory") . '/img/news-icon.png" alt="News icon" />
                     <div class="title-w-border-r">
                       <h2>' . get_sub_field('title') . '</h2>
                     </div>
