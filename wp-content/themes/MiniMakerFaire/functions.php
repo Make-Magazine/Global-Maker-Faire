@@ -31,14 +31,20 @@
     require_once( ABSPATH . '/wp-admin/includes/user.php' );
   }
 
-// Define our current Version number using the stylesheet version
-function my_wp_default_styles($styles) {
-  $my_theme = wp_get_theme();
-  $my_version = $my_theme->get('Version');
-  $styles->default_version = $my_version;
-}
 
-add_action("wp_default_styles", "my_wp_default_styles");
+////////////////////////////////////////////////////////////////////
+// Define our current Version number using the stylesheet version
+////////////////////////////////////////////////////////////////////
+
+  function my_wp_default_styles($styles) {
+    $my_theme = wp_get_theme();
+    $my_version = $my_theme->get('Version');
+    $styles->default_version = $my_version;
+  }
+
+  add_action("wp_default_styles", "my_wp_default_styles");
+
+
 ////////////////////////////////////////////////////////////////////
 // Enqueue Styles (normal style.css and bootstrap.css)
 ////////////////////////////////////////////////////////////////////
@@ -54,12 +60,15 @@ add_action("wp_default_styles", "my_wp_default_styles");
   }
   add_action('wp_enqueue_scripts', 'devdmbootstrap3_theme_stylesheets');
 
+
 ////////////////////////////////////////////////////////////////////
 // Include all function files in the /functions directory:
 ////////////////////////////////////////////////////////////////////
-foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
-  include_once $file;
-}
+
+  foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
+    include_once $file;
+  }
+
 
 ////////////////////////////////////////////////////////////////////
 // Register Bootstrap JS with jquery
@@ -73,6 +82,7 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
   }
   add_action('wp_enqueue_scripts', 'devdmbootstrap3_theme_js');
 
+
 ////////////////////////////////////////////////////////////////////
 // Register custom scripts
 ////////////////////////////////////////////////////////////////////
@@ -81,6 +91,7 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
     wp_enqueue_script('newsletter-js', get_stylesheet_directory_uri() . '/js/dynamic/newsletter.php', array( 'jquery' ),time(),true );
   }
   add_action('wp_enqueue_scripts', 'makerfaire_theme_js');
+
 
 ////////////////////////////////////////////////////////////////////
 // Enqueue the AngularJS
@@ -123,6 +134,7 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
 ////////////////////////////////////////////////////////////////////
 // Load Admin scripts
 ////////////////////////////////////////////////////////////////////
+
   function load_admin_scripts() {
     wp_enqueue_style( 'admin-btstrp', get_stylesheet_directory_uri() . '/css/admin-bootstrap.css' );
     // jquery from Wordpress core (with no-conflict mode flag enabled):
@@ -132,6 +144,7 @@ foreach ( glob(TEMPLATEPATH . '/functions/*.php' ) as $file) {
     wp_enqueue_script('bootstrap', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js', array( 'jquery' ),false,true );
   }
   add_action('admin_enqueue_scripts','load_admin_scripts');
+
 
 ////////////////////////////////////////////////////////////////////
 // Add Title Tag Support with Regular Title Tag injection Fall back.
