@@ -1,0 +1,54 @@
+{
+    "key": "group_5750d13a38bc2",
+    "title": "Schedule Page",
+    "fields": [
+        {
+            "key": "field_5750d1756eeb0",
+            "label": "You cannot edit this schedule page from here. Edit it with Gravity Forms.",
+            "name": "you_cannot_edit_this_schedule_page_from_here_it_automatically_displays_a_feed_of_all_your_posts",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-schedule.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "custom_fields",
+        "discussion",
+        "comments",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1464914462
+}
