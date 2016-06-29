@@ -683,7 +683,7 @@
                 {
                     "key": "56fc7521f1668",
                     "name": "post_feed",
-                    "label": "Post Feed",
+                    "label": "News \/ Post Feed",
                     "display": "row",
                     "sub_fields": [
                         {
@@ -1477,5 +1477,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1463506569
+    "modified": 1463506570
 }
