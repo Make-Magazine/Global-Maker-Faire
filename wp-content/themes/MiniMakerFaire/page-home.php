@@ -751,7 +751,6 @@ get_header();
           }
 
           $sponsor_panel_field_1 = get_sub_field('title_sponsor_panel');
-          $sponsor_panel_field_2 = get_sub_field('sub_title_sponsor_panel');
           $sponsor_panel_field_3 = get_sub_field('become_a_sponsor_button');
 
           // check if the nested repeater field has rows of data
@@ -764,7 +763,6 @@ get_header();
                         <div class="title-w-border-r">
                           <h2 class="sponsor-slide-title">' . $sponsor_panel_field_1 . '</h2>
                         </div>
-                        <p>' . $sponsor_panel_field_2 . ' <span class="sponsor-slide-cat"></span></p>
                       </div>
                     </div>
                     <div class="row">
@@ -836,15 +834,12 @@ get_header();
                 </div>
               </div>
             </section>
-            <script>jQuery(".sponsor-slide .carousel-inner .item:first-child").addClass("active");
-                    jQuery(function() {
-                      var title = jQuery(".item.active .sponsors-type").html();
-                      jQuery(".sponsor-slide-cat").text(title);
-                      jQuery("#carousel-sponsors-slider").on("slid.bs.carousel", function () {
-                        var title = jQuery(".item.active .sponsors-type").html();
-                        jQuery(".sponsor-slide-cat").text(title);
-                      })
-                    });</script>';
+            <script>
+              jQuery(".sponsor-slide .carousel-inner .item:first-child").addClass("active");
+              jQuery(function() {
+                var title = jQuery(".item.active .sponsors-type").html();
+              });
+            </script>';
 
           endif; //End have rows sponsors
 
@@ -880,13 +875,11 @@ get_header();
         <div class="col-xs-6 col-sm-6 col-md-4 text-center">
           <a href="//readerservices.makezine.com/mk/default.aspx" target="_blank">
             <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Make-Subscriptions.jpg" alt="Click here to get subscritions to Make: Magazine" class="img-responsive" />
-            <p>Get Make: Magazine</p>
           </a>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-4 text-center">
           <a href="//makerfaire.com/map/" target="_blank">
             <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Maker-Faire-map.png" alt="Click here to see our global Maker Faires" class="img-responsive" />
-            <p>Global Maker Faires</p>
           </a>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 text-center house-ad">
