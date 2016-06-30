@@ -294,11 +294,11 @@
                                 "Blue": "Blue",
                                 "Red": "Red"
                             },
+                            "allow_null": 0,
                             "other_choice": 0,
                             "save_other_choice": 0,
                             "default_value": "Blue",
-                            "layout": "horizontal",
-                            "allow_null": 0
+                            "layout": "horizontal"
                         }
                     ],
                     "min": "",
@@ -949,6 +949,29 @@
                             },
                             "default_value": "",
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_5775a4459a43f",
+                            "label": "Background Color",
+                            "name": "background_color",
+                            "type": "radio",
+                            "instructions": "Background color of this panel. Choose blue or red.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "Blue": "Blue",
+                                "Red": "Red"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "default_value": "Blue",
+                            "layout": "horizontal"
                         }
                     ],
                     "min": "",
@@ -1499,5 +1522,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1467248071
+    "modified": 1467327610
 }

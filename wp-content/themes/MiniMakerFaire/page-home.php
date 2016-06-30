@@ -493,7 +493,12 @@ get_header();
 
           $cta_title = get_sub_field('text');
           $cta_url = get_sub_field('url');
-          echo '<section class="cta-panel">
+          $background_color = get_sub_field('background_color');
+          echo '<section class="cta-panel" ';
+          if( $background_color == "Red" ): 
+            echo 'style="background: -webkit-linear-gradient(left,#930d14,#B52A31,#930d14);background: linear-gradient(to right,#930d14,#B52A31,#930d14);"';
+          endif;
+          echo '>
                   <div class="container">
                     <div class="row text-center">
                       <div class="col-xs-12">
