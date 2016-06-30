@@ -11,7 +11,7 @@ function mmf_customizer_settings( $wp_customize ) {
 // Header Logo and CTA
 ////////////////////////////////////////////////////////////////////
     $wp_customize->add_section( 'header_controls', array(
-        'title' => 'Header Logo and CTA',
+        'title' => 'Logo and CTA Button',
         'priority' => 20,
     ));
     // LOGO
@@ -31,7 +31,7 @@ function mmf_customizer_settings( $wp_customize ) {
     ));
  
     $wp_customize->add_control('header_cta_radio', array(
-        'label'      => 'Call to action button',
+        'label'      => 'Call to Action Button',
         'section'    => 'header_controls',
         'description'   => 'Adds a button in the header to the right of the navigation.<br /><img src="../wp-content/themes/MiniMakerFaire/img/header-with-cta-admin-example.png" class="wp-admin-photo" />',
         'type'       => 'radio',

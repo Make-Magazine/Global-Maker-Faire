@@ -77,6 +77,13 @@
   }
 }
 
+/* HIDE THE SITE ICON EDITOR FROM THE CUSTOMIZER */
+#customize-control-site_icon {
+  display: none !important;
+}
+
+
+
 /* Admin Entry Detail View section */
 
 /* hide the default gravity form info box and notifications box, top toolbar */
