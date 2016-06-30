@@ -792,6 +792,23 @@
                             "default_value": 4,
                             "layout": "vertical",
                             "allow_null": 0
+                        },
+                        {
+                            "key": "field_5774661792dfc",
+                            "label": "Items shown in this panel are automatically fed from the \"Posts\" post type, pages are not included in this. You can add new posts by going to Posts in the left navigation.",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
                         }
                     ],
                     "min": "",
@@ -1503,5 +1520,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1467243293
+    "modified": 1467247336
 }
