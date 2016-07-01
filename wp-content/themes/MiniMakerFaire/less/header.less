@@ -80,6 +80,15 @@ body.slide-active {
 //   position: relative
 // }
 
+@media screen and (min-width:768px) {
+  #slidemenu .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  #slidemenu .dropdown-toggle {
+    cursor: default;
+  }
+}
+
 .navbar-nav>li {
   &:nth-of-type(1n+7) {
     display: none;
@@ -311,10 +320,4 @@ body.slide-active {
   .navbar-nav>li:first-child {
     border-left: 1px solid #e7e7e7;
   }
-}
-@media screen and (min-width:992px) and (max-width:1199px) {
-}
-@media screen and (min-width:768px) and (max-width:991px) {
-}
-@media screen and (max-width:767px) {
 }
