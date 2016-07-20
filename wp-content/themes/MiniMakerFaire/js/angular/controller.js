@@ -1,14 +1,15 @@
 var app = angular.module('mtm', []);
 
 app.controller('mtmMakers', function($scope, $http) {
-  $http.get('/wp-content/themes/MiniMakerFaire/categories.json')
+  var formIDs = jQuery('#forms2use').val();
+  $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=categories&formIDs='+formIDs)
   .then(function successCallback(response) {
     $scope.catJson = [];
     angular.forEach(response.data.category,function(catArr){
        $scope.catJson[catArr.id] = catArr.name.trim();
     });
    });
-  $http.get('/wp-content/themes/MiniMakerFaire/entity.json')
+  $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=mtm&formIDs='+formIDs)
   .then(function successCallback(response) {
     $scope.makers = response.data.entity;
     $scope.category = '';

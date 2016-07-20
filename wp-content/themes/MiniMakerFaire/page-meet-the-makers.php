@@ -5,7 +5,7 @@
 get_header(); ?>
 
 <div class="mtm" ng-app="mtm">
-
+  <input type="hidden" id="forms2use" value="1,3" />
   <div class="container">
     <h1 class="text-center"><?php echo get_the_title(); ?></h1>
   </div>
@@ -57,7 +57,7 @@ get_header(); ?>
           Filter by Topics: {{category}}
           <i class="fa fa-chevron-down" aria-hidden="true"></i>
         </button>
-        
+
         <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
           <li ng-repeat="tag in tags | orderBy: tag"> <a ng-click="setTagFilter(tag)">{{ tag }}</a></li>
         </ul>
