@@ -85,11 +85,13 @@
 
 
 /* Admin Entry Detail View section */
-
+#post-body.columns-2 #side-sortables {
+    min-height: 100%;
+}
 /* hide the default gravity form info box and notifications box, top toolbar */
 #entry_form #submitcomment #minor-publishing,
 #entry_form #submitdiv h3.hndle,
-#entry_form #notifications_container,
+#entry_form #notifications,
 #entry_form #gf_form_toolbar {
   display: none;
 }
