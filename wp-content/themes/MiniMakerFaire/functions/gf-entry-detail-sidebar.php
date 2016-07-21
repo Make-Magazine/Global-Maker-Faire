@@ -72,6 +72,8 @@ function mf_sidebar_entry_status($form_id, $lead) {
     <br/><br />
     <input type="submit" id="update_status" value="Save Status" class="update-status btn btn-danger" />
     <span id="statusResp"></span>
+    <br/><br/>
+    <i>A notification will be sent when Status is changed. Notifications can be managed at Forms > Settings</i>
     <?php
   }else{
     echo ('<label class="detail-label" for="entry_info_status_change">Status: </label>');
