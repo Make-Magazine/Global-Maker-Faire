@@ -87,7 +87,7 @@ function disp_ratings($lead){
   global $wpdb;
   // Retrieve any ratings
   $entry_id=$lead['id'];
-  $sql = "SELECT user_id, rating, ratingDate FROM `wp_rg_lead_rating` where entry_id = ".$entry_id;
+  $sql = "SELECT user_id, rating, ratingDate FROM `{$wpdb->prefix}rg_lead_rating` where entry_id = ".$entry_id;
   $ratingTotal = 0;
   $ratingNum   = 0;
   $ratingResults = '';
@@ -253,7 +253,7 @@ function disp_sched( $form, $lead) {
   // Set up the Add to Schedule Section
   echo ('<h4 class="topBorder">Add New:</h4>');
 
-  $sql = "select distinct(location) as location from wp_mf_location";
+  $sql = "select distinct(location) as location from {$wpdb->prefix}mf_location";
 
   $locArr = array();
   $options = '';
@@ -294,12 +294,14 @@ function display_schedule($form_id,$lead,$section='sidebar'){
   global $wpdb;
   //first, let's display any schedules already entered for this entry
   $entry_id=$lead['id'];
-  $sql = "select `wp_mf_schedule`.`ID` as schedule_id, `wp_mf_schedule`.`entry_id`, location.ID as location_id, location.location,
-          `wp_mf_schedule`.`start_dt`, `wp_mf_schedule`.`end_dt`, `wp_mf_schedule`.`day`
+  $sql = "select `{$wpdb->prefix}mf_schedule`.`ID` as schedule_id, `{$wpdb->prefix}mf_schedule`.`entry_id`,
+              location.ID as location_id, location.location,
+          `{$wpdb->prefix}mf_schedule`.`start_dt`, `{$wpdb->prefix}mf_schedule`.`end_dt`,
+          `{$wpdb->prefix}mf_schedule`.`day`
 
-          from wp_mf_location location
-          left outer join wp_mf_schedule on `wp_mf_schedule`.`entry_id` = ".$entry_id."
-            and wp_mf_schedule.location_id = location.ID
+          from {$wpdb->prefix}mf_location location
+          left outer join {$wpdb->prefix}mf_schedule on `{$wpdb->prefix}mf_schedule`.`entry_id` = ".$entry_id."
+            and {$wpdb->prefix}mf_schedule.location_id = location.ID
 
           where location.entry_id=".$entry_id."
           order by location ASC, start_dt ASC";

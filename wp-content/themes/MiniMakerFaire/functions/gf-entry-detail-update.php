@@ -10,14 +10,14 @@ function MF_update_entry_rating() {
 
   //if there is already a record for this user, update it.
   //else add it.
-  $sql = "Insert into wp_rg_lead_rating (entry_id, user_id, rating) "
+  $sql = "Insert into {$wpdb->prefix}rg_lead_rating (entry_id, user_id, rating) "
        . " values (".$entry_id.','.$user.','.$rating.")"
        . " on duplicate key update rating=".$rating.", ratingDate=now()";
 
   $wpdb->get_results($sql);
 
   //update the meta with the average rating
-  $sql = "SELECT avg(rating) as rating FROM `wp_rg_lead_rating` where entry_id = ".$entry_id;
+  $sql = "SELECT avg(rating) as rating FROM `{$wpdb->prefix}rg_lead_rating` where entry_id = ".$entry_id;
   $results = $wpdb->get_results($sql);
   $rating = round($results[0]->rating);
 
@@ -126,12 +126,12 @@ function update_entry_schedule(){
   $entry_schedule_end    = $_POST['dateEnd'];
   if (!empty($location)){
     global $wpdb;
-    $insert_query = "INSERT INTO `wp_mf_location`(`entry_id`, `location`, `location_element_id`) "
+    $insert_query = "INSERT INTO `{$wpdb->prefix}mf_location`(`entry_id`, `location`, `location_element_id`) "
                    . " VALUES ($entry_id,'$location',3)";
     $wpdb->get_results($insert_query);
     $location_id = $wpdb->insert_id;
     if($entry_schedule_start!='' && $entry_schedule_end!=''){
-      $insert_query = "INSERT INTO `wp_mf_schedule` (`entry_id`, location_id, `start_dt`, `end_dt`) "
+      $insert_query = "INSERT INTO `{$wpdb->prefix}mf_schedule` (`entry_id`, location_id, `start_dt`, `end_dt`) "
               . " VALUES ($entry_id,$location_id,'$entry_schedule_start','$entry_schedule_end')";
       $wpdb->get_results($insert_query);
       $schedule_id = $wpdb->insert_id;
@@ -156,16 +156,16 @@ function delete_entry_location(){
   //delete schedule and location
 	if ($delete_schedule != ''){
     //delete from schedule and location table
-    $delete_query =  "DELETE `wp_mf_schedule`, `wp_mf_location`
-                        FROM `wp_mf_schedule`, `wp_mf_location`
-                       WHERE wp_mf_schedule.ID IN ($delete_schedule) and location_id=wp_mf_location.id";
+    $delete_query =  "DELETE `{$wpdb->prefix}mf_schedule`, `{$wpdb->prefix}mf_location`
+                       WHERE {$wpdb->prefix}mf_schedule.ID IN "
+                       . "($delete_schedule) and location_id={$wpdb->prefix}mf_location.id";
     $wpdb->get_results($delete_query);
   }
 
   //delete location only
 	if ($delete_location != ''){
     //delete from schedule and location table
-    $delete_query =  "DELETE FROM `wp_mf_location` WHERE wp_mf_location.ID IN ($delete_location)";
+    $delete_query =  "DELETE FROM `{$wpdb->prefix}mf_location` WHERE {$wpdb->prefix}mf_location.ID IN ($delete_location)";
     $wpdb->get_results($delete_query);
   }
 }
