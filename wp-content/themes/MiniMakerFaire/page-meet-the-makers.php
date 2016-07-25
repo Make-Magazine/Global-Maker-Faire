@@ -82,34 +82,8 @@ get_header(); ?>
 </div>
 
 <script>
-  // Carousel init
-  jQuery('.mtm-carousel').owlCarousel({
-    center: true,
-    autoWidth:true,
-    items:2,
-    loop:true,
-    margin:0,
-    nav:true,
-    //navContainer:true,
-    autoplay:true,
-    autoplayHoverPause:true,
-    responsive:{
-      600:{
-        items:3
-      }
-    }
-  });
-
-  // Carousel left right
-  jQuery( "#right-trigger" ).click(function() {
-    jQuery( ".owl-next" ).click();
-  });
-  jQuery( "#left-trigger" ).click(function() {
-    jQuery( ".owl-prev" ).click();
-  });
-
-  // Gallery and list view
   jQuery(document).ready(function(){
+    // Gallery and list view
     jQuery(".mtm-filter-l").click( function(event) {
       event.preventDefault();
       jQuery(".mtm-results-cont").addClass("container");
@@ -117,6 +91,32 @@ get_header(); ?>
     jQuery(".mtm-filter-g").click( function(event) {
       event.preventDefault();
       jQuery(".mtm-results-cont").removeClass("container");
+    });
+
+    // Carousel init
+    jQuery('.mtm-carousel').owlCarousel({
+      center: true,
+      autoWidth:true,
+      items:2,
+      loop:true,
+      margin:0,
+      nav:true,
+      //navContainer:true,
+      autoplay:true,
+      autoplayHoverPause:true,
+      responsive:{
+        600:{
+          items:3
+        }
+      }
+    });
+
+    // Carousel left right
+    jQuery( "#right-trigger" ).click(function() {
+      jQuery( ".owl-next" ).click();
+    });
+    jQuery( "#left-trigger" ).click(function() {
+      jQuery( ".owl-prev" ).click();
     });
   });
 </script>
