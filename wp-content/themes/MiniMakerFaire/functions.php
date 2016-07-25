@@ -97,7 +97,7 @@
 // Enqueue the AngularJS
 ////////////////////////////////////////////////////////////////////
   function angular_scripts() {
-    if (is_page('meet-the-makers') || is_page('schedule')) {
+    if (is_page_template('page-meet-the-makers.php') || is_page('page-schedule.php')) {
       wp_enqueue_script(
         'angularjs',
         get_stylesheet_directory_uri() . '/bower_components/angular/angular.min.js'
@@ -112,7 +112,7 @@
         'carousel',
         get_stylesheet_directory_uri().'/js/owl.carousel.min.js'
       );
-      if (is_page('meet-the-makers')) {
+      if (is_page_template('page-meet-the-makers.php')) {
           wp_enqueue_script(
           'angular-mtm',
           get_stylesheet_directory_uri() . '/js/angular/controller.js',
@@ -120,7 +120,7 @@
         );
       }
 
-      if (is_page('schedule')) {
+      if (is_page('page-schedule.php')) {
         wp_enqueue_script(
           'angular-schedule',
           get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',
