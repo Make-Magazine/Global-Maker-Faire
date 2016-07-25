@@ -97,7 +97,7 @@
 // Enqueue the AngularJS
 ////////////////////////////////////////////////////////////////////
   function angular_scripts() {
-    if (is_page_template('page-meet-the-makers.php') || is_page('page-schedule.php')) {
+    if (is_page_template('page-meet-the-makers.php') || is_page_template('page-schedule.php')) {
       wp_enqueue_script(
         'angularjs',
         get_stylesheet_directory_uri() . '/bower_components/angular/angular.min.js'
@@ -120,7 +120,7 @@
         );
       }
 
-      if (is_page('page-schedule.php')) {
+      if (is_page_template('page-schedule.php')) {
         wp_enqueue_script(
           'angular-schedule',
           get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',
