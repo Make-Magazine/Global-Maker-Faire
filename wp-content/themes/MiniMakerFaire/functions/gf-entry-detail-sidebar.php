@@ -6,9 +6,17 @@
 //function to add entry status update section
 add_action( 'gform_entry_detail_sidebar_before', 'mf_entry_info', 10, 2 );
 function mf_entry_info( $form_id, $entry){
-  echo "<div class='stuffbox'><div class='inside'>";
-  echo mf_sidebar_entry_status( $form_id, $entry );
-  echo "<br/></div></div>";
+  ?>
+  <div class="meta-box-sortables">
+    <div id="entryStatus" class="postbox">
+      <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Entry Status</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+      <h2 class="hndle ui-sortable-handle"><span>Entry Status</span></h2>
+      <div class="inside">
+        <?php echo mf_sidebar_entry_status( $form_id, $entry ); ?>
+      </div>
+    </div>
+  </div>
+  <?php
 }
 
 //function to add additional sidebars for entry rating, notes, flags, schedule/location, print button
@@ -16,35 +24,46 @@ add_action( 'gform_entry_detail_sidebar_middle', 'add_sidebar_text_middle', 10, 
 function add_sidebar_text_middle( $form, $entry ) {
   ?>
   <!-- Ratings SideBar-->
-  <div class='stuffbox'>
-    <div class='inside'>
-      <h3><span class='hndle'>Rating</span></h3>
-      <?php echo disp_ratings($entry);?>
-      <br/>
+  <div class="meta-box-sortables">
+    <div id="entryRating" class="postbox">
+      <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Entry Rating</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+      <h2 class="hndle ui-sortable-handle"><span>Entry Rating</span></h2>
+      <div class="inside">
+        <?php echo disp_ratings($form,$entry);?>
+      </div>
     </div>
   </div>
+
   <!-- Notes SideBar-->
-  <div class='stuffbox'>
-    <div class='inside'>
-      <h3><span class='hndle'>Notes</span></h3>
-      <?php echo disp_notes( $form, $entry);?>
-      <br/>
+  <div class="meta-box-sortables">
+    <div id="entryNotes" class="postbox">
+      <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Notes</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+      <h2 class="hndle ui-sortable-handle"><span>Notes</span></h2>
+      <div class="inside">
+        <?php echo disp_notes( $form, $entry);?>
+      </div>
     </div>
   </div>
+
   <!-- Flags SideBar-->
-  <div class='stuffbox'>
-    <div class='inside'>
-      <h3><span class='hndle'>Flags</span></h3>
-      <?php echo disp_flags( $form, $entry);?>
-      <br/>
+  <div class="meta-box-sortables">
+    <div id="entryFlags" class="postbox">
+      <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Flags</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+      <h2 class="hndle ui-sortable-handle"><span>Flags</span></h2>
+      <div class="inside">
+        <?php echo disp_flags( $form, $entry);?>
+      </div>
     </div>
   </div>
+
   <!-- Schedule/Location SideBar-->
-  <div class='stuffbox'>
-    <div class='inside'>
-      <h3><span class='hndle'>Schedule/Location</span></h3>
-      <?php echo disp_sched( $form, $entry);?>
-      <br/>
+  <div class="meta-box-sortables">
+    <div id="entrySched" class="postbox">
+      <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Schedule/Location</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+      <h2 class="hndle ui-sortable-handle"><span>Schedule/Location</span></h2>
+      <div class="inside">
+        <?php echo disp_sched( $form, $entry);?>
+      </div>
     </div>
   </div>
   <?php
@@ -82,7 +101,7 @@ function mf_sidebar_entry_status($form_id, $lead) {
 }
 
 //display ratings sidebar - admin entry display
-function disp_ratings($lead){
+function disp_ratings($form, $lead){
   /* Ratings Sidebar Area */
   global $wpdb;
   // Retrieve any ratings
@@ -98,9 +117,9 @@ function disp_ratings($lead){
 
       //don't display current user in the list of rankings
       if($user_ID!=$row->user_id){
-          $ratingResults .= '<tr><td style="text-align: center;">'.$row->rating.'</td><td>'.$user->display_name.'</td><td class="alignright">'.date("m-d-Y", strtotime($row->ratingDate)).'</td></tr>';
+        $ratingResults .= '<tr><td style="text-align: center;">'.$row->rating.'</td><td>'.$user->display_name.'</td><td class="alignright">'.date("m-d-Y", strtotime($row->ratingDate)).'</td></tr>';
       }else{
-          $currRating = $row->rating;
+        $currRating = $row->rating;
       }
       $ratingTotal += $row->rating;
       $ratingNum++;
@@ -249,10 +268,18 @@ function disp_sched( $form, $lead) {
 
   echo display_schedule($form_id,$lead);
 
-
   // Set up the Add to Schedule Section
-  echo ('<h4 class="topBorder">Add New:</h4>');
-
+  ?>
+  <h4 class="topBorder">Add New:
+    <span class="sidebar-title">
+      <a href="#" onclick="return false;"
+        data-toggle="popover" data-trigger="hover"
+        data-placement="top" data-html="true"
+        data-content="Location is required<br/>Type and Date are optional, however if one is set the other must be as well">
+        (?)</a>
+    </span>
+    </h4>
+  <?php
   $sql = "select distinct(location) as location from {$wpdb->prefix}mf_location";
 
   $locArr = array();
@@ -260,26 +287,34 @@ function disp_sched( $form, $lead) {
   foreach($wpdb->get_results($sql,ARRAY_A) as $row){
     $options .= '<option value="'.$row['location'].'">'.$row['location'].'</option>';
   }
-
   ?>
-  Location Code: (optional)<br/>
+
+  <label for="locationSel">Location Code:</label>
   <select id="locationSel">
     <?php echo $options;?>
     <option value="new">Add new</option>
   </select>
-  <br/>
   <input type="text" name="update_entry_location_code" <?php echo (empty($options)?"":'style="display:none"');?> id="update_entry_location_code" />
-  <br/>
 
-  Optional Schedule Start/End
-  <div class="clear"></div>
-  <div style="padding:10px 0;width:40px;float:left">Start: </div>
-  <div style="float:left">
-    <input type="text" value="" name="datetimepickerstart" id="datetimepickerstart">
-  </div>
-  <div class="clear" style="padding:10px 0;width:40px;float:left">End:</div>
-  <div style="float:left">
-    <input type="text" value="" name="datetimepickerend" id="datetimepickerend">
+  <label for="typeSel">Type: (Optional)</label>
+  <select id="typeSel">
+    <option value="">Please Select</option>
+    <option value="workshop">Workshop</option>
+    <option value="talk">Talk</option>
+    <option value="performance">Performance</option>
+    <option value="demo">Demo</option>
+  </select>
+
+  <label for="schedAdd">Schedule Start/End: (Optional)</label>
+  <div id="schedAdd">
+    <div style="padding:10px 0;width:40px;float:left">Start: </div>
+    <div style="float:left">
+      <input type="text" value="" name="datetimepickerstart" id="datetimepickerstart">
+    </div>
+    <div class="clear" style="padding:10px 0;width:40px;float:left">End:</div>
+    <div style="float:left">
+      <input type="text" value="" name="datetimepickerend" id="datetimepickerend">
+    </div>
   </div>
   <div class="clear"></div>
 
@@ -295,9 +330,10 @@ function display_schedule($form_id,$lead,$section='sidebar'){
   //first, let's display any schedules already entered for this entry
   $entry_id=$lead['id'];
   $sql = "select `{$wpdb->prefix}mf_schedule`.`ID` as schedule_id, `{$wpdb->prefix}mf_schedule`.`entry_id`,
-              location.ID as location_id, location.location,
-          `{$wpdb->prefix}mf_schedule`.`start_dt`, `{$wpdb->prefix}mf_schedule`.`end_dt`,
-          `{$wpdb->prefix}mf_schedule`.`day`
+                 `{$wpdb->prefix}mf_schedule`.`type`,
+                  location.ID as location_id, location.location,
+                 `{$wpdb->prefix}mf_schedule`.`start_dt`, `{$wpdb->prefix}mf_schedule`.`end_dt`,
+                 `{$wpdb->prefix}mf_schedule`.`day`
 
           from {$wpdb->prefix}mf_location location
           left outer join {$wpdb->prefix}mf_schedule on `{$wpdb->prefix}mf_schedule`.`entry_id` = ".$entry_id."
@@ -310,6 +346,7 @@ function display_schedule($form_id,$lead,$section='sidebar'){
   foreach($wpdb->get_results($sql,ARRAY_A) as $row){
     //order entries by location, then date
     $location    = $row['location'];
+    $type        = $row['type'];
     $start_dt    = ($row['start_dt'] != NULL ? strtotime($row['start_dt'])  : '');
     $end_dt      = ($row['end_dt']   != NULL ? strtotime($row['end_dt'])    : '');
     $schedule_id = ($row['schedule_id'] != NULL ? (int) $row['schedule_id'] : '');
@@ -320,7 +357,7 @@ function display_schedule($form_id,$lead,$section='sidebar'){
     $schedules[$row['location_id']]['location'] = $location;
 
     if($date!=''){
-      $schedules[$row['location_id']]['schedule'][$date][$schedule_id] = array('start_dt' => $start_dt, 'end_dt' => $end_dt, 'timeZone'=>$timeZone);
+      $schedules[$row['location_id']]['schedule'][$date][$schedule_id] = array('start_dt' => $start_dt, 'end_dt' => $end_dt, 'timeZone'=>$timeZone, 'type'=>$type);
     }
   }
 
@@ -339,6 +376,7 @@ function display_schedule($form_id,$lead,$section='sidebar'){
               $start_dt   = $schedData['start_dt'];
               $end_dt     = $schedData['end_dt'];
               $db_tz      = $schedData['timeZone'];
+              $type       = $schedData['type'];
 
               //set time zone for faire
               /*
@@ -346,14 +384,20 @@ function display_schedule($form_id,$lead,$section='sidebar'){
               $dateTime->setTimeZone(new DateTimeZone($db_tz));
               $timeZone = $dateTime->format('T');*/
               if($section!='summary'){
-                echo '<div id="schedule'.$schedule_id.'" class="schedBox">'
-                . '<input type="checkbox" value="'.$schedule_id.'" name="delete_schedule"></input>'
-                . '<span class="schedInfo">'
-                  . date('l n/j/y',strtotime($date)).':<br/>'
-                  . date("g:i A",$start_dt).' - ' .date("g:i A",$end_dt) .'<br/>'
-                  . $stage
-                . '</span>'
-                . '<div class="clear"></div></div>';
+                ?>
+                <div id="schedule<?php echo $schedule_id; ?>" class="schedBox">
+                  <input type="checkbox" value="<?php echo $schedule_id; ?>" name="delete_schedule" />
+                  <span class="schedInfo">
+                    <span><?php echo $stage;?></span>
+                    <div class="clear"></div>
+                    <div class="startDt"><?php echo date('l n/j/y',strtotime($date));?></div>
+                    <span class="time"><?php echo date("g:i A",$start_dt).' - ' .date("g:i A",$end_dt);?></span>
+                    <div class="clear"></div>
+                    <?php echo ($type!=''? '<div class="innerInfo">Type: '.ucwords($type).'</div>':'');?>
+                  </span>
+                  <div class="clear"></div>
+                </div>
+                <?php
               }else{
                 //display the schedule only
                 echo '<span class="schedDate">'.date("g:i A",$start_dt).' - '.date("g:i A",$end_dt).'</span><div class="clear"></div>';

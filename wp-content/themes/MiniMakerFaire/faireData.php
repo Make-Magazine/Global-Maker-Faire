@@ -60,11 +60,14 @@ function getMTMentries($formIDs) {
 
     //find out if there is an override image for this page
     $overrideImg = findOverride($entry['id'],'mtm');
-    $projPhoto = ($overrideImg==''?$entry['22']:$overrideImg);
+    
+    $projPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
+    $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
+    if($fitPhoto==NULL) $fitPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
     $data['entity'][] = array(
         'id'                => $entry['id'],
         'name'              => $entry['151'],
-        'large_img_url'     => legacy_get_resized_remote_image_url($projPhoto,230,181),
+        'large_img_url'     => $fitPhoto,
         'category_id_refs'  => $leadCategory,
         'description'       => $entry['16']
         );
