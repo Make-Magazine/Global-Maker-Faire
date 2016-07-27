@@ -352,6 +352,9 @@ get_header();
                         $url = wp_get_attachment_url($thumb_id);
                         echo "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
                       }
+                      else {
+                        echo get_first_post_image($recent);
+                      }
 
             echo  '     <div class="recent-post-text">
                           <h4>' . $recent["post_title"] . '</h4>
