@@ -74,6 +74,79 @@
 
 
 
+
+      // DYNAMIC FEATURED MAKERS (SQUARE)
+      //          DYNAMIC              //
+      ///////////////////////////////////
+      elseif( get_row_layout() == 'featured_makers_panel_dynamic' ):
+
+        $activeinactive = get_sub_field('activeinactive');
+        if( $activeinactive == 'Active' ):
+
+          $more_makers_button = get_sub_field('more_makers_button');
+          $background_color = get_sub_field('background_color');
+          echo '<section class="featured-maker-panel" ';
+          if( $background_color == "Red" ): 
+            echo 'style="background: -webkit-linear-gradient(left,#930d14,#B52A31,#930d14);background: linear-gradient(to right,#930d14,#B52A31,#930d14);"';
+          endif;
+          echo '  >
+                  <div class="container">';
+          if(get_sub_field('title')){
+            echo '<div class="row text-center">
+                    <div class="title-w-border-y">
+                      <h2>' . get_sub_field('title') . '</h2>
+                    </div>
+                  </div>';
+          }
+
+          echo '<div class="row padbottom">';
+
+            //Add GF loop here
+
+              //Add the GF data to these variables
+              $image = 'http://lorempixel.com/400/400/technics/';
+              $maker = 'Maker Name';
+              $decription = 'Maker description';
+              $maker_url = '#';
+
+              if( $maker_url ) {
+                echo '<a href="' . $maker_url . '">';
+              }
+
+              echo '<div class="featured-maker col-xs-6 col-sm-3">
+                      <div class="maker-img" style="background-image: url(' . $image . ');">
+                      </div>
+                      <div class="maker-panel-text">
+                        <h4>' . $maker . '</h4>
+                        <p class="hidden-xs">' . $decription . '</p>
+                      </div>
+                    </div>';
+
+              if( $maker_url ) {
+                echo '</a>';
+              }
+
+            //End add GF loop here
+
+          echo '</div>';
+
+          if(get_sub_field('more_makers_button')){
+            echo '<div class="row padbottom">
+                    <div class="col-xs-12 padbottom text-center">
+                      <a class="btn btn-w-ghost" href="' . $more_makers_button . '">More Makers</a>
+                    </div>
+                  </div>';
+          }
+
+          echo '</div><div class="flag-banner"></div></section>';
+
+        endif;
+
+
+
+
+
+
       // FEATURED MAKERS (CIRCLE)
       elseif( get_row_layout() == 'featured_makers_panel_circle' ):
 
@@ -132,6 +205,76 @@
           endif;
 
         endif;
+
+
+
+
+
+
+      // DYNAMIC FEATURED MAKERS (CIRCLE)
+      //          DYNAMIC              //
+      ///////////////////////////////////
+      elseif( get_row_layout() == 'featured_makers_panel_circle_dynamic' ):
+
+        $activeinactive = get_sub_field('activeinactive');
+        if( $activeinactive == 'Active' ):
+
+          $more_makers_button = get_sub_field('more_makers_button');
+          echo '<section class="featured-maker-panel-circle">
+                  <div class="container">';
+
+          if(get_sub_field('title')){
+            echo '<div class="row padtop text-center">
+                    <img class="robot-head" src="' . get_bloginfo("template_directory") . '/img/news-icon.png" alt="News icon" />
+                    <div class="title-w-border-r">
+                      <h2>' . get_sub_field('title') . '</h2>
+                    </div>
+                  </div>';
+          }
+
+          echo '<div class="row padbottom">';
+
+            //Add GF loop here
+
+              //Add the GF data to these variables
+              $image = 'http://lorempixel.com/400/400/technics/';
+              $maker = 'Maker Name';
+              $decription = 'Maker description';
+              $maker_url = '#';
+
+              if( $maker_url ) {
+                echo '<a href="' . $maker_url . '">';
+              }
+
+              echo '<div class="featured-maker col-xs-6 col-sm-3">
+                      <div class="maker-img" style="background-image: url(' . $image . ');">
+                      </div>
+                      <div class="maker-panel-text">
+                        <h4>' . $maker . '</h4>
+                        <p class="hidden-xs">' . $decription . '</p>
+                      </div>
+                    </div>';
+
+              if( $maker_url ) {
+                echo '</a>';
+              }
+
+            //End add GF loop here
+
+          echo '</div>';
+
+          if(get_sub_field('more_makers_button')){
+            echo '<div class="row padbottom">
+                    <div class="col-xs-12 padbottom text-center">
+                      <a class="btn btn-b-ghost" href="' . $more_makers_button . '">More Makers</a>
+                    </div>
+                  </div>';
+          }
+
+          echo '</div><div class="flag-banner"></div></section>';
+
+        endif;
+
 
 
 
@@ -206,6 +349,79 @@
           endif;
 
         endif;
+
+
+
+
+
+
+      // DYNAMIC FEATURED EVENTS
+      //        DYNAMIC       //
+      //////////////////////////
+      elseif( get_row_layout() == 'featured_events_dynamic' ):
+
+        $activeinactive = get_sub_field('activeinactive');
+        if( $activeinactive == 'Active' ):
+
+          $panel_title = get_sub_field('title');
+          $all_events_button = get_sub_field('all_events_button');
+
+          echo '<section class="featured-events-panel">
+                  <div class="container">';
+
+          if( $panel_title ){
+            echo '<div class="row padtop text-center">
+                    <div class="title-w-border-r">
+                      <h2>' . $panel_title . '</h2>
+                    </div>
+                  </div>';
+          }
+
+          echo '<div class="row padbottom">';
+
+          //Add GF loop here
+
+            //Add the GF data to these variables
+            $image = 'http://lorempixel.com/400/400/technics/';
+            $event = 'Event Name Here';
+            $decription = 'Description goes here.';
+            $day = 'Day'; 
+            $time = 'Time';
+            $location = 'location';
+
+            echo '<div class="featured-event col-xs-6">
+                    <div class="col-xs-12 col-sm-4 nopad">
+                      <div class="event-img" style="background-image: url(' . $image . ');"></div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8">
+                      <div class="event-description">
+                        <p class="event-day">' . $day . '</p>
+                        <h4>' . $event . '</h4>
+                        <p class="event-desc">' . $decription . '</p>
+                      </div>
+                      <div class="event-details">
+                        <p class="event-time">' . $time . '</p>
+                        <p class="event-location">' . $location . '</p>
+                      </div>
+                    </div>
+                  </div>';
+
+          //End add GF loop here
+
+          echo '</div>';
+
+          if( $all_events_button ) {
+            echo '<div class="row padbottom">
+                    <div class="col-xs-12 padbottom text-center">
+                      <a class="btn btn-b-ghost" href="' . $all_events_button . '">All Events</a>
+                    </div>
+                  </div>';
+          }
+
+          echo '</div><div class="flag-banner"></div></section>';
+
+        endif;
+
 
 
 

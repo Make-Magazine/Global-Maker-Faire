@@ -284,6 +284,145 @@
                     "max": ""
                 },
                 {
+                    "key": "579924c93c2c0",
+                    "name": "featured_makers_panel_dynamic",
+                    "label": "Featured Makers (Square images) ===== DYNAMIC PANEL",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_579924c93c2cb",
+                            "label": "Active\/Inactive",
+                            "name": "activeinactive",
+                            "type": "radio",
+                            "instructions": "Activate or Inactivate this panel",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "activeinactive",
+                                "id": ""
+                            },
+                            "choices": {
+                                "Active": "Active",
+                                "Inactive": "Inactive"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "default_value": "Active",
+                            "layout": "horizontal"
+                        },
+                        {
+                            "key": "field_579924c93c2cc",
+                            "label": "Panel Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "i.e. \"Featured Makers\". 28 character limit.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": 28,
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_579925463c2e0",
+                            "label": "Enter formid here",
+                            "name": "enter_formid_here",
+                            "type": "number",
+                            "instructions": "Enter a form ID here... better description needed to explain this*",
+                            "required": 1,
+                            "conditional_logic": "",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_579924c93c2cd",
+                            "label": "Amount of Makers to show",
+                            "name": "makers_to_show",
+                            "type": "radio",
+                            "instructions": "Show 4 Makers or 8 makers",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "4": 4,
+                                "8": 8
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "default_value": 4,
+                            "layout": "vertical"
+                        },
+                        {
+                            "key": "field_579924c93c2d3",
+                            "label": "\"More Makers\" button",
+                            "name": "more_makers_button",
+                            "type": "url",
+                            "instructions": "Optional button to link to a page with more makers. Leave URL field blank to hide.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_579924c93c2d4",
+                            "label": "Background Color",
+                            "name": "background_color",
+                            "type": "radio",
+                            "instructions": "Background color of this panel. Choose blue or red.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "Blue": "Blue",
+                                "Red": "Red"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "default_value": "Blue",
+                            "layout": "horizontal"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
                     "key": "573e3efd8e814",
                     "name": "featured_makers_panel_circle",
                     "label": "Featured Makers (Circle images)",
@@ -443,6 +582,122 @@
                         },
                         {
                             "key": "field_573e3efd8e81c",
+                            "label": "\"More Makers\" button",
+                            "name": "more_makers_button",
+                            "type": "url",
+                            "instructions": "Optional button to link to a page with more makers. Leave URL field blank to hide.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "579925053c2d5",
+                    "name": "featured_makers_panel_circle_dynamic",
+                    "label": "Featured Makers (Circle images) ===== DYNAMIC PANEL",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_579925053c2d6",
+                            "label": "Active\/Inactive",
+                            "name": "activeinactive",
+                            "type": "radio",
+                            "instructions": "Activate or Inactivate this panel",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "activeinactive",
+                                "id": ""
+                            },
+                            "choices": {
+                                "Active": "Active",
+                                "Inactive": "Inactive"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "default_value": "Active",
+                            "layout": "horizontal"
+                        },
+                        {
+                            "key": "field_579925053c2d7",
+                            "label": "Panel Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "i.e. \"Featured Makers\". 28 character limit.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": 28,
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_579926253c2eb",
+                            "label": "Enter formid here",
+                            "name": "enter_formid_here",
+                            "type": "number",
+                            "instructions": "Enter a form ID here... better description needed to explain this*",
+                            "required": 1,
+                            "conditional_logic": "",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_579925053c2d8",
+                            "label": "Amount of Makers to show",
+                            "name": "makers_to_show",
+                            "type": "radio",
+                            "instructions": "Show 4 Makers or 8 makers",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "4": 4,
+                                "8": 8
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "default_value": 4,
+                            "layout": "vertical"
+                        },
+                        {
+                            "key": "field_579925053c2de",
                             "label": "\"More Makers\" button",
                             "name": "more_makers_button",
                             "type": "url",
@@ -662,6 +917,99 @@
                         },
                         {
                             "key": "field_573e4bc7b6661",
+                            "label": "\"All Events\" button",
+                            "name": "all_events_button",
+                            "type": "url",
+                            "instructions": "Optional button to link to a page with more events. Leave URL field blank to hide.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "579925163c2df",
+                    "name": "featured_events_dynamic",
+                    "label": "Featured Events ===== DYNAMIC PANEL",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_579925163c2dg",
+                            "label": "Active\/Inactive",
+                            "name": "activeinactive",
+                            "type": "radio",
+                            "instructions": "Activate or Inactivate this panel",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "activeinactive",
+                                "id": ""
+                            },
+                            "choices": {
+                                "Active": "Active",
+                                "Inactive": "Inactive"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "default_value": "Active",
+                            "layout": "horizontal"
+                        },
+                        {
+                            "key": "field_579925163c2e1",
+                            "label": "Panel Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "i.e. \"Featured Makers\". 40 character limit.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": 40,
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_579926323c2ec",
+                            "label": "Enter formid here",
+                            "name": "enter_formid_here",
+                            "type": "number",
+                            "instructions": "Enter a form ID here... better description needed to explain this*",
+                            "required": 1,
+                            "conditional_logic": "",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_579925163c2e9",
                             "label": "\"All Events\" button",
                             "name": "all_events_button",
                             "type": "url",
