@@ -4,7 +4,7 @@
 */
 get_header(); ?>
 
-
+<input type="hidden" id="forms2use" value="1,3" />
 <div id="page-schedule" class="container">
   <div class="container schedule-table"  ng-controller="scheduleCtrl" ng-app="scheduleApp">
     <div class="topic-nav">
@@ -70,36 +70,21 @@ get_header(); ?>
     </div>
 
     <ul class="day-nav nav nav-tabs">
-      <li class="day-nav-box active">
-        <div class="day-nav-item active">
-          <a data-toggle="tab" href="#FridaySched">
-            <h2>Education Friday</h2>
+      <li ng-repeat="day in days" class="day-nav-box" ng-class="{active:$first}">
+        <div class="day-nav-item" ng-class="{active:$first}">
+          <a data-toggle="tab" href="#{{day}}Sched">
+            <h2>{{day}}</h2>
           </a>
         </div>
       </li>
-      <li class="day-nav-box">
-        <div class="day-nav-item">
-          <a data-toggle="tab" href="#SaturdaySched">
-            <h2>DAY 1: SATURDAY</h2>
-          </a>
-        </div>
-      </li>
-      <li class="day-nav-box">
-        <div class="day-nav-item">
-          <a data-toggle="tab" href="#SundaySched">
-            <h2>DAY 2: SUNDAY</h2>
-          </a>
-        </div>
-      </li>
+
     </ul>
 
     <div class="row header">
       <div class="col-lg-1">&nbsp;</div>
       <div class="col-lg-4">
-        <!--<span ng-click="order('name')">Title</span>
+        <span ng-click="order('name')">Title</span>
         <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
-        -->
-        Title
       </div>
       <div class="col-lg-1">
         <!--<span ng-click="order('time_start')">Time</span>
@@ -140,10 +125,10 @@ get_header(); ?>
       </div>
     </div>
     <div class="tab-content">
-      <div ng-repeat="day in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
-        <div ng-repeat="schedule in schedules | dayFilter:day | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
+      <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
+        <div ng-repeat="schedule in schedules | dayFilter: key | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
           <div class="row">
-            <div class="col-lg-1"><img src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></div>
+            <div class="col-lg-1"><img class="projImg" src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></div>
             <div class="col-lg-4"><h3>{{schedule.name}}</h3>
               <p class="presenterList">{{schedule.maker_list}}</p>
             </div>
