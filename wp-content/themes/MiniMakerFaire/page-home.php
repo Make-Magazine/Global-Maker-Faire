@@ -174,6 +174,8 @@ get_header();
 
           $more_makers_button = get_sub_field('more_makers_button');
           $background_color = get_sub_field('background_color');
+          $formid = get_sub_field('enter_formid_here');
+
           echo '<section class="featured-maker-panel" ';
           if( $background_color == "Red" ): 
             echo 'style="background: -webkit-linear-gradient(left,#930d14,#B52A31,#930d14);background: linear-gradient(to right,#930d14,#B52A31,#930d14);"';
@@ -320,6 +322,8 @@ get_header();
         if( $activeinactive == 'Active' ):
 
           $more_makers_button = get_sub_field('more_makers_button');
+          $formid = get_sub_field('enter_formid_here');
+
           echo '<section class="featured-maker-panel-circle">
                   <div class="container">';
 
@@ -466,6 +470,7 @@ get_header();
 
           $panel_title = get_sub_field('title');
           $all_events_button = get_sub_field('all_events_button');
+          $formid = get_sub_field('enter_formid_here');
 
           echo '<section class="featured-events-panel">
                   <div class="container">';
