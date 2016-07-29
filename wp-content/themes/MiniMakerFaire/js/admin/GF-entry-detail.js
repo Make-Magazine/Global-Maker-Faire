@@ -120,55 +120,76 @@ jQuery( document ).ready(function() {
     if(location =='new'){
       location = jQuery("#update_entry_location_code").val();
     }
+
     if(location==''){
-      alert('Please enter a location');
-    }else{
-      var dateStart = jQuery("#datetimepickerstart").val();
-      var dateEnd   = jQuery("#datetimepickerend").val();
-      // check if the end date is before the startdate
-      edate = new Date(dateEnd);
-      sdate = new Date(dateStart);
-      if(edate < sdate){
-        alert('End Date/Time cannot be before Start Date/Time');
-      }else{
-        jQuery('#schedResp').html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>');
-
-        var entry_id = jQuery("input[name=entry_info_entry_id]").val();
-        var flags = jQuery('input[name=entry_info_flags]').map(function() {
-            return this.value + '_'+this.checked;
-        }).get();
-
-        var data = {
-          'action': 'update_entry_schedule',
-          'entry_id': entry_id,
-          'location': location,
-          'dateStart': dateStart,
-          'dateEnd': dateEnd
-        };
-        jQuery.post(ajaxurl, data, function(response) {
-          jQuery('#schedResp').text(response.msg);
-          jQuery("#datetimepickerstart").val('');
-          jQuery("#datetimepickerend").val('');
-          var locID   = response.locID;
-          var schedID = response.schedID;
-          if(dateStart==''&&dateEnd==''){
-            //add location to the sidebar
-            var newLoc = '<div id="location'+locID+'" class="locBox"><input type="checkbox" value="'+locID+'" name="delete_location_id"> <span class="stageName">'+location+'</span></div>';
-          }else{
-            startD = formatDate(dateStart);
-            endD   = formatDate(dateEnd);
-            //put it all together now
-            var dispStart = startD.day+" " +startD.month+"/"+startD.date + "/" + startD.year + ":<br/>"+
-                    startD.hour+":"+startD.min+" "+startD.ampm+" - "+
-                    endD.hour+":"+endD.min+" "+endD.ampm;
-            var newLoc = '<div id="schedule'+schedID+'" class="schedBox">\n\
-                <input type="checkbox" value="'+schedID+'" name="delete_schedule">\n\
-                <span class="schedInfo">'+dispStart+'<br>'+location+'</span><div class="clear"></div></div>';
-          }
-          jQuery('#locationList').append(newLoc);
-        });
-      }
+      alert('Location is required');
+      return;
     }
+
+    var type = jQuery("#typeSel").val();
+    var dateStart = jQuery("#datetimepickerstart").val();
+    var dateEnd   = jQuery("#datetimepickerend").val();
+
+    if(dateStart != '' && type=='') {
+      alert('You must select a type if a date is entered');
+      return;
+    }
+    if(dateStart == '' && type!='') {
+      alert('You must enter a date if type is selected');
+      return;
+    }
+    if((dateStart != '' && dateEnd == '') ||
+        dateStart == '' && dateEnd != '') {
+      alert('Must set both start and end date');
+      return;
+    }
+    // check if the end date is before the startdate
+    edate = new Date(dateEnd);
+    sdate = new Date(dateStart);
+    if(edate < sdate){
+      alert('End Date/Time cannot be before Start Date/Time');
+      return;
+    }
+
+    //everything looks good, lets process it
+    jQuery('#schedResp').html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>');
+
+    var entry_id = jQuery("input[name=entry_info_entry_id]").val();
+    var flags = jQuery('input[name=entry_info_flags]').map(function() {
+        return this.value + '_'+this.checked;
+    }).get();
+
+    var data = {
+      'action': 'update_entry_schedule',
+      'entry_id': entry_id,
+      'location': location,
+      'dateStart': dateStart,
+      'dateEnd': dateEnd,
+      'type': type
+    };
+
+    jQuery.post(ajaxurl, data, function(response) {
+      jQuery('#schedResp').text(response.msg);
+      jQuery("#datetimepickerstart").val('');
+      jQuery("#datetimepickerend").val('');
+      var locID   = response.locID;
+      var schedID = response.schedID;
+      if(dateStart==''&&dateEnd==''){
+        //add location to the sidebar
+        var newLoc = '<div id="location'+locID+'" class="locBox"><input type="checkbox" value="'+locID+'" name="delete_location_id"> <span class="stageName">'+location+'</span></div>';
+      }else{
+        startD = formatDate(dateStart);
+        endD   = formatDate(dateEnd);
+        //put it all together now
+        var dispStart = startD.day+" " +startD.month+"/"+startD.date + "/" + startD.year + ":<br/>"+
+                startD.hour+":"+startD.min+" "+startD.ampm+" - "+
+                endD.hour+":"+endD.min+" "+endD.ampm;
+        var newLoc = '<div id="schedule'+schedID+'" class="schedBox">\n\
+            <input type="checkbox" value="'+schedID+'" name="delete_schedule">\n\
+            <span class="schedInfo">'+dispStart+'<br>'+location+'</span><div class="clear"></div></div>';
+      }
+      jQuery('#locationList').append(newLoc);
+    });
   });
 
   //delete schedule info

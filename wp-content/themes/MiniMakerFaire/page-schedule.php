@@ -4,7 +4,7 @@
 */
 get_header(); ?>
 
-
+<input type="hidden" id="forms2use" value="1,3" />
 <div id="page-schedule" class="container">
   <div class="container schedule-table"  ng-controller="scheduleCtrl" ng-app="scheduleApp">
     <div class="topic-nav">
@@ -18,8 +18,8 @@ get_header(); ?>
               <div class="topic-nav-item">
                 <p>ALL</p>
               </div>
-              <div class="active-topic-arrow"></div>
             </a>
+            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -29,8 +29,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/talk.png" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
                 Talk</p>
               </div>
-              <div class="active-topic-arrow"></div>
             </a>
+            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -40,8 +40,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/demo.png" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
                 Demo</p>
               </div>
-              <div class="active-topic-arrow"></div>
             </a>
+            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -51,8 +51,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/workshop.png" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
                 Workshop</p>
               </div>
-              <div class="active-topic-arrow"></div>
             </a>
+            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -62,29 +62,22 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/performance.png" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
                 Performance</p>
               </div>
-              <div class="active-topic-arrow"></div>
             </a>
+            <div class="active-topic-arrow"></div>
           </li>
         </ul>
       </div>
     </div>
 
-    <ul class="day-nav list-unstyled">
-      <li class="day-nav-box active">
-        <a class="day-nav-item" data-toggle="tab" href="#FridaySched">
-          <h2>Education Friday</h2>
-        </a>
+    <ul class="day-nav nav nav-tabs">
+      <li ng-repeat="day in days" class="day-nav-box" ng-class="{active:$first}">
+        <div class="day-nav-item" ng-class="{active:$first}">
+          <a data-toggle="tab" href="#{{day}}Sched">
+            <h2>{{day}}</h2>
+          </a>
+        </div>
       </li>
-      <li class="day-nav-box">
-        <a class="day-nav-item" data-toggle="tab" href="#SaturdaySched">
-          <h2>DAY 1: SATURDAY</h2>
-        </a>
-      </li>
-      <li class="day-nav-box">
-        <a class="day-nav-item" data-toggle="tab" href="#SundaySched">
-          <h2>DAY 2: SUNDAY</h2>
-        </a>
-      </li>
+
     </ul>
 
     <div class="row header">
@@ -134,11 +127,11 @@ get_header(); ?>
       </div>
     </div>
     <div class="tab-content">
-      <div ng-repeat="day in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
-        <div ng-repeat="schedule in schedules | dayFilter:day | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
+      <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
+        <div ng-repeat="schedule in schedules | dayFilter: key | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
           <div class="row">
-            <div class="col-lg-1"><img src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></div>
-            <div class="col-lg-4"><h3>{{schedule.name}}</h3>
+            <div class="col-lg-1"><a href="/maker/entry/{{schedule.id}}"><img class="projImg" src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></a></div>
+            <div class="col-lg-4"><h3><a href="/maker/entry/{{schedule.id}}">{{schedule.name}}</a></h3>
               <p class="presenterList">{{schedule.maker_list}}</p>
             </div>
             <div class="col-lg-1">{{schedule.time_start | date: "shortTime"}} - <br/>{{schedule.time_end | date: "shortTime"}}<br/></div>
@@ -164,10 +157,6 @@ get_header(); ?>
 
 
 <script>
-jQuery(".topic-nav-item-inner").click(function() {
-  jQuery(".topic-nav-item-inner.activeTopic").removeClass("activeTopic");
-  jQuery(this).addClass('activeTopic');
-});
 jQuery( ".quick-view-toggle" ).click(function(event) {
   event.preventDefault();
   jQuery(this).closest(".schedule-row").next(".quick-view-tr").fadeToggle("medium");
