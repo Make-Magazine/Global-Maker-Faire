@@ -5,20 +5,41 @@
 get_header(); ?>
 
 <div class="mtm" ng-app="mtm">
-  <input type="hidden" id="forms2use" value="1,3" />
-  <div class="container">
-    <h1 class="text-center"><?php echo get_the_title(); ?></h1>
-  </div>
-
-  <div class="mtm-carousel-cont">
-    <?php $images = get_field('mtm_image_carousel');
-    if( $images ): ?>
+  <div ng-controller="mtmMakers">
+    <input type="hidden" id="forms2use" value="1,3" />
+    <div class="container">
+      <h1 class="text-center"><?php echo get_the_title(); ?></h1>
+    </div>
+<!-- new
+    <div class="mtm-carousel-cont">
       <div class="mtm-carousel owl-carousel">
-        <?php foreach( $images as $image ): ?>
-            <div class="mtm-car-image" style="background: url('<?php echo $image["url"]; ?>') no-repeat center center;background-size: cover;"></div>
-        <?php endforeach; ?>
+        <div ng-repeat="maker in makers | filter: {flag:'Featured Maker'}" class="mtm-car-image"
+             style="background: url('{{ maker.large_img_url }}') no-repeat center center;background-size: cover;"></div>
       </div>
-    <?php endif; ?>
+
+      <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
+        <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
+        <span class="sr-only">Previous</span>
+      </a>
+      <a id="right-trigger" class="right carousel-control" href="#" role="button" data-slide="next">
+        <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+-->
+
+    <!--//old-->
+    <div class="mtm-carousel-cont">
+    <?php $images = get_field('mtm_image_carousel');
+    //if( $images ): ?>
+      <div class="mtm-carousel owl-carousel">
+        <?php //foreach( $images as $image ): ?>
+        <div ng-repeat="maker in makers | filter: {flag:'Featured Maker'}">
+          <div class="mtm-car-image" style="background: url('{{ maker.large_img_url }}') no-repeat center center;background-size: cover;"></div>
+        </div>
+        <?php //endforeach; ?>
+      </div>
+    <?php //endif; ?>
 
     <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
       <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
@@ -28,22 +49,22 @@ get_header(); ?>
       <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
       <span class="sr-only">Next</span>
     </a>
-  </div>
+    </div>
+    <!--//end old-->
+    <div class="container">
+      <h2 class="text-center">Explore our Maker Exhibits!</h2>
+    </div>
+    <div class="flag-banner"></div>
 
-  <div class="container">
-    <h2 class="text-center">Explore our Maker Exhibits!</h2>
-  </div>
-  <div class="flag-banner"></div>
+    <div class="mtm-search">
+      <form class="form-inline">
+        <label for="mtm-search-input">Search:</label>
+        <input ng-model="makerSearch.$" id="mtm-search-input" class="form-control" placeholder="Looking for a specific Exhibit or Maker?" type="text">
+        <!--input class="form-control btn-w-ghost" value="GO" type="submit"-->
+      </form>
+    </div>
 
-  <div class="mtm-search">
-    <form class="form-inline">
-      <label for="mtm-search-input">Search:</label>
-      <input ng-model="makerSearch.$" id="mtm-search-input" class="form-control" placeholder="Looking for a specific Exhibit or Maker?" type="text">
-      <!--input class="form-control btn-w-ghost" value="GO" type="submit"-->
-    </form>
-  </div>
 
-  <div ng-controller="mtmMakers">
     <div class="mtm-filter container">
       <div class="mtm-filter-view">
         <span class="mtm-view-by">View by:</span>
@@ -67,7 +88,7 @@ get_header(); ?>
 
     <div class="mtm-results">
       <div class="mtm-results-cont">
-        <article class="mtm-maker" ng-repeat="maker in makers | filter : makerSearch | byCategory:category | limitTo:24" style="background-image: url('{{ maker.large_img_url }}')">
+        <article class="mtm-maker" ng-repeat="maker in makers | filter : makerSearch | byCategory:category" style="background-image: url('{{ maker.large_img_url }}')">
           <h3>{{ maker.name }}</h3>
         </article>
 

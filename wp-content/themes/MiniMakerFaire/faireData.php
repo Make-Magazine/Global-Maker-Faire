@@ -16,7 +16,9 @@ if($type != '' && $formIDs != '') {
   $data = array();
   switch ($type) {
     case 'mtm':
-      $data = getMTMentries($formIDs);
+      $entity   = getMTMentries($formIDs);
+      $category = getCategories($formIDs);
+      $data     = array_merge($entity, $category);
       break;
     case 'categories':
       $data = getCategories($formIDs);
@@ -48,6 +50,7 @@ function getMTMentries($formIDs) {
   shuffle ($entries);
   foreach($entries as $entry){
     $leadCategory = array();
+    $flag = '';
     //build category array
     foreach($entry as $leadKey=>$leadValue){
       $pos = strpos($leadKey, '321'); //4 additional categories
@@ -60,16 +63,20 @@ function getMTMentries($formIDs) {
       if ($pos !== false) {
         $leadCategory[]=$leadValue;
       }
-    }
 
-    $flag = '';
-    $pos = strpos($leadKey, '304'); // flags
-    if ($pos !== false) {
-      $pos2 = strpos($leadValue, 'Featured');
-      if ($pos2 !== false) {
-        $flag = $leadValue;
+      //flags
+      $pos = strpos($leadKey, '304'); // flags
+      if ($pos !== false) {
+        //echo $leadValue.'   ';
+        $pos2 = strpos($leadValue, 'Featured');
+        if ($pos2 !== false) {
+          //echo 'featured maker ';
+          $flag = $leadValue;
+        }
       }
     }
+
+
 
     //find out if there is an override image for this page
     $overrideImg = findOverride($entry['id'],'mtm');
