@@ -69,27 +69,21 @@ get_header(); ?>
       </div>
     </div>
 
-    <ul class="day-nav nav nav-tabs">
+    <ul class="day-nav list-unstyled">
       <li class="day-nav-box active">
-        <div class="day-nav-item active">
-          <a data-toggle="tab" href="#FridaySched">
-            <h2>Education Friday</h2>
-          </a>
-        </div>
+        <a class="day-nav-item" data-toggle="tab" href="#FridaySched">
+          <h2>Education Friday</h2>
+        </a>
       </li>
       <li class="day-nav-box">
-        <div class="day-nav-item">
-          <a data-toggle="tab" href="#SaturdaySched">
-            <h2>DAY 1: SATURDAY</h2>
-          </a>
-        </div>
+        <a class="day-nav-item" data-toggle="tab" href="#SaturdaySched">
+          <h2>DAY 1: SATURDAY</h2>
+        </a>
       </li>
       <li class="day-nav-box">
-        <div class="day-nav-item">
-          <a data-toggle="tab" href="#SundaySched">
-            <h2>DAY 2: SUNDAY</h2>
-          </a>
-        </div>
+        <a class="day-nav-item" data-toggle="tab" href="#SundaySched">
+          <h2>DAY 2: SUNDAY</h2>
+        </a>
       </li>
     </ul>
 
