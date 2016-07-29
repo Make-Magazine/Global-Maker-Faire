@@ -21,7 +21,12 @@ app.controller('mtmMakers', function($scope, $http) {
         This will:
         compare them to the catJson to get the category name,
         and output an array of category names */
+    var carouselImgs ='';
     angular.forEach($scope.makers, function(maker){
+      //build carousel images
+      if(maker.flag=='Featured Maker') {
+        carouselImgs += '<div class="mtm-car-image" style="background: url(' + maker.large_img_url + ') no-repeat center center;background-size: cover;"></div>';
+      }
       var categories = [];
       var catList = maker.category_id_refs;
       angular.forEach(catList, function(catID){
@@ -40,6 +45,24 @@ app.controller('mtmMakers', function($scope, $http) {
       });
       maker.category_id_refs = categories;
     })
+    jQuery('#carouselImgs').html(carouselImgs);
+    // Carousel init
+    jQuery('.mtm-carousel').owlCarousel({
+      center: true,
+      autoWidth:true,
+      items:2,
+      loop:true,
+      margin:0,
+      nav:true,
+      //navContainer:true,
+      autoplay:true,
+      autoplayHoverPause:true,
+      responsive:{
+        600:{
+          items:3
+        }
+      }
+    });
   }, function errorCallback(error) {
     console.log(error);
   });

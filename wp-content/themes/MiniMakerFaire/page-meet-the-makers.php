@@ -10,34 +10,11 @@ get_header(); ?>
     <div class="container">
       <h1 class="text-center"><?php echo get_the_title(); ?></h1>
     </div>
-<!-- new
     <div class="mtm-carousel-cont">
-      <div class="mtm-carousel owl-carousel">
-        <div ng-repeat="maker in makers | filter: {flag:'Featured Maker'}" class="mtm-car-image"
-             style="background: url('{{ maker.large_img_url }}') no-repeat center center;background-size: cover;"></div>
-      </div>
-
-      <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
-        <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
-        <span class="sr-only">Previous</span>
-      </a>
-      <a id="right-trigger" class="right carousel-control" href="#" role="button" data-slide="next">
-        <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
--->
-
-    <!--//old-->
-    <div class="mtm-carousel-cont">
-    <?php $images = get_field('mtm_image_carousel');
+    <?php //$images = get_field('mtm_image_carousel');
     //if( $images ): ?>
-      <div class="mtm-carousel owl-carousel">
-        <?php //foreach( $images as $image ): ?>
-        <div ng-repeat="maker in makers | filter: {flag:'Featured Maker'}">
-          <div class="mtm-car-image" style="background: url('{{ maker.large_img_url }}') no-repeat center center;background-size: cover;"></div>
-        </div>
-        <?php //endforeach; ?>
+      <div id="carouselImgs" class="mtm-carousel owl-carousel">
+
       </div>
     <?php //endif; ?>
 
@@ -114,23 +91,7 @@ get_header(); ?>
       jQuery(".mtm-results-cont").removeClass("container");
     });
 
-    // Carousel init
-    jQuery('.mtm-carousel').owlCarousel({
-      center: true,
-      autoWidth:true,
-      items:2,
-      loop:true,
-      margin:0,
-      nav:true,
-      //navContainer:true,
-      autoplay:true,
-      autoplayHoverPause:true,
-      responsive:{
-        600:{
-          items:3
-        }
-      }
-    });
+
 
     // Carousel left right
     jQuery( "#right-trigger" ).click(function() {
