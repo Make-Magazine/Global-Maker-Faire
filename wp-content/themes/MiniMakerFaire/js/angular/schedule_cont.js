@@ -1,13 +1,13 @@
   var scheduleApp = angular.module('scheduleApp', []);
-var weekday = new Array(7);
-    weekday[1] =  "Sunday";
-    weekday[2] = "Monday";
-    weekday[3] = "Tuesday";
-    weekday[4] = "Wednesday";
-    weekday[5] = "Thursday";
-    weekday[6] = "Friday";
-    weekday[7] = "Saturday";
-  scheduleApp.controller('scheduleCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+  var weekday = new Array(7);
+      weekday[1] =  "Sunday";
+      weekday[2] = "Monday";
+      weekday[3] = "Tuesday";
+      weekday[4] = "Wednesday";
+      weekday[5] = "Thursday";
+      weekday[6] = "Friday";
+      weekday[7] = "Saturday";
+    scheduleApp.controller('scheduleCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 
 
     var formIDs = jQuery('#forms2use').val();

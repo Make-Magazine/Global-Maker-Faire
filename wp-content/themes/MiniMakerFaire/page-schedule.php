@@ -83,8 +83,10 @@ get_header(); ?>
     <div class="row header">
       <div class="col-lg-1">&nbsp;</div>
       <div class="col-lg-4">
-        <span ng-click="order('name')">Title</span>
+        <!--<span ng-click="order('name')">Title</span>
         <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+        -->
+        Title
       </div>
       <div class="col-lg-1">
         <!--<span ng-click="order('time_start')">Time</span>
@@ -128,8 +130,8 @@ get_header(); ?>
       <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
         <div ng-repeat="schedule in schedules | dayFilter: key | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
           <div class="row">
-            <div class="col-lg-1"><img class="projImg" src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></div>
-            <div class="col-lg-4"><h3>{{schedule.name}}</h3>
+            <div class="col-lg-1"><a href="/maker/entry/{{schedule.id}}"><img class="projImg" src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></a></div>
+            <div class="col-lg-4"><h3><a href="/maker/entry/{{schedule.id}}">{{schedule.name}}</a></h3>
               <p class="presenterList">{{schedule.maker_list}}</p>
             </div>
             <div class="col-lg-1">{{schedule.time_start | date: "shortTime"}} - <br/>{{schedule.time_end | date: "shortTime"}}<br/></div>

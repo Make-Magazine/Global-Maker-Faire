@@ -11,12 +11,8 @@ get_header(); ?>
       <h1 class="text-center"><?php echo get_the_title(); ?></h1>
     </div>
     <div class="mtm-carousel-cont">
-    <?php //$images = get_field('mtm_image_carousel');
-    //if( $images ): ?>
       <div id="carouselImgs" class="mtm-carousel owl-carousel">
-
-      </div>
-    <?php //endif; ?>
+    </div>
 
     <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
       <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
@@ -65,10 +61,13 @@ get_header(); ?>
 
     <div class="mtm-results">
       <div class="mtm-results-cont">
-        <article class="mtm-maker" ng-repeat="maker in makers | filter : makerSearch | byCategory:category" style="background-image: url('{{ maker.large_img_url }}')">
-          <h3>{{ maker.name }}</h3>
-        </article>
-
+        <div ng-repeat="maker in makers | filter : makerSearch | byCategory:category" >
+          <a href="/maker/entry/{{maker.id}}">
+            <article class="mtm-maker" style="background-image: url('{{ maker.large_img_url }}')">
+              <h3>{{ maker.name }}</h3>
+            </article>
+          </a>
+        </div>
         <div class="clearfix"></div>
 
       </div>
