@@ -18,8 +18,8 @@ get_header(); ?>
               <div class="topic-nav-item">
                 <p>ALL</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -29,8 +29,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/talk.png" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
                 Talk</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -40,8 +40,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/demo.png" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
                 Demo</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -51,8 +51,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/workshop.png" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
                 Workshop</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -62,8 +62,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/performance.png" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
                 Performance</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
         </ul>
       </div>
@@ -170,6 +170,10 @@ get_header(); ?>
 
 
 <script>
+jQuery(".topic-nav-item-inner").click(function() {
+  jQuery(".topic-nav-item-inner.activeTopic").removeClass("activeTopic");
+  jQuery(this).addClass('activeTopic');
+});
 jQuery( ".quick-view-toggle" ).click(function(event) {
   event.preventDefault();
   jQuery(this).closest(".schedule-row").next(".quick-view-tr").fadeToggle("medium");
