@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
   var watchList = ['less/**/*.less', 'js/**/*.js', '!js/*.js', 'js/angular/**/*.js', 'js/angular/global-faires-map-app.js'];
   var cssFiles = {
-    'css/bootstrap.min.css': 'less/bootstrap/bootstrap.less',
+    'css/bootstrap.min.css': 'node_modules/bootstrap/less/bootstrap.less',
     'css/style.css': ['less/global.less', 'less/**/*.less', '!less/bootstrap/*', '!less/admin-styles/*'],
     'css/mf-admin-style.css': ['less/admin-styles/*']
   };
@@ -56,6 +56,8 @@ module.exports = function(grunt) {
           'js/built.js': ['js/src/misc-libs.js', 'js/src/*.js'],
           'js/built-libs.js': [
             'node_modules/bootstrap/**/bootstrap.min.js',
+            'node_modules/angular-ui-bootstrap/**/ui-bootstrap.js',
+            'node_modules/angular-animate/angular-animate.min.js',
             'node_modules/bootstrap-dialog/**/bootstrap-dialog.min.js',
             'node_modules/jquery.cookie/**/jquery-cookie.js',
             'node_modules/fancybox/**/jquery.fancybox.pack.js',

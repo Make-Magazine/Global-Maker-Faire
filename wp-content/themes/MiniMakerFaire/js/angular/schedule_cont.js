@@ -1,4 +1,4 @@
-  var scheduleApp = angular.module('scheduleApp', []);
+  var scheduleApp = angular.module('scheduleApp', ['ngAnimate', 'ui.bootstrap']);
   var weekday = new Array(7);
       weekday[1] =  "Sunday";
       weekday[2] = "Monday";

@@ -5,6 +5,8 @@
 get_header(); ?>
 
 <input type="hidden" id="forms2use" value="1,3" />
+<button data-toggle="collapse" data-target="#demo">Collapsible</button>
+
 <div id="page-schedule" class="container">
   <div class="container schedule-table"  ng-controller="scheduleCtrl" ng-app="scheduleApp">
     <div class="topic-nav">
@@ -130,9 +132,24 @@ get_header(); ?>
       <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
         <div ng-repeat="schedule in schedules | dayFilter: key | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
           <div class="row">
-            <div class="col-lg-1"><a href="/maker/entry/{{schedule.id}}"><img class="projImg" src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></a></div>
-            <div class="col-lg-4"><h3><a href="/maker/entry/{{schedule.id}}">{{schedule.name}}</a></h3>
+            <div class="col-lg-1">
+              <a href="/maker/entry/{{schedule.id}}"><img class="projImg" src="{{schedule.thumb_img_url}}" alt="{{schedule.name}}" /></a>
+            </div>
+            <div class="col-lg-4">
+              <h3><a href="/maker/entry/{{schedule.id}}">{{schedule.name}}</a></h3>
               <p class="presenterList">{{schedule.maker_list}}</p>
+
+              <div class="panel-heading">
+                <span style="color:#337ab7;" ng-click="schedule.isCollapsed = !schedule.isCollapsed" ng-init="schedule.isCollapsed=true">Quick View
+                  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': schedule.isCollapsed, 'glyphicon-chevron-up': !schedule.isCollapsed}"></i>
+                </span>
+              </div>
+              <div collapse="schedule.isCollapsed" style="width:200%">
+                <div ng-show="!schedule.isCollapsed" class="panel-body "><p>{{schedule.desc}}</p>
+                  <p><a href="/maker/entry/{{schedule.id}}">full details</a></p>
+                </div>
+              </div>
+
             </div>
             <div class="col-lg-1">{{schedule.time_start | date: "shortTime"}} - <br/>{{schedule.time_end | date: "shortTime"}}<br/></div>
             <div class="col-lg-2">{{schedule.nicename}}</div>
@@ -157,10 +174,16 @@ get_header(); ?>
 
 
 <script>
-jQuery( ".quick-view-toggle" ).click(function(event) {
-  event.preventDefault();
-  jQuery(this).closest(".schedule-row").next(".quick-view-tr").fadeToggle("medium");
+jQuery(document).ready(function(){
+  jQuery( ".quick-view-toggle" ).click(function(event) {
+
+    alert('stop');
+    event.preventDefault();
+
+    jQuery(this).closest(".description").fadeToggle("medium");
+  });
 });
 </script>
+
 
 <?php get_footer(); ?>
