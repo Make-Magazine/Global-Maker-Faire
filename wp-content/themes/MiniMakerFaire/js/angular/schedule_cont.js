@@ -1,27 +1,50 @@
-  var scheduleApp = angular.module('scheduleApp', []);
+  var scheduleApp = angular.module('scheduleApp', ['ngAnimate', 'ui.bootstrap']);
+  var weekday = new Array(7);
+      weekday[1] =  "Sunday";
+      weekday[2] = "Monday";
+      weekday[3] = "Tuesday";
+      weekday[4] = "Wednesday";
+      weekday[5] = "Thursday";
+      weekday[6] = "Friday";
+      weekday[7] = "Saturday";
+    scheduleApp.controller('scheduleCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 
-  scheduleApp.controller('scheduleCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
-    $scope.days = ['Friday','Saturday','Sunday'];
-    $http.get('/wp-content/themes/MiniMakerFaire/categories.json')
+
+    var formIDs = jQuery('#forms2use').val();
+    /*
+      $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=categories&formIDs='+formIDs)
+      .then(function successCallback(response) {
+        $scope.catJson = [];
+        angular.forEach(response.data.category,function(catArr){
+           $scope.catJson[catArr.id] = catArr.name.trim();
+        });
+       });*/
+    $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=schedule&formIDs='+formIDs)
      .then(function successCallback(response) {
-       $scope.catJson = [];
-       angular.forEach(response.data.category,function(catArr){
-          $scope.catJson[catArr.id] = catArr.name.trim();
-       });
-      });
-    $http.get('/wp-content/themes/MiniMakerFaire/schedule.json')
-     .then(function successCallback(response) {
+        $scope.catJson = [];
+        angular.forEach(response.data.category,function(catArr){
+           $scope.catJson[catArr.id] = catArr.name.trim();
+        });
+
         $scope.schedType = 'all';
         $scope.schedStage = '';
         $scope.schedTopic = '';
         $scope.schedules = response.data.schedule;
         $scope.tags = []; //unique list of categories
-
+        daysObj = {};
         /* input categories are a comma sepated list of category id's
             the below will split these into an array,
             compare them to the catJson to get the category name,
             and output an array of category names */
         angular.forEach($scope.schedules, function(schedule){
+
+          if(schedule.day){
+            var day = parseInt(schedule.day);
+            if (!(day in daysObj)) {
+              daysObj[day] = weekday[day];
+            }
+          }
+
           var categories = [];
           var catList = schedule.category.split(",");
           angular.forEach(catList, function(catID){
@@ -39,7 +62,8 @@
             }
           });
           schedule.category = categories;
-        })
+        });
+         $scope.days = daysObj;
      }, function errorCallback(error) {
        console.log(error);
      });
@@ -66,6 +90,8 @@
       // Using the angular.forEach method, go through the array of data and perform the operation of figuring out if the language is statically or dynamically typed.
       angular.forEach(input, function(schedule) {
         var schedDOW = $filter('date')(schedule.time_start, "EEEE");
+        var schedDOW = weekday.indexOf(schedDOW)
+
         if(schedDOW==dayOfWeek){
           out.push(schedule);
         }

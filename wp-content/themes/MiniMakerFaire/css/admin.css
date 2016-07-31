@@ -199,6 +199,13 @@
 .schedBox .schedInfo {
   float: left;
 }
+.schedBox .schedInfo .innerInfo {
+  padding-top: 10px;
+}
+
+.schedBox .schedInfo {
+  padding-left: 10px;
+}
 
 .schedBox,
 .locBox {
@@ -208,4 +215,31 @@
 
 #locationList {
   margin-bottom: 10px;
+}
+#entrySched .topBorder {
+  border-top: thin dashed grey;
+  padding-top: 10px;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+#entrySched label {
+  font-weight: 700;
+  line-height: 1.5;
+  padding: 7px 0;
+  display: block;
+}
+#entrySched #typeSel, #entrySched #locationSel {
+  width: 90%;
+}
+
+#entrySched .stageName {
+  padding-left: 10px;
+}
+
+#entrySched .startDt {
+  margin-top: 10px;
+}
+
+#entrySched .time {
+
 }

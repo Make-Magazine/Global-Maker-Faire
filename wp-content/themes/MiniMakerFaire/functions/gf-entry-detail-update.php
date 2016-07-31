@@ -122,6 +122,7 @@ add_action( 'wp_ajax_update_flags', 'update_flags' );
 function update_entry_schedule(){
   $entry_id   = $_POST['entry_id'];
   $location   = $_POST['location'];
+  $type       = $_POST['type'];
   $entry_schedule_start  = $_POST['dateStart'];
   $entry_schedule_end    = $_POST['dateEnd'];
   if (!empty($location)){
@@ -131,8 +132,8 @@ function update_entry_schedule(){
     $wpdb->get_results($insert_query);
     $location_id = $wpdb->insert_id;
     if($entry_schedule_start!='' && $entry_schedule_end!=''){
-      $insert_query = "INSERT INTO `{$wpdb->prefix}mf_schedule` (`entry_id`, location_id, `start_dt`, `end_dt`) "
-              . " VALUES ($entry_id,$location_id,'$entry_schedule_start','$entry_schedule_end')";
+      $insert_query = "INSERT INTO `{$wpdb->prefix}mf_schedule` (`entry_id`, location_id, `start_dt`, `end_dt`, type) "
+              . " VALUES ($entry_id,$location_id,'$entry_schedule_start','$entry_schedule_end','$type')";
       $wpdb->get_results($insert_query);
       $schedule_id = $wpdb->insert_id;
     }

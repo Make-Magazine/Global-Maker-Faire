@@ -50,7 +50,11 @@
 ////////////////////////////////////////////////////////////////////
 
   function devdmbootstrap3_theme_stylesheets() {
-    wp_enqueue_style( 'bootstrap-css', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css', array(), null, 'all' );
+    wp_enqueue_style('bootstrap-css',get_stylesheet_directory_uri() . '/css/bootstrap.min.css');
+
+    //wp_enqueue_style( 'bootstrap-css', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css', array(), null, 'all' );
+    //???????
+    //wp_enqueue_style( 'make-bootstrap', get_stylesheet_directory_uri() . '/css/bootstrap.min.css');
     wp_enqueue_style( 'theme-css', get_stylesheet_directory_uri() . '/css/style.css' );
     wp_enqueue_style( 'font-awesome-css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css', array(), null, 'all' );
     wp_enqueue_style( 'google-font-body', 'https://fonts.googleapis.com/css?family=Roboto:400,300,700,500', array(), null, 'all' );
@@ -98,35 +102,22 @@
 ////////////////////////////////////////////////////////////////////
   function angular_scripts() {
     if (is_page_template('page-meet-the-makers.php') || is_page_template('page-schedule.php')) {
-      wp_enqueue_script(
-        'angularjs',
-        get_stylesheet_directory_uri() . '/bower_components/angular/angular.min.js'
-      );
-
-      wp_enqueue_script(
-        'dirPagination',
-        get_stylesheet_directory_uri() . '/bower_components/angular/dirPagination.js',
-        array( 'angularjs')
-      );
-      wp_enqueue_script(
-        'carousel',
-        get_stylesheet_directory_uri().'/js/owl.carousel.min.js'
-      );
+      wp_enqueue_script('angularjs',get_stylesheet_directory_uri() . '/node_modules/angular/angular.min.js');
+      wp_enqueue_script('dirPagination',get_stylesheet_directory_uri() . '/node_modules/angular-utils-pagination/dirPagination.js',array( 'angularjs'));
+      wp_enqueue_script('carousel',get_stylesheet_directory_uri().'/js/owl.carousel.min.js');
       if (is_page_template('page-meet-the-makers.php')) {
-          wp_enqueue_script(
-          'angular-mtm',
-          get_stylesheet_directory_uri() . '/js/angular/controller.js',
-          array( 'angularjs', 'dirPagination' )
-        );
+        wp_enqueue_script('angular-mtm',get_stylesheet_directory_uri() . '/js/angular/controller.js', array( 'angularjs', 'dirPagination' ));
       }
 
       if (is_page_template('page-schedule.php')) {
-        wp_enqueue_script(
-          'angular-schedule',
-          get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',
-          array( 'angularjs', 'dirPagination' )
-        );
+        wp_enqueue_script('angular-schedule',get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',array( 'angularjs', 'dirPagination' ));
       }
+      // jquery from Wordpress core (with no-conflict mode flag enabled):
+      wp_enqueue_script('jquery');
+      $my_theme = wp_get_theme();
+      $my_version = $my_theme->get('Version');
+      // Libraries concatenated by the grunt concat task (in Gruntfile.js):
+      wp_enqueue_script('built-libs', get_stylesheet_directory_uri() . '/js/built-libs.js', array('angularjs','jquery'),$my_version);
     }
   }
   add_action( 'wp_enqueue_scripts', 'angular_scripts' );
