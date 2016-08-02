@@ -70,15 +70,12 @@ get_header(); ?>
       </div>
     </div>
 
-    <ul class="day-nav nav nav-tabs">
-      <li ng-repeat="day in days" class="day-nav-box" ng-class="{active:$first}">
-        <div class="day-nav-item" ng-class="{active:$first}">
-          <a data-toggle="tab" href="#{{day}}Sched">
-            <h2>{{day}}</h2>
-          </a>
-        </div>
+    <ul class="day-nav list-unstyled">
+      <li ng-repeat="day in days" class="day-nav-box" ng-class="{active:$first}" ng-class="{active:$first}">
+        <a class="day-nav-item" data-toggle="tab" href="#{{day}}Sched">
+          <h2>{{day}}</h2>
+        </a>
       </li>
-
     </ul>
 
     <div class="row header">
@@ -173,6 +170,11 @@ get_header(); ?>
 
 
 <script>
+jQuery(".topic-nav-item-inner").click(function() {
+  jQuery(".topic-nav-item-inner.activeTopic").removeClass("activeTopic");
+  jQuery(this).addClass('activeTopic');
+});
+  
 jQuery(document).ready(function(){
   jQuery( ".quick-view-toggle" ).click(function(event) {
 
