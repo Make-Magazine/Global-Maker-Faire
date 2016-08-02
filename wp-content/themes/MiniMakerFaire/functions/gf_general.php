@@ -28,7 +28,6 @@ function findOverride($entry_id, $type){
                 . "                 (detail.field_number = 329 and override.field_number between 334.0 and 334.9999)";
         $results = $wpdb->get_results($sql);
         if($wpdb->num_rows > 0){
-
             return $results[0]->value;
         }
     }

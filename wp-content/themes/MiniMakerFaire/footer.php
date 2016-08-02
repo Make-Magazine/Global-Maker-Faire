@@ -93,6 +93,29 @@
                   <a href="//help.makermedia.com/hc/en-us/categories/200333245-Maker-Faire" target="_blank">Maker Faire FAQs</a>
                 </li>
               </ul>
+            </div>
+            <div class="col-xs-6 footer-no-rt-pad">
+              <ul class="list-unstyled footer-right-col">
+                <li>
+                  <p>Explore Making</p>
+                </li>
+                <li>
+                  <a href="http://makezine.com/" target="_blank">Make: News &amp; Projects</a>
+                </li>
+                <li>
+                  <a href="http://www.makershed.com/" target="_blank">Maker Shed</a>
+                </li>
+                <li>
+                  <a href="http://makercamp.com/" target="_blank">Maker Camp</a>
+                </li>
+                <li>
+                  <a href="https://readerservices.makezine.com/mk/default.aspx" target="_blank">Subscribe to Make:</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
               <div class="social-network-container">
                 <ul class="social-network social-circle">
                   <li>
@@ -122,25 +145,6 @@
                   </li>
                 </ul>
               </div>
-            </div>
-            <div class="col-xs-6">
-              <ul class="list-unstyled footer-right-col">
-                <li>
-                  <p>Explore Making</p>
-                </li>
-                <li>
-                  <a href="http://makezine.com/" target="_blank">Make: News &amp; Projects</a>
-                </li>
-                <li>
-                  <a href="http://www.makershed.com/" target="_blank">Maker Shed</a>
-                </li>
-                <li>
-                  <a href="http://makercamp.com/" target="_blank">Maker Camp</a>
-                </li>
-                <li>
-                  <a href="https://readerservices.makezine.com/mk/default.aspx" target="_blank">Subscribe to Make:</a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
