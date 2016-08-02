@@ -6,9 +6,8 @@
  */
 
   global $wp_query;
-  $entryId = $wp_query->query_vars['e_id'];
+  $entryId = $wp_query->query_vars['eid'];
   $entry = GFAPI::get_entry($entryId);
-
   //entry not found
   if(isset($entry->errors)){
     $entry=array();
