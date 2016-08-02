@@ -5,7 +5,6 @@
 get_header(); ?>
 
 <input type="hidden" id="forms2use" value="1,3" />
-<button data-toggle="collapse" data-target="#demo">Collapsible</button>
 
 <div id="page-schedule" class="container">
   <div class="container schedule-table"  ng-controller="scheduleCtrl" ng-app="scheduleApp">
