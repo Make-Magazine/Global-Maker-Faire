@@ -4,7 +4,7 @@
 */
 get_header(); ?>
 
-<input type="hidden" id="forms2use" value="1,3" />
+<input type="hidden" id="forms2use" value="<?php echo get_field('schedule_ids'); ?>" />
 
 <div id="page-schedule" class="container">
   <div class="container schedule-table"  ng-controller="scheduleCtrl" ng-app="scheduleApp">
@@ -174,7 +174,7 @@ jQuery(".topic-nav-item-inner").click(function() {
   jQuery(".topic-nav-item-inner.activeTopic").removeClass("activeTopic");
   jQuery(this).addClass('activeTopic');
 });
-  
+
 jQuery(document).ready(function(){
   jQuery( ".quick-view-toggle" ).click(function(event) {
 

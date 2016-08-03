@@ -6,22 +6,22 @@ get_header(); ?>
 
 <div class="mtm" ng-app="mtm">
   <div ng-controller="mtmMakers">
-    <input type="hidden" id="forms2use" value="1,3" />
+    <input type="hidden" id="forms2use" value="<?php echo get_field('form_id'); ?>" />
     <div class="container">
       <h1 class="text-center"><?php echo get_the_title(); ?></h1>
     </div>
     <div class="mtm-carousel-cont">
       <div id="carouselImgs" class="mtm-carousel owl-carousel">
-    </div>
+      </div>
 
-    <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
-      <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
-      <span class="sr-only">Previous</span>
-    </a>
-    <a id="right-trigger" class="right carousel-control" href="#" role="button" data-slide="next">
-      <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
-      <span class="sr-only">Next</span>
-    </a>
+      <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
+        <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
+        <span class="sr-only">Previous</span>
+      </a>
+      <a id="right-trigger" class="right carousel-control" href="#" role="button" data-slide="next">
+        <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
+        <span class="sr-only">Next</span>
+      </a>
     </div>
     <!--//end old-->
     <div class="container">
