@@ -53,7 +53,9 @@ get_header(); ?>
         </button>
 
         <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
-          <li ng-repeat="tag in tags | orderBy: tag"> <a ng-click="setTagFilter(tag)">{{ tag }}</a></li>
+          <li ng-repeat="tag in tags | orderBy: tag">
+            <a href="#" ng-click="setTagFilter(tag)">{{ tag }}</a>
+          </li>
         </ul>
 
       </div>
@@ -89,8 +91,6 @@ get_header(); ?>
       event.preventDefault();
       jQuery(".mtm-results-cont").removeClass("container");
     });
-
-
 
     // Carousel left right
     jQuery( "#right-trigger" ).click(function() {
