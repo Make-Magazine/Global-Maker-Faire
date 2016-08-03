@@ -134,18 +134,9 @@
           text-decoration: none;
         }
       }
-      .dropdown-menu ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        li {
-          display: flex; /* 1 */
-          flex-direction: column; /* 1 */
-          flex: 0 0 300px; /* 2 */
-          margin: 10px; /* 3 */
-        }
+      .dropdown-menu {
+        max-height: 350px;
+        overflow-y: scroll;
       }
     }
   }
