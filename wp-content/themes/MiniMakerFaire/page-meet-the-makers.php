@@ -70,6 +70,7 @@ get_header(); ?>
           <a href="/maker/entry/{{maker.id}}">
             <article class="mtm-maker" style="background-image: url('{{ maker.large_img_url }}')">
               <h3>{{ maker.name }}</h3>
+              <h4 class="mtm-maker-name-listed"><!-- Maker names Go here --></h4>
             </article>
           </a>
         </div>

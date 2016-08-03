@@ -6,7 +6,7 @@ app.controller('mtmMakers', function($scope, $http) {
   .then(function successCallback(response) {
     $scope.catJson = [];
     angular.forEach(response.data.category,function(catArr){
-       $scope.catJson[catArr.id] = catArr.name.trim();
+      $scope.catJson[catArr.id] = catArr.name.trim();
     });
     $scope.makers = response.data.entity;
     $scope.category = '';
@@ -69,6 +69,7 @@ app.controller('mtmMakers', function($scope, $http) {
   $scope.setTagFilter = function (tag) {
     $scope.category = tag;
   }
+  // Clear category filter on All button click
   $scope.clearFilter = function() {
     $scope.category = '';
   };
