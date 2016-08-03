@@ -69,6 +69,9 @@ app.controller('mtmMakers', function($scope, $http) {
   $scope.setTagFilter = function (tag) {
     $scope.category = tag;
   }
+  $scope.clearFilter = function() {
+    $scope.category = '';
+  };
 });
 
 app.filter('byCategory', function(){

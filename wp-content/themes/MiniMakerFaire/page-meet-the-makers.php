@@ -53,8 +53,9 @@ get_header(); ?>
         </button>
 
         <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
-          <li ng-repeat="tag in tags | orderBy: tag">
-            <a class="pointer-on-hover" ng-click="setTagFilter(tag)">{{ tag }}</a>
+          <li>
+            <a class="pointer-on-hover" ng-click="clearFilter()">All</a>
+            <a class="pointer-on-hover" ng-repeat="tag in tags | orderBy: tag" ng-click="setTagFilter(tag)">{{ tag }}</a>
           </li>
         </ul>
 
