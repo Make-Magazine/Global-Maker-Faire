@@ -41,9 +41,9 @@ get_header(); ?>
     <div class="mtm-filter container">
       <div class="mtm-filter-view">
         <span class="mtm-view-by">View by:</span>
-        <a href="#" class="mtm-filter-g"><i class="fa fa-picture-o" aria-hidden="true"></i> GALLERY</a>
+        <a class="mtm-filter-g pointer-on-hover"><i class="fa fa-picture-o" aria-hidden="true"></i> GALLERY</a>
         <span class="mtm-pipe">|</span>
-        <a href="#" class="mtm-filter-l"><i class="fa fa-th-list" aria-hidden="true"></i> LIST</a>
+        <a class="mtm-filter-l pointer-on-hover"><i class="fa fa-th-list" aria-hidden="true"></i> LIST</a>
       </div>
 
       <div class="dropdown">
@@ -54,7 +54,7 @@ get_header(); ?>
 
         <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
           <li ng-repeat="tag in tags | orderBy: tag">
-            <a href="#" ng-click="setTagFilter(tag)">{{ tag }}</a>
+            <a class="pointer-on-hover" ng-click="setTagFilter(tag)">{{ tag }}</a>
           </li>
         </ul>
 
