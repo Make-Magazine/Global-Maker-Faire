@@ -140,7 +140,7 @@
 
         <?php
         if (!empty($project_website)) {
-          echo '<a href="' . $project_website . '" class="btn btn-info pull-left" target="_blank" style="margin-right:15px;">Project Website</a>';
+          echo '<a href="' . $project_website . '" class="btn btn-info" target="_blank">Project Website</a>';
         }
         ?>
 
@@ -177,7 +177,7 @@
           echo '<div class="row center-block">
                   ',(!empty($groupphoto) ? '<img class="col-md-3 pull-left img-responsive" src="' . legacy_get_fit_remote_image_url($groupphoto,200,250) . '" alt="Group Image">' : '<img class="col-md-3 pull-left img-responsive" src="' . get_stylesheet_directory_uri() . '/images/maker-placeholder.jpg" alt="Group Image">');
           echo    '<div class="col-md-5">
-                    <h3 style="margin-top: 0px;">' . $groupname . '</h3>
+                    <h3>' . $groupname . '</h3>
                     <p>' . make_clickable($groupbio) . '</p>
                   </div>
                 </div>';
@@ -187,7 +187,7 @@
               echo '<div class="row center-block">
                       ',(!empty($maker['photo']) ? '<img class="col-md-3 pull-left img-responsive" src="' . legacy_get_fit_remote_image_url($maker['photo'],200,250) . '" alt="Maker Image">' : '<img class="col-md-3 pull-left img-responsive" src="' . get_stylesheet_directory_uri() . '/images/maker-placeholder.jpg" alt="Maker Image">');
               echo    '<div class="col-md-5">
-                        <h3 style="margin-top: 0px;">' . $maker['firstname'] . ' ' . $maker['lastname'] . '</h3>
+                        <h3>' . $maker['firstname'] . ' ' . $maker['lastname'] . '</h3>
                         <p>' . make_clickable($maker['bio']) . '</p>
                       </div>
                     </div>';
