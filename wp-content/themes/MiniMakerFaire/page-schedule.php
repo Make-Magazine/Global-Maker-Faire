@@ -71,7 +71,7 @@ get_header(); ?>
     </div>
 
     <ul class="day-nav list-unstyled">
-      <li ng-repeat="day in days" class="day-nav-box" ng-class="{active:$first}" ng-class="{active:$first}">
+      <li ng-repeat="day in days" class="day-nav-box" ng-class="{active:$first}">
         <a class="day-nav-item" data-toggle="tab" href="#{{day}}Sched">
           <h2>{{day}}</h2>
         </a>
@@ -125,7 +125,7 @@ get_header(); ?>
       </div>
     </div>
     <div class="tab-content">
-      <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
+      <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="{active:$first}" class="tab-pane">
         <div ng-repeat="schedule in schedules | dayFilter: key | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
           <div class="row">
             <div class="col-lg-1">
