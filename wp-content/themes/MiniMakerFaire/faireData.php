@@ -84,7 +84,7 @@ function getMTMentries($formIDs) {
 
       $projPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
       $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
-      $featImg   = legacy_get_fit_remote_image_url($projPhoto,500,800);
+      $featImg   = legacy_get_fit_remote_image_url($projPhoto,800,500);
       if($fitPhoto==NULL) $fitPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
       $data['entity'][] = array(
           'id'                => $entry['id'],
