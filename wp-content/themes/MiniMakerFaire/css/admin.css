@@ -216,11 +216,10 @@
 #locationList {
   margin-bottom: 10px;
 }
-#entrySched .topBorder {
-  border-top: thin dashed grey;
-  padding-top: 10px;
+#entrySched #scheduledItems {
+  border-bottom: thin dashed grey;
+  padding-bottom: 1em;
   margin-bottom: 1em;
-  margin-top: 2em;
 }
 #entrySched label {
   font-weight: 700;
@@ -242,4 +241,17 @@
 
 #entrySched .time {
 
+}
+
+#delete_entry_schedule {
+  padding-bottom: 15px;
+}
+
+#dispSchedSect {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#schedSect {
+  margin-bottom: 10px;
 }
