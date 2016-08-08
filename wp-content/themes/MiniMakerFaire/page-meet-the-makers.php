@@ -11,8 +11,7 @@ get_header(); ?>
       <h1 class="text-center"><?php echo get_the_title(); ?></h1>
     </div>
     <div class="mtm-carousel-cont">
-      <div id="carouselImgs" class="mtm-carousel owl-carousel">
-      </div>
+      <div id="carouselImgs" class="mtm-carousel owl-carousel"></div>
 
       <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
         <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />

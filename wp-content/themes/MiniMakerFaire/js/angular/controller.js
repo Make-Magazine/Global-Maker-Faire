@@ -25,7 +25,7 @@ app.controller('mtmMakers', function($scope, $http) {
     angular.forEach($scope.makers, function(maker){
       //build carousel images
       if(maker.flag=='Featured Maker') {
-        carouselImgs += '<a href="/maker/entry/'+maker.id+'"><div class="mtm-car-image" style="background: url(' + maker.large_img_url + ') no-repeat center center;background-size: cover;"></div></a>';
+        carouselImgs += '<a href="/maker/entry/'+maker.id+'"><div class="mtm-car-image" style="background: url(' + maker.featured_img + ') no-repeat center center;background-size: cover;"></div></a>';
       }
       var categories = [];
       var catList = maker.category_id_refs;

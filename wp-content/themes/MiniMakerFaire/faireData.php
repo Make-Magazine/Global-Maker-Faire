@@ -39,62 +39,66 @@ exit;
 
 function getMTMentries($formIDs) {
   $data = array();
-  $formIDarr = explode(",", $formIDs);
+  $formIDarr = array_map('intval', explode(",", $formIDs));
 
   $search_criteria['status'] = 'active';
   $search_criteria['field_filters'][] = array( 'key' => '303', 'value' => 'Accepted');
 
-  $entries = GFAPI::get_entries($formIDarr, $search_criteria, null, array('offset' => 0, 'page_size' => 999));
+  $entries = GFAPI::get_entries(0, $search_criteria, null, array('offset' => 0, 'page_size' => 999));
 
   //randomly order entries
   shuffle ($entries);
   foreach($entries as $entry){
-    $leadCategory = array();
-    $flag = '';
-    //build category array
-    foreach($entry as $leadKey=>$leadValue){
-      $pos = strpos($leadKey, '321'); //4 additional categories
-      if ($pos !== false) {
-        $leadCategory[]=$leadValue;
-      }
+    if(in_array($entry['form_id'],$formIDarr)) {
+      $leadCategory = array();
+      $flag = '';
+      //build category array
+      foreach($entry as $leadKey=>$leadValue){
+        $pos = strpos($leadKey, '321'); //4 additional categories
+        if ($pos !== false) {
+          $leadCategory[]=$leadValue;
+        }
 
-      //main catgory
-      $pos = strpos($leadKey, '320');
-      if ($pos !== false) {
-        $leadCategory[]=$leadValue;
-      }
+        //main catgory
+        $pos = strpos($leadKey, '320');
+        if ($pos !== false) {
+          $leadCategory[]=$leadValue;
+        }
 
-      //flags
-      $pos = strpos($leadKey, '304'); // flags
-      if ($pos !== false) {
-        //echo $leadValue.'   ';
-        $pos2 = strpos($leadValue, 'Featured');
-        if ($pos2 !== false) {
-          //echo 'featured maker ';
-          $flag = $leadValue;
+        //flags
+        $pos = strpos($leadKey, '304'); // flags
+        if ($pos !== false) {
+          //echo $leadValue.'   ';
+          $pos2 = strpos($leadValue, 'Featured');
+          if ($pos2 !== false) {
+            //echo 'featured maker ';
+            $flag = $leadValue;
+          }
         }
       }
+
+
+
+      //find out if there is an override image for this page
+      $overrideImg = findOverride($entry['id'],'mtm');
+
+      $projPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
+      $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
+      $featImg   = legacy_get_fit_remote_image_url($projPhoto,500,800);
+      if($fitPhoto==NULL) $fitPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
+      $data['entity'][] = array(
+          'id'                => $entry['id'],
+          'name'              => $entry['151'],
+          'large_img_url'     => $fitPhoto,
+          'featured_img'      => $featImg,
+          'category_id_refs'  => array_unique($leadCategory),
+          'description'       => $entry['16'],
+          'flag'              => $flag //only set if flag is set to 'Featured Maker'
+          );
     }
-
-
-
-    //find out if there is an override image for this page
-    $overrideImg = findOverride($entry['id'],'mtm');
-
-    $projPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
-    $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
-    if($fitPhoto==NULL) $fitPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
-    $data['entity'][] = array(
-        'id'                => $entry['id'],
-        'name'              => $entry['151'],
-        'large_img_url'     => $fitPhoto,
-        'category_id_refs'  => array_unique($leadCategory),
-        'description'       => $entry['16'],
-        'flag'              => $flag //only set if flag is set to 'Featured Maker'
-        );
-    }
-    return $data;
-  }
+  } //end foreach $entries
+  return $data;
+} //end getMTMentries
 
   function getCategories($formIDs) {
     $data = array();
