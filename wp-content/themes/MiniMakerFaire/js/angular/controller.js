@@ -1,6 +1,7 @@
 var app = angular.module('mtm', []);
 
 app.controller('mtmMakers', function($scope, $http) {
+  $scope.layout = 'grid';
   var formIDs = jQuery('#forms2use').val();
   $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=mtm&formIDs='+formIDs)
   .then(function successCallback(response) {

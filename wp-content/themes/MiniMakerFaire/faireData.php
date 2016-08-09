@@ -77,8 +77,6 @@ function getMTMentries($formIDs) {
         }
       }
 
-
-
       //find out if there is an override image for this page
       $overrideImg = findOverride($entry['id'],'mtm');
 
@@ -86,6 +84,10 @@ function getMTMentries($formIDs) {
       $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
       $featImg   = legacy_get_fit_remote_image_url($projPhoto,800,500);
       if($fitPhoto==NULL) $fitPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
+
+      //maker list
+      $makerList = getMakerList($entry['id']);
+
       $data['entity'][] = array(
           'id'                => $entry['id'],
           'name'              => $entry['151'],
@@ -93,7 +95,8 @@ function getMTMentries($formIDs) {
           'featured_img'      => $featImg,
           'category_id_refs'  => array_unique($leadCategory),
           'description'       => $entry['16'],
-          'flag'              => $flag //only set if flag is set to 'Featured Maker'
+          'flag'              => $flag, //only set if flag is set to 'Featured Maker'
+          'makerList'         => $makerList
           );
     }
   } //end foreach $entries
@@ -130,14 +133,7 @@ function getMTMentries($formIDs) {
               (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '22')  as photo,
               (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '151') as name,
               (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '16')  as short_desc,
-              (select group_concat( value separator ', ') as cat   from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '%320%' OR field_number like '%321%')) as category,
-              (select group_concat( value separator ' ') as Maker1 from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '160.3' OR field_number like '160.6')) as maker1,
-              (select group_concat( value separator ' ') as Maker2 from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '158.3' OR field_number like '158.6')) as maker2,
-              (select group_concat( value separator ' ') as Maker3 from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '155.3' OR field_number like '155.6')) as maker3,
-              (select group_concat( value separator ' ') as Maker4 from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '156.3' OR field_number like '156.6')) as maker4,
-              (select group_concat( value separator ' ') as Maker5 from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '157.3' OR field_number like '157.6')) as maker5,
-              (select group_concat( value separator ' ') as Maker6 from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '159.3' OR field_number like '159.6')) as maker6,
-              (select group_concat( value separator ' ') as Maker7 from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '154.3' OR field_number like '154.6')) as maker7
+              (select group_concat( value separator ', ') as cat   from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '%320%' OR field_number like '%321%')) as category
                FROM {$wpdb->prefix}mf_schedule as schedule
                left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
                left outer join {$wpdb->prefix}rg_lead as lead on schedule.entry_id = lead.id
@@ -148,15 +144,8 @@ function getMTMentries($formIDs) {
     //retrieve project name, img (22), maker list, topics
 
     foreach($wpdb->get_results($query) as $row){
+      $makerList = getMakerList($row->entry_id);
       $makerArr = array();
-      if($row->maker1 != NULL)  $makerArr[] = $row->maker1;
-      if($row->maker2 != NULL)  $makerArr[] = $row->maker2;
-      if($row->maker3 != NULL)  $makerArr[] = $row->maker3;
-      if($row->maker4 != NULL)  $makerArr[] = $row->maker4;
-      if($row->maker5 != NULL)  $makerArr[] = $row->maker5;
-      if($row->maker6 != NULL)  $makerArr[] = $row->maker6;
-      if($row->maker7 != NULL)  $makerArr[] = $row->maker7;
-      $makerList = implode(",", $makerArr);
 
       //remove duplicates
       $catArr = explode(", ", $row->category);
@@ -193,4 +182,51 @@ function getMTMentries($formIDs) {
     }
 
     return $data;
+  }
+
+  function getMakerList($entryID) {
+    $makerList = '';
+    $data = array(); global $wpdb;
+    $query = "SELECT *
+              FROM {$wpdb->prefix}rg_lead_detail as lead_detail
+              where lead_detail.lead_id = $entryID "
+           . "and cast(field_number as char) in('160.3', '160.6', '158.3', '158.6', '155.3', '155.6', "
+           . "'156.3', '156.6', '157.3', '157.6', '159.3', '159.6', '154.3', '154.6', '109', '105')";
+    $entryData = $wpdb->get_results($query);
+    //field 105 - who would you like listed
+    //    one maker, a group or association, a list of makers
+    /* Maker Name field #'s -> 1 - 160, 2 - 158, 3 - 155, 4 - 156, 5 - 157, 6 - 159, 7 - 154
+     * Group Name - 109
+     */
+    $fieldData = array();
+    foreach($entryData as $field){
+      $fieldData[$field->field_number] = $field->value;
+    }
+
+    if(isset($fieldData[105])){
+      $whoListed = strtolower($fieldData['105']);
+      $isGroup =false;
+      $isGroup    = (strpos($whoListed, 'group') !== false);
+      $isOneMaker = false;
+      $isOneMaker = (strpos($whoListed, 'one') !== false);
+
+      if($isGroup) {
+        $makerList = $fieldData[109];
+      }elseif($isOneMaker){
+        $makerList = $fieldData['160.3']. ' ' .$fieldData['160.6'];
+      }else{
+        $makerArr = array();
+        if(isset($fieldData['160.3']))  $makerArr[] = $fieldData['160.3']. ' ' .$fieldData['160.6'];
+        if(isset($fieldData['158.3']))  $makerArr[] = $fieldData['158.3']. ' ' .$fieldData['158.6'];
+        if(isset($fieldData['155.3']))  $makerArr[] = $fieldData['155.3']. ' ' .$fieldData['155.6'];
+        if(isset($fieldData['156.3']))  $makerArr[] = $fieldData['156.3']. ' ' .$fieldData['166.6'];
+        if(isset($fieldData['157.3']))  $makerArr[] = $fieldData['157.3']. ' ' .$fieldData['157.6'];
+        if(isset($fieldData['159.3']))  $makerArr[] = $fieldData['159.3']. ' ' .$fieldData['159.6'];
+        if(isset($fieldData['154.3']))  $makerArr[] = $fieldData['154.3']. ' ' .$fieldData['154.6'];
+
+        $makerList = implode(", ", $makerArr);
+      }
+    }
+
+    return $makerList;
   }

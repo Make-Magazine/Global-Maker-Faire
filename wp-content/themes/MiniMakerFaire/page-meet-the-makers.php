@@ -5,7 +5,7 @@
 get_header(); ?>
 
 <div class="mtm" ng-app="mtm">
-  <div ng-controller="mtmMakers">
+  <div ng-controller="mtmMakers"  ng-cloak=">
     <input type="hidden" id="forms2use" value="<?php echo get_field('form_id'); ?>" />
     <div class="container">
       <h1 class="text-center"><?php echo get_the_title(); ?></h1>
@@ -40,9 +40,9 @@ get_header(); ?>
     <div class="mtm-filter container">
       <div class="mtm-filter-view">
         <span class="mtm-view-by">View by:</span>
-        <a class="mtm-filter-g pointer-on-hover"><i class="fa fa-picture-o" aria-hidden="true"></i> GALLERY</a>
+        <a ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'" class="mtm-filter-g pointer-on-hover box gallery"><i class="fa fa-picture-o" aria-hidden="true"></i> GALLERY</a>
         <span class="mtm-pipe">|</span>
-        <a class="mtm-filter-l pointer-on-hover"><i class="fa fa-th-list" aria-hidden="true"></i> LIST</a>
+        <a ng-class="{active: layout == 'list'}" ng-click="layout = 'list'" class="mtm-filter-l pointer-on-hover box list" ><i class="fa fa-th-list" aria-hidden="true"></i> LIST</a>
       </div>
 
       <div class="dropdown">
@@ -64,17 +64,29 @@ get_header(); ?>
     </div>
 
     <div class="mtm-results">
-      <div class="mtm-results-cont">
-        <div ng-repeat="maker in makers | filter : makerSearch | byCategory:category" >
+      <!-- Grid View -->
+      <div ng-show="layout == 'grid'" class="mtm-results-cont">
+        <div ng-repeat="maker in makers | filter : makerSearch | byCategory:category">
           <a href="/maker/entry/{{maker.id}}">
             <article class="mtm-maker" style="background-image: url('{{ maker.large_img_url }}')">
               <h3>{{ maker.name }}</h3>
-              <h4 class="mtm-maker-name-listed"><!-- Maker names Go here --></h4>
             </article>
           </a>
         </div>
         <div class="clearfix"></div>
+      </div>
 
+      <!-- List View -->
+      <div ng-show="layout == 'list'" class="mtm-results-cont container">
+        <div ng-repeat="maker in makers | filter : makerSearch | byCategory:category | orderBy: 'name'">
+          <a href="/maker/entry/{{maker.id}}">
+            <article class="mtm-maker" style="background-image: url('{{ maker.large_img_url }}')">
+              <h3>{{ maker.name }}</h3>
+              <h6 style="font-weight: lighter;padding-left: 21px;">{{maker.makerList}}</h6>
+            </article>
+          </a>
+        </div>
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>
@@ -85,16 +97,6 @@ get_header(); ?>
 
 <script>
   jQuery(document).ready(function(){
-    // Gallery and list view
-    jQuery(".mtm-filter-l").click( function(event) {
-      event.preventDefault();
-      jQuery(".mtm-results-cont").addClass("container");
-    });
-    jQuery(".mtm-filter-g").click( function(event) {
-      event.preventDefault();
-      jQuery(".mtm-results-cont").removeClass("container");
-    });
-
     // Carousel left right
     jQuery( "#right-trigger" ).click(function() {
       jQuery( ".owl-next" ).click();
