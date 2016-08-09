@@ -5,7 +5,7 @@
 get_header(); ?>
 
 <div class="mtm" ng-app="mtm">
-  <div ng-controller="mtmMakers"  ng-cloak=">
+  <div ng-controller="mtmMakers"  ng-cloak="">
     <input type="hidden" id="forms2use" value="<?php echo get_field('form_id'); ?>" />
     <div class="container">
       <h1 class="text-center"><?php echo get_the_title(); ?></h1>
