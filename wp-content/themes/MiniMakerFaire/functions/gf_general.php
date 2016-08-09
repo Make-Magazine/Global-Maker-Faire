@@ -79,3 +79,17 @@ function legacy_get_fit_remote_image_url( $url, $width, $height, $escape = true 
 	return ( $escape ) ? esc_url( $thumburl ) : $thumburl;
 	endif;
 }
+
+/**
+ *  Check if input string is a valid YouTube URL
+ *  and try to extract the YouTube Video ID from it.
+ *  @author  Stephan Schmitz <eyecatchup@gmail.com>
+ *  @param   $url   string   The string that shall be checked.
+ *  @return  mixed           Returns YouTube Video ID, or (boolean) false.
+ */
+function parse_yturl($url)
+{
+    $pattern = '#^(?:https?://)?(?:www\.)?(?:youtu\.be/|youtube\.com(?:/embed/|/v/|/watch\?v=|/watch\?.+&v=))([\w-]{11})(?:.+)?$#x';
+    preg_match($pattern, $url, $matches);
+    return (isset($matches[1])) ? $matches[1] : false;
+}

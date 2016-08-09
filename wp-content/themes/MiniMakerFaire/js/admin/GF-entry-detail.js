@@ -181,14 +181,25 @@ jQuery( document ).ready(function() {
         startD = formatDate(dateStart);
         endD   = formatDate(dateEnd);
         //put it all together now
-        var dispStart = startD.day+" " +startD.month+"/"+startD.date + "/" + startD.year + ":<br/>"+
-                startD.hour+":"+startD.min+" "+startD.ampm+" - "+
-                endD.hour+":"+endD.min+" "+endD.ampm;
-        var newLoc = '<div id="schedule'+schedID+'" class="schedBox">\n\
-            <input type="checkbox" value="'+schedID+'" name="delete_schedule">\n\
-            <span class="schedInfo">'+dispStart+'<br>'+location+'</span><div class="clear"></div></div>';
+        var dispStart = startD.day+" " +startD.month+"/"+startD.date + "/" + startD.year;
+        var dispTime  = startD.hour+":"+startD.min+" "+startD.ampm+" - "+
+                        endD.hour+":"+endD.min+" "+endD.ampm;
+        var newLoc =
+          '<div id="schedule'+schedID+'" class="schedBox">'  +
+            '<input type="checkbox" value="'+schedID+'" name="delete_schedule">'  +
+            '<span class="schedInfo">' +
+              '<span>'+location+'</span>' +
+              '<div class="clear"></div>' +
+              '<div class="startDt">'+dispStart+'</div>'  +
+              '<span class="time">'+dispTime+'</span>'  +
+              '<div class="clear"></div>'  +
+              '<div class="innerInfo">Type: '+type+'</div>'  +
+            '</span>'  +
+            '<div class="clear"></div>' +
+          '</div>';
       }
-      jQuery('#locationList').append(newLoc);
+
+      jQuery('#entrySched #locationList').append(newLoc);
     });
   });
 
@@ -243,6 +254,15 @@ jQuery( document ).ready(function() {
       jQuery('#addNoteResp').text(response.msg);
       location.reload();
     });
+  });
+
+  //show schedule section when #dispSchedSect is checked
+  jQuery("#dispSchedSect").change(function() {
+    if(this.checked) {
+      jQuery('#schedSect').show();
+    }else{
+      jQuery('#schedSect').hide();
+    }
   });
 });
 

@@ -6,7 +6,6 @@ jQuery(document).ready(function () {
     //stick in the fixed 100% height behind the navbar but don't wrap it
     //jQuery('#slide-nav.navbar-default').after(jQuery('<div id="navbar-height-col"></div>'));  
 
-    // Enter your ids or classes
     var toggler = '.navbar-toggle';
     var pagewrapper = '#page-content';
     var navigationwrapper = '.navbar-header';

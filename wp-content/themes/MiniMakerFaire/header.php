@@ -71,14 +71,14 @@
 
       <?php
       wp_nav_menu( array(
-              'theme_location'    => 'main_menu',
-              'depth'             => 2,
-              'container'         => 'div',
-              'container_id'      => 'slidemenu',
-              'container_class'   => '',
-              'menu_class'        => 'nav navbar-nav',
-              'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-              'walker'            => new wp_bootstrap_navwalker())
+        'theme_location'    => 'main_menu',
+        'depth'             => 2,
+        'container'         => 'div',
+        'container_id'      => 'slidemenu',
+        'container_class'   => '',
+        'menu_class'        => 'nav navbar-nav',
+        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+        'walker'            => new wp_bootstrap_navwalker())
       );
 
       $header_cta_radio = get_theme_mod( 'header_cta_radio' );
