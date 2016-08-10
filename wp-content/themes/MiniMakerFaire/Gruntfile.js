@@ -1,9 +1,9 @@
 module.exports = function(grunt) {
   var watchList = [
-    'less/*.less', 
-    'js/**/*.js', 
-    '!js/*.js', 
-    'js/angular/**/*.js', 
+    'less/*.less',
+    'js/**/*.js',
+    '!js/*.js',
+    'js/angular/**/*.js',
     'js/angular/global-faires-map-app.js'
   ];
   var cssFiles = {
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'js/built.js': [
-            'js/src/misc-libs.js', 
+            'js/src/misc-libs.js',
             'js/src/*.js'
           ],
           'js/built-libs.js': [
