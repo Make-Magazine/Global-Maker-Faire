@@ -74,7 +74,7 @@
 ////////////////////////////////////////////////////////////////////
 
   function devdmbootstrap3_theme_js() {
-    //wp_enqueue_script('bootstrap-js', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js', array( 'jquery' ),false,true );
+    wp_enqueue_script('bootstrap-js', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js', array( 'jquery' ),false,true );
     wp_enqueue_script('fancybox-js', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js', array( 'jquery' ),false,true );
     wp_enqueue_script('owl-carousel', get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ),false,true );
     wp_enqueue_script('misc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ),false,true );

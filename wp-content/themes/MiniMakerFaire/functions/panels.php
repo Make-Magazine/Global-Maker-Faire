@@ -464,12 +464,13 @@ function getCTApanel() {
 /*  Function to return IMAGE CAROUSEL (RECTANGLE)  */
 /***************************************************/
 function getImgCarousel() {
+  // IMAGE CAROUSEL (RECTANGLE)
   $width = get_sub_field('width');
-
   // check if the nested repeater field has rows of data
   if( have_rows('images') ) {
-    echo '<section class="rectangle-image-carousel '.($width == 'Content Width' ? 'container':'').'">';
 
+    echo '<section class="rectangle-image-carousel ';
+    if ($width == 'Content Width') { echo 'container">'; } else { echo '">'; }
     echo     '<div id="carouselPanel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">';
     $i = 0;
@@ -478,14 +479,13 @@ function getImgCarousel() {
     while ( have_rows('images') ) {
       the_row();
 
-      $text  = get_sub_field('text');
-      $url   = get_sub_field('url');
+      $text = get_sub_field('text');
+      $url  = get_sub_field('url');
       $image = get_sub_field('image');
 
       if ($i == 0) { ?>
         <div class="item active">
-          <?php
-          if($url){ ?>
+          <?php if(get_sub_field('url')){ ?>
             <a href="<?php echo $url ?>">
           <?php } ?>
             <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
@@ -494,7 +494,7 @@ function getImgCarousel() {
                 <h3><?php echo $text; ?></h3>
               </div>
             <?php }
-          if($url){
+          if(get_sub_field('url')){
             echo '</a>';
           } ?>
         </div> <?php
@@ -507,10 +507,11 @@ function getImgCarousel() {
         </div> <?php
       }
       $i++;
-    }
-    echo '</div>'; //end div.carousel-inner
+    } ?>
 
-    if( $i > 1 ) { ?>
+    </div> <!-- close carousel-inner-->
+
+    <?php if( $i > 1 ){ ?>
       <a class="left carousel-control" href="#carouselPanel" role="button" data-slide="prev">
         <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
         <span class="sr-only">Previous</span>
@@ -519,9 +520,10 @@ function getImgCarousel() {
         <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
         <span class="sr-only">Next</span>
       </a>
-    <?php }
-    echo '</div><!-- /.carousel -->
-      </section>';
+<?php } ?>
+          </div> <!-- close carouselPanel-->
+        </section> <?php
+
   }
 }
 
@@ -540,8 +542,8 @@ function getImgCarouselSquare() {
       <?php while ( have_rows('images') ) {
         the_row();
 
-        $text = get_sub_field('text');
-        $url = get_sub_field('url');
+        $text  = get_sub_field('text');
+        $url   = get_sub_field('url');
         $image = get_sub_field('image'); ?>
 
         <div class="mtm-car-image" style="background: url('<?php echo $image["url"]; ?>') no-repeat center center;background-size: cover;"></div>
@@ -557,11 +559,12 @@ function getImgCarouselSquare() {
       <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
       <span class="sr-only">Next</span>
     </a>
+    </section>
 
     <script>
     jQuery( document ).ready(function() {
       // Carousel init
-      jQuery('.mtm-carousel').owlCarousel({
+      jQuery('.square-image-carousel .mtm-carousel').owlCarousel({
         center: true,
         autoWidth:true,
         items:2,
@@ -578,18 +581,17 @@ function getImgCarouselSquare() {
         }
       });
       // Carousel left right
-      jQuery( "#right-trigger" ).click(function( event ) {
+      jQuery( ".square-image-carousel #right-trigger" ).click(function( event ) {
         event.preventDefault();
-        jQuery( ".owl-next" ).click();
+        jQuery( ".square-image-carousel .owl-next" ).click();
       });
-      jQuery( "#left-trigger" ).click(function( event ) {
+      jQuery( ".square-image-carousel #left-trigger" ).click(function( event ) {
         event.preventDefault();
-        jQuery( ".owl-prev" ).click();
+        jQuery( ".square-image-carousel .owl-prev" ).click();
       });
     });
     </script>
     <?php
-    echo '</section>';
   }
 }
 
