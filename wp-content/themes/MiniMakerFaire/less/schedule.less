@@ -1,6 +1,7 @@
 #page-schedule {
   padding-top: 30px;
   padding-bottom: 30px;
+  color: #666;
   .sortorder:after {
     content: '\25b2';
   }
@@ -217,24 +218,32 @@
     }
   }
 
-  .schedule-table {
-    vertical-align: middle;
-    color: #666;
-    h3 {
-      margin-top: 0;
-      margin-bottom: 2px;
-      font-family: Roboto,"Helvetica Neue",Helvetica,sans-serif;
-      font-size: 20px;
-      color: #00A3DA;
+  .sched-table {
+    @media (max-width:767px) {
+      overflow-x: scroll;
     }
-    .header {
+    .sched-header {
       color: #888;
       font-size: 14px;
       font-weight: 400;
       text-transform: uppercase;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #00A3DA;
-      .dropdown-toggle {
+      @media (max-width:767px) {
+        min-width: 700px;
+      }
+      > div {
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        overflow: hidden;
+        &:first-child {
+          @media (min-width:1200px) {
+            padding-left: 0;
+          }
+        }
+        &:last-child {
+          padding-right: 15px;
+        }
+      }
+      .dropdown-toggle, &.dropdown-toggle a {
         padding: 0;
         border-width: 0;
         text-transform: uppercase;
@@ -242,76 +251,137 @@
           text-decoration: none;
         }
       }
-    }
-    .quick-view-tr {
-      display: none;
+      hr {
+        margin-top: 10px;
+      }
     }
 
-    .schedule-col-1 {
-      width: 10%;
-      @media (min-width:992px) and (max-width:1199px) {
-        width: 12%;
-      }
-      @media (min-width:768px) and (max-width:991px) {
-        width: 17%;
-      }
-      @media (max-width:767px) {
-        width: 19%;
-        img {
-          max-width: 100px;
+    .sched-body {
+      .sched-row {
+        margin-bottom: 15px;
+        @media (max-width:767px) {
+          min-width: 700px;
         }
-      }
-      img {
-        border: 2px solid #ccc;
-      }
-    }
-    .presenters {
+        > div {
+          padding-left: 7.5px;
+          padding-right: 7.5px;
+          overflow: hidden;
+          height: 165px;
+          @media (min-width:992px) and (max-width:1199px) {
+            height: 140px;
+          }
+          @media (min-width:768px) and (max-width:991px) {
+            height: 103px;
+          }
+          @media (max-width:767px) {
+            height: 95px;
+          }
+          &:first-child {
+            padding-left: 15px;
+            @media (min-width:1200px) {
+              padding-right: 15px;
+            }
+          }
+          &:nth-child(2) {
+            @media (min-width:1200px) {
+              padding-left: 0;
+            }
+          }
+          &:last-child {
+            padding-right: 15px;
+          }
+        }
+        .sched-img {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
+        h3 {
+          margin-top: 0;
+          margin-bottom: 2px;
+          font-family: Roboto,"Helvetica Neue",Helvetica,sans-serif;
+          font-size: 20px;
+          color: #00A3DA;
+          max-height: 46px;
+          overflow: hidden;
+          @media (max-width:767px) {
+            font-size: 18px;
+          }
+        }
+        .sched-description {
+          max-height: 118px;
+          overflow: hidden;
+          @media (min-width:992px) and (max-width:1199px) {
+            max-height: 70px;
+          }
+          @media (max-width:991px) {
+            max-height: 39px;
+            line-height: 1.2em;
+          }
+        }
+        .sched-type {
+          img {
+            @media (min-width:768px) {
+              max-width: 50px;
+            }
+          }
+        }
 
-      h3 {
-        margin-top: 0;
-        margin-bottom: 2px;
-        font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
-        font-size: 20px;
-        color: #00A3DA;
+        .overflow-ellipsis-text {
+          overflow: hidden;
+          position: relative; 
+          line-height: 1.2em;
+          max-height: 9.6em; 
+          margin-right: -1em;
+          padding-right: 1em;
+          @media (min-width:992px) and (max-width:1199px) {
+            max-height: 8.4em;
+          }
+          @media (min-width:768px) and (max-width:991px) {
+            max-height: 6em;
+          }
+          @media (max-width:767px) {
+            max-height: 4em;
+          }
+          &:before {
+            content: '...';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+          }
+          &:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 1em;
+            height: 1em;
+            margin-top: 0.2em;
+            background: white;
+          }
+        }
+
+        .sched-more-info {
+          height: inherit;
+          margin-top: -25px;
+          padding-left: 0;
+          @media (max-width:1199px) {
+            padding-left: 8px;
+          }
+          .panel-heading {
+            padding-bottom: 0;
+            span {
+              color: #397b98;
+              cursor: pointer;
+            }
+          }
+          .panel-heading, .panel-body {
+            padding-left: 0;
+          }
+        }
+
       }
-      p {
-        font-size: 15px;
-      }
-      span {
-        color: #00A3DA;
-        font-size: 12px;
-        position: absolute;
-        bottom: 0;
-      }
     }
-    .schedule-col-3 {
-      width: 12%;
-    }
-    .schedule-col-4 {
-      width: 17%;
-    }
-    .schedule-col-5 {
-      width: 12%;
-      img {
-        width: 50px;
-      }
-    }
-    .schedule-col-6 {
-      width: 12%;
-    }
-    .schedule-fixed-h {
-      height: 100px;
-      position: relative;
-    }
-  }
-  .schedType {
-    vertical-align: middle;
-    img {
-      height: 50px;
-    }
-  }
-  .projImg {
-    width: 80px;
-    height: auto;
   }
 }
