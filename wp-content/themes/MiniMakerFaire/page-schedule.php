@@ -80,57 +80,60 @@ get_header(); ?>
 
   <div class="sched-table">
     <div class="row sched-header">
-      <div class="col-xs-5 col-sm-4 col-xs-offset-2">
-        <!--<span ng-click="order('name')">Title</span>
-        <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
-        -->
-        Title
+
+      <div class="sched-col-1"></div>
+
+      <div class="sched-flex-row">
+
+        <div class="sched-col-2">
+          <!--<span ng-click="order('name')">Title</span>
+          <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+          -->
+          Title
+        </div>
+
+        <div class="sched-col-3">
+          <!--<span ng-click="order('time_start')">Time</span>
+          <span class="sortorder" ng-show="predicate === 'time_start'" ng-class="{reverse:reverse}"></span>
+          -->
+          Time
+        </div>
+
+        <div class="sched-col-4">
+          <span class="dropdown">
+            <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Stage {{schedStage}}
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
+              <li>
+                <a ng-click="setStage('')">All</a>
+              </li>
+              <li ng-repeat="schedule in schedules | unique:'nicename' | orderBy: nicename ">
+                <a ng-click="setStage(schedule.nicename)">{{schedule.nicename}}</a>
+              </li>
+            </ul>
+          </span>
+        </div>
+
+        <div class="sched-col-5">Type</div>
+
+        <div class="sched-col-6">
+          <span class="dropdown">
+            <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Topics {{schedTopic}}
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
+              <li>
+                <a ng-click="setTagFilter('')">All</a>
+              </li>
+              <li ng-repeat="tag in tags | orderBy: tag"> <a ng-click="setTagFilter(tag)">{{ tag }}</a></li>
+            </ul>
+          </span>
+        </div>
       </div>
 
-      <div class="col-xs-2 col-sm-1 no-pad-left">
-        <!--<span ng-click="order('time_start')">Time</span>
-        <span class="sortorder" ng-show="predicate === 'time_start'" ng-class="{reverse:reverse}"></span>
-        -->
-        Time
-      </div>
-
-      <div class="col-xs-2 col-sm-1">
-        <span class="dropdown">
-          <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Stage {{schedStage}}
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
-            <li>
-              <a ng-click="setStage('')">All</a>
-            </li>
-            <li ng-repeat="schedule in schedules | unique:'nicename' | orderBy: nicename ">
-              <a ng-click="setStage(schedule.nicename)">{{schedule.nicename}}</a>
-            </li>
-          </ul>
-        </span>
-      </div>
-
-      <div class="col-xs-1">Type</div>
-
-      <div class="col-sm-3 hidden-xs">
-        <span class="dropdown">
-          <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Topics {{schedTopic}}
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
-            <li>
-              <a ng-click="setTagFilter('')">All</a>
-            </li>
-            <li ng-repeat="tag in tags | orderBy: tag"> <a ng-click="setTagFilter(tag)">{{ tag }}</a></li>
-          </ul>
-        </span>
-      </div>
-
-      <div class="col-xs-12">
-        <hr />
-      </div>
     </div>
 
 
@@ -140,33 +143,36 @@ get_header(); ?>
         <div ng-repeat="schedule in schedules | dayFilter: key | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
           <div class="row sched-row">
 
-            <div class="col-xs-2">
+            <div class="sched-col-1">
               <a href="/maker/entry/{{schedule.id}}">
                 <div class="sched-img" style="background-image: url({{schedule.thumb_img_url}});"></div>
               </a>
             </div>
 
-            <div class="col-xs-5 col-sm-4">
-              <h3>
-                <a href="/maker/entry/{{schedule.id}}">{{schedule.name}}</a>
-              </h3>
-              <p class="sched-description">{{schedule.maker_list}}</p>
-            </div>
+            <div class="sched-flex-row">
 
-            <div class="col-xs-2 col-sm-1 no-pad-left no-pad-right">{{schedule.time_start | date: "shortTime"}} - <br/>{{schedule.time_end | date: "shortTime"}}</div>
+              <div class="sched-col-2">
+                <h3>
+                  <a href="/maker/entry/{{schedule.id}}">{{schedule.name}}</a>
+                </h3>
+                <p class="sched-description">{{schedule.maker_list}}</p>
+              </div>
 
-            <div class="col-xs-2 col-sm-1 no-pad-right">{{schedule.nicename}}</div>
+              <div class="sched-col-3">{{schedule.time_start | date: "shortTime"}} - <br/>{{schedule.time_end | date: "shortTime"}}</div>
 
-            <div class="col-xs-1 sched-type">
-              <img ng-if="schedule.type == 'Demo'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Demo-icon.svg" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
-              <img ng-if="schedule.type == 'Talk'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Talk-icon.svg" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
-              <img ng-if="schedule.type == 'Workshop'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Workshop-icon.svg" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
-              <img ng-if="schedule.type == 'Performance'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Performance-icon.svg" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
-            </div>
+              <div class="sched-col-4">{{schedule.nicename}}</div>
 
-            <div class="col-sm-3 hidden-xs">
-              <div class="overflow-ellipsis-text">
-                <span data-ng-repeat="catName in schedule.category">{{catName}}<font ng-show="!$last">, </font></span>
+              <div class="sched-col-5 sched-type">
+                <img ng-if="schedule.type == 'Demo'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Demo-icon.svg" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
+                <img ng-if="schedule.type == 'Talk'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Talk-icon.svg" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
+                <img ng-if="schedule.type == 'Workshop'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Workshop-icon.svg" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
+                <img ng-if="schedule.type == 'Performance'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Performance-icon.svg" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
+              </div>
+
+              <div class="sched-col-6">
+                <div class="overflow-ellipsis-text">
+                  <span data-ng-repeat="catName in schedule.category">{{catName}}<font ng-show="!$last">, </font></span>
+                </div>
               </div>
             </div>
 
@@ -182,10 +188,6 @@ get_header(); ?>
                   <a href="/maker/entry/{{schedule.id}}">Full Details</a>
                 </div>
               </div>
-            </div>
-
-            <div class="col-xs-12">
-              <hr />
             </div>
 
           </div>

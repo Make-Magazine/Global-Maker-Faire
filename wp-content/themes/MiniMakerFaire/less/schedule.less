@@ -218,6 +218,36 @@
     }
   }
 
+  .sched-flex-row {
+    margin-left: 110px;
+    > div {
+      float: left;
+      padding-left: 5px;
+      padding-right: 5px;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+    .sched-col-2 {
+      width: 40%;
+    }
+    .sched-col-3 {
+      width: 15%;
+    }
+    .sched-col-4 {
+      width: 15%;
+    }
+    .sched-col-5 {
+      width: 15%;
+    }
+    .sched-col-6 {
+      width: 15%;
+    }
+  }
+
   .sched-table {
     @media (max-width:767px) {
       overflow-x: scroll;
@@ -227,6 +257,11 @@
       font-size: 14px;
       font-weight: 400;
       text-transform: uppercase;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #00A3DA;
       @media (max-width:991px) {
         font-size: 13px;
         .dropdown-toggle, &.dropdown-toggle a {
@@ -235,19 +270,6 @@
       }
       @media (max-width:767px) {
         min-width: 700px;
-      }
-      > div {
-        padding-left: 7.5px;
-        padding-right: 7.5px;
-        overflow: hidden;
-        &:first-child {
-          @media (min-width:1200px) {
-            padding-left: 0;
-          }
-        }
-        &:last-child {
-          padding-right: 15px;
-        }
       }
       .dropdown-toggle, &.dropdown-toggle a {
         padding: 0;
@@ -268,58 +290,35 @@
 
     .sched-body {
       .sched-row {
+        margin-left: 0;
+        margin-right: 0;
         margin-bottom: 10px;
         padding-bottom: 5px;
+        border-bottom: 1px solid #00A3DA;
         @media (max-width:991px) {
           font-size: 14px;
         }
         @media (max-width:767px) {
           min-width: 700px;
         }
-        > div {
-          padding-left: 7.5px;
-          padding-right: 7.5px;
-          overflow: hidden;
-          height: 165px;
-          &.hidden-xs {
-            overflow: initial;
-          }
-          @media (min-width:992px) and (max-width:1199px) {
-            height: 140px;
-          }
-          @media (min-width:768px) and (max-width:991px) {
-            height: 103px;
-          }
-          @media (max-width:767px) {
-            height: 95px;
-          }
-          &:first-child {
-            padding-left: 15px;
-            @media (min-width:1200px) {
-              padding-right: 15px;
-            }
-          }
-          &:nth-child(2) {
-            @media (min-width:1200px) {
-              padding-left: 0;
-            }
-          }
-          &:last-child {
-            padding-right: 15px;
-          }
-        }
         .sched-img {
-          width: 100%;
-          height: 100%;
+          border: 2px solid #888;
+          width: 100px;
+          height: 100px;
+          float: left;
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center center;
         }
+        .sched-flex-row {
+          height: 100px;
+        }
         h3 {
-          margin-top: 0;
+          margin-top: -2px;
           margin-bottom: 2px;
           font-family: Roboto,"Helvetica Neue",Helvetica,sans-serif;
           font-size: 20px;
+          line-height: 1.1em;
           color: #00A3DA;
           max-height: 46px;
           overflow: hidden;
@@ -328,10 +327,14 @@
           }
         }
         .sched-description {
-          max-height: 118px;
+          line-height: 1.3em;
+          max-height: 90px;
           overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
           @media (min-width:992px) and (max-width:1199px) {
-            max-height: 70px;
+            max-height: 41px;
           }
           @media (max-width:991px) {
             max-height: 33px;
@@ -341,57 +344,25 @@
         .sched-type {
           img {
             @media (min-width:768px) {
-              max-width: 50px;
+              max-width: 60px;
             }
           }
         }
-        .no-pad-right {
-          padding-right: 0;
-        }
-        .no-pad-left {
-          padding-left: 0;
-        }
 
         .overflow-ellipsis-text {
-          overflow: hidden;
-          position: relative; 
+          font-size: 14px;
           line-height: 1.2em;
-          max-height: 9.6em; 
-          margin-right: -1em;
-          padding-right: 1em;
-          @media (min-width:992px) and (max-width:1199px) {
-            max-height: 8.4em;
-          }
-          @media (min-width:768px) and (max-width:991px) {
-            max-height: 7em;
-          }
-          @media (max-width:767px) {
-            max-height: 4em;
-          }
-          &:before {
-            content: '...';
-            position: absolute;
-            right: 4px;
-            bottom: 0;
-          }
-          &:after {
-            content: '';
-            position: absolute;
-            right: 0;
-            width: 1em;
-            height: 1em;
-            margin-top: 0.2em;
-            background: white;
-          }
+          max-height: 97px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 6;
+          -webkit-box-orient: vertical;
         }
 
         .sched-more-info {
-          height: inherit;
           margin-top: -25px;
           padding-left: 0;
-          @media (max-width:1199px) {
-            padding-left: 8px;
-          }
+          margin-left: 110px;
           .panel-heading {
             padding-bottom: 0;
             span {
@@ -403,17 +374,6 @@
             padding-left: 0;
           }
         }
-
-        .col-xs-12 {
-          padding-left: 15px;
-          padding-right: 15px;
-          height: auto;
-          hr {
-            margin-top: 7px;
-            margin-bottom: 0;
-          }
-        }
-
       }
     }
   }
