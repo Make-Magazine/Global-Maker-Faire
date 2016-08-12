@@ -4,10 +4,10 @@
 */
 get_header(); ?>
 
-<input type="hidden" id="forms2use" value="1,3" />
+<input type="hidden" id="forms2use" value="<?php echo get_field('schedule_ids'); ?>" />
 
 <div id="page-schedule" class="container">
-  <div class="container schedule-table"  ng-controller="scheduleCtrl" ng-app="scheduleApp">
+  <div class="container schedule-table"  ng-controller="scheduleCtrl" ng-app="scheduleApp" ng-cloak="">
     <div class="topic-nav">
       <div class="btn-group">
         <button type="button" class="btn btn-b-ghost dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -19,8 +19,8 @@ get_header(); ?>
               <div class="topic-nav-item">
                 <p>ALL</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -30,8 +30,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/talk.png" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
                 Talk</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -41,8 +41,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/demo.png" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
                 Demo</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -52,8 +52,8 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/workshop.png" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
                 Workshop</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
 
           <li class="topic-nav-item-inner">
@@ -63,15 +63,15 @@ get_header(); ?>
                   <img src="<?php echo get_bloginfo('template_directory'); ?>/img/performance.png" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
                 Performance</p>
               </div>
+              <div class="active-topic-arrow"></div>
             </a>
-            <div class="active-topic-arrow"></div>
           </li>
         </ul>
       </div>
     </div>
 
     <ul class="day-nav list-unstyled">
-      <li ng-repeat="day in days" class="day-nav-box" ng-class="{active:$first}" ng-class="{active:$first}">
+      <li ng-repeat="day in days" class="day-nav-box" ng-class="{active:$first}">
         <a class="day-nav-item" data-toggle="tab" href="#{{day}}Sched">
           <h2>{{day}}</h2>
         </a>
@@ -125,7 +125,7 @@ get_header(); ?>
       </div>
     </div>
     <div class="tab-content">
-      <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
+      <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="{active:$first}" class="tab-pane">
         <div ng-repeat="schedule in schedules | dayFilter: key | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
           <div class="row">
             <div class="col-lg-1">
@@ -174,7 +174,7 @@ jQuery(".topic-nav-item-inner").click(function() {
   jQuery(".topic-nav-item-inner.activeTopic").removeClass("activeTopic");
   jQuery(this).addClass('activeTopic');
 });
-  
+
 jQuery(document).ready(function(){
   jQuery( ".quick-view-toggle" ).click(function(event) {
 

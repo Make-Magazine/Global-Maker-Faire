@@ -59,8 +59,8 @@ function add_sidebar_text_middle( $form, $entry ) {
   <!-- Schedule/Location SideBar-->
   <div class="meta-box-sortables">
     <div id="entrySched" class="postbox">
-      <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Schedule/Location</span><span class="toggle-indicator" aria-hidden="true"></span></button>
-      <h2 class="hndle ui-sortable-handle"><span>Schedule/Location</span></h2>
+      <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Location & Schedule</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+      <h2 class="hndle ui-sortable-handle"><span>Location & Schedule</span></h2>
       <div class="inside">
         <?php echo disp_sched( $form, $entry);?>
       </div>
@@ -264,22 +264,11 @@ function disp_flags($form, $lead) {
 function disp_sched( $form, $lead) {
   global $wpdb;
   $form_id = $form['id'];
-  echo ('<link rel="stylesheet" type="text/css" href="'.get_stylesheet_directory_uri() . '/css/jquery.datetimepicker.css"/>');
-
-  echo display_schedule($form_id,$lead);
-
-  // Set up the Add to Schedule Section
   ?>
-  <h4 class="topBorder">Add New:
-    <span class="sidebar-title">
-      <a href="#" onclick="return false;"
-        data-toggle="popover" data-trigger="hover"
-        data-placement="top" data-html="true"
-        data-content="Location is required<br/>Type and Date are optional, however if one is set the other must be as well">
-        (?)</a>
-    </span>
-    </h4>
+  <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/jquery.datetimepicker.css"/>
+  <div id="scheduledItems"><?php echo display_schedule($form_id,$lead);?></div>
   <?php
+  // Set up the Add to Schedule Section
   $sql = "select distinct(location) as location from {$wpdb->prefix}mf_location";
 
   $locArr = array();
@@ -288,37 +277,42 @@ function disp_sched( $form, $lead) {
     $options .= '<option value="'.$row['location'].'">'.$row['location'].'</option>';
   }
   ?>
-
-  <label for="locationSel">Location Code:</label>
+  <!-- Scheduling section -->
+  <label for="locationSel">Select Location:</label>
   <select id="locationSel">
     <?php echo $options;?>
     <option value="new">Add new</option>
   </select>
   <input type="text" name="update_entry_location_code" <?php echo (empty($options)?"":'style="display:none"');?> id="update_entry_location_code" />
-
-  <label for="typeSel">Type: (Optional)</label>
-  <select id="typeSel">
-    <option value="">Please Select</option>
-    <option value="workshop">Workshop</option>
-    <option value="talk">Talk</option>
-    <option value="performance">Performance</option>
-    <option value="demo">Demo</option>
-  </select>
-
-  <label for="schedAdd">Schedule Start/End: (Optional)</label>
-  <div id="schedAdd">
-    <div style="padding:10px 0;width:40px;float:left">Start: </div>
-    <div style="float:left">
-      <input type="text" value="" name="datetimepickerstart" id="datetimepickerstart">
-    </div>
-    <div class="clear" style="padding:10px 0;width:40px;float:left">End:</div>
-    <div style="float:left">
-      <input type="text" value="" name="datetimepickerend" id="datetimepickerend">
-    </div>
-  </div>
   <div class="clear"></div>
 
-  <input type="submit" id="update_entry_schedule" value="Add Location" class="button" /><br />
+  <input type="checkbox" id="dispSchedSect" value="yes" />  Add Date & Time
+  <!-- Only show when #dispSchedSect is selected-->
+  <div id="schedSect" style="display:none">
+    <label for="schedAdd">Start/End:</label>
+    <div id="schedAdd">
+      <div style="padding:10px 0;width:40px;float:left">Start: </div>
+      <div style="float:left">
+        <input type="text" value="" name="datetimepickerstart" id="datetimepickerstart">
+      </div>
+      <div class="clear" style="padding:10px 0;width:40px;float:left">End:</div>
+      <div style="float:left">
+        <input type="text" value="" name="datetimepickerend" id="datetimepickerend">
+      </div>
+    </div>
+    <div class="clear"></div>
+    <label for="typeSel">Type: </label>
+    <select id="typeSel">
+      <option value="">Please Select</option>
+      <option value="workshop">Workshop</option>
+      <option value="talk">Talk</option>
+      <option value="performance">Performance</option>
+      <option value="demo">Demo</option>
+    </select>
+    <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
+  <input type="submit" id="update_entry_schedule" value="Add" class="button" /><br />
 
   <br/>
   <span id="schedResp"></span>
@@ -400,7 +394,19 @@ function display_schedule($form_id,$lead,$section='sidebar'){
                 <?php
               }else{
                 //display the schedule only
-                echo '<span class="schedDate">'.date("g:i A",$start_dt).' - '.date("g:i A",$end_dt).'</span><div class="clear"></div>';
+                ?>
+                <div class="schedBox">
+                  <span class="schedInfo">
+                    <span><?php echo $stage;?></span>
+                    <div class="clear"></div>
+                    <div class="startDt"><?php echo date('l n/j/y',strtotime($date));?></div>
+                    <span class="time"><?php echo date("g:i A",$start_dt).' - ' .date("g:i A",$end_dt);?></span>
+                    <div class="clear"></div>
+                    <?php echo ($type!=''? '<div class="innerInfo">Type: '.ucwords($type).'</div>':'');?>
+                  </span>
+                  <div class="clear"></div>
+                </div>
+                <?php
               }
 
             }

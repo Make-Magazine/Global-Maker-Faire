@@ -1,12 +1,13 @@
 var app = angular.module('mtm', []);
 
 app.controller('mtmMakers', function($scope, $http) {
+  $scope.layout = 'grid';
   var formIDs = jQuery('#forms2use').val();
   $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=mtm&formIDs='+formIDs)
   .then(function successCallback(response) {
     $scope.catJson = [];
     angular.forEach(response.data.category,function(catArr){
-       $scope.catJson[catArr.id] = catArr.name.trim();
+      $scope.catJson[catArr.id] = catArr.name.trim();
     });
     $scope.makers = response.data.entity;
     $scope.category = '';
@@ -25,7 +26,7 @@ app.controller('mtmMakers', function($scope, $http) {
     angular.forEach($scope.makers, function(maker){
       //build carousel images
       if(maker.flag=='Featured Maker') {
-        carouselImgs += '<a href="/maker/entry/'+maker.id+'"><div class="mtm-car-image" style="background: url(' + maker.large_img_url + ') no-repeat center center;background-size: cover;"></div></a>';
+        carouselImgs += '<a href="/maker/entry/'+maker.id+'"><div class="mtm-car-image" style="background: url(' + maker.featured_img + ') no-repeat center center;background-size: cover;"></div></a>';
       }
       var categories = [];
       var catList = maker.category_id_refs;
@@ -69,6 +70,10 @@ app.controller('mtmMakers', function($scope, $http) {
   $scope.setTagFilter = function (tag) {
     $scope.category = tag;
   }
+  // Clear category filter on All button click
+  $scope.clearFilter = function() {
+    $scope.category = '';
+  };
 });
 
 app.filter('byCategory', function(){

@@ -158,7 +158,8 @@ function delete_entry_location(){
 	if ($delete_schedule != ''){
     //delete from schedule and location table
     $delete_query =  "DELETE `{$wpdb->prefix}mf_schedule`, `{$wpdb->prefix}mf_location`
-                       WHERE {$wpdb->prefix}mf_schedule.ID IN "
+                      from `{$wpdb->prefix}mf_schedule`, `{$wpdb->prefix}mf_location`
+                      WHERE {$wpdb->prefix}mf_schedule.ID IN "
                        . "($delete_schedule) and location_id={$wpdb->prefix}mf_location.id";
     $wpdb->get_results($delete_query);
   }
