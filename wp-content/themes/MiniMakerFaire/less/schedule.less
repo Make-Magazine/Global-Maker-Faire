@@ -227,6 +227,12 @@
       font-size: 14px;
       font-weight: 400;
       text-transform: uppercase;
+      @media (max-width:991px) {
+        font-size: 13px;
+        .dropdown-toggle, &.dropdown-toggle a {
+          font-size: 13px;
+        }
+      }
       @media (max-width:767px) {
         min-width: 700px;
       }
@@ -251,14 +257,22 @@
           text-decoration: none;
         }
       }
-      hr {
-        margin-top: 10px;
+      .col-xs-12 {
+        padding-left: 15px;
+        padding-right: 15px;
+        hr {
+          margin-top: 10px;
+        }
       }
     }
 
     .sched-body {
       .sched-row {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        @media (max-width:991px) {
+          font-size: 14px;
+        }
         @media (max-width:767px) {
           min-width: 700px;
         }
@@ -267,6 +281,9 @@
           padding-right: 7.5px;
           overflow: hidden;
           height: 165px;
+          &.hidden-xs {
+            overflow: initial;
+          }
           @media (min-width:992px) and (max-width:1199px) {
             height: 140px;
           }
@@ -317,7 +334,7 @@
             max-height: 70px;
           }
           @media (max-width:991px) {
-            max-height: 39px;
+            max-height: 33px;
             line-height: 1.2em;
           }
         }
@@ -327,6 +344,12 @@
               max-width: 50px;
             }
           }
+        }
+        .no-pad-right {
+          padding-right: 0;
+        }
+        .no-pad-left {
+          padding-left: 0;
         }
 
         .overflow-ellipsis-text {
@@ -340,7 +363,7 @@
             max-height: 8.4em;
           }
           @media (min-width:768px) and (max-width:991px) {
-            max-height: 6em;
+            max-height: 7em;
           }
           @media (max-width:767px) {
             max-height: 4em;
@@ -348,7 +371,7 @@
           &:before {
             content: '...';
             position: absolute;
-            right: 0;
+            right: 4px;
             bottom: 0;
           }
           &:after {
@@ -378,6 +401,16 @@
           }
           .panel-heading, .panel-body {
             padding-left: 0;
+          }
+        }
+
+        .col-xs-12 {
+          padding-left: 15px;
+          padding-right: 15px;
+          height: auto;
+          hr {
+            margin-top: 7px;
+            margin-bottom: 0;
           }
         }
 

@@ -27,7 +27,7 @@ get_header(); ?>
           <a href="#" ng-click="setTypeFilter('Talk')">
             <div class="topic-nav-item">
               <p>
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/talk.png" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
+                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Talk-icon.svg" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
               Talk</p>
             </div>
             <div class="active-topic-arrow"></div>
@@ -38,7 +38,7 @@ get_header(); ?>
           <a ng-click="setTypeFilter('Demo')">
             <div class="topic-nav-item">
               <p>
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/demo.png" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
+                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Demo-icon.svg" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
               Demo</p>
             </div>
             <div class="active-topic-arrow"></div>
@@ -49,7 +49,7 @@ get_header(); ?>
           <a ng-click="setTypeFilter('Workshop')">
             <div class="topic-nav-item">
               <p>
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/workshop.png" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
+                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Workshop-icon.svg" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
               Workshop</p>
             </div>
             <div class="active-topic-arrow"></div>
@@ -60,7 +60,7 @@ get_header(); ?>
           <a ng-click="setTypeFilter('Performance')">
             <div class="topic-nav-item">
               <p>
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/performance.png" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
+                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Performance-icon.svg" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
               Performance</p>
             </div>
             <div class="active-topic-arrow"></div>
@@ -87,7 +87,7 @@ get_header(); ?>
         Title
       </div>
 
-      <div class="col-xs-2 col-sm-1">
+      <div class="col-xs-2 col-sm-1 no-pad-left">
         <!--<span ng-click="order('time_start')">Time</span>
         <span class="sortorder" ng-show="predicate === 'time_start'" ng-class="{reverse:reverse}"></span>
         -->
@@ -153,15 +153,15 @@ get_header(); ?>
               <p class="sched-description">{{schedule.maker_list}}</p>
             </div>
 
-            <div class="col-xs-2 col-sm-1">{{schedule.time_start | date: "shortTime"}} - <br/>{{schedule.time_end | date: "shortTime"}}</div>
+            <div class="col-xs-2 col-sm-1 no-pad-left no-pad-right">{{schedule.time_start | date: "shortTime"}} - <br/>{{schedule.time_end | date: "shortTime"}}</div>
 
-            <div class="col-xs-2 col-sm-1">{{schedule.nicename}}</div>
+            <div class="col-xs-2 col-sm-1 no-pad-right">{{schedule.nicename}}</div>
 
             <div class="col-xs-1 sched-type">
-              <img ng-if="schedule.type == 'Demo'" src="<?php echo get_bloginfo('template_directory'); ?>/img/demo.png" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
-              <img ng-if="schedule.type == 'Talk'" src="<?php echo get_bloginfo('template_directory'); ?>/img/talk.png" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
-              <img ng-if="schedule.type == 'Workshop'" src="<?php echo get_bloginfo('template_directory'); ?>/img/workshop.png" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
-              <img ng-if="schedule.type == 'Performance'" src="<?php echo get_bloginfo('template_directory'); ?>/img/performance.png" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
+              <img ng-if="schedule.type == 'Demo'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Demo-icon.svg" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
+              <img ng-if="schedule.type == 'Talk'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Talk-icon.svg" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
+              <img ng-if="schedule.type == 'Workshop'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Workshop-icon.svg" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
+              <img ng-if="schedule.type == 'Performance'" src="<?php echo get_bloginfo('template_directory'); ?>/img/Performance-icon.svg" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
             </div>
 
             <div class="col-sm-3 hidden-xs">
@@ -182,6 +182,10 @@ get_header(); ?>
                   <a href="/maker/entry/{{schedule.id}}">Full Details</a>
                 </div>
               </div>
+            </div>
+
+            <div class="col-xs-12">
+              <hr />
             </div>
 
           </div>
