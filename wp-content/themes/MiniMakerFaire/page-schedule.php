@@ -6,7 +6,7 @@ get_header(); ?>
 
 <input type="hidden" id="forms2use" value="<?php echo get_field('schedule_ids'); ?>" />
 
-<div id="page-schedule" class="container schedule-table" ng-controller="scheduleCtrl" ng-app="scheduleApp">
+<div id="page-schedule" class="container schedule-table" ng-controller="scheduleCtrl" ng-app="scheduleApp" ng-cloak="">
 
   <div class="topic-nav">
     <div class="btn-group">
