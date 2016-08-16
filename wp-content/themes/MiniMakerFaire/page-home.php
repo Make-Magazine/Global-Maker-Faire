@@ -743,6 +743,108 @@ get_header();
 
 
 
+
+
+
+      // SOCIAL MEDIA PANEL
+      elseif( get_row_layout() == 'social_media' ):
+
+        $activeinactive = get_sub_field('activeinactive');
+        if( $activeinactive == 'Active' ):
+
+          if( have_rows('active_feeds') ) { 
+            $panel_title = get_sub_field('panel_title'); ?>
+
+            <section class="social-feeds-panel">
+              <div class="container">
+                <div class="row social-row">
+                  <?php if( get_sub_field('panel_title') != '' ) { ?>
+                    <div class="col-xs-12 text-center">
+                      <h3><?php echo get_sub_field('panel_title'); ?></h3>
+                    </div>
+                  <?php }
+
+            $feedcount = 0;
+
+            while ( have_rows('active_feeds') ) : the_row();
+
+              if( get_row_layout() == 'facebook' ) {
+                $facebook_url = get_sub_field('facebook_url');
+                $facebook_url_2 = rawurlencode($facebook_url); 
+                $facebook_url_3 = '<iframe src="https://www.facebook.com/plugins/page.php?href=' . $facebook_url_2 . '&tabs=timeline&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>';
+
+              } elseif( get_row_layout() == 'twitter' ) {
+                $twitter_id = get_sub_field('twitter_id'); 
+                $twitter_feed = '<script type="text/javascript" src="' . get_bloginfo('template_directory') . '/js/twitterFetcher.min.js"></script>
+                  <div class="twitter-feed-parent">
+                    <h4>Tweets <span>by <a href="https://twitter.com/' . $twitter_id . '" target="_bank">@' . $twitter_id . '</a></span></h4>
+                    <hr />
+                    <div id="twitter-feed-body"></div>
+                  </div>
+                  <script>
+                    var twitter_handle = "' . $twitter_id . '";
+                    var configProfile = {
+                      "profile": {"screenName": twitter_handle},
+                      "domId": "twitter-feed-body",
+                      "maxTweets": 10,
+                      "enableLinks": true, 
+                      "showUser": true,
+                      "showTime": true,
+                      "showImages": true,
+                      "lang": "en"
+                    };
+                    twitterFetcher.fetch(configProfile);
+                  </script>';
+
+              } elseif( get_row_layout() == 'instagram' ) {
+                $instagram_iframe = get_sub_field('instagram_iframe');
+              }
+
+              $pagecount++;
+
+            endwhile;
+
+              if ($pagecount == 1) {
+                $social_bs_grid = 'col-xs-12 col-sm-6 col-sm-offset-3';
+              }
+              elseif ($pagecount == 2) {
+                $social_bs_grid = 'col-xs-12 col-sm-6';
+              }
+              elseif ($pagecount == 3) {
+                $social_bs_grid = 'col-xs-12 col-sm-6 col-md-4';
+              }
+
+                if (!empty($facebook_url_3)) { ?>
+                  <div class="social-panel-fb <?php echo $social_bs_grid; ?>">
+                    <?php echo $facebook_url_3; ?>
+                  </div>
+                <?php }
+                if (!empty($twitter_feed)) { ?>
+                  <div class="social-panel-tw <?php echo $social_bs_grid; ?>">
+                    <?php echo $twitter_feed; ?>
+                  </div>
+                <?php }
+                if (!empty($instagram_iframe)) { ?>
+                  <div class="social-panel-ig <?php echo $social_bs_grid; ?>">
+                    <?php echo $instagram_iframe; ?>
+                  </div>
+                <?php } ?>
+
+                </div>
+              </div>
+            </section>
+
+          <?php
+          }
+
+        endif;
+
+
+
+
+
+
+
       // SPONSOR PANEL
       elseif( get_row_layout() == 'sponsors_panel' ): 
 

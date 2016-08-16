@@ -294,11 +294,11 @@
                                 "Blue": "Blue",
                                 "Red": "Red"
                             },
-                            "allow_null": 0,
                             "other_choice": 0,
                             "save_other_choice": 0,
                             "default_value": "Blue",
-                            "layout": "horizontal"
+                            "layout": "horizontal",
+                            "allow_null": 0
                         }
                     ],
                     "min": "",
@@ -1374,11 +1374,11 @@
                                 "Active": "Active",
                                 "Inactive": "Inactive"
                             },
+                            "allow_null": 0,
                             "other_choice": 0,
                             "save_other_choice": 0,
                             "default_value": "Active",
-                            "layout": "horizontal",
-                            "allow_null": 0
+                            "layout": "horizontal"
                         },
                         {
                             "key": "field_573d16220b297",
@@ -1408,7 +1408,7 @@
                             "label": "Images",
                             "name": "images",
                             "type": "repeater",
-                            "instructions": "Minimum of 3 image. Max 10 images.",
+                            "instructions": "Minimum of 3 images. Max 10 images.",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1488,6 +1488,167 @@
                     ],
                     "min": "",
                     "max": 1
+                },
+                {
+                    "key": "57b20ae569288",
+                    "name": "social_media",
+                    "label": "Social Media",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_57b215b4644e8",
+                            "label": "Active\/Inactive",
+                            "name": "activeinactive",
+                            "type": "radio",
+                            "instructions": "Activate or Inactivate this panel",
+                            "required": 0,
+                            "conditional_logic": "",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "Active": "Active",
+                                "Inactive": "Inactive"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "default_value": "Active",
+                            "layout": "vertical"
+                        },
+                        {
+                            "key": "field_57b22cbb9598e",
+                            "label": "Title",
+                            "name": "panel_title",
+                            "type": "text",
+                            "instructions": "Optional: Add a title to this panel. e.g. \"Follow us on Social Media\"",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_57b20b0b69289",
+                            "label": "Active Feeds",
+                            "name": "active_feeds",
+                            "type": "flexible_content",
+                            "instructions": "Click the \"Add Social Feed\" button for each Social media feeds. 1, 2, or 3 feeds can be added. ",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "button_label": "Add Social Feed",
+                            "min": "",
+                            "max": "",
+                            "layouts": [
+                                {
+                                    "key": "57b20b62ee5c3",
+                                    "name": "facebook",
+                                    "label": "Facebook",
+                                    "display": "table",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_57b20c5f6928a",
+                                            "label": "Facebook URL",
+                                            "name": "facebook_url",
+                                            "type": "url",
+                                            "instructions": "Enter a Facebook page URL to generate the feed. e.g. \"https:\/\/www.facebook.com\/makerfaire\/\"",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": ""
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                },
+                                {
+                                    "key": "57b218d7b1f40",
+                                    "name": "twitter",
+                                    "label": "Twitter",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_57b218e0b1f41",
+                                            "label": "Twitter Handle",
+                                            "name": "twitter_id",
+                                            "type": "text",
+                                            "instructions": "Enter Twitter name(handle). e.g. \"makerfaire\" or \"MakerCamp\"",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": "",
+                                            "readonly": 0,
+                                            "disabled": 0
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                },
+                                {
+                                    "key": "57b26f1be766d",
+                                    "name": "instagram",
+                                    "label": "Instagram",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_57b26f23e766e",
+                                            "label": "Paste code here",
+                                            "name": "instagram_iframe",
+                                            "type": "textarea",
+                                            "instructions": "Go to this URL to get the iframe code to paste here. https:\/\/snapwidget.com\/widgets\/create?plan=free&service=instagram&type=grid\r\n<br\/><br\/>\r\nSnapwidget will have you login to Instagram to generate the code. Default settings will work fine, and then click the \"Get Widget\" button.",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "maxlength": "",
+                                            "rows": "",
+                                            "new_lines": "",
+                                            "readonly": 0,
+                                            "disabled": 0
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ]
         }
@@ -1522,5 +1683,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1467327610
+    "modified": 1471371673
 }

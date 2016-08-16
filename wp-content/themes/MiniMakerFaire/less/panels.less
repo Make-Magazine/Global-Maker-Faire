@@ -607,6 +607,124 @@
   }
 }
 
+.social-feeds-panel {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  h3 {
+
+  }
+  .social-row {
+    .col-sm-6:nth-child(3) {
+      @media (min-width:768px) and (max-width:991px) {
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+        display: block;
+        clear: both;
+      }
+    }
+  }
+  .social-panel-fb,
+  .social-panel-tw,
+  .social-panel-ig {
+    max-height: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    * {
+      text-align: initial;
+    }
+    @media (max-width:767px) {
+      margin-bottom: 30px;
+      iframe {
+        max-width: 340px!important;
+      }
+    }
+  }
+  .social-panel-fb {
+    iframe {
+      width: 100%;
+      max-width: 345px;
+    }
+  }
+  .social-panel-tw {
+    .twitter-feed-parent {
+      width: 100%;
+      max-width: 345px;
+      display: inline-block;
+      h4 {
+        font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        margin-bottom: 0;
+        margin-top: 0;
+        span {
+
+        }
+      }
+      hr {
+        margin-top: 15px;
+        margin-bottom: 0;
+      }
+      #twitter-feed-body {
+        ul {
+          padding-left: 0;
+          list-style: none;
+          height: 462px;
+          overflow-y: scroll;
+          overflow-x: hidden;
+          border-bottom: 1px solid #eee;
+          li {
+            padding-left: 36px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+          }
+          p {
+            font-weight: 300;
+          }
+          .user {
+            margin-left: -36px;
+            img {
+              width: 32px;
+              height: auto;
+            }
+          }
+          .media {
+            img {
+              width: 100%;
+              border-radius: 6px;
+            }
+          }
+          .timePosted {
+            float: right;
+            font-size: 14px;
+          }
+          .interact {
+            margin-bottom: 0;
+            font-size: 14px;
+            a {
+              padding-right: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .social-panel-ig {
+    h4 {
+      font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+    }
+    @media (max-width:767px) {
+      iframe {
+        //height: 92vw!important;
+      }
+    }
+  }
+}
+
 // Common elements
 .content-panel {
   padding-top: 20px;
