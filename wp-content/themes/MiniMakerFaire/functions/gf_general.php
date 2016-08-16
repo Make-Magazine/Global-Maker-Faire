@@ -93,3 +93,15 @@ function parse_yturl($url)
     preg_match($pattern, $url, $matches);
     return (isset($matches[1])) ? $matches[1] : false;
 }
+
+/**
+ * Adding code to change out options on adding a new form to explain issues around adding new forms
+ */
+add_action( 'gform_new_form_button', 'new_form_button' );
+function new_form_button( $button ) {
+        return '<div style="margin-top: -35px;margin-bottom: 15px;">Warning: <strong>DO NOT</strong> create a new Call for Makers application using this feature. To create your Call for Makers, duplicate and edit the Sample form we provided, or duplicate one of your previous forms that originated with the Sample form we provided.</div>
+</script>
+<style> label[for=new_form_description]{ display:none; } #new_form_description { display: none; }</style>
+	<input id="save_new_form" type="button" class="button button-large button-primary" value="I Understand, Create Form" onclick="saveNewForm();" tabindex="9002">';
+    }
+    
