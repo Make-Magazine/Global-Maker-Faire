@@ -750,19 +750,23 @@ get_header();
       elseif( get_row_layout() == 'social_media' ):
 
         $activeinactive = get_sub_field('activeinactive');
+        $panel_title = get_sub_field('panel_title');
         if( $activeinactive == 'Active' ):
 
-          if( have_rows('active_feeds') ) { 
-            $panel_title = get_sub_field('panel_title'); ?>
+          if( have_rows('active_feeds') ) { ?>
 
             <section class="social-feeds-panel">
               <div class="container">
-                <div class="row social-row">
-                  <?php if( get_sub_field('panel_title') != '' ) { ?>
+                <?php if( $panel_title ) { ?>
+                  <div class="row">
                     <div class="col-xs-12 text-center">
-                      <h3><?php echo get_sub_field('panel_title'); ?></h3>
+                      <div class="title-w-border-r">
+                        <h2><?php echo $panel_title; ?></h2>
+                      </div>
                     </div>
-                  <?php }
+                  </div>
+                <?php } ?>
+                <div class="row social-row"> <?php
 
             $feedcount = 0;
 
