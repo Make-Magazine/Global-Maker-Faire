@@ -72,7 +72,7 @@ function add_sidebar_text_middle( $form, $entry ) {
 //display status update/view section
 function mf_sidebar_entry_status($form_id, $lead) {
   echo ('<input type="hidden" name="entry_info_entry_id" value="'.$lead['id'].'">');
-  if ( current_user_can( 'update_entry_status') ) {
+  if ( current_user_can( 'gravityforms_edit_entries') ) {
     // Load Fields to show on entry info
     $form = GFAPI::get_form($form_id);
     $field303=RGFormsModel::get_field($form,'303');
