@@ -46,7 +46,8 @@
                             "save_other_choice": 0,
                             "default_value": "show",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         }
                     ],
                     "min": "",
@@ -79,7 +80,8 @@
                             "save_other_choice": 0,
                             "default_value": "show",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         }
                     ],
                     "min": "",
@@ -112,7 +114,8 @@
                             "save_other_choice": 0,
                             "default_value": "Active",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_56fcb5958152f",
@@ -156,7 +159,8 @@
                             "save_other_choice": 0,
                             "default_value": 4,
                             "layout": "vertical",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_56fc6fc3dc4a3",
@@ -298,7 +302,8 @@
                             "save_other_choice": 0,
                             "default_value": "Blue",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         }
                     ],
                     "min": "",
@@ -331,7 +336,8 @@
                             "save_other_choice": 0,
                             "default_value": "Active",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_573e3efd8e816",
@@ -375,7 +381,8 @@
                             "save_other_choice": 0,
                             "default_value": 4,
                             "layout": "vertical",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_573e3efd8e818",
@@ -527,7 +534,8 @@
                             "save_other_choice": 0,
                             "default_value": "Active",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_573e4bc7b665b",
@@ -747,7 +755,8 @@
                             "save_other_choice": 0,
                             "default_value": "Active",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_57070199eed66",
@@ -791,7 +800,8 @@
                             "save_other_choice": 0,
                             "default_value": 4,
                             "layout": "vertical",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_5774661792dfc",
@@ -841,7 +851,8 @@
                             "save_other_choice": 0,
                             "default_value": "Active",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_571518e122ba1",
@@ -911,7 +922,8 @@
                             "save_other_choice": 0,
                             "default_value": "Active",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_571e86b7082c3",
@@ -971,7 +983,8 @@
                             "other_choice": 0,
                             "save_other_choice": 0,
                             "default_value": "Blue",
-                            "layout": "horizontal"
+                            "layout": "horizontal",
+                            "return_format": "value"
                         }
                     ],
                     "min": "",
@@ -1004,7 +1017,8 @@
                             "save_other_choice": 0,
                             "default_value": "Active",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_572bad2b2d759",
@@ -1113,7 +1127,8 @@
                             "save_other_choice": 0,
                             "default_value": "Active",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_5707044778278",
@@ -1240,7 +1255,8 @@
                             "save_other_choice": 0,
                             "default_value": "Active",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_573d09f7c7a5a",
@@ -1263,7 +1279,8 @@
                             "save_other_choice": 0,
                             "default_value": "Content Width",
                             "layout": "vertical",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_572d9faa52da5",
@@ -1378,7 +1395,8 @@
                             "other_choice": 0,
                             "save_other_choice": 0,
                             "default_value": "Active",
-                            "layout": "horizontal"
+                            "layout": "horizontal",
+                            "return_format": "value"
                         },
                         {
                             "key": "field_573d16220b297",
@@ -1401,7 +1419,8 @@
                             "save_other_choice": 0,
                             "default_value": "Content Width",
                             "layout": "horizontal",
-                            "allow_null": 0
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
                             "key": "field_573d16220b298",
@@ -1502,7 +1521,7 @@
                             "type": "radio",
                             "instructions": "Activate or Inactivate this panel",
                             "required": 0,
-                            "conditional_logic": "",
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -1516,7 +1535,8 @@
                             "other_choice": 0,
                             "save_other_choice": 0,
                             "default_value": "Active",
-                            "layout": "vertical"
+                            "layout": "vertical",
+                            "return_format": "value"
                         },
                         {
                             "key": "field_57b22cbb9598e",
@@ -1544,7 +1564,7 @@
                             "label": "Active Feeds",
                             "name": "active_feeds",
                             "type": "flexible_content",
-                            "instructions": "Click the \"Add Social Feed\" button for each Social media feeds. 1, 2, or 3 feeds can be added. ",
+                            "instructions": "Click the \"Add Social Feed\" button for each Social media feeds. 1, 2, or 3 feeds can be added.",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1560,8 +1580,27 @@
                                     "key": "57b20b62ee5c3",
                                     "name": "facebook",
                                     "label": "Facebook",
-                                    "display": "table",
+                                    "display": "block",
                                     "sub_fields": [
+                                        {
+                                            "key": "field_57b37bd956349",
+                                            "label": "Text above Facebook feed",
+                                            "name": "fb_title",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        },
                                         {
                                             "key": "field_57b20c5f6928a",
                                             "label": "Facebook URL",
@@ -1588,6 +1627,25 @@
                                     "label": "Twitter",
                                     "display": "block",
                                     "sub_fields": [
+                                        {
+                                            "key": "field_57b37bf35634b",
+                                            "label": "Text above Twitter feed",
+                                            "name": "tw_title",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        },
                                         {
                                             "key": "field_57b218e0b1f41",
                                             "label": "Twitter Handle",
@@ -1619,6 +1677,25 @@
                                     "label": "Instagram",
                                     "display": "block",
                                     "sub_fields": [
+                                        {
+                                            "key": "field_57b37c0b5634c",
+                                            "label": "Text above Instagram feed",
+                                            "name": "ig_title",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        },
                                         {
                                             "key": "field_57b26f23e766e",
                                             "label": "Paste code here",
@@ -1683,5 +1760,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1471371673
+    "modified": 1471392412
 }
