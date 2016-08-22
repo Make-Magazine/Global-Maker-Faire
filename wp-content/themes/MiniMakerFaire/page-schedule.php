@@ -139,7 +139,7 @@ get_header(); ?>
 
 
     <div class="tab-content sched-body">
-      <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="day=='Friday'?'active tab-pane':'tab-pane'">
+      <div ng-repeat="(key, day) in days" id="{{day}}Sched" ng-class="{active:$first}" class="tab-pane">
         <div ng-repeat="schedule in schedules | dayFilter: key | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData | orderBy:predicate">
           <div class="row sched-row">
 
