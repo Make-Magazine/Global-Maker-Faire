@@ -53,6 +53,7 @@ jQuery.ajax({
   .done(function( data ) {
     if ( console && console.log ) {
       console.log( "Sample of data:", data );
+      console.log( "Input Values:", inputValues );
     }
   });
 }
