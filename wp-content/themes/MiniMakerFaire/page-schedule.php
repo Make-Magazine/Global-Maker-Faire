@@ -183,7 +183,7 @@ get_header(); ?>
                 </span>
               </div>
               <div collapse="schedule.isCollapsed">
-                <div ng-show="!schedule.isCollapsed" class="panel-body ">
+                <div ng-show="!schedule.isCollapsed" class="panel-body">
                   <p>{{schedule.desc}}</p>
                   <a href="/maker/entry/{{schedule.id}}">Full Details</a>
                 </div>
