@@ -271,10 +271,11 @@
       @media (max-width:767px) {
         min-width: 700px;
       }
-      .dropdown-toggle, &.dropdown-toggle a {
+      .dropdown-toggle, .dropdown-toggle a {
         padding: 0;
         border-width: 0;
         text-transform: uppercase;
+        color: #00AEEF;
         &:hover, &:focus {
           text-decoration: none;
         }
@@ -302,7 +303,7 @@
           min-width: 700px;
         }
         .sched-img {
-          border: 2px solid #888;
+          border: 3px solid #9CAFC3;
           width: 100px;
           height: 100px;
           float: left;
@@ -319,9 +320,12 @@
           font-family: Roboto,"Helvetica Neue",Helvetica,sans-serif;
           font-size: 20px;
           line-height: 1.1em;
-          color: #00A3DA;
+          color: #00AEEF;
           max-height: 46px;
           overflow: hidden;
+          a {
+            color: inherit;
+          }
           @media (max-width:767px) {
             font-size: 18px;
           }
@@ -366,12 +370,15 @@
           .panel-heading {
             padding-bottom: 0;
             span {
-              color: #397b98;
+              color: #00AEEF;
               cursor: pointer;
             }
           }
           .panel-heading, .panel-body {
             padding-left: 0;
+            a {
+              color: #00AEEF;
+            }
           }
         }
       }
