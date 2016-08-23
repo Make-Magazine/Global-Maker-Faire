@@ -8,8 +8,8 @@ $webapioptions = get_option('gravityformsaddon_gravityformswebapi_settings', arr
 echo '<!-- '.print_r($webapioptions,true).' -->';
 // Setup the API variables required for posting emails
 //set API keys
-$api_key = $webapioptions['public_key'];
-$private_key = $webapioptions['private_key'];
+$api_key = rgar( $webapioptions, 'public_key' );
+$private_key = rgar( $webapioptions, 'private_key' );
 $form_id = RGFormsModel::get_form_id('Email List: Newsletter Subscribers');
 
 function calculate_signature($string, $private_key) {
