@@ -4,7 +4,7 @@ header('Content-type: text/javascript');
 
 $parse_uri = explode( 'wp-content', $_SERVER['SCRIPT_FILENAME'] );
 require_once( $parse_uri[0] . 'wp-load.php' );
-$webapioptions = get_option('gravityformsaddon_gravityformswebapi_settings', array() );
+$webapioptions = get_site_option('gravityformsaddon_gravityformswebapi_settings', array() );
 echo '<!-- '.print_r($webapioptions,true).' -->';
 // Setup the API variables required for posting emails
 //set API keys
