@@ -1,4 +1,4 @@
-  var scheduleApp = angular.module('scheduleApp', ['ngAnimate', 'ui.bootstrap']);
+  var scheduleApp = angular.module('scheduleApp', ['ngAnimate', 'ui.bootstrap','angular.filter']);
   var weekday = new Array(7);
       weekday[1] = "Sunday";
       weekday[2] = "Monday";
@@ -9,6 +9,8 @@
       weekday[7] = "Saturday";
 
   scheduleApp.controller('scheduleCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+    $scope.showType = false;
+    $scope.showSchedules = false;
     var formIDs = jQuery('#forms2use').val();
     /*
       $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=categories&formIDs='+formIDs)
@@ -31,11 +33,21 @@
         $scope.schedules = response.data.schedule;
         $scope.tags = []; //unique list of categories
         daysObj = {};
+        var typeArr = [];
+        var addType = '';
+
         /* input categories are a comma sepated list of category id's
             the below will split these into an array,
             compare them to the catJson to get the category name,
             and output an array of category names */
         angular.forEach($scope.schedules, function(schedule){
+          //check if there is more than one type
+          addType = schedule.type;
+          if(addType in typeArr){
+            //do nothing
+          }else{
+            typeArr.push(addType);
+          }
 
           if(schedule.day){
             var day = parseInt(schedule.day);
@@ -62,9 +74,15 @@
           });
           schedule.category = categories;
         });
+
+        if(typeArr.length > 1){
+          $scope.showType = true;
+        }
          $scope.days = daysObj;
      }, function errorCallback(error) {
        console.log(error);
+     }).finally( function (){
+       $scope.showSchedules = true;
      });
     $scope.predicate = 'time_start';
     $scope.reverse = true;

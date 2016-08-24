@@ -112,7 +112,9 @@
       }
 
       if (is_page_template('page-schedule.php')) {
-        wp_enqueue_script('angular-schedule',get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',array( 'angularjs', 'dirPagination','built-libs'),false,true);
+        //angular filter
+        wp_enqueue_script('angular-filter','//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js',array(),false,true);
+        wp_enqueue_script('angular-schedule',get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',array( 'angularjs', 'dirPagination','built-libs','angular-filter'),false,true);
         //angular ui-bootstrap style
         wp_enqueue_style('ui-bootstrap', get_stylesheet_directory_uri() . '/css/angular/angular-ui-bootstrap/ui-bootstrap-csp.css', array(), null, 'all');
       }

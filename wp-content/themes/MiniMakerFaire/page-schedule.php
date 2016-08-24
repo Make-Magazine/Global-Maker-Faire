@@ -6,9 +6,9 @@ get_header(); ?>
 
 <input type="hidden" id="forms2use" value="<?php echo get_field('schedule_ids'); ?>" />
 
-<div id="page-schedule" class="container schedule-table" ng-controller="scheduleCtrl" ng-app="scheduleApp" ng-cloak="">
-
-  <div class="topic-nav">
+<div id="page-schedule" class="container schedule-table" ng-controller="scheduleCtrl" ng-app="scheduleApp">
+  <div ng-cloak>
+  <div class="topic-nav" ng-if="showType">
     <div class="btn-group">
       <button type="button" class="btn btn-b-ghost dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Category <span class="caret"></span>
@@ -23,45 +23,13 @@ get_header(); ?>
           </a>
         </li>
 
-        <li class="topic-nav-item-inner">
-          <a href="#" ng-click="setTypeFilter('Talk')">
+        <li class="topic-nav-item-inner" ng-repeat="(schedType,sched) in schedules | groupBy: 'type'">
+          <a href="#" ng-click="setTypeFilter('{{schedType}}')">
             <div class="topic-nav-item">
               <p>
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Talk-icon.svg" alt="Maker Exhibit Talk Topic Icon" class="img-responsive" />
-              Talk</p>
-            </div>
-            <div class="active-topic-arrow"></div>
-          </a>
-        </li>
-
-        <li class="topic-nav-item-inner">
-          <a ng-click="setTypeFilter('Demo')">
-            <div class="topic-nav-item">
-              <p>
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Demo-icon.svg" alt="Maker Exhibit Demo Topic Icon" class="img-responsive" />
-              Demo</p>
-            </div>
-            <div class="active-topic-arrow"></div>
-          </a>
-        </li>
-
-        <li class="topic-nav-item-inner">
-          <a ng-click="setTypeFilter('Workshop')">
-            <div class="topic-nav-item">
-              <p>
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Workshop-icon.svg" alt="Maker Exhibit Workshop Topic Icon" class="img-responsive" />
-              Workshop</p>
-            </div>
-            <div class="active-topic-arrow"></div>
-          </a>
-        </li>
-
-        <li class="topic-nav-item-inner">
-          <a ng-click="setTypeFilter('Performance')">
-            <div class="topic-nav-item">
-              <p>
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Performance-icon.svg" alt="Maker Exhibit Performance Topic Icon" class="img-responsive" />
-              Performance</p>
+                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/{{schedType}}-icon.svg" alt="Maker Exhibit {{schedType}} Topic Icon" class="img-responsive" />
+                {{schedType}}
+              </p>
             </div>
             <div class="active-topic-arrow"></div>
           </a>
@@ -195,7 +163,7 @@ get_header(); ?>
       </div>
     </div>
   </div>
-</div>
+</div></div>
 
 
 
