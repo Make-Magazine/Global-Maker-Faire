@@ -105,7 +105,8 @@ function getMTMentries($formIDs) {
 
   function getCategories($formIDs) {
     $data = array();
-    $formIDarr = explode(",", $formIDs);
+    $formIDarr = array_map('intval', explode(",", $formIDs));
+
     foreach($formIDarr as $form_id){
       $form = GFAPI::get_form( $form_id );
       if(is_array($form['fields'])) {
