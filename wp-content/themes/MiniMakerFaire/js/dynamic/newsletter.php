@@ -4,12 +4,12 @@ header('Content-type: text/javascript');
 
 $parse_uri = explode( 'wp-content', $_SERVER['SCRIPT_FILENAME'] );
 require_once( $parse_uri[0] . 'wp-load.php' );
- $webapioptions = get_option('gravityformsaddon_gravityformswebapi_settings', array() );
-
+$webapioptions = get_blog_option(1,'gravityformsaddon_gravityformswebapi_settings', array() );
+echo '<!-- '.print_r($webapioptions,true).' -->';
 // Setup the API variables required for posting emails
 //set API keys
-$api_key = $webapioptions['public_key'];
-$private_key = $webapioptions['private_key'];
+$api_key = rgar( $webapioptions, 'public_key' );
+$private_key = rgar( $webapioptions, 'private_key' );
 $form_id = RGFormsModel::get_form_id('Email List: Newsletter Subscribers');
 
 function calculate_signature($string, $private_key) {
@@ -53,6 +53,7 @@ jQuery.ajax({
   .done(function( data ) {
     if ( console && console.log ) {
       console.log( "Sample of data:", data );
+      console.log( "Input Values:", inputValues );
     }
   });
 }

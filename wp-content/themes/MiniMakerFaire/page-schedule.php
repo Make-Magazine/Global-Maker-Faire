@@ -103,7 +103,7 @@ get_header(); ?>
           <span class="dropdown">
             <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               Stage {{schedStage}}
-              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
               <li>
@@ -122,7 +122,7 @@ get_header(); ?>
           <span class="dropdown">
             <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               Topics {{schedTopic}}
-              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
               <li>
@@ -178,14 +178,14 @@ get_header(); ?>
 
             <div class="col-xs-10 col-xs-offset-2 sched-more-info">
               <div class="panel-heading">
-                <span ng-click="schedule.isCollapsed = !schedule.isCollapsed" ng-init="schedule.isCollapsed=true">Quick View
-                  <i class="glyphicon" ng-class="{'glyphicon-chevron-down': schedule.isCollapsed, 'glyphicon-chevron-up': !schedule.isCollapsed}"></i>
+                <span ng-click="schedule.isCollapsed = !schedule.isCollapsed" ng-init="schedule.isCollapsed=true">quick view
+                  <i class="fa fa-lg" ng-class="{'fa-angle-down': schedule.isCollapsed, 'fa-angle-up': !schedule.isCollapsed}"></i>
                 </span>
               </div>
               <div collapse="schedule.isCollapsed">
-                <div ng-show="!schedule.isCollapsed" class="panel-body ">
+                <div ng-show="!schedule.isCollapsed" class="panel-body">
                   <p>{{schedule.desc}}</p>
-                  <a href="/maker/entry/{{schedule.id}}">Full Details</a>
+                  <a href="/maker/entry/{{schedule.id}}">full details</a>
                 </div>
               </div>
             </div>
