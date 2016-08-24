@@ -8,7 +8,7 @@ module.exports = function(grunt) {
   ];
   var cssFiles = {
     'css/style.css': [
-      'less/style.less',
+      'less/style.less'
     ]
   };
   // All configurations go here
@@ -64,8 +64,8 @@ module.exports = function(grunt) {
             'js/src/*.js'
           ],
           'js/built-libs.js': [
-            'node_modules/bootstrap/**/bootstrap.min.js',
-            'node_modules/angular-ui-bootstrap/**/ui-bootstrap.js',
+            //'node_modules/bootstrap/**/bootstrap.min.js',
+            'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
             'node_modules/angular-animate/angular-animate.min.js',
             'node_modules/bootstrap-dialog/**/bootstrap-dialog.min.js',
             'node_modules/jquery.cookie/**/jquery-cookie.js',
