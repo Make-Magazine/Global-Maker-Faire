@@ -136,7 +136,6 @@
   function load_admin_scripts() {
     wp_enqueue_style( 'admin-btstrp', get_stylesheet_directory_uri() . '/css/admin-bootstrap.css' );
     // jquery from Wordpress core (with no-conflict mode flag enabled):
-    wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'datetimepicker', get_stylesheet_directory_uri() . '/js/admin/jquery.datetimepicker.js', array( 'jquery' ) );
     wp_enqueue_script( 'GF-entry-detail', get_stylesheet_directory_uri() . '/js/admin/GF-entry-detail.js', array( 'jquery' ) );
     wp_enqueue_script('bootstrap', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js', array( 'jquery' ),false,true );
