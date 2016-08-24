@@ -1,9 +1,9 @@
 module.exports = function(grunt) {
   var watchList = [
-    'less/*.less', 
-    'js/**/*.js', 
-    '!js/*.js', 
-    'js/angular/**/*.js', 
+    'less/*.less',
+    'js/**/*.js',
+    '!js/*.js',
+    'js/angular/**/*.js',
     'js/angular/global-faires-map-app.js'
   ];
   var cssFiles = {
@@ -60,12 +60,11 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'js/built.js': [
-            'js/src/misc-libs.js', 
+            'js/src/misc-libs.js',
             'js/src/*.js'
           ],
           'js/built-libs.js': [
-            'node_modules/bootstrap/**/bootstrap.min.js',
-            'node_modules/angular-ui-bootstrap/**/ui-bootstrap.js',
+            'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
             'node_modules/angular-animate/angular-animate.min.js',
             'node_modules/bootstrap-dialog/**/bootstrap-dialog.min.js',
             'node_modules/jquery.cookie/**/jquery-cookie.js',

@@ -97,34 +97,25 @@
 ////////////////////////////////////////////////////////////////////
   function angular_scripts() {
     if (is_page_template('page-meet-the-makers.php') || is_page_template('page-schedule.php')) {
-      wp_enqueue_script(
-        'angularjs',
-        get_stylesheet_directory_uri() . '/bower_components/angular/angular.min.js'
-      );
+      wp_enqueue_script('angularjs',     get_stylesheet_directory_uri() . '/bower_components/angular/angular.min.js',array(),false,true);
+      wp_enqueue_script('dirPagination', get_stylesheet_directory_uri() . '/bower_components/angular/dirPagination.js',array( 'angularjs'),false,true);
+      wp_enqueue_script('carousel',      get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array(),false,true);
 
-      wp_enqueue_script(
-        'dirPagination',
-        get_stylesheet_directory_uri() . '/bower_components/angular/dirPagination.js',
-        array( 'angularjs')
-      );
-      wp_enqueue_script(
-        'carousel',
-        get_stylesheet_directory_uri().'/js/owl.carousel.min.js'
-      );
+      $my_theme = wp_get_theme();
+      $my_version = $my_theme->get('Version');
+
+      // Libraries concatenated by the grunt concat task (in Gruntfile.js): angular Bootstrap-UI included
+      wp_enqueue_script('built-libs', get_stylesheet_directory_uri() . '/js/built-libs.js', array('angularjs','jquery', 'bootstrap-js'),$my_version,true);
 
       if (is_page_template('page-meet-the-makers.php')) {
-        wp_enqueue_script('angular-mtm',get_stylesheet_directory_uri() . '/js/angular/controller.js', array( 'angularjs', 'dirPagination' ));
+        wp_enqueue_script('angular-mtm',get_stylesheet_directory_uri() . '/js/angular/controller.js', array( 'angularjs', 'dirPagination', 'carousel' ),false,true);
       }
 
       if (is_page_template('page-schedule.php')) {
-        wp_enqueue_script('angular-schedule',get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',array( 'angularjs', 'dirPagination' ));
+        wp_enqueue_script('angular-schedule',get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',array( 'angularjs', 'dirPagination','built-libs'),false,true);
+        //angular ui-bootstrap style
+        wp_enqueue_style('ui-bootstrap', get_stylesheet_directory_uri() . '/css/angular/angular-ui-bootstrap/ui-bootstrap-csp.css', array(), null, 'all');
       }
-      // jquery from Wordpress core (with no-conflict mode flag enabled):
-      wp_enqueue_script('jquery');
-      $my_theme = wp_get_theme();
-      $my_version = $my_theme->get('Version');
-      // Libraries concatenated by the grunt concat task (in Gruntfile.js):
-      wp_enqueue_script('built-libs', get_stylesheet_directory_uri() . '/js/built-libs.js', array('angularjs','jquery'),$my_version);
     }
   }
   add_action( 'wp_enqueue_scripts', 'angular_scripts' );
