@@ -4,8 +4,7 @@ header('Content-type: text/javascript');
 
 $parse_uri = explode( 'wp-content', $_SERVER['SCRIPT_FILENAME'] );
 require_once( $parse_uri[0] . 'wp-load.php' );
-$webapioptions = get_blog_option(1,'gravityformsaddon_gravityformswebapi_settings', array() );
-echo '<!-- '.print_r($webapioptions,true).' -->';
+$webapioptions = get_option('gravityformsaddon_gravityformswebapi_settings');
 // Setup the API variables required for posting emails
 //set API keys
 $api_key = rgar( $webapioptions, 'public_key' );
@@ -52,8 +51,7 @@ jQuery.ajax({
   })
   .done(function( data ) {
     if ( console && console.log ) {
-      console.log( "Sample of data:", data );
-      console.log( "Input Values:", inputValues );
+      console.log( "Return data:", data );
     }
   });
 }
