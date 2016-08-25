@@ -141,12 +141,12 @@ get_header(); ?>
 
             <div class="col-xs-10 col-xs-offset-2 sched-more-info">
               <div class="panel-heading">
-                <span ng-click="schedule.isCollapsed = !schedule.isCollapsed" ng-init="schedule.isCollapsed=true">quick view
-                  <i class="fa fa-lg" ng-class="{'fa-angle-down': schedule.isCollapsed, 'fa-angle-up': !schedule.isCollapsed}"></i>
+                <span ng-click="daySched.isCollapsed = !daySched.isCollapsed" ng-init="daySched.isCollapsed=true">quick view
+                  <i class="fa fa-lg" ng-class="{'fa-angle-down': daySched.isCollapsed, 'fa-angle-up': !daySched.isCollapsed}"></i>
                 </span>
               </div>
-              <div collapse="schedule.isCollapsed">
-                <div ng-show="!schedule.isCollapsed" class="panel-body">
+              <div collapse="daySched.isCollapsed">
+                <div ng-show="!daySched.isCollapsed" class="panel-body">
                   <p>{{daySched.desc}}</p>
                   <a href="/maker/entry/{{daySched.id}}">full details</a>
                 </div>
