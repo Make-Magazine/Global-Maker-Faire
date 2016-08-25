@@ -71,9 +71,16 @@
             schedule.category = categories;
           });
         });
+        var uniquetypeArr = [];
+        jQuery.each(typeArr, function(i, el){
+          if(jQuery.inArray(el, uniquetypeArr) === -1) uniquetypeArr.push(el);
+        });
+
+        typeArr = uniquetypeArr;
         if(typeArr.length > 1){
           $scope.showType = true;
         }
+        
         $scope.types = typeArr;
       }, function errorCallback(error) {
         console.log(error);
