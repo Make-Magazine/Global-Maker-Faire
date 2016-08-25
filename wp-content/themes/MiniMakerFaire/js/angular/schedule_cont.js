@@ -21,7 +21,7 @@
         });
        });*/
     $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=schedule&formIDs='+formIDs)
-     .then(function successCallback(response) {
+      .then(function successCallback(response) {
         $scope.catJson = [];
         angular.forEach(response.data.category,function(catArr){
            $scope.catJson[catArr.id] = catArr.name.trim();
@@ -32,58 +32,54 @@
         $scope.schedTopic = '';
         $scope.schedules = response.data.schedule;
         $scope.tags = []; //unique list of categories
-        daysObj = {};
+
         var typeArr = [];
         var addType = '';
+        $scope.dateFilter = '';
 
         /* input categories are a comma sepated list of category id's
             the below will split these into an array,
             compare them to the catJson to get the category name,
             and output an array of category names */
-        angular.forEach($scope.schedules, function(schedule){
-          //check if there is more than one type
-          addType = schedule.type;
-          if(addType in typeArr){
-            //do nothing
-          }else{
-            typeArr.push(addType);
-          }
-
-          if(schedule.day){
-            var day = parseInt(schedule.day);
-            if (!(day in daysObj)) {
-              daysObj[day] = weekday[day];
+        angular.forEach($scope.schedules, function(scheduleDay, scheduleKey){
+          if($scope.dateFilter=='') $scope.dateFilter = scheduleKey;
+          angular.forEach(scheduleDay, function(schedule){
+            //check if there is more than one type
+            addType = schedule.type;
+            if(addType in typeArr){
+              //do nothing
+            }else{
+              typeArr.push(addType);
             }
-          }
 
-          var categories = [];
-          var catList = schedule.category.split(",");
-          angular.forEach(catList, function(catID){
-            catID = catID.trim();
-            if(catID!=''){
-              var addCat = catID;
-              //look up cat id in the category json file to find the matching category name
-              if(catID in $scope.catJson){
-                addCat = $scope.catJson[catID];
+            var categories = [];
+            var catList = schedule.category.split(",");
+            angular.forEach(catList, function(catID){
+              catID = catID.trim();
+              if(catID!=''){
+                var addCat = catID;
+                //look up cat id in the category json file to find the matching category name
+                if(catID in $scope.catJson){
+                  addCat = $scope.catJson[catID];
+                }
+                categories.push(addCat);
+                //create a unique list of category names for a filter drop down
+                if ($scope.tags.indexOf(addCat) == -1)
+                  $scope.tags.push(addCat);
               }
-              categories.push(addCat);
-              //create a unique list of category names for a filter drop down
-              if ($scope.tags.indexOf(addCat) == -1)
-                $scope.tags.push(addCat);
-            }
+            });
+            schedule.category = categories;
           });
-          schedule.category = categories;
         });
-
         if(typeArr.length > 1){
           $scope.showType = true;
         }
-         $scope.days = daysObj;
-     }, function errorCallback(error) {
-       console.log(error);
-     }).finally( function (){
+        $scope.types = typeArr;
+      }, function errorCallback(error) {
+        console.log(error);
+      }).finally( function (){
        $scope.showSchedules = true;
-     });
+      });
     $scope.predicate = 'time_start';
     $scope.reverse = true;
     $scope.order = function(predicate) {
@@ -93,12 +89,19 @@
     $scope.setTypeFilter = function (type) {
       $scope.schedType = type;
     }
+    $scope.setDateFilter = function (date) {
+      $scope.dateFilter = date;
+    }
     $scope.setStage = function(stage){
       $scope.schedStage = stage;
     }
     $scope.setTagFilter = function (tag) {
       $scope.schedTopic = tag;
     }
+    $scope.sortBy = function(propertyName) {
+      $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+      $scope.propertyName = propertyName;
+    };
   }]).filter('dayFilter', function($filter) {
     // Create the return function and set the required parameter name to **input**
     return function(input,dayOfWeek) {
@@ -123,10 +126,9 @@
         var out = [];
         // Using the angular.forEach method, go through the array of data and perform the operation of figuring out if the language is statically or dynamically typed.
         angular.forEach(schedules, function(schedule) {
-          if(schedule.type==schedType){
-            out.push(schedule);
-          }
-
+            if(schedule.type==schedType){
+              out.push(schedule);
+            }
         })
       }else{//return all
         var out = schedules;
