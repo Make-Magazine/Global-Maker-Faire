@@ -68,7 +68,7 @@
           display: flex;
         }
       }
-      .dropdown-menu>li>a:focus, 
+      .dropdown-menu>li>a:focus,
       .dropdown-menu>li>a:hover {
         background-color: transparent;
       }
@@ -157,7 +157,7 @@
 
   .day-nav {
     width: 100%;
-    height: 90px;
+    height: 70px;
     margin-bottom: 50px;
     display: flex;
     @media (max-width:767px) {
@@ -184,7 +184,7 @@
           &:hover {
             background: #00A3DA;
           }
-          h2 {
+          h2, h4 {
             color: #fff;
           }
         }
@@ -192,6 +192,7 @@
       a.day-nav-item {
         height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         border-bottom: 1px solid #ddd;
@@ -207,11 +208,23 @@
           margin-top: 0;
           margin-bottom: 0;
           color: #00A3DA;
-          font-size: 28px;
+          font-size: 24px;
           font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
           @media (max-width:767px) {
-            font-size: 20px;
-            padding: 5px;
+            font-size: 18px;
+            padding-top: 5px;
+          }
+        }
+        h4 {
+          text-align: center;
+          margin-top: 0;
+          margin-bottom: 0;
+          color: #00A3DA;
+          font-size: 20px;
+          font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
+          @media (max-width:767px) {
+            font-size: 16px;
+            padding-bottom: 5px;
           }
         }
       }
@@ -383,5 +396,8 @@
         }
       }
     }
+  }
+  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
   }
 }

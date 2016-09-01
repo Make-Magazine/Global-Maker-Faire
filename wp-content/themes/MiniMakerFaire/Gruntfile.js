@@ -64,7 +64,6 @@ module.exports = function(grunt) {
             'js/src/*.js'
           ],
           'js/built-libs.js': [
-            //'node_modules/bootstrap/**/bootstrap.min.js',
             'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
             'node_modules/angular-animate/angular-animate.min.js',
             'node_modules/bootstrap-dialog/**/bootstrap-dialog.min.js',

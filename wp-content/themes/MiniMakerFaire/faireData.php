@@ -105,7 +105,8 @@ function getMTMentries($formIDs) {
 
   function getCategories($formIDs) {
     $data = array();
-    $formIDarr = explode(",", $formIDs);
+    $formIDarr = array_map('intval', explode(",", $formIDs));
+
     foreach($formIDarr as $form_id){
       $form = GFAPI::get_form( $form_id );
       if(is_array($form['fields'])) {
@@ -159,13 +160,14 @@ function getMTMentries($formIDs) {
       if($fitPhoto==NULL) $fitPhoto = $row->photo;
 
       //format start and end date
-      $startDate = date_create($row->time_start);
-      $startDate = date_format($startDate,'Y-m-d').'T'.date_format($startDate,'G:i:s');
+      $startDay   = date_create($row->time_start);
+      $startDate  = date_format($startDay,'Y-m-d').'T'.date_format($startDay,'G:i:s');
+      $keyDate    = date_format($startDay,'Y-m-d');
 
       $endDate = date_create($row->time_end);
       $endDate = date_format($endDate,'Y-m-d').'T'.date_format($endDate,'G:i:s');
       //"2016-05-21T11:55:00-07:00"
-      $data['schedule'][] = array(
+      $data['schedule'][$keyDate][] = array(
             'id'            => $row->entry_id,
             'time_start'    => $startDate,
             'time_end'      => $endDate,

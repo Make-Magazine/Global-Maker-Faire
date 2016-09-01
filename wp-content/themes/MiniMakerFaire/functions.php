@@ -100,7 +100,6 @@
       wp_enqueue_script('dirPagination', get_stylesheet_directory_uri() . '/bower_components/angular/dirPagination.js',array( 'angularjs'),false,true);
       wp_enqueue_script('carousel',      get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array(),false,true);
 
-      wp_enqueue_script('jquery');    // jquery from Wordpress core (with no-conflict mode flag enabled):
       $my_theme = wp_get_theme();
       $my_version = $my_theme->get('Version');
 
@@ -112,7 +111,10 @@
       }
 
       if (is_page_template('page-schedule.php')) {
-        wp_enqueue_script('angular-schedule',get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',array( 'angularjs', 'dirPagination','built-libs'),false,true);
+        //angular filter
+        wp_enqueue_script('angular-filter','//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js',array(),false,true);
+        wp_enqueue_script('angular-schedule',get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',array( 'angularjs', 'dirPagination','built-libs','angular-filter'),false,true);
+
         //angular ui-bootstrap style
         wp_enqueue_style('ui-bootstrap', get_stylesheet_directory_uri() . '/css/angular/angular-ui-bootstrap/ui-bootstrap-csp.css', array(), null, 'all');
       }
@@ -127,7 +129,6 @@
   function load_admin_scripts() {
     wp_enqueue_style( 'admin-btstrp', get_stylesheet_directory_uri() . '/css/admin-bootstrap.css' );
     // jquery from Wordpress core (with no-conflict mode flag enabled):
-    wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'datetimepicker', get_stylesheet_directory_uri() . '/js/admin/jquery.datetimepicker.js', array( 'jquery' ) );
     wp_enqueue_script( 'GF-entry-detail', get_stylesheet_directory_uri() . '/js/admin/GF-entry-detail.js', array( 'jquery' ) );
     wp_enqueue_script('bootstrap', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js', array( 'jquery' ),false,true );
