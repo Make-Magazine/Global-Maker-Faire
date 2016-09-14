@@ -255,3 +255,7 @@
 #schedSect {
   margin-bottom: 10px;
 }
+
+#notes {
+  display: none;
+}
