@@ -22,13 +22,21 @@ $blogSql = 'SELECT blog_id,domain FROM `wp_blogs`';
 $results = $wpdb->get_results($blogSql,ARRAY_A);
 foreach($results as $blogrow){
   echo $blogrow['blog_id'].' - '.$blogrow['domain'].'<br/>';
-  $wpdb->set_prefix('wp_'.$blogrow['blog_id'].'_');
+
+  $blogID = $blogrow['blog_id'];
+  $wpdb->blogid = $blogID;
+	$wpdb->set_prefix( $wpdb->base_prefix );
+echo '$wpdb->prefix='.$wpdb->prefix.'<br/>';
   $forms = GFAPI::get_forms();
+  var_dump($forms);
   foreach($forms as $form){
+    echo 'Form ='.$form['title'].'<br/>';
     $updForm = false;
     if(is_array($form['notifications'])){
       foreach($form['notifications'] as $notifKey=> $notification){
+        echo 'updating '.$notification['name'].'<br/>';
         //var_dump($notification);
+        //echo '<br/><br/>';
         if(is_array($notification['conditionalLogic'])){
           if(isset($notification['conditionalLogic']['rules'])){
             foreach($notification['conditionalLogic']['rules'] as $ruleKey=>$rule){
@@ -44,10 +52,9 @@ foreach($results as $blogrow){
       }
     }
     if($updForm){
-      //var_dump($form);
-      //echo '<br/><br/>';
+      //var_dump($form['notifications']);
+     // echo '<br/><br/>';
       //update notification
-
       $updresult = GFAPI::update_form( $form );
       if(!$updresult){
         var_dump($updresult);
@@ -55,6 +62,7 @@ foreach($results as $blogrow){
         echo 'Form - '.$copyForm.' Updated<br/>';
       }
     }
+    echo '<br/><br/>';
   }
 }
 ?>
