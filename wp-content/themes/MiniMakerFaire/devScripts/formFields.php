@@ -56,7 +56,7 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
       $blogSql = 'SELECT blog_id,domain FROM `wp_blogs`';
       $blogresult = $mysqli->query($blogSql) or trigger_error($mysqli->error."[$sql]");
       while ( $blogrow = $blogresult->fetch_array(MYSQLI_ASSOC) ) {
-        echo $blogrow['blog_id'].' - '.$blogrow['domain'].'<br/>';
+        echo $blogrow['blog_id'].' - '.$blogrow['domain'].', ';
       }?>
      </small>
   </div>

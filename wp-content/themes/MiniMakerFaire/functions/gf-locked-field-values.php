@@ -7,21 +7,20 @@ add_filter( 'gform_admin_pre_render', 'populate_checkbox' );
 function populate_checkbox( $form) {
   $lockedValues = array("Disable Notification", "Make: Magazine Review", "Featured Maker","Disable Autoresponder");
 
-  //set field inputs
-  $lockedInputs = array(
-      array("label" => "Disable Notification",  "id" => "304.1"),
-      array("label" => "Make: Magazine Review", "id" => "304.2"),
-      array("label" => "Featured Maker",        "id" => "304.3"),
-  );
-  //set field choices
-  $lockedChoices = array(
-    array("text" => "Disable Notification",  "value" => "Disable Notification"),
-    array("text" => "Make: Magazine Review", "value" => "Make: Magazine Review"),
-    array("text" => "Featured Maker",        "value" => "Featured Maker")
-  );
-
   foreach ( $form['fields'] as &$field ) {
     if($field["id"] == 304){
+      //set field inputs
+      $lockedInputs = array(
+          array("label" => "Disable Notification",  "id" => "304.1"),
+          array("label" => "Make: Magazine Review", "id" => "304.2"),
+          array("label" => "Featured Maker",        "id" => "304.3"),
+      );
+      //set field choices
+      $lockedChoices = array(
+        array("text" => "Disable Notification",  "value" => "Disable Notification"),
+        array("text" => "Make: Magazine Review", "value" => "Make: Magazine Review"),
+        array("text" => "Featured Maker",        "value" => "Featured Maker")
+      );
       $input_id = 304.4;
       //now let's loop thru the inputs and add to the bottom if they aren't already one of the locked fields
       foreach($field['inputs'] as $input){

@@ -27,24 +27,23 @@ foreach($results as $blogrow){
   $wpdb->blogid = $blogID;
 	$wpdb->set_prefix( $wpdb->base_prefix );
 echo '$wpdb->prefix='.$wpdb->prefix.'<br/>';
-  $forms = GFAPI::get_forms();
+  $forms = GFAPI::get_forms(false);
   //var_dump($forms);
   foreach($forms as $form){
     echo 'Form ='.$form['title'].'<br/>';
     $updForm = false;
     if(is_array($form['notifications'])){
       foreach($form['notifications'] as $notifKey=> $notification){
-        echo 'updating '.$notification['name'].'<br/>';
+        echo 'Looking at '.$notification['name'].'<br/>';
         //var_dump($notification);
-        //echo '<br/><br/>';
+        //echo '<br/>';
         if(is_array($notification['conditionalLogic'])){
           if(isset($notification['conditionalLogic']['rules'])){
             foreach($notification['conditionalLogic']['rules'] as $ruleKey=>$rule){
-              if($rule['value']=='Disable Autoresponder') {
-                echo 'updating '.$notification['name'].'<br/>';
+              if(trim($rule['value'])=='Disable Autoresponder') {
+                echo 'updating<br/>';
                 $form['notifications'][$notifKey]['conditionalLogic']['rules'][$ruleKey]['value'] = 'Disable Notification';
                 $updForm=true;
-
               }
             }
           }
@@ -52,15 +51,17 @@ echo '$wpdb->prefix='.$wpdb->prefix.'<br/>';
       }
     }
     if($updForm){
-      //var_dump($form['notifications']);
-     // echo '<br/><br/>';
+      echo 'begin update<br/>';
       //update notification
       $updresult = GFAPI::update_form( $form );
       if(!$updresult){
+        echo 'error updating Form - '.$copyForm.'<br/>';
         var_dump($updresult);
       }else{
         echo 'Form - '.$copyForm.' Updated<br/>';
       }
+    }else{
+      echo 'no update<br/>';
     }
     echo '<br/><br/>';
   }
