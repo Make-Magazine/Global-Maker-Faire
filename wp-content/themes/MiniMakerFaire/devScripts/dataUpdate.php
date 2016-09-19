@@ -28,7 +28,7 @@ foreach($results as $blogrow){
 	$wpdb->set_prefix( $wpdb->base_prefix );
 echo '$wpdb->prefix='.$wpdb->prefix.'<br/>';
   $forms = GFAPI::get_forms();
-  var_dump($forms);
+  //var_dump($forms);
   foreach($forms as $form){
     echo 'Form ='.$form['title'].'<br/>';
     $updForm = false;
