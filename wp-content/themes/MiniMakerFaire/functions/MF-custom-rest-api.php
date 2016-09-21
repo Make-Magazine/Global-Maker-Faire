@@ -1,44 +1,49 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-// ../  /wp-content
-// ../  /themes
-// ../  /miniMakerFaire
+/* adds a custom REST API endpoint of makerfaire*/
+add_action( 'rest_api_init', function () {
 
- include '../../../wp-load.php';
-//retrieve GET variables
-$type    = (isset($_GET['type'])     ? sanitize_text_field($_GET['type'])    : '');
-$formIDs = (isset($_GET['formIDs'])  ? sanitize_text_field($_GET['formIDs']) : '');
+	register_rest_route( 'makerfaire', '/v1/fairedata/(?P<type>[a-z0-9\-]+)/(?P<formids>[a-z0-9\-]+)', array(
+		'methods' => 'GET',
+		'callback' => 'mf_fairedata'
+	));
+});
 
-if($type != '' && $formIDs != '') {
-  $data = array();
-  switch ($type) {
-    case 'mtm':
-      $entity   = FDgetMTMentries($formIDs);
-      $category = FDgetCategories($formIDs);
-      $data     = array_merge($entity, $category);
-      break;
-    case 'categories':
-      $data = FDgetCategories($formIDs);
-      break;
-    case 'schedule':
-      $schedule = FDgetSchedule($formIDs);
-      $category = FDgetCategories($formIDs);
-      $data     = array_merge($schedule, $category);
-      break;
+function mf_fairedata( WP_REST_Request $request ) {
+  // You can access parameters via direct array access on the object:
+	$type     = $request['type'];
+  $formIDs  = $request['formids'];
+  if($type != '' && $formIDs != '') {
+    $data = array();
+    switch ($type) {
+      case 'mtm':
+        $entity   = getMTMentries($formIDs);
+        $category = getCategories($formIDs);
+        $data     = array_merge($entity, $category);
+        break;
+      case 'categories':
+        $data = getCategories($formIDs);
+        break;
+      case 'schedule':
+        $schedule = getSchedule($formIDs);
+        $category = getCategories($formIDs);
+        $data     = array_merge($schedule, $category);
+        break;
+    }
+
+  } else {
+    $data['error'] = 'Error: Type or Form IDs not submitted';
   }
 
-} else {
-  $data['error'] = 'Error: Type or Form IDs not submitted';
+  $return = 'your type is '.$type.' and your formids are ';
+  $formArr = explode("-",$formIDs);
+  foreach($formArr as $formID){
+    $return .= $formID.' ';
+  }
+
+  return $data;
 }
 
-echo json_encode($data);
-exit;
-
-function FDgetMTMentries($formIDs) {
+function getMTMentries($formIDs) {
   $data = array();
   $formIDarr = array_map('intval', explode(",", $formIDs));
 
@@ -104,7 +109,7 @@ function FDgetMTMentries($formIDs) {
   return $data;
 } //end getMTMentries
 
-  function FDgetCategories($formIDs) {
+  function getCategories($formIDs) {
     $data = array();
     $formIDarr = array_map('intval', explode(",", $formIDs));
 
@@ -128,7 +133,7 @@ function FDgetMTMentries($formIDs) {
     return $data;
   }
 
-  function FDgetSchedule($formIDs) {
+  function getSchedule($formIDs) {
     $data = array(); global $wpdb;
     $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
               lead_detail.value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
@@ -187,7 +192,7 @@ function FDgetMTMentries($formIDs) {
     return $data;
   }
 
-  function FDgetMakerList($entryID) {
+  function getMakerList($entryID) {
     $makerList = '';
     $data = array(); global $wpdb;
     $query = "SELECT *
@@ -201,7 +206,6 @@ function FDgetMTMentries($formIDs) {
     /* Maker Name field #'s -> 1 - 160, 2 - 158, 3 - 155, 4 - 156, 5 - 157, 6 - 159, 7 - 154
      * Group Name - 109
      */
-
     $fieldData = array();
     foreach($entryData as $field){
       $fieldData[$field->field_number] = $field->value;
