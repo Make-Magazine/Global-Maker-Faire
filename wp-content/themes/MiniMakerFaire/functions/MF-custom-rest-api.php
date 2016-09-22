@@ -9,7 +9,6 @@ add_action( 'rest_api_init', function () {
 });
 
 function mf_fairedata( WP_REST_Request $request ) {
-  // You can access parameters via direct array access on the object:
 	$type     = $request['type'];
   $formIDs  = $request['formids'];
   if($type != '' && $formIDs != '') {
@@ -39,7 +38,6 @@ function mf_fairedata( WP_REST_Request $request ) {
   foreach($formArr as $formID){
     $return .= $formID.' ';
   }
-
   return $data;
 }
 
@@ -47,21 +45,36 @@ function getMTMentries($formIDs) {
   $data['entity'] = array();
   $formIDarr = array_map('intval', explode("-", $formIDs));
 
-  $search_criteria['status'] = 'active';
-  $search_criteria['field_filters'][] = array( 'key' => '303', 'value' => 'Accepted');
-  $paging = array( 'offset' => 0, 'page_size' => 24 ); //divisible by 6 as we display 6 makers per row
+  global $wpdb;
+  //find all active entries for selected forms
+  $query = "select lead_detail.lead_id, lead_detail.field_number, lead_detail.value
+            from    {$wpdb->prefix}rg_lead_detail lead_detail
+            left outer join {$wpdb->prefix}rg_lead as lead on lead_detail.lead_id = lead.id
+            where lead.status = 'active'
+              and lead_detail.form_id in(".implode(",",$formIDarr).")
+              and (field_number like '22' OR
+                   field_number like '16' OR
+                   field_number like '151' OR
+                   field_number like '303' OR
+                   field_number like '320' OR
+                   field_number like '32.1%' OR
+                   field_number like '304.%')
+            ORDER BY `lead_detail`.`lead_id`  ASC";
+
+  $results = $wpdb->get_results($query);
+
+  //build entry array
   $entries = array();
-  foreach($formIDarr as $formID){
-    $gfapi_result = GFAPI::get_entries($formIDsearch, $search_criteria,null,$search_criteria);
-    if(!empty($gfapi_result)) $entries = array_merge($entries,$gfapi_result);
+  foreach($results as $result){
+    $entries[$result->lead_id]['id'] = $result->lead_id;
+    $entries[$result->lead_id][$result->field_number] = $result->value;
   }
 
   //randomly order entries
-  shuffle ($entries);
   foreach($entries as $entry){
-    if(in_array($entry['form_id'],$formIDarr)) {
-      $leadCategory = array();
-      $flag = '';
+    $leadCategory = array();
+    $flag = '';
+    if($entry['303']=='Accepted'){
       //build category array
       foreach($entry as $leadKey=>$leadValue){
         $pos = strpos($leadKey, '321'); //4 additional categories
@@ -87,13 +100,9 @@ function getMTMentries($formIDs) {
         }
       }
 
-      //find out if there is an override image for this page
-      $overrideImg = findOverride($entry['id'],'mtm');
-
-      $projPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
+      $projPhoto = (isset($entry['22']) ? $entry['22']:'');
       $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
       $featImg   = legacy_get_fit_remote_image_url($projPhoto,800,500);
-      if($fitPhoto==NULL) $fitPhoto = ($overrideImg=='' ? $entry['22']:$overrideImg);
 
       //maker list
       $makerList = getMakerList($entry['id']);
