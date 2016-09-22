@@ -12,7 +12,7 @@ app.controller('mtmMakers', function($scope, $http) {
     'type': 'mtm',
     'formIDs': formIDs
   };
-  formIDs = '1'
+  
   var config = {headers : {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'}};
 
   //call to MF custom rest API
