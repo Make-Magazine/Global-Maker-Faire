@@ -49,9 +49,10 @@ function getMTMentries($formIDs) {
 
   $search_criteria['status'] = 'active';
   $search_criteria['field_filters'][] = array( 'key' => '303', 'value' => 'Accepted');
+  $paging = array( 'offset' => 0, 'page_size' => 24 ); //divisible by 6 as we display 6 makers per row
   $entries = array();
   foreach($formIDarr as $formID){
-    $gfapi_result = GFAPI::get_entries($formIDsearch, $search_criteria, null, array('offset' => 0, 'page_size' => 999));
+    $gfapi_result = GFAPI::get_entries($formIDsearch, $search_criteria,null,$search_criteria);
     if(!empty($gfapi_result)) $entries = array_merge($entries,$gfapi_result);
   }
 
