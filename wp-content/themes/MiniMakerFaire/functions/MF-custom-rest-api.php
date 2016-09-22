@@ -44,13 +44,16 @@ function mf_fairedata( WP_REST_Request $request ) {
 }
 
 function getMTMentries($formIDs) {
-  $data = array();
-  $formIDarr = array_map('intval', explode(",", $formIDs));
+  $data['entity'] = array();
+  $formIDarr = array_map('intval', explode("-", $formIDs));
 
   $search_criteria['status'] = 'active';
   $search_criteria['field_filters'][] = array( 'key' => '303', 'value' => 'Accepted');
-
-  $entries = GFAPI::get_entries(0, $search_criteria, null, array('offset' => 0, 'page_size' => 999));
+  $entries = array();
+  foreach($formIDarr as $formID){
+    $gfapi_result = GFAPI::get_entries($formIDsearch, $search_criteria, null, array('offset' => 0, 'page_size' => 999));
+    if(!empty($gfapi_result)) $entries = array_merge($entries,$gfapi_result);
+  }
 
   //randomly order entries
   shuffle ($entries);
@@ -111,7 +114,7 @@ function getMTMentries($formIDs) {
 
   function getCategories($formIDs) {
     $data = array();
-    $formIDarr = array_map('intval', explode(",", $formIDs));
+    $formIDarr = array_map('intval', explode("-", $formIDs));
 
     foreach($formIDarr as $form_id){
       $form = GFAPI::get_form( $form_id );

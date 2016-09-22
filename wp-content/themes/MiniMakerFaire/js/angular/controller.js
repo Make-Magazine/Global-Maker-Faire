@@ -5,19 +5,15 @@ app.controller('mtmMakers', function($scope, $http) {
   $scope.category = '';
   $scope.tags = [];
   catJson = [];
-
   var formIDs = jQuery('#forms2use').val();
-    var vars = {
-    'action': 'getFairedata',
-    'type': 'mtm',
-    'formIDs': formIDs
-  };
-  
-  var config = {headers : {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'}};
-
+  formIDs = formIDs.replace(",","-");
+  //to be added - replace commas with - in form ids
   //call to MF custom rest API
-  $http.get('/wp-json/makerfaire/v1/fairedata/mtm/'+encodeURI(formIDs))
+  $http.get('/wp-json/makerfaire/v1/fairedata/mtm/'+formIDs)
     .success(function(response){
+      if(response.entity.length<=0){
+        jQuery('.mtm .loading').html('No makers found');
+      }
       $scope.makers = response.entity;
       //build array of categories
       angular.forEach(response.category,function(catArr){
@@ -55,6 +51,9 @@ app.controller('mtmMakers', function($scope, $http) {
       $scope.tags = catList;
       jQuery('#carouselImgs').html(carouselImgs);
     })
+    .error(function(response){
+      jQuery('.mtm .loading').html('There was an error retrieving makers');
+    })
     .finally(function(){
       //trigger the carousel
       jQuery('.mtm-carousel').owlCarousel({
@@ -74,19 +73,6 @@ app.controller('mtmMakers', function($scope, $http) {
         }
       });
     });
-
-  //WP ajax call
-  /*
-  $http.post(ajax_object.ajax_url, vars,config).then(function successCallback(response) {
-
-
-
-    $scope.makers = response.entity;
-
-
-  /*
-
-  */
   $scope.setTagFilter = function (tag) {
     $scope.category = tag;
   }
