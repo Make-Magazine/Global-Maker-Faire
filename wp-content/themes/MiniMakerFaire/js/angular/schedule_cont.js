@@ -12,25 +12,19 @@
     $scope.showType = false;
     $scope.showSchedules = false;
     var formIDs = jQuery('#forms2use').val();
-    /*
-      $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=categories&formIDs='+formIDs)
+    if(formIDs=='') alert ('error!  Please set the form to pull from on the admin page.')
+    $http.get('/wp-json/makerfaire/v1/fairedata/mtm/'+formIDs)
+    //$http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=schedule&formIDs='+formIDs)
       .then(function successCallback(response) {
         $scope.catJson = [];
-        angular.forEach(response.data.category,function(catArr){
-           $scope.catJson[catArr.id] = catArr.name.trim();
-        });
-       });*/
-    $http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=schedule&formIDs='+formIDs)
-      .then(function successCallback(response) {
-        $scope.catJson = [];
-        angular.forEach(response.data.category,function(catArr){
+        angular.forEach(response.category,function(catArr){
            $scope.catJson[catArr.id] = catArr.name.trim();
         });
 
         $scope.schedType = 'all';
         $scope.schedStage = '';
         $scope.schedTopic = '';
-        $scope.schedules = response.data.schedule;
+        $scope.schedules = response.schedule;
         $scope.tags = []; //unique list of categories
 
         var typeArr = [];
@@ -80,7 +74,7 @@
         if(typeArr.length > 1){
           $scope.showType = true;
         }
-        
+
         $scope.types = typeArr;
       }, function errorCallback(error) {
         console.log(error);
