@@ -55,7 +55,7 @@ function get_summary_side($form, $lead) {
     $main_description = $short_description;
   }
 
-  // build contact info  	
+  // build contact info
   $contactName = (isset($lead['96.3'])?$lead['96.3']:'').' '.(isset($lead['96.6'])?$lead['96.6']:'');
   $street  = (isset($lead['101.1'])?$lead['101.1']:'');
 	$street2 = (!empty($lead["101.2"])) ? $lead["101.2"].'<br />' : '' ;
@@ -215,24 +215,25 @@ function get_summary_note_section($form, $lead) {
      );
     $faireUsers = get_users( $args );
     ?>
+    Email Note To:
+    <br/>
     <table width="100%" class="entry-notes">
       <tr>
-        <td>
-          <label >Email Note To:</label><br />
+        <td width="40%">
           <div style="float:left">
             <?php
             foreach ( $faireUsers as $faireUser) {
               //should be able to use user_can function, but it is always returning false
               //if(!user_can( $faireUser->ID, 'mf_can_receive_entry_notes' )){
               if(isset($faireUser->allcaps['mf_can_receive_entry_notes']) && $faireUser->allcaps['mf_can_receive_entry_notes']) {
-                echo('<input type="checkbox"  name="email_notes_to" style="margin: 3px;" value="'.$faireUser->user_email.'" /><strong>'.$faireUser->user_nicename.'</strong> <br />');
+                echo('<span style="float:left; width:50%"><input type="checkbox"  name="email_notes_to" style="margin: 3px;" value="'.$faireUser->user_email.'" /><strong>'.$faireUser->user_nicename.'</strong> </span>');
               }
             } ?>
           </div>
         </td>
 
-        <td style="vertical-align: top; padding: 10px;">
-          <textarea id="new_note" style="width: 90%; height: 140px;" cols="" rows=""></textarea>
+        <td style="vertical-align: top; padding: 0 10px;">
+          <textarea id="new_note" style="width: 100%; height: 140px;" cols="" rows=""></textarea>
           <input type="submit" id="add_entry_note" value="Add Note" class="button"/>
 
           <span style="padding-left:10px" id="addNoteResp"></span>

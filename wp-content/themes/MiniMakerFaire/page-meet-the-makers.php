@@ -64,6 +64,10 @@ get_header(); ?>
     </div>
 
     <div class="mtm-results">
+      <div ng-show="!makers.length" class="container loading">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+      </div>
       <!-- Grid View -->
       <div ng-show="layout == 'grid'" class="mtm-results-cont">
         <div ng-repeat="maker in makers | filter : makerSearch | byCategory:category">

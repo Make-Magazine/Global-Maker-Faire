@@ -256,4 +256,10 @@
   margin-bottom: 10px;
 }
 
+<<<<<<< HEAD
 #notes {display:none}
+=======
+#notes {
+  display: none;
+}
+>>>>>>> master

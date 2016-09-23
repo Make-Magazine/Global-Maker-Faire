@@ -7,7 +7,7 @@
             "label": "Display data from these forms:",
             "name": "schedule_ids",
             "type": "text",
-            "instructions": "Enter one or more Form IDs here. If you add more than one id, separate each with a comma, ie: 1,3\r\n<br>\r\nYou can find the Form IDs in Forms > Forms > ID column.\"",
+            "instructions": "Enter one or more Form IDs here. If you add more than one id, separate each with a comma, ie: 1,3\r\n<br>\r\nYou can find the Form IDs in Forms > Forms > ID column.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
