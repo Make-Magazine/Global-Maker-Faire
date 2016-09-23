@@ -13,7 +13,7 @@
     $scope.showSchedules = false;
     var formIDs = jQuery('#forms2use').val();
     if(formIDs=='') alert ('error!  Please set the form to pull from on the admin page.')
-    $http.get('/wp-json/makerfaire/v1/fairedata/mtm/'+formIDs)
+    $http.get('/wp-json/makerfaire/v1/fairedata/schedule/'+formIDs)
     //$http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=schedule&formIDs='+formIDs)
       .then(function successCallback(response) {
         $scope.catJson = [];
