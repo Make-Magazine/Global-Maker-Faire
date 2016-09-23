@@ -69,7 +69,8 @@ function getMTMentries($formIDs) {
     $entries[$result->lead_id]['id'] = $result->lead_id;
     $entries[$result->lead_id][$result->field_number] = $result->value;
   }
-
+  
+  shuffle ($entries);
   //randomly order entries
   foreach($entries as $entry){
     $leadCategory = array();
