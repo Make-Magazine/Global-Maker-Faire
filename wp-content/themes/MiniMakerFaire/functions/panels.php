@@ -185,7 +185,7 @@ function getFeatMkPanel($row_layout) {
 }
 
 /**************************************************/
-/*   Function to build the featured maker panel   */
+/*   Function to build the featured event panel   */
 /**************************************************/
 function getFeatEvPanel($row_layout) {
   global $wpdb;
@@ -217,6 +217,7 @@ function getFeatEvPanel($row_layout) {
                left outer join {$wpdb->prefix}rg_lead_detail as lead_detail on
                    schedule.entry_id = lead_detail.lead_id and field_number = 303
                where lead.status = 'active' and lead_detail.value='Accepted'";
+
     foreach($wpdb->get_results($query) as $row){
       $startDate = date_create($row->time_start);
       $startDate = date_format($startDate,'G:i:s');
@@ -230,7 +231,8 @@ function getFeatEvPanel($row_layout) {
           'description' => $row->short_desc,
           'day'         => $row->day,
           'time'        => $startDate,
-          'location'    => $row->location
+          'location'    => $row->location,
+          'maker_url'  => '/maker/entry/'.$row->entry_id
         );
     }
   } else {
@@ -245,7 +247,8 @@ function getFeatEvPanel($row_layout) {
           'description' => get_sub_field('event_short_description'),
           'day'         => get_sub_field('day'),
           'time'        => get_sub_field('time'),
-          'location'    => get_sub_field('location')
+          'location'    => get_sub_field('location'),
+          'maker_url'   => ''
         );
       }
     }
@@ -253,8 +256,9 @@ function getFeatEvPanel($row_layout) {
 
   //build event display
   foreach($eventArr as $event) {
-    echo '<div class="featured-event col-xs-6">
-            <div class="col-xs-12 col-sm-4 nopad">
+    echo '<div class="featured-event col-xs-6">'.
+            ($event['maker_url']!=''?'<a href="'.$event['maker_url'].'">':'').
+           '<div class="col-xs-12 col-sm-4 nopad">
               <div class="event-img" style="background-image: url(' . $event['image']["url"] . ');"></div>
             </div>
             <div class="col-xs-12 col-sm-8">
@@ -267,8 +271,9 @@ function getFeatEvPanel($row_layout) {
                 <p class="event-time">' . $event['time'] . '</p>
                 <p class="event-location">' . $event['location'] . '</p>
               </div>
-            </div>
-          </div>';
+            </div>'.
+            ($event['maker_url']!=''?'</a>':'').
+         '</div>';
   }
 
   echo '</div>'; //end div.row
