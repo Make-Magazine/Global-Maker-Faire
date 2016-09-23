@@ -162,7 +162,7 @@ function getFeatMkPanel($row_layout) {
             </div>
             <div class="maker-panel-text">
               <h4>' . $maker['name'] . '</h4>
-              <p class="hidden-xs">' . $maker['decription'] . '</p>
+              <p class="hidden-xs">' . $maker['desc'] . '</p>
             </div>
           </div>';
 
