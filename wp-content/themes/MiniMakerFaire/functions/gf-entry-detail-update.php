@@ -30,7 +30,7 @@ function MF_update_entry_rating() {
 add_action( 'wp_ajax_update-entry-rating', 'MF_update_entry_rating' );
 
 /* Update Entry Status */
-function MF_set_entry_status($lead,$form){
+function MF_set_entry_status(){
   global $wpdb;
   $entry_id       = $_POST['entry_id'];
   $update_status  = $_POST['status'];
