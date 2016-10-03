@@ -69,6 +69,13 @@ function enqueue_admin()
   }
   add_action('wp_enqueue_scripts', 'devdmbootstrap3_theme_stylesheets');
 
+////////////////////////////////////////////////////////////////////
+// Include all class files in the /classes directory:
+////////////////////////////////////////////////////////////////////
+
+  foreach ( glob(TEMPLATEPATH . '/classes/*.php' ) as $file) {
+    include_once $file;
+  }
 
 ////////////////////////////////////////////////////////////////////
 // Include all function files in the /functions directory:
