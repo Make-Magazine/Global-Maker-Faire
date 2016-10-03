@@ -89,7 +89,10 @@ get_header();
   }
   ?>
 
-  <?php // FIND OUT MORE PANEL ?>
+  <?php // FIND OUT MORE PANEL
+  $url1 = str_replace( "SITE_URL", esc_url( network_home_url() ), get_site_option( 'find-out-more-url1' ) );
+  $url2 = str_replace( "SITE_URL", esc_url( network_home_url() ), get_site_option( 'find-out-more-url2' ) );
+  ?>
   <aside class="fom-panel">
     <div class="container">
       <div class="row text-center">
@@ -100,13 +103,13 @@ get_header();
 
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-4 text-center">
-          <a href="//readerservices.makezine.com/mk/default.aspx" target="_blank">
-            <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Make-Subscriptions.jpg" alt="Click here to get subscritions to Make: Magazine" class="img-responsive" />
+          <a href="<?php echo $url1;?>" target="_blank">
+            <img src="<?php echo get_site_option( 'find-out-more-img1' ); ?>" alt="Click here to get subscritions to Make: Magazine" class="img-responsive" />
           </a>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-4 text-center">
-          <a href="//makerfaire.com/map/" target="_blank">
-            <img src="<?php echo get_bloginfo('template_directory'); ?>/img/Maker-Faire-map.png" alt="Click here to see our global Maker Faires" class="img-responsive" />
+          <a href="<?php echo $url2;?>" target="_blank">
+            <img src="<?php echo get_site_option( 'find-out-more-img2' ); ?>" alt="Click here to see our global Maker Faires" class="img-responsive" />
           </a>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 text-center house-ad">

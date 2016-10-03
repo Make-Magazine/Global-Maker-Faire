@@ -431,11 +431,9 @@ function getWhatisMF() {
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                  <p class="text-center">Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From engineers to artists to scientists to crafters, Maker Faire is a venue to for these “makers” to show hobbies, experiments, projects.</p>
-                  <p class="text-center">We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase of invention, creativity, and resourcefulness.</p>
-                  <p class="text-center">Glimpse the future and get inspired!</p>
-                </div>
+                <div class="col-md-10 col-md-offset-1">'
+                  .get_site_option( 'what-is-makerfaire' ).
+               '</div>
               </div>
             </div>
             <div class="wimf-border">

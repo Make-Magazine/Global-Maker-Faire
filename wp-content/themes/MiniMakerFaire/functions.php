@@ -43,6 +43,16 @@
 
   add_action("wp_default_styles", "my_wp_default_styles");
 
+add_action( 'admin_enqueue_scripts', 'enqueue_admin' );
+
+function enqueue_admin()
+{
+	wp_enqueue_script( 'thickbox' );
+	wp_enqueue_style('thickbox');
+
+	wp_enqueue_script('media-upload');
+}
+
 
 ////////////////////////////////////////////////////////////////////
 // Enqueue Styles (normal style.css and bootstrap.css)
