@@ -49,7 +49,7 @@ class GMFAdminSettings {
 
     public static function save_network_settings() {
       foreach ( $_POST['panelField'] as $name => $value ) {
-        update_site_option( $name, $value) ;
+        update_site_option( $name, stripslashes($value)) ;
       }
     }
 
