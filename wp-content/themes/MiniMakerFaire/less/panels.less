@@ -397,6 +397,11 @@
       border: 2px solid #999;
     }
     .event-description {
+      max-height: 145px;
+      overflow: hidden;
+      @media (min-width:992px) and (max-width:1199px) {
+        max-height: 120px;
+      }
       .event-day {
         font-size: 12px;
         font-weight: 500;
@@ -404,14 +409,45 @@
       }
       h4 {
         margin-top: 0;
-        margin-bottom: 5px;
+        margin-bottom: 4px;
         font-size: 20px;
         color: #00AEEF;
         font-family: Roboto;
+        //Below lines will limit text to one line with ...
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @media (max-width:991px) {
+          max-height: 63px;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal;
+          line-height: 1.05em;
+        }
+        @media (max-width:767px) {
+          max-height: 43px;
+          -webkit-line-clamp: 2;
+        }
       }
       .event-desc {
         font-size: 14px;
         line-height: 1.4em;
+        margin-bottom: 0;
+        //Below lines will limit text lines with ...
+        max-height: 95px;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @media (min-width:992px) and (max-width:1199px) {
+          max-height: 71px;
+          -webkit-line-clamp: 4;
+          line-height: 1.3em;
+        }
         @media (max-width:991px) {
           display: none;
         }
