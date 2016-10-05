@@ -72,6 +72,12 @@ function dispLayout($row_layout) {
         $return = getSponsorPanel();
       }
       break;
+    case 'social_media': //social media panel
+      $activeinactive = get_sub_field('activeinactive');
+      if( $activeinactive == 'Active') {
+        $return = getSocialPanel();
+      }
+      break;
   }
   return $return;
 }
@@ -767,5 +773,79 @@ function getSponsorPanel() {
         var title = jQuery(".item.active .sponsors-type").html();
       });
     </script><?php
+  }
+}
+
+/***************************************************/
+/*  Function to return Social Media Panel          */
+/***************************************************/
+function getSocialPanel() {
+  if( have_rows('active_feeds') ) { ?>
+    <section class="social-feeds-panel">
+      <div class="container">
+        <?php if( $panel_title ) { ?>
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <div class="title-w-border-r">
+                <h2><?php echo $panel_title; ?></h2>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <div class="social-row"> <?php
+          while ( have_rows('active_feeds') ) {
+            the_row();
+
+            if( get_row_layout() == 'facebook' ) {
+              $facebook_title = get_sub_field('fb_title');
+              $facebook_url = get_sub_field('facebook_url');
+              $facebook_url_2 = rawurlencode($facebook_url);
+              echo '
+              <div class="social-panel-fb social-panel-feed">
+                <h5>' . $facebook_title . '</h5>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=' . $facebook_url_2 . '&tabs=timeline&height=468&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+              </div>';
+
+            } elseif( get_row_layout() == 'twitter' ) {
+              $twitter_title = get_sub_field('tw_title');
+              $twitter_id = get_sub_field('twitter_id');
+              echo '
+              <div class="social-panel-tw social-panel-feed">
+                <div class="twitter-feed-parent">
+                  <h5>' . $twitter_title . '</h5>
+                  <script type="text/javascript" src="' . get_bloginfo('template_directory') . '/js/twitterFetcher.min.js"></script>
+                  <h4>Tweets <span>by <a href="https://twitter.com/' . $twitter_id . '" target="_bank">@' . $twitter_id . '</a></span></h4>
+                  <hr />
+                  <div id="twitter-feed-body"></div>
+                  <script>
+                    var twitter_handle = "' . $twitter_id . '";
+                    var configProfile = {
+                      "profile": {"screenName": twitter_handle},
+                      "domId": "twitter-feed-body",
+                      "maxTweets": 10,
+                      "enableLinks": true,
+                      "showUser": true,
+                      "showTime": true,
+                      "showImages": true,
+                      "lang": "en"
+                    };
+                    twitterFetcher.fetch(configProfile);
+                  </script>
+                </div>
+              </div>';
+
+            } elseif( get_row_layout() == 'instagram' ) {
+              $instagram_title = get_sub_field('ig_title');
+              $instagram_iframe = get_sub_field('instagram_iframe'); ?>
+              <div class="social-panel-ig social-panel-feed">
+                <h5><?php echo $instagram_title; ?></h5>
+                <?php echo $instagram_iframe; ?>
+              </div> <?php
+            }
+          }?>
+        </div>
+      </div>
+    </section>
+  <?php
   }
 }
