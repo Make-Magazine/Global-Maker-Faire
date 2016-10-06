@@ -786,10 +786,11 @@ function getSponsorPanel() {
 /*  Function to return Social Media Panel          */
 /***************************************************/
 function getSocialPanel() {
-  if( have_rows('active_feeds') ) { ?>
+  $panel_title = get_sub_field('panel_title');
+  if( have_rows('active_feeds') ) {?>
     <section class="social-feeds-panel">
       <div class="container">
-        <?php if( $panel_title ) { ?>
+        <?php if( $panel_title!='' ) { ?>
           <div class="row">
             <div class="col-xs-12 text-center">
               <div class="title-w-border-r">
@@ -804,7 +805,7 @@ function getSocialPanel() {
 
             if( get_row_layout() == 'facebook' ) {
               $facebook_title = get_sub_field('fb_title');
-              $facebook_url = get_sub_field('facebook_url');
+              $facebook_url   = get_sub_field('facebook_url');
               $facebook_url_2 = rawurlencode($facebook_url);
               echo '
               <div class="social-panel-fb social-panel-feed">
