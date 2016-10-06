@@ -214,6 +214,7 @@ function getFeatEvPanel($row_layout) {
     $formid = get_sub_field('enter_formid_here');
     $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
               lead_detail.value as entry_status, DAYNAME(schedule.start_dt) as day,location.location,
+              (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '304.3' and value like 'Featured Maker')  as flag,
               (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '22')  as photo,
               (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '151') as name,
               (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '16')  as short_desc
@@ -225,21 +226,27 @@ function getFeatEvPanel($row_layout) {
                where lead.status = 'active' and lead_detail.value='Accepted'";
 
     foreach($wpdb->get_results($query) as $row){
-      $startDate = date_create($row->time_start);
-      $startDate = date_format($startDate,'G:i:s');
+      //only write schedule for featured events
+      if($row->flag != NULL){
+        $startDate = date_create($row->time_start);
+        $startDate = date_format($startDate,'g:i a');
 
-      $projPhoto = $row->photo;
-      $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
-      if($fitPhoto==NULL) $fitPhoto = $projPhoto;
-      $eventArr[] = array(
-          'image'       => array('url'=>$fitPhoto),
-          'event'       => $row->name,
-          'description' => $row->short_desc,
-          'day'         => $row->day,
-          'time'        => $startDate,
-          'location'    => $row->location,
-          'maker_url'  => '/maker/entry/'.$row->entry_id
-        );
+        $endDate = date_create($row->time_end);
+        $endDate = date_format($endDate,'g:i a');
+
+        $projPhoto = $row->photo;
+        $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
+        if($fitPhoto==NULL) $fitPhoto = $projPhoto;
+        $eventArr[] = array(
+            'image'       => array('url'=>$fitPhoto),
+            'event'       => $row->name,
+            'description' => $row->short_desc,
+            'day'         => $row->day,
+            'time'        => $startDate.' - '.$endDate,
+            'location'    => $row->location,
+            'maker_url'  => '/maker/entry/'.$row->entry_id
+          );
+      }
     }
   } else {
     // check if the nested repeater field has rows of data
@@ -269,12 +276,11 @@ function getFeatEvPanel($row_layout) {
             </div>
             <div class="col-xs-12 col-sm-8">
               <div class="event-description">
-                <p class="event-day">' . $event['day'] . '</p>
                 <h4>' . $event['event'] . '</h4>
                 <p class="event-desc">' . $event['description'] . '</p>
               </div>
               <div class="event-details">
-                <p class="event-time">' . $event['time'] . '</p>
+                <p class="event-day">' . $event['day'] . ' '. $event['time'] . '</p>
                 <p class="event-location">' . $event['location'] . '</p>
               </div>
             </div>'.
