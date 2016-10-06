@@ -1911,7 +1911,7 @@
                             "label": "Active Feeds",
                             "name": "active_feeds",
                             "type": "flexible_content",
-                            "instructions": "Click the \"Add Social Feed\" button for each Social media feeds. 1, 2, or 3 feeds can be added.",
+                            "instructions": "Click the \"Add Social Feed\" button for each Social media feeds. Up to 3 feeds can be added.",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1921,7 +1921,7 @@
                             },
                             "button_label": "Add Social Feed",
                             "min": "",
-                            "max": "",
+                            "max": "3",
                             "layouts": [
                                 {
                                     "key": "57b20b62ee5c3",
@@ -2107,5 +2107,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1471392412
+    "modified": 1471392423
 }
