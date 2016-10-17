@@ -14,17 +14,16 @@
     var formIDs = jQuery('#forms2use').val();
     if(formIDs=='') alert ('error!  Please set the form to pull from on the admin page.')
     $http.get('/wp-json/makerfaire/v1/fairedata/schedule/'+formIDs)
-    //$http.get('/wp-content/themes/MiniMakerFaire/faireData.php?type=schedule&formIDs='+formIDs)
       .then(function successCallback(response) {
         $scope.catJson = [];
-        angular.forEach(response.category,function(catArr){
+        angular.forEach(response.data.category,function(catArr){
            $scope.catJson[catArr.id] = catArr.name.trim();
         });
 
         $scope.schedType = 'all';
         $scope.schedStage = '';
         $scope.schedTopic = '';
-        $scope.schedules = response.schedule;
+        $scope.schedules = response.data.schedule;
         $scope.tags = []; //unique list of categories
 
         var typeArr = [];
