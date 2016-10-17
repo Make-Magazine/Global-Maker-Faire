@@ -11,6 +11,7 @@
   scheduleApp.controller('scheduleCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
     $scope.showType = false;
     $scope.showSchedules = false;
+    $scope.propertyName = 'time_start';
     var formIDs = jQuery('#forms2use').val();
     if(formIDs=='') alert ('error!  Please set the form to pull from on the admin page.')
     $http.get('/wp-json/makerfaire/v1/fairedata/schedule/'+formIDs)

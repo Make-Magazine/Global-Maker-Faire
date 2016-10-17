@@ -105,7 +105,7 @@ get_header(); ?>
 
     <div class="tab-content sched-body">
       <div ng-repeat="(schedDay,schedule) in schedules" id="Sched{{schedDay | date: 'd'}}" class="tab-pane" ng-class="{ 'active': $first }">
-        <div ng-repeat="(key,daySched) in schedule | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData |  orderBy:propertyName:reverse">
+        <div ng-repeat="(key,daySched) in schedule | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData |  orderBy:propertyName">
           <div class="row sched-row">
             <div class="sched-col-1">
               <a href="/maker/entry/{{daySched.id}}">
