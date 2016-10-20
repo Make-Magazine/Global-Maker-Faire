@@ -69,7 +69,7 @@ function getMTMentries($formIDs) {
     $entries[$result->lead_id]['id'] = $result->lead_id;
     $entries[$result->lead_id][$result->field_number] = $result->value;
   }
-  
+
   shuffle ($entries);
   //randomly order entries
   foreach($entries as $entry){
@@ -104,7 +104,8 @@ function getMTMentries($formIDs) {
       $projPhoto = (isset($entry['22']) ? $entry['22']:'');
       $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
       $featImg   = legacy_get_fit_remote_image_url($projPhoto,800,500);
-
+      if($fitPhoto == NULL) $fitPhoto = $projPhoto;
+      if($featImg == NULL)  $featImg = $projPhoto;
       //maker list
       $makerList = getMakerList($entry['id']);
 

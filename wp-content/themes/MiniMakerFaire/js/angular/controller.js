@@ -11,12 +11,12 @@ app.controller('mtmMakers', function($scope, $http) {
   //call to MF custom rest API
   $http.get('/wp-json/makerfaire/v1/fairedata/mtm/'+formIDs)
     .success(function(response){
-      if(response.data.entity.length<=0){
+      if(response.entity.length<=0){
         jQuery('.mtm .loading').html('No makers found');
       }
-      $scope.makers = response.data.entity;
+      $scope.makers = response.entity;
       //build array of categories
-      angular.forEach(response.data.category,function(catArr){
+      angular.forEach(response.category,function(catArr){
         catJson[catArr.id] = catArr.name.trim();
       });
       var catList = [];
