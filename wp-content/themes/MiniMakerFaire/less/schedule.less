@@ -237,6 +237,10 @@
       float: left;
       padding-left: 5px;
       padding-right: 5px;
+      @media (max-width:767px) {
+        padding-left: 0;
+        padding-right: 0;
+      }
       &:first-child {
         padding-left: 0;
       }
@@ -246,25 +250,41 @@
     }
     .sched-col-2 {
       width: 40%;
+      @media (max-width:767px) {
+        width: 100%;
+      }
     }
     .sched-col-3 {
       width: 15%;
+      @media (max-width:767px) {
+        width: 100%;
+        margin-bottom: 5px;
+      }
     }
     .sched-col-4 {
       width: 15%;
+      @media (max-width:767px) {
+        width: 100%;
+        margin-bottom: 5px;
+      }
     }
     .sched-col-5 {
       width: 15%;
+      @media (max-width:767px) {
+        width: 30px;
+        position: absolute;
+        left: 15px;
+      }
     }
     .sched-col-6 {
       width: 15%;
+      @media (max-width:767px) {
+        width: 100%;
+      }
     }
   }
 
   .sched-table {
-    @media (max-width:767px) {
-      overflow-x: scroll;
-    }
     .sched-header {
       color: #888;
       font-size: 14px;
@@ -280,9 +300,6 @@
         .dropdown-toggle, &.dropdown-toggle a {
           font-size: 13px;
         }
-      }
-      @media (max-width:767px) {
-        min-width: 700px;
       }
       .dropdown-toggle, .dropdown-toggle a {
         padding: 0;
@@ -301,6 +318,11 @@
           margin-top: 10px;
         }
       }
+      .sched-flex-row {
+        @media (max-width:767px) {
+          display: none;
+        }
+      }
     }
 
     .sched-body {
@@ -312,9 +334,6 @@
         border-bottom: 1px solid #00A3DA;
         @media (max-width:991px) {
           font-size: 14px;
-        }
-        @media (max-width:767px) {
-          min-width: 700px;
         }
         .sched-img {
           border: 3px solid #9CAFC3;
@@ -381,11 +400,21 @@
           margin-top: -25px;
           padding-left: 0;
           margin-left: 110px;
+          @media (max-width:767px) {
+            margin-top: 0;
+            padding-right: 0;
+            width: 100%;
+            margin-left: 0;
+            padding-left: 110px;
+          }
           .panel-heading {
             padding-bottom: 0;
             span {
               color: #00AEEF;
               cursor: pointer;
+            }
+            @media (max-width:767px) {
+              padding-right: 0;
             }
           }
           .panel-heading, .panel-body {
