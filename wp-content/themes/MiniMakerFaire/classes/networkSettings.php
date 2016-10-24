@@ -63,6 +63,7 @@ class GMFAdminSettings {
           window.send_to_editor = function( html ){
             imgurl = jQuery( 'img', html ).attr( 'src' );
             jQuery( '#'+id+'_image' ).val(imgurl);
+            jQuery('#'+id+'_pimg').attr("src",imgurl);
             tb_remove();
           }
 
@@ -88,7 +89,7 @@ class GMFAdminSettings {
                     <?php if($panelData['type']=='textarea'){ ?>
                       <textarea name="panelField[<?php echo $panelData['id']; ?>]" rows="4" cols="50"><?php echo get_site_option( $panelData['id'] ) ;?></textarea>
                     <?php }elseif($panelData['type']=='image'){ ?>
-                      <img class="user-preview-image" src="<?php echo esc_attr( get_site_option( $panelData['id'] ) ); ?>">
+                      <img id="<?php echo $panelData['id']; ?>_pimg"  class="user-preview-image" src="<?php echo esc_attr( get_site_option( $panelData['id'] ) ); ?>">
                       <br/>
                       <input type="text" name="panelField[<?php echo $panelData['id']; ?>]" id="<?php echo $panelData['id']; ?>_image" value="<?php echo esc_attr( get_site_option( $panelData['id'] ) ); ?>" class="regular-text" />
                       <input type='button' class="button-primary uploadImage" onClick="buildUpload('<?php echo $panelData['id']; ?>')" value="Upload Image" />
