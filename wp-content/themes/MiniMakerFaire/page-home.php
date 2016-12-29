@@ -95,12 +95,6 @@ get_header();
   ?>
   <aside class="fom-panel">
     <div class="container">
-      <div class="row text-center">
-        <div class="title-w-border-y">
-          <h2 class="text-center">Find Out More</h2>
-        </div>
-      </div>
-
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-4 text-center">
           <a href="<?php echo $url1;?>" target="_blank">
