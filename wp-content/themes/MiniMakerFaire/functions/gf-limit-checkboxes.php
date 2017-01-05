@@ -16,8 +16,8 @@ class GFLimitCheckboxes {
         $this->form_id = $form_id;
         $this->field_limits = $this->set_field_limits($field_limits);
 
-        add_filter("gform_pre_render_$form_id", array(&$this, 'pre_render'));
-        add_filter("gform_validation_$form_id", array(&$this, 'validate'));
+        add_filter("gform_pre_render", array(&$this, 'pre_render'));
+        add_filter("gform_validation", array(&$this, 'validate'));
 
     }
 
@@ -203,24 +203,11 @@ class GFLimitCheckboxes {
 
 }
 
-/*  
- * array to limit checkboxes.  
- * 
- * to add a new limit, add a new array to limitArray array(fieldID,max#, array of formID's)
- * 
- */
-$limitArray = array(
-                array(321,4,array(1,2,3)), //limit additional categories field to 4
-              );
 
-foreach($limitArray as $limit){
-    $field = $limit[0];
-    $max   = $limit[1];
-    foreach($limit[2] as $form){          
-        new GFLimitCheckboxes($form, array(
-            $field => array('max' => $max)
-        ));
-    }
-}
+  $field = 321;
+  $max   = 4;
 
-
+  //limits are for all forms
+  new GFLimitCheckboxes(9, array(
+    $field => array('max' => $max)
+  ));
