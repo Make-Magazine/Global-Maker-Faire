@@ -43,6 +43,7 @@ function dispLayout($row_layout) {
       $return = getWhatisMF();
       break;
     case 'call_to_action_panel':  // CTA PANEL
+    case 'call_to_action':  // CTA PANEL
       $activeinactive = get_sub_field('activeinactive');
       if( $activeinactive == 'Active') {
         $return = getCTApanel();
@@ -86,6 +87,7 @@ function dispLayout($row_layout) {
 /*   Function to build the featured maker panel   */
 /**************************************************/
 function getFeatMkPanel($row_layout) {
+  $return  = '';
   $dynamic = ($row_layout=='featured_makers_panel_dynamic' || $row_layout=='featured_makers_panel_circle_dynamic' ? true : false);
   $circle  = ($row_layout=='featured_makers_panel_circle'  || $row_layout=='featured_makers_panel_circle_dynamic' ? true : false);
 
@@ -95,18 +97,18 @@ function getFeatMkPanel($row_layout) {
 
   //set the class to featured-maker0panel-circle if a circle panel was selected
   //if not a circle panel, check if the background color selected was red
-  echo '<section class="featured-maker-panel'.($circle?'-circle':($background_color == "Red"?' red-back':'')).'"> ';
-  echo '<div class="container">';
+  $return .= '<section class="featured-maker-panel'.($circle?'-circle':($background_color == "Red"?' red-back':'')).'"> ';
+  $return .=  '<div class="container">';
   if(get_sub_field('title')){
     if($circle){
-      echo '<div class="row padtop text-center">
+      $return .=  '<div class="row padtop text-center">
               <img class="robot-head" src="' . get_bloginfo("template_directory") . '/img/news-icon.png" alt="News icon" />
               <div class="title-w-border-r">
                 <h2>' . get_sub_field('title') . '</h2>
               </div>
             </div>';
     } else {
-      echo '<div class="row text-center">
+      $return .=  '<div class="row text-center">
               <div class="title-w-border-y">
                 <h2>' . get_sub_field('title') . '</h2>
               </div>
@@ -114,7 +116,7 @@ function getFeatMkPanel($row_layout) {
     }
   }
 
-  echo '<div class="row padbottom">';
+  $return .=  '<div class="row padbottom">';
 
   //build makers array
   $makerArr = array();
@@ -160,10 +162,10 @@ function getFeatMkPanel($row_layout) {
   //loop thru maker data and build the table
   foreach($makerArr as $maker) {
     if(!empty($maker['maker_url'])){
-      echo '<a href="' . $maker['maker_url'] . '">';
+      $return .=  '<a href="' . $maker['maker_url'] . '">';
     }
 
-    echo '<div class="featured-maker col-xs-6 col-sm-3">
+    $return .=  '<div class="featured-maker col-xs-6 col-sm-3">
             <div class="maker-img" style="background-image: url(' . $maker['image']["url"] . ');">
             </div>
             <div class="maker-panel-text">
@@ -173,21 +175,22 @@ function getFeatMkPanel($row_layout) {
           </div>';
 
     if(!empty($maker['maker_url'])){
-      echo '</a>';
+      $return .=  '</a>';
     }
   }
-  echo '</div>';  //end div.row
+  $return .=  '</div>';  //end div.row
 
   //check if we should display a more maker button
   if(get_sub_field('more_makers_button')) {
-    echo '<div class="row padbottom">
+    $return .=  '<div class="row padbottom">
             <div class="col-xs-12 padbottom text-center">
               <a class="btn ' .($circle?'btn-b-ghost':'btn-w-ghost').'" href="' . $more_makers_button . '">'.__('More Makers','MiniMakerFaire').'</a>
             </div>
           </div>';
   }
-  echo '</div>'; //end div.container
-  echo '<div class="flag-banner"></div></section>';
+  $return .=  '</div>'; //end div.container
+  $return .=  '<div class="flag-banner"></div></section>';
+  return $return;
 }
 
 /**************************************************/
@@ -195,18 +198,19 @@ function getFeatMkPanel($row_layout) {
 /**************************************************/
 function getFeatEvPanel($row_layout) {
   global $wpdb;
+  $return = '';
   $dynamic = ($row_layout=='featured_events_dynamic' ? true : false);
-  echo '<section class="featured-events-panel">
+  $return .=  '<section class="featured-events-panel">
           <div class="container">';
   if(get_sub_field('title')){
-    echo '<div class="row padtop text-center">
+    $return .=  '<div class="row padtop text-center">
             <div class="title-w-border-r">
               <h2>' . get_sub_field('title') . '</h2>
             </div>
           </div>';
   }
 
-  echo '<div class="row padbottom">';
+  $return .=  '<div class="row padbottom">';
 
   //build event array
   $eventArr = array();
@@ -269,7 +273,7 @@ function getFeatEvPanel($row_layout) {
 
   //build event display
   foreach($eventArr as $event) {
-    echo '<div class="featured-event col-xs-6">'.
+    $return .=  '<div class="featured-event col-xs-6">'.
             ($event['maker_url']!=''?'<a href="'.$event['maker_url'].'">':'').
            '<div class="col-xs-12 col-sm-4 nopad">
               <div class="event-img" style="background-image: url(' . $event['image']["url"] . ');"></div>
@@ -288,23 +292,25 @@ function getFeatEvPanel($row_layout) {
          '</div>';
   }
 
-  echo '</div>'; //end div.row
+  $return .=  '</div>'; //end div.row
   if(get_sub_field('all_events_button')) {
     $all_events_button = get_sub_field('all_events_button');
-    echo '<div class="row padbottom">
+    $return .=  '<div class="row padbottom">
             <div class="col-xs-12 padbottom text-center">
               <a class="btn btn-b-ghost" href="' . $all_events_button . '">All Events</a>
             </div>
           </div>';
   }
-  echo '</div>'; //end div.container
-  echo '<div class="flag-banner"></div></section>';
+  $return .=  '</div>'; //end div.container
+  $return .=  '<div class="flag-banner"></div></section>';
+  return $return;
 }
 
 /************************************/
 /*   Function to return post feed   */
 /************************************/
 function getPostFeed() {
+  $return = '';
   $post_feed_quantity = get_sub_field('post_quantity');
   $args = array( 'numberposts' => $post_feed_quantity, 'post_status' => 'publish' );
   $recent_posts = wp_get_recent_posts( $args );
@@ -319,10 +325,10 @@ function getPostFeed() {
   }
   $news_slug = get_post( $news_ID )->post_name;
 
-  echo '<section class="recent-post-panel"><div class="container">';
+  $return .=  '<section class="recent-post-panel"><div class="container">';
 
   if(get_sub_field('title')) {
-    echo '<div class="row padbottom text-center">
+    $return .=  '<div class="row padbottom text-center">
             <img class="robot-head" src="' . get_bloginfo("template_directory") . '/img/news-icon.png" alt="News icon" />
             <div class="title-w-border-r">
               <h2>' . get_sub_field('title') . '</h2>
@@ -330,21 +336,21 @@ function getPostFeed() {
           </div>';
   }
 
-  echo '<div class="row">';
+  $return .=  '<div class="row">';
 
   foreach( $recent_posts as $recent ) {
-    echo '<div class="recent-post-post col-xs-12 col-sm-3">
+    $return .=  '<div class="recent-post-post col-xs-12 col-sm-3">
             <article class="recent-post-inner">
               <a href="' . get_permalink($recent["ID"]) . '">';
     if ( get_the_post_thumbnail($recent['ID']) != '' ) {
       $thumb_id = get_post_thumbnail_id($recent['ID']);
       $url = wp_get_attachment_url($thumb_id);
-      echo "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
+      $return .=  "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
     } else {
-      echo get_first_post_image($recent);
+      $return .=  get_first_post_image($recent);
     }
 
-    echo  '     <div class="recent-post-text">
+    $return .=   '     <div class="recent-post-text">
                   <h4>' . $recent["post_title"] . '</h4>
                   <p class="recent-post-date">' . mysql2date('M j, Y',  $recent["post_date"]) . '</p>
                   <p class="recent-post-descripton">' . substr(wp_strip_all_tags($recent["post_content"]), 0 , 150) . '</p>
@@ -354,88 +360,94 @@ function getPostFeed() {
           </div>';
   }
 
-  echo '<div class="col-xs-12 padtop padbottom text-center">
+  $return .=  '<div class="col-xs-12 padtop padbottom text-center">
           <a class="btn btn-b-ghost" href="/' . $news_slug . '">'.__('More News','MiniMakerFaire').'</a>
         </div>';
 
-  echo '</div></div><div class="flag-banner"></div></section>';
+  $return .=  '</div></div><div class="flag-banner"></div></section>';
+  return $return;
 }
 
 /******************************************************/
 /*  Function to return 2_column_photo_and_text_panel  */
 /******************************************************/
 function get2ColLayout() {
+  $return = '';
   $column_1 = get_sub_field('column_1');
   $column_2 = get_sub_field('column_2');
   $cta_button = get_sub_field('cta_button');
   $cta_button_url = get_sub_field('cta_button_url');
-  echo '<section class="content-panel">
+  $return .=  '<section class="content-panel">
           <div class="container">';
 
   if(get_sub_field('title')) {
-    echo '  <div class="row">
+    $return .=  '  <div class="row">
               <div class="col-xs-12 text-center padbottom">
                 <h2>' . get_sub_field('title') . '</h2>
               </div>
             </div>';
   }
 
-  echo '    <div class="row">
+  $return .=  '    <div class="row">
               <div class="col-sm-6">' . $column_1 . '</div>
               <div class="col-sm-6">' . $column_2 . '</div>
             </div>';
 
   if(get_sub_field('cta_button')){
-    echo '  <div class="row text-center padtop">
+    $return .=  '  <div class="row text-center padtop">
               <a class="btn btn-b-ghost" href="' . $cta_button_url . '">' . $cta_button . '</a>
             </div>';
   }
 
-  echo '  </div>
+  $return .=  '  </div>
           <div class="flag-banner"></div>
         </section>';
+  return $return;
 }
 
 /******************************************************/
 /*  Function to return 2_column_photo_and_text_panel  */
 /******************************************************/
 function get1ColLayout() {
+  $return = '';
   $column_1 = get_sub_field('column_1');
   $cta_button = get_sub_field('cta_button');
   $cta_button_url = get_sub_field('cta_button_url');
-  echo '<section class="content-panel">
+  $return .=  '<section class="content-panel">
           <div class="container">';
 
   if(get_sub_field('title')) {
-    echo '  <div class="row">
+    $return .=  '  <div class="row">
               <div class="col-xs-12 text-center padbottom">
                 <h2>' . get_sub_field('title') . '</h2>
               </div>
             </div>';
   }
 
-  echo '    <div class="row">
+  $return .=  '    <div class="row">
               <div class="col-xs-12">' . $column_1 . '</div>
             </div>';
 
   if(get_sub_field('cta_button')) {
-    echo '  <div class="row text-center padtop">
+    $return .=  '  <div class="row text-center padtop">
               <a class="btn btn-b-ghost" href="' . $cta_button_url . '">' . $cta_button . '</a>
             </div>';
   }
 
-  echo '  </div>
+  $return .=  '  </div>
           <div class="flag-banner"></div>
         </section>';
+  return $return;
 }
 
 /******************************************************/
 /*  Function to return WHAT IS MAKER FAIRE PANEL      */
 /******************************************************/
 function getWhatisMF() {
+  $return = '';
   $widget_radio = get_sub_field('show_what_is_maker_faire');
   if( $widget_radio == 'show') {
-    echo '<section class="what-is-maker-faire">
+    $return .=  '<section class="what-is-maker-faire">
             <div class="container">
               <div class="row text-center">
                 <div class="title-w-border-y">
@@ -454,18 +466,20 @@ function getWhatisMF() {
             <img src="' . get_bloginfo('template_directory') . '/img/makey.png" alt="Maker Faire information Makey icon" />
           </section>';
   }
+  return $return;
 }
 
 /*********************************************/
 /*  Function to return Call to Action panel  */
 /*********************************************/
 function getCTApanel() {
-  $cta_title = get_sub_field('text');
-  $cta_url = get_sub_field('url');
+  $return           = '';
+  $cta_title        = get_sub_field('text');
+  $cta_url          = get_sub_field('url');
   $background_color = get_sub_field('background_color');
 
-  echo '<section class="cta-panel'.($background_color == "Red"?' red-back':'').'">';
-  echo '<div class="container">
+  $return .=  '<section class="cta-panel'.($background_color == "Red"?' red-back':'').'">';
+  $return .=  '<div class="container">
           <div class="row text-center">
             <div class="col-xs-12">
               <h3><a href="' . $cta_url . '">' . $cta_title . ' <i class="fa fa-chevron-right" aria-hidden="true"></i></a></h3>
@@ -473,20 +487,22 @@ function getCTApanel() {
           </div>
         </div>
       </section>';
+  return $return;
 }
 
 /***************************************************/
 /*  Function to return IMAGE CAROUSEL (RECTANGLE)  */
 /***************************************************/
 function getImgCarousel() {
+  $return = '';
   // IMAGE CAROUSEL (RECTANGLE)
   $width = get_sub_field('width');
   // check if the nested repeater field has rows of data
   if( have_rows('images') ) {
 
-    echo '<section class="rectangle-image-carousel ';
-    if ($width == 'Content Width') { echo 'container">'; } else { echo '">'; }
-    echo     '<div id="carouselPanel" class="carousel slide" data-ride="carousel">
+    $return .=  '<section class="rectangle-image-carousel ';
+    if ($width == 'Content Width') { $return .=   'container">'; } else { $return .=   '">'; }
+    $return .=      '<div id="carouselPanel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">';
     $i = 0;
 
@@ -498,88 +514,95 @@ function getImgCarousel() {
       $url  = get_sub_field('url');
       $image = get_sub_field('image');
 
-      if ($i == 0) { ?>
-        <div class="item active">
-          <?php if(get_sub_field('url')){ ?>
-            <a href="<?php echo $url ?>">
-          <?php } ?>
-            <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-            <?php if (get_sub_field('text')){ ?>
-              <div class="carousel-caption">
-                <h3><?php echo $text; ?></h3>
-              </div>
-            <?php }
+      if ($i == 0) {
+        $return .= '
+        <div class="item active">';
           if(get_sub_field('url')){
-            echo '</a>';
-          } ?>
-        </div> <?php
-      } else { ?>
-        <div class="item">
-          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+            $return .= '<a href="'. $url .'">';
+          }
+          $return .= '
+            <img src="'. $image['url'].'" alt="'. $image['alt'] .'" />';
+          if (get_sub_field('text')){
+            $return .= '
+              <div class="carousel-caption">
+                <h3>'. $text.'</h3>
+              </div>';
+          }
+          if(get_sub_field('url')){
+            $return .=  '</a>';
+          }
+        $return .= '
+        </div>';
+      } else {
+        $return .=
+        '<div class="item">
+          <img src="'. $image['url'] .'" alt="'. $image['alt'].'" />
           <div class="carousel-caption">
-            <h3><?php echo $text; ?></h3>
+            <h3>'. $text .'</h3>
           </div>
-        </div> <?php
+        </div>';
       }
       $i++;
-    } ?>
+    }
+    $return .=
+    '</div> <!-- close carousel-inner-->';
 
-    </div> <!-- close carousel-inner-->
-
-    <?php if( $i > 1 ){ ?>
-      <a class="left carousel-control" href="#carouselPanel" role="button" data-slide="prev">
-        <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
+    if( $i > 1 ){
+      $return .=
+      '<a class="left carousel-control" href="#carouselPanel" role="button" data-slide="prev">
+        <img class="glyphicon-chevron-right" src="'. get_bloginfo('template_directory').'/img/arrow_left.png" alt="Image Carousel button left" />
         <span class="sr-only">Previous</span>
       </a>
       <a class="right carousel-control" href="#carouselPanel" role="button" data-slide="next">
-        <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
+        <img class="glyphicon-chevron-right" src="'. get_bloginfo('template_directory').'/img/arrow_right.png" alt="Image Carousel button right" />
         <span class="sr-only">Next</span>
-      </a>
-<?php } ?>
+      </a>';
+    }
+    $return .= '
           </div> <!-- close carouselPanel-->
-        </section> <?php
-
+        </section>';
   }
+  return $return;
 }
 
 /***************************************************/
 /*  Function to return IMAGE CAROUSEL (SQUARE)     */
 /***************************************************/
 function getImgCarouselSquare() {
+  $return = '';
   // IMAGE CAROUSEL (SQUARE)
   $width = get_sub_field('width');
 
   if( have_rows('images') ) {
-    echo '<section class="square-image-carousel '.($width == 'Content Width' ? 'container nopad':'').'">';
-    ?>
-
-    <div class="mtm-carousel owl-carousel">
-      <?php while ( have_rows('images') ) {
+    $return .=  '<section class="square-image-carousel '.($width == 'Content Width' ? 'container nopad':'').'">';
+    $return .=    '<div class="mtm-carousel owl-carousel">';
+    while ( have_rows('images') ) {
         the_row();
 
         $text  = get_sub_field('text');
         $url   = get_sub_field('url');
-        $image = get_sub_field('image'); ?>
+        $image = get_sub_field('image');
+        $return .=
+        '<div class="mtm-car-image" style="background: url(\''. $image["url"].'\') no-repeat center center;background-size: cover;"></div>';
 
-        <div class="mtm-car-image" style="background: url('<?php echo $image["url"]; ?>') no-repeat center center;background-size: cover;"></div>
-
-      <?php } ?>
+    }
+    $return .= '
     </div>
 
     <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
-      <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
-      <span class="sr-only">Previous</span>
+      <img class="glyphicon-chevron-right" src="'. get_bloginfo('template_directory').'/img/arrow_left.png" alt="Image Carousel button left" />
+      <span class="sr-only">'. __('Previous','MiniMakerFaire').'</span>
     </a>
     <a id="right-trigger" class="right carousel-control" href="#" role="button" data-slide="next">
-      <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
-      <span class="sr-only">Next</span>
+      <img class="glyphicon-chevron-right" src="'. get_bloginfo('template_directory').'/img/arrow_right.png" alt="Image Carousel button right" />
+      <span class="sr-only">'. __('Next','MiniMakerFaire').'</span>
     </a>
     </section>
 
     <script>
     jQuery( document ).ready(function() {
       // Carousel init
-      jQuery('.square-image-carousel .mtm-carousel').owlCarousel({
+      jQuery(\'.square-image-carousel .mtm-carousel\').owlCarousel({
         center: true,
         autoWidth:true,
         items:2,
@@ -605,18 +628,18 @@ function getImgCarouselSquare() {
         jQuery( ".square-image-carousel .owl-prev" ).click();
       });
     });
-    </script>
-    <?php
+    </script>';
   }
+  return $return;
 }
 
 function getNewsletterPanel() {
-    ?>
+  $return = '
     <section class="newsletter-panel">
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-6">
-            <p><strong><?php _e('Stay in Touch:','MiniMakerFaire')?></strong><br /><?php _e('Get Local and Global Maker Faire Community updates.','MiniMakerFaire')?></p>
+            <p><strong>'. __('Stay in Touch:','MiniMakerFaire').'</strong><br />'. __('Get Local and Global Maker Faire Community updates.','MiniMakerFaire').'</p>
           </div>
           <div class="col-xs-12 col-sm-6">
             <form class="form-inline sub-form whatcounts-signup1" action="http://whatcounts.com/bin/listctrl" method="POST">
@@ -626,11 +649,11 @@ function getNewsletterPanel() {
               <input type="hidden" name="cmd" value="subscribe" />
               <input type="hidden" name="custom_source" value="footer" />
               <input type="hidden" name="custom_incentive" value="none" />
-              <input type="hidden" name="custom_url" value="<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>" />
+              <input type="hidden" name="custom_url" value="'. $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"].'" />
               <input type="hidden" id="format_mime" name="format" value="mime" />
-              <input type="hidden" name="custom_host" value="<?php echo $_SERVER["HTTP_HOST"]; ?>" />
-              <input id="wc-email" class="form-control nl-panel-input" name="email" placeholder="Enter your Email" required type="email">
-              <input class="form-control btn-w-ghost" value="GO" type="submit">
+              <input type="hidden" name="custom_host" value="'. $_SERVER["HTTP_HOST"].'" />
+              <input id="wc-email" class="form-control nl-panel-input" name="email" placeholder="'. __('Enter your Email','MiniMakerFaire').'" required type="email">
+              <input class="form-control btn-w-ghost" value="'. __('GO','MiniMakerFaire').'" type="submit">
             </form>
           </div>
         </div>
@@ -645,8 +668,8 @@ function getNewsletterPanel() {
         </span>
       </div>
       <div class="col-sm-8 col-xs-12 nl-modal">
-        <h3><?php _e('Awesome!','MiniMakerFaire')?></h3>
-        <p><?php _e('Thanks for signing up.','MiniMakerFaire')?></p>
+        <h3>'. __('Awesome!','MiniMakerFaire').'</h3>
+        <p>'. __('Thanks for signing up.','MiniMakerFaire').'</p>
       </div>
       <div class="clearfix"></div>
     </div>
@@ -662,22 +685,23 @@ function getNewsletterPanel() {
             this.content = this.content.html();
           }
         });
-        jQuery(document).on('submit', '.whatcounts-signup1', function (e) {
+        jQuery(document).on("submit", ".whatcounts-signup1", function (e) {
           e.preventDefault();
-          var bla = jQuery('#wc-email').val();
+          var bla = jQuery("#wc-email").val();
           globalNewsletterSignup(bla);
-          jQuery.post('http://whatcounts.com/bin/listctrl', jQuery('.whatcounts-signup1').serialize());
-          jQuery('.fancybox-thx').trigger('click');
-          //jQuery('.nl-modal-email-address').text(bla);
-          //jQuery('.whatcounts-signup2 #email').val(bla);
+          jQuery.post("http://whatcounts.com/bin/listctrl", jQuery(".whatcounts-signup1").serialize());
+          jQuery(".fancybox-thx").trigger("click");
+          //jQuery(".nl-modal-email-address").text(bla);
+          //jQuery(".whatcounts-signup2 #email").val(bla);
         });
       });
-    </script>
-    <?php
+    </script>';
+  return $return;
 }
 
 
 function getSponsorPanel() {
+  $return = '';
   // Get the sponsors template page ID
   $sponsor_pages = get_pages(array(
     'meta_key' => '_wp_page_template',
@@ -692,13 +716,13 @@ function getSponsorPanel() {
 
   // check if the nested repeater field has rows of data
   if( have_rows('sponsors', $sponsor_ID)) {
-    ?>
+    $return .= '
     <section class="sponsor-slide">
       <div class="container">
         <div class="row sponsor_panel_title">
           <div class="col-xs-12 text-center">
             <div class="title-w-border-r">
-              <h2 class="sponsor-slide-title"><?php echo $sponsor_panel_field_1;?></h2>
+              <h2 class="sponsor-slide-title">'. $sponsor_panel_field_1.'</h2>
             </div>
           </div>
         </div>
@@ -706,7 +730,7 @@ function getSponsorPanel() {
           <div class="col-xs-12">
             <div id="carousel-sponsors-slider" class="carousel slide" data-ride="carousel">
               <!-- Wrapper for slides -->
-              <div class="carousel-inner" role="listbox"><?php
+              <div class="carousel-inner" role="listbox">';
                 // loop through the rows of data
                 while ( have_rows('sponsors', $sponsor_ID) ) {
                   the_row();
@@ -716,17 +740,17 @@ function getSponsorPanel() {
                     $sub_field_3 = get_sub_field('sponsors_image_size'); //size option
 
                     // check if the nested repeater field has rows of data
-                    if( have_rows('sponsors_with_image') ) { ?>
+                    if( have_rows('sponsors_with_image') ) {
+                      $return .= '
                       <div class="item">
                         <div class="row spnosors-row">
-                          <div class="col-xs-12">
-                            <?php
+                          <div class="col-xs-12">';
                             if(!empty($sponsor_group_title)) {
-                              echo '<h5 class="text-center sponsors-type">' . $sponsor_group_title . '</h5>';
+                              $return .= '<h5 class="text-center sponsors-type">' . $sponsor_group_title . '</h5>';
                             }
-                            ?>
-                            <div class="sponsors-box">
-                              <?php
+                            $return .= '
+                            <div class="sponsors-box">';
+
                               // loop through the rows of data
                               while ( have_rows('sponsors_with_image') ) {
                                 the_row();
@@ -734,40 +758,37 @@ function getSponsorPanel() {
                                 $sub_field_1 = get_sub_field('image'); //Photo
                                 $sub_field_2 = get_sub_field('url'); //URL
 
-                                echo '<div class="' . $sub_field_3 . '">';
+                                $return .= '<div class="' . $sub_field_3 . '">';
                                 if( $sub_field_2 ) {
-                                  echo '<a href="' . $sub_field_2 . '" target="_blank">';
+                                  $return .= '<a href="' . $sub_field_2 . '" target="_blank">';
                                 }
-                                echo '<img src="' . $sub_field_1 . '" alt="Maker Faire sponsor logo" class="img-responsive" />';
+                                $return .= '<img src="' . $sub_field_1 . '" alt="Maker Faire sponsor logo" class="img-responsive" />';
                                 if( $sub_field_2 ) {
-                                  echo '</a>';
+                                  $return .= '</a>';
                                 }
-                                echo '</div>';
-
+                                $return .= '</div>';
                               }
-                              ?>
+                            $return .= '
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <?php
+                      </div>';
                     } // end if image
                 } // end row layout
               }
-              ?>
+              $return .= '
               </div>
             </div>
           </div>
         </div>
         <div class="row sponsor_panel_bottom">
           <div class="col-xs-12 text-center">
-            <p>
-              <?php
+            <p>';
               if(!empty($sponsor_panel_field_3)) {
-                echo '<a href="' . $sponsor_panel_field_3 . '">'. _e('Become a Sponsor','MiniMakerFaire').'</a><span>&bull;</span>';
+                $return .= '<a href="' . $sponsor_panel_field_3 . '">'. __('Become a Sponsor','MiniMakerFaire').'</a><span>&bull;</span>';
               }
-              ?>
-              <a href="/sponsors"><?php _e('All Sponsors','MiniMakerFaire')?></a>
+              $return .= '
+              <a href="/sponsors">'. __('All Sponsors','MiniMakerFaire').'</a>
             </p>
           </div>
         </div>
@@ -778,28 +799,33 @@ function getSponsorPanel() {
       jQuery(function() {
         var title = jQuery(".item.active .sponsors-type").html();
       });
-    </script><?php
+    </script>';
   }
+  return $return;
 }
 
 /***************************************************/
 /*  Function to return Social Media Panel          */
 /***************************************************/
 function getSocialPanel() {
+  $return = '';
   $panel_title = get_sub_field('panel_title');
-  if( have_rows('active_feeds') ) {?>
+  if( have_rows('active_feeds') ) {
+    $return .= '
     <section class="social-feeds-panel">
-      <div class="container">
-        <?php if( $panel_title!='' ) { ?>
+      <div class="container">';
+        if( $panel_title!='' ) {
+          $return .= '
           <div class="row">
             <div class="col-xs-12 text-center">
               <div class="title-w-border-r">
-                <h2><?php echo $panel_title; ?></h2>
+                <h2>'. $panel_title.'</h2>
               </div>
             </div>
-          </div>
-        <?php } ?>
-        <div class="social-row"> <?php
+          </div>';
+        }
+        $return .= '
+        <div class="social-row">';
           while ( have_rows('active_feeds') ) {
             the_row();
 
@@ -807,7 +833,7 @@ function getSocialPanel() {
               $facebook_title = get_sub_field('fb_title');
               $facebook_url   = get_sub_field('facebook_url');
               $facebook_url_2 = rawurlencode($facebook_url);
-              echo '
+              $return .= '
               <div class="social-panel-fb social-panel-feed">
                 <h5>' . $facebook_title . '</h5>
                 <iframe src="https://www.facebook.com/plugins/page.php?href=' . $facebook_url_2 . '&tabs=timeline&height=468&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
@@ -816,7 +842,7 @@ function getSocialPanel() {
             } elseif( get_row_layout() == 'twitter' ) {
               $twitter_title = get_sub_field('tw_title');
               $twitter_id = get_sub_field('twitter_id');
-              echo '
+              $return .= '
               <div class="social-panel-tw social-panel-feed">
                 <div class="twitter-feed-parent">
                   <h5>' . $twitter_title . '</h5>
@@ -843,16 +869,18 @@ function getSocialPanel() {
 
             } elseif( get_row_layout() == 'instagram' ) {
               $instagram_title = get_sub_field('ig_title');
-              $instagram_iframe = get_sub_field('instagram_iframe'); ?>
+              $instagram_iframe = get_sub_field('instagram_iframe');
+              $return .= '
               <div class="social-panel-ig social-panel-feed">
-                <h5><?php echo $instagram_title; ?></h5>
-                <?php echo $instagram_iframe; ?>
-              </div> <?php
+                <h5>'. $instagram_title.'</h5>
+                '.$instagram_iframe .'
+              </div>';
             }
-          }?>
+          }
+          $return .= '
         </div>
       </div>
-    </section>
-  <?php
+    </section>';
   }
+  return $return;
 }
