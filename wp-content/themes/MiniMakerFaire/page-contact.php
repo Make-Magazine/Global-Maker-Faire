@@ -6,12 +6,12 @@ get_header(); ?>
 
 <div class="container contact-page">
 
-<?php 
+<?php
 $page_title = get_field( "page_title" );
 $contentdecription = get_field( "contentdecription" );
 
 if( $page_title || $contentdecription ) { ?>
-    
+
   <div class="row">
 
     <div class="col-xs-12 col-lg-10 col-lg-offset-1 text-center contact-desc">
@@ -44,17 +44,17 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
       <h3>Contact Info</h3>
 
       <?php if( $contact_address ) {
-        echo '<h4>Address:</h4>';
+        echo '<h4>'.__('Address','MiniMakerFaire').':</h4>';
         echo '<div class="contact-info-p">' . $contact_address . '</div>';
       }
 
       if( $phone ) {
-        echo '<h4>Phone:</h4>';
+        echo '<h4>'.__('Phone','MiniMakerFaire').':</h4>';
         echo '<div class="contact-info-p">' . $phone . '</div>';
       }
 
       if( $email ) {
-        echo '<h4>Email:</h4>';
+        echo '<h4>'.__('Email','MiniMakerFaire').':</h4>';
         echo '<div class="contact-info-p">' . $email . '</div>';
       }
 
@@ -109,12 +109,12 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
     <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
 
-      <?php 
+      <?php
       $contact_form_email_address = get_field( "contact_form_email_address" );
 
       if( $contact_form_email_address ) { ?>
 
-        <h3>Contact Us</h3>
+        <h3><?php _e('Contact Us','MiniMakerFaire')?></h3>
 
         <div class="contact-page-form">
 
@@ -134,11 +134,11 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
           }
 
           //response messages
-          $not_human       = "Human verification incorrect.";
-          $missing_content = "Please supply all information.";
-          $email_invalid   = "Email Address Invalid.";
-          $message_unsent  = "Message was not sent. Try Again.";
-          $message_sent    = "Thanks! Your message has been sent.";
+          $not_human       = __("Human verification incorrect.",'MiniMakerFaire');
+          $missing_content = __("Please supply all information.",'MiniMakerFaire');
+          $email_invalid   = __("Email Address Invalid.",'MiniMakerFaire');
+          $message_unsent  = __("Message was not sent. Try Again.",'MiniMakerFaire');
+          $message_sent    = __("Thanks! Your message has been sent.",'MiniMakerFaire');
 
           //user posted variables
           $name = $_POST['message_name'];
@@ -148,9 +148,9 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
           //php mailer variables
           //$to = $contact_form_email_address;
-          $subject = "Someone sent a message from ".get_bloginfo('name');
-          $headers = 'From: '. $email . "\r\n" .
-            'Reply-To: ' . $email . "\r\n";
+          $subject = __("Someone sent a message from ",'MiniMakerFaire').get_bloginfo('name');
+          $headers = __("From: ",'MiniMakerFaire'). $email . "\r\n" .
+            __('Reply-To: ','MiniMakerFaire') . $email . "\r\n";
 
           if(!$human == 0){
             if($human != 2) my_contact_form_generate_response("error", $not_human); //not human!
@@ -180,19 +180,19 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
             <?php echo $response; ?>
             <form action="<?php the_permalink(); ?>" method="post">
               <div class="form-group">
-                <label for="name">Name <span>*</span></label>
+                <label for="name"><?php _e("Name",'MiniMakerFaire')?> <span>*</span></label>
                 <input type="text" class="form-control" name="message_name" value="<?php echo esc_attr($_POST['message_name']); ?>">
               </div>
               <div class="form-group">
-                <label for="message_email">Email <span>*</span></label>
+                <label for="message_email"><?php _e("Email",'MiniMakerFaire')?> <span>*</span></label>
                 <input type="text" class="form-control" name="message_email" value="<?php echo esc_attr($_POST['message_email']); ?>">
               </div>
               <div class="form-group">
-                <label for="message_text">Message <span>*</span></label>
+                <label for="message_text"><?php _e("Message",'MiniMakerFaire')?> <span>*</span></label>
                 <textarea type="text" class="form-control" rows="3" name="message_text"><?php echo esc_textarea($_POST['message_text']); ?></textarea>
               </div>
               <div class="form-group">
-                <label for="message_human">Human Verification <span>*</span> <br><input type="text" style="width: 60px;" name="message_human"> + 3 = 5</label>
+                <label for="message_human"><?php _e("Human Verification",'MiniMakerFaire')?> <span>*</span> <br><input type="text" style="width: 60px;" name="message_human"> + 3 = 5</label>
               </div>
               <input type="hidden" name="submitted" value="1">
               <p><input class="btn btn-primary" type="submit"></p>

@@ -98,12 +98,12 @@ get_header();
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-4 text-center">
           <a href="<?php echo $url1;?>" target="_blank">
-            <img src="<?php echo get_site_option( 'find-out-more-img1' ); ?>" alt="Click here to get subscritions to Make: Magazine" class="img-responsive" />
+            <img src="<?php echo get_site_option( 'find-out-more-img1' ); ?>" alt="<?php _e('Click here to get subscriptions to Make: Magazine','MiniMakerFaire');?>" class="img-responsive" />
           </a>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-4 text-center">
           <a href="<?php echo $url2;?>" target="_blank">
-            <img src="<?php echo get_site_option( 'find-out-more-img2' ); ?>" alt="Click here to see our global Maker Faires" class="img-responsive" />
+            <img src="<?php echo get_site_option( 'find-out-more-img2' ); ?>" alt="<?php _e('Click here to see our global Maker Faires','MiniMakerFaire');?>" class="img-responsive" />
           </a>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 text-center house-ad">

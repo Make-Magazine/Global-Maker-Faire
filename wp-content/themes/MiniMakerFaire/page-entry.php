@@ -163,11 +163,11 @@
           <h2>
           <?php
             if ($isGroup)
-              echo 'Group';
+              echo __('Group','MiniMakerFaire');
             elseif($isList)
-              echo 'Makers';
+              echo __('Makers','MiniMakerFaire');
             else
-              echo 'Maker';
+              echo __('Maker','MiniMakerFaire');
           ?>
           </h2>
         </div>
@@ -201,7 +201,7 @@
       <?php
       echo display_groupEntries($entryId);
       } else { //entry is not active
-        echo '<h2>Invalid entry</h2>';
+        echo '<h2>'. __('Invalid entry','MiniMakerFaire').'</h2>';
       }
       ?>
 
@@ -254,15 +254,15 @@ function display_entry_schedule($entry_id) {
         <span class="pull-right">
           <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-Map_2016__8.5x11_Pg-2.pdf">
             <img class="actionIcon" src="http://makerfaire.com/wp-content/uploads/2016/01/icon-map.png" width="40px" scale="0">
-            Event Map
+            <?php  __('Event Map','MiniMakerFaire')?>
           </a>
         </span>
         <span class="pull-right">
           <a class="flagship-icon-link" href="http://makerfaire.com/national-2016/schedule/">
             <img class="actionIcon" src="http://makerfaire.com/wp-content/uploads/2016/01/icon-schedule.png" width="40px" scale="0">
           </a>
-          <span class="pull-right "><a href="http://makerfaire.com/national-2016/schedule/">View full schedule</a><br/>
-            <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-ProgramGuide_2016_v2.pdf">Download the program guide</a>
+          <span class="pull-right "><a href="http://makerfaire.com/national-2016/schedule/"><?php  __('View full schedule','MiniMakerFaire')?></a><br/>
+            <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-ProgramGuide_2016_v2.pdf"><?php  __('Download the program guide','MiniMakerFaire')?></a>
           </span>
         </span>
       </div>
@@ -306,10 +306,10 @@ function display_groupEntries($entryID){
   $results = $wpdb->get_results($sql);
   if($wpdb->num_rows > 0){
     if($results[0]->parentID==$entryID){
-        $title = 'Exhibits in this group:';
+        $title = __('Exhibits in this group:','MiniMakerFaire');
         $type = 'parent';
       }else{
-        $title = 'Part of a group:';
+        $title = __('Part of a group:','MiniMakerFaire');
         $type = 'child';
       }
     $return .= $title.'<br/>';

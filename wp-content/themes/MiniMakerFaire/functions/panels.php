@@ -182,7 +182,7 @@ function getFeatMkPanel($row_layout) {
   if(get_sub_field('more_makers_button')) {
     echo '<div class="row padbottom">
             <div class="col-xs-12 padbottom text-center">
-              <a class="btn ' .($circle?'btn-b-ghost':'btn-w-ghost').'" href="' . $more_makers_button . '">More Makers</a>
+              <a class="btn ' .($circle?'btn-b-ghost':'btn-w-ghost').'" href="' . $more_makers_button . '">'.__('More Makers','MiniMakerFaire').'</a>
             </div>
           </div>';
   }
@@ -355,7 +355,7 @@ function getPostFeed() {
   }
 
   echo '<div class="col-xs-12 padtop padbottom text-center">
-          <a class="btn btn-b-ghost" href="/' . $news_slug . '">More News</a>
+          <a class="btn btn-b-ghost" href="/' . $news_slug . '">'.__('More News','MiniMakerFaire').'</a>
         </div>';
 
   echo '</div></div><div class="flag-banner"></div></section>';
@@ -439,7 +439,7 @@ function getWhatisMF() {
             <div class="container">
               <div class="row text-center">
                 <div class="title-w-border-y">
-                  <h2>What is Maker Faire?</h2>
+                  <h2>'.__('What is Maker Faire?','MiniMakerFaire').'</h2>
                 </div>
               </div>
               <div class="row">
@@ -616,7 +616,7 @@ function getNewsletterPanel() {
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-6">
-            <p><strong>Stay in Touch:</strong><br />Get Local and Global Maker Faire Community updates.</p>
+            <p><strong><?php _e('Stay in Touch:','MiniMakerFaire')?></strong><br /><?php _e('Get Local and Global Maker Faire Community updates.','MiniMakerFaire')?></p>
           </div>
           <div class="col-xs-12 col-sm-6">
             <form class="form-inline sub-form whatcounts-signup1" action="http://whatcounts.com/bin/listctrl" method="POST">
@@ -645,8 +645,8 @@ function getNewsletterPanel() {
         </span>
       </div>
       <div class="col-sm-8 col-xs-12 nl-modal">
-        <h3>Awesome!</h3>
-        <p>Thanks for signing up.</p>
+        <h3><?php _e('Awesome!','MiniMakerFaire')?></h3>
+        <p><?php _e('Thanks for signing up.','MiniMakerFaire')?></p>
       </div>
       <div class="clearfix"></div>
     </div>
@@ -764,10 +764,10 @@ function getSponsorPanel() {
             <p>
               <?php
               if(!empty($sponsor_panel_field_3)) {
-                echo '<a href="' . $sponsor_panel_field_3 . '">Become a Sponsor</a><span>&bull;</span>';
+                echo '<a href="' . $sponsor_panel_field_3 . '">'. _e('Become a Sponsor','MiniMakerFaire').'</a><span>&bull;</span>';
               }
               ?>
-              <a href="/sponsors">All Sponsors</a>
+              <a href="/sponsors"><?php _e('All Sponsors','MiniMakerFaire')?></a>
             </p>
           </div>
         </div>

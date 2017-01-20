@@ -12,7 +12,7 @@ get_header(); ?>
 
       <?php
       if(get_field('become_sponsor_url')) {
-        echo '<a class="sponsors-btn-top" href="' . get_field('become_sponsor_url') . '">BECOME A SPONSOR</a>';
+        echo '<a class="sponsors-btn-top" href="' . get_field('become_sponsor_url') . '">'. __("BECOME A SPONSOR",'MiniMakerFaire').'</a>';
       } ?>
 
     </div>
@@ -45,7 +45,7 @@ get_header(); ?>
 
               $sub_field_1 = get_sub_field('image'); //Photo
               $sub_field_2 = get_sub_field('url'); //URL
-              
+
               echo '<div class="' . $sub_field_3 . '">';
               if( get_sub_field('url') ):
                 echo '<a href="' . $sub_field_2 . '" target="_blank">';
@@ -83,7 +83,7 @@ get_header(); ?>
 
               $sub_field_1 = get_sub_field('sponsor_name'); //Photo
               $sub_field_2 = get_sub_field('url'); //URL
-              
+
               echo '<div class="sponsors-text-box-inner">';
               if( get_sub_field('url') ):
                 echo '<a href="' . $sub_field_2 . '" target="_blank">';
@@ -109,14 +109,14 @@ get_header(); ?>
     else :
 
       // no sponsors found
-      ?> no sponsors found<?php
+      echo __("no sponsors found",'MiniMakerFaire');
 
     endif; // End Sonsors rows
 
     if(get_field('become_sponsor_url')) {
       echo '<div class="row">
               <div class="col-xs-12 text-center">
-                <a class="sponsors-btn-bottom" href="' . get_field('become_sponsor_url') . '">BECOME A SPONSOR</a>
+                <a class="sponsors-btn-bottom" href="' . get_field('become_sponsor_url') . '">'.__("BECOME A SPONSOR",'MiniMakerFaire').'</a>
               </div>
             </div>';
     }

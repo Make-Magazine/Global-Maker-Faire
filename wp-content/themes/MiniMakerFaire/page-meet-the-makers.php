@@ -15,23 +15,23 @@ get_header(); ?>
 
       <a id="left-trigger" class="left carousel-control" href="#" role="button" data-slide="prev">
         <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_left.png" alt="Image Carousel button left" />
-        <span class="sr-only">Previous</span>
+        <span class="sr-only"><?php _e("Previous",'MiniMakerFaire')?></span>
       </a>
       <a id="right-trigger" class="right carousel-control" href="#" role="button" data-slide="next">
         <img class="glyphicon-chevron-right" src="<?php echo get_bloginfo('template_directory');?>/img/arrow_right.png" alt="Image Carousel button right" />
-        <span class="sr-only">Next</span>
+        <span class="sr-only"><?php _e("Next",'MiniMakerFaire')?></span>
       </a>
     </div>
     <!--//end old-->
     <div class="container">
-      <h2 class="text-center">Explore our Maker Exhibits!</h2>
+      <h2 class="text-center"><?php _e("Explore our Maker Exhibits!",'MiniMakerFaire')?></h2>
     </div>
     <div class="flag-banner"></div>
 
     <div class="mtm-search">
       <form class="form-inline">
-        <label for="mtm-search-input">Search:</label>
-        <input ng-model="makerSearch.$" id="mtm-search-input" class="form-control" placeholder="Looking for a specific Exhibit or Maker?" type="text">
+        <label for="mtm-search-input"><?php _e("Search:",'MiniMakerFaire')?></label>
+        <input ng-model="makerSearch.$" id="mtm-search-input" class="form-control" placeholder="<?php _e("Looking for a specific Exhibit or Maker?",'MiniMakerFaire')?>" type="text">
         <!--input class="form-control btn-w-ghost" value="GO" type="submit"-->
       </form>
     </div>
@@ -39,21 +39,21 @@ get_header(); ?>
 
     <div class="mtm-filter container">
       <div class="mtm-filter-view">
-        <span class="mtm-view-by">View by:</span>
-        <a ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'" class="mtm-filter-g pointer-on-hover box gallery"><i class="fa fa-picture-o" aria-hidden="true"></i> GALLERY</a>
+        <span class="mtm-view-by"><?php _e("View by:",'MiniMakerFaire')?></span>
+        <a ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'" class="mtm-filter-g pointer-on-hover box gallery"><i class="fa fa-picture-o" aria-hidden="true"></i> <?php _e("GALLERY",'MiniMakerFaire')?></a>
         <span class="mtm-pipe">|</span>
-        <a ng-class="{active: layout == 'list'}" ng-click="layout = 'list'" class="mtm-filter-l pointer-on-hover box list" ><i class="fa fa-th-list" aria-hidden="true"></i> LIST</a>
+        <a ng-class="{active: layout == 'list'}" ng-click="layout = 'list'" class="mtm-filter-l pointer-on-hover box list" ><i class="fa fa-th-list" aria-hidden="true"></i> <?php _e("LIST",'MiniMakerFaire')?></a>
       </div>
 
       <div class="dropdown">
         <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Filter by Topics: {{category}}
+          <?php _e("Filter by Topics:",'MiniMakerFaire')?> {{category}}
           <i class="fa fa-chevron-down" aria-hidden="true"></i>
         </button>
 
         <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
           <li>
-            <a class="pointer-on-hover" ng-click="clearFilter()">All</a>
+            <a class="pointer-on-hover" ng-click="clearFilter()"><?php _e("All",'MiniMakerFaire')?></a>
           </li>
           <li ng-repeat="tag in tags | orderBy: tag">
             <a class="pointer-on-hover" ng-click="setTagFilter(tag)">{{ tag }}</a>
@@ -66,7 +66,7 @@ get_header(); ?>
     <div class="mtm-results">
       <div ng-show="!makers.length" class="container loading">
         <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only"><?php _e("Loading",'MiniMakerFaire')?>...</span>
       </div>
       <!-- Grid View -->
       <div ng-show="layout == 'grid'" class="mtm-results-cont">

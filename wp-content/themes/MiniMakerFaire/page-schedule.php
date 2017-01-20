@@ -11,13 +11,13 @@ get_header(); ?>
   <div class="topic-nav" ng-if="showType">
     <div class="btn-group">
       <button type="button" class="btn btn-b-ghost dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Category <span class="caret"></span>
+        <?php _e('Category','MiniMakerFaire');?> <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
         <li class="topic-nav-item-inner activeTopic" ng-class="{ 'activeTopic': schedType== 'all' }">
           <a href="#" ng-click="setTypeFilter('all')">
             <div class="topic-nav-item">
-              <p>ALL</p>
+              <p><?php _e('ALL','MiniMakerFaire');?></p>
             </div>
             <div class="active-topic-arrow"></div>
           </a>
@@ -52,24 +52,24 @@ get_header(); ?>
       <div class="sched-col-1"></div>
       <div class="sched-flex-row">
         <div class="sched-col-2">
-          <span ng-click="sortBy('name')">Title</span>
+          <span ng-click="sortBy('name')"><p><?php _e('Title','MiniMakerFaire');?></span>
           <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
         </div>
 
         <div class="sched-col-3">
-          <span ng-click="sortBy('time_start')">Time</span>
+          <span ng-click="sortBy('time_start')"><?php _e('Time','MiniMakerFaire');?></span>
           <span class="sortorder" ng-show="propertyName === 'time_start'" ng-class="{reverse: reverse}"></span>
         </div>
 
         <div class="sched-col-4">
           <span class="dropdown">
             <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Stage {{schedStage}}
+              <?php _e('Stage','MiniMakerFaire');?> {{schedStage}}
               <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
               <li>
-                <a ng-click="setStage('')">All</a>
+                <a ng-click="setStage('')"><?php _e('All','MiniMakerFaire');?></a>
               </li>
               <li ng-repeat="schedule in schedules[dateFilter] | unique:'nicename' | orderBy: nicename ">
                 <a ng-click="setStage(schedule.nicename)">{{schedule.nicename}}</a>
@@ -79,19 +79,19 @@ get_header(); ?>
         </div>
 
         <div class="sched-col-5">
-          <span ng-click="sortBy('type')">Type</span>
+          <span ng-click="sortBy('type')"><?php _e('Type','MiniMakerFaire');?></span>
           <span class="sortorder" ng-show="propertyName === 'type'" ng-class="{reverse: reverse}"></span>
         </div>
 
         <div class="sched-col-6">
           <span class="dropdown">
             <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Topics {{schedTopic}}
+              <?php _e('Topics','MiniMakerFaire');?> {{schedTopic}}
               <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
               <li>
-                <a ng-click="setTagFilter('')">All</a>
+                <a ng-click="setTagFilter('')"><?php _e('All','MiniMakerFaire');?></a>
               </li>
               <li ng-repeat="tag in tags | orderBy: tag"> <a ng-click="setTagFilter(tag)">{{ tag }}</a></li>
             </ul>
@@ -141,14 +141,14 @@ get_header(); ?>
 
             <div class="col-xs-10 col-xs-offset-2 sched-more-info">
               <div class="panel-heading">
-                <span ng-click="daySched.isCollapsed = !daySched.isCollapsed" ng-init="daySched.isCollapsed=true">quick view
+                <span ng-click="daySched.isCollapsed = !daySched.isCollapsed" ng-init="daySched.isCollapsed=true"><?php _e('quick view','MiniMakerFaire');?>
                   <i class="fa fa-lg" ng-class="{'fa-angle-down': daySched.isCollapsed, 'fa-angle-up': !daySched.isCollapsed}"></i>
                 </span>
               </div>
               <div collapse="daySched.isCollapsed">
                 <div ng-show="!daySched.isCollapsed" class="panel-body">
                   <p>{{daySched.desc}}</p>
-                  <a href="/maker/entry/{{daySched.id}}">full details</a>
+                  <a href="/maker/entry/{{daySched.id}}"><?php _e('full details','MiniMakerFaire');?></a>
                 </div>
               </div>
             </div>

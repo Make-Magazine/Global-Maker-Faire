@@ -70,7 +70,7 @@ class GMFAdminSettings {
           return false;
         }
       </script>
-      <h3><?php _e( 'Network Panel Settings' ); ?></h3>
+      <h3><?php _e( 'Network Panel Settings','MiniMakerFaire'); ?></h3>
       <table id="menu" class="form-table">
         <?php
         foreach ($settings as $setting) {
@@ -92,7 +92,7 @@ class GMFAdminSettings {
                       <img id="<?php echo $panelData['id']; ?>_pimg"  class="user-preview-image" src="<?php echo esc_attr( get_site_option( $panelData['id'] ) ); ?>">
                       <br/>
                       <input type="text" name="panelField[<?php echo $panelData['id']; ?>]" id="<?php echo $panelData['id']; ?>_image" value="<?php echo esc_attr( get_site_option( $panelData['id'] ) ); ?>" class="regular-text" />
-                      <input type='button' class="button-primary uploadImage" onClick="buildUpload('<?php echo $panelData['id']; ?>')" value="Upload Image" />
+                      <input type='button' class="button-primary uploadImage" onClick="buildUpload('<?php echo $panelData['id']; ?>')" value="<?php _e('Upload Image','MiniMakerFaire')?>" />
                     <?php }else{  ?>
                       <input type="<?php echo $panelData['type'];?>" name="panelField[<?php echo $panelData['id']; ?>]" value="<?php echo esc_attr( get_site_option( $panelData['id'] ) ); ?>" />
                     <?php }?>
@@ -113,47 +113,47 @@ class GMFAdminSettings {
 
     public static function get_network_settings() {
 
-        $settings[] = array('panel'=> __('What is Maker Faire?'),
+        $settings[] = array('panel'=> __('What is Maker Faire?','MiniMakerFaire'),
             'panelData' =>
               array(
                 array(
                   'id'   => 'what-is-makerfaire',
-                  'name' => __( 'Text' ),
-                  'desc' => __( 'Text' ),
+                  'name' => __( 'Text','MiniMakerFaire' ),
+                  'desc' => __( 'Text','MiniMakerFaire'),
                   'type' => 'textarea',
                   'size' => 'regular'
                 )
               )
         );
 
-        $settings[] = array('panel'=> __('Find Out More'),
+        $settings[] = array('panel'=> __('Find Out More','MiniMakerFaire'),
             'panelData' =>
               array(
                 array(
                   'id'   => 'find-out-more-img1',
-                  'name' => __( 'Image #1' ),
-                  'desc' => __( 'Image #1' ),
+                  'name' => __( 'Image #1','MiniMakerFaire' ),
+                  'desc' => __( 'Image #1','MiniMakerFaire' ),
                   'std'  => '5',
                   'type' => 'image'
                 ),
                 array(
                   'id'   => 'find-out-more-url1',
-                  'name' => __( 'URL #1' ),
-                  'desc' => __( 'URL for Image #1' ),
+                  'name' => __( 'URL #1','MiniMakerFaire' ),
+                  'desc' => __( 'URL for Image #1','MiniMakerFaire' ),
                   'std'  => '5',
                   'type' => 'text'
                 ),
                 array(
                   'id'   => 'find-out-more-img2',
-                  'name' => __( 'Image #2' ),
-                  'desc' => __( 'Image #2' ),
+                  'name' => __( 'Image #2','MiniMakerFaire' ),
+                  'desc' => __( 'Image #2','MiniMakerFaire' ),
                   'std'  => '5',
                   'type' => 'image'
                 ),
                 array(
                   'id'   => 'find-out-more-url2',
-                  'name' => __( 'URL #2' ),
-                  'desc' => __( 'URL for Image #2' ),
+                  'name' => __( 'URL #2','MiniMakerFaire' ),
+                  'desc' => __( 'URL for Image #2','MiniMakerFaire' ),
                   'std'  => '5',
                   'type' => 'text'
                 )
@@ -164,8 +164,8 @@ class GMFAdminSettings {
               array(
                 array(
                   'id'   => 'footer-text',
-                  'name' => __( 'Text' ),
-                  'desc' => __( 'Text' ),
+                  'name' => __( 'Text','MiniMakerFaire' ),
+                  'desc' => __( 'Text','MiniMakerFaire' ),
                   'type' => 'textarea',
                   'size' => 'regular'
                 )
