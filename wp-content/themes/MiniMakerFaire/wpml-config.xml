@@ -1,8 +1,8 @@
 <wpml-config>
     <custom-fields>
-      <custom-field action="copy">become_sponsor_url</custom-field></custom-field>
-      <custom-field action="copy">call_to_action_text</custom-field></custom-field>
-      <custom-field action="copy">call_to_action_text_url</custom-field></custom-field>
+      <custom-field action="copy">become_sponsor_url</custom-field>
+      <custom-field action="copy">call_to_action_text</custom-field>
+      <custom-field action="copy">call_to_action_text_url</custom-field>
       <custom-field action="copy">contact_address</custom-field>
       <custom-field action="copy">contact_form_email_address</custom-field>
       <custom-field action="copy">contentdecription</custom-field>
