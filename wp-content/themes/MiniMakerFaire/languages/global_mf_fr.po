@@ -1,0 +1,404 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Global Maker Faire\n"
+"POT-Creation-Date: 2017-01-23 16:24-0700\n"
+"PO-Revision-Date: 2017-01-23 16:27-0700\n"
+"Language-Team: MakerFaire\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"Last-Translator: \n"
+"Language: fr\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: bower_components\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: blog.php:55
+msgid "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Newer"
+msgstr ""
+
+#: blog.php:58
+msgid "Older <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
+msgstr ""
+
+#: blog.php:67
+msgid "None found."
+msgstr ""
+
+#: classes/networkSettings.php:73
+msgid "Network Panel Settings"
+msgstr ""
+
+#: classes/networkSettings.php:95
+msgid "Upload Image"
+msgstr ""
+
+#: classes/networkSettings.php:116 functions/panels.php:454
+msgid "What is Maker Faire?"
+msgstr "French - What is Maker Faire?"
+
+#: classes/networkSettings.php:121 classes/networkSettings.php:122
+#: classes/networkSettings.php:167 classes/networkSettings.php:168
+msgid "Text"
+msgstr ""
+
+#: classes/networkSettings.php:129
+msgid "Find Out More"
+msgstr ""
+
+#: classes/networkSettings.php:134 classes/networkSettings.php:135
+msgid "Image #1"
+msgstr ""
+
+#: classes/networkSettings.php:141
+msgid "URL #1"
+msgstr ""
+
+#: classes/networkSettings.php:142
+msgid "URL for Image #1"
+msgstr ""
+
+#: classes/networkSettings.php:148 classes/networkSettings.php:149
+msgid "Image #2"
+msgstr ""
+
+#: classes/networkSettings.php:155
+msgid "URL #2"
+msgstr ""
+
+#: classes/networkSettings.php:156
+msgid "URL for Image #2"
+msgstr ""
+
+#: classes/networkSettings.php:162
+msgid "Footer"
+msgstr ""
+
+#: comments.php:6 index.php:90
+msgid "Leave a Comment"
+msgstr ""
+
+#: comments.php:6 index.php:90
+msgid "One Comment"
+msgstr ""
+
+#: comments.php:6 index.php:90
+msgid " Comments"
+msgstr ""
+
+#: customizer.php:21
+msgid "Faire Logo"
+msgstr ""
+
+#: customizer.php:52
+msgid "Button text"
+msgstr ""
+
+#: customizer.php:66
+msgid "Button URL"
+msgstr ""
+
+#: customizer.php:90
+msgid "Facebook URL"
+msgstr ""
+
+#: customizer.php:104
+msgid "Twitter URL"
+msgstr ""
+
+#: customizer.php:118
+msgid "Instagram URL"
+msgstr ""
+
+#: customizer.php:132
+msgid "Pintrest URL"
+msgstr ""
+
+#: customizer.php:146
+msgid "Google+ URL"
+msgstr ""
+
+#: customizer.php:166
+msgid "Enter any scripts that need to be placed in the header here."
+msgstr ""
+
+#: customizer.php:176
+msgid "Enter any scripts that need to be placed in the footer here."
+msgstr ""
+
+#: functions/gf-entry-detail-sidebar.php:225
+msgid "added on"
+msgstr ""
+
+#: functions/gf-entry-detail-update.php:214
+msgid "Acceptance Status Changed"
+msgstr ""
+
+#: functions/gf-entry-list.php:10
+msgid "Click to view"
+msgstr ""
+
+#: functions/panels.php:187
+msgid "More Makers"
+msgstr ""
+
+#: functions/panels.php:364
+msgid "More News"
+msgstr ""
+
+#: functions/panels.php:460
+msgid ""
+"Maker Faire is a gathering of fascinating, curious people who enjoy learning "
+"and who love sharing what they can do. From engineers to artists to "
+"scientists to crafters, Maker Faire is a venue to for these “makers” to show "
+"hobbies, experiments, projects."
+msgstr ""
+
+#: functions/panels.php:463
+msgid ""
+"We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase "
+"of invention, creativity, and resourcefulness."
+msgstr ""
+
+#: functions/panels.php:466
+msgid "Glimpse the future and get inspired!"
+msgstr ""
+
+#: functions/panels.php:603 page-meet-the-makers.php:18
+msgid "Previous"
+msgstr ""
+
+#: functions/panels.php:607 page-meet-the-makers.php:22
+msgid "Next"
+msgstr ""
+
+#: functions/panels.php:651
+msgid "Stay in Touch:"
+msgstr ""
+
+#: functions/panels.php:651
+msgid "Get Local and Global Maker Faire Community updates."
+msgstr ""
+
+#: functions/panels.php:664
+msgid "Enter your Email"
+msgstr ""
+
+#: functions/panels.php:665
+msgid "GO"
+msgstr ""
+
+#: functions/panels.php:680
+msgid "Awesome!"
+msgstr ""
+
+#: functions/panels.php:681
+msgid "Thanks for signing up."
+msgstr ""
+
+#: functions/panels.php:797
+msgid "Become a Sponsor"
+msgstr ""
+
+#: functions/panels.php:800
+msgid "All Sponsors"
+msgstr ""
+
+#: index.php:16
+#, php-format
+msgid "%s Search Results for \"%s\""
+msgstr ""
+
+#: index.php:77
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: page-contact.php:47
+msgid "Address"
+msgstr ""
+
+#: page-contact.php:52
+msgid "Phone"
+msgstr ""
+
+#: page-contact.php:57 page-contact.php:187
+msgid "Email"
+msgstr ""
+
+#: page-contact.php:117
+msgid "Contact Us"
+msgstr ""
+
+#: page-contact.php:137
+msgid "Human verification incorrect."
+msgstr ""
+
+#: page-contact.php:138
+msgid "Please supply all information."
+msgstr ""
+
+#: page-contact.php:139
+msgid "Email Address Invalid."
+msgstr ""
+
+#: page-contact.php:140
+msgid "Message was not sent. Try Again."
+msgstr ""
+
+#: page-contact.php:141
+msgid "Thanks! Your message has been sent."
+msgstr ""
+
+#: page-contact.php:151
+msgid "Someone sent a message from "
+msgstr ""
+
+#: page-contact.php:152
+msgid "From: "
+msgstr ""
+
+#: page-contact.php:153
+msgid "Reply-To: "
+msgstr ""
+
+#: page-contact.php:183
+msgid "Name"
+msgstr ""
+
+#: page-contact.php:191
+msgid "Message"
+msgstr ""
+
+#: page-contact.php:195
+msgid "Human Verification"
+msgstr ""
+
+#: page-entry.php:166
+msgid "Group"
+msgstr ""
+
+#: page-entry.php:168
+msgid "Makers"
+msgstr ""
+
+#: page-entry.php:170
+msgid "Maker"
+msgstr ""
+
+#: page-entry.php:204
+msgid "Invalid entry"
+msgstr ""
+
+#: page-entry.php:257
+msgid "Event Map"
+msgstr ""
+
+#: page-entry.php:264
+msgid "View full schedule"
+msgstr ""
+
+#: page-entry.php:265
+msgid "Download the program guide"
+msgstr ""
+
+#: page-entry.php:309
+msgid "Exhibits in this group:"
+msgstr ""
+
+#: page-entry.php:312
+msgid "Part of a group:"
+msgstr ""
+
+#: page-home.php:102
+msgid "Click here to get subscriptions to Make: Magazine"
+msgstr ""
+
+#: page-home.php:107
+msgid "Click here to see our global Maker Faires"
+msgstr ""
+
+#: page-meet-the-makers.php:27
+msgid "Explore our Maker Exhibits!"
+msgstr ""
+
+#: page-meet-the-makers.php:33
+msgid "Search:"
+msgstr ""
+
+#: page-meet-the-makers.php:34
+msgid "Looking for a specific Exhibit or Maker?"
+msgstr ""
+
+#: page-meet-the-makers.php:42
+msgid "View by:"
+msgstr ""
+
+#: page-meet-the-makers.php:43
+msgid "GALLERY"
+msgstr ""
+
+#: page-meet-the-makers.php:45
+msgid "LIST"
+msgstr ""
+
+#: page-meet-the-makers.php:50
+msgid "Filter by Topics:"
+msgstr ""
+
+#: page-meet-the-makers.php:56 page-schedule.php:72 page-schedule.php:94
+msgid "All"
+msgstr ""
+
+#: page-meet-the-makers.php:69
+msgid "Loading"
+msgstr ""
+
+#: page-schedule.php:14
+msgid "Category"
+msgstr ""
+
+#: page-schedule.php:20
+msgid "ALL"
+msgstr ""
+
+#: page-schedule.php:55
+msgid "Title"
+msgstr ""
+
+#: page-schedule.php:60
+msgid "Time"
+msgstr ""
+
+#: page-schedule.php:67
+msgid "Stage"
+msgstr ""
+
+#: page-schedule.php:82
+msgid "Type"
+msgstr ""
+
+#: page-schedule.php:89
+msgid "Topics"
+msgstr ""
+
+#: page-schedule.php:144
+msgid "quick view"
+msgstr ""
+
+#: page-schedule.php:151
+msgid "full details"
+msgstr ""
+
+#: page-sponsors.php:15 page-sponsors.php:119
+msgid "BECOME A SPONSOR"
+msgstr ""
+
+#: page-sponsors.php:112
+msgid "no sponsors found"
+msgstr ""
