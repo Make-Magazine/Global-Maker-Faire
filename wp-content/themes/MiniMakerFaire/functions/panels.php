@@ -455,8 +455,17 @@ function getWhatisMF() {
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-10 col-md-offset-1">'
-                  .get_site_option( 'what-is-makerfaire' ).
+                <div class="col-md-10 col-md-offset-1">
+                  <p class="text-center">'.
+                    __('Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From engineers to artists to scientists to crafters, Maker Faire is a venue to for these “makers” to show hobbies, experiments, projects.','MiniMakerFaire') .
+                  '</p>'.
+                  '<p class="text-center">'.
+                    __('We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase of invention, creativity, and resourcefulness.','MiniMakerFaire').
+                  '</p>'.
+                  '<p class="text-center">'.
+                    __('Glimpse the future and get inspired!','MiniMakerFaire') .
+                  '</p>'.
+                  //.get_site_option( 'what-is-makerfaire' ).
                '</div>
               </div>
             </div>
@@ -639,7 +648,7 @@ function getNewsletterPanel() {
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-6">
-            <p><strong>'. __('Stay in Touch:','MiniMakerFaire').'</strong><br />'. __('Get Local and Global Maker Faire Community updates.','MiniMakerFaire').'</p>
+            <p><strong>'. __('Stay in Touch:','MiniMakerFaire').'</strong><br />'. __('Get Local and Global Maker Faire Community updates.','MiniMakerFaire').'</strong></p>
           </div>
           <div class="col-xs-12 col-sm-6">
             <form class="form-inline sub-form whatcounts-signup1" action="http://whatcounts.com/bin/listctrl" method="POST">
