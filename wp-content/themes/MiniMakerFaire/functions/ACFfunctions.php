@@ -1,5 +1,19 @@
 <?php
+/* This code hides the ACF menu from everyone but super admins. */
+add_filter('acf/settings/show_admin', 'my_acf_show_admin');
 
+function my_acf_show_admin( $show ) {
+  if ( is_super_admin() ) {
+    return true;
+  }else {
+    return false;
+  }
+}
+
+/*
+ * Please paste PHP code below this that is generated using Custom Fields-> Tools -> Export Field Groups
+ * Toggle all field groups and click 'Generate Export Code'
+ */
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
