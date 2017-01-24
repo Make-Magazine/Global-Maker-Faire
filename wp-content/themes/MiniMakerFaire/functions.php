@@ -264,7 +264,7 @@ function enqueue_admin()
                     <div class="row spnosors-row">
                       <div class="col-xs-12">
                         <h3 class="sponsors-type text-center">GOLDSMITH</h3>
-                          <div class="sponsors-box">
+                          <div class="faire-sponsors-box">
                           <?php
                             while( have_rows('goldsmith_sponsors', $id) ): the_row();
                               $sub_field_1 = get_sub_field('image'); //Photo

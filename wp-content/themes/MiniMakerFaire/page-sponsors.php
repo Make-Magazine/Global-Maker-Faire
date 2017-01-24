@@ -38,7 +38,7 @@ get_header(); ?>
           // check if the nested repeater field has rows of data
           if( have_rows('sponsors_with_image') ):
 
-            echo '<div class="sponsors-box">';
+            echo '<div class="faire-sponsors-box">';
 
             // loop through the rows of data
             while ( have_rows('sponsors_with_image') ) : the_row();

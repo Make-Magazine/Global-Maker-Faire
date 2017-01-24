@@ -758,7 +758,7 @@ function getSponsorPanel() {
                               $return .= '<h5 class="text-center sponsors-type">' . $sponsor_group_title . '</h5>';
                             }
                             $return .= '
-                            <div class="sponsors-box">';
+                            <div class="faire-sponsors-box">';
 
                               // loop through the rows of data
                               while ( have_rows('sponsors_with_image') ) {
