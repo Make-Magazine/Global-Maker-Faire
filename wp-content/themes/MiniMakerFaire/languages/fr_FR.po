@@ -2,18 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-01-23 16:24-0700\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2017-01-23 16:58-0700\n"
 "Language-Team: MakerFaire\n"
-"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.9\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
+"Last-Translator: \n"
+"Language: fr\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: classes/networkSettings.php:116 functions/panels.php:454
 msgid "What is Maker Faire?"
-msgstr ""
+msgstr "French - What is Maker Faire?"
 
 #: classes/networkSettings.php:121 classes/networkSettings.php:122
 #: classes/networkSettings.php:167 classes/networkSettings.php:168
@@ -171,7 +171,7 @@ msgstr ""
 
 #: functions/panels.php:603 page-meet-the-makers.php:18
 msgid "Previous"
-msgstr ""
+msgstr "Previous"
 
 #: functions/panels.php:607 page-meet-the-makers.php:22
 msgid "Next"
@@ -179,7 +179,7 @@ msgstr ""
 
 #: functions/panels.php:651
 msgid "Stay in Touch:"
-msgstr ""
+msgstr "French translation of Stay in Touch:"
 
 #: functions/panels.php:651
 msgid "Get Local and Global Maker Faire Community updates."
@@ -241,7 +241,7 @@ msgstr ""
 
 #: page-contact.php:138
 msgid "Please supply all information."
-msgstr ""
+msgstr "Please supply all information."
 
 #: page-contact.php:139
 msgid "Email Address Invalid."
@@ -257,7 +257,7 @@ msgstr ""
 
 #: page-contact.php:151
 msgid "Someone sent a message from "
-msgstr ""
+msgstr "Someone sent a message from "
 
 #: page-contact.php:152
 msgid "From: "
@@ -265,7 +265,7 @@ msgstr ""
 
 #: page-contact.php:153
 msgid "Reply-To: "
-msgstr ""
+msgstr "Reply-To: "
 
 #: page-contact.php:183
 msgid "Name"
@@ -329,7 +329,7 @@ msgstr ""
 
 #: page-meet-the-makers.php:33
 msgid "Search:"
-msgstr ""
+msgstr "Search:"
 
 #: page-meet-the-makers.php:34
 msgid "Looking for a specific Exhibit or Maker?"
@@ -377,7 +377,7 @@ msgstr ""
 
 #: page-schedule.php:67
 msgid "Stage"
-msgstr ""
+msgstr "Stage"
 
 #: page-schedule.php:82
 msgid "Type"
@@ -389,7 +389,7 @@ msgstr ""
 
 #: page-schedule.php:144
 msgid "quick view"
-msgstr ""
+msgstr "quick view"
 
 #: page-schedule.php:151
 msgid "full details"
@@ -402,4 +402,3 @@ msgstr ""
 #: page-sponsors.php:112
 msgid "no sponsors found"
 msgstr ""
-
