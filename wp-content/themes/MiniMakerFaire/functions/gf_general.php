@@ -63,7 +63,9 @@ function legacy_get_resized_remote_image_url( $url, $width, $height, $escape = t
 	$thumburl = jetpack_photon_url( $url, array( 'resize' => array( $width, $height ) ) );
 
 	return ( $escape ) ? esc_url( $thumburl ) : $thumburl;
-	endif;
+	else:
+  return $url;  
+  endif;
 }
 function legacy_get_fit_remote_image_url( $url, $width, $height, $escape = true ) {
 	if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) :
@@ -77,7 +79,9 @@ function legacy_get_fit_remote_image_url( $url, $width, $height, $escape = true 
 	$thumburl = jetpack_photon_url( $url, array( 'fit' => array( $width, $height ) ) );
 
 	return ( $escape ) ? esc_url( $thumburl ) : $thumburl;
-	endif;
+  else:
+  return $url;  
+  endif;
 }
 
 /**
