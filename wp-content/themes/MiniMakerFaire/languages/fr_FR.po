@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-01-23 16:58-0700\n"
+"PO-Revision-Date: 2017-01-27 10:49-0700\n"
 "Language-Team: MakerFaire\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,136 +20,136 @@ msgstr ""
 
 #: blog.php:55
 msgid "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Newer"
-msgstr ""
+msgstr "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Plus récent"
 
 #: blog.php:58
 msgid "Older <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
-msgstr ""
+msgstr "Plus âgée<i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
 
 #: blog.php:67
 msgid "None found."
-msgstr ""
+msgstr "Nous n'avons rien trouvé."
 
 #: classes/networkSettings.php:73
 msgid "Network Panel Settings"
-msgstr ""
+msgstr "Panneau de configuration"
 
 #: classes/networkSettings.php:95
 msgid "Upload Image"
-msgstr ""
+msgstr "Importer une image"
 
 #: classes/networkSettings.php:116 functions/panels.php:454
 msgid "What is Maker Faire?"
-msgstr "French - What is Maker Faire?"
+msgstr "Qu'est-ce que Maker Faire?"
 
 #: classes/networkSettings.php:121 classes/networkSettings.php:122
 #: classes/networkSettings.php:167 classes/networkSettings.php:168
 msgid "Text"
-msgstr ""
+msgstr "Texte"
 
 #: classes/networkSettings.php:129
 msgid "Find Out More"
-msgstr ""
+msgstr "En savoir plus"
 
 #: classes/networkSettings.php:134 classes/networkSettings.php:135
 msgid "Image #1"
-msgstr ""
+msgstr "Image #1"
 
 #: classes/networkSettings.php:141
 msgid "URL #1"
-msgstr ""
+msgstr "URL #1"
 
 #: classes/networkSettings.php:142
 msgid "URL for Image #1"
-msgstr ""
+msgstr "URL Image # 1"
 
 #: classes/networkSettings.php:148 classes/networkSettings.php:149
 msgid "Image #2"
-msgstr ""
+msgstr "Image #2"
 
 #: classes/networkSettings.php:155
 msgid "URL #2"
-msgstr ""
+msgstr "URL #2"
 
 #: classes/networkSettings.php:156
 msgid "URL for Image #2"
-msgstr ""
+msgstr "URL for Image #2"
 
 #: classes/networkSettings.php:162
 msgid "Footer"
-msgstr ""
+msgstr "Bas de page"
 
 #: comments.php:6 index.php:90
 msgid "Leave a Comment"
-msgstr ""
+msgstr "Laissez un commentaire"
 
 #: comments.php:6 index.php:90
 msgid "One Comment"
-msgstr ""
+msgstr "Un commentaire"
 
 #: comments.php:6 index.php:90
 msgid " Comments"
-msgstr ""
+msgstr "Commentaires"
 
 #: customizer.php:21
 msgid "Faire Logo"
-msgstr ""
+msgstr "Logo Maker Faire"
 
 #: customizer.php:52
 msgid "Button text"
-msgstr ""
+msgstr "Bouton texte"
 
 #: customizer.php:66
 msgid "Button URL"
-msgstr ""
+msgstr "Bouton URL"
 
 #: customizer.php:90
 msgid "Facebook URL"
-msgstr ""
+msgstr "Facebook URL"
 
 #: customizer.php:104
 msgid "Twitter URL"
-msgstr ""
+msgstr "Twitter URL"
 
 #: customizer.php:118
 msgid "Instagram URL"
-msgstr ""
+msgstr "Instagram URL"
 
 #: customizer.php:132
 msgid "Pintrest URL"
-msgstr ""
+msgstr "Pintrest URL"
 
 #: customizer.php:146
 msgid "Google+ URL"
-msgstr ""
+msgstr "Google+ URL"
 
 #: customizer.php:166
 msgid "Enter any scripts that need to be placed in the header here."
-msgstr ""
+msgstr "Entrez votre script pour l'en-tête."
 
 #: customizer.php:176
 msgid "Enter any scripts that need to be placed in the footer here."
-msgstr ""
+msgstr "Entrez votre script pour le bas de page."
 
 #: functions/gf-entry-detail-sidebar.php:225
 msgid "added on"
-msgstr ""
+msgstr "ajouté sur"
 
 #: functions/gf-entry-detail-update.php:214
 msgid "Acceptance Status Changed"
-msgstr ""
+msgstr "Le statut a changé"
 
 #: functions/gf-entry-list.php:10
 msgid "Click to view"
-msgstr ""
+msgstr "Cliquez pour voir"
 
 #: functions/panels.php:187
 msgid "More Makers"
-msgstr ""
+msgstr "Plus de Makers"
 
 #: functions/panels.php:364
 msgid "More News"
-msgstr ""
+msgstr "Plus d'infos"
 
 #: functions/panels.php:460
 msgid ""
@@ -158,247 +158,258 @@ msgid ""
 "scientists to crafters, Maker Faire is a venue to for these “makers” to show "
 "hobbies, experiments, projects."
 msgstr ""
+"Maker Faire est à la fois une fête de la science, une foire populaire et "
+"l’événement de référence de l’innovation partout dans le monde. Ce concept "
+"totalement unique regroupe stands de démonstration, ateliers de découverte, "
+"spectacles et conférences autour des thèmes de la créativité, de la "
+"fabrication, des cultures Do It Yourself et Makers. Cet événement, réunit "
+"des passionnés de technologies, des artisans, des industriels, des amateurs, "
+"des ingénieurs, des clubs de science, des artistes, des étudiants et des "
+"Start’Up. Ensemble, ils forment la communauté des Makers et viennent pour "
+"montrer leurs créations, partager leurs connaissances…"
 
 #: functions/panels.php:463
 msgid ""
 "We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase "
 "of invention, creativity, and resourcefulness."
 msgstr ""
+"Nous l'appelons le plus grand spectacle sur la terre - une vitrine fun et "
+"familiale de l'invention, la créativité et la fabrication personnel."
 
 #: functions/panels.php:466
 msgid "Glimpse the future and get inspired!"
-msgstr ""
+msgstr "Bienvenue dans le futur !"
 
 #: functions/panels.php:603 page-meet-the-makers.php:18
 msgid "Previous"
-msgstr "Previous"
+msgstr "Précédent"
 
 #: functions/panels.php:607 page-meet-the-makers.php:22
 msgid "Next"
-msgstr ""
+msgstr "Suivant"
 
 #: functions/panels.php:651
 msgid "Stay in Touch:"
-msgstr "French translation of Stay in Touch:"
+msgstr "Restez en contact:"
 
 #: functions/panels.php:651
 msgid "Get Local and Global Maker Faire Community updates."
-msgstr ""
+msgstr "Soyez informé des nouvelles de la communauté Maker Faire."
 
 #: functions/panels.php:664
 msgid "Enter your Email"
-msgstr ""
+msgstr "Entrez votre Email"
 
 #: functions/panels.php:665
 msgid "GO"
-msgstr ""
+msgstr "Go"
 
 #: functions/panels.php:680
 msgid "Awesome!"
-msgstr ""
+msgstr "Génial !"
 
 #: functions/panels.php:681
 msgid "Thanks for signing up."
-msgstr ""
+msgstr "Merci pour votre inscription."
 
 #: functions/panels.php:797
 msgid "Become a Sponsor"
-msgstr ""
+msgstr "Devenez partenaire"
 
 #: functions/panels.php:800
 msgid "All Sponsors"
-msgstr ""
+msgstr "Nos sponsors"
 
 #: index.php:16
 #, php-format
 msgid "%s Search Results for \"%s\""
-msgstr ""
+msgstr "%s Recherché des résultats pour \"%s\""
 
 #: index.php:77
 #, php-format
 msgid "Permalink to %s"
-msgstr ""
+msgstr "Permalien pour %s"
 
 #: page-contact.php:47
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: page-contact.php:52
 msgid "Phone"
-msgstr ""
+msgstr "Téléphone"
 
 #: page-contact.php:57 page-contact.php:187
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: page-contact.php:117
 msgid "Contact Us"
-msgstr ""
+msgstr "Contactez-nous"
 
 #: page-contact.php:137
 msgid "Human verification incorrect."
-msgstr ""
+msgstr "Identification humain incorrecte."
 
 #: page-contact.php:138
 msgid "Please supply all information."
-msgstr "Please supply all information."
+msgstr "Merci de remplir toutes les informations."
 
 #: page-contact.php:139
 msgid "Email Address Invalid."
-msgstr ""
+msgstr "Adresse Email invalide."
 
 #: page-contact.php:140
 msgid "Message was not sent. Try Again."
-msgstr ""
+msgstr "Votre message n'a pas pu être envoyé. Merci d'essayer à nouveau."
 
 #: page-contact.php:141
 msgid "Thanks! Your message has been sent."
-msgstr ""
+msgstr "Merci ! Votre message a bien été envoyé."
 
 #: page-contact.php:151
 msgid "Someone sent a message from "
-msgstr "Someone sent a message from "
+msgstr "Quelqu'un a envoyé un message"
 
 #: page-contact.php:152
 msgid "From: "
-msgstr ""
+msgstr "De:"
 
 #: page-contact.php:153
 msgid "Reply-To: "
-msgstr "Reply-To: "
+msgstr "Répondre à:"
 
 #: page-contact.php:183
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: page-contact.php:191
 msgid "Message"
-msgstr ""
+msgstr "Message"
 
 #: page-contact.php:195
 msgid "Human Verification"
-msgstr ""
+msgstr "Identification humaine"
 
 #: page-entry.php:166
 msgid "Group"
-msgstr ""
+msgstr "Collectif"
 
 #: page-entry.php:168
 msgid "Makers"
-msgstr ""
+msgstr "Makers"
 
 #: page-entry.php:170
 msgid "Maker"
-msgstr ""
+msgstr "Maker"
 
 #: page-entry.php:204
 msgid "Invalid entry"
-msgstr ""
+msgstr "Entrée invalide"
 
 #: page-entry.php:257
 msgid "Event Map"
-msgstr ""
+msgstr "Carte des événements"
 
 #: page-entry.php:264
 msgid "View full schedule"
-msgstr ""
+msgstr "Voir le programme complet"
 
 #: page-entry.php:265
 msgid "Download the program guide"
-msgstr ""
+msgstr "Télécharger le programme"
 
 #: page-entry.php:309
 msgid "Exhibits in this group:"
-msgstr ""
+msgstr "Membres de ce collectif"
 
 #: page-entry.php:312
 msgid "Part of a group:"
-msgstr ""
+msgstr "Partie du collectif:"
 
 #: page-home.php:102
 msgid "Click here to get subscriptions to Make: Magazine"
-msgstr ""
+msgstr "Cliquez ici pour vous abonnez à Make: Magazine"
 
 #: page-home.php:107
 msgid "Click here to see our global Maker Faires"
-msgstr ""
+msgstr "Cliquez ici pour découvrir toutes les Maker Faire"
 
 #: page-meet-the-makers.php:27
 msgid "Explore our Maker Exhibits!"
-msgstr ""
+msgstr "Découvrez nos Makers!"
 
 #: page-meet-the-makers.php:33
 msgid "Search:"
-msgstr "Search:"
+msgstr "Recherche"
 
 #: page-meet-the-makers.php:34
 msgid "Looking for a specific Exhibit or Maker?"
-msgstr ""
+msgstr "Vous cherchez un Maker en particulier?"
 
 #: page-meet-the-makers.php:42
 msgid "View by:"
-msgstr ""
+msgstr "Affichage par:"
 
 #: page-meet-the-makers.php:43
 msgid "GALLERY"
-msgstr ""
+msgstr "Gallerie"
 
 #: page-meet-the-makers.php:45
 msgid "LIST"
-msgstr ""
+msgstr "Liste"
 
 #: page-meet-the-makers.php:50
 msgid "Filter by Topics:"
-msgstr ""
+msgstr "Filtre par thèmes:"
 
 #: page-meet-the-makers.php:56 page-schedule.php:72 page-schedule.php:94
 msgid "All"
-msgstr ""
+msgstr "Tous"
 
 #: page-meet-the-makers.php:69
 msgid "Loading"
-msgstr ""
+msgstr "Chargement"
 
 #: page-schedule.php:14
 msgid "Category"
-msgstr ""
+msgstr "Catégorie"
 
 #: page-schedule.php:20
 msgid "ALL"
-msgstr ""
+msgstr "Tous"
 
 #: page-schedule.php:55
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: page-schedule.php:60
 msgid "Time"
-msgstr ""
+msgstr "Heure"
 
 #: page-schedule.php:67
 msgid "Stage"
-msgstr "Stage"
+msgstr "Scène"
 
 #: page-schedule.php:82
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: page-schedule.php:89
 msgid "Topics"
-msgstr ""
+msgstr "Thèmes"
 
 #: page-schedule.php:144
 msgid "quick view"
-msgstr "quick view"
+msgstr "Affichage rapide"
 
 #: page-schedule.php:151
 msgid "full details"
-msgstr ""
+msgstr "Tous les détails"
 
 #: page-sponsors.php:15 page-sponsors.php:119
 msgid "BECOME A SPONSOR"
-msgstr ""
+msgstr "DEVENEZ PARTENAIRE"
 
 #: page-sponsors.php:112
 msgid "no sponsors found"
-msgstr ""
+msgstr "Aucun partenaire trouvé"
