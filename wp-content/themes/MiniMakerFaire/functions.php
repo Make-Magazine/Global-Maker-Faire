@@ -47,9 +47,10 @@ add_action( 'admin_enqueue_scripts', 'enqueue_admin' );
 
 function enqueue_admin()
 {
-	wp_enqueue_script( 'thickbox' );
-	wp_enqueue_style('thickbox');
-
+	wp_enqueue_script( 'wp-admin', get_stylesheet_directory_uri() . '/js/wp-admin.js' );
+  wp_enqueue_script('fancybox', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js', true);
+  wp_enqueue_style('fancybox-style',  '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css');
+ 
 	wp_enqueue_script('media-upload');
 }
 

@@ -79,7 +79,7 @@ function get_summary_side($form, $lead) {
     <tbody>
       <tr>
         <td style="width:440px; padding:5px;" valign="top">
-          <a href="<?php echo $photo;?>" class='thickbox'>
+          <a href="<?php echo $photo;?>" >
           <img width="400px" src="<?php echo $photo;?>" alt="" /></a>
         </td>
         <td valign="top">
@@ -130,49 +130,49 @@ function get_summary_side($form, $lead) {
               <td valign="top"><?php echo !empty($makergroupname) ? $makergroupname.'(Group)</br>' : ''; ?>
                 <?php
                 if(!empty($makerPhoto1)){?>
-                  <a href="<?php echo $makerPhoto1;?>" class='thickbox'>
+                  <a href="<?php echo $makerPhoto1;?>" >
                     <img width="30px" src="<?php echo $makerPhoto1;?>" alt="" />
                   </a>
                 <?php  }?>
                 <?php echo !empty($makerfirstname1) ?  $makerfirstname1.' '.$makerlastname1.'</br>' : '' ;
                 if(!empty($makerPhoto2)){?>
-                  <a href="<?php echo $makerPhoto2;?>" class='thickbox'>
+                  <a href="<?php echo $makerPhoto2;?>" >
                     <img width="30px" src="<?php echo $makerPhoto2;?>" alt="" />
                   </a>
                 <?php  }
                 echo !empty($makerfirstname2) ?  $makerfirstname2.' '.$makerlastname2.'</br>' : '' ;
                 if(!empty($makerPhoto3)){?>
-                  <a href="<?php echo $makerPhoto3;?>" class='thickbox'>
+                  <a href="<?php echo $makerPhoto3;?>" >
                     <img width="30px" src="<?php echo $makerPhoto3;?>" alt="" />
                   </a>
                 <?php  }
                 echo !empty($makerfirstname3) ?  $makerfirstname3.' '.$makerlastname3.'</br>' : '' ; ?>
                 <?php if(!empty($makerPhoto4)){?>
-                    <a href="<?php echo $makerPhoto4;?>" class='thickbox'>
+                    <a href="<?php echo $makerPhoto4;?>" >
                     <img width="30px" src="<?php echo $makerPhoto4;?>" alt="" />
                     </a>
                 <?php  }?>
                 <?php echo !empty($makerfirstname4) ?  $makerfirstname4.' '.$makerlastname4.'</br>' : '' ; ?>
                 <?php if(!empty($makerPhoto5)){?>
-                    <a href="<?php echo $makerPhoto5;?>" class='thickbox'>
+                    <a href="<?php echo $makerPhoto5;?>" >
                     <img width="30px" src="<?php echo $makerPhoto5;?>" alt="" />
                     </a>
                 <?php  }?>
                 <?php echo !empty($makerfirstname5) ?  $makerfirstname5.' '.$makerlastname5.'</br>' : '' ; ?>
                 <?php if(!empty($makerPhoto6)){?>
-                    <a href="<?php echo $makerPhoto6;?>" class='thickbox'>
+                    <a href="<?php echo $makerPhoto6;?>" >
                     <img width="30px" src="<?php echo $makerPhoto6;?>" alt="" />
                     </a>
                 <?php  }?>
                 <?php echo !empty($makerfirstname6) ?  $makerfirstname6.' '.$makerlastname6.'</br>' : '' ; ?>
                 <?php if(!empty($makerPhoto7)){?>
-                    <a href="<?php echo $makerPhoto7;?>" class='thickbox'>
+                    <a href="<?php echo $makerPhoto7;?>" >
                     <img width="30px" src="<?php echo $makerPhoto7;?>" alt="" />
                     </a>
                 <?php  }?>
                 <?php if(!empty($makerGroupPhoto)){?>
                     Group Photo<br/>
-                    <a href="<?php echo $makerGroupPhoto;?>" class='thickbox'>
+                    <a href="<?php echo $makerGroupPhoto;?>" >
                     <img width="30px" src="<?php echo $makerGroupPhoto;?>" alt="" />
                     </a>
                 <?php  }?>
