@@ -29,7 +29,7 @@ function mmf_customizer_settings( $wp_customize ) {
     $wp_customize->add_setting('header_cta_radio', array(
         'default'        => 'value2',
     ));
- 
+
     $wp_customize->add_control('header_cta_radio', array(
         'label'      => 'Call to Action Button',
         'section'    => 'header_controls',
@@ -47,7 +47,7 @@ function mmf_customizer_settings( $wp_customize ) {
     ));
     function sanitize_header_cta_text( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
-    } 
+    }
     $wp_customize->add_control( 'header_cta_text', array(
         'label'         => __( 'Button text' ),
         'section'       => 'header_controls',
@@ -61,7 +61,7 @@ function mmf_customizer_settings( $wp_customize ) {
     ));
     function sanitize_header_cta_link( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
-    }  
+    }
     $wp_customize->add_control( 'header_cta_link', array(
         'label'    => __( 'Button URL' ),
         'section'  => 'header_controls',
@@ -85,7 +85,7 @@ function mmf_customizer_settings( $wp_customize ) {
     ));
     function sanitize_facebook_link( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
-    }  
+    }
     $wp_customize->add_control( 'facebook_link', array(
         'label'    => __( 'Facebook URL' ),
         'section'  => 'footer_social_media',
@@ -99,7 +99,7 @@ function mmf_customizer_settings( $wp_customize ) {
     ));
     function sanitize_twitter_link( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
-    }  
+    }
     $wp_customize->add_control( 'twitter_link', array(
         'label'    => __( 'Twitter URL' ),
         'section'  => 'footer_social_media',
@@ -113,7 +113,7 @@ function mmf_customizer_settings( $wp_customize ) {
     ));
     function sanitize_instagram_link( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
-    }  
+    }
     $wp_customize->add_control( 'instagram_link', array(
         'label'    => __( 'Instagram URL' ),
         'section'  => 'footer_social_media',
@@ -127,9 +127,9 @@ function mmf_customizer_settings( $wp_customize ) {
     ));
     function sanitize_pintrest_link( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
-    }  
+    }
     $wp_customize->add_control( 'pintrest_link', array(
-        'label'    => __( 'Pintrest URL' ),
+        'label'    => __( 'Pinterest URL' ),
         'section'  => 'footer_social_media',
         'settings' => 'pintrest_link',
         'type'     => 'url',
@@ -141,7 +141,7 @@ function mmf_customizer_settings( $wp_customize ) {
     ));
     function sanitize_google_plus_link( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
-    }  
+    }
     $wp_customize->add_control( 'google_plus_link', array(
         'label'    => __( 'Google+ URL' ),
         'section'  => 'footer_social_media',

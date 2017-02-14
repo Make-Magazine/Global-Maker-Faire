@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-02-13 17:51-0700\n"
+"PO-Revision-Date: 2017-02-13 17:54-0700\n"
 "Language-Team: MakerFaire\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,7 +112,7 @@ msgid "Instagram URL"
 msgstr ""
 
 #: customizer.php:132
-msgid "Pintrest URL"
+msgid "Pinterest URL"
 msgstr ""
 
 #: customizer.php:146
