@@ -1,4 +1,4 @@
-  <?php
+<?php
 /* class to add new options to the network admin settings screen */
 class GMFAdminSettings {
 
