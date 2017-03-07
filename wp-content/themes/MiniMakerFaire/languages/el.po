@@ -1,0 +1,412 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Global Maker Faire\n"
+"POT-Creation-Date: 2017-01-23 16:24-0700\n"
+"PO-Revision-Date: 2017-03-07 16:07-0700\n"
+"Language-Team: MakerFaire\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"Last-Translator: \n"
+"Language: el\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: bower_components\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: blog.php:55
+msgid "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Newer"
+msgstr "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Νεότερο"
+
+#: blog.php:58
+msgid "Older <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
+msgstr "Παλαιότερο <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
+
+#: blog.php:67
+msgid "None found."
+msgstr "Δεν βρέθηκε."
+
+#: classes/networkSettings.php:73
+msgid "Network Panel Settings"
+msgstr ""
+
+#: classes/networkSettings.php:95
+msgid "Upload Image"
+msgstr "Ανέβασε φωτογραφία"
+
+#: classes/networkSettings.php:116 functions/panels.php:454
+msgid "What is Maker Faire?"
+msgstr "Τι είναι το Maker Faire;"
+
+#: classes/networkSettings.php:121 classes/networkSettings.php:122
+#: classes/networkSettings.php:167 classes/networkSettings.php:168
+msgid "Text"
+msgstr "Κείμενο"
+
+#: classes/networkSettings.php:129
+msgid "Find Out More"
+msgstr "Δες περισσότερα"
+
+#: classes/networkSettings.php:134 classes/networkSettings.php:135
+msgid "Image #1"
+msgstr "Εικόνα #1"
+
+#: classes/networkSettings.php:141
+msgid "URL #1"
+msgstr ""
+
+#: classes/networkSettings.php:142
+msgid "URL for Image #1"
+msgstr "URL για εικόνα #1"
+
+#: classes/networkSettings.php:148 classes/networkSettings.php:149
+msgid "Image #2"
+msgstr "Εικόνα #2"
+
+#: classes/networkSettings.php:155
+msgid "URL #2"
+msgstr ""
+
+#: classes/networkSettings.php:156
+msgid "URL for Image #2"
+msgstr "URL για εικόνα #2"
+
+#: classes/networkSettings.php:162
+msgid "Footer"
+msgstr ""
+
+#: comments.php:6 index.php:90
+msgid "Leave a Comment"
+msgstr "Γράψε σχόλιο"
+
+#: comments.php:6 index.php:90
+msgid "One Comment"
+msgstr "Ένα σχόλιο"
+
+#: comments.php:6 index.php:90
+msgid " Comments"
+msgstr "Σχόλια"
+
+#: customizer.php:21
+msgid "Faire Logo"
+msgstr ""
+
+#: customizer.php:52
+msgid "Button text"
+msgstr ""
+
+#: customizer.php:66
+msgid "Button URL"
+msgstr ""
+
+#: customizer.php:90
+msgid "Facebook URL"
+msgstr ""
+
+#: customizer.php:104
+msgid "Twitter URL"
+msgstr ""
+
+#: customizer.php:118
+msgid "Instagram URL"
+msgstr ""
+
+#: customizer.php:132
+msgid "Pintrest URL"
+msgstr ""
+
+#: customizer.php:146
+msgid "Google+ URL"
+msgstr ""
+
+#: customizer.php:166
+msgid "Enter any scripts that need to be placed in the header here."
+msgstr ""
+
+#: customizer.php:176
+msgid "Enter any scripts that need to be placed in the footer here."
+msgstr ""
+
+#: functions/gf-entry-detail-sidebar.php:225
+msgid "added on"
+msgstr ""
+
+#: functions/gf-entry-detail-update.php:214
+msgid "Acceptance Status Changed"
+msgstr "Η κατάσταση της πορείας της αίτησης άλλαξε"
+
+#: functions/gf-entry-list.php:10
+msgid "Click to view"
+msgstr "Πάτησε για να δεις"
+
+#: functions/panels.php:187
+msgid "More Makers"
+msgstr "Περισσότεροι Makers"
+
+#: functions/panels.php:364
+msgid "More News"
+msgstr "Περισσότερα νέα"
+
+#: functions/panels.php:460
+msgid ""
+"Maker Faire is a gathering of fascinating, curious people who enjoy learning "
+"and who love sharing what they can do. From engineers to artists to "
+"scientists to crafters, Maker Faire is a venue to for these “makers” to show "
+"hobbies, experiments, projects."
+msgstr ""
+"Στο Maker Faire συγκεντρώνονται συναρπαστικοί άνθρωποι με περιέργεια που "
+"απολαμβάνουν τη μάθηση και αγαπούν να μοιράζονται το τι μπορούν να κάνουν. "
+"Από μηχανικούς μέχρι καλλιτέχνες και από επιστήμονες μέχρι crafters, το "
+"Maker Faire αποτελεί το μέρος συγκέντρωσης των \"makers\" ώστε να δείξουν τα "
+"hobby, τα πειράματα και τα projects τους. "
+
+#: functions/panels.php:463
+msgid ""
+"We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase "
+"of invention, creativity, and resourcefulness."
+msgstr ""
+"Το αποκαλούμε το Σπουδαιότερο show στη Γη (The Greatest Show & Tell on "
+"Earth)- ένα οικογενειακό show για την καινοτομία, την δημιουργία και την "
+"εφευρετικότητα. "
+
+#: functions/panels.php:466
+msgid "Glimpse the future and get inspired!"
+msgstr "Διακρίνετε το μέλλον και εμπνευστείτε!"
+
+#: functions/panels.php:603 page-meet-the-makers.php:18
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: functions/panels.php:607 page-meet-the-makers.php:22
+msgid "Next"
+msgstr "Επόμενο"
+
+#: functions/panels.php:651
+msgid "Stay in Touch:"
+msgstr "Ας επικοινωνήσουμε:"
+
+#: functions/panels.php:651
+msgid "Get Local and Global Maker Faire Community updates."
+msgstr "Ενημερώσου για τα νέα της κοινότητας του Maker Faire"
+
+#: functions/panels.php:664
+msgid "Enter your Email"
+msgstr "Συμπλήρωσε το email σου "
+
+#: functions/panels.php:665
+msgid "GO"
+msgstr ""
+
+#: functions/panels.php:680
+msgid "Awesome!"
+msgstr "Εκπληκτικά!"
+
+#: functions/panels.php:681
+msgid "Thanks for signing up."
+msgstr "Ευχαριστούμε για την εγγραφή σου. "
+
+#: functions/panels.php:797
+msgid "Become a Sponsor"
+msgstr "Γίνε Χορηγός"
+
+#: functions/panels.php:800
+msgid "All Sponsors"
+msgstr "Οι Χορηγοί"
+
+#: index.php:16
+#, php-format
+msgid "%s Search Results for \"%s\""
+msgstr ""
+
+#: index.php:77
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: page-contact.php:47
+msgid "Address"
+msgstr "Διεύθυνση"
+
+#: page-contact.php:52
+msgid "Phone"
+msgstr "Τηλέφωνο"
+
+#: page-contact.php:57 page-contact.php:187
+msgid "Email"
+msgstr ""
+
+#: page-contact.php:117
+msgid "Contact Us"
+msgstr "Επικοινωνήστε μαζί μας"
+
+#: page-contact.php:137
+msgid "Human verification incorrect."
+msgstr ""
+
+#: page-contact.php:138
+msgid "Please supply all information."
+msgstr "Παρακαλώ συμπληρώστε όλες τις πληροφορίες."
+
+#: page-contact.php:139
+msgid "Email Address Invalid."
+msgstr "Η ηλεκτρ. διεύθυνση δεν είναι σωστή. "
+
+#: page-contact.php:140
+msgid "Message was not sent. Try Again."
+msgstr "Το μήνυμα δεν εστάλη. Προσπαθήστε ξανά. "
+
+#: page-contact.php:141
+msgid "Thanks! Your message has been sent."
+msgstr "Ευχαριστούμε! Το μήνυμα σου εστάλη. "
+
+#: page-contact.php:151
+msgid "Someone sent a message from "
+msgstr "Κάποιος έστειλε κάποιο μήνυμα από"
+
+#: page-contact.php:152
+msgid "from: "
+msgstr "από:"
+
+#: page-contact.php:153
+msgid "Reply-To: "
+msgstr "Απάντηση στο:"
+
+#: page-contact.php:183
+msgid "Name"
+msgstr "Όνομα"
+
+#: page-contact.php:191
+msgid "Message"
+msgstr "Μήνυμα"
+
+#: page-contact.php:195
+msgid "Human Verification"
+msgstr ""
+
+#: page-entry.php:166
+msgid "Group"
+msgstr ""
+
+#: page-entry.php:168
+msgid "Makers"
+msgstr ""
+
+#: page-entry.php:170
+msgid "Maker"
+msgstr ""
+
+#: page-entry.php:204
+msgid "Invalid entry"
+msgstr ""
+
+#: page-entry.php:257
+msgid "Event Map"
+msgstr "Χάρτης Εκδήλωσης"
+
+#: page-entry.php:264
+msgid "View full schedule"
+msgstr "Δες όλο το πρόγραμμα"
+
+#: page-entry.php:265
+msgid "Download the program guide"
+msgstr "Κατέβασε το πρόγραμμα της εκδήλωσης"
+
+#: page-entry.php:309
+msgid "Exhibits in this group:"
+msgstr "Εκθέματα στο group:"
+
+#: page-entry.php:312
+msgid "Part of a group:"
+msgstr "Μέρος του group:"
+
+#: page-home.php:102
+msgid "Click here to get subscriptions to Make: Magazine"
+msgstr "Πάτησε εδώ για να λάβεις συνδρομή του Make: Magazine"
+
+#: page-home.php:107
+msgid "Click here to see our global Maker Faires"
+msgstr "Πάτησε εδώ για να δεις το Maker Faire παγκόσμια"
+
+#: page-meet-the-makers.php:27
+msgid "Explore our Maker Exhibits!"
+msgstr "Ανακάλυψε τα εκθέματα των Makers!"
+
+#: page-meet-the-makers.php:33
+msgid "Search:"
+msgstr "Αναζήτηση:"
+
+#: page-meet-the-makers.php:34
+msgid "Looking for a specific Exhibit or Maker?"
+msgstr "Ψάχνεις για κάποιο συγκεκριμένο Έκθεμα ή Maker;"
+
+#: page-meet-the-makers.php:42
+msgid "View by:"
+msgstr "Ταξινόμησε ανά:"
+
+#: page-meet-the-makers.php:43
+msgid "GALLERY"
+msgstr ""
+
+#: page-meet-the-makers.php:45
+msgid "LIST"
+msgstr "Λίστα"
+
+#: page-meet-the-makers.php:50
+msgid "Filter by Topics:"
+msgstr "Αναζήτηση ανά θέμα:"
+
+#: page-meet-the-makers.php:56 page-schedule.php:72 page-schedule.php:94
+msgid "All"
+msgstr "Όλα"
+
+#: page-meet-the-makers.php:69
+msgid "Loading"
+msgstr ""
+
+#: page-schedule.php:14
+msgid "Category"
+msgstr "Κατηγορία"
+
+#: page-schedule.php:20
+msgid "ALL"
+msgstr "ΟΛΑ"
+
+#: page-schedule.php:55
+msgid "Title"
+msgstr "Τίτλος"
+
+#: page-schedule.php:60
+msgid "Time"
+msgstr "Χρόνος"
+
+#: page-schedule.php:67
+msgid "Stage"
+msgstr "Στάδιο"
+
+#: page-schedule.php:82
+msgid "Type"
+msgstr "Τύπος"
+
+#: page-schedule.php:89
+msgid "Topics"
+msgstr "Θέματα"
+
+#: page-schedule.php:144
+msgid "quick view"
+msgstr "Γρήγορη ματιά"
+
+#: page-schedule.php:151
+msgid "full details"
+msgstr "όλες οι λεπτομέρειες"
+
+#: page-sponsors.php:15 page-sponsors.php:119
+msgid "BECOME A SPONSOR"
+msgstr "ΓΙΝΕ ΧΟΡΗΓΟΣ"
+
+#: page-sponsors.php:112
+msgid "no sponsors found"
+msgstr "δεν βρέθηκαν χορηγοί"
