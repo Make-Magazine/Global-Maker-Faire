@@ -345,7 +345,13 @@ function getPostFeed() {
     if ( get_the_post_thumbnail($recent['ID']) != '' ) {
       $thumb_id = get_post_thumbnail_id($recent['ID']);
       $url = wp_get_attachment_url($thumb_id);
-      $return .=  "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
+      $args = array(
+        'resize' => '300,300',
+        'quality' => '80',
+        'strip' => 'all',
+      );
+      $photon = jetpack_photon_url($url, $args);
+      $return .=  "<div class='recent-post-img' style='background-image: url(" . $photon . ");'></div>";
     } else {
       $return .=  get_first_post_image($recent);
     }
