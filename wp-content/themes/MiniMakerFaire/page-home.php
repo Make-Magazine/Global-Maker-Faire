@@ -41,20 +41,29 @@ get_header();
       endif; ?>
     </div>
 
-    <?php $images = get_field('image_carousel', $home_ID);
+    <?php 
+    $images = get_field('image_carousel', $home_ID);
     if( $images ): ?>
 
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
-          <?php $i = 0;
+          <?php 
+          $i = 0;
           foreach( $images as $image ):
+            $args = array(
+              'resize' => '1200,450',
+              'quality' => '70',
+              'strip' => 'all',
+            );
+            $url = $image['url'];
+            $photon = jetpack_photon_url($url, $args);
             if ($i == 0) { ?>
               <div class="item active">
-                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                <img src="<?php echo $photon; ?>" alt="<?php echo $image['alt']; ?>" />
               </div> <?php
             } else { ?>
               <div class="item">
-                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                <img src="<?php echo $photon; ?>" alt="<?php echo $image['alt']; ?>" />
               </div> <?php
             }
             $i++;
