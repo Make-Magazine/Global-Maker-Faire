@@ -157,7 +157,7 @@ function getFeatMkPanel($row_layout) {
           'quality' => '80',
           'strip' => 'all',
         );
-        $photon = jetpack_photon_url($url, $args);
+        $photon = jetpack_photon_url($url['url'], $args);
         $makerArr[] = array('image'      => $photon,
                             'name'       => get_sub_field('maker_name'),
                             'desc'       => get_sub_field('maker_short_description'),
