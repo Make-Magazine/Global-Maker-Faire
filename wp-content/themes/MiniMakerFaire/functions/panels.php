@@ -131,11 +131,15 @@ function getFeatMkPanel($row_layout) {
     //randomly order entries
     shuffle ($entries);
     foreach($entries as $entry) {
-      $projPhoto = $entry['22'];
-      $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,262,234);
-      if($fitPhoto==NULL) $fitPhoto = $projPhoto;
+      $url = $entry['22'];
+      $args = array(
+        'resize' => '300,300',
+        'quality' => '80',
+        'strip' => 'all',
+      );
+      $photon = jetpack_photon_url($url, $args);
 
-      $makerArr[] = array('image'      => array('url'=>$fitPhoto),
+      $makerArr[] = array('image'      => $photon,
                           'name'       => $entry['151'],
                           'desc'       => $entry['16'],
                           'maker_url'  => '/maker/entry/'.$entry['id']
@@ -147,7 +151,14 @@ function getFeatMkPanel($row_layout) {
       // loop through the rows of data
       while ( have_rows('featured_makers') ) {
         the_row();
-        $makerArr[] = array('image'      => get_sub_field('maker_image'),
+        $url = get_sub_field('maker_image');
+        $args = array(
+          'resize' => '300,300',
+          'quality' => '80',
+          'strip' => 'all',
+        );
+        $photon = jetpack_photon_url($url, $args);
+        $makerArr[] = array('image'      => $photon,
                             'name'       => get_sub_field('maker_name'),
                             'desc'       => get_sub_field('maker_short_description'),
                             'maker_url'  => get_sub_field('maker_url')
@@ -166,7 +177,7 @@ function getFeatMkPanel($row_layout) {
     }
 
     $return .=  '<div class="featured-maker col-xs-6 col-sm-3">
-            <div class="maker-img" style="background-image: url(' . $maker['image']["url"] . ');">
+            <div class="maker-img" style="background-image: url(' . $maker['image'] . ');">
             </div>
             <div class="maker-panel-text">
               <h4>' . $maker['name'] . '</h4>
