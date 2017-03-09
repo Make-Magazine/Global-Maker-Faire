@@ -250,10 +250,14 @@ function getFeatEvPanel($row_layout) {
         $endDate = date_format($endDate,'g:i a');
 
         $projPhoto = $row->photo;
-        $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
-        if($fitPhoto==NULL) $fitPhoto = $projPhoto;
+        $args = array(
+          'resize' => '300,300',
+          'quality' => '80',
+          'strip' => 'all',
+        );
+        $photon = jetpack_photon_url($projPhoto, $args);
         $eventArr[] = array(
-            'image'       => array('url'=>$fitPhoto),
+            'image'       => $photon,
             'event'       => $row->name,
             'description' => $row->short_desc,
             'day'         => $row->day,
@@ -269,8 +273,15 @@ function getFeatEvPanel($row_layout) {
       // loop through the rows of data
       while ( have_rows('featured_events') ) {
         the_row();
+        $url = get_sub_field('event_image');
+        $args = array(
+          'resize' => '300,300',
+          'quality' => '80',
+          'strip' => 'all',
+        );
+        $photon = jetpack_photon_url($url['url'], $args);
         $eventArr[] = array(
-          'image'       => get_sub_field('event_image'),
+          'image'       => $photon,
           'event'       => get_sub_field('event_name'),
           'description' => get_sub_field('event_short_description'),
           'day'         => get_sub_field('day'),
@@ -287,7 +298,7 @@ function getFeatEvPanel($row_layout) {
     $return .=  '<div class="featured-event col-xs-6">'.
             ($event['maker_url']!=''?'<a href="'.$event['maker_url'].'">':'').
            '<div class="col-xs-12 col-sm-4 nopad">
-              <div class="event-img" style="background-image: url(' . $event['image']["url"] . ');"></div>
+              <div class="event-img" style="background-image: url(' . $event['image'] . ');"></div>
             </div>
             <div class="col-xs-12 col-sm-8">
               <div class="event-description">
