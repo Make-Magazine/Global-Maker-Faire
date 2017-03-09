@@ -783,12 +783,18 @@ function getSponsorPanel() {
 
                                 $sub_field_1 = get_sub_field('image'); //Photo
                                 $sub_field_2 = get_sub_field('url'); //URL
+                                $args = array(
+                                  'w' => '300',
+                                  'quality' => '80',
+                                  'strip' => 'all',
+                                );
+                                $photon = jetpack_photon_url($sub_field_1, $args);
 
                                 $return .= '<div class="' . $sub_field_3 . '">';
                                 if( $sub_field_2 ) {
                                   $return .= '<a href="' . $sub_field_2 . '" target="_blank">';
                                 }
-                                $return .= '<img src="' . $sub_field_1 . '" alt="Maker Faire sponsor logo" class="img-responsive" />';
+                                $return .= '<img src="' . $photon . '" alt="Maker Faire sponsor logo" class="img-responsive" />';
                                 if( $sub_field_2 ) {
                                   $return .= '</a>';
                                 }
