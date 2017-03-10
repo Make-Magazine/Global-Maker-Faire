@@ -51,7 +51,7 @@ function findOverride($entry_id, $type){
  * @param bool $escape Optional. If true (the default), the URL will be run through esc_url(). Set this to false if you need the raw URL.
  * @return string
  */
-function legacy_get_resized_remote_image_url( $url, $width, $height, $escape = true ) {
+function legacy_get_resized_remote_image_url( $url, $width, $height ) {
 	if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) :
 	$width = (int) $width;
 	$height = (int) $height;
@@ -66,12 +66,12 @@ function legacy_get_resized_remote_image_url( $url, $width, $height, $escape = t
     );
     $thumburl = jetpack_photon_url( $url, $args );
 
-	return ( $escape ) ? esc_url( $thumburl ) : $thumburl;
+	return $thumburl;
 	else:
   return $url;  
   endif;
 }
-function legacy_get_fit_remote_image_url( $url, $width, $height, $escape = true ) {
+function legacy_get_fit_remote_image_url( $url, $width, $height ) {
 	if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) :
 	$width = (int) $width;
 	$height = (int) $height;
@@ -86,7 +86,7 @@ function legacy_get_fit_remote_image_url( $url, $width, $height, $escape = true 
     );
 	$thumburl = jetpack_photon_url( $url, $args );
 
-	return ( $escape ) ? esc_url( $thumburl ) : $thumburl;
+	return $thumburl;
   else:
   return $url;  
   endif;
