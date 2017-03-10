@@ -102,8 +102,8 @@ function getMTMentries($formIDs) {
       }
 
       $projPhoto = (isset($entry['22']) ? $entry['22']:'');
-      $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
-      $featImg   = legacy_get_fit_remote_image_url($projPhoto,800,500);
+      $fitPhoto  = legacy_get_resized_remote_image_url($projPhoto,230,181);
+      $featImg   = legacy_get_resized_remote_image_url($projPhoto,800,500);
       if($fitPhoto == NULL) $fitPhoto = $projPhoto;
       if($featImg == NULL)  $featImg = $projPhoto;
       //maker list
@@ -177,7 +177,7 @@ function getMTMentries($formIDs) {
       //$overrideImg = findOverride($entry['id'],'mtm');
       //$projPhoto = ($row->photo=='' ? $entry['22']: $overrideImg);
       $projPhoto = $row->photo;
-      $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
+      $fitPhoto  = legacy_get_resized_remote_image_url($projPhoto,200,200);
       if($fitPhoto==NULL) $fitPhoto = $row->photo;
 
       //format start and end date
