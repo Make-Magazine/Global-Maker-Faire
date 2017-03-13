@@ -150,6 +150,7 @@ function getMTMentries($formIDs) {
 
   function getSchedule($formIDs) {
     $data = array(); global $wpdb;
+    $formIDarr = array_map('intval', explode("-", $formIDs));
     $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
               lead_detail.value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
               (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '22')  as photo,
@@ -161,7 +162,8 @@ function getMTMentries($formIDs) {
                left outer join {$wpdb->prefix}rg_lead as lead on schedule.entry_id = lead.id
                left outer join {$wpdb->prefix}rg_lead_detail as lead_detail on
                    schedule.entry_id = lead_detail.lead_id and field_number = 303
-               where lead.status = 'active' and lead_detail.value='Accepted'";
+               where lead.status = 'active' and lead_detail.value='Accepted' "
+               . " and lead_detail.form_id in(".implode(",",$formIDarr).")";
 
     //retrieve project name, img (22), maker list, topics
 
