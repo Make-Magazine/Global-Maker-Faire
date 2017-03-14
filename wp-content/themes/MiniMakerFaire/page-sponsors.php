@@ -45,12 +45,22 @@ get_header(); ?>
 
               $sub_field_1 = get_sub_field('image'); //Photo
               $sub_field_2 = get_sub_field('url'); //URL
+              $args = array(
+                'w' => '400',
+                'quality' => '80',
+                'strip' => 'all',
+              );
+              $photon = jetpack_photon_url($sub_field_1['url'], $args);
 
               echo '<div class="' . $sub_field_3 . '">';
               if( get_sub_field('url') ):
                 echo '<a href="' . $sub_field_2 . '" target="_blank">';
               endif;
-              echo '<img src="' . $sub_field_1 . '" alt="Maker Faire sponsor logo" class="img-responsive" />';
+              if( $sub_field_1['alt'] ):
+                echo '<img src="' . $photon . '" alt="' . $sub_field_1['alt'] . '" class="img-responsive" />';
+              else:
+                echo '<img src="' . $photon . '" alt="Maker Faire sponsor logo" class="img-responsive" />';
+              endif;
               if( get_sub_field('url') ):
                 echo '</a>';
               endif;

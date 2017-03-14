@@ -59,11 +59,11 @@ get_header();
             $photon = jetpack_photon_url($url, $args);
             if ($i == 0) { ?>
               <div class="item active">
-                <img src="<?php echo $photon; ?>" alt="<?php echo $image['alt']; ?>" />
+                <img src="<?php echo $photon; ?>" alt="<?php if($image['alt'] != ''){echo $image['alt'];}else{echo 'Maker Faire featured image';} ?>" />
               </div> <?php
             } else { ?>
               <div class="item">
-                <img src="<?php echo $photon; ?>" alt="<?php echo $image['alt']; ?>" />
+                <img src="<?php echo $photon; ?>" alt="<?php if($image['alt'] != ''){echo $image['alt'];}else{echo 'Maker Faire featured image';} ?>" />
               </div> <?php
             }
             $i++;

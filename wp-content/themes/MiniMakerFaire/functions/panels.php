@@ -799,7 +799,7 @@ function getSponsorPanel() {
                                   'quality' => '80',
                                   'strip' => 'all',
                                 );
-                                $photon = jetpack_photon_url($sub_field_1, $args);
+                                $photon = jetpack_photon_url($sub_field_1['url'], $args);
 
                                 $return .= '<div class="' . $sub_field_3 . '">';
                                 if( $sub_field_2 ) {
