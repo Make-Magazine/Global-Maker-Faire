@@ -34,7 +34,7 @@ get_header();
         if( $call_to_action_text_url ): ?>
           <a href="<?php echo $call_to_action_text_url ?>">
         <?php endif; ?>
-        <h3 class="call_to_action_text"><?php echo $call_to_action_text ?></h3> <?php
+        <h1 class="call_to_action_text"><?php echo $call_to_action_text ?></h1> <?php
         if( $call_to_action_text_url ): ?>
           </a>
         <?php endif;
