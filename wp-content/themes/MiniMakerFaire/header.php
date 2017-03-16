@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+  <?php wp_head(); ?>
+
   <meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-  <?php wp_head(); ?>
-
+  
   <link rel='shortlink' href='<?php echo get_site_url(); ?>' />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
@@ -49,7 +50,8 @@
 <body <?php body_class(); ?>>
 
   <div class="flag-banner header-flag"></div>
-
+  <div class="alert alert-danger" role="alert">
+Site Maintenance: Thurs 3/16, 9PM PDT to 2AM PDT. Any changes made to your site during this timeframe will not be saved.</div>
       
   <nav class="navbar navbar-default <?php if(!is_page_template( 'page-home.php' )) : ?>nav-not-home<?php endif; ?>" role="navigation" id="slide-nav">
     <div class="container text-center nav-flex">
