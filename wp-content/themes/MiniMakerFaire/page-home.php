@@ -34,27 +34,36 @@ get_header();
         if( $call_to_action_text_url ): ?>
           <a href="<?php echo $call_to_action_text_url ?>">
         <?php endif; ?>
-        <h3 class="call_to_action_text"><?php echo $call_to_action_text ?></h3> <?php
+        <h1 class="call_to_action_text"><?php echo $call_to_action_text ?></h1> <?php
         if( $call_to_action_text_url ): ?>
           </a>
         <?php endif;
       endif; ?>
     </div>
 
-    <?php $images = get_field('image_carousel', $home_ID);
+    <?php 
+    $images = get_field('image_carousel', $home_ID);
     if( $images ): ?>
 
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
-          <?php $i = 0;
+          <?php 
+          $i = 0;
           foreach( $images as $image ):
+            $args = array(
+              'resize' => '1200,450',
+              'quality' => '70',
+              'strip' => 'all',
+            );
+            $url = $image['url'];
+            $photon = jetpack_photon_url($url, $args);
             if ($i == 0) { ?>
               <div class="item active">
-                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                <img src="<?php echo $photon; ?>" alt="<?php if($image['alt'] != ''){echo $image['alt'];}else{echo 'Maker Faire featured image';} ?>" />
               </div> <?php
             } else { ?>
               <div class="item">
-                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                <img src="<?php echo $photon; ?>" alt="<?php if($image['alt'] != ''){echo $image['alt'];}else{echo 'Maker Faire featured image';} ?>" />
               </div> <?php
             }
             $i++;

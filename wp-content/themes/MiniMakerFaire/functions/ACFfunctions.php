@@ -755,7 +755,7 @@ acf_add_local_field_group(array (
 			'label' => 'Image Carousel',
 			'name' => 'image_carousel',
 			'type' => 'gallery',
-			'instructions' => 'Up to 3 images can be added. Images look best when uploaded when sized at 2400px wide by 900px hieght, but the carousel will do its best to fit any size image to fit.',
+			'instructions' => 'Up to 3 images can be added. Carousel images will be centered and sized at 1200px wide by 450px hieght.',
 			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array (
@@ -2941,7 +2941,7 @@ acf_add_local_field_group(array (
 						array (
 							'sub_fields' => array (
 								array (
-									'return_format' => 'url',
+									'return_format' => 'array',
 									'preview_size' => 'thumbnail',
 									'library' => 'all',
 									'min_width' => '',

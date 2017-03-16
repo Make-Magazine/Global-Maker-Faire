@@ -102,8 +102,8 @@ function getMTMentries($formIDs) {
       }
 
       $projPhoto = (isset($entry['22']) ? $entry['22']:'');
-      $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
-      $featImg   = legacy_get_fit_remote_image_url($projPhoto,800,500);
+      $fitPhoto  = legacy_get_resized_remote_image_url($projPhoto,230,181);
+      $featImg   = legacy_get_resized_remote_image_url($projPhoto,800,500);
       if($fitPhoto == NULL) $fitPhoto = $projPhoto;
       if($featImg == NULL)  $featImg = $projPhoto;
       //maker list
@@ -150,6 +150,7 @@ function getMTMentries($formIDs) {
 
   function getSchedule($formIDs) {
     $data = array(); global $wpdb;
+    $formIDarr = array_map('intval', explode("-", $formIDs));
     $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
               lead_detail.value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
               (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '22')  as photo,
@@ -161,7 +162,8 @@ function getMTMentries($formIDs) {
                left outer join {$wpdb->prefix}rg_lead as lead on schedule.entry_id = lead.id
                left outer join {$wpdb->prefix}rg_lead_detail as lead_detail on
                    schedule.entry_id = lead_detail.lead_id and field_number = 303
-               where lead.status = 'active' and lead_detail.value='Accepted'";
+               where lead.status = 'active' and lead_detail.value='Accepted' "
+               . " and lead_detail.form_id in(".implode(",",$formIDarr).")";
 
     //retrieve project name, img (22), maker list, topics
 
@@ -177,7 +179,7 @@ function getMTMentries($formIDs) {
       //$overrideImg = findOverride($entry['id'],'mtm');
       //$projPhoto = ($row->photo=='' ? $entry['22']: $overrideImg);
       $projPhoto = $row->photo;
-      $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
+      $fitPhoto  = legacy_get_resized_remote_image_url($projPhoto,200,200);
       if($fitPhoto==NULL) $fitPhoto = $row->photo;
 
       //format start and end date

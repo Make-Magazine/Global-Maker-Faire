@@ -131,11 +131,15 @@ function getFeatMkPanel($row_layout) {
     //randomly order entries
     shuffle ($entries);
     foreach($entries as $entry) {
-      $projPhoto = $entry['22'];
-      $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,262,234);
-      if($fitPhoto==NULL) $fitPhoto = $projPhoto;
+      $url = $entry['22'];
+      $args = array(
+        'resize' => '300,300',
+        'quality' => '80',
+        'strip' => 'all',
+      );
+      $photon = jetpack_photon_url($url, $args);
 
-      $makerArr[] = array('image'      => array('url'=>$fitPhoto),
+      $makerArr[] = array('image'      => $photon,
                           'name'       => $entry['151'],
                           'desc'       => $entry['16'],
                           'maker_url'  => '/maker/entry/'.$entry['id']
@@ -147,7 +151,14 @@ function getFeatMkPanel($row_layout) {
       // loop through the rows of data
       while ( have_rows('featured_makers') ) {
         the_row();
-        $makerArr[] = array('image'      => get_sub_field('maker_image'),
+        $url = get_sub_field('maker_image');
+        $args = array(
+          'resize' => '300,300',
+          'quality' => '80',
+          'strip' => 'all',
+        );
+        $photon = jetpack_photon_url($url['url'], $args);
+        $makerArr[] = array('image'      => $photon,
                             'name'       => get_sub_field('maker_name'),
                             'desc'       => get_sub_field('maker_short_description'),
                             'maker_url'  => get_sub_field('maker_url')
@@ -166,7 +177,7 @@ function getFeatMkPanel($row_layout) {
     }
 
     $return .=  '<div class="featured-maker col-xs-6 col-sm-3">
-            <div class="maker-img" style="background-image: url(' . $maker['image']["url"] . ');">
+            <div class="maker-img" style="background-image: url(' . $maker['image'] . ');">
             </div>
             <div class="maker-panel-text">
               <h4>' . $maker['name'] . '</h4>
@@ -239,10 +250,14 @@ function getFeatEvPanel($row_layout) {
         $endDate = date_format($endDate,'g:i a');
 
         $projPhoto = $row->photo;
-        $fitPhoto  = legacy_get_fit_remote_image_url($projPhoto,230,181);
-        if($fitPhoto==NULL) $fitPhoto = $projPhoto;
+        $args = array(
+          'resize' => '300,300',
+          'quality' => '80',
+          'strip' => 'all',
+        );
+        $photon = jetpack_photon_url($projPhoto, $args);
         $eventArr[] = array(
-            'image'       => array('url'=>$fitPhoto),
+            'image'       => $photon,
             'event'       => $row->name,
             'description' => $row->short_desc,
             'day'         => $row->day,
@@ -258,8 +273,15 @@ function getFeatEvPanel($row_layout) {
       // loop through the rows of data
       while ( have_rows('featured_events') ) {
         the_row();
+        $url = get_sub_field('event_image');
+        $args = array(
+          'resize' => '300,300',
+          'quality' => '80',
+          'strip' => 'all',
+        );
+        $photon = jetpack_photon_url($url['url'], $args);
         $eventArr[] = array(
-          'image'       => get_sub_field('event_image'),
+          'image'       => $photon,
           'event'       => get_sub_field('event_name'),
           'description' => get_sub_field('event_short_description'),
           'day'         => get_sub_field('day'),
@@ -276,7 +298,7 @@ function getFeatEvPanel($row_layout) {
     $return .=  '<div class="featured-event col-xs-6">'.
             ($event['maker_url']!=''?'<a href="'.$event['maker_url'].'">':'').
            '<div class="col-xs-12 col-sm-4 nopad">
-              <div class="event-img" style="background-image: url(' . $event['image']["url"] . ');"></div>
+              <div class="event-img" style="background-image: url(' . $event['image'] . ');"></div>
             </div>
             <div class="col-xs-12 col-sm-8">
               <div class="event-description">
@@ -345,7 +367,13 @@ function getPostFeed() {
     if ( get_the_post_thumbnail($recent['ID']) != '' ) {
       $thumb_id = get_post_thumbnail_id($recent['ID']);
       $url = wp_get_attachment_url($thumb_id);
-      $return .=  "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
+      $args = array(
+        'resize' => '300,300',
+        'quality' => '80',
+        'strip' => 'all',
+      );
+      $photon = jetpack_photon_url($url, $args);
+      $return .=  "<div class='recent-post-img' style='background-image: url(" . $photon . ");'></div>";
     } else {
       $return .=  get_first_post_image($recent);
     }
@@ -457,7 +485,7 @@ function getWhatisMF() {
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <p class="text-center">'.
-                    __('Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From engineers to artists to scientists to crafters, Maker Faire is a venue to for these “makers” to show hobbies, experiments, projects.','MiniMakerFaire') .
+                    __('Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From engineers to artists to scientists to crafters, Maker Faire is a venue for these “makers” to show hobbies, experiments, projects.','MiniMakerFaire') .
                   '</p>'.
                   '<p class="text-center">'.
                     __('We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase of invention, creativity, and resourcefulness.','MiniMakerFaire').
@@ -766,12 +794,18 @@ function getSponsorPanel() {
 
                                 $sub_field_1 = get_sub_field('image'); //Photo
                                 $sub_field_2 = get_sub_field('url'); //URL
+                                $args = array(
+                                  'w' => '300',
+                                  'quality' => '80',
+                                  'strip' => 'all',
+                                );
+                                $photon = jetpack_photon_url($sub_field_1['url'], $args);
 
                                 $return .= '<div class="' . $sub_field_3 . '">';
                                 if( $sub_field_2 ) {
                                   $return .= '<a href="' . $sub_field_2 . '" target="_blank">';
                                 }
-                                $return .= '<img src="' . $sub_field_1 . '" alt="Maker Faire sponsor logo" class="img-responsive" />';
+                                $return .= '<img src="' . $photon . '" alt="Maker Faire sponsor logo" class="img-responsive" />';
                                 if( $sub_field_2 ) {
                                   $return .= '</a>';
                                 }

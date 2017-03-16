@@ -13,143 +13,143 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "Last-Translator: \n"
-"Language: fr\n"
+"Language: el\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 
 #: blog.php:55
 msgid "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Newer"
-msgstr "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Plus récent"
+msgstr "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Νεότερο"
 
 #: blog.php:58
 msgid "Older <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
-msgstr "Plus âgée<i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
+msgstr "Παλαιότερο <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
 
 #: blog.php:67
 msgid "None found."
-msgstr "Nous n'avons rien trouvé."
+msgstr "Δεν βρέθηκε."
 
 #: classes/networkSettings.php:73
 msgid "Network Panel Settings"
-msgstr "Panneau de configuration"
+msgstr ""
 
 #: classes/networkSettings.php:95
 msgid "Upload Image"
-msgstr "Importer une image"
+msgstr "Ανέβασε φωτογραφία"
 
 #: classes/networkSettings.php:116 functions/panels.php:454
 msgid "What is Maker Faire?"
-msgstr "Qu'est-ce que Maker Faire?"
+msgstr "Τι είναι το Maker Faire;"
 
 #: classes/networkSettings.php:121 classes/networkSettings.php:122
 #: classes/networkSettings.php:167 classes/networkSettings.php:168
 msgid "Text"
-msgstr "Texte"
+msgstr "Κείμενο"
 
 #: classes/networkSettings.php:129
 msgid "Find Out More"
-msgstr "En savoir plus"
+msgstr "Δες περισσότερα"
 
 #: classes/networkSettings.php:134 classes/networkSettings.php:135
 msgid "Image #1"
-msgstr "Image #1"
+msgstr "Εικόνα #1"
 
 #: classes/networkSettings.php:141
 msgid "URL #1"
-msgstr "URL #1"
+msgstr ""
 
 #: classes/networkSettings.php:142
 msgid "URL for Image #1"
-msgstr "URL Image # 1"
+msgstr "URL για εικόνα #1"
 
 #: classes/networkSettings.php:148 classes/networkSettings.php:149
 msgid "Image #2"
-msgstr "Image #2"
+msgstr "Εικόνα #2"
 
 #: classes/networkSettings.php:155
 msgid "URL #2"
-msgstr "URL #2"
+msgstr ""
 
 #: classes/networkSettings.php:156
 msgid "URL for Image #2"
-msgstr "URL for Image #2"
+msgstr "URL για εικόνα #2"
 
 #: classes/networkSettings.php:162
 msgid "Footer"
-msgstr "Bas de page"
+msgstr ""
 
 #: comments.php:6 index.php:90
 msgid "Leave a Comment"
-msgstr "Laissez un commentaire"
+msgstr "Γράψε σχόλιο"
 
 #: comments.php:6 index.php:90
 msgid "One Comment"
-msgstr "Un commentaire"
+msgstr "Ένα σχόλιο"
 
 #: comments.php:6 index.php:90
 msgid " Comments"
-msgstr "Commentaires"
+msgstr "Σχόλια"
 
 #: customizer.php:21
 msgid "Faire Logo"
-msgstr "Logo Maker Faire"
+msgstr ""
 
 #: customizer.php:52
 msgid "Button text"
-msgstr "Bouton texte"
+msgstr ""
 
 #: customizer.php:66
 msgid "Button URL"
-msgstr "Bouton URL"
+msgstr ""
 
 #: customizer.php:90
 msgid "Facebook URL"
-msgstr "Facebook URL"
+msgstr ""
 
 #: customizer.php:104
 msgid "Twitter URL"
-msgstr "Twitter URL"
+msgstr ""
 
 #: customizer.php:118
 msgid "Instagram URL"
-msgstr "Instagram URL"
+msgstr ""
 
 #: customizer.php:132
-msgid "Pinterest URL"
-msgstr "Pinterest URL"
+msgid "Pintrest URL"
+msgstr ""
 
 #: customizer.php:146
 msgid "Google+ URL"
-msgstr "Google+ URL"
+msgstr ""
 
 #: customizer.php:166
 msgid "Enter any scripts that need to be placed in the header here."
-msgstr "Entrez votre script pour l'en-tête."
+msgstr ""
 
 #: customizer.php:176
 msgid "Enter any scripts that need to be placed in the footer here."
-msgstr "Entrez votre script pour le bas de page."
+msgstr ""
 
 #: functions/gf-entry-detail-sidebar.php:225
 msgid "added on"
-msgstr "ajouté sur"
+msgstr ""
 
 #: functions/gf-entry-detail-update.php:214
 msgid "Acceptance Status Changed"
-msgstr "Le statut a changé"
+msgstr "Η κατάσταση της πορείας της αίτησης άλλαξε"
 
 #: functions/gf-entry-list.php:10
 msgid "Click to view"
-msgstr "Cliquez pour voir"
+msgstr "Πάτησε για να δεις"
 
 #: functions/panels.php:187
 msgid "More Makers"
-msgstr "Plus de Makers"
+msgstr "Περισσότεροι Makers"
 
 #: functions/panels.php:364
 msgid "More News"
-msgstr "Plus d'infos"
+msgstr "Περισσότερα νέα"
 
 #: functions/panels.php:460
 msgid ""
@@ -158,258 +158,255 @@ msgid ""
 "scientists to crafters, Maker Faire is a venue for these “makers” to show "
 "hobbies, experiments, projects."
 msgstr ""
-"Maker Faire est à la fois une fête de la science, une foire populaire et "
-"l’événement de référence de l’innovation partout dans le monde. Ce concept "
-"totalement unique regroupe stands de démonstration, ateliers de découverte, "
-"spectacles et conférences autour des thèmes de la créativité, de la "
-"fabrication, des cultures Do It Yourself et Makers. Cet événement, réunit "
-"des passionnés de technologies, des artisans, des industriels, des amateurs, "
-"des ingénieurs, des clubs de science, des artistes, des étudiants et des "
-"Start’Up. Ensemble, ils forment la communauté des Makers et viennent pour "
-"montrer leurs créations, partager leurs connaissances…"
+"Στο Maker Faire συγκεντρώνονται συναρπαστικοί άνθρωποι με περιέργεια που "
+"απολαμβάνουν τη μάθηση και αγαπούν να μοιράζονται το τι μπορούν να κάνουν. "
+"Από μηχανικούς μέχρι καλλιτέχνες και από επιστήμονες μέχρι crafters, το "
+"Maker Faire αποτελεί το μέρος συγκέντρωσης των \"makers\" ώστε να δείξουν τα "
+"hobby, τα πειράματα και τα projects τους. "
 
 #: functions/panels.php:463
 msgid ""
 "We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase "
 "of invention, creativity, and resourcefulness."
 msgstr ""
-"Nous l'appelons le plus grand spectacle sur la terre - une vitrine fun et "
-"familiale de l'invention, la créativité et la fabrication personnel."
+"Το αποκαλούμε το Σπουδαιότερο show στη Γη (The Greatest Show & Tell on "
+"Earth)- ένα οικογενειακό show για την καινοτομία, την δημιουργία και την "
+"εφευρετικότητα. "
 
 #: functions/panels.php:466
 msgid "Glimpse the future and get inspired!"
-msgstr "Bienvenue dans le futur !"
+msgstr "Διακρίνετε το μέλλον και εμπνευστείτε!"
 
 #: functions/panels.php:603 page-meet-the-makers.php:18
 msgid "Previous"
-msgstr "Précédent"
+msgstr "Προηγούμενο"
 
 #: functions/panels.php:607 page-meet-the-makers.php:22
 msgid "Next"
-msgstr "Suivant"
+msgstr "Επόμενο"
 
 #: functions/panels.php:651
 msgid "Stay in Touch:"
-msgstr "Restez en contact:"
+msgstr "Ας επικοινωνήσουμε:"
 
 #: functions/panels.php:651
 msgid "Get Local and Global Maker Faire Community updates."
-msgstr "Soyez informé des nouvelles de la communauté Maker Faire."
+msgstr "Ενημερώσου για τα νέα της κοινότητας του Maker Faire"
 
 #: functions/panels.php:664
 msgid "Enter your Email"
-msgstr "Entrez votre Email"
+msgstr "Συμπλήρωσε το email σου "
 
 #: functions/panels.php:665
 msgid "GO"
-msgstr "Go"
+msgstr ""
 
 #: functions/panels.php:680
 msgid "Awesome!"
-msgstr "Génial !"
+msgstr "Εκπληκτικά!"
 
 #: functions/panels.php:681
 msgid "Thanks for signing up."
-msgstr "Merci pour votre inscription."
+msgstr "Ευχαριστούμε για την εγγραφή σου. "
 
 #: functions/panels.php:797
 msgid "Become a Sponsor"
-msgstr "Devenez partenaire"
+msgstr "Γίνε Χορηγός"
 
 #: functions/panels.php:800
 msgid "All Sponsors"
-msgstr "Nos sponsors"
+msgstr "Οι Χορηγοί"
 
 #: index.php:16
 #, php-format
 msgid "%s Search Results for \"%s\""
-msgstr "%s Recherché des résultats pour \"%s\""
+msgstr ""
 
 #: index.php:77
 #, php-format
 msgid "Permalink to %s"
-msgstr "Permalien pour %s"
+msgstr ""
 
 #: page-contact.php:47
 msgid "Address"
-msgstr "Adresse"
+msgstr "Διεύθυνση"
 
 #: page-contact.php:52
 msgid "Phone"
-msgstr "Téléphone"
+msgstr "Τηλέφωνο"
 
 #: page-contact.php:57 page-contact.php:187
 msgid "Email"
-msgstr "Email"
+msgstr ""
 
 #: page-contact.php:117
 msgid "Contact Us"
-msgstr "Contactez-nous"
+msgstr "Επικοινωνήστε μαζί μας"
 
 #: page-contact.php:137
 msgid "Human verification incorrect."
-msgstr "Identification humain incorrecte."
+msgstr ""
 
 #: page-contact.php:138
 msgid "Please supply all information."
-msgstr "Merci de remplir toutes les informations."
+msgstr "Παρακαλώ συμπληρώστε όλες τις πληροφορίες."
 
 #: page-contact.php:139
 msgid "Email Address Invalid."
-msgstr "Adresse Email invalide."
+msgstr "Η ηλεκτρ. διεύθυνση δεν είναι σωστή. "
 
 #: page-contact.php:140
 msgid "Message was not sent. Try Again."
-msgstr "Votre message n'a pas pu être envoyé. Merci d'essayer à nouveau."
+msgstr "Το μήνυμα δεν εστάλη. Προσπαθήστε ξανά. "
 
 #: page-contact.php:141
 msgid "Thanks! Your message has been sent."
-msgstr "Merci ! Votre message a bien été envoyé."
+msgstr "Ευχαριστούμε! Το μήνυμα σου εστάλη. "
 
 #: page-contact.php:151
 msgid "Someone sent a message from "
-msgstr "Quelqu'un a envoyé un message"
+msgstr "Κάποιος έστειλε κάποιο μήνυμα από"
 
 #: page-contact.php:152
-msgid "From: "
-msgstr "De:"
+msgid "from: "
+msgstr "από:"
 
 #: page-contact.php:153
 msgid "Reply-To: "
-msgstr "Répondre à:"
+msgstr "Απάντηση στο:"
 
 #: page-contact.php:183
 msgid "Name"
-msgstr "Nom"
+msgstr "Όνομα"
 
 #: page-contact.php:191
 msgid "Message"
-msgstr "Message"
+msgstr "Μήνυμα"
 
 #: page-contact.php:195
 msgid "Human Verification"
-msgstr "Identification humaine"
+msgstr ""
 
 #: page-entry.php:166
 msgid "Group"
-msgstr "Collectif"
+msgstr ""
 
 #: page-entry.php:168
 msgid "Makers"
-msgstr "Makers"
+msgstr ""
 
 #: page-entry.php:170
 msgid "Maker"
-msgstr "Maker"
+msgstr ""
 
 #: page-entry.php:204
 msgid "Invalid entry"
-msgstr "Entrée invalide"
+msgstr ""
 
 #: page-entry.php:257
 msgid "Event Map"
-msgstr "Carte des événements"
+msgstr "Χάρτης Εκδήλωσης"
 
 #: page-entry.php:264
 msgid "View full schedule"
-msgstr "Voir le programme complet"
+msgstr "Δες όλο το πρόγραμμα"
 
 #: page-entry.php:265
 msgid "Download the program guide"
-msgstr "Télécharger le programme"
+msgstr "Κατέβασε το πρόγραμμα της εκδήλωσης"
 
 #: page-entry.php:309
 msgid "Exhibits in this group:"
-msgstr "Membres de ce collectif"
+msgstr "Εκθέματα στο group:"
 
 #: page-entry.php:312
 msgid "Part of a group:"
-msgstr "Partie du collectif:"
+msgstr "Μέρος του group:"
 
 #: page-home.php:102
 msgid "Click here to get subscriptions to Make: Magazine"
-msgstr "Cliquez ici pour vous abonnez à Make: Magazine"
+msgstr "Πάτησε εδώ για να λάβεις συνδρομή του Make: Magazine"
 
 #: page-home.php:107
 msgid "Click here to see our global Maker Faires"
-msgstr "Cliquez ici pour découvrir toutes les Maker Faire"
+msgstr "Πάτησε εδώ για να δεις το Maker Faire παγκόσμια"
 
 #: page-meet-the-makers.php:27
 msgid "Explore our Maker Exhibits!"
-msgstr "Découvrez nos Makers!"
+msgstr "Ανακάλυψε τα εκθέματα των Makers!"
 
 #: page-meet-the-makers.php:33
 msgid "Search:"
-msgstr "Recherche"
+msgstr "Αναζήτηση:"
 
 #: page-meet-the-makers.php:34
 msgid "Looking for a specific Exhibit or Maker?"
-msgstr "Vous cherchez un Maker en particulier?"
+msgstr "Ψάχνεις για κάποιο συγκεκριμένο Έκθεμα ή Maker;"
 
 #: page-meet-the-makers.php:42
 msgid "View by:"
-msgstr "Affichage par:"
+msgstr "Ταξινόμησε ανά:"
 
 #: page-meet-the-makers.php:43
 msgid "GALLERY"
-msgstr "Gallerie"
+msgstr ""
 
 #: page-meet-the-makers.php:45
 msgid "LIST"
-msgstr "Liste"
+msgstr "Λίστα"
 
 #: page-meet-the-makers.php:50
 msgid "Filter by Topics:"
-msgstr "Filtre par thèmes:"
+msgstr "Αναζήτηση ανά θέμα:"
 
 #: page-meet-the-makers.php:56 page-schedule.php:72 page-schedule.php:94
 msgid "All"
-msgstr "Tous"
+msgstr "Όλα"
 
 #: page-meet-the-makers.php:69
 msgid "Loading"
-msgstr "Chargement"
+msgstr ""
 
 #: page-schedule.php:14
 msgid "Category"
-msgstr "Catégorie"
+msgstr "Κατηγορία"
 
 #: page-schedule.php:20
 msgid "ALL"
-msgstr "Tous"
+msgstr "ΟΛΑ"
 
 #: page-schedule.php:55
 msgid "Title"
-msgstr "Titre"
+msgstr "Τίτλος"
 
 #: page-schedule.php:60
 msgid "Time"
-msgstr "Heure"
+msgstr "Χρόνος"
 
 #: page-schedule.php:67
 msgid "Stage"
-msgstr "Scène"
+msgstr "Στάδιο"
 
 #: page-schedule.php:82
 msgid "Type"
-msgstr "Type"
+msgstr "Τύπος"
 
 #: page-schedule.php:89
 msgid "Topics"
-msgstr "Thèmes"
+msgstr "Θέματα"
 
 #: page-schedule.php:144
 msgid "quick view"
-msgstr "Affichage rapide"
+msgstr "Γρήγορη ματιά"
 
 #: page-schedule.php:151
 msgid "full details"
-msgstr "Tous les détails"
+msgstr "όλες οι λεπτομέρειες"
 
 #: page-sponsors.php:15 page-sponsors.php:119
 msgid "BECOME A SPONSOR"
-msgstr "DEVENEZ PARTENAIRE"
+msgstr "ΓΙΝΕ ΧΟΡΗΓΟΣ"
 
 #: page-sponsors.php:112
 msgid "no sponsors found"
-msgstr "Aucun partenaire trouvé"
+msgstr "δεν βρέθηκαν χορηγοί"

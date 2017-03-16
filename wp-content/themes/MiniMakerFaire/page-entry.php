@@ -135,7 +135,7 @@
           <h1><?php echo $project_title; ?></h1>
         </div>
 
-        <img class="img-responsive entry-image" src="<?php echo $project_photo; ?>" />
+        <img class="img-responsive entry-image" src="<?php echo $project_photo; ?>" alt="<?php echo $project_title; ?>" />
         <p class="lead"><?php echo nl2br(make_clickable($project_short)); ?></p>
 
         <?php
@@ -175,7 +175,7 @@
         <?php
         if ($isGroup) {
           echo '<div class="row center-block">
-                  ',(!empty($groupphoto) ? '<img class="col-md-3 pull-left img-responsive" src="' . legacy_get_fit_remote_image_url($groupphoto,200,250) . '" alt="Group Image">' : '<img class="col-md-3 pull-left img-responsive" src="' . get_stylesheet_directory_uri() . '/images/maker-placeholder.jpg" alt="Group Image">');
+                  ',(!empty($groupphoto) ? '<img class="col-md-3 pull-left img-responsive" src="' . legacy_get_fit_remote_image_url($groupphoto,200,250) . '" alt="' . $groupname . '">' : '<img class="col-md-3 pull-left img-responsive" src="' . get_stylesheet_directory_uri() . '/images/maker-placeholder.jpg" alt="Group Image">');
           echo    '<div class="col-md-5">
                     <h3>' . $groupname . '</h3>
                     <p>' . make_clickable($groupbio) . '</p>
@@ -185,7 +185,7 @@
           foreach($makers as $maker) {
             if($maker['firstname'] !='' && $maker['lastname'] !=''){
               echo '<div class="row center-block">
-                      ',(!empty($maker['photo']) ? '<img class="col-md-3 pull-left img-responsive" src="' . legacy_get_fit_remote_image_url($maker['photo'],200,250) . '" alt="Maker Image">' : '<img class="col-md-3 pull-left img-responsive" src="' . get_stylesheet_directory_uri() . '/images/maker-placeholder.jpg" alt="Maker Image">');
+                      ',(!empty($maker['photo']) ? '<img class="col-md-3 pull-left img-responsive" src="' . legacy_get_fit_remote_image_url($maker['photo'],200,250) . '" alt="' . $maker['firstname'] . ' ' . $maker['lastname'] . '">' : '<img class="col-md-3 pull-left img-responsive" src="' . get_stylesheet_directory_uri() . '/images/maker-placeholder.jpg" alt="Maker Image">');
               echo    '<div class="col-md-5">
                         <h3>' . $maker['firstname'] . ' ' . $maker['lastname'] . '</h3>
                         <p>' . make_clickable($maker['bio']) . '</p>
@@ -253,13 +253,13 @@ function display_entry_schedule($entry_id) {
       <div class="faireActions">
         <span class="pull-right">
           <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-Map_2016__8.5x11_Pg-2.pdf">
-            <img class="actionIcon" src="http://makerfaire.com/wp-content/uploads/2016/01/icon-map.png" width="40px" scale="0">
+            <img class="actionIcon" src="http://makerfaire.com/wp-content/uploads/2016/01/icon-map.png" alt="Map Icon" width="40px" scale="0">
             <?php  __('Event Map','MiniMakerFaire')?>
           </a>
         </span>
         <span class="pull-right">
           <a class="flagship-icon-link" href="http://makerfaire.com/national-2016/schedule/">
-            <img class="actionIcon" src="http://makerfaire.com/wp-content/uploads/2016/01/icon-schedule.png" width="40px" scale="0">
+            <img class="actionIcon" src="http://makerfaire.com/wp-content/uploads/2016/01/icon-schedule.png" alt="Schedule Icon" width="40px" scale="0">
           </a>
           <span class="pull-right "><a href="http://makerfaire.com/national-2016/schedule/"><?php  __('View full schedule','MiniMakerFaire')?></a><br/>
             <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-ProgramGuide_2016_v2.pdf"><?php  __('Download the program guide','MiniMakerFaire')?></a>
