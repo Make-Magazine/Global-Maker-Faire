@@ -51,7 +51,7 @@
 
   <div class="flag-banner header-flag"></div>
   <div class="alert alert-danger text-center" role="alert">
-Site Maintenance: Thurs 3/16, 9PM PDT to 2AM PDT. Any changes made to your site during this timeframe will not be saved.</div>
+Site Maintenance: Thurs 3/16, 9PM PDT to 2AM PDT. Any changes or applications submitted during this timeframe will not be saved.</div>
       
   <nav class="navbar navbar-default <?php if(!is_page_template( 'page-home.php' )) : ?>nav-not-home<?php endif; ?>" role="navigation" id="slide-nav">
     <div class="container text-center nav-flex">
