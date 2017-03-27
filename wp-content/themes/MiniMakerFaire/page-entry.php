@@ -69,19 +69,18 @@
   $isGroup =(strpos($displayType, 'group') !== false);
   $isList =(strpos($displayType, 'list') !== false);
   $isSingle =(strpos($displayType, 'One') !== false);
-
-  //$sharing_cards = new mf_sharing_cards();
+  $sharing_cards = new mf_sharing_cards();
 
   //Change Project Name
   $project_name = (isset($entry['151']) ? $entry['151'] : '');
 
   // Url
   $project_photo = (isset($entry['22']) ? legacy_get_fit_remote_image_url($entry['22'],750,500) : '');
-  //$sharing_cards->project_photo = $project_photo;
+  $sharing_cards->project_photo = $project_photo;
 
   // Description
   $project_short = (isset($entry['16']) ? $entry['16']: '');
-  //$sharing_cards->project_short = $project_short;
+  $sharing_cards->project_short = $project_short;
 
   //Website
   $project_website = (isset($entry['27']) ? $entry['27']: '');
@@ -90,14 +89,14 @@
   //Title
   $project_title = (isset($entry['151'])?(string)$entry['151']:'');
   $project_title  = preg_replace('/\v+|\\\[rn]/','<br/>',$project_title);
-  //$sharing_cards->project_title = $project_title;
+  $sharing_cards->project_title = $project_title;
 
   //Url
   global $wp;
   $canonical_url = home_url( $wp->request ) . '/' ;
-  //$sharing_cards->canonical_url = $canonical_url;
+  $sharing_cards->canonical_url = $canonical_url;
 
-  //$sharing_cards->set_values();
+  $sharing_cards->set_values();
   get_header();
 ?>
 
