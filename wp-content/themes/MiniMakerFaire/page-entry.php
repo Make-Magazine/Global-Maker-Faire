@@ -93,8 +93,8 @@
   //$sharing_cards->project_title = $project_title;
 
   //Url
-  global $wp;
-  $canonical_url = home_url( $wp->request ) . '/' ;
+  //global $wp;
+  //$canonical_url = home_url( $wp->request ) . '/' ;
   //$sharing_cards->canonical_url = $canonical_url;
 
   //$sharing_cards->set_values();
