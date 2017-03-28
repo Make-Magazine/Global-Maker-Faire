@@ -72,7 +72,7 @@ public function set_values ()
     $title = $project_title;
     return $title;
     }
-    /*global $canonical_url;
+    global $canonical_url;
      $canonical_url =$this->canonical_url;
     add_filter( 'wpseo_canonical', 'change_wpseo_canonical' );
     function change_wpseo_canonical( $url ) {
@@ -80,9 +80,8 @@ public function set_values ()
     $url = $canonical_url;
     return $url;
     }
-     * 
-     */
-    add_filter( 'wpseo_canonical', '__return_false' );
+    
+    //add_filter( 'wpseo_canonical', '__return_false' );
     add_filter( 'wpseo_prev_rel_link', '__return_false' );
     add_filter( 'wpseo_next_rel_link', '__return_false' );
     

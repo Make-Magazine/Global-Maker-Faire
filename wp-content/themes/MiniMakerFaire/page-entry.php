@@ -93,7 +93,7 @@
 
   //Url
   global $wp;
-  $canonical_url = home_url( $wp->request ) . '/' ;
+  $canonical_url ="//".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']. '/' ;
   $sharing_cards->canonical_url = $canonical_url;
 
   $sharing_cards->set_values();
