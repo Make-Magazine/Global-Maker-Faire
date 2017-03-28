@@ -83,6 +83,10 @@ public function set_values ()
      * 
      */
     add_filter( 'wpseo_canonical', '__return_false' );
+    add_filter( 'wpseo_prev_rel_link', '__return_false' );
+    add_filter( 'wpseo_next_rel_link', '__return_false' );
+    
+    
     return true;
    
 }
