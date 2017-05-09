@@ -74,7 +74,8 @@ module.exports = function(grunt) {
             'node_modules/angular/angular.js',
             'node_modules/angular-filter/dist/angular-filter.js',
             'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
-            'node_modules/angular-utils-pagination/dirPagination.js'
+            'node_modules/angular-utils-pagination/dirPagination.js',
+            'node_modules/angular-animate/angular-animate.js'
           ],
           'js/built-admin-scripts.js': [
             'js/src-admin-scripts/*.js'

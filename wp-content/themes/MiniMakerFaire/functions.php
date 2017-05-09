@@ -119,13 +119,14 @@ function enqueue_admin()
       $my_theme = wp_get_theme();
       $my_version = $my_theme->get('Version');
 
-      wp_enqueue_script('angularjs', get_stylesheet_directory_uri() . '/js/built-angular-libs.js', array('built-libs'),false,true);
+      wp_enqueue_script('angularjs', get_stylesheet_directory_uri() . '/js/built-angular-libs.js', array(),$my_version,true);
       if (is_page_template('page-meet-the-makers.php')) {
-        wp_enqueue_script('angular-mtm',get_stylesheet_directory_uri() . '/js/angular/controller.js', array( 'angularjs', 'carousel' ),false,true);
+        wp_enqueue_script('angular-mtm',get_stylesheet_directory_uri() . '/js/angular/controller.js', array( 'angularjs', 'carousel' ),$my_version,true);
       }
 
       if (is_page_template('page-schedule.php')) {
-        wp_enqueue_script('angular-schedule',get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',array( 'angularjs'),false,true);
+        wp_enqueue_script('angular-filter','//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js',array('angularjs'),$my_version,true);
+        wp_enqueue_script('angular-schedule',get_stylesheet_directory_uri() . '/js/angular/schedule_cont.js',array('angularjs','angular-filter'),$my_version,true);
       }
     }
   }
