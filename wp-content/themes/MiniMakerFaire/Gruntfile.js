@@ -64,13 +64,17 @@ module.exports = function(grunt) {
             'js/src/*.js'
           ],
           'js/built-libs.js': [
-            'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
-            'node_modules/angular-animate/angular-animate.min.js',
             'node_modules/bootstrap-dialog/**/bootstrap-dialog.min.js',
             'node_modules/jquery.cookie/**/jquery-cookie.js',
             'node_modules/fancybox/**/jquery.fancybox.pack.js',
             'node_modules/hammerjs/hammer.min.js',
             'js/libs-src/*.js'
+          ],
+          'js/built-angular-libs.js': [
+            'node_modules/angular/angular.js',
+            'node_modules/angular-filter/dist/angular-filter.js',
+            'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+            'node_modules/angular-utils-pagination/dirPagination.js'
           ],
           'js/built-admin-scripts.js': [
             'js/src-admin-scripts/*.js'
