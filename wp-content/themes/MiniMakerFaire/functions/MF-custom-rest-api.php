@@ -57,7 +57,7 @@ function getMTMentries($formIDs) {
                    field_number like '151' OR
                    field_number like '303' OR
                    field_number like '320' OR
-                   field_number like '32.1%' OR
+                   field_number like '321%' OR
                    field_number like '304.%')
             ORDER BY `lead_detail`.`lead_id`  ASC";
 
