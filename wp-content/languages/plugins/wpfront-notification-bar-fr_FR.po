@@ -1,0 +1,494 @@
+# Translation of Plugins - WPFront Notification Bar - Stable (latest release) in French (France)
+# This file is distributed under the same license as the Plugins - WPFront Notification Bar - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-01-18 10:59:39+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Plugins - WPFront Notification Bar - Stable (latest release)\n"
+
+#: templates/options-template.php:246 templates/options-template.php:257
+msgid "[YYYY-MM-DD] [hh:mm ap]"
+msgstr "[AAAA-MM-JJ]"
+
+#: classes/class-wpfront-notification-bar-options.php:85
+msgid "End Time"
+msgstr "Date de fin"
+
+#: classes/class-wpfront-notification-bar-options.php:84
+msgid "Start Time"
+msgstr "Heure de d&eacute;but"
+
+#: classes/class-wpfront-notification-bar-options.php:83
+msgid "End Date & Time"
+msgstr "Date et heure de fin"
+
+#: classes/class-wpfront-notification-bar-options.php:82
+msgid "Start Date & Time"
+msgstr "Date et heure de début"
+
+#. Author URI of the plugin/theme
+msgid "http://wpfront.com"
+msgstr "http://wpfront.com"
+
+#. Author of the plugin/theme
+msgid "Syam Mohan"
+msgstr "Syam Mohan"
+
+#. Description of the plugin/theme
+msgid "Easily lets you create a bar on top or bottom to display a notification."
+msgstr "Créez facilement une barre en haut ou en bas pour afficher une notification."
+
+#. Plugin URI of the plugin/theme
+msgid "http://wpfront.com/notification-bar-plugin/"
+msgstr "http://wpfront.com/notification-bar-plugin/"
+
+#: templates/options-template.php:476
+msgid "Plugin Ideas"
+msgstr "Idées d’extension"
+
+#: templates/options-template.php:460
+msgid "CSS"
+msgstr "CSS"
+
+#: templates/options-template.php:455
+msgid "[Normal, Hover, X]"
+msgstr "[Normal, Survol, X]"
+
+#: templates/options-template.php:406
+msgid "Button Color"
+msgstr "Couleur du bouton"
+
+#: templates/options-template.php:392 templates/options-template.php:417
+msgid "[Select two different colors to create a gradient.]"
+msgstr "[Sélectionnez deux couleurs différentes pour créer un dégradé.]"
+
+#: templates/options-template.php:381
+msgid "Bar Color"
+msgstr "Couleur de la barre"
+
+#: templates/options-template.php:377
+msgid "Color"
+msgstr "Couleur"
+
+#: templates/options-template.php:371
+msgid "Enable WP eMember integration."
+msgstr "Active l’intégration eMember."
+
+#: templates/options-template.php:365
+msgid "[Guest]"
+msgstr "[Invité]"
+
+#: templates/options-template.php:359
+msgid "[No Role]"
+msgstr "[Aucun rôle]"
+
+#: templates/options-template.php:339
+msgid "Manage Roles"
+msgstr "Gestion des rôles"
+
+#: templates/options-template.php:339
+msgid "For following user roles"
+msgstr "Pour les rôles utilisateurs suivants"
+
+#: templates/options-template.php:334
+msgid "Guest users. [Non-logged in users]"
+msgstr "Utilisateurs invités [non connectés]"
+
+#: templates/options-template.php:329
+msgid "All logged in users."
+msgstr "Tous les utilisateurs connectés."
+
+#: templates/options-template.php:324
+msgid "All users."
+msgstr "Tous les utilisateurs."
+
+#: templates/options-template.php:297
+msgid "Exclude in following pages"
+msgstr "Exclusion sur les pages suivantes"
+
+#: templates/options-template.php:277
+msgid "Include in following pages"
+msgstr "Inclusion sur les pages suivantes"
+
+#: templates/options-template.php:272
+msgid "[The first page they visit on your website.]"
+msgstr "[La première page visitée sur votre site]"
+
+#: templates/options-template.php:267
+msgid "All pages."
+msgstr "Toutes les pages."
+
+#: templates/options-template.php:236
+msgid "Filter"
+msgstr "Filtre"
+
+#: templates/options-template.php:186
+msgid "[Displays a button next to the message.]"
+msgstr "[Affiche un bouton après le message.]"
+
+#: templates/options-template.php:178
+msgid "[Processes shortcodes in message text.]"
+msgstr "[Traite les codes courts dans le texte de message.]"
+
+#: templates/options-template.php:170
+msgid "[HTML tags are allowed. e.g. Add <br /> for break.]"
+msgstr "[Balises HTML autorisées; Ex : Ajoutez <br /> pour les sauts de lignes.]"
+
+#: templates/options-template.php:161
+msgid "Content"
+msgstr "Contenu"
+
+#: templates/options-template.php:156
+msgid "Bar will be kept closed for the number of days specified from last closed date."
+msgstr "La barre restera fermée pour le nombre de jours spécifiés à partir de la date de dernière fermeture."
+
+#: templates/options-template.php:156
+msgid "day(s)"
+msgstr "jour(s)"
+
+#: templates/options-template.php:148
+msgid "Once closed, bar will display closed on other pages."
+msgstr "Une fois fermée, la barre restera fermée sur les autres pages."
+
+#: templates/options-template.php:140
+msgid "A reopen button will be displayed after the bar is closed."
+msgstr "Un bouton de réouverture sera affiché après la fermeture de la barre."
+
+#: templates/options-template.php:124
+msgid "Set 0 second(s) to disable auto close. Do not work in \"Display on Scroll\" mode."
+msgstr "Définissez 0 secondes pour désactiver la fermeture automatique. Ne fonctionne pas avec le mode \"Afficher au défilement\"."
+
+#: templates/options-template.php:116
+msgid "[Displays a close button at the top right corner of the bar.]"
+msgstr "[Affiche un bouton de fermeture en haut à droite de la barre.]"
+
+#: templates/options-template.php:108
+msgid "Set 0 second(s) for no animation."
+msgstr "Définissez 0 secondes pour aucune animation."
+
+#: templates/options-template.php:100
+msgid "Set 0 second(s) to display immediately. Do not work in \"Display on Scroll\" mode."
+msgstr "Définissez 0 secondes pour l’afficher immédiatement. Ne fonctionne pas avec le mode \"Afficher au défilement\". "
+
+#: templates/options-template.php:100 templates/options-template.php:108
+#: templates/options-template.php:124
+msgid "second(s)"
+msgstr "seconde(s)"
+
+#: templates/options-template.php:84
+msgid "Set 0px to auto fit contents."
+msgstr "Définissez 0 pour adapter automatiquement les contenus."
+
+#: templates/options-template.php:76
+msgid "Number of pixels to be scrolled before the bar appears."
+msgstr "Nombre de pixels devant être défilés avant que la barre apparaisse."
+
+#: templates/options-template.php:76 templates/options-template.php:84
+#: templates/options-template.php:92
+msgid "px"
+msgstr "px"
+
+#: templates/options-template.php:68
+msgid "[Displays the bar on window scroll.]"
+msgstr "[Affiche la barre au défilement de la fenêtre.)"
+
+#: templates/options-template.php:60
+msgid "[Sticky Bar, bar will stay at position regardless of scrolling.]"
+msgstr "[Barre fixe, la barre restera en place sans se soucier du défilement.]"
+
+#: templates/options-template.php:51
+msgid "Bottom"
+msgstr "En bas"
+
+#: templates/options-template.php:50
+msgid "Top"
+msgstr "En haut"
+
+#: templates/options-template.php:34
+msgid "Display"
+msgstr "Affichage"
+
+#: templates/options-template.php:32
+msgid "WPFront Notification Bar Settings"
+msgstr "Réglages de WPFront Notification Bar"
+
+#: classes/class-wpfront-notification-bar.php:199
+msgid "[Post]"
+msgstr "[Article]"
+
+#: classes/class-wpfront-notification-bar.php:190
+msgid "Home"
+msgstr "Accueil"
+
+#: classes/class-wpfront-notification-bar.php:190
+#: classes/class-wpfront-notification-bar.php:194
+msgid "[Page]"
+msgstr "[Page]"
+
+#: classes/class-wpfront-notification-bar.php:62
+msgid "Notification Bar"
+msgstr "Barre de notification"
+
+#. #-#-#-#-#  tmp-wpfront-notification-bar.pot (WPFront Notification Bar 1.7) 
+#. #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: classes/class-wpfront-notification-bar.php:62
+msgid "WPFront Notification Bar"
+msgstr "WPFront Notification Bar"
+
+#: classes/class-wpfront-notification-bar-options.php:80
+msgid "Display on Scroll"
+msgstr "Afficher au défilement"
+
+#: classes/class-wpfront-notification-bar-options.php:78
+msgid "Display for User Roles"
+msgstr "Afficher pour les rôles utilisateur"
+
+#: classes/class-wpfront-notification-bar-options.php:75
+msgid "Close Button Color"
+msgstr "Couleur de bouton de fermeture"
+
+#: classes/class-wpfront-notification-bar-options.php:74
+msgid "Custom CSS"
+msgstr "CSS personnalisée"
+
+#: classes/class-wpfront-notification-bar-options.php:72
+msgid "Keep Closed For"
+msgstr "Garder fermée pour"
+
+#: classes/class-wpfront-notification-bar-options.php:71
+msgid "Keep Closed"
+msgstr "Garder fermée"
+
+#: classes/class-wpfront-notification-bar-options.php:70
+msgid "Reopen Button Color"
+msgstr "Couleur de bouton de réouverture"
+
+#: classes/class-wpfront-notification-bar-options.php:69
+msgid "Display Reopen Button"
+msgstr "Afficher le bouton de réouverture"
+
+#: classes/class-wpfront-notification-bar-options.php:66
+msgid "Display on Pages"
+msgstr "Afficher sur les pages"
+
+#: classes/class-wpfront-notification-bar-options.php:65
+msgid "Button Text Color"
+msgstr "Couleur de texte de bouton"
+
+#: classes/class-wpfront-notification-bar-options.php:62
+#: classes/class-wpfront-notification-bar-options.php:64
+msgid "To Color"
+msgstr "Vers la couleur"
+
+#: classes/class-wpfront-notification-bar-options.php:61
+#: classes/class-wpfront-notification-bar-options.php:63
+msgid "From Color"
+msgstr "Depuis la couleur"
+
+#: classes/class-wpfront-notification-bar-options.php:60
+msgid "Message Text Color"
+msgstr "Couleur de texte de message"
+
+#: classes/class-wpfront-notification-bar-options.php:59
+msgid "Fixed at Position"
+msgstr "Fixée sur la position"
+
+#: classes/class-wpfront-notification-bar-options.php:58
+msgid "Display Shadow"
+msgstr "Afficher l’ombre"
+
+#: classes/class-wpfront-notification-bar-options.php:57
+msgid "Close Bar on Button Click"
+msgstr "Fermer la barre au clic sur le bouton"
+
+#: classes/class-wpfront-notification-bar-options.php:56
+msgid "Execute JavaScript"
+msgstr "Exécuter JavaScript"
+
+#: classes/class-wpfront-notification-bar-options.php:55
+msgid "No follow link"
+msgstr "Lien no follow"
+
+#: classes/class-wpfront-notification-bar-options.php:54
+msgid "Open URL in new tab/window"
+msgstr "Ouvrir l’URL dans un nouvel onglet / fenêtre"
+
+#: classes/class-wpfront-notification-bar-options.php:53
+msgid "Open URL:"
+msgstr "Ouvrir l’URL :"
+
+#: classes/class-wpfront-notification-bar-options.php:52
+msgid "Button Action"
+msgstr "Action du bouton"
+
+#: classes/class-wpfront-notification-bar-options.php:51
+msgid "Button Text"
+msgstr "Texte du bouton"
+
+#: classes/class-wpfront-notification-bar-options.php:50
+msgid "Display Button"
+msgstr "Afficher le bouton"
+
+#: classes/class-wpfront-notification-bar-options.php:49
+msgid "Auto Close After"
+msgstr "Fermeture auto après"
+
+#: classes/class-wpfront-notification-bar-options.php:48
+msgid "Display Close Button"
+msgstr "Afficher le bouton de fermeture"
+
+#: classes/class-wpfront-notification-bar-options.php:47
+msgid "Animation Duration"
+msgstr "Durée de l&rsquo;animation"
+
+#: classes/class-wpfront-notification-bar-options.php:46
+msgid "Display After"
+msgstr "Afficher après"
+
+#: classes/class-wpfront-notification-bar-options.php:45
+msgid "Process Shortcode"
+msgstr "Traiter le code court"
+
+#: classes/class-wpfront-notification-bar-options.php:44
+msgid "Message Text"
+msgstr "Texte du message"
+
+#: classes/class-wpfront-notification-bar-options.php:43
+msgid "Bar Height"
+msgstr "Hauteur de la barre"
+
+#: classes/class-wpfront-notification-bar-options.php:42
+msgid "Position"
+msgstr "Position"
+
+#: classes/class-wpfront-notification-bar-options.php:41
+msgid "Enabled"
+msgstr "Activé"
+
+#: classes/base/class-wpfront-base.php:197
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: classes/base/class-wpfront-base.php:180
+msgid "Buy me a Beer or Coffee"
+msgstr "M&rsquo;acheter une bière ou un café"
+
+#: classes/base/class-wpfront-base.php:178
+msgid "Contact Me"
+msgstr "Me contacter"
+
+#: classes/base/class-wpfront-base.php:176
+msgid "Write Review"
+msgstr "Rédiger une évaluation"
+
+#: classes/base/class-wpfront-base.php:174
+msgid "Report Bug"
+msgstr "Rapport de bogue"
+
+#: classes/base/class-wpfront-base.php:172
+msgid "Feature Request"
+msgstr "Demande de fonctionnalité"
+
+#: classes/base/class-wpfront-base.php:170
+msgid "Plugin FAQ"
+msgstr "FAQ de l’extension"
+
+#: classes/base/class-wpfront-base.php:168
+msgid "Settings Description"
+msgstr "Description des réglages"
+
+#: classes/base/class-wpfront-base.php:150
+msgid "If you have a caching plugin, clear the cache for the new settings to take effect."
+msgstr "Si vous possédez une extension de cache, videz le cache pour que le nouveau réglage prenne effet."
+
+#: classes/base/class-wpfront-base.php:130
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Vous n'avez pas les droits suffisants pour accéder à cette page."
+
+#: classes/base/class-wpfront-base-menu.php:217
+msgid "All Plugins"
+msgstr "Toutes les extensions"
+
+#: classes/base/class-wpfront-base-menu.php:216
+msgid "WPFront"
+msgstr "WPFront"
+
+#: classes/base/class-wpfront-base-menu.php:199
+msgid "Feedback"
+msgstr "Retour"
+
+#: classes/base/class-wpfront-base-menu.php:177
+msgid "Activate"
+msgstr "Activer"
+
+#: classes/base/class-wpfront-base-menu.php:175
+#: classes/base/class-wpfront-base.php:105
+msgid "Settings"
+msgstr "Réglages"
+
+#: classes/base/class-wpfront-base-menu.php:173
+msgid "Installed"
+msgstr "Installé"
+
+#: classes/base/class-wpfront-base-menu.php:168
+msgid "Update Now"
+msgstr "Mettre à jour maintenant"
+
+#: classes/base/class-wpfront-base-menu.php:168
+msgid "Update to version %s"
+msgstr "Mettre à jour avec la version %s"
+
+#: classes/base/class-wpfront-base-menu.php:163
+msgid "Install Now"
+msgstr "Installez maintenant"
+
+#: classes/base/class-wpfront-base-menu.php:163
+msgid "Install %s"
+msgstr "Installer %s"
+
+#: classes/base/class-wpfront-base-menu.php:154
+msgid "Details"
+msgstr "Détails"
+
+#: classes/base/class-wpfront-base-menu.php:154
+msgid "More information about %s"
+msgstr "Plus d&rsquo;information à propos de %s"
+
+#: classes/base/class-wpfront-base-menu.php:147
+msgid "By %s"
+msgstr "Par %s"
+
+#: classes/base/class-wpfront-base-menu.php:123
+#: classes/base/class-wpfront-base-menu.php:217
+msgid "WPFront Plugins"
+msgstr "Extensions WPFront"
+
+#: classes/base/class-wpfront-base-menu.php:105
+msgid "Unable to communicate with WordPress.org"
+msgstr "Impossible de communiquer avec WordPress.org"
+
+#: classes/base/class-wpfront-base-menu.php:69
+msgid "based on %s rating(s)"
+msgstr "basée sur %s note(s)"
+
+#: classes/base/class-wpfront-base-menu.php:55
+msgid "Description"
+msgstr "Description"
+
+#: classes/base/class-wpfront-base-menu.php:54
+msgid "Rating"
+msgstr "Note"
+
+#: classes/base/class-wpfront-base-menu.php:53
+msgid "Version"
+msgstr "Version"
+
+#: classes/base/class-wpfront-base-menu.php:52
+msgid "Name"
+msgstr "Nom"
