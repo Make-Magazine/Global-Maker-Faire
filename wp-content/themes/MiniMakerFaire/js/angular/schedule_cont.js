@@ -57,16 +57,17 @@
                 if(catID in $scope.catJson){
                   addCat = $scope.catJson[catID];
                 }
-                categories.push(addCat);
+                //check if category is already in the array
+                if(jQuery.inArray(addCat, categories) === -1){
+                  categories.push(addCat);
+                }
                 //create a unique list of category names for a filter drop down
                 if ($scope.tags.indexOf(addCat) == -1)
                   $scope.tags.push(addCat);
               }
             });
-            var dedupedCat = [categories].filter(function (el, i, arr) {
-              return arr.indexOf(el) === i;
-            });
-            schedule.category = dedupedCat;
+            
+            schedule.category = categories;
 
         });
 
