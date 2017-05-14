@@ -13,6 +13,7 @@ get_header(); ?>
       <button type="button" class="btn btn-b-ghost dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?php _e('Category','MiniMakerFaire');?> <span class="caret"></span>
       </button>
+
       <ul class="dropdown-menu">
         <li class="topic-nav-item-inner activeTopic" ng-class="{ 'activeTopic': schedType== 'all' }">
           <a href="#" ng-click="setTypeFilter('all')">
@@ -24,11 +25,11 @@ get_header(); ?>
         </li>
 
         <li class="topic-nav-item-inner" ng-repeat="type in types" ng-class="{ 'activeTopic': type==schedType }">
-          <a href="#" ng-click="setTypeFilter(type)">
+          <a href="#" ng-click="setTypeFilter(type.imgName)">
             <div class="topic-nav-item">
               <p>
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/{{type}}-icon.svg" alt="Maker Exhibit {{type}} Topic Icon" class="img-responsive" />
-                {{type}}
+                <img src="<?php echo get_bloginfo('template_directory'); ?>/img/{{type.imgName}}-icon.svg" alt="Maker Exhibit {{type.imgName}} Topic Icon" class="img-responsive" />
+                {{type.transText}}
               </p>
             </div>
             <div class="active-topic-arrow"></div>
@@ -39,72 +40,70 @@ get_header(); ?>
   </div>
 
   <ul class="day-nav list-unstyled">
-    <li class="day-nav-box" ng-repeat="(schedDay,schedule) in schedules" ng-class="{'active':$first}">
-      <a class="day-nav-item" data-toggle="tab" href="#Sched{{schedDay | date: 'd'}}"  ng-click="setDateFilter(schedDay)">
-        <h2>{{schedDay | date: "EEEE"}}</h2>
-        <h4>{{schedDay | date: "shortDate"}}</h4>
+    <li class="day-nav-box" ng-repeat="(schedDay,schedule) in schedules | groupBy: 'dayOfWeek'" ng-class="{ 'active': $first }">
+      <a class="day-nav-item" data-toggle="tab" href="#Sched{{ schedDay }}" ng-click="setDateFilter(schedDay)">
+        <h2>{{ schedDay }}</h2>
+        <h4>{{days[schedDay]}}</h4>
       </a>
     </li>
   </ul>
 
   <div class="sched-table">
-    <div class="row sched-header">
-      <div class="sched-col-1"></div>
-      <div class="sched-flex-row">
-        <div class="sched-col-2">
-          <span ng-click="sortBy('name')"><p><?php _e('Title','MiniMakerFaire');?></span>
-          <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
-        </div>
-
-        <div class="sched-col-3">
-          <span ng-click="sortBy('time_start')"><?php _e('Time','MiniMakerFaire');?></span>
-          <span class="sortorder" ng-show="propertyName === 'time_start'" ng-class="{reverse: reverse}"></span>
-        </div>
-
-        <div class="sched-col-4">
-          <span class="dropdown">
-            <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <?php _e('Stage','MiniMakerFaire');?> {{schedStage}}
-              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
-              <li>
-                <a ng-click="setStage('')"><?php _e('All','MiniMakerFaire');?></a>
-              </li>
-              <li ng-repeat="schedule in schedules[dateFilter] | unique:'nicename' | orderBy: nicename ">
-                <a ng-click="setStage(schedule.nicename)">{{schedule.nicename}}</a>
-              </li>
-            </ul>
-          </span>
-        </div>
-
-        <div class="sched-col-5">
-          <span ng-click="sortBy('type')"><?php _e('Type','MiniMakerFaire');?></span>
-          <span class="sortorder" ng-show="propertyName === 'type'" ng-class="{reverse: reverse}"></span>
-        </div>
-
-        <div class="sched-col-6">
-          <span class="dropdown">
-            <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <?php _e('Topics','MiniMakerFaire');?> {{schedTopic}}
-              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
-              <li>
-                <a ng-click="setTagFilter('')"><?php _e('All','MiniMakerFaire');?></a>
-              </li>
-              <li ng-repeat="tag in tags | orderBy: tag"> <a ng-click="setTagFilter(tag)">{{ tag }}</a></li>
-            </ul>
-          </span>
-        </div>
-      </div>
-
-    </div>
-
-
-
     <div class="tab-content sched-body">
-      <div ng-repeat="(schedDay,schedule) in schedules" id="Sched{{schedDay | date: 'd'}}" class="tab-pane" ng-class="{ 'active': $first }">
+      <div ng-repeat="(schedDay,schedule) in schedules | groupBy: 'dayOfWeek'" id="Sched{{schedDay}}" class="tab-pane" ng-class="{ 'active': $first }">
+        <div class="row sched-header">
+          <div class="sched-col-1"></div>
+          <div class="sched-flex-row">
+            <div class="sched-col-2">
+              <span ng-click="sortBy('name')"><p><?php _e('Title','MiniMakerFaire');?></p></span>
+              <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+            </div>
+
+            <div class="sched-col-3">
+              <span ng-click="sortBy('time_start')"><?php _e('Time','MiniMakerFaire');?></span>
+              <span class="sortorder" ng-show="propertyName === 'time_start'" ng-class="{reverse: reverse}"></span>
+            </div>
+
+            <div class="sched-col-4">
+              <span class="dropdown">
+                <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <?php _e('Stage','MiniMakerFaire');?> {{schedStage}}
+                  <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
+                  <li>
+                    <a ng-click="setStage('')"><?php _e('All','MiniMakerFaire');?></a>
+                  </li>
+                  <li ng-repeat="schedDay in schedule | unique:'nicename' | orderBy: 'nicename'">
+                    <a ng-click="setStage(schedDay.nicename)">{{schedDay.nicename}}</a>
+                  </li>
+                </ul>
+              </span>
+            </div>
+
+            <div class="sched-col-5">
+              <span ng-click="sortBy('type')"><?php _e('Type','MiniMakerFaire');?></span>
+              <span class="sortorder" ng-show="propertyName === 'type'" ng-class="{reverse: reverse}"></span>
+            </div>
+
+            <div class="sched-col-6">
+              <span class="dropdown">
+                <button class="btn btn-link dropdown-toggle" type="button" id="mtm-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <?php _e('Topics','MiniMakerFaire');?> {{schedTopic}}
+                  <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="mtm-dropdownMenu">
+                  <li>
+                    <a ng-click="setTagFilter('')"><?php _e('All','MiniMakerFaire');?></a>
+                  </li>
+                  <li ng-repeat="tag in tags | orderBy: tag"> <a ng-click="setTagFilter(tag)">{{ tag }}</a></li>
+                </ul>
+              </span>
+            </div>
+          </div>
+        </div>
+
+
         <div ng-repeat="(key,daySched) in schedule | typeFilter: schedType | stageFilter: schedStage | catFilter:schedTopic | filter:filterData |  orderBy:propertyName">
           <div class="row sched-row">
             <div class="sched-col-1">
@@ -121,7 +120,7 @@ get_header(); ?>
                 <p class="sched-description">{{daySched.maker_list}}</p>
               </div>
 
-              <div class="sched-col-3">{{daySched.time_start | date: "EEEE"}}<br/>{{daySched.time_start | date: "shortTime"}} - <br/>{{daySched.time_end | date: "shortTime"}}</div>
+              <div class="sched-col-3">{{daySched.dayOfWeek}}<br/>{{daySched.time_start | date: "shortTime"}} - <br/>{{daySched.time_end | date: "shortTime"}}</div>
 
               <div class="sched-col-4">{{daySched.nicename}}</div>
 

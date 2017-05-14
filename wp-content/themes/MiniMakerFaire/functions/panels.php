@@ -485,10 +485,10 @@ function getWhatisMF() {
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <p class="text-center">'.
-                    __('Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From engineers to artists to scientists to crafters, Maker Faire is a venue for these “makers” to show hobbies, experiments, projects.','MiniMakerFaire') .
+                    __('Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From engineers to artists to scientists to crafters, Maker Faire is a venue for these "makers" to show hobbies, experiments, projects.','MiniMakerFaire') .
                   '</p>'.
                   '<p class="text-center">'.
-                    __('We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase of invention, creativity, and resourcefulness.','MiniMakerFaire').
+                    __('We call it the Greatest Show (& Tell) on Earth - a family-friendly showcase of invention, creativity, and resourcefulness.','MiniMakerFaire').
                   '</p>'.
                   '<p class="text-center">'.
                     __('Glimpse the future and get inspired!','MiniMakerFaire') .
