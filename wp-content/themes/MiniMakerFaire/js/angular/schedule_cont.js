@@ -63,7 +63,10 @@
                   $scope.tags.push(addCat);
               }
             });
-            schedule.category = categories;
+            var dedupedCat = [categories].filter(function (el, i, arr) {
+              return arr.indexOf(el) === i;
+            });
+            schedule.category = dedupedCat;
 
         });
 
