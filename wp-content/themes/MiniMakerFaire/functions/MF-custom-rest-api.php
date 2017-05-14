@@ -151,7 +151,6 @@ function getMTMentries($formIDs) {
   function getSchedule($formIDs) {
     $data = array(); global $wpdb;
     setlocale(LC_ALL, WPLANG);
-    switch_to_locale( get_locale() );
 
     //create type translate array
     $workshop    = __('Workshop','MiniMakerFaire');
