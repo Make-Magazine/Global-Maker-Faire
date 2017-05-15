@@ -214,7 +214,7 @@ function getMTMentries($formIDs) {
             'maker_list'    => $makerList,
             'nicename'      => $row->location,
             'category'      => $catList,
-            'dayOfWeek'     => $dayofWeek,
+            'dayOfWeek'     => ucwords($dayofWeek),
             'desc'          => $row->short_desc,
             'transType'     => $$type,
             'type'          => ucwords($row->type)
