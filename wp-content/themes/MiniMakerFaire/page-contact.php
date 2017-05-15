@@ -41,7 +41,7 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-offset-1">
 
-      <h3>Contact Info</h3>
+      <h3><?php _e('Contact Info','MiniMakerFaire');?></h3>
 
       <?php if( $contact_address ) {
         echo '<h4>'.__('Address','MiniMakerFaire').':</h4>';

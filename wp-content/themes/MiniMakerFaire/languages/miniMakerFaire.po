@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2017-05-12 14:42-0600\n"
-"PO-Revision-Date: 2017-05-14 19:40-0600\n"
+"PO-Revision-Date: 2017-05-14 19:50-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -234,6 +234,10 @@ msgstr ""
 msgid "Permalink to %s"
 msgstr ""
 
+#: page-contact.php:44
+msgid "Contact Info"
+msgstr ""
+
 #: page-contact.php:47
 msgid "Address"
 msgstr ""
@@ -432,8 +436,4 @@ msgstr ""
 
 #: theme-options.php:21
 msgid "Mini Maker Faire Theme"
-msgstr ""
-
-#: ACFfunctions.php:135
-msgid "Contact Info"
 msgstr ""

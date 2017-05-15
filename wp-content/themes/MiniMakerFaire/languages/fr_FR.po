@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-05-14 19:41-0600\n"
+"PO-Revision-Date: 2017-05-14 19:50-0600\n"
 "Language-Team: MakerFaire\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -442,6 +442,6 @@ msgstr "Rechercher plus de fabricants"
 msgid "Project Website"
 msgstr "Site Web du projet"
 
-#: ACFfunctions.php:135
+#: page-contact.php:44
 msgid "Contact Info"
 msgstr "Informations de contact"
