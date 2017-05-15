@@ -24,7 +24,7 @@ get_header(); ?>
           </a>
         </li>
 
-        <li class="topic-nav-item-inner" ng-repeat="type in types" ng-class="{ 'activeTopic': type==schedType }">
+        <li class="topic-nav-item-inner" ng-repeat="type in types" ng-class="{ 'activeTopic': type.imgName==schedType }">
           <a href="#" ng-click="setTypeFilter(type.imgName)">
             <div class="topic-nav-item">
               <p>
