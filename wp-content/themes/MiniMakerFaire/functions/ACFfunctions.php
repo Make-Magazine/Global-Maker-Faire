@@ -132,7 +132,7 @@ acf_add_local_field_group(array (
 			'placement' => 'top',
 			'endpoint' => 1,
 			'key' => 'field_5748dcb820a4d',
-			'label' => 'Contact Info',
+			'label' => __('Contact Info','MiniMakerFaire'),
 			'name' => '',
 			'type' => 'tab',
 			'instructions' => '',
