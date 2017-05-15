@@ -150,8 +150,10 @@ function getMTMentries($formIDs) {
 
   function getSchedule($formIDs) {
     $data = array(); global $wpdb;
-    setlocale(LC_ALL, get_locale());
+    //setlocale(LC_ALL, get_locale());
 
+    $wp_locale = get_locale();
+    switch_to_locale( get_locale() );
     //create type translate array
     $workshop    = __('Workshop','MiniMakerFaire');
     $talk        = __('Talk','MiniMakerFaire');
@@ -199,8 +201,9 @@ function getMTMentries($formIDs) {
       $endDate = date_format($endDate,'Y-m-d').'T'.date_format($endDate,'G:i:s');
 
       $startTime = strtotime($row->time_start);
-      $dayofWeek = strftime("%A",$startTime);
 
+      //$dayofWeek = strftime("%A",$startTime);
+      $dayofWeek = date_i18n("l",$startTime);
       $type = $row->type;
       $data['schedule'][] = array(
             'id'            => $row->entry_id,
