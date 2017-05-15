@@ -112,10 +112,10 @@
       $slug = end($path); // get the value of the last element
       if($slug=='schedule'){
         $backlink = wp_get_referer();
-        $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back to the Schedule';
+        $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> '.__('Back to the Schedule','MiniMakerFaire');
       }else{
         $backlink = $url['path'];
-        $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> Look for More Makers';
+        $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> '.__('Look for More Makers','MiniMakerFaire');
       }
       ?>
       <div class="backlink"><a href="<?php echo $backlink;?>"><?php echo $backMsg;?></a></div>
@@ -139,7 +139,7 @@
 
         <?php
         if (!empty($project_website)) {
-          echo '<a href="' . $project_website . '" class="btn btn-info" target="_blank">Project Website</a>';
+          echo '<a href="' . $project_website . '" class="btn btn-info" target="_blank">'.__('Project Website','MiniMakerFaire').'</a>';
         }
         ?>
 
@@ -162,11 +162,11 @@
           <h2>
           <?php
             if ($isGroup)
-              echo __('Group','MiniMakerFaire');
+              _e('Group','MiniMakerFaire');
             elseif($isList)
-              echo __('Makers','MiniMakerFaire');
+              _e('Makers','MiniMakerFaire');
             else
-              echo __('Maker','MiniMakerFaire');
+              _e('Maker','MiniMakerFaire');
           ?>
           </h2>
         </div>
@@ -200,7 +200,7 @@
       <?php
       echo display_groupEntries($entryId);
       } else { //entry is not active
-        echo '<h2>'. __('Invalid entry','MiniMakerFaire').'</h2>';
+        echo '<h2>'. _e('Invalid entry','MiniMakerFaire').'</h2>';
       }
       ?>
 
@@ -283,7 +283,7 @@ function display_entry_schedule($entry_id) {
           $faire_end   = strtotime($faire_end);
 
           //tbd change this to be dynamically populated
-          echo '<td>Friday, Saturday and Sunday: '.date("F j",$faire_start).'-' . date("j",$faire_end).'</td>';
+          echo '<td>'.__('Friday, Saturday and Sunday','MiniMakerFaire').': '.date("F j",$faire_start).'-' . date("j",$faire_end).'</td>';
         }
         echo '<td>'.$row->area.'</td><td>'.($row->nicename!=''?$row->nicename:$row->subarea).'</td>';
         echo '</tr>';

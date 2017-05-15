@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-05-12 15:04-0600\n"
+"PO-Revision-Date: 2017-05-14 19:11-0600\n"
 "Language-Team: MakerFaire\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -300,7 +300,7 @@ msgstr "Makers"
 
 #: page-entry.php:170
 msgid "Maker"
-msgstr "Maker"
+msgstr "Fabricant"
 
 #: page-entry.php:204
 msgid "Invalid entry"
@@ -429,3 +429,15 @@ msgstr "Effectuer"
 #: MF-custom-rest-api.php:155
 msgid "Demo"
 msgstr "Démonstration"
+
+#: page-entry.php:115
+msgid "Back to the Schedule"
+msgstr "Retour à l'horaire"
+
+#: page-entry.php:118
+msgid "Look for More Makers"
+msgstr "Rechercher plus de fabricants"
+
+#: page-entry.php:142
+msgid "Project Website"
+msgstr "Site Web du projet"

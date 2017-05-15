@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2017-05-12 14:42-0600\n"
-"PO-Revision-Date: 2017-05-12 15:02-0600\n"
+"PO-Revision-Date: 2017-05-14 19:09-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -292,6 +292,18 @@ msgstr ""
 
 #: page-contact.php:195
 msgid "Human Verification"
+msgstr ""
+
+#: page-entry.php:115
+msgid "Back to the Schedule"
+msgstr ""
+
+#: page-entry.php:118
+msgid "Look for More Makers"
+msgstr ""
+
+#: page-entry.php:142
+msgid "Project Website"
 msgstr ""
 
 #: page-entry.php:165
