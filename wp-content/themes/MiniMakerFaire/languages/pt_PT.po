@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-03-08 14:03-0700\n"
+"PO-Revision-Date: 2017-05-18 10:57-0700\n"
 "Language-Team: MakerFaire\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,8 +42,7 @@ msgstr "Carregar imagem"
 msgid "What is Maker Faire?"
 msgstr "O que é uma Maker faire"
 
-#: classes/networkSettings.php:121 classes/networkSettings.php:122
-#: classes/networkSettings.php:167 classes/networkSettings.php:168
+#: classes/networkSettings.php:121 classes/networkSettings.php:122 classes/networkSettings.php:167 classes/networkSettings.php:168
 msgid "Text"
 msgstr "Texto"
 
@@ -153,23 +152,17 @@ msgstr "Mais Noticias"
 
 #: functions/panels.php:460
 msgid ""
-"Maker Faire is a gathering of fascinating, curious people who enjoy learning "
-"and who love sharing what they can do. From engineers to artists to "
-"scientists to crafters, Maker Faire is a venue for these “makers” to show "
-"hobbies, experiments, projects."
+"Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From "
+"engineers to artists to scientists to crafters, Maker Faire is a venue for these \"makers\" to show hobbies, experiments, "
+"projects."
 msgstr ""
-"A Maker Faire é um encontro de pessoas fascinantes e curiosas que gostam de "
-"aprender e adoram partilhar o que fazem. De engenheiros a artistas, de "
-"cientistas a artesãos, a Maker Faire um local para esses \"makers\" "
-"mostrarem os passatempos, experiências e projectos."
+"A Maker Faire é um encontro de pessoas fascinantes e curiosas que gostam de aprender e adoram partilhar o que fazem. De "
+"engenheiros a artistas, de cientistas a artesãos, a Maker Faire um local para esses \"makers\" mostrarem os passatempos, "
+"experiências e projectos."
 
 #: functions/panels.php:463
-msgid ""
-"We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase "
-"of invention, creativity, and resourcefulness."
-msgstr ""
-"É o maior  espetáculo de Mostra (e Conta) do planeta - uma demostração "
-"familiar de invenções, criatividade e engenho."
+msgid "We call it the Greatest Show (& Tell) on Earth - a family-friendly showcase of invention, creativity, and resourcefulness."
+msgstr "É o maior  espetáculo de Mostra (e Conta) do planeta - uma demostração familiar de invenções, criatividade e engenho."
 
 #: functions/panels.php:466
 msgid "Glimpse the future and get inspired!"
