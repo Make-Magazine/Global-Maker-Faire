@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2017-05-12 14:42-0600\n"
-"PO-Revision-Date: 2017-05-18 09:18-0700\n"
+"PO-Revision-Date: 2017-05-18 09:59-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -41,8 +41,8 @@ msgstr ""
 msgid "What is Maker Faire?"
 msgstr ""
 
-#: classes/networkSettings.php:121 classes/networkSettings.php:122
-#: classes/networkSettings.php:167 classes/networkSettings.php:168
+#: classes/networkSettings.php:121 classes/networkSettings.php:122 classes/networkSettings.php:167
+#: classes/networkSettings.php:168
 msgid "Text"
 msgstr ""
 
@@ -168,16 +168,14 @@ msgstr ""
 
 #: functions/panels.php:488
 msgid ""
-"Maker Faire is a gathering of fascinating, curious people who enjoy learning "
-"and who love sharing what they can do. From engineers to artists to "
-"scientists to crafters, Maker Faire is a venue for these “makers” to show "
-"hobbies, experiments, projects."
+"Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From "
+"engineers to artists to scientists to crafters, Maker Faire is a venue for these “makers” to show hobbies, experiments, "
+"projects."
 msgstr ""
 
 #: functions/panels.php:491
 msgid ""
-"We call it the Greatest Show (& Tell) on Earth - a family-friendly showcase "
-"of invention, creativity, and resourcefulness."
+"We call it the Greatest Show (& Tell) on Earth - a family-friendly showcase of invention, creativity, and resourcefulness."
 msgstr ""
 
 #: functions/panels.php:494

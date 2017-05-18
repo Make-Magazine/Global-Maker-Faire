@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-05-14 19:50-0600\n"
+"PO-Revision-Date: 2017-05-18 10:44-0700\n"
 "Language-Team: MakerFaire\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,8 +42,7 @@ msgstr "Importer une image"
 msgid "What is Maker Faire?"
 msgstr "Qu'est-ce que Maker Faire?"
 
-#: classes/networkSettings.php:121 classes/networkSettings.php:122
-#: classes/networkSettings.php:167 classes/networkSettings.php:168
+#: classes/networkSettings.php:121 classes/networkSettings.php:122 classes/networkSettings.php:167 classes/networkSettings.php:168
 msgid "Text"
 msgstr "Texte"
 
@@ -153,28 +152,19 @@ msgstr "Plus d'infos"
 
 #: functions/panels.php:460
 msgid ""
-"Maker Faire is a gathering of fascinating, curious people who enjoy learning "
-"and who love sharing what they can do. From engineers to artists to "
-"scientists to crafters, Maker Faire is a venue for these “makers” to show "
-"hobbies, experiments, projects."
+"Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From engineers to artists "
+"to scientists to crafters, Maker Faire is a venue for these \"makers\" to show hobbies, experiments, projects."
 msgstr ""
-"Maker Faire est à la fois une fête de la science, une foire populaire et "
-"l’événement de référence de l’innovation partout dans le monde. Ce concept "
-"totalement unique regroupe stands de démonstration, ateliers de découverte, "
-"spectacles et conférences autour des thèmes de la créativité, de la "
-"fabrication, des cultures Do It Yourself et Makers. Cet événement, réunit "
-"des passionnés de technologies, des artisans, des industriels, des amateurs, "
-"des ingénieurs, des clubs de science, des artistes, des étudiants et des "
-"Start’Up. Ensemble, ils forment la communauté des Makers et viennent pour "
-"montrer leurs créations, partager leurs connaissances…"
+"Maker Faire est à la fois une fête de la science, une foire populaire et l’événement de référence de l’innovation partout dans le monde. Ce "
+"concept totalement unique regroupe stands de démonstration, ateliers de découverte, spectacles et conférences autour des thèmes de la "
+"créativité, de la fabrication, des cultures Do It Yourself et Makers. Cet événement, réunit des passionnés de technologies, des artisans, des "
+"industriels, des amateurs, des ingénieurs, des clubs de science, des artistes, des étudiants et des Start’Up. Ensemble, ils forment la "
+"communauté des Makers et viennent pour montrer leurs créations, partager leurs connaissances…"
 
-#: functions/panels.php:463
-msgid ""
-"We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase "
-"of invention, creativity, and resourcefulness."
+#: functions/panels.php:491
+msgid "We call it the Greatest Show (& Tell) on Earth - a family-friendly showcase of invention, creativity, and resourcefulness."
 msgstr ""
-"Nous l'appelons le plus grand spectacle sur la terre - une vitrine fun et "
-"familiale de l'invention, la créativité et la fabrication personnel."
+"Nous l'appelons le plus grand spectacle sur la terre - une vitrine fun et familiale de l'invention, la créativité et la fabrication personnel."
 
 #: functions/panels.php:466
 msgid "Glimpse the future and get inspired!"

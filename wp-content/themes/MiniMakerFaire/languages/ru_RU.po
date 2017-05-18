@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-04-25 14:17-0600\n"
+"PO-Revision-Date: 2017-05-18 10:49-0700\n"
 "Language-Team: MakerFaire\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,8 +42,7 @@ msgstr "Загрузите изображение"
 msgid "What is Maker Faire?"
 msgstr "Что такое Maker Faire?"
 
-#: classes/networkSettings.php:121 classes/networkSettings.php:122
-#: classes/networkSettings.php:167 classes/networkSettings.php:168
+#: classes/networkSettings.php:121 classes/networkSettings.php:122 classes/networkSettings.php:167 classes/networkSettings.php:168
 msgid "Text"
 msgstr "Текст"
 
@@ -153,28 +152,21 @@ msgstr "Ещё новости"
 
 #: functions/panels.php:460
 msgid ""
-"Maker Faire is a gathering of fascinating, curious people who enjoy learning "
-"and who love sharing what they can do. From engineers to artists to "
-"scientists to crafters, Maker Faire is a venue for these “makers” to show "
-"hobbies, experiments, projects."
+"Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From "
+"engineers to artists to scientists to crafters, Maker Faire is a venue for these \"makers\" to show hobbies, experiments, "
+"projects."
 msgstr ""
-"Maker Faire это место, где собираются невероятные и любознательные люди, "
-"которые любят делиться с окружающими своими знаниями, навыками и опытом. "
-"Инженеры, художники, ученые, мастера ремёсел — для них Maker Faire это "
-"площадка для демонстрации своих хобби, экспериментов, проектов."
+"Maker Faire это место, где собираются невероятные и любознательные люди, которые любят делиться с окружающими своими знаниями, "
+"навыками и опытом. Инженеры, художники, ученые, мастера ремёсел — для них Maker Faire это площадка для демонстрации своих "
+"хобби, экспериментов, проектов."
 
-#: functions/panels.php:463
-msgid ""
-"We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase "
-"of invention, creativity, and resourcefulness."
-msgstr ""
-"Возможно, это самое грандиозное шоу на земле — семейный праздник "
-"изобретательства, творчества, смекалки и трудолюбия. "
+#: functions/panels.php:491
+msgid "We call it the Greatest Show (& Tell) on Earth - a family-friendly showcase of invention, creativity, and resourcefulness."
+msgstr "Возможно, это самое грандиозное шоу на земле — семейный праздник изобретательства, творчества, смекалки и трудолюбия. "
 
 #: functions/panels.php:466
 msgid "Glimpse the future and get inspired!"
-msgstr ""
-"Загляни в будущее и получи вдохновение для собственных открытий и свершений!"
+msgstr "Загляни в будущее и получи вдохновение для собственных открытий и свершений!"
 
 #: functions/panels.php:603 page-meet-the-makers.php:18
 msgid "Previous"
