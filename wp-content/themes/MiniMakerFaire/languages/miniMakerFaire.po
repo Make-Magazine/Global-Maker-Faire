@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2017-05-12 14:42-0600\n"
-"PO-Revision-Date: 2017-05-14 19:50-0600\n"
+"PO-Revision-Date: 2017-05-18 09:18-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -170,7 +170,7 @@ msgstr ""
 msgid ""
 "Maker Faire is a gathering of fascinating, curious people who enjoy learning "
 "and who love sharing what they can do. From engineers to artists to "
-"scientists to crafters, Maker Faire is a venue for these \"makers\" to show "
+"scientists to crafters, Maker Faire is a venue for these “makers” to show "
 "hobbies, experiments, projects."
 msgstr ""
 
@@ -226,7 +226,7 @@ msgstr ""
 
 #: index.php:16
 #, php-format
-msgid "%s Search Results for \"%s\""
+msgid "%s Search Results for “%s"
 msgstr ""
 
 #: index.php:77
