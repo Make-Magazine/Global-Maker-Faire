@@ -184,11 +184,11 @@ function getMTMentries($formIDs) {
 
       //format start and end date
       $startDay   = date_create($row->time_start);
-      $startDate  = date_format($startDay,'Y-m-d').'T'.date_format($startDay,'G:i:s');
+      $startDate  = date_format($startDay,'Y-m-d').'T'.date_format($startDay,'H:i:s');
       $keyDate    = date_format($startDay,'Y-m-d');
 
       $endDate = date_create($row->time_end);
-      $endDate = date_format($endDate,'Y-m-d').'T'.date_format($endDate,'G:i:s');
+      $endDate = date_format($endDate,'Y-m-d').'T'.date_format($endDate,'H:i:s');
       //"2016-05-21T11:55:00-07:00"
       $data['schedule'][$keyDate][] = array(
             'id'            => $row->entry_id,
