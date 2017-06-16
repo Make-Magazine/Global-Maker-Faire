@@ -9,7 +9,7 @@ app.controller('mtmMakers', function($scope, $http) {
   formIDs = formIDs.replace(",","-");
   //to be added - replace commas with - in form ids
   //call to MF custom rest API
-  $http.get('/wp-json/makerfaire/v1/fairedata/mtm/'+formIDs)
+  $http.get('/wp-json/makerfaire/v2/fairedata/mtm/'+formIDs)
     .then(function successCallback(response) {
       if(response.data.entity.length<=0){
         jQuery('.mtm .loading').html('No makers found');

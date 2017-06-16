@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-03-07 16:16-0700\n"
+"PO-Revision-Date: 2017-05-18 10:53-0700\n"
 "Language-Team: MakerFaire\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,8 +42,7 @@ msgstr "Ανέβασε φωτογραφία"
 msgid "What is Maker Faire?"
 msgstr "Τι είναι το Maker Faire;"
 
-#: classes/networkSettings.php:121 classes/networkSettings.php:122
-#: classes/networkSettings.php:167 classes/networkSettings.php:168
+#: classes/networkSettings.php:121 classes/networkSettings.php:122 classes/networkSettings.php:167 classes/networkSettings.php:168
 msgid "Text"
 msgstr "Κείμενο"
 
@@ -153,25 +152,19 @@ msgstr "Περισσότερα νέα"
 
 #: functions/panels.php:460
 msgid ""
-"Maker Faire is a gathering of fascinating, curious people who enjoy learning "
-"and who love sharing what they can do. From engineers to artists to "
-"scientists to crafters, Maker Faire is a venue for these “makers” to show "
-"hobbies, experiments, projects."
+"Maker Faire is a gathering of fascinating, curious people who enjoy learning and who love sharing what they can do. From "
+"engineers to artists to scientists to crafters, Maker Faire is a venue for these \"makers\" to show hobbies, experiments, "
+"projects."
 msgstr ""
-"Στο Maker Faire συγκεντρώνονται συναρπαστικοί άνθρωποι με περιέργεια που "
-"απολαμβάνουν τη μάθηση και αγαπούν να μοιράζονται το τι μπορούν να κάνουν. "
-"Από μηχανικούς μέχρι καλλιτέχνες και από επιστήμονες μέχρι crafters, το "
-"Maker Faire αποτελεί το μέρος συγκέντρωσης των \"makers\" ώστε να δείξουν τα "
-"hobby, τα πειράματα και τα projects τους. "
+"Στο Maker Faire συγκεντρώνονται συναρπαστικοί άνθρωποι με περιέργεια που απολαμβάνουν τη μάθηση και αγαπούν να μοιράζονται το "
+"τι μπορούν να κάνουν. Από μηχανικούς μέχρι καλλιτέχνες και από επιστήμονες μέχρι crafters, το Maker Faire αποτελεί το μέρος "
+"συγκέντρωσης των \"makers\" ώστε να δείξουν τα hobby, τα πειράματα και τα projects τους. "
 
 #: functions/panels.php:463
-msgid ""
-"We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase "
-"of invention, creativity, and resourcefulness."
+msgid "We call it the Greatest Show (& Tell) on Earth - a family-friendly showcase of invention, creativity, and resourcefulness."
 msgstr ""
-"Το αποκαλούμε το Σπουδαιότερο show στη Γη (The Greatest Show & Tell on "
-"Earth)- ένα οικογενειακό show για την καινοτομία, την δημιουργία και την "
-"εφευρετικότητα. "
+"Το αποκαλούμε το Σπουδαιότερο show στη Γη (The Greatest Show & Tell on Earth)- ένα οικογενειακό show για την καινοτομία, την "
+"δημιουργία και την εφευρετικότητα. "
 
 #: functions/panels.php:466
 msgid "Glimpse the future and get inspired!"

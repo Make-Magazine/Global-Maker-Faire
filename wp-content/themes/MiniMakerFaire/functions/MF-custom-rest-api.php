@@ -2,7 +2,7 @@
 /* adds a custom REST API endpoint of makerfaire*/
 add_action( 'rest_api_init', function () {
 
-	register_rest_route( 'makerfaire', '/v1/fairedata/(?P<type>[a-z0-9\-]+)/(?P<formids>[a-z0-9\-]+)', array(
+	register_rest_route( 'makerfaire', '/v2/fairedata/(?P<type>[a-z0-9\-]+)/(?P<formids>[a-z0-9\-]+)', array(
 		'methods' => 'GET',
 		'callback' => 'mf_fairedata'
 	));
@@ -150,6 +150,16 @@ function getMTMentries($formIDs) {
 
   function getSchedule($formIDs) {
     $data = array(); global $wpdb;
+    //setlocale(LC_ALL, get_locale());
+
+    $wp_locale = get_locale();
+    switch_to_locale( get_locale() );
+    //create type translate array
+    $workshop    = __('Workshop','MiniMakerFaire');
+    $talk        = __('Talk','MiniMakerFaire');
+    $performance = __('Performance','MiniMakerFaire');
+    $demo        = __('Demo','MiniMakerFaire');
+
     $formIDarr = array_map('intval', explode("-", $formIDs));
     $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
               lead_detail.value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
@@ -161,12 +171,12 @@ function getMTMentries($formIDs) {
                left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
                left outer join {$wpdb->prefix}rg_lead as lead on schedule.entry_id = lead.id
                left outer join {$wpdb->prefix}rg_lead_detail as lead_detail on
-                   schedule.entry_id = lead_detail.lead_id and field_number = 303
-               where lead.status = 'active' and lead_detail.value='Accepted' "
-               . " and lead_detail.form_id in(".implode(",",$formIDarr).")";
+                   lead.id = lead_detail.lead_id and field_number = 303
+               where lead.status = 'active'
+                 and lead_detail.value='Accepted' "
+             . " and lead.form_id in(".implode(",",$formIDarr).")";
 
     //retrieve project name, img (22), maker list, topics
-
     foreach($wpdb->get_results($query) as $row){
       $makerList = getMakerList($row->entry_id);
       $makerArr = array();
@@ -184,13 +194,18 @@ function getMTMentries($formIDs) {
 
       //format start and end date
       $startDay   = date_create($row->time_start);
-      $startDate  = date_format($startDay,'Y-m-d').'T'.date_format($startDay,'H:i:s');
+      $startDate  = date_format($startDay,'Y-m-d').'T'.date_format($startDay,'G:i:s');
       $keyDate    = date_format($startDay,'Y-m-d');
 
       $endDate = date_create($row->time_end);
-      $endDate = date_format($endDate,'Y-m-d').'T'.date_format($endDate,'H:i:s');
-      //"2016-05-21T11:55:00-07:00"
-      $data['schedule'][$keyDate][] = array(
+      $endDate = date_format($endDate,'Y-m-d').'T'.date_format($endDate,'G:i:s');
+
+      $startTime = strtotime($row->time_start);
+
+      //$dayofWeek = strftime("%A",$startTime);
+      $dayofWeek = date_i18n("l",$startTime);
+      $type = $row->type;
+      $data['schedule'][] = array(
             'id'            => $row->entry_id,
             'time_start'    => $startDate,
             'time_end'      => $endDate,
@@ -199,8 +214,9 @@ function getMTMentries($formIDs) {
             'maker_list'    => $makerList,
             'nicename'      => $row->location,
             'category'      => $catList,
-            'day'           => (int) $row->day,
+            'dayOfWeek'     => ucwords($dayofWeek),
             'desc'          => $row->short_desc,
+            'transType'     => $$type,
             'type'          => ucwords($row->type)
       );
 
