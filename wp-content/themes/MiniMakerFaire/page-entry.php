@@ -173,7 +173,7 @@
 
         <?php
         if ($isGroup) {
-          echo '<div class="row center-block">
+          echo '<div class="row center-block maker-profile-row">
                   ',(!empty($groupphoto) ? '<img class="col-md-3 pull-left img-responsive" src="' . legacy_get_fit_remote_image_url($groupphoto,200,250) . '" alt="' . $groupname . '">' : '<img class="col-md-3 pull-left img-responsive" src="' . get_stylesheet_directory_uri() . '/img/maker-placeholder.jpg" alt="Group Image">');
           echo    '<div class="col-md-5">
                     <h3>' . $groupname . '</h3>
@@ -183,7 +183,7 @@
         } else {
           foreach($makers as $maker) {
             if($maker['firstname'] !='' && $maker['lastname'] !=''){
-              echo '<div class="row center-block">
+              echo '<div class="row center-block maker-profile-row">
                       ',(!empty($maker['photo']) ? '<img class="col-md-3 pull-left img-responsive" src="' . legacy_get_fit_remote_image_url($maker['photo'],200,250) . '" alt="' . $maker['firstname'] . ' ' . $maker['lastname'] . '">' : '<img class="col-md-3 pull-left img-responsive" src="' . get_stylesheet_directory_uri() . '/img/maker-placeholder.jpg" alt="Maker Image">');
               echo    '<div class="col-md-5">
                         <h3>' . $maker['firstname'] . ' ' . $maker['lastname'] . '</h3>
