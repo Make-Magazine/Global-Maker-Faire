@@ -174,7 +174,8 @@ function getMTMentries($formIDs) {
                    lead.id = lead_detail.lead_id and field_number = 303
                where lead.status = 'active'
                  and lead_detail.value='Accepted' "
-             . " and lead.form_id in(".implode(",",$formIDarr).")";
+             . " and lead.form_id in(".implode(",",$formIDarr).") "
+            . "order by schedule.start_dt";
 
     //retrieve project name, img (22), maker list, topics
     foreach($wpdb->get_results($query) as $row){
