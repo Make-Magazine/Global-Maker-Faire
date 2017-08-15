@@ -1,12 +1,17 @@
 <?php
 include 'db_connect.php';
 
-$table = (isset($_GET['blog_id'])?'wp_'.$_GET['blog_id'].'_rg_form_meta':'wp_rg_form_meta');
-$sql = 'select display_meta from '.$table.' where form_id!=1 and form_id!=24';
+$lockedFields = array('151','16', '22', '27', '96', '98', '101',
+  '105', '160', '161', '217', '234', '158','162', '224',
+  '258', '155', '167', '223', '259', '156', '166', '222', '260', '157',
+  '165', '220', '261', '159', '164', '221', '262', '154', '163', '219',
+  '233', '109', '111', '110', '320', '321', '303','304', '376');
 
+$blogID =  get_current_blog_id();
+$table  =  'wp_'.$blogID.'_rg_form_meta';
+$sql    = 'select display_meta from '.$table.' where form_id!=1 and form_id!=24';
 if(isset($_GET['formID'])) $sql.= ' and form_id='.$_GET['formID'];
 
-//echo $sql;
 $mysqli->query("SET NAMES 'utf8'");
 $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
 ?>
@@ -15,81 +20,83 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
 <html lang="en">
 <head>
 
-<style>
-  #headerRow {
-    font-size: 1.2em;
-    border: 1px solid #98bf21;
-    padding: 3px 7px 2px 7px;
-    background-color: #A7C942;
-    color: #fff;
-  }
+  <style>
+    h1, .h1, h2, .h2, h3, .h3 {
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
+    }
+    ul, ol {
+      margin-top: 0 !important;
+      margin-bottom: 0px !important;
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+    }
+    table {font-size: 14px;}
+    #headerRow {
+      font-size: 1.2em;
+      border: 1px solid #98bf21;
+      padding: 5px;
+      background-color: #A7C942;
+      color: #fff;
+      text-align: center;
+    }
 
-  .detailRow {
-    font-size: 1.2em;
-    border: 1px solid #98bf21;
-  }
-  .detailRow div {
-    border-right: 1px solid #98bf21;
-    padding: 3px 7px;
-  }
-  .detailRow div:last-child {
-    border-right: none;
-  }
-  .row-eq-height {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-  }
-</style>
-<link rel='stylesheet' id='make-bootstrap-css'  href='http://makerfaire.com/wp-content/themes/makerfaire/css/bootstrap.min.css' type='text/css' media='all' />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    .detailRow {
+      font-size: 1.2em;
+      border: 1px solid #98bf21;
+    }
+    #headerRow td, .detailRow td {
+      border-right: 1px solid #98bf21;
+      padding: 3px 7px;
+      vertical-align: baseline;
+    }
+    .detailRow td:last-child {
+      border-right: none;
+    }
+    .row-eq-height {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+    .tcenter {
+      text-align: center;
+    }
+  </style>
+  <link rel='stylesheet' id='make-bootstrap-css'  href='http://makerfaire.com/wp-content/themes/makerfaire/css/bootstrap.min.css' type='text/css' media='all' />
+  <link rel='stylesheet' id='font-awesome-css'  href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css?ver=2.819999999999997' type='text/css' media='all' />
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <div style="text-align: center">
-    <h2> MakerFaire Form Layout </h2>
-    <small>
-      To display forms for a certain faire: add ?blog_id=<i>id#</i> to the end of the url<br/>
-      ie: global.makerfaire.com/wp-content/themes/MiniMakerFaire/devScripts/formFields.php?blog_id=4<br/><br/>
-        <?php
-      $blogSql = 'SELECT blog_id,domain FROM `wp_blogs`';
-      $blogresult = $mysqli->query($blogSql) or trigger_error($mysqli->error."[$sql]");
-      while ( $blogrow = $blogresult->fetch_array(MYSQLI_ASSOC) ) {
-        echo $blogrow['blog_id'].' - '.$blogrow['domain'].', ';
-      }?>
-     </small>
-  </div>
-  <div class="clear"></div>
-  <div class="container" style="width:95%">
+  <div class="container" style="width:100%; line-height: 1.3em">
     <?php
-    // Loop through the posts
+    // Loop through the forms
     while ( $row = $result->fetch_array(MYSQLI_ASSOC) ) {
       $json = json_decode($row['display_meta']);
-      echo '<h2>Form '.$json->id.' - '.$json->title.'</h2>';
+      echo '<h3 style="float:left">Form '.$json->id.' - '.$json->title.'</h3>';
       ?>
-      <div id="headerRow" class="row">
-        <div class="col-sm-1">
-          ID
-        </div>
-        <div class="col-sm-4">
-          Label
-        </div>
-        <div class="col-sm-2">
-          Type
-        </div>
-        <div class="col-sm-1">
-          Admin Only?
-        </div>
-        <div class="col-sm-1">
-          Required?
-        </div>
-        <div class="col-sm-3">
-          Options
+      <div style="clear:both"></div>
+      <div style="text-align: center">
+        <div style="font-size: 12px;line-height: 12px;">
+          <i>add ?formID=xxx to the end of the URL to specify a specific form - ie: global.makerfaire.com/wp-content/themes/MiniMakerFaire/devScripts/formFields.php?formID=77</i>
         </div>
       </div>
-      <?php
 
+      <div style="clear:both"></div>
+        <table style="margin: 10px 0;">
+          <thead>
+            <tr id="headerRow">
+              <td style="width:  3%">ID</td>
+              <td style="width: 40%">Label</td>
+              <td style="width:  3%">Type</td>
+              <td style="width: 40%">Options</td>
+              <td style="width:  3%">Admin Only</td>
+              <td style="width:  3%">Required</td>
+              <td style="width:  3%">Locked</td>
+            </tr>
+          </thead><?php
       $jsonArray = (array) $json->fields;
       foreach($jsonArray as &$array){
         $array->id = (float) $array->id;
@@ -97,7 +104,7 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
       }
 
       usort($jsonArray, "cmp");
-      //   var_dump($jsonArray);
+      // buld table of field data
       foreach($jsonArray as $field){
         if($field['type'] != 'html' && $field['type'] != 'section' && $field['type'] != 'page'){
           //var_dump($field);
@@ -105,26 +112,20 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
           if($label=='' && $field['type']=='checkbox') $label = $field['choices'][0]->text;
 
           ?>
-          <div class="row detailRow row-eq-height">
-            <div class="col-sm-1">
-              <?php echo $field['id'];?>
-            </div>
-            <div class="col-sm-4">
-              <?php echo $label;?>
-            </div>
-            <div class="col-sm-2">
-              <?php echo $field['type']; ?>
-            </div>
-            <div class="col-sm-1">
-              <?php echo (isset($field['adminOnly']) && $field['adminOnly']?'Yes':'');?>
-            </div>
-            <div class="col-sm-1">
-              <?php echo ($field['isRequired']?'Yes':'');?>
-            </div>
-            <div class="col-sm-3">
-              <?php
-              if($field['type']=='checkbox'||$field['type']=='radio'||$field['type']=='select' ||$field['type']=='address'){
-                echo '<ul>';
+          <tr class="detailRow">
+            <td class="tcenter"><?php echo $field['id'];?></td>
+            <td><?php echo $label;?></td>
+            <td><?php echo $field['type'];?></td>
+            <td><?php
+              if($field['type']=='product') {
+                echo '<table width="100%">';
+                echo '<tr><th>Label</th><th>Price</th></tr>';
+                foreach($field['choices'] as $choice){
+                  echo '<tr><td>'.($choice->value!=$choice->text?$choice->value.'-'.$choice->text:$choice->text).'</td><td>'.$choice->price.'</td></tr>';
+                }
+                echo '</table>';
+              }elseif($field['type']=='checkbox'||$field['type']=='radio'||$field['type']=='select' ||$field['type']=='address'){
+                echo '<ul style="padding-left: 20px;">';
                 if(isset($field['inputs']) && !empty($field['inputs'])){
                   foreach($field['inputs'] as $choice){
                     echo '<li>'.$choice->id.' : '.$choice->label.'</li>';
@@ -137,19 +138,20 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
                 echo '</ul>';
               }
               ?>
-            </div>
-          </div>
+            </td>
+            <td class="tcenter"><?php echo (isset($field['visibility']) && $field['visibility']=='administrative'?'<i class="fa fa-check" aria-hidden="true"></i>':'');?></td>
+            <td class="tcenter"><?php echo ($field['isRequired']?'<i class="fa fa-check" aria-hidden="true"></i>':'');?></td>
+            <td class="tcenter"><?php echo (in_array($field['id'],$lockedFields)?'<i class="fa fa-check" aria-hidden="true"></i>':'');?></td>
+          </tr>
           <?php
         }
       }
-      echo '<br/><br/>';
     }
     ?>
-  </div>
+  </table>
 </body>
 </html>
 <?php
 function cmp($a, $b) {
     return $a["id"] - $b["id"];
 }
-
