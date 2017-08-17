@@ -9,8 +9,8 @@ $lockedFields = array('151','16', '22', '27', '96', '98', '101',
 
 $blogID =  get_current_blog_id();
 $table  =  'wp_'.$blogID.'_rg_form_meta';
-$sql    = 'select display_meta from '.$table.' where form_id!=1 and form_id!=24';
-if(isset($_GET['formID'])) $sql.= ' and form_id='.$_GET['formID'];
+$sql    = 'select display_meta from '.$table;
+if(isset($_GET['formID'])) $sql.= ' where form_id='.$_GET['formID'];
 
 $mysqli->query("SET NAMES 'utf8'");
 $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
@@ -76,6 +76,7 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
     while ( $row = $result->fetch_array(MYSQLI_ASSOC) ) {
       $json = json_decode($row['display_meta']);
       echo '<h3 style="float:left">Form '.$json->id.' - '.$json->title.'</h3>';
+      echo '<span style="float:right; margin-top: 15px;"><i>Blog ID = '.$blogID.'</i></span>';
       ?>
       <div style="clear:both"></div>
       <div style="text-align: center">
@@ -85,18 +86,18 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
       </div>
 
       <div style="clear:both"></div>
-        <table style="margin: 10px 0;">
-          <thead>
-            <tr id="headerRow">
-              <td style="width:  3%">ID</td>
-              <td style="width: 40%">Label</td>
-              <td style="width:  3%">Type</td>
-              <td style="width: 40%">Options</td>
-              <td style="width:  3%">Admin Only</td>
-              <td style="width:  3%">Required</td>
-              <td style="width:  3%">Locked</td>
-            </tr>
-          </thead><?php
+      <table style="margin: 10px 0;">
+        <thead>
+          <tr id="headerRow">
+            <td style="width:  3%">ID</td>
+            <td style="width: 40%">Label</td>
+            <td style="width:  3%">Type</td>
+            <td style="width: 40%">Options</td>
+            <td style="width:  3%">Admin Only</td>
+            <td style="width:  3%">Required</td>
+            <td style="width:  3%">Locked</td>
+          </tr>
+        </thead><?php
       $jsonArray = (array) $json->fields;
       foreach($jsonArray as &$array){
         $array->id = (float) $array->id;
@@ -146,9 +147,11 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
           <?php
         }
       }
+      ?>
+      </table><?php
     }
     ?>
-  </table>
+    </div>
 </body>
 </html>
 <?php
