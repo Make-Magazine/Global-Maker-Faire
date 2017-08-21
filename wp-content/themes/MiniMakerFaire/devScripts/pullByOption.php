@@ -2,6 +2,17 @@
 include 'db_connect.php';
 global $wpdb;
 
+//form submitted to update optoin?
+$updateOption   = false;
+$updateName     = '';
+$updateValue    = '';
+if(isset($_POST['optionValue']) && trim($_POST['optionValue']) !='' &&
+   isset($_POST['optionName'])   && trim($_POST['optionName'])   !=''){
+  $updateOption = true;
+  $updateName   = $_POST['optionName'];
+  $updateValue  = $_POST['optionValue'];
+}
+
 $blogSql = "select blog_id, domain from wp_blogs  ORDER BY `wp_blogs`.`blog_id` ASC";
 $results = $wpdb->get_results($blogSql,ARRAY_A);
 $option = (isset($_GET['option'])?$_GET['option']:'');
@@ -11,6 +22,10 @@ if($option!=''){
   foreach($results as $blogrow){
     $blogID = $blogrow['blog_id'];
     $table  =  'wp_'.$blogID.'_options';
+    //update the option first
+    if($updateOption){
+      $updated =  $wpdb->update( $table, array('option_value' => $updateValue ), array( 'option_name' => $updateName ), array( '%s'), array( '%s' ) );
+    }
     $optionValue = $wpdb->get_var("select option_value from ".$table." where option_name='".$option."'");
     $blogArray[] = array(
         'blog_id' => $blogID,
@@ -78,23 +93,51 @@ if($option!=''){
 <body>
   <div class="container" style="width:100%; line-height: 1.3em">
     <?php
+    echo 'updating '.$updateName. ' to '.$updateValue.'<br/>';
     if($option==''){
       echo 'Please supply the option name that you want to pull data from';
     }else{
-      echo 'Returning results for Option - '.$option.'<br/>';
-      echo '<table width="100%">';
-        echo '<tr>';
-          echo '<td>Blog ID</td>';
-          echo '<td>Name</td>';
-          echo '<td>Option Value</td>';
-        echo '</tr>';
-      foreach($blogArray as $blogData){
-        echo '<tr>';
+      ?>
+      <div style="float:left;width:50%">
+        Returning results for Option - <?php echo $option; ?>
+      </div>
+      <div style="float:left;width:45%">
+        <form method="post" enctype="multipart/form-data">
+          Update option across all sites (be VERY careful using this as it affects live sites!!)<br/>
+          <table width="100%" style="border: thin solid grey;margin: 0 auto;">
+            <tr>
+              <th style="padding:5px;">Option Name</th>
+              <th style="padding:5px;">Option Value</th>
+              <th style="padding:5px;">&nbsp;</th>
+            </tr>
+            <tr>
+              <td style="padding:5px;"><?php echo $option; ?><input type="hidden" name="optionName" value="<?php echo $option;?>"/></td>
+              <td style="padding:5px;"><input type="text" name="optionValue" /></td>
+              <td style="padding:5px;"><input type="submit" value="Update" name="submit"></td>
+            </tr>
+          </table>
+        </form>
+        <br/><br/>
+      </div>
+      <div style="clear:both">
+        <table width="100%">
+          <tr>
+            <td>Blog ID</td>
+            <td>Name</td>
+            <td>Option Value</td>
+          </tr>
+        <?php
+        foreach($blogArray as $blogData){
+          echo '<tr>';
           echo '<td>'.$blogData['blog_id'].'</td>';
           echo '<td>'.$blogData['blog_name'].'</td>';
           echo '<td>'.$blogData['optionValue'].'</td>';
-        echo '</tr>';
-      }
+          echo '</tr>';
+        }
+        ?>
+        </table>
+      </div>
+      <?php
     }
 
     ?>
