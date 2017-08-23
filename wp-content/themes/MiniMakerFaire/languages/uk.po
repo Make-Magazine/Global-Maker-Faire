@@ -1,0 +1,410 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Global Maker Faire\n"
+"POT-Creation-Date: 2017-01-23 16:24-0700\n"
+"PO-Revision-Date: 2017-04-27 20:36+0300\n"
+"Language-Team: MakerFaire\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"Last-Translator: \n"
+"Language: uk\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: bower_components\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: blog.php:55
+msgid "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Newer"
+msgstr "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i> Ніколи"
+
+#: blog.php:58
+msgid "Older <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
+msgstr "Раніші <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>"
+
+#: blog.php:67
+msgid "None found."
+msgstr "Нічого не знайдено."
+
+#: classes/networkSettings.php:73
+msgid "Network Panel Settings"
+msgstr "Панель настройки мережі"
+
+#: classes/networkSettings.php:95
+msgid "Upload Image"
+msgstr "Завантажити зображення"
+
+#: classes/networkSettings.php:116 functions/panels.php:454
+msgid "What is Maker Faire?"
+msgstr "Що таке Maker Faire?"
+
+#: classes/networkSettings.php:121 classes/networkSettings.php:122
+#: classes/networkSettings.php:167 classes/networkSettings.php:168
+msgid "Text"
+msgstr "Текст"
+
+#: classes/networkSettings.php:129
+msgid "Find Out More"
+msgstr "Дізнатися більше"
+
+#: classes/networkSettings.php:134 classes/networkSettings.php:135
+msgid "Image #1"
+msgstr "Зображення #1"
+
+#: classes/networkSettings.php:141
+msgid "URL #1"
+msgstr ""
+
+#: classes/networkSettings.php:142
+msgid "URL for Image #1"
+msgstr "URL для зображення #1"
+
+#: classes/networkSettings.php:148 classes/networkSettings.php:149
+msgid "Image #2"
+msgstr "Зображення #2"
+
+#: classes/networkSettings.php:155
+msgid "URL #2"
+msgstr ""
+
+#: classes/networkSettings.php:156
+msgid "URL for Image #2"
+msgstr "URL для зображення #1"
+
+#: classes/networkSettings.php:162
+msgid "Footer"
+msgstr ""
+
+#: comments.php:6 index.php:90
+msgid "Leave a Comment"
+msgstr "Залишити коментар"
+
+#: comments.php:6 index.php:90
+msgid "One Comment"
+msgstr "Один коментар"
+
+#: comments.php:6 index.php:90
+msgid " Comments"
+msgstr "Коментарі"
+
+#: customizer.php:21
+msgid "Faire Logo"
+msgstr "Логотип ярмарку"
+
+#: customizer.php:52
+msgid "Button text"
+msgstr "Текст кнопки"
+
+#: customizer.php:66
+msgid "Button URL"
+msgstr "URL кнопки"
+
+#: customizer.php:90
+msgid "Facebook URL"
+msgstr ""
+
+#: customizer.php:104
+msgid "Twitter URL"
+msgstr ""
+
+#: customizer.php:118
+msgid "Instagram URL"
+msgstr ""
+
+#: customizer.php:132
+msgid "Pintrest URL"
+msgstr ""
+
+#: customizer.php:146
+msgid "Google+ URL"
+msgstr ""
+
+#: customizer.php:166
+msgid "Enter any scripts that need to be placed in the header here."
+msgstr "Введіть скріпти, що повинні бути у header"
+
+#: customizer.php:176
+msgid "Enter any scripts that need to be placed in the footer here."
+msgstr "Введіть скріпти, що повинні бути у footer"
+
+#: functions/gf-entry-detail-sidebar.php:225
+msgid "added on"
+msgstr "доданий"
+
+#: functions/gf-entry-detail-update.php:214
+msgid "Acceptance Status Changed"
+msgstr "Статус прийому змінено"
+
+#: functions/gf-entry-list.php:10
+msgid "Click to view"
+msgstr "Натисніть щоб передивитися"
+
+#: functions/panels.php:187
+msgid "More Makers"
+msgstr "Більше мейкерів"
+
+#: functions/panels.php:364
+msgid "More News"
+msgstr "Більше новин"
+
+#: functions/panels.php:460
+msgid ""
+"Maker Faire is a gathering of fascinating, curious people who enjoy learning "
+"and who love sharing what they can do. From engineers to artists to "
+"scientists to crafters, Maker Faire is a venue to for these “makers” to show "
+"hobbies, experiments, projects."
+msgstr ""
+"Maker Faire — це захід, що збирає захоплюючих та допитливих людей, які "
+"люблять вчитися та ділитися тим, що вміють робити. Від інженерів до митців "
+"та від науковців до хендмейдерів. Maker Faire — це місце, де мейкери "
+"показують свої хобі, експерименти та проекти."
+
+#: functions/panels.php:463
+msgid ""
+"We call it the Greatest Show (& Tell) on Earth — a family-friendly showcase "
+"of invention, creativity, and resourcefulness."
+msgstr ""
+"Ми називаємо це the Greatest Show & Tell (покажи та розкажи) у Світі  — "
+"сімейне свято винахідництва та креативності."
+
+#: functions/panels.php:466
+msgid "Glimpse the future and get inspired!"
+msgstr "Побачте майбутнє та надихніться!"
+
+#: functions/panels.php:603 page-meet-the-makers.php:18
+msgid "Previous"
+msgstr "Попередня"
+
+#: functions/panels.php:607 page-meet-the-makers.php:22
+msgid "Next"
+msgstr "Наступна"
+
+#: functions/panels.php:651
+msgid "Stay in Touch:"
+msgstr "Ukranian translation of Stay in Touch:"
+
+#: functions/panels.php:651
+msgid "Get Local and Global Maker Faire Community updates."
+msgstr "Отримуйте новини локальної та глобальної спільноти Maker Faire."
+
+#: functions/panels.php:664
+msgid "Enter your Email"
+msgstr "Введіть свій email"
+
+#: functions/panels.php:665
+msgid "GO"
+msgstr "ВПЕРЕД"
+
+#: functions/panels.php:680
+msgid "Awesome!"
+msgstr "Супер!"
+
+#: functions/panels.php:681
+msgid "Thanks for signing up."
+msgstr "Дякуємо за реєстрацію."
+
+#: functions/panels.php:797
+msgid "Become a Sponsor"
+msgstr "Станьте спонсором"
+
+#: functions/panels.php:800
+msgid "All Sponsors"
+msgstr "Усі спонсори"
+
+#: index.php:16
+#, php-format
+msgid "%s Search Results for \"%s\""
+msgstr "%s Результати пошуку для \"%s\""
+
+#: index.php:77
+#, php-format
+msgid "Permalink to %s"
+msgstr "Постійне посилання на %s"
+
+#: page-contact.php:47
+msgid "Address"
+msgstr "Адреса"
+
+#: page-contact.php:52
+msgid "Phone"
+msgstr "Телефон"
+
+#: page-contact.php:57 page-contact.php:187
+msgid "Email"
+msgstr ""
+
+#: page-contact.php:117
+msgid "Contact Us"
+msgstr "Зв'яжіться з нами"
+
+#: page-contact.php:137
+msgid "Human verification incorrect."
+msgstr "Схоже, що ви робот"
+
+#: page-contact.php:138
+msgid "Please supply all information."
+msgstr "Please supply all information."
+
+#: page-contact.php:139
+msgid "Email Address Invalid."
+msgstr "Некоректна email адреса"
+
+#: page-contact.php:140
+msgid "Message was not sent. Try Again."
+msgstr "Повідомлення не відправлено. Спробуйте ще."
+
+#: page-contact.php:141
+msgid "Thanks! Your message has been sent."
+msgstr "Дякуємо! Ваше повідомлення було відправлено."
+
+#: page-contact.php:151
+msgid "Someone sent a message from "
+msgstr "Хтось відправив повідомлення з"
+
+#: page-contact.php:152
+msgid "from: "
+msgstr "від:"
+
+#: page-contact.php:153
+msgid "Reply-To: "
+msgstr "Відповісти:"
+
+#: page-contact.php:183
+msgid "Name"
+msgstr "Ім'я"
+
+#: page-contact.php:191
+msgid "Message"
+msgstr "Повідомлення"
+
+#: page-contact.php:195
+msgid "Human Verification"
+msgstr "Перевірка на робота"
+
+#: page-entry.php:166
+msgid "Group"
+msgstr "Група"
+
+#: page-entry.php:168
+msgid "Makers"
+msgstr "Мейкери"
+
+#: page-entry.php:170
+msgid "Maker"
+msgstr "Мейкери"
+
+#: page-entry.php:204
+msgid "Invalid entry"
+msgstr "Некоректний запис"
+
+#: page-entry.php:257
+msgid "Event Map"
+msgstr "Карта події"
+
+#: page-entry.php:264
+msgid "View full schedule"
+msgstr "Подивитися повний розклад"
+
+#: page-entry.php:265
+msgid "Download the program guide"
+msgstr "Завантажити програму"
+
+#: page-entry.php:309
+msgid "Exhibits in this group:"
+msgstr "Ярмарки у цієй групі:"
+
+#: page-entry.php:312
+msgid "Part of a group:"
+msgstr "Частина групи"
+
+#: page-home.php:102
+msgid "Click here to get subscriptions to Make: Magazine"
+msgstr "Підписатися на Make: Magazine"
+
+#: page-home.php:107
+msgid "Click here to see our global Maker Faires"
+msgstr "Переглянути глобальні Maker Faire"
+
+#: page-meet-the-makers.php:27
+msgid "Explore our Maker Exhibits!"
+msgstr "Дізнайтесь про стенди  мейкерів!"
+
+#: page-meet-the-makers.php:33
+msgid "Search:"
+msgstr "Пошук:"
+
+#: page-meet-the-makers.php:34
+msgid "Looking for a specific Exhibit or Maker?"
+msgstr "Шукаєте  конкретний стенд чи мейкера?"
+
+#: page-meet-the-makers.php:42
+msgid "View by:"
+msgstr "Переглянути за допомогою:"
+
+#: page-meet-the-makers.php:43
+msgid "GALLERY"
+msgstr "ГАЛЕРЕЯ"
+
+#: page-meet-the-makers.php:45
+msgid "LIST"
+msgstr "СПИСОК"
+
+#: page-meet-the-makers.php:50
+msgid "Filter by Topics:"
+msgstr "Фільтрувати за категорією"
+
+#: page-meet-the-makers.php:56 page-schedule.php:72 page-schedule.php:94
+msgid "All"
+msgstr "Усе"
+
+#: page-meet-the-makers.php:69
+msgid "Loading"
+msgstr "Загрузка"
+
+#: page-schedule.php:14
+msgid "Category"
+msgstr "Категорія"
+
+#: page-schedule.php:20
+msgid "ALL"
+msgstr "УСІ"
+
+#: page-schedule.php:55
+msgid "Title"
+msgstr "Назва"
+
+#: page-schedule.php:60
+msgid "Time"
+msgstr "Час"
+
+#: page-schedule.php:67
+msgid "Stage"
+msgstr "Етап"
+
+#: page-schedule.php:82
+msgid "Type"
+msgstr "Тип"
+
+#: page-schedule.php:89
+msgid "Topics"
+msgstr "Теми"
+
+#: page-schedule.php:144
+msgid "quick view"
+msgstr "Швидкий перегляд"
+
+#: page-schedule.php:151
+msgid "full details"
+msgstr "Детальніше"
+
+#: page-sponsors.php:15 page-sponsors.php:119
+msgid "BECOME A SPONSOR"
+msgstr "СТАТИ СПОНСОРОМ"
+
+#: page-sponsors.php:112
+msgid "no sponsors found"
+msgstr "Спонсорів не знайдено"
