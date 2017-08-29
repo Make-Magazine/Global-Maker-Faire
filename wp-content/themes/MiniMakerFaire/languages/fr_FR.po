@@ -2,12 +2,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Global Maker Faire\n"
 "POT-Creation-Date: 2017-01-23 16:24-0700\n"
-"PO-Revision-Date: 2017-06-01 14:30-0700\n"
+"PO-Revision-Date: 2017-08-29 14:38-0700\n"
 "Language-Team: MakerFaire\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -342,7 +342,7 @@ msgstr "Affichage par:"
 
 #: page-meet-the-makers.php:43
 msgid "GALLERY"
-msgstr "Gallerie"
+msgstr "Galerie"
 
 #: page-meet-the-makers.php:45
 msgid "LIST"
@@ -406,15 +406,15 @@ msgstr "Aucun partenaire trouvé"
 
 #: MF-custom-rest-api.php:155
 msgid "Workshop"
-msgstr "Atelier"
+msgstr "Ateliers"
 
 #: MF-custom-rest-api.php:155
 msgid "Talk"
-msgstr "Confèrence"
+msgstr "Conférence"
 
 #: MF-custom-rest-api.php:155
 msgid "Performance"
-msgstr "Effectuer"
+msgstr "Performance"
 
 #: MF-custom-rest-api.php:155
 msgid "Demo"
