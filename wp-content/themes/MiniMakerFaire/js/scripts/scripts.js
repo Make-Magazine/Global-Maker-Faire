@@ -48,3 +48,10 @@ jQuery(document).ready(function () {
         }
     });
 });
+
+// Modifying the bootstrap drop down menu UX to let level 1 nav items be clickable if they contain a url
+if (Modernizr.touch == false) {
+    jQuery('#slidemenu .dropdown > a:not(a[href="#"])').on('click', function() {
+        self.location = jQuery(this).attr('href');
+    });   
+}
