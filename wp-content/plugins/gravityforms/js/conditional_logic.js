@@ -2,9 +2,11 @@
 var __gf_timeout_handle;
 
 gform.addAction( 'gform_input_change', function( elem, formId, fieldId ) {
-	var dependentFieldIds = rgars( gf_form_conditional_logic, [ formId, 'fields', gformExtractFieldId( fieldId ) ].join( '/' ) );
-	if( dependentFieldIds ) {
-		gf_apply_rules( formId, dependentFieldIds );
+	if( window.gf_form_conditional_logic ) {
+		var dependentFieldIds = rgars( gf_form_conditional_logic, [ formId, 'fields', gformExtractFieldId( fieldId ) ].join( '/' ) );
+		if( dependentFieldIds ) {
+			gf_apply_rules( formId, dependentFieldIds );
+		}
 	}
 }, 10 );
 
@@ -148,9 +150,9 @@ function gf_is_match_default( $input, rule, formId, fieldId ) {
 		}
 
 		var ruleValue = rule.value;
-		if ( fieldNumberFormat ) {
-			ruleValue = gf_format_number( ruleValue, fieldNumberFormat );
-		}
+		//if ( fieldNumberFormat ) {
+		//	ruleValue = gf_format_number( ruleValue, fieldNumberFormat );
+		//}
 
 		if( gf_matches_operation( fieldValue, ruleValue, rule.operator ) ) {
 			matchCount++;
