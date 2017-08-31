@@ -59,6 +59,10 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
+          'js/scripts/min/scripts-min.js': [
+            'js/scripts/owl.carousel.min.js',
+            'js/scripts/scripts.js'
+          ],
           'js/built.js': [
             'js/src/misc-libs.js',
             'js/src/*.js'
@@ -95,6 +99,7 @@ module.exports = function(grunt) {
           banner: '// Compiled file - any changes will be overwritten by grunt task\n',
         },
         files: {
+          'js/scripts/min/scripts-min.js': 'js/scripts/min/scripts-min.js',
           'js/built.js': 'js/built.js',
           'js/angular/global-faires-map-app.js': 'js/angular/global-faires-map-app.js',
           'js/built-admin-scripts.js': 'js/built-admin-scripts.js'
