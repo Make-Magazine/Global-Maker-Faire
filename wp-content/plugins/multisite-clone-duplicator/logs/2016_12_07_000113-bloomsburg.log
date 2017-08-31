@@ -1,0 +1,573 @@
+[07/Dec/2016:00:01:13] Start site duplication : from site 6
+[07/Dec/2016:00:01:13] Admin email : bolson@makermedia.com
+[07/Dec/2016:00:01:13] Domain : bloomsburg.global.makerfaire.com
+[07/Dec/2016:00:01:13] Path : /
+[07/Dec/2016:00:01:13] Site title : Bloomsburg Mini Maker Faire
+[07/Dec/2016:00:01:15] Copy files from /nas/content/live/globalmkrfaire/wp-content/uploads/sites/6/ to /nas/content/live/globalmkrfaire/wp-content/uploads/sites/52/
+[07/Dec/2016:00:01:16] SQL :SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'wp_globalmkrfaire' AND TABLE_NAME LIKE 'wp\\_6\\_%'
+[07/Dec/2016:00:01:16] Result :array (
+  0 => 'wp_6_commentmeta',
+  1 => 'wp_6_comments',
+  2 => 'wp_6_gf_addon_feed',
+  3 => 'wp_6_gf_addon_payment_callback',
+  4 => 'wp_6_gf_addon_payment_transaction',
+  5 => 'wp_6_links',
+  6 => 'wp_6_mf_location',
+  7 => 'wp_6_mf_schedule',
+  8 => 'wp_6_options',
+  9 => 'wp_6_postmeta',
+  10 => 'wp_6_posts',
+  11 => 'wp_6_rg_form',
+  12 => 'wp_6_rg_form_meta',
+  13 => 'wp_6_rg_form_view',
+  14 => 'wp_6_rg_incomplete_submissions',
+  15 => 'wp_6_rg_lead',
+  16 => 'wp_6_rg_lead_detail',
+  17 => 'wp_6_rg_lead_detail_long',
+  18 => 'wp_6_rg_lead_meta',
+  19 => 'wp_6_rg_lead_notes',
+  20 => 'wp_6_rg_lead_rating',
+  21 => 'wp_6_term_relationships',
+  22 => 'wp_6_term_taxonomy',
+  23 => 'wp_6_termmeta',
+  24 => 'wp_6_terms',
+)
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_commentmeta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_commentmeta` LIKE `wp_globalmkrfaire`.`wp_6_commentmeta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_commentmeta` SELECT * FROM `wp_globalmkrfaire`.`wp_6_commentmeta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_comments`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_comments` LIKE `wp_globalmkrfaire`.`wp_6_comments`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_comments` SELECT * FROM `wp_globalmkrfaire`.`wp_6_comments`
+[07/Dec/2016:00:01:16] Result :1
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_gf_addon_feed`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_gf_addon_feed` LIKE `wp_globalmkrfaire`.`wp_6_gf_addon_feed`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_gf_addon_feed` SELECT * FROM `wp_globalmkrfaire`.`wp_6_gf_addon_feed`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_gf_addon_payment_callback`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_gf_addon_payment_callback` LIKE `wp_globalmkrfaire`.`wp_6_gf_addon_payment_callback`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_gf_addon_payment_callback` SELECT * FROM `wp_globalmkrfaire`.`wp_6_gf_addon_payment_callback`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_gf_addon_payment_transaction`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_gf_addon_payment_transaction` LIKE `wp_globalmkrfaire`.`wp_6_gf_addon_payment_transaction`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_gf_addon_payment_transaction` SELECT * FROM `wp_globalmkrfaire`.`wp_6_gf_addon_payment_transaction`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_links`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_links` LIKE `wp_globalmkrfaire`.`wp_6_links`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_links` SELECT * FROM `wp_globalmkrfaire`.`wp_6_links`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_mf_location`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_mf_location` LIKE `wp_globalmkrfaire`.`wp_6_mf_location`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_mf_location` SELECT * FROM `wp_globalmkrfaire`.`wp_6_mf_location`
+[07/Dec/2016:00:01:16] Result :1
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_mf_schedule`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_mf_schedule` LIKE `wp_globalmkrfaire`.`wp_6_mf_schedule`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_mf_schedule` SELECT * FROM `wp_globalmkrfaire`.`wp_6_mf_schedule`
+[07/Dec/2016:00:01:16] Result :1
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_options`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_options` LIKE `wp_globalmkrfaire`.`wp_6_options`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_options` SELECT * FROM `wp_globalmkrfaire`.`wp_6_options`
+[07/Dec/2016:00:01:16] Result :259
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_postmeta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_postmeta` LIKE `wp_globalmkrfaire`.`wp_6_postmeta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_postmeta` SELECT * FROM `wp_globalmkrfaire`.`wp_6_postmeta`
+[07/Dec/2016:00:01:16] Result :431
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_posts`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_posts` LIKE `wp_globalmkrfaire`.`wp_6_posts`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_posts` SELECT * FROM `wp_globalmkrfaire`.`wp_6_posts`
+[07/Dec/2016:00:01:16] Result :194
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_form`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_form` LIKE `wp_globalmkrfaire`.`wp_6_rg_form`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_form` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_form`
+[07/Dec/2016:00:01:16] Result :2
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_form_meta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_form_meta` LIKE `wp_globalmkrfaire`.`wp_6_rg_form_meta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_form_meta` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_form_meta`
+[07/Dec/2016:00:01:16] Result :2
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_form_view`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_form_view` LIKE `wp_globalmkrfaire`.`wp_6_rg_form_view`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_form_view` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_form_view`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_incomplete_submissions`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_incomplete_submissions` LIKE `wp_globalmkrfaire`.`wp_6_rg_incomplete_submissions`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_incomplete_submissions` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_incomplete_submissions`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_lead`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_lead` LIKE `wp_globalmkrfaire`.`wp_6_rg_lead`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_lead` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_lead`
+[07/Dec/2016:00:01:16] Result :1
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_lead_detail`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_lead_detail` LIKE `wp_globalmkrfaire`.`wp_6_rg_lead_detail`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_lead_detail` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_lead_detail`
+[07/Dec/2016:00:01:16] Result :60
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_lead_detail_long`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_lead_detail_long` LIKE `wp_globalmkrfaire`.`wp_6_rg_lead_detail_long`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_lead_detail_long` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_lead_detail_long`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_lead_meta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_lead_meta` LIKE `wp_globalmkrfaire`.`wp_6_rg_lead_meta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_lead_meta` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_lead_meta`
+[07/Dec/2016:00:01:16] Result :1
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_lead_notes`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_lead_notes` LIKE `wp_globalmkrfaire`.`wp_6_rg_lead_notes`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_lead_notes` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_lead_notes`
+[07/Dec/2016:00:01:16] Result :3
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_rg_lead_rating`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_rg_lead_rating` LIKE `wp_globalmkrfaire`.`wp_6_rg_lead_rating`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_rg_lead_rating` SELECT * FROM `wp_globalmkrfaire`.`wp_6_rg_lead_rating`
+[07/Dec/2016:00:01:16] Result :1
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_term_relationships`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_term_relationships` LIKE `wp_globalmkrfaire`.`wp_6_term_relationships`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_term_relationships` SELECT * FROM `wp_globalmkrfaire`.`wp_6_term_relationships`
+[07/Dec/2016:00:01:16] Result :21
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_term_taxonomy`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_term_taxonomy` LIKE `wp_globalmkrfaire`.`wp_6_term_taxonomy`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_term_taxonomy` SELECT * FROM `wp_globalmkrfaire`.`wp_6_term_taxonomy`
+[07/Dec/2016:00:01:16] Result :3
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_termmeta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_termmeta` LIKE `wp_globalmkrfaire`.`wp_6_termmeta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_termmeta` SELECT * FROM `wp_globalmkrfaire`.`wp_6_termmeta`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :DROP TABLE IF EXISTS `wp_52_terms`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :CREATE TABLE IF NOT EXISTS `wp_52_terms` LIKE `wp_globalmkrfaire`.`wp_6_terms`
+[07/Dec/2016:00:01:16] Result :0
+[07/Dec/2016:00:01:16] SQL :INSERT `wp_52_terms` SELECT * FROM `wp_globalmkrfaire`.`wp_6_terms`
+[07/Dec/2016:00:01:16] Result :3
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_options` SET `option_value` = 'a:6:{i:0;b:0;s:16:\"header_cta_radio\";s:6:\"value1\";s:15:\"header_cta_text\";s:21:\"Update Call To Action\";s:15:\"header_cta_link\";s:51:\"http://master.global.makerfaire.com/call-for-makers\";s:18:\"nav_menu_locations\";a:2:{s:9:\"main_menu\";i:2;s:11:\"footer_menu\";i:3;}s:11:\"header_logo\";s:96:\"http://bloomsburg.global.makerfaire.com/wp-content/uploads/sites/52/2016/06/placeholder_logo.png\";}' WHERE `option_value` = 'a:6:{i:0;b:0;s:16:\"header_cta_radio\";s:6:\"value1\";s:15:\"header_cta_text\";s:21:\"Update Call To Action\";s:15:\"header_cta_link\";s:51:\"http://master.global.makerfaire.com/call-for-makers\";s:18:\"nav_menu_locations\";a:2:{s:9:\"main_menu\";i:2;s:11:\"footer_menu\";i:3;}s:11:\"header_logo\";s:84:\"http://master.makerfaire.com/wp-content/uploads/sites/6/2016/06/placeholder_logo.png\";}'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_options` SET `option_name` = 'wp_52_user_roles' WHERE `option_name` = 'wp_6_user_roles'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/wp-content/uploads/sites/52/2016/06/home1.jpg' WHERE `guid` = 'http://master.makerfaire.com/wp-content/uploads/sites/6/2016/06/home1.jpg'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/wp-content/uploads/sites/52/2016/06/home2.jpg' WHERE `guid` = 'http://master.makerfaire.com/wp-content/uploads/sites/6/2016/06/home2.jpg'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/wp-content/uploads/sites/52/2016/06/home3.jpg' WHERE `guid` = 'http://master.makerfaire.com/wp-content/uploads/sites/6/2016/06/home3.jpg'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/wp-content/uploads/sites/52/2016/06/placeholder_logo.png' WHERE `guid` = 'http://master.makerfaire.com/wp-content/uploads/sites/6/2016/06/placeholder_logo.png'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/wp-content/uploads/sites/52/2016/06/makeLogo_url_2012.png' WHERE `guid` = 'http://master.makerfaire.com/wp-content/uploads/sites/6/2016/06/makeLogo_url_2012.png'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/wp-content/uploads/sites/52/2016/12/global-logo.png' WHERE `guid` = 'http://master.makerfaire.com/wp-content/uploads/sites/6/2016/12/global-logo.png'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=12' WHERE `guid` = 'http://master.makerfaire.com/?page_id=12'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=13' WHERE `guid` = 'http://master.makerfaire.com/?page_id=13'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=332' WHERE `guid` = 'http://master.makerfaire.com/?page_id=332'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=333' WHERE `guid` = 'http://master.makerfaire.com/?page_id=333'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=334' WHERE `guid` = 'http://master.makerfaire.com/?p=334'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=335' WHERE `guid` = 'http://master.makerfaire.com/?p=335'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=337' WHERE `guid` = 'http://master.makerfaire.com/?page_id=337'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=338' WHERE `guid` = 'http://master.makerfaire.com/?page_id=338'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=339' WHERE `guid` = 'http://master.makerfaire.com/?page_id=339'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=340' WHERE `guid` = 'http://master.makerfaire.com/?page_id=340'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=341' WHERE `guid` = 'http://master.makerfaire.com/?page_id=341'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=342' WHERE `guid` = 'http://master.makerfaire.com/?page_id=342'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=343' WHERE `guid` = 'http://master.makerfaire.com/?page_id=343'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=344' WHERE `guid` = 'http://master.makerfaire.com/?page_id=344'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/2016/06/28/345/' WHERE `guid` = 'http://master.makerfaire.com/2016/06/28/345/'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/2016/06/28/346/' WHERE `guid` = 'http://master.makerfaire.com/2016/06/28/346/'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/2016/06/28/347/' WHERE `guid` = 'http://master.makerfaire.com/2016/06/28/347/'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/2016/06/28/attend/' WHERE `guid` = 'http://master.makerfaire.com/2016/06/28/attend/'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=350' WHERE `guid` = 'http://master.makerfaire.com/?p=350'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=351' WHERE `guid` = 'http://master.makerfaire.com/?p=351'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=352' WHERE `guid` = 'http://master.makerfaire.com/?p=352'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=353' WHERE `guid` = 'http://master.makerfaire.com/?p=353'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=354' WHERE `guid` = 'http://master.makerfaire.com/?p=354'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=355' WHERE `guid` = 'http://master.makerfaire.com/?page_id=355'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=358' WHERE `guid` = 'http://master.makerfaire.com/?p=358'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=359' WHERE `guid` = 'http://master.makerfaire.com/?p=359'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=360' WHERE `guid` = 'http://master.makerfaire.com/?p=360'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=361' WHERE `guid` = 'http://master.makerfaire.com/?p=361'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=362' WHERE `guid` = 'http://master.makerfaire.com/?p=362'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=363' WHERE `guid` = 'http://master.makerfaire.com/?p=363'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=364' WHERE `guid` = 'http://master.makerfaire.com/?p=364'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=366' WHERE `guid` = 'http://master.makerfaire.com/?page_id=366'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=367' WHERE `guid` = 'http://master.makerfaire.com/?p=367'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=368' WHERE `guid` = 'http://master.makerfaire.com/?page_id=368'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?p=369' WHERE `guid` = 'http://master.makerfaire.com/?p=369'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=370' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=370'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=371' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=371'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=372' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=372'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=373' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=373'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=374' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=374'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=375' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=375'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=376' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=376'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=377' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=377'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=378' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=378'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=379' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=379'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=380' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=380'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=381' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=381'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=382' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=382'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=383' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=383'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=384' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=384'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=385' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=385'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=386' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=386'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=387' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=387'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=388' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=388'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=389' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=389'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=390' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=390'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=391' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=391'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=392' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=392'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=393' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=393'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=394' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=394'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=395' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=395'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=396' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=396'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=397' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=397'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=398' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=398'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=399' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=399'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=400' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=400'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=401' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=401'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=402' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=402'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=403' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=403'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=404' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=404'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=405' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=405'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=406' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=406'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=407' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=407'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=408' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=408'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=409' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=409'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=411' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=411'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=412' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=412'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=413' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=413'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=414' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=414'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=415' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=415'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=416' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=416'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=417' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=417'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=418' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=418'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=419' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=419'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=420' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=420'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=421' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=421'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=422' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=422'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=423' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=423'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=424' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=424'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=425' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=425'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=426' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=426'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=427' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=427'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=428' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=428'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=429' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=429'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=430' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=430'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=431' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=431'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=432' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=432'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=433' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=433'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=434' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=434'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=435' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=435'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=436' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=436'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=437' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=437'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=438' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=438'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=439' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=439'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=440' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=440'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=441' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=441'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=442' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=442'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=443' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=443'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=444' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=444'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=445' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=445'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=446' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=446'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=447' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=447'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=448' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=448'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=449' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=449'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=450' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=450'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=451' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=451'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=452' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=452'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=453' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=453'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=454' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=454'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=455' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=455'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=456' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=456'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=457' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=457'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=458' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=458'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=459' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=459'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=460' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=460'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=461' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=461'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=462' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=462'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=463' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=463'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=464' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=464'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=465' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=465'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=466' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=466'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=467' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=467'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=468' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=468'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=469' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=469'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=470' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=470'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=471' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=471'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=472' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=472'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=473' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=473'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=474' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=474'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=475' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=475'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=476' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=476'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=477' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=477'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=478' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=478'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=479' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=479'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=481' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=481'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=482' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=482'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=483' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=483'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=484' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=484'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=485' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=485'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=486' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=486'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=487' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=487'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=488' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=488'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=489' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=489'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=490' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=490'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=491' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=491'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=492' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=492'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=493' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=493'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=494' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=494'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=495' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=495'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=496' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=496'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=497' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=497'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=498' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=498'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=499' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=499'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=500' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=500'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=501' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=501'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=502' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=502'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=503' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=503'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=504' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=504'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=505' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=505'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=506' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=506'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=507' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=507'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field-group&#038;p=508' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field-group&#038;p=508'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&#038;p=509' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&#038;p=509'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=510' WHERE `guid` = 'http://master.makerfaire.com/?page_id=510'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=511' WHERE `guid` = 'http://master.makerfaire.com/?page_id=511'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=513' WHERE `guid` = 'http://master.makerfaire.com/?page_id=513'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=514' WHERE `guid` = 'http://master.makerfaire.com/?page_id=514'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=515' WHERE `guid` = 'http://master.makerfaire.com/?page_id=515'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&p=518' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&p=518'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&p=519' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&p=519'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&p=520' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&p=520'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?post_type=acf-field&p=521' WHERE `guid` = 'http://master.makerfaire.com/?post_type=acf-field&p=521'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_posts` SET `guid` = 'http://bloomsburg.global.makerfaire.com/?page_id=522' WHERE `guid` = 'http://master.makerfaire.com/?page_id=522'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_rg_lead` SET `source_url` = 'http://bloomsburg.global.makerfaire.com/call-for-makers/application/' WHERE `source_url` = 'http://master.makerfaire.com/call-for-makers/application/'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_rg_lead_detail` SET `value` = 'http://bloomsburg.global.makerfaire.com/wp-content/uploads/sites/52/gravity_forms/1-116b987cbefab2a3e5582181e7ed27ae/2016/07/IMG_0662.jpg' WHERE `value` = 'http://master.makerfaire.com/wp-content/uploads/sites/6/gravity_forms/1-116b987cbefab2a3e5582181e7ed27ae/2016/07/IMG_0662.jpg'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:17] SQL :UPDATE `wp_52_rg_lead_detail` SET `value` = 'http://bloomsburg.global.makerfaire.com/wp-content/uploads/sites/52/gravity_forms/1-116b987cbefab2a3e5582181e7ed27ae/2016/07/IMG_0655.jpg' WHERE `value` = 'http://master.makerfaire.com/wp-content/uploads/sites/6/gravity_forms/1-116b987cbefab2a3e5582181e7ed27ae/2016/07/IMG_0655.jpg'
+[07/Dec/2016:00:01:17] Result :1
+[07/Dec/2016:00:01:18] End site duplication : new site ID = 52
