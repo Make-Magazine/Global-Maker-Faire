@@ -8,6 +8,26 @@ function populate_checkbox( $form) {
   $lockedValues = array("Disable Notification", "Make: Magazine Review", "Featured Maker","Disable Autoresponder");
 
   foreach ( $form['fields'] as &$field ) {
+    //Producers are not allowed to change the text of field 376
+    if($field["id"] == 376){
+      $field['label'] = "Please know that Make:, Maker Faire, and Maker Media respect your privacy and will not share or sell your information.";
+      $field['description'] = 'Complete Make: privacy policy is located at: <a href="http://makermedia.com/privacy/">http://makermedia.com/privacy/</a>';
+      $field['choices'] = array(
+        array(
+        'text'  => 'I understand that by submitting this application, I consent to sharing my contact and exhibit information with Make: and consent to the Make: Privacy Policy.',
+        'value' => 'I understand that by submitting this application, I consent to sharing my contact and exhibit information with Make: and consent to the Make: Privacy Policy.',
+        'isSelected' => false,
+        'price' => ''));
+      $field['inputs'] = array(
+          array(
+              "id" => "376.1",
+              "label" => "I understand that by submitting this application, I consent to sharing my contact and exhibit information with Make: and consent to the Make: Privacy Policy.",
+              "name"  => ""
+          )
+      );
+      echo '<br/>after<br/>';
+    }
+    //these field choices should always be the first 3 for flags
     if($field["id"] == 304){
       //set field inputs
       $lockedInputs = array(

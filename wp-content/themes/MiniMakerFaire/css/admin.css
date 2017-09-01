@@ -176,7 +176,7 @@
 /* End Entry Rating Styling*/
 
 /* admin gform display */
-.field_hover.lockedField {
+#gform_fields .field_hover.lockedField{
   background-image: url(../img/gf-fieldnotification-header.jpg);
 }
 
