@@ -121,12 +121,13 @@ function getFeatMkPanel($row_layout) {
   //build makers array
   $makerArr = array();
   if($dynamic){
-    $formIDarr = array_map('intval', explode(",", $formIDs));
+    $formid = (int) get_sub_field('enter_formid_here');
+
     $search_criteria['status'] = 'active';
     $search_criteria['field_filters'][] = array( 'key' => '303', 'value' => 'Accepted');
     $search_criteria['field_filters'][] = array( 'key' => '304', 'value' => 'Featured Maker');
 
-    $entries = GFAPI::get_entries(0, $search_criteria, null, array('offset' => 0, 'page_size' => 999));
+    $entries = GFAPI::get_entries($formid, $search_criteria, null, array('offset' => 0, 'page_size' => 999));
 
     //randomly order entries
     shuffle ($entries);
