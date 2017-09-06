@@ -24,15 +24,17 @@ get_header(); ?>
               else{
                 echo 'col-xs-12 col-sm-3">';
               }
-               
+
               echo   '<article class="recent-post-inner">
                         <a href="' . get_permalink() . '">';
 
               if ( get_the_post_thumbnail() != '' ) {
                 $thumb_id = get_post_thumbnail_id();
                 $url = wp_get_attachment_url($thumb_id);
-                echo "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
+              }else{
+                $url = "/wp-content/themes/MiniMakerFaire/img/grey-makey.png";
               }
+              echo "<div class='recent-post-img' style='background-image: url(" . $url . ");'></div>";
 
               echo '      <div class="recent-post-text">
                             <h4>' . get_the_title() . '</h4>
