@@ -60,7 +60,7 @@ function add_sidebar_text_middle( $form, $entry ) {
   <div class="meta-box-sortables">
     <div id="entrySched" class="postbox">
       <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Location & Schedule</span><span class="toggle-indicator" aria-hidden="true"></span></button>
-      <h2 class="hndle ui-sortable-handle"><span>Location & Schedule</span></h2>
+      <h2 class="hndle ui-sortable-handle"><span>Schedule</span></h2>
       <div class="inside">
         <?php echo disp_sched( $form, $entry);?>
       </div>
