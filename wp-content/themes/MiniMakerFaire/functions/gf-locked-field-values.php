@@ -25,7 +25,6 @@ function populate_checkbox( $form) {
               "name"  => ""
           )
       );
-      echo '<br/>after<br/>';
     }
     //these field choices should always be the first 3 for flags
     if($field["id"] == 304){
