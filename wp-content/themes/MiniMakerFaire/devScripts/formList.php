@@ -12,9 +12,10 @@ foreach($results as $blogrow){
   $table  =  'wp_'.$blogID.'_rg_form';
 
   $formResults = $wpdb->get_results("select * from ".$table,ARRAY_A);
-  $form = GFAPI::get_form($formrow['id']);
+
   $formArray = array();
   foreach($formResults as $formrow){
+    $form = GFAPI::get_form($formrow['id']);
     $formArray[] = array(
         'form_id'       => $formrow['id'],
         'form_type'     => (isset($form['form_type'])?$form['form_type']:''),
