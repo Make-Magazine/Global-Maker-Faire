@@ -12,10 +12,12 @@ foreach($results as $blogrow){
   $table  =  'wp_'.$blogID.'_rg_form';
 
   $formResults = $wpdb->get_results("select * from ".$table,ARRAY_A);
+  $form = GFAPI::get_form($formrow['id']);
   $formArray = array();
   foreach($formResults as $formrow){
     $formArray[] = array(
         'form_id'       => $formrow['id'],
+        'form_type'     => (isset($form['form_type'])?$form['form_type']:''),
         'form_name'     => $formrow['title'],
         'date_created'  => $formrow['date_created'],
         'is_active'     => $formrow['is_active'],
@@ -98,16 +100,20 @@ foreach($results as $blogrow){
       <div style="clear:both">
         <table width="100%">
           <tr>
-            <td width="10%">Form ID</td>
-            <td width="50%">Name</td>
-            <td width="20%">Date Created</td>
-            <td width="10%">Active?</td>
-            <td width="10%">Deleted?</td>
+            <td width="5%">Blog ID</td>
+            <td width="5%">Form ID</td>
+            <td width="5%">Form Type</td>
+            <td width="60%">Name</td>
+            <td width="15%">Date Created</td>
+            <td width="5%">Active?</td>
+            <td width="5%">Deleted?</td>
           </tr>
         <?php
         foreach($blogData['forms'] as $formData){
           echo '<tr>';
+          echo '<td>'.$blogData['blog_id'].'</td>';
           echo '<td>'.$formData['form_id'].'</td>';
+          echo '<td>'.$formData['form_type'].'</td>';
           echo '<td>'.$formData['form_name'].'</td>';
           echo '<td>'.$formData['date_created'].'</td>';
           echo '<td>'.($formData['is_active']==0?'No':'').'</td>';

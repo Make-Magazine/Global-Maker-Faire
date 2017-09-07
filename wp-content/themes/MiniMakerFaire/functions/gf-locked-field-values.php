@@ -1,4 +1,61 @@
 <?php
+/*  Define an array of field ID's to be locked */
+//TBD - Put list of locked fields in DB
+  $lockedFields = array(
+   '16',  '22',  '27',  '96',  '98',
+  '101', '105', '109', '110', '111', '151', '154', '155', '156', '157', '158', '159', '160', '161',
+  '162', '163', '164', '165', '166', '167',
+  '217', '219', '220', '221', '222', '223', '224', '234', '258', '259', '260', '261', '262', '263',
+  '303', '304', '310', '311', '312', '313', '314', '315', '316', '320', '321', '376' );
+
+add_action( 'gform_delete_field_link', 'mf_delete_field_link', 10, 1 );
+function mf_delete_field_link( $delete_field_link ) {
+  global $lockedFields;
+
+  //find beginning of field id (gfield_delete_{$this->id}')
+  $fieldID = 0;
+  $fieldIDstart = strpos($delete_field_link, 'gfield_delete_');
+  if($fieldIDstart !== false )
+    $fieldIDend   = strpos($delete_field_link, "'",$fieldIDstart);
+  if($fieldIDend !== false && $fieldIDstart !== false)
+    $fieldID = substr($delete_field_link, $fieldIDstart+14, $fieldIDend-$fieldIDstart-14);
+  if(in_array($fieldID,$lockedFields,true)){
+    return '';
+  }else{
+    return $delete_field_link;
+  }
+}
+
+/*
+ * If form type is Call for Makers, add a class of locked fields that makes the background of the field red showing it is a locked field
+ */
+add_action('gform_field_css_class','mf_field_css_class',10,4);
+function mf_field_css_class($css_class,$field,$form){
+  global $lockedFields;
+  if(isset($form['form_type']) && $form['form_type']=='cfm'){
+    $fieldID = (string) $field->id; //typecast to string for in_array check
+    if(in_array($fieldID,$lockedFields,true)){
+      $css_class .=' lockedField';
+    }
+  }
+  return $css_class;
+}
+
+/*  Adds a message at the top of the form - not currently used */
+function mf_add_msg($form) {
+  //var_dump($form);
+  return $form;
+}
+add_action('gform_admin_pre_render','mf_add_msg',10,1);
+
+
+/*
+ * If form type is 'Call For Makers'
+ *    - Lock field text for field 376
+ *    - Require field 376 be checked for submit button to appear
+ *    - Lock 3 values on field 304 (flags) and always place them at the top of the list
+ *      "Disable Notification", "Make: Magazine Review", "Featured Maker"
+ */
 add_filter( 'gform_pre_render', 'populate_checkbox' );
 add_filter( 'gform_pre_validation', 'populate_checkbox' );
 add_filter( 'gform_pre_submission_filter', 'populate_checkbox' );
@@ -23,7 +80,6 @@ function populate_checkbox( $form) {
     $form['button']['conditionalLogic']['rules'] = array_values($form['button']['conditionalLogic']['rules']);
 
     //lock values on field 376 and 304.  These cannot be changed by producers
-    $lockedValues = array("Disable Notification", "Make: Magazine Review", "Featured Maker","Disable Autoresponder");
     foreach ( $form['fields'] as &$field ) {
       //Producers are not allowed to change the text of field 376
       if($field["id"] == 376){
@@ -43,7 +99,9 @@ function populate_checkbox( $form) {
             )
         );
       }
+
       //these field choices should always be the first 3 for flags
+      $lockedValues = array("Disable Notification", "Make: Magazine Review", "Featured Maker","Disable Autoresponder");
       if($field["id"] == 304){
         //set field inputs
         $lockedInputs = array(
