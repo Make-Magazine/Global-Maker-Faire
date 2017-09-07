@@ -14,7 +14,7 @@ function my_acf_show_admin( $show ) {
  * Please paste PHP code below this that is generated using Custom Fields-> Tools -> Export Field Groups
  * Toggle all field groups and click 'Generate Export Code'
  */
-if( function_exists('acf_add_local_field_group') ):
+if( function_exists('acf_add_local_field_group') ){
 
 acf_add_local_field_group(array (
 	'key' => 'group_571002e8e1ecf',
@@ -804,11 +804,6 @@ acf_add_local_field_group(array (
 	'title' => 'Meet the Makers',
 	'fields' => array (
 		array (
-			'default_value' => '',
-			'maxlength' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
 			'key' => 'field_57a126f5e7350',
 			'label' => 'Display data from these forms:',
 			'name' => 'form_id',
@@ -816,15 +811,37 @@ acf_add_local_field_group(array (
 			'instructions' => 'Enter one or more Form IDs here. If you add more than one id, separate each with a comma, ie: 1,3
 <br>
 You can find the Form IDs in Forms > Forms > ID column.',
-			'required' => 0,
+			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array (
 				'width' => '',
 				'class' => '',
 				'id' => '',
 			),
-			'readonly' => 0,
-			'disabled' => 0,
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array (
+			'key' => 'field_59b1a8e73002c',
+			'label' => 'No Makers Found text',
+			'name' => 'no_makers_found_text',
+			'type' => 'text',
+			'instructions' => 'Text displayed when no makers are set. Defaults to \'No Makers Found\'',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 'No Makers Found',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
 		),
 	),
 	'location' => array (
@@ -856,8 +873,6 @@ You can find the Form IDs in Forms > Forms > ID column.',
 	),
 	'active' => 1,
 	'description' => '',
-	'modified' => 1470181145,
-	'local' => 'json',
 ));
 
 acf_add_local_field_group(array (
@@ -5312,4 +5327,4 @@ acf_add_local_field_group(array (
 	'local' => 'php',
 ));
 
-endif;
+}

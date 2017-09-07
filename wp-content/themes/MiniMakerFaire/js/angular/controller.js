@@ -5,6 +5,7 @@ app.controller('mtmMakers', function($scope, $http) {
   $scope.category = '';
   $scope.tags = [];
   catJson = [];
+  var noMakerText = jQuery('#noMakerText').val();
   var formIDs = jQuery('#forms2use').val();
   formIDs = formIDs.replace(",","-");
   //to be added - replace commas with - in form ids
@@ -12,7 +13,7 @@ app.controller('mtmMakers', function($scope, $http) {
   $http.get('/wp-json/makerfaire/v2/fairedata/mtm/'+formIDs)
     .then(function successCallback(response) {
       if(response.data.entity.length<=0){
-        jQuery('.mtm .loading').html('No makers found');
+        jQuery('.mtm .loading').html(noMakerText);
       }
       $scope.makers = response.data.entity;
       //build array of categories
@@ -52,6 +53,7 @@ app.controller('mtmMakers', function($scope, $http) {
       jQuery('#carouselImgs').html(carouselImgs);
       }, function errorCallback(error) {
         console.log(error);
+        jQuery('.mtm .loading').html(noMakerText);
       }).finally(function(){
       //trigger the carousel
       jQuery('.mtm-carousel').owlCarousel({

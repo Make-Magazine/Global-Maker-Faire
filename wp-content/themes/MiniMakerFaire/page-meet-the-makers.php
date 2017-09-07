@@ -2,11 +2,16 @@
 /*
 * Template name: Meet the Makers
 */
-get_header(); ?>
+get_header();
+
+$noMakerText = get_field('no_makers_found_text');
+if($noMakerText =='') $noMakerText = 'No makers found';
+?>
 
 <div class="mtm" ng-app="mtm">
   <div ng-controller="mtmMakers"  ng-cloak="">
     <input type="hidden" id="forms2use" value="<?php echo get_field('form_id'); ?>" />
+    <input type="hidden" id="noMakerText" value="<?php echo $noMakerText; ?>" />
     <div class="container">
       <h1 class="text-center"><?php echo get_the_title(); ?></h1>
     </div>
