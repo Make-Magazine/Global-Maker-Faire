@@ -2,11 +2,18 @@
 /*
 * Template name: Schedule
 */
-get_header(); ?>
+get_header();
+$noMakerText = get_field('no_makers_found_text');
+?>
 
 <input type="hidden" id="forms2use" value="<?php echo get_field('schedule_ids'); ?>" />
+<input type="hidden" id="noMakerText" value="<?php echo $noMakerText; ?>" />
 
 <div id="page-schedule" class="container schedule-table" ng-controller="scheduleCtrl" ng-app="scheduleApp">
+  <div ng-show="!schedules.length" class="container loading">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    <span class="sr-only"><?php _e("Loading",'MiniMakerFaire')?>...</span>
+  </div>
   <div ng-cloak>
   <div class="topic-nav" ng-if="showType">
     <div class="btn-group">

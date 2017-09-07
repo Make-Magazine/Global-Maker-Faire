@@ -4,10 +4,17 @@
     $scope.showType = false;
     $scope.showSchedules = false;
     $scope.propertyName = 'time_start';
+    var noMakerText = jQuery('#noMakerText').val();
     var formIDs = jQuery('#forms2use').val();
     if(formIDs=='') alert ('error!  Please set the form to pull from on the admin page.')
     $http.get('/wp-json/makerfaire/v2/fairedata/schedule/'+formIDs)
       .then(function successCallback(response) {
+        if('schedule' in response.data && response.data.schedule.length<=0){
+
+        }else{
+          jQuery('#page-schedule .loading').html(noMakerText);
+        }
+
         $scope.catJson = [];
         $scope.types=[];
         angular.forEach(response.data.category,function(catArr){
@@ -66,7 +73,7 @@
                   $scope.tags.push(addCat);
               }
             });
-            
+
             schedule.category = categories;
 
         });
@@ -79,6 +86,7 @@
         $scope.types = typeArr;
       }, function errorCallback(error) {
         console.log(error);
+        jQuery('#page-schedule .loading').html(noMakerText);
       }).finally( function (){
        $scope.showSchedules = true;
       });

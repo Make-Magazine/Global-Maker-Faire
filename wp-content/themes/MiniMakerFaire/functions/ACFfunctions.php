@@ -2833,11 +2833,6 @@ acf_add_local_field_group(array (
 	'title' => 'Schedule Page',
 	'fields' => array (
 		array (
-			'default_value' => '',
-			'maxlength' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
 			'key' => 'field_5750d1756eeb0',
 			'label' => 'Display data from these forms:',
 			'name' => 'schedule_ids',
@@ -2845,15 +2840,37 @@ acf_add_local_field_group(array (
 			'instructions' => 'Enter one or more Form IDs here. If you add more than one id, separate each with a comma, ie: 1,3
 <br>
 You can find the Form IDs in Forms > Forms > ID column."',
-			'required' => 0,
+			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array (
 				'width' => '',
 				'class' => '',
 				'id' => '',
 			),
-			'readonly' => 0,
-			'disabled' => 0,
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array (
+			'key' => 'field_59b1aac2197c5',
+			'label' => 'No Makers Found text',
+			'name' => 'no_makers_found_text',
+			'type' => 'text',
+			'instructions' => 'Text displayed when no makers are set. Defaults to \'No Makers Found\'',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 'No Makers Found',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
 		),
 	),
 	'location' => array (
@@ -2886,8 +2903,6 @@ You can find the Form IDs in Forms > Forms > ID column."',
 	),
 	'active' => 1,
 	'description' => '',
-	'modified' => 1470182495,
-	'local' => 'json',
 ));
 
 acf_add_local_field_group(array (
