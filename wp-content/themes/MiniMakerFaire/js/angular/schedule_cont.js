@@ -9,8 +9,8 @@
     if(formIDs=='') alert ('error!  Please set the form to pull from on the admin page.')
     $http.get('/wp-json/makerfaire/v2/fairedata/schedule/'+formIDs)
       .then(function successCallback(response) {
-        if('schedule' in response.data && response.data.schedule.length<=0){
-
+        if('schedule' in response.data && response.data.schedule.length>0){
+          jQuery('#page-schedule .loading').hide();
         }else{
           jQuery('#page-schedule .loading').html(noMakerText);
         }
