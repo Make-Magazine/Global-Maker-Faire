@@ -3,26 +3,33 @@ include 'db_connect.php';
 global $wpdb;
 
 $blogSql = "select blog_id, domain from wp_blogs  ORDER BY `wp_blogs`.`blog_id` ASC";
+
 $results = $wpdb->get_results($blogSql,ARRAY_A);
 
 $blogArray = array();
 //loop thru blogs
 foreach($results as $blogrow){
   $blogID = $blogrow['blog_id'];
-  $table  =  'wp_'.$blogID.'_rg_form';
+  if($blogID==1){
+    $table  =  'wp_rg_form_meta';
+  }else{
+    $table  =  'wp_'.$blogID.'_rg_form_meta';
+  }
 
-  $formResults = $wpdb->get_results("select * from ".$table,ARRAY_A);
+  $formResults = $wpdb->get_results('select display_meta, form_id from '.$table,ARRAY_A);
 
   $formArray = array();
   foreach($formResults as $formrow){
-    $form = GFAPI::get_form($formrow['id']);
+    $form_id = $formrow['form_id'];
+    $json = json_decode($formrow['display_meta']);
+
     $formArray[] = array(
-        'form_id'       => $formrow['id'],
-        'form_type'     => (isset($form['form_type'])?$form['form_type']:''),
-        'form_name'     => $formrow['title'],
-        'date_created'  => $formrow['date_created'],
-        'is_active'     => $formrow['is_active'],
-        'is_trash'      => $formrow['is_trash']
+        'form_id'       => $form_id,
+        'form_type'     => (isset($json->form_type)?$json->form_type:''),
+        'form_name'     => $json->title,
+        'date_created'  => $json->date_created,
+        'is_active'     => $json->is_active,
+        'is_trash'      => $json->is_trash
     );
   }
   $blogArray[] = array(
