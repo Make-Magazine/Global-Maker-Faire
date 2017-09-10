@@ -64,6 +64,7 @@ add_filter( 'gform_admin_pre_render', 'populate_checkbox' );
 function populate_checkbox( $form) {
   if(isset($form['form_type']) && $form['form_type']=='cfm'){
     //Always require field 376 to be checked prior to displaying the submit button.
+    /*
     foreach($form['button']['conditionalLogic']['rules'] as $key=>&$rule){
       if($rule['fieldId']==376){
         unset($form['button']['conditionalLogic']['rules'][$key]);
@@ -78,10 +79,11 @@ function populate_checkbox( $form) {
             "I understand that by submitting this application, I consent to sharing my contact and exhibit information with Make: and consent to the Make: Privacy Policy."
           );
     $form['button']['conditionalLogic']['rules'] = array_values($form['button']['conditionalLogic']['rules']);
-
+*/
     //lock values on field 376 and 304.  These cannot be changed by producers
     foreach ( $form['fields'] as &$field ) {
       //Producers are not allowed to change the text of field 376
+      /*
       if($field["id"] == 376){
         $field['label'] = "Please know that Make:, Maker Faire, and Maker Media respect your privacy and will not share or sell your information.";
         $field['description'] = 'Complete Make: privacy policy is located at: <a href="http://makermedia.com/privacy/">http://makermedia.com/privacy/</a>';
@@ -98,7 +100,7 @@ function populate_checkbox( $form) {
                 "name"  => ""
             )
         );
-      }
+      }*/
 
       //these field choices should always be the first 3 for flags
       $lockedValues = array("Disable Notification", "Make: Magazine Review", "Featured Maker","Disable Autoresponder");
