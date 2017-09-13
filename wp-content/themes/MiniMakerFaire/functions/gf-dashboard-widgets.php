@@ -26,7 +26,7 @@
 
   function add_welcome_widget(){ ?>
 
-<img style="float:right;" src="http://makerfaire.com/wp-content/uploads/2015/03/MF-Relations_Icon_SetUp.jpg" alt="MF-Relations_Icon_SetUp" width="75" height="75" align="left" hspace="10" />
+<img style="float:right;" src="https://makerfaire.com/wp-content/uploads/2015/03/MF-Relations_Icon_SetUp.jpg" alt="MF-Relations_Icon_SetUp" width="75" height="75" align="left" hspace="10" />
 
 The left navigation bar is your control center for your site.
  <ol>

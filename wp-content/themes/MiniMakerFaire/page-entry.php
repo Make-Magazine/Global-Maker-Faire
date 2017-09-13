@@ -252,13 +252,13 @@ function display_entry_schedule($entry_id) {
       <div class="faireActions">
         <span class="pull-right">
           <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-Map_2016__8.5x11_Pg-2.pdf">
-            <img class="actionIcon" src="http://makerfaire.com/wp-content/uploads/2016/01/icon-map.png" alt="Map Icon" width="40px" scale="0">
+            <img class="actionIcon" src="https://makerfaire.com/wp-content/uploads/2016/01/icon-map.png" alt="Map Icon" width="40px" scale="0">
             <?php  __('Event Map','MiniMakerFaire')?>
           </a>
         </span>
         <span class="pull-right">
           <a class="flagship-icon-link" href="http://makerfaire.com/national-2016/schedule/">
-            <img class="actionIcon" src="http://makerfaire.com/wp-content/uploads/2016/01/icon-schedule.png" alt="Schedule Icon" width="40px" scale="0">
+            <img class="actionIcon" src="https://makerfaire.com/wp-content/uploads/2016/01/icon-schedule.png" alt="Schedule Icon" width="40px" scale="0">
           </a>
           <span class="pull-right "><a href="http://makerfaire.com/national-2016/schedule/"><?php  __('View full schedule','MiniMakerFaire')?></a><br/>
             <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-ProgramGuide_2016_v2.pdf"><?php  __('Download the program guide','MiniMakerFaire')?></a>

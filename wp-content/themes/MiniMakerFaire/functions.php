@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////////////////////////
 
   $themename = "MakerFaire";
-  $developer_uri = "http://makermedia.com";
+  $developer_uri = "https://makermedia.com";
   $shortname = "mf";
   $version = '1.0';
 

@@ -680,7 +680,7 @@ function getNewsletterPanel() {
             <p><strong>'. __('Stay in Touch:','MiniMakerFaire').'</strong><br />'. __('Get Local and Global Maker Faire Community updates.','MiniMakerFaire').'</strong></p>
           </div>
           <div class="col-xs-12 col-sm-6">
-            <form class="form-inline sub-form whatcounts-signup1" action="http://whatcounts.com/bin/listctrl" method="POST">
+            <form class="form-inline sub-form whatcounts-signup1" action="https://secure.whatcounts.com/bin/listctrl" method="POST">
               <input type="hidden" name="slid" value="6B5869DC547D3D4690C43FE9E066FBC6" /><!-- Confirmation -->
               <input type="hidden" name="custom_list_makermedia" value="yes" />
               <input type="hidden" name="custom_list_makerfaire" value="yes" />
@@ -727,7 +727,7 @@ function getNewsletterPanel() {
           e.preventDefault();
           var bla = jQuery("#wc-email").val();
           globalNewsletterSignup(bla);
-          jQuery.post("http://whatcounts.com/bin/listctrl", jQuery(".whatcounts-signup1").serialize());
+          jQuery.post("https://secure.whatcounts.com/bin/listctrl", jQuery(".whatcounts-signup1").serialize());
           jQuery(".fancybox-thx").trigger("click");
           //jQuery(".nl-modal-email-address").text(bla);
           //jQuery(".whatcounts-signup2 #email").val(bla);
