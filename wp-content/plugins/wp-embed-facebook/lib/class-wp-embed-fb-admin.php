@@ -6,7 +6,6 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 		//Donate or review notice
 		add_action( 'admin_notices', __CLASS__ . '::admin_notices' );
 		add_action( 'wp_ajax_wpemfb_close_warning', __CLASS__ . '::wpemfb_close_warning' );
-		add_action( 'wp_ajax_wpemfb_video_down', __CLASS__ . '::wpemfb_video_down' );
 
 		//settings page
 		add_action( 'admin_menu', __CLASS__ . '::add_page' );
@@ -24,16 +23,9 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 			?>
 			<div class="notice wpemfb_warning is-dismissible">
 				<h2>WP Embed Facebook</h2>
-
-				<p>Hey! The last step.</p>
-
-				<p><img style="position:relative; top: 5px;" height="20px" width="auto"
-				        src="<?php echo self::url() . 'lib/admin/ic_setting.png' ?>">&nbsp;Turn on <a title="Let your site visitors download Facebook videos"
-						id="wef-video-down" href="<?php echo admin_url( "options-general.php?page=embedfacebook" ) ?>">Video
-						Download Option</a> in settings.</p>
 				<p>
 					<?php
-					printf( __( 'To enable comment moderation and embed albums, events, profiles and video as HTML5 setup a facebook app on <a href="%s">settings</a>', 'wp-embed-facebook' ), admin_url('options-general.php?page=embedfacebook') )
+					printf( __( 'To enable comment moderation and embed albums, events, profiles and video as HTML5 setup a facebook app on <a id="wef_settings_link" href="%s">settings</a>', 'wp-embed-facebook' ), admin_url('options-general.php?page=embedfacebook') )
 					?>
 				</p>
 			</div>
@@ -54,7 +46,6 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 		if ( current_user_can( 'manage_options' ) ) {
 			$options                   = self::get_option();
 			$options['close_warning2'] = 'true';
-			$options['video_download'] = 'true';
 			self::set_options( $options );
 		}
 		die;
@@ -91,19 +82,35 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 		if ( $hook_suffix == 'settings_page_embedfacebook' ) :
 			?>
 			<script type="text/javascript">
-				jQuery(document).ready(function () {
-					var sections = jQuery('section');
-					sections.first().show();
-					jQuery(".nav-tab-wrapper a").on('click', function (event) {
-						event.preventDefault();
-						sections.hide();
-						jQuery.each(jQuery(".nav-tab-wrapper a"), function (key, value) {
-							jQuery(value).removeClass("nav-tab-active");
-						});
-						sections.eq(jQuery(this).index()).show();
-						jQuery(this).addClass('nav-tab-active')
-					});
-				});
+                jQuery(document).ready(function () {
+                    var sections = jQuery('section');
+                    var tabs = jQuery(".nav-tab-wrapper a");
+                    var hash = jQuery(window.location.hash);
+                    sections.hide();
+                    if (hash.length) {
+                        var index = hash.index() - 4;
+                        console.log(index);
+                        sections.eq(index).show();
+                        jQuery.each(tabs, function (key, value) {
+                            jQuery(value).removeClass("nav-tab-active");
+                        });
+                        tabs.eq(index).addClass('nav-tab-active');
+                    } else {
+                        sections.first().show();
+                    }
+                    tabs.on('click', function (event) {
+                        var index = jQuery(this).index();
+                        var url = window.location.pathname + window.location.search + '#' + sections.eq(index)[0].id;
+                        event.preventDefault();
+                        sections.hide();
+                        jQuery.each(tabs, function (key, value) {
+                            jQuery(value).removeClass("nav-tab-active");
+                        });
+                        sections.eq(index).show();
+                        jQuery(this).addClass('nav-tab-active');
+                        window.history.pushState(sections.eq(index)[0].id, tabs.eq(index)[0].innerText, url);
+                    });
+                });
 			</script>
 			<?php
 		endif;
@@ -113,13 +120,14 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 				jQuery(document).on('click', '.wpemfb_warning .notice-dismiss', function () {
 					jQuery.post(ajaxurl, {action: 'wpemfb_close_warning'});
 				});
-				jQuery(document).on('click', '#wef-video-down', function (e) {
-					e.preventDefault();
-					jQuery.post(ajaxurl, {action: 'wpemfb_video_down'}, function () {
-						window.location = "<?php echo admin_url("options-general.php?page=embedfacebook"); ?>"
-					});
 
-				});
+                jQuery(document).on('click', '#wef_settings_link', function (e) {
+                    e.preventDefault();
+                    jQuery.post(ajaxurl, {action: 'wpemfb_close_warning'}, function () {
+                        window.location = "<?php echo admin_url("options-general.php?page=embedfacebook"); ?>"
+                    });
+
+                });
 			</script>
 			<?php
 		endif;
@@ -136,9 +144,33 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 	 * Add template editor style to the embeds.
 	 */
 	static function admin_init() {
-		add_editor_style( self::url() . '/templates/default/default.css' );
-		add_editor_style( self::url() . '/templates/classic/classic.css' );
+		//add_editor_style( self::url() . 'templates/default/default.css' );
+		//add_editor_style( self::url() . 'templates/classic/classic.css' );
+        //This way I only have to change the version instead of all
+        add_filter('mce_css',__CLASS__.'::mce_css');
 	}
+
+	static function mce_css($css){
+
+	    $list = array();
+
+		$list[] = add_query_arg(
+			'version',
+			'2.2.1',
+			WP_Embed_FB_Plugin::url() . 'templates/classic/classic.css'
+		);
+		$list[] = add_query_arg(
+			'version',
+			'2.2.1',
+			WP_Embed_FB_Plugin::url() . 'templates/default/default.css'
+		);
+
+		if(!empty($css)){
+		    $css .= ',';
+        }
+
+		return $css . implode( ',', $list );
+    }
 
 	/**
 	 * Render form sections
@@ -305,7 +337,7 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 			<h2>WP Embed Facebook</h2>
 
 			<div class="wef-content">
-				<form id="config-form" action="#" method="post">
+				<form id="config-form" action="" method="post">
 					<?php wp_nonce_field( 'W7ziLKoLoj', 'save-data' ); ?>
 					<?php
 					$has_app = self::has_fb_app();
@@ -335,13 +367,7 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 						self::field( 'checkbox', 'auto_embed_active', __( 'Auto embed url\'s on editor ', 'wp-embed-facebook' ) );
 						self::field( 'number', 'max_width', __( 'Maximum width in pixels', 'wp-embed-facebook' ), array(), array( 'min' => '0' ) );
 						self::field( 'checkbox', 'video_as_post', __( 'Embed video as post', 'wp-embed-facebook' ) );
-						self::field( 'checkbox', 'video_download', sprintf( __( '%sShow download option <br> under video', 'wp-embed-facebook' ), '<img title="Let your site visitors download Facebook videos" style="display:block;float:left;padding-right:5px;" width="50px" height="auto" src="' . self::url() . 'lib/admin/ic_image_settings.png">' ) );
 						?>
-						<tr valign="middle">
-							<th></th>
-							<td style="float: left;position: relative;top: -31px;left: 23px;">
-								Let your site visitors download Facebook videos					</td>
-						</tr>
 						<?php
 
 						self::field( 'string', sprintf( __( 'The quote plugin lets people select text on your page and add it to their share.<br><a href="%s" target="_blank" title="WP Embed Facebook">Demo</a>', 'wp-embed-facebook' ), 'http://www.wpembedfb.com/demo-site/social-plugins/quote-plugin/' ), '<h3>' . __( 'Quote Plugin', 'wp-embed-facebook' ) . '</h3>' );
@@ -594,11 +620,12 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 					<?php do_action( 'wpemfb_options' ); ?>
 
 					<section id="advanced" class="sections">
-						<p>Beware altering this options without the proper knowledge could make the world disappear.</p>
+						<p><?php _e('Beware altering this options without the proper knowledge could make the world disappear.','wp-embed-facebook') ?></p>
 						<?php
 						self::section( true );
 						self::field( 'string', '', '<h3>' . __( 'Enqueue styles and scripts', 'wp-embed-facebook' ) . '</h3>' );
 						self::field( 'checkbox', 'enq_when_needed', __( 'Only when there is an embed present', 'wp-embed-facebook' ) );
+						self::field( 'checkbox', 'permalink_on_social_plugins', __( 'Use permalinks on social plugins urls', 'wp-embed-facebook' ) );
 						self::field( 'checkbox', 'enq_fbjs', __( 'Facebook SDK', 'wp-embed-facebook' ) );
 						self::field( 'checkbox', 'enqueue_style', __( 'Template Styles', 'wp-embed-facebook' ) );
 						self::field( 'checkbox', 'enq_wpemfb', __( 'Adaptive social plugins script', 'wp-embed-facebook' ) );
@@ -612,13 +639,14 @@ class WP_Embed_FB_Admin extends WP_Embed_FB_Plugin {
 						self::field( 'checkbox', 'enq_fbjs_global', __( 'Force Facebook SDK script on all site', 'wp-embed-facebook' ) );
 						self::field( 'checkbox', 'force_app_token', __( 'Force app token', 'wp-embed-facebook' ) );
 						$versions = array(
-							'v2.1' => '2.1',
-							'v2.2' => '2.2',
 							'v2.3' => '2.3',
 							'v2.4' => '2.4',
 							'v2.5' => '2.5',
 							'v2.6' => '2.6',
 							'v2.7' => '2.7',
+							'v2.8' => '2.8',
+							'v2.9' => '2.9',
+							'v2.10' => '2.10',
 						);
 						self::field( 'select', 'sdk_version', 'Facebook SDK Version', $versions );
 
