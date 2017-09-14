@@ -63,6 +63,8 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
       $instagram = get_field('instagram');
       $pinterest = get_field('pinterest');
       $googleplus = get_field('googleplus');
+      $linked = get_field('linked');
+
 
       echo '<div class="social-network-container">
               <ul class="social-network social-circle pull-left">';
@@ -99,6 +101,13 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
                   echo '<li>
                           <a href="' . $instagram . '" class="icoInstagram" title="Instagram" target="_blank">
                             <i class="fa fa-instagram"></i>
+                          </a>
+                        </li>';
+                endif;
+                if( $linkedin ):
+                  echo '<li>
+                          <a href="' . $instagram . '" class="icoLinkedin" title="Linkedin" target="_blank">
+                            <i class="fa fa-linkedin"></i>
                           </a>
                         </li>';
                 endif;
@@ -240,6 +249,7 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
           $instagram = get_sub_field('instagram');
           $pinterest = get_sub_field('pinterest');
           $googleplus = get_sub_field('googleplus');
+          $linkedin = get_sub_field('linkedin');
           $email_address = get_sub_field('email_address');
           $website = get_sub_field('website');
 
@@ -284,6 +294,13 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
                           echo '<li>
                                   <a href="' . $instagram . '" class="icoInstagram" title="Instagram" target="_blank">
                                     <i class="fa fa-instagram"></i>
+                                  </a>
+                                </li>';
+                        endif;
+                        if( $linkedin ):
+                          echo '<li>
+                                  <a href="' . $linkedin . '" class="icoLinkedin" title="Linkedin" target="_blank">
+                                    <i class="fa fa-linkedin"></i>
                                   </a>
                                 </li>';
                         endif;
