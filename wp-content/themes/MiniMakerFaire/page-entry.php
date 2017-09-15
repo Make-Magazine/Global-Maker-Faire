@@ -139,6 +139,7 @@
 
         <?php
         if (!empty($project_website)) {
+          $project_website = str_replace( 'http://', 'https://', $project_website );
           echo '<a href="' . $project_website . '" class="btn btn-info" target="_blank">'.__('Project Website','MiniMakerFaire').'</a>';
         }
         ?>
@@ -146,6 +147,7 @@
         <!-- Button to trigger video modal -->
         <?php
         if (!empty($project_video)) {
+          $project_video = str_replace( 'http://', 'https://', $project_video );
           $dispVideo = str_replace('//vimeo.com','//player.vimeo.com/video',$project_video);
           //youtube has two type of url formats we need to look for and change
           $videoID = parse_yturl($dispVideo);
