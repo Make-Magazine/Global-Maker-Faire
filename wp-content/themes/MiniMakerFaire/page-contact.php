@@ -104,13 +104,6 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
                           </a>
                         </li>';
                 endif;
-                if( $linkedin ):
-                  echo '<li>
-                          <a href="' . $instagram . '" class="icoLinkedin" title="Linkedin" target="_blank">
-                            <i class="fa fa-linkedin"></i>
-                          </a>
-                        </li>';
-                endif;
       echo    '</ul>
             </div>'; ?>
 
