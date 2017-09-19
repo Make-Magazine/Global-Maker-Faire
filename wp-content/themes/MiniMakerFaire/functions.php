@@ -40,23 +40,21 @@
     $my_version = $my_theme->get('Version');
     $styles->default_version = $my_version;
   }
-
   add_action("wp_default_styles", "my_wp_default_styles");
 
-add_action( 'admin_enqueue_scripts', 'enqueue_admin' );
 
-function enqueue_admin()
-{
-	wp_enqueue_script( 'wp-admin', get_stylesheet_directory_uri() . '/js/wp-admin.js' );
-  wp_enqueue_script('fancybox', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js', true);
-  wp_enqueue_style('fancybox-style', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css');
 
-	wp_enqueue_script('media-upload');
-}
+  function enqueue_admin() {
+  	wp_enqueue_script('wp-admin', get_stylesheet_directory_uri() . '/js/wp-admin.js' );
+    wp_enqueue_script('fancybox', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js', true);
+    wp_enqueue_style('fancybox-style', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css');
+  	wp_enqueue_script('media-upload');
+  }
+  add_action( 'admin_enqueue_scripts', 'enqueue_admin' );
 
 
 ////////////////////////////////////////////////////////////////////
-// Enqueue Styles (normal style.css and bootstrap.css)
+// Enqueue Styles
 ////////////////////////////////////////////////////////////////////
 
   function devdmbootstrap3_theme_stylesheets() {
@@ -87,7 +85,7 @@ function enqueue_admin()
   }
 
 ////////////////////////////////////////////////////////////////////
-// Register Bootstrap JS with jquery
+// Register Scripts
 ////////////////////////////////////////////////////////////////////
 
   function devdmbootstrap3_theme_js() {
@@ -100,7 +98,7 @@ function enqueue_admin()
 
 
 ////////////////////////////////////////////////////////////////////
-// Register custom scripts
+// Register newsletter script
 ////////////////////////////////////////////////////////////////////
 
   function makerfaire_theme_js() {
@@ -112,6 +110,7 @@ function enqueue_admin()
 ////////////////////////////////////////////////////////////////////
 // Enqueue the AngularJS
 ////////////////////////////////////////////////////////////////////
+
   function angular_scripts() {
     if (is_page_template('page-meet-the-makers.php') || is_page_template('page-schedule.php')) {
       wp_enqueue_script('carousel',      get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array(),false,true);
@@ -137,13 +136,14 @@ function enqueue_admin()
 ////////////////////////////////////////////////////////////////////
 
   function load_admin_scripts() {
-    wp_enqueue_style( 'admin-btstrp', get_stylesheet_directory_uri() . '/css/admin-bootstrap.css' );
+    wp_enqueue_style('admin-btstrp', get_stylesheet_directory_uri() . '/css/admin-bootstrap.css' ); // FYI this is not the full bootstrap css file, most BS styles are missing from this *
     // jquery from Wordpress core (with no-conflict mode flag enabled):
-    wp_enqueue_script( 'datetimepicker', get_stylesheet_directory_uri() . '/js/admin/jquery.datetimepicker.js', array( 'jquery' ) );
-    wp_enqueue_script( 'GF-entry-detail', get_stylesheet_directory_uri() . '/js/admin/GF-entry-detail.js', array( 'jquery' ) );
-    wp_enqueue_script('bootstrap', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js', array( 'jquery' ),false,true );
+    wp_enqueue_script('datetimepicker', get_stylesheet_directory_uri() . '/js/admin/jquery.datetimepicker.js', array( 'jquery' ) );
+    wp_enqueue_script('GF-entry-detail', get_stylesheet_directory_uri() . '/js/admin/GF-entry-detail.js', array( 'jquery' ) );
+    wp_enqueue_script('bootstrap', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js', array( 'jquery' ),false,true );
   }
   add_action('admin_enqueue_scripts','load_admin_scripts');
+
 
 
 ////////////////////////////////////////////////////////////////////
