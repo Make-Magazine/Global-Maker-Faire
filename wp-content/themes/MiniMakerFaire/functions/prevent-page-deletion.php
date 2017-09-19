@@ -16,7 +16,7 @@ add_action('before_delete_post', 'restrict_post_deletion', 10, 1);
 // news = 366
 
 function restrict_post_deletion($post_id) {
-  $restricted_pages = array(5,12,13,71,101,340,341,366);
+  $restricted_pages = array(5,12,13,340,341,366);
 
   if( ! is_super_admin() ) {
     if( is_page && in_array($post_id, $restricted_pages) ) {
