@@ -375,8 +375,11 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
     width: 100%
 }
 
-.tooltip {
-  position: absolute;
+.tooltip.top,
+.tooltip.right,
+.tooltip.bottom,
+.tooltip.left {
+  position: absolute !important;
   z-index: 1070;
   display: block;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
