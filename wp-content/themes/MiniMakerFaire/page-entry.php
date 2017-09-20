@@ -139,7 +139,7 @@
 
         <?php
         if (!empty($project_website)) {
-          $project_website = str_replace( 'http://', 'https://', $project_website );
+          //$project_website = str_replace( 'http://', 'https://', $project_website );
           echo '<a href="' . $project_website . '" class="btn btn-info" target="_blank">'.__('Project Website','MiniMakerFaire').'</a>';
         }
         ?>
