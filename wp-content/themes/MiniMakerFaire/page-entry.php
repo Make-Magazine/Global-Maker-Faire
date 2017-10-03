@@ -110,17 +110,18 @@
       $url['path'] = rtrim($url['path'], "/"); //remove any trailing slashes
       $path = explode("/", $url['path']); // splitting the path
       $slug = end($path); // get the value of the last element
+
       if($slug=='schedule'){
         $backlink = wp_get_referer();
         $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> '.__('Back to the Schedule','MiniMakerFaire');
       }else{
-        $backlink = $url['path'];
+        $backlink = get_permalink( get_page_by_path( 'meet-the-makers' ) );
         $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> '.__('Look for More Makers','MiniMakerFaire');
       }
+
       ?>
       <div class="backlink"><a href="<?php echo $backlink;?>"><?php echo $backMsg;?></a></div>
       <?php
-
 
       if(is_array($entry) && isset($entry['status']) && $entry['status']=='active' && isset($entry[303]) && $entry[303]=='Accepted'){
         //display schedule/location information if there is any
