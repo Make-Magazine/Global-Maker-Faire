@@ -82,6 +82,9 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
     // Loop through the forms
     while ( $row = $result->fetch_array(MYSQLI_ASSOC) ) {
       $json = json_decode($row['display_meta']);
+      
+      if(!$json->is_trash){
+
       echo '<h3 style="float:left">Form '.$json->id.' - '.$json->title.'</h3>';
       echo '<span style="float:right; margin-top: 15px;"><i>Blog ID = '.$blogID.'</i></span>';
       ?>
@@ -156,6 +159,7 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
       }
       ?>
       </table><?php
+      }
     }
     ?>
     </div>
