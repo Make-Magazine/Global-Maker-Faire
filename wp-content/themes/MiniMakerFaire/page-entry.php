@@ -107,6 +107,7 @@
     <div class="content entry-page col-xs-12">
       <?php //set the 'backlink' text and link (only set on valid entries)
       $url = parse_url(wp_get_referer()); //getting the referring URL
+      
       $url['path'] = rtrim($url['path'], "/"); //remove any trailing slashes
       $path = explode("/", $url['path']); // splitting the path
       $slug = end($path); // get the value of the last element
@@ -114,17 +115,19 @@
       if($slug=='schedule'){
         $backlink = wp_get_referer();
         $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> '.__('Back to the Schedule','MiniMakerFaire');
-      }elseif($slug=='meet-the-makers'){
-        $backlink = $url['path'];
+      }elseif($slug!=''){
+        $backlink = wp_get_referer();
         $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> '.__('Look for More Makers','MiniMakerFaire');
       }else{
-        $backlink = get_permalink( get_page_by_path( 'meet-the-makers' ) );
-        $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> '.__('Look for More Makers','MiniMakerFaire');
+        $backlink = '';
+        $backMsg  = '';
       }
 
+      if($backlink!=''){
       ?>
         <div class="backlink"><a href="<?php echo $backlink;?>"><?php echo $backMsg;?></a></div>
       <?php
+      }
 
 
 
