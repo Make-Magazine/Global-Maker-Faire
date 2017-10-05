@@ -5,7 +5,7 @@
           <div class="footer-logo-div">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
               <?php $header_logo = get_theme_mod( 'header_logo' ); ?>
-              <img class="img-responsive footer-logos footer-local-logo" src="<?php echo legacy_get_fit_remote_image_url( $header_logo, 384, 384); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
+              <img class="img-responsive footer-logos footer-local-logo" src="<?php echo legacy_get_fit_remote_image_url( $header_logo, 620, 620); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
             </a>
           </div>
           <?php
