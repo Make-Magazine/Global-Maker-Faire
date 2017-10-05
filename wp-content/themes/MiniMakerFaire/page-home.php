@@ -27,7 +27,8 @@ get_header();
         <h2 class="event-date" itemprop="startDate"><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo $faire_date ?></h2> <?php
       endif; ?>
 
-      <img class="img-responsive header-logo" src="<?php echo get_theme_mod( 'header_logo' ); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
+      <?php $header_logo = get_theme_mod( 'header_logo' ); ?>
+      <img class="img-responsive header-logo" src="<?php echo legacy_get_fit_remote_image_url( $header_logo, 750, 750); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
       <?php $call_to_action_text = get_field('call_to_action_text', $home_ID);
             $call_to_action_text_url = get_field('call_to_action_text_url', $home_ID);
       if( $call_to_action_text ):
