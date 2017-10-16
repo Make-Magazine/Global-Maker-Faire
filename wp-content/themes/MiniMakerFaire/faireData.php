@@ -112,14 +112,14 @@ function FDgetMTMentries($formIDs) {
       $form = GFAPI::get_form( $form_id );
       if(is_array($form['fields'])) {
         foreach($form['fields'] as $field) {
-          if($field->id==320){
+          if($field->id=='320'){
             foreach($field->choices as $choice) {
               if($choice['value']!='') {
                 $data['category'][] = array('id'=>absint( $choice['value'] ),'name'=>html_entity_decode( esc_js( $choice['text'] ) ));
               }
             }
           }
-          if($field->id==321){
+          if($field->id=='321'){
            // var_dump($field);
           }
         }

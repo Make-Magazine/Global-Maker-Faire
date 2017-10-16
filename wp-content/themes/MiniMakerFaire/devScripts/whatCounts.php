@@ -46,11 +46,11 @@ $data       = array();
 $url = 'https://api.whatcounts.net/rest/subscribers?email='.$email;
 //$url = 'https://api.whatcounts.net/rest/lists';
 $result = call_whatCounts($data,$url, 'GET');
-if(!empty($result)){
-if(isset($result[0]['subscriberId'])){
-  $subscriberID = $result[0]['subscriberId'];
-}
-}else{
+if(!empty($result)){ //already a subscriber?
+  if(isset($result[0]['subscriberId'])){
+    $subscriberID = $result[0]['subscriberId'];
+  }
+}else{ //no? add them
   echo 'no user found';
   //If subscriber not found, add it
   $url = "https://api.whatcounts.net/rest/subscribers";
@@ -60,11 +60,15 @@ if(isset($result[0]['subscriberId'])){
       "lastName"  => "Williams",
   );
   $result = call_whatCounts($data,$url);
-var_dump($result);
+  var_dump($result);
   //add subscriber to email list
   $subscriberID = $result['subscriberId'];
 }
 
+// is this faire already in the faire_info table
+// no, add it
+// yes, get faire ID
+// add subscriber to faire-id link
 
 //create subscription to list
 $url = "http://api.whatcounts.com/rest/subscriptions";

@@ -29,7 +29,7 @@ foreach($results as $blogrow){
     $form_id    = $formrow['form_id'];
     $form       = json_decode($formrow['display_meta']);
     $form_type  = (isset($form->form_type)?$form->form_type:'');
-    if(!$form->is_trash){
+    if(isset($form->is_trash) && !$form->is_trash){
     if($form_type=='cfm'){
       //echo 'Form - '.$form_id.' - ' .$form_type.'<br/>';
 

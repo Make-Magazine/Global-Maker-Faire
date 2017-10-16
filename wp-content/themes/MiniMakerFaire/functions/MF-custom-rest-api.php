@@ -51,7 +51,7 @@ function getMTMentries($formIDs) {
             from    {$wpdb->prefix}rg_lead_detail lead_detail
             left outer join {$wpdb->prefix}rg_lead as lead on lead_detail.lead_id = lead.id
             where lead.status = 'active'
-              and lead_detail.form_id in(".implode(",",$formIDarr).")
+              and lead.form_id in(".implode(",",$formIDarr).")
               and (field_number like '22' OR
                    field_number like '16' OR
                    field_number like '151' OR
@@ -104,8 +104,9 @@ function getMTMentries($formIDs) {
       $projPhoto = (isset($entry['22']) ? $entry['22']:'');
       $fitPhoto  = legacy_get_resized_remote_image_url($projPhoto,230,181);
       $featImg   = legacy_get_resized_remote_image_url($projPhoto,800,500);
-      if($fitPhoto == NULL) $fitPhoto = $projPhoto;
-      if($featImg == NULL)  $featImg = $projPhoto;
+      if($fitPhoto === NULL || $fitPhoto === '') $fitPhoto = $projPhoto;
+      if($featImg === NULL || $featImg === '')  $featImg  = $projPhoto;
+
       //maker list
       $makerList = getMakerList($entry['id']);
 
@@ -132,14 +133,14 @@ function getMTMentries($formIDs) {
       $form = GFAPI::get_form( $form_id );
       if(is_array($form['fields'])) {
         foreach($form['fields'] as $field) {
-          if($field->id==320){
+          if($field->id=='320'){
             foreach($field->choices as $choice) {
               if($choice['value']!='') {
                 $data['category'][] = array('id'=>absint( $choice['value'] ),'name'=>html_entity_decode( esc_js( $choice['text'] ) ));
               }
             }
           }
-          if($field->id==321){
+          if($field->id=='321'){
            // var_dump($field);
           }
         }
