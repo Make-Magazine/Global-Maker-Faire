@@ -33,7 +33,11 @@ if( $page_title || $contentdecription ) { ?>
 $contact_address = get_field( "contact_address" );
 $phone = get_field( "phone" );
 $email = get_field( "email" );
+
 $contact_form_email_address = get_field( "contact_form_email_address" );
+if(trim($contact_form_email_address)===''){
+  $contact_form_email_address = get_option('admin_email');
+}
 
 if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
@@ -112,7 +116,6 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
     <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
 
       <?php
-      $contact_form_email_address = get_field( "contact_form_email_address" );
 
       if( $contact_form_email_address ) { ?>
 
