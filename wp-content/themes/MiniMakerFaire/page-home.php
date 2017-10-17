@@ -17,14 +17,22 @@ get_header();
   <section class="slideshow-panel">
 
     <div class="header-logo-div text-center" itemprop="event" itemscope itemtype="http://schema.org/Event">
-      <?php $faire_location = get_field('faire_location', $home_ID);
+      <?php 
+      $faire_location = get_field('faire_location', $home_ID);
+      $faire_location_url = get_field('faire_location_url', $home_ID);
+      if( $faire_location_url ): ?>
+        <a class="event-location-url" href="<?php echo $faire_location_url ?>">
+      <?php endif;
       if( $faire_location ): ?>
-        <h2 class="event-location" itemprop="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $faire_location ?></h2> <?php
+        <h2 class="event-location" itemprop="location"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $faire_location ?></h2><?php
       endif;
+      if( $faire_location_url ): ?>
+        </a>
+      <?php endif;
 
       $faire_date = get_field('faire_date', $home_ID);
       if( $faire_date ): ?>
-        <h2 class="event-date" itemprop="startDate"><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo $faire_date ?></h2> <?php
+        <h2 class="event-date" itemprop="startDate"><i class="fa fa-calendar-o" aria-hidden="true"></i><?php echo $faire_date ?></h2> <?php
       endif; ?>
 
       <?php $header_logo = get_theme_mod( 'header_logo' ); ?>

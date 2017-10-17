@@ -63,6 +63,13 @@
     }
     a:hover {
       color: #fff;
+      &.event-location-url {
+        h2.event-location {
+          text-decoration: underline;
+          text-shadow: 0 1px 7px #000, 0 0 9px #000;
+          transition: all 0.15s ease;
+        }
+      }
     }
     .call_to_action_text {
       margin-bottom: 0;
@@ -491,12 +498,6 @@
         margin-bottom: 0;
         text-transform: uppercase;
         color: #666;
-      }
-      .event-time {
-
-      }
-      .event-location {
-
       }
     }
   }
