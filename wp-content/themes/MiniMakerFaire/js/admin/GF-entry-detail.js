@@ -16,7 +16,7 @@ jQuery( document ).ready(function() {
     defaultTime:'10:00 am'
   });
 
-  jQuery('[data-toggle="popover"]').popover();
+  //jQuery('[data-toggle="popover"]').popover();
 
   //on update of rating submit ajax to update value in database
   jQuery('.star-rating :radio').change(
