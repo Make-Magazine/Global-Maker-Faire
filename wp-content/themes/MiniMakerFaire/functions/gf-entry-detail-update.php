@@ -46,6 +46,15 @@ function MF_set_entry_status(){
 		if (!empty($update_status)){
 			//Handle acceptance status changes
 			if ($is_acceptance_status_changed ){
+        if($update_status === 'Accepted'){
+          /*
+           * If the status is accepted, trigger a cron job to update whatcounts
+           * The cron job will trigger action sidebar_entry_update
+           */
+          wp_schedule_single_event(time() + 1,'sidebar_entry_update', array($entry, $form));
+
+        }
+
         //Update Field for Acceptance Status
         $result = GFAPI::update_entry_field( $entry_id, $input_id, $update_status );
 

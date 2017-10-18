@@ -263,3 +263,41 @@
 #field_335, #field_331, #field_336, #field_332, #field_337, #field_333, #field_338, #field_330, #field_334, #field_329 {
   display: none;
 }
+
+/* entry detail head section */
+#entry_form .inner-sidebar {
+  width: 300px;
+}
+h2.gf_admin_page_title #gform_settings_page_title {
+  padding-left:0;
+}
+h2.gf_admin_page_title span.gf_admin_page_subtitle {
+  display: block;
+  clear: both;
+  font-size: .6rem;
+  line-height: 1.8em !important;
+}
+h2.gf_admin_page_title span.gf_admin_page_subtitle  span.gf_admin_page_formid,
+h2.gf_admin_page_title span.gf_admin_page_subtitle  span.gf_admin_page_formname {
+    color: #FFF;
+    letter-spacing: 0.1rem;
+    padding: 1px 8px 2px 9px;
+    font-size: 11px !important;
+    font-weight: normal !important;
+    line-height: 1.8em !important;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin: 0 8px 0 0 !important;
+    position: relative;
+    top: -1px;
+    display: -moz-inline-stack;
+    display: inline-block;
+  }
+  h2.gf_admin_page_title span.gf_admin_page_subtitle span.gf_admin_page_formid {
+    background-color: #D54E21;
+  }
+  h2.gf_admin_page_title span.gf_admin_page_subtitle span.gf_admin_page_formname {
+    background-color: #0074A2;
+  }
+/* end entry detail head section */

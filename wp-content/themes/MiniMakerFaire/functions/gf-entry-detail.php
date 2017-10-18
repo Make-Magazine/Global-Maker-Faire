@@ -41,11 +41,38 @@ add_action("gform_entry_detail_content_before", "mf_entry_detail_head", 10, 2);
  *  Funtion to modify the header on the entry detail page
  */
 function mf_entry_detail_head($form, $lead) {
+  //get form from entry id in $lead incase the form was changed ($form only represents the original form)
+  $form_id = $lead['form_id'];
+  $form    = RGFormsModel::get_form_meta($form_id);
+
+  $page_title =
+   '<span>'. __( 'Entry ID: ', 'gravityforms' ) . absint( $lead['id'] ).'</span>';
+  $page_subtitle =
+    '<span class="gf_admin_page_subtitle">'
+  . '  <span class="gf_admin_page_formid">Form ID: '. $form_id . '</span>'
+  . '  <span class="gf_admin_page_formname">Form Name: '. $form['title'] .'</span>';
+  $statuscount=get_makerfaire_status_counts( $form_id );
+  foreach($statuscount as $statuscount){
+    $page_subtitle .= '<span class="gf_admin_page_formname">'.  $statuscount['label'].'('.  $statuscount['entries'].')</span>';
+  }
+  $page_subtitle .= '</span>';
+
   $query_string = get_return_entry_list_url($form);
 	$outputURL    = admin_url( 'admin.php?' . $query_string );
   $outputURL = '<a href="'. $outputURL .'">Return to entries list</a>';
   ?>
   <script>
+    //remove sections for form switcher and form name editing
+    jQuery('h2.gf_admin_page_title #gform_settings_page_title').removeClass("gform_settings_page_title gform_settings_page_title_editable");
+    jQuery('h2.gf_admin_page_title #gform_settings_page_title').prop('onclick',null).off('click');
+    jQuery('.form_switcher_arrow').remove();
+    jQuery('#form_switcher_container').remove();
+    //change page title
+    jQuery('h2.gf_admin_page_title #gform_settings_page_title').html('<?php echo $page_title;?>');
+
+    //change page subtitle to have entry id, form id and form name
+    jQuery('h2.gf_admin_page_title .gf_admin_page_subtitle').html('<?php echo $page_subtitle;?>');
+
     //add in Return to Entries List link
     jQuery('h2.gf_admin_page_title div.gf_entry_detail_pagination').append('<?php echo $outputURL;?>');
   </script>
@@ -77,3 +104,22 @@ function get_return_entry_list_url($form) {
             '&operator=' .  esc_attr( $search_operator );
 		return $edit_url;
 	}
+
+  function get_makerfaire_status_counts( $form_id ) {
+	global $wpdb;
+	$lead_details_table_name = RGFormsModel::get_lead_details_table_name();
+	$sql             = $wpdb->prepare(
+			"SELECT count(0) as entries,value as label FROM $lead_details_table_name
+			      join wp_rg_lead lead
+                                    on  lead.id = $lead_details_table_name.lead_id and
+                                        lead.status = 'active'
+                        where field_number='303'
+			and $lead_details_table_name.form_id=%d
+			group by value",
+			$form_id
+	);
+
+	$results = $wpdb->get_results( $sql, ARRAY_A );
+	return $results;
+
+}
