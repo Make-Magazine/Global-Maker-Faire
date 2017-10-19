@@ -21,7 +21,7 @@ get_header();
       $faire_location = get_field('faire_location', $home_ID);
       $faire_location_url = get_field('faire_location_url', $home_ID);
       if( $faire_location_url ): ?>
-        <a class="event-location-url" href="<?php echo $faire_location_url ?>">
+        <a class="event-location-url" href="<?php echo $faire_location_url ?>" target="_blank">
       <?php endif;
       if( $faire_location ): ?>
         <h2 class="event-location" itemprop="location"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $faire_location ?></h2><?php
