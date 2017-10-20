@@ -54,61 +54,74 @@ function updateWC($entry, $form){
         array('type' =>  'Maker 6',  'emailField' => '164', 'nameField' => '159'),
         array('type' =>  'Maker 7',  'emailField' => '163', 'nameField' => '154')
      );
+    $emailArr = array();
     foreach($typeArr as $key=>$typeData){
       $email      = (isset($entry[$typeData['emailField']]) ? $entry[$typeData['emailField']]  : '');
       $firstName  = (isset($entry[$typeData['nameField'].'.3']) ? $entry[$typeData['nameField'].'.3']  : '');
       $lastName   = (isset($entry[$typeData['nameField'].'.6']) ? $entry[$typeData['nameField'].'.6']  : '');
 
-      if($email!='' && $firstName!=''){
-        /*    Retrieve  subscriber ID from whatCounts   */
-        //First check if this email is already a subscriber in whatcounts
-        $url = 'https://api.whatcounts.net/rest/subscribers?email='.$email;
-        $data   = array();
-        $result = call_whatCounts($data,$url, 'GET');
-        if(!empty($result)){ //already a subscriber?
-          if(isset($result[0]['subscriberId'])){
-            $subscriberID = $result[0]['subscriberId'];
-          }
-        }else{ //no? add them
-          //If subscriber not found, add it
-          $url = "https://api.whatcounts.net/rest/subscribers";
-          $data = array('email' => $email, "firstName" => $firstName, "lastName"  => $lastName);
-          $result = call_whatCounts($data, $url);
-          $subscriberID = $result['subscriberId'];
-        }
-
-        //  WhatCounts - faire to subscriber table
-         //build faire_to_subscriber key
-        $subscriber_type = '2'; // (maker)
-        $entry_id = $entry['id'].$key;
-        $ftos = (int) $entry_id;
-        error_log('for '.$entry['id'].' '.$typeData['type'].' email is '. $email.' name is ' .$firstName.' '.$lastName.' subscriber id ='.$subscriberID.' $ftos='.$ftos);
-        // Check if this subscriber is already linked to this faire
-        $url       = "https://api.whatcounts.net/rest/relationalTables/faire_to_subscriber/rows/".$ftos;
-        $data      = array();
-        $result    = call_whatCounts($data, $url, 'GET');
-
-        //record not found? add it
-        if(isset($result['statusCode']) && $result['statusCode']==404){
-          //echo 'Adding faire to subscriber link ' .$ftos.'<br/>';
-          $url       = "https://api.whatcounts.net/rest/relationalTables/faire_to_subscriber/";
-          $data      = array( "ftos_id"   => (int) $ftos,
-                              "faire_id"  => (int) $faire_id,
-                              "subscriber_id"  => (int) $subscriberID,
-                              "subscriber_type" => (int) $subscriber_type);
-          $result    = call_whatCounts($data, $url, 'POST');
-
-          //errror?
-          if(isset($result['statusCode'])){
-            //write to error log
-            error_log('WhatCounts API: error with adding to faire_to_Subscriber table');
-            error_log( print_r( $result, true ) );
-          }
+      if($email != '' && $firstName != ''){
+        //build unique email list
+        if(!(isset($emailArr[$email]))){
+          $emailArr[$email] = array('email'=>$email,'firstName'=>$firstName, 'lastName'=>lastName);
         }
       }
     }
-  }
-}
+
+    //send unique emails to whatCounts
+    foreach($emailArr as $uniqueEmail){
+      $email      = $uniqueEmail['email'];
+      $firstName  = $uniqueEmail['firstName'];
+      $lastName   = $uniqueEmail['lastName'];
+      /*    Retrieve  subscriber ID from whatCounts   */
+      //First check if this email is already a subscriber in whatcounts
+      $url = 'https://api.whatcounts.net/rest/subscribers?email='.$email;
+      $data   = array();
+      $result = call_whatCounts($data,$url, 'GET');
+      if(!empty($result)){ //already a subscriber?
+        if(isset($result[0]['subscriberId'])){
+          $subscriberID = $result[0]['subscriberId'];
+        }
+      }else{ //no? add them
+        //If subscriber not found, add it
+        $url = "https://api.whatcounts.net/rest/subscribers";
+        $data = array('email' => $email, "firstName" => $firstName, "lastName"  => $lastName);
+        $result = call_whatCounts($data, $url);
+        $subscriberID = $result['subscriberId'];
+      }
+
+      //  WhatCounts - faire to subscriber table
+       //build faire_to_subscriber key
+      $subscriber_type = '2'; // (maker)
+      $entry_id = $entry['id'].$key;
+      $ftos = (int) $entry_id;
+      error_log('for '.$entry['id'].' '.$typeData['type'].' email is '. $email.' name is ' .$firstName.' '.$lastName.' subscriber id ='.$subscriberID.' $ftos='.$ftos);
+      // Check if this subscriber is already linked to this faire
+      $url       = "https://api.whatcounts.net/rest/relationalTables/faire_to_subscriber/rows/".$ftos;
+      $data      = array();
+      $result    = call_whatCounts($data, $url, 'GET');
+
+      //record not found? add it
+      if(isset($result['statusCode']) && $result['statusCode']==404){
+        //echo 'Adding faire to subscriber link ' .$ftos.'<br/>';
+        $url       = "https://api.whatcounts.net/rest/relationalTables/faire_to_subscriber/";
+        $data      = array( "ftos_id"   => (int) $ftos,
+                            "faire_id"  => (int) $faire_id,
+                            "subscriber_id"  => (int) $subscriberID,
+                            "subscriber_type" => (int) $subscriber_type);
+        $result    = call_whatCounts($data, $url, 'POST');
+
+        //errror?
+        if(isset($result['statusCode'])){
+          //write to error log
+          error_log('WhatCounts API: error with adding to faire_to_Subscriber table');
+          error_log( print_r( $result, true ) );
+        }
+      }
+    } //end foreach email array
+  } //end check form type
+} //end function
+
 
 function call_whatCounts($data,$url,$curlType='POST'){
   //echo 'Rest call to '.$url.'<Br/>';
