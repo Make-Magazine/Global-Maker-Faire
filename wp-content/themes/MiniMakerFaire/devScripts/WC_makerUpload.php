@@ -55,9 +55,8 @@ $timer = 1;
         echo 'Adding '.$entry_id. ' from form '.$form_id.' to WhatCounts<br/>';
         $lead = GFAPI::get_entry($entry_id);
         wp_schedule_single_event(time() + $timer,'sidebar_entry_update', array($lead, $form));
-
-          $timer++;
-        
+        //testupdateWC($lead, $form);
+        $timer++;
       }
     }
 
@@ -65,3 +64,47 @@ echo 'Timer = '.$timer;
 ?>
   </body>
 </html>
+
+<?php
+function testupdateWC($entry, $form){
+   /*
+     * find all first name, last name, email address - contact, maker 1-7
+     */
+     $typeArr = array(
+        array('type' =>  'Contact',  'emailField' => '98',  'nameField' => '96'),
+        array('type' =>  'Maker 1',  'emailField' => '161', 'nameField' => '160'),
+        array('type' =>  'Maker 2',  'emailField' => '162', 'nameField' => '158'),
+        array('type' =>  'Maker 3',  'emailField' => '167', 'nameField' => '155'),
+        array('type' =>  'Maker 4',  'emailField' => '166', 'nameField' => '156'),
+        array('type' =>  'Maker 5',  'emailField' => '165', 'nameField' => '157'),
+        array('type' =>  'Maker 6',  'emailField' => '164', 'nameField' => '159'),
+        array('type' =>  'Maker 7',  'emailField' => '163', 'nameField' => '154')
+     );
+    $emailArr = array();
+    foreach($typeArr as $key=>$typeData){
+      $email      = (isset($entry[$typeData['emailField']]) ? $entry[$typeData['emailField']]  : '');
+      $firstName  = (isset($entry[$typeData['nameField'].'.3']) ? $entry[$typeData['nameField'].'.3']  : '');
+      $lastName   = (isset($entry[$typeData['nameField'].'.6']) ? $entry[$typeData['nameField'].'.6']  : '');
+
+      if($email != '' && $firstName != ''){
+        //build unique email list
+        if(!(isset($emailArr[$email]))){
+          $emailArr[$email] = array('email'=>$email,'firstName'=>$firstName, 'lastName'=>$lastName);
+        }
+      }
+    }
+
+    $ftosID = 0;
+    //send unique emails to whatCounts
+    foreach($emailArr as $uniqueEmail){
+      $email      = $uniqueEmail['email'];
+      $firstName  = $uniqueEmail['firstName'];
+      $lastName   = $uniqueEmail['lastName'];
+
+      $entry_id = $entry['id'].$ftosID;
+      $ftos = (int) $entry_id;
+      echo 'For '.$entry['id'].' email is '. $email.' name is ' .$firstName.' '.$lastName.' $ftos='.$ftos.'<br/>';
+
+      $ftosID++;
+    } //end foreach email array
+}
