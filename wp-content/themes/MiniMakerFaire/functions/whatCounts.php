@@ -63,11 +63,12 @@ function updateWC($entry, $form){
       if($email != '' && $firstName != ''){
         //build unique email list
         if(!(isset($emailArr[$email]))){
-          $emailArr[$email] = array('email'=>$email,'firstName'=>$firstName, 'lastName'=>lastName);
+          $emailArr[$email] = array('email'=>$email,'firstName'=>$firstName, 'lastName'=>$lastName);
         }
       }
     }
 
+     $ftosID = 0;
     //send unique emails to whatCounts
     foreach($emailArr as $uniqueEmail){
       $email      = $uniqueEmail['email'];
@@ -91,11 +92,11 @@ function updateWC($entry, $form){
       }
 
       //  WhatCounts - faire to subscriber table
-       //build faire_to_subscriber key
+      //build faire_to_subscriber key
       $subscriber_type = '2'; // (maker)
-      $entry_id = $entry['id'].$key;
+      $entry_id = $blogID.$entry['id'].$ftosID;
       $ftos = (int) $entry_id;
-      error_log('for '.$entry['id'].' '.$typeData['type'].' email is '. $email.' name is ' .$firstName.' '.$lastName.' subscriber id ='.$subscriberID.' $ftos='.$ftos);
+      //error_log('for '.$entry['id'].' email is '. $email.' name is ' .$firstName.' '.$lastName.' subscriber id ='.$subscriberID.' $ftos='.$ftos);
       // Check if this subscriber is already linked to this faire
       $url       = "https://api.whatcounts.net/rest/relationalTables/faire_to_subscriber/rows/".$ftos;
       $data      = array();
@@ -117,6 +118,23 @@ function updateWC($entry, $form){
           error_log('WhatCounts API: error with adding to faire_to_Subscriber table');
           error_log( print_r( $result, true ) );
         }
+      }
+      $ftosID++;
+
+      //add email to WC list 81
+      //create subscription to list
+      $url = "http://api.whatcounts.com/rest/subscriptions";
+      $data = array(
+          'subscriberId'     => $subscriberID,
+          "listId" => 81,
+          "formatId"  => 1  //[0,1,99], where 0=plain text, 1=html, and 99=MIME
+      );
+      $result = call_whatCounts($data,$url, 'POST');
+      //errror?
+      if(isset($result['statusCode'])){
+        //write to error log
+        error_log('WhatCounts API: error with adding to faire_to_Subscriber table');
+        error_log( print_r( $result, true ) );
       }
     } //end foreach email array
   } //end check form type
@@ -159,10 +177,10 @@ function call_whatCounts($data,$url,$curlType='POST'){
 
   //error occured?
   if(isset($returnedData->statusCode)){
-    echo 'There was an error in the call to '.$url.'<br/><br/>';
-    echo 'Status Code: '. $returnedData->statusCode.'<br/>';
-    echo 'Status: '.      $returnedData->status.'<br/>';
-    echo 'Error: '.       $returnedData->error.'<br/>';
+    error_log('There was an error in the call to '.$url);
+    error_log('Status Code: '. $returnedData->statusCode);
+    error_log('Status: '.      $returnedData->status);
+    error_log('Error: '.       $returnedData->error);
   }
   return $returnedData;
 }
