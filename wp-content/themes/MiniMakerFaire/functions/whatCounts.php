@@ -20,7 +20,6 @@ function updateWC($entry, $form){
 
     //record not found? add it
     if(isset($result['statusCode']) && $result['statusCode']==404){
-      //echo 'Adding faire ' .$faire_id.'<br/>';
       $formCreationDate = $form['date_created'];
       $url       = "https://api.whatcounts.net/rest/relationalTables/faire_info/";
       $data      = array(
@@ -96,7 +95,7 @@ function updateWC($entry, $form){
       $subscriber_type = '2'; // (maker)
       $entry_id = $blogID.$entry['id'].$ftosID;
       $ftos = (int) $entry_id;
-      //error_log('for '.$entry['id'].' email is '. $email.' name is ' .$firstName.' '.$lastName.' subscriber id ='.$subscriberID.' $ftos='.$ftos);
+
       // Check if this subscriber is already linked to this faire
       $url       = "https://api.whatcounts.net/rest/relationalTables/faire_to_subscriber/rows/".$ftos;
       $data      = array();
@@ -104,7 +103,6 @@ function updateWC($entry, $form){
 
       //record not found? add it
       if(isset($result['statusCode']) && $result['statusCode']==404){
-        //echo 'Adding faire to subscriber link ' .$ftos.'<br/>';
         $url       = "https://api.whatcounts.net/rest/relationalTables/faire_to_subscriber/";
         $data      = array( "ftos_id"   => (int) $ftos,
                             "faire_id"  => (int) $faire_id,
@@ -115,26 +113,32 @@ function updateWC($entry, $form){
         //errror?
         if(isset($result['statusCode'])){
           //write to error log
-          error_log('WhatCounts API: error with adding to faire_to_Subscriber table');
+          error_log('WhatCounts API: error with adding to faire_to_Subscriber table. Entry ID = '.$entry['id'].'. ftos='.$ftos);
           error_log( print_r( $result, true ) );
         }
       }
       $ftosID++;
 
       //add email to WC list 81
-      //create subscription to list
-      $url = "http://api.whatcounts.com/rest/subscriptions";
-      $data = array(
-          'subscriberId'     => $subscriberID,
-          "listId" => 81,
-          "formatId"  => 1  //[0,1,99], where 0=plain text, 1=html, and 99=MIME
-      );
-      $result = call_whatCounts($data,$url, 'POST');
-      //errror?
-      if(isset($result['statusCode'])){
-        //write to error log
-        error_log('WhatCounts API: error with adding to faire_to_Subscriber table');
-        error_log( print_r( $result, true ) );
+      //Check if subscriber is already part of WC list 81
+      $url = "http://api.whatcounts.com/rest/lists/81/subscribers?email=".$email;
+      $data      = array();
+      $result    = call_whatCounts($data, $url, 'GET');
+      //if not, add subscriber to list
+      if(empty($result)){
+        $url = "http://api.whatcounts.com/rest/subscriptions";
+        $data = array(
+            'subscriberId'     => $subscriberID,
+            "listId" => 81,
+            "formatId"  => 0  //[0,1,99], where 0=plain text, 1=html, and 99=MIME
+        );
+        $result = call_whatCounts($data,$url, 'POST');
+        //errror?
+        if(isset($result['statusCode'])){
+          //write to error log
+          error_log('WhatCounts API: error with adding '.$subscriberID.' to list 81.');
+          error_log( print_r( $result, true ) );
+        }
       }
     } //end foreach email array
   } //end check form type
@@ -142,7 +146,6 @@ function updateWC($entry, $form){
 
 
 function call_whatCounts($data,$url,$curlType='POST'){
-  //echo 'Rest call to '.$url.'<Br/>';
   $realm = 'makermedia';
   $pwd   = 'liableab3675';
 
@@ -168,7 +171,7 @@ function call_whatCounts($data,$url,$curlType='POST'){
 
   // Check for errors and display the error message
   if(curl_errno($ch)){
-    echo 'Curl error: ' . curl_error($ch);
+    error_log('Curl error: ' . curl_error($ch));
   }else{
     $returnedData = json_decode($result, true);
 

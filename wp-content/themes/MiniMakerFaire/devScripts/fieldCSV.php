@@ -10,7 +10,18 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
 $blogSql = "select blog_id, domain from wp_blogs  ORDER BY `wp_blogs`.`blog_id` ASC";
 $results = $wpdb->get_results($blogSql,ARRAY_A);
 
+$type = filter_input(INPUT_GET, 'type');
+
 $fieldHdrs = array();
+$fieldHdrs['blog_id']       = 'Blog ID';
+$fieldHdrs['blog_name']     = 'Blog Domain';
+$fieldHdrs['form_id']       = 'Form ID';
+$fieldHdrs['form_type']     = 'Form Type';
+$fieldHdrs['form_name']     = 'Form Title';
+$fieldHdrs['date_created']  = 'Date Created';
+$fieldHdrs['is_active']     = 'Active';
+$fieldHdrs['is_trash']      = 'Trash';
+
 $blogArray = array();
 //loop thru blogs
 foreach($results as $blogrow){
@@ -22,7 +33,6 @@ foreach($results as $blogrow){
   }
 
   $formResults = $wpdb->get_results('select display_meta, form_id from '.$table,ARRAY_A);
-  //echo 'Blog: '.$blogID.'<br/>';
 
   $formArray = array();
   foreach($formResults as $formrow){
@@ -74,7 +84,7 @@ foreach($results as $blogrow){
           }
 
           //adminOnly
-          $adminOnly  = (isset($field['visibility']) && $field['visibility']=='administrative'?'X':'');
+          $visibility  = (isset($field['visibility'])? $field['visibility']:'');
           $isRequired = (isset($field['isRequired']) && $field['isRequired']?'X':'');
           $isLocked   = (in_array($field['id'],$lockedFields)?'X':'');
           $fieldHdrs[$field['id']] = $field['id'].($isLocked? ' (Locked)':'');
@@ -84,7 +94,7 @@ foreach($results as $blogrow){
             'label'     =>  $label,
             'type'      =>  $field['type'],
             'options'   =>  $options,
-            'adminOnly' =>  $adminOnly,
+            'visibility' =>  $visibility,
             'required'  =>  $isRequired,
             'locked'    =>  $isLocked
           );
@@ -123,15 +133,6 @@ header('Expires: 0');
 // create a file pointer connected to the output stream
 $file = fopen('php://output', 'w');
 
-$fieldHdrs['blog_id']       = 'Blog ID';
-$fieldHdrs['blog_name']     = 'Blog Domain';
-$fieldHdrs['form_id']       = 'Form ID';
-$fieldHdrs['form_type']     = 'Form Type';
-$fieldHdrs['form_name']     = 'Form Title';
-$fieldHdrs['date_created']  = 'Date Created';
-$fieldHdrs['is_active']     = 'Active';
-$fieldHdrs['is_trash']      = 'Trash';
-
 // send the column headers
 fputcsv($file, $fieldHdrs);
 
@@ -167,9 +168,13 @@ foreach($blogArray as $blogData){
           break;
         default:
           if(isset($form['fields'][$key])){
-            $output[] = $form['fields'][$key]['type']     . "\r" .
-                        $form['fields'][$key]['label']    . "\r" .
-                        $form['fields'][$key]['options']  . "\r";
+            if($type == 'type'){
+               $output[] = $form['fields'][$key]['type'].' - '.$form['fields'][$key]['visibility'];
+            }else{
+              $output[] = $form['fields'][$key]['type']     . "\r" .
+                          $form['fields'][$key]['label']    . "\r" .
+                          $form['fields'][$key]['options']  . "\r";
+            }
           }else{
             $output[] = '';
           }
