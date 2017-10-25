@@ -673,7 +673,7 @@ acf_add_local_field_group(array (
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
-				'width' => 50,
+				'width' => 40,
 				'class' => '',
 				'id' => '',
 			),
@@ -694,12 +694,28 @@ acf_add_local_field_group(array (
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
-				'width' => 50,
+				'width' => 40,
 				'class' => '',
 				'id' => '',
 			),
 			'readonly' => 0,
 			'disabled' => 0,
+		),
+		array (
+			'default_value' => 0,
+			'placeholder' => '',
+			'key' => 'field_59f07df43e1a3',
+			'label' => 'Open Faire Location URL In New Tab?',
+			'name' => 'open_faire_location',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => 20,
+				'class' => '',
+				'id' => '',
+			),
 		),
 		array (
 			'default_value' => '',
