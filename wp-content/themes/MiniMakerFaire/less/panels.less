@@ -12,17 +12,22 @@
     @media (max-width:767px) {
       width: auto;
     }
-    .header-logo {
-      width: 375px;
+    .header-logo-cont {
       margin-top: 10px;
+    }
+    .header-logo-cont,
+    .header-logo {
+      max-width: 580px;
+      max-height: 150px;
       margin-left: auto;
       margin-right: auto;
       @media(min-width:992px) and (max-width:1199px) {
+        max-width: 500px;
+        max-height: 130px;
       }
       @media(min-width:768px) and (max-width:991px) {
-        width: 300px;
-        margin-left: auto;
-        margin-right: auto;
+        max-width: 430px;
+        max-height: 105px;
       }
       @media (max-width: 768px) {
         display: none;
@@ -59,6 +64,13 @@
     }
     a:hover {
       color: #fff;
+      &.event-location-url {
+        h2.event-location {
+          text-decoration: underline;
+          text-shadow: 0 1px 7px #000, 0 0 9px #000;
+          transition: all 0.15s ease;
+        }
+      }
     }
     .call_to_action_text {
       margin-bottom: 0;
@@ -487,12 +499,6 @@
         margin-bottom: 0;
         text-transform: uppercase;
         color: #666;
-      }
-      .event-time {
-
-      }
-      .event-location {
-
       }
     }
   }
