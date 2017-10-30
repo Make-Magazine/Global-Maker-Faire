@@ -808,7 +808,7 @@ acf_add_local_field_group(array (
 			'label' => 'Image Carousel',
 			'name' => 'image_carousel',
 			'type' => 'gallery',
-			'instructions' => 'Up to 3 images can be added. Carousel images will be centered and sized at 1200px wide by 450px hieght.',
+			'instructions' => 'Up to 3 images can be added. Carousel images will be centered and sized at 850px wide by 318px hieght.',
 			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array (
