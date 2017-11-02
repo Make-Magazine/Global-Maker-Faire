@@ -1,13 +1,9 @@
 <?php
-/*  Define an array of field ID's to be locked */
-//TBD - Put list of locked fields in DB
-  $lockedFields = array(
-   '16',  '22',  '27',  '96',  '98',
-  '101', '105', '109', '110', '111', '151', '154', '155', '156', '157', '158', '159', '160', '161',
-  '162', '163', '164', '165', '166', '167',
-  '217', '219', '220', '221', '222', '223', '224', '234', '258', '259', '260', '261', '262', '263',
-  '303', '304', '310', '311', '312', '313', '314', '315', '316', '320', '321', '376' );
+/*  Define an array of field ID's to be locked - these are set in network settings */
+$gfLockedFields = str_replace(' ', '', get_site_option( 'gf-locked-fields' )); //remove extra spaces
+$lockedFields = explode(',',$gfLockedFields);
 
+//locked fields cannot be deleted
 add_action( 'gform_delete_field_link', 'mf_delete_field_link', 10, 1 );
 function mf_delete_field_link( $delete_field_link ) {
   global $lockedFields;
@@ -24,6 +20,7 @@ function mf_delete_field_link( $delete_field_link ) {
   }else{
     return $delete_field_link;
   }
+
 }
 
 /*
@@ -47,7 +44,6 @@ function mf_add_msg($form) {
   return $form;
 }
 add_action('gform_admin_pre_render','mf_add_msg',10,1);
-
 
 /*
  * If form type is 'Call For Makers'

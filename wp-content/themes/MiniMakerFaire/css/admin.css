@@ -176,8 +176,27 @@
 /* End Entry Rating Styling*/
 
 /* admin gform display */
-#gform_fields .field_hover.lockedField{
+#gform_fields .field_hover.lockedField {
   background-image: url(../img/gf-fieldnotification-header.jpg);
+}
+
+/* don't allow user to change visibility or values on choices on locked fields */
+#gform_fields .lockedField .field-choice-value,
+#gform_fields .lockedField input[name=field_visibility],
+#gform_fields .lockedField .visibility_setting label,
+#gform_fields .lockedField #field_required,
+#gform_fields .lockedField label[for=field_required] {
+  pointer-events: none;
+  background: rgba(255,255,255,.5);
+  border-color: rgba(222,222,222,.75);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.04);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.04);
+  color: rgba(51,51,51,.5);
+}
+
+#gform_fields .lockedField .gf_insert_field_choice,
+#gform_fields .lockedField .gf_delete_field_choice {
+  display: none;
 }
 
 /* Add message to top of edit form view */

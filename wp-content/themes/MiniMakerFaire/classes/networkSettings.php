@@ -172,6 +172,19 @@ class GMFAdminSettings {
               )
         );
 
+        $settings[] = array('panel'=> 'GF Locked Fields',
+            'panelData' =>
+              array(
+                array(
+                  'id'   => 'gf-locked-fields',
+                  'name' => "Comma seperated list of locked field ID's",
+                  'desc' => "Comma seperated list of locked field ID's",
+                  'type' => 'textarea',
+                  'size' => 'regular'
+                )
+              )
+        );
+
         return apply_filters( 'plugin_settings', $settings );
     }
 }

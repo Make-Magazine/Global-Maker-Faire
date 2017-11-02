@@ -82,7 +82,7 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
     // Loop through the forms
     while ( $row = $result->fetch_array(MYSQLI_ASSOC) ) {
       $json = json_decode($row['display_meta']);
-      
+
       if(!$json->is_trash){
 
       echo '<h3 style="float:left">Form '.$json->id.' - '.$json->title.'</h3>';
@@ -103,7 +103,7 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
             <td style="width: 40%">Label</td>
             <td style="width:  3%">Type</td>
             <td style="width: 40%">Options</td>
-            <td style="width:  3%">Admin Only</td>
+            <td style="width:  3%">Visibility</td>
             <td style="width:  3%">Required</td>
             <td style="width:  3%">Locked</td>
           </tr>
@@ -117,7 +117,7 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
       usort($jsonArray, "cmp");
       // buld table of field data
       foreach($jsonArray as $field){
-        if($field['type'] != 'html' && $field['type'] != 'section' && $field['type'] != 'page'){
+        if($field['type'] != 'html' && $field['type'] != 'page'){
           //var_dump($field);
           $label = (isset($field['adminLabel']) && trim($field['adminLabel']) != '' ? $field['adminLabel'] : $field['label']);
           if($label=='' && $field['type']=='checkbox') $label = $field['choices'][0]->text;
@@ -150,7 +150,7 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
               }
               ?>
             </td>
-            <td class="tcenter"><?php echo (isset($field['visibility']) && $field['visibility']=='administrative'?'<i class="fa fa-check" aria-hidden="true"></i>':'');?></td>
+            <td class="tcenter"><?php echo (isset($field['visibility'])?$field['visibility']:'');?></td>
             <td class="tcenter"><?php echo ($field['isRequired']?'<i class="fa fa-check" aria-hidden="true"></i>':'');?></td>
             <td class="tcenter"><?php echo (in_array($field['id'],$lockedFields)?'<i class="fa fa-check" aria-hidden="true"></i>':'');?></td>
           </tr>
