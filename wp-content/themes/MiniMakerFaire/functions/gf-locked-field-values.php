@@ -29,10 +29,28 @@ function mf_delete_field_link( $delete_field_link ) {
 add_action('gform_field_css_class','mf_field_css_class',10,4);
 function mf_field_css_class($css_class,$field,$form){
   global $lockedFields;
+
+  //Lock the options value only - producers can still translate
+  $lockValOnly  = array('303', '304', '105');
+
+  //Lock the options and text value - producers cannot translate
+  $lockValText  = array('310', '311', '312', '313', '314', '315', '316');
+
+  //remove ability to add/delete/reorder options
+  $lockNoChg    = array('310', '311', '312', '313', '314', '315', '316', '105');
   if(isset($form['form_type']) && $form['form_type']=='cfm'){
     $fieldID = (string) $field->id; //typecast to string for in_array check
     if(in_array($fieldID,$lockedFields,true)){
       $css_class .=' lockedField';
+    }
+    if(in_array($fieldID,$lockValOnly,true)){
+      $css_class .=' lockValOnly';
+    }
+    if(in_array($fieldID,$lockValText,true)){
+      $css_class .=' lockValText';
+    }
+    if(in_array($fieldID,$lockNoChg,true)){
+      $css_class .=' lockNoChg';
     }
   }
   return $css_class;
@@ -52,10 +70,10 @@ add_action('gform_admin_pre_render','mf_add_msg',10,1);
  *    - Lock 3 values on field 304 (flags) and always place them at the top of the list
  *      "Disable Notification", "Make: Magazine Review", "Featured Maker"
  */
-add_filter( 'gform_pre_render', 'populate_checkbox' );
-add_filter( 'gform_pre_validation', 'populate_checkbox' );
-add_filter( 'gform_pre_submission_filter', 'populate_checkbox' );
-add_filter( 'gform_admin_pre_render', 'populate_checkbox' );
+//add_filter( 'gform_pre_render', 'populate_checkbox' );
+//add_filter( 'gform_pre_validation', 'populate_checkbox' );
+//add_filter( 'gform_pre_submission_filter', 'populate_checkbox' );
+//add_filter( 'gform_admin_pre_render', 'populate_checkbox' );
 
 function populate_checkbox( $form) {
   if(isset($form['form_type']) && $form['form_type']=='cfm'){
@@ -118,10 +136,11 @@ function populate_checkbox( $form) {
         foreach($field['inputs'] as $input){
           //do not add back in the locked values if they are already there
           if(!in_array($input['label'],$lockedValues)){
-            $lockedInputs[] = array( 'label' => $input['label'], 'id' => "{$field_id}.$input_id" );
-            $input_id++;
+            $lockedInputs[] = array( 'label' => $input['label'], 'id' => "$input_id" );
+            $input_id = $input_id + .1;
           }
         }
+
         $field['inputs'] = $lockedInputs;
 
 
