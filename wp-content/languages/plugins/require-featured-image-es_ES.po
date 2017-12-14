@@ -1,0 +1,79 @@
+# Translation of Plugins - Require Featured Image - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Require Featured Image - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-07-22 19:04:08+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Require Featured Image - Stable (latest release)\n"
+
+#: require-featured-image.php:144
+msgid "You cannot publish without a featured image that is at least %s x %s pixels."
+msgstr "No puedes publicar sin una imagen destacada que sea de como mínimo %s x %s pixels."
+
+#: admin-options.php:40
+msgid "Image Size"
+msgstr "Tamaño de imagen"
+
+#: admin-options.php:42
+msgid "Minimum size of the featured images"
+msgstr "Tamaño mínimo para las imágenes destacadas"
+
+#: admin-options.php:50
+msgid "<p>The minimum acceptable size can be set for featured images. This size means that posts with images smaller than the specified dimensions cannot be published. By default the sizes are zero, so any image size will be accepted.</p>"
+msgstr "<p>Puede definirse un tamaño mínimo aceptable para las imágenes destacadas. Este tamaño implica que las entradas con imágenes más pequeñas que las dimensiones especificadas no podrán publicarse. Por defecto los tamaños están a cero, así que se aceptará cualquier tamaño de imagen.</p>"
+
+#: require-featured-image.php:46
+msgid "<strong>This entry has a featured image that is too small.</strong> Please use an image that is at least %s x %s pixels."
+msgstr "<strong>Esta entrada tiene una imagen destacada demasiado pequeña.</strong>Por favor, usa una imagen de al menos %s x %s pixels."
+
+#: require-featured-image.php:44
+msgid "<strong>This entry has no featured image.</strong> Please set one. You need to set a featured image before publishing."
+msgstr "<strong>Esta entrada no tiene imagen destacada. </strong>Por favor establezca una. Necesita establecer una imagen destacada antes de publicar."
+
+#: require-featured-image.php:141
+msgid "You cannot publish without a featured image."
+msgstr "No puede publicar sin una imagen destacada."
+
+#: admin-options.php:36
+msgid "Post Types that require featured images "
+msgstr "Tipos de publicación que requieren imagenes destacadas"
+
+#. Author of the plugin/theme
+msgid "Press Up"
+msgstr "Press Up"
+
+#. Author URI of the plugin/theme
+msgid "http://pressupinc.com"
+msgstr "http://pressupinc.com"
+
+#. Plugin URI of the plugin/theme
+msgid "http://pressupinc.com/wordpress-plugins/require-featured-image/"
+msgstr "http://pressupinc.com/wordpress-plugins/require-featured-image/"
+
+#: admin-options.php:46
+msgid "<p>You can specify the post type for Require Featured Image to work on. By default it works on Posts only.</p><p>If you're not seeing a post type here that you think should be, it probably does not have support for featured images. Only post types that support featured images will appear on this list.</p>"
+msgstr "<p>Puedes especificar el tipo de contenido en el que quieres que funcioneel plugin Require Featured Image. Por defecto sólo funciona en las entradas.</p><p>Si no ves aquí un tipo de contenido que crees que debería estar es probable que no sea compatible con imágenes destacadas. Solo aparecerán en esta lista los tipos de contenido compatibles con imágenes destacadas.</p>"
+
+#. Description of the plugin/theme
+msgid "Like it says on the tin: requires posts to have a featured image set before they'll be published."
+msgstr "Como dice en el mensaje: es obligatorio que las entradas tengan una imagen destacada para que puedan publicarse."
+
+#: admin-options.php:33
+msgid "Post Types"
+msgstr "Tipos de publicación"
+
+#: admin-options.php:14
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#. #-#-#-#-#  require-featured-image-code.pot (Require Featured Image 1.3.0) 
+#. #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin-options.php:10
+msgid "Require Featured Image"
+msgstr "Requerir imagen destacada"
