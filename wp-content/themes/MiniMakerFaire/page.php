@@ -13,17 +13,19 @@ if(get_current_blog_id()==211 && !is_user_logged_in()){
     <div class="container">
       <?php the_content(); ?>
     </div>
-      <?php
-  // check if the flexible content field has rows of data
-  if( have_rows('content_panels', $home_ID)) {
-    // loop through the rows of data
-    while ( have_rows('content_panels', $home_ID) ) {
-      the_row();
-      $row_layout = get_row_layout();
-      echo dispLayout($row_layout);
+    <?php
+    if(isset($home_ID)){
+      // check if the flexible content field has rows of data
+      if( have_rows('content_panels', $home_ID)) {
+        // loop through the rows of data
+        while ( have_rows('content_panels', $home_ID) ) {
+          the_row();
+          $row_layout = get_row_layout();
+          echo dispLayout($row_layout);
+        }
+      }
     }
-  }
-  ?>
+    ?>
     <?php wp_link_pages(); ?>
     <?php comments_template(); ?>
   <?php endwhile; ?>
