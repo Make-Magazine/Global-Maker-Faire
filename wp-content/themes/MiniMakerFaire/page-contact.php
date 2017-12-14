@@ -186,15 +186,15 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
             <form action="<?php the_permalink(); ?>" method="post">
               <div class="form-group">
                 <label for="name"><?php _e("Name",'MiniMakerFaire')?> <span>*</span></label>
-                <input type="text" class="form-control" name="message_name" value="<?php echo esc_attr($_POST['message_name']); ?>">
+                <input type="text" class="form-control" name="message_name" value="<?php echo esc_attr($name); ?>">
               </div>
               <div class="form-group">
                 <label for="message_email"><?php _e("Email",'MiniMakerFaire')?> <span>*</span></label>
-                <input type="text" class="form-control" name="message_email" value="<?php echo esc_attr($_POST['message_email']); ?>">
+                <input type="text" class="form-control" name="message_email" value="<?php echo esc_attr($email); ?>">
               </div>
               <div class="form-group">
                 <label for="message_text"><?php _e("Message",'MiniMakerFaire')?> <span>*</span></label>
-                <textarea type="text" class="form-control" rows="3" name="message_text"><?php echo esc_textarea($_POST['message_text']); ?></textarea>
+                <textarea type="text" class="form-control" rows="3" name="message_text"><?php echo esc_textarea($message); ?></textarea>
               </div>
               <div class="form-group">
                 <label for="message_human"><?php _e("Human Verification",'MiniMakerFaire')?> <span>*</span> <br><input type="text" style="width: 60px;" name="message_human"> + 3 = 5</label>
