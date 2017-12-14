@@ -4,11 +4,9 @@
  */
 include 'db_connect.php';
 global $wpdb;
-$lockField = array(16,	22,	27,	96,	98,	101,	105,	109,	110,	111,	151,	154,	155,	156,	157,	158,	159,	160,	161,	162,	163,
-    164,	165,	166,	167,	201,	203,	204,	205,	206,	207,	208,	209,	211,	212,	213,	214,	215,	216,	217,	219,	220,	221,
-    222,	223,	224,	234,	258,	259,	260,	261,	262,	263,	303,	304,	310,	311,	312,	313,	314,	315,	316,	320,	321,	325,
-    326,	376);
-$lockField = array(310,311,262,263,325,326);
+$gfLockedFields = str_replace(' ', '', get_site_option( 'gf-locked-fields' )); //remove extra spaces
+$lockField = explode(',',$gfLockedFields);
+
 error_reporting(E_ALL); ini_set('display_errors', 1);
 
 //build output data
@@ -27,6 +25,7 @@ $fieldHdrs['date_created']  = 'Date Created';
 $fieldHdrs['is_active']     = 'Active';
 $fieldHdrs['is_trash']      = 'Trash';
 foreach($lockField as $fieldID){
+  $fieldHdrs[] = $fieldID .' - Test';
   $fieldHdrs[] = $fieldID .' - Type';
   $fieldHdrs[] = $fieldID .' - Label';
   //$fieldHdrs[] = $fieldID .' - Description';
@@ -164,6 +163,7 @@ foreach($blogArray as $blogData){
     $output[] = $form['is_trash'];
     foreach($lockField as $fieldID){
       if(isset($form['fields'][$fieldID])){
+        $output[] = '';
         $output[] = $form['fields'][$fieldID]['type'];
         $output[] = $form['fields'][$fieldID]['label'];
         //$output[] = $form['fields'][$fieldID]['description'];
@@ -171,6 +171,7 @@ foreach($blogArray as $blogData){
         $output[] = $form['fields'][$fieldID]['required'];
         $output[] = $form['fields'][$fieldID]['visibility'];
       }else{
+        $output[] = '';
         $output[] = '';
         $output[] = '';
         $output[] = '';

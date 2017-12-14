@@ -1,13 +1,7 @@
 <?php
 include 'db_connect.php';
-
-$lockedFields = array('151','16', '22', '27', '96', '98', '101',
-  '105', '160', '161', '217', '234', '158','162', '224',
-  '258', '155', '167', '223', '259', '156', '166', '222', '260', '157',
-  '165', '220', '261', '159', '164', '221', '262', '154', '163', '219',
-  '263', '109', '111', '110', '320', '321', '303','304', '376',
-  '310', '311', '312', '313', '314', '315', '316');
-
+$gfLockedFields = str_replace(' ', '', get_site_option( 'gf-locked-fields' )); //remove extra spaces
+$lockedFields = explode(',',$gfLockedFields);
 
 $blogID =  get_current_blog_id();
 
