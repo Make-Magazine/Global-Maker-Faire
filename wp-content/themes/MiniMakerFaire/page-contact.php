@@ -146,10 +146,10 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
           $message_sent    = __("Thanks! Your message has been sent.",'MiniMakerFaire');
 
           //user posted variables
-          $name = $_POST['message_name'];
-          $email = $_POST['message_email'];
-          $message = $_POST['message_text'];
-          $human = $_POST['message_human'];
+          $name     = (isset($_POST['message_name'])?$_POST['message_name']:'');
+          $email    = (isset($_POST['message_email'])?$_POST['message_email']:'');
+          $message  = (isset($_POST['message_text'])?$_POST['message_text']:'');
+          $human    = (isset($_POST['message_human'])?$_POST['message_human']:'');
 
           //php mailer variables
           //$to = $contact_form_email_address;
@@ -179,7 +179,7 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
               }
             }
           }
-          else if ($_POST['submitted']) my_contact_form_generate_response("error", $missing_content); ?>
+          else if (isset($_POST['submitted'])&&$_POST['submitted']) my_contact_form_generate_response("error", $missing_content); ?>
 
           <div id="respond">
             <?php echo $response; ?>
