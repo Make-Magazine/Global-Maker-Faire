@@ -19,7 +19,7 @@ function restrict_post_deletion($post_id) {
   $restricted_pages = array(5,12,13,340,341,366);
 
   if( ! is_super_admin() ) {
-    if( is_page && in_array($post_id, $restricted_pages) ) {
+    if( is_page($post_id) && in_array($post_id, $restricted_pages) ) {
       exit('The page you were trying to delete is protected.');
     }
   }
