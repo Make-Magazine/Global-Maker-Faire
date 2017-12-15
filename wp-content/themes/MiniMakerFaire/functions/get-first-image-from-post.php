@@ -5,7 +5,7 @@ function get_first_post_image( $recent ) {
   ob_start();
   ob_end_clean();
   $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $recent['post_content'], $matches);
-  $first_img = $matches[1][0];
+  $first_img = (isset($matches[1][0])?$matches[1][0]:'');
 
   if(!empty($first_img)){
     return "<div class='recent-post-img' style='background-image: url(" . $first_img . ");'></div>";

@@ -346,8 +346,9 @@ function getPostFeed() {
   foreach($news_pages as $news_page) {
     $news_ID = $news_page->ID;
   }
-  $news_slug = get_post( $news_ID )->post_name;
-
+  if(isset($news_ID)){
+    $news_slug = get_post( $news_ID )->post_name;
+  }
   $return .=  '<section class="recent-post-panel"><div class="container">';
 
   if(get_sub_field('title')) {
@@ -388,11 +389,11 @@ function getPostFeed() {
             </article>
           </div>';
   }
-
-  $return .=  '<div class="col-xs-12 padtop padbottom text-center">
-          <a class="btn btn-b-ghost" href="/' . $news_slug . '">'.__('More News','MiniMakerFaire').'</a>
-        </div>';
-
+  if(isset($news_slug)){
+    $return .=  '<div class="col-xs-12 padtop padbottom text-center">
+            <a class="btn btn-b-ghost" href="/' . $news_slug . '">'.__('More News','MiniMakerFaire').'</a>
+          </div>';
+  }
   $return .=  '</div></div><div class="flag-banner"></div></section>';
   return $return;
 }
@@ -740,6 +741,7 @@ function getNewsletterPanel() {
 
 function getSponsorPanel() {
   $return = '';
+  $sponsor_ID = 0;
   // Get the sponsors template page ID
   $sponsor_pages = get_pages(array(
     'meta_key' => '_wp_page_template',
