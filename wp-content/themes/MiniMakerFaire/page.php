@@ -14,15 +14,13 @@ if(get_current_blog_id()==211 && !is_user_logged_in()){
       <?php the_content(); ?>
     </div>
     <?php
-    if(isset($home_ID)){
-      // check if the flexible content field has rows of data
-      if( have_rows('content_panels', $home_ID)) {
-        // loop through the rows of data
-        while ( have_rows('content_panels', $home_ID) ) {
-          the_row();
-          $row_layout = get_row_layout();
-          echo dispLayout($row_layout);
-        }
+    // check if the flexible content field has rows of data
+    if( have_rows('content_panels')) {
+      // loop through the rows of data
+      while ( have_rows('content_panels') ) {
+        the_row();
+        $row_layout = get_row_layout();
+        echo dispLayout($row_layout);
       }
     }
     ?>
