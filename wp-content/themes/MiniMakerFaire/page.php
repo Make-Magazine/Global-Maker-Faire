@@ -3,7 +3,7 @@
 
 if(get_current_blog_id()==211 && !is_user_logged_in()){
   //if not logged in
-  echo '<h2 class="text-center">You must be logged in to view this site.<br/>Please log into your home site.</h2>';
+  echo '<h2 class="text-center">You must be logged in to view this site.</h2><p class="text-center">Please log in to your ___.makerfaire.com site and find resources.makerfaire.com under My Sites.</p>';
 }else{
 ?>
 
