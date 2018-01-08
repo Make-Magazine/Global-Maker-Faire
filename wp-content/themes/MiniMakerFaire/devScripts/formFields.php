@@ -90,6 +90,22 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
       </div>
 
       <div style="clear:both"></div>
+      <?php
+      //Display rules conditional logic
+      if(isset($json->button->conditionalLogic->rules) && is_array($json->button->conditionalLogic->rules)){
+        ?>
+        Submit Button Conditional Logic
+        <ul>
+        <?php
+        foreach($json->button->conditionalLogic->rules as $rule){
+          echo '<li>'.$rule->fieldId .' '.$rule->operator.' '.$rule->value.'</li>';
+        }
+        ?>
+        </ul>
+        <?php
+      }
+
+      ?>
       <table style="margin: 10px 0;">
         <thead>
           <tr id="headerRow">
