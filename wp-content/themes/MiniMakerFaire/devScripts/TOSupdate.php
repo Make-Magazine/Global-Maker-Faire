@@ -82,12 +82,15 @@ foreach($blogFormArr as $data){
     //echo 'button set ';
     if(isset($compForm->button->conditionalLogic->rules) && $compForm->button->conditionalLogic->rules) {
         $links = '';
-        foreach($compForm->button->conditionalLogic->rules as $rule){
+        foreach($compForm->button->conditionalLogic->rules as $rulekey=>$rule){
           if($rule->fieldId==='376'){
+            /*
             $rule->value = $field550->label;
             $rule->fieldId = '550';
             $ruleFound = true;
-            echo 'Changed button rule from 376 to 550<br/>';
+            echo 'Changed button rule from 376 to 550<br/>';*/
+            echo 'removed rule for 376<br/>';
+            unset($compForm->button->conditionalLogic->rules[$rulekey]);
           }
         }
 /*
