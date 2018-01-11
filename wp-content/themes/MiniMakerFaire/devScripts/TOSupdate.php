@@ -34,18 +34,6 @@ foreach($masterFields as $field){
   if($field->id == 550) $field550 = $field;
 }
 
-//$submitButton
-$submitButton   = $masterForm->button;
-$ButtonLogic550 = '';
-foreach($submitButton->conditionalLogic->rules as $rule){
-  if($rule->fieldId==='550'){
-    $ButtonLogic550 = $rule;
-  }
-}
-if($ButtonLogic550==='') die('button logic empty');
-//var_dump($submitButton);
-//echo '<br/><br/>';
-//
 //pull form for each blog in the $blogFormArr array
 foreach($blogFormArr as $data){
   $blogID = $data['blogID'];
@@ -84,32 +72,10 @@ foreach($blogFormArr as $data){
         $links = '';
         foreach($compForm->button->conditionalLogic->rules as $rulekey=>$rule){
           if($rule->fieldId==='376'){
-            /*
-            $rule->value = $field550->label;
-            $rule->fieldId = '550';
-            $ruleFound = true;
-            echo 'Changed button rule from 376 to 550<br/>';*/
             echo 'removed rule for 376<br/>';
             unset($compForm->button->conditionalLogic->rules[$rulekey]);
           }
         }
-/*
-        if(!$ruleFound){
-          //add this to the conditional logic
-          $compForm->button->conditionalLogic->rules[] = $ButtonLogic550;
-          echo 'Added additional button rule for 550<br/>';
-          $ruleFound = true;
-        }
-*/
-    }else{
-      /*
-      $compForm->button->conditionalLogic = new stdClass();
-      $compForm->button->conditionalLogic->actionType = "show";
-      $compForm->button->conditionalLogic->logicType = "all";
-      $compForm->button->conditionalLogic->rules = array($ButtonLogic550);
-      echo 'Added conditional button logic for 550<br/>';
-      $ruleFound = true;
-       */
     }
   }else{
     echo 'error no compform button logic<br/>';
