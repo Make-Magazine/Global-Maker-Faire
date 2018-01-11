@@ -64,6 +64,7 @@ foreach($blogFormArr as $data){
   //copy 550 into the form
   $compFields[] = $field550;
 
+  
   //submit button logic
   if(isset($compForm->button)){
     //echo 'button set ';
