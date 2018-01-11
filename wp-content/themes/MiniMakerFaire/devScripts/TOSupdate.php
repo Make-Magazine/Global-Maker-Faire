@@ -65,7 +65,6 @@ foreach($blogFormArr as $data){
   $compFields[] = $field550;
 
   //submit button logic
-  $ruleFound = false;
   if(isset($compForm->button)){
     //echo 'button set ';
     if(isset($compForm->button->conditionalLogic->rules) && $compForm->button->conditionalLogic->rules) {
@@ -81,10 +80,6 @@ foreach($blogFormArr as $data){
     echo 'error no compform button logic<br/>';
     die();
   }
-  if(!$ruleFound){
-    $compForm->button->conditionalLogic->rules[] = $submitButton->conditionalLogic->rules;
-  }
-
 
 $updateForm = true;
   //update the form
