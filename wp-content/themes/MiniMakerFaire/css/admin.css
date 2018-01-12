@@ -208,11 +208,11 @@
 /* field 550 Make: TOS
  * editing is not allowed on any part of this field
  */
-#field_550 #field_label,
-#field_550 .gfield_choice_checkbox,
-#field_550 .field-choice-value,
-#field_550 .field-choice-input,
-#field_550 .gf_insert_field_choice{
+#field_550.lockedField #field_label,
+#field_550.lockedField .gfield_choice_checkbox,
+#field_550.lockedField .field-choice-value,
+#field_550.lockedField .field-choice-input,
+#field_550.lockedField .gf_insert_field_choice{
   pointer-events: none;
   background: rgba(255,255,255,.5);
   border-color: rgba(222,222,222,.75);
