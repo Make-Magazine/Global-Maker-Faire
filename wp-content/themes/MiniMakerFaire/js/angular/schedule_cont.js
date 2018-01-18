@@ -43,7 +43,7 @@
             and output an array of category names */
         angular.forEach($scope.schedules, function(schedule, scheduleKey){
           if($scope.dateFilter=='') $scope.dateFilter = schedule.dayOfWeek;
-          $scope.days[schedule.dayOfWeek] = $filter('date')(schedule.time_start, "shortDate");
+          $scope.days[schedule.dayOfWeek] = $filter('date')(schedule.time_start, "d/MMM/yy");
 
             //check if there is more than one type
             addType = schedule.type;
