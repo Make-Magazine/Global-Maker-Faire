@@ -682,15 +682,14 @@ function getNewsletterPanel() {
           </div>
           <div class="col-xs-12 col-sm-6">
             <form class="form-inline sub-form whatcounts-signup1" action="https://secure.whatcounts.com/bin/listctrl" method="POST">
-              <input type="hidden" name="slid" value="6B5869DC547D3D4690C43FE9E066FBC6" /><!-- Confirmation -->
-              <input type="hidden" name="custom_list_makermedia" value="yes" />
-              <input type="hidden" name="custom_list_makerfaire" value="yes" />
+              <input type="hidden" name="slid" value="6B5869DC547D3D46E66DEF1987C64E7A" /><!-- MakerFaire -->
               <input type="hidden" name="cmd" value="subscribe" />
-              <input type="hidden" name="custom_source" value="footer" />
+              <input type="hidden" name="custom_source" value="Panel" />
               <input type="hidden" name="custom_incentive" value="none" />
               <input type="hidden" name="custom_url" value="'. $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"].'" />
               <input type="hidden" id="format_mime" name="format" value="mime" />
               <input type="hidden" name="custom_host" value="'. $_SERVER["HTTP_HOST"].'" />
+              <div id="recapcha-panel" class="g-recaptcha" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;margin-bottom:-8px;"></div>
               <input id="wc-email" class="form-control nl-panel-input" name="email" placeholder="'. __('Enter your Email','MiniMakerFaire').'" required type="email">
               <input class="form-control btn-w-ghost" value="'. __('GO','MiniMakerFaire').'" type="submit">
             </form>
@@ -713,8 +712,25 @@ function getNewsletterPanel() {
       <div class="clearfix"></div>
     </div>
 
+    <div class="nl-modal-error" style="display:none;">
+        <div class="col-xs-12 nl-modal padtop">
+            <p class="lead">The reCAPTCHA box was not checked. Please try again.</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
     <script>
       jQuery(document).ready(function(){
+        var recaptchaKey = "6Lffo0EUAAAAABhGRLPk751JrmCLqR5bvUR9RYZJ";
+        var recaptchaPanel;
+        onloadCallback = function() {
+          if ( jQuery("#recapcha-panel").length ) {
+            recaptchaPanel = grecaptcha.render("recapcha-panel", {
+              "sitekey" : recaptchaKey
+            });
+          }
+        };
+        
         jQuery(".fancybox-thx").fancybox({
           autoSize : false,
           width  : 400,
@@ -724,14 +740,27 @@ function getNewsletterPanel() {
             this.content = this.content.html();
           }
         });
+        jQuery(".nl-modal-error").fancybox({
+          autoSize : false,
+          width  : 250,
+          autoHeight : true,
+          padding : 0,
+          afterLoad   : function() {
+            this.content = this.content.html();
+          }
+        });
         jQuery(document).on("submit", ".whatcounts-signup1", function (e) {
           e.preventDefault();
-          var bla = jQuery("#wc-email").val();
-          globalNewsletterSignup(bla);
-          jQuery.post("https://secure.whatcounts.com/bin/listctrl", jQuery(".whatcounts-signup1").serialize());
-          jQuery(".fancybox-thx").trigger("click");
-          //jQuery(".nl-modal-email-address").text(bla);
-          //jQuery(".whatcounts-signup2 #email").val(bla);
+          if ( grecaptcha.getResponse(recaptchaPanel) != "" ) {
+            var bla = jQuery("#wc-email").val();
+            globalNewsletterSignup(bla);
+            jQuery.post("https://secure.whatcounts.com/bin/listctrl", jQuery(".whatcounts-signup1").serialize());
+            jQuery(".fancybox-thx").trigger("click");
+            //jQuery(".nl-modal-email-address").text(bla);
+            //jQuery(".whatcounts-signup2 #email").val(bla);
+          } else {
+            jQuery(".nl-modal-error").trigger("click");
+          }
         });
       });
     </script>';
