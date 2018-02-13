@@ -689,7 +689,7 @@ function getNewsletterPanel() {
               <input type="hidden" name="custom_url" value="'. $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"].'" />
               <input type="hidden" id="format_mime" name="format" value="mime" />
               <input type="hidden" name="custom_host" value="'. $_SERVER["HTTP_HOST"].'" />
-              <div id="recapcha-panel" class="g-recaptcha" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;margin-bottom:-8px;"></div>
+              <div id="recapcha-panel" class="g-recaptcha" data-size="invisible"></div>
               <input id="wc-email" class="form-control nl-panel-input" name="email" placeholder="'. __('Enter your Email','MiniMakerFaire').'" required type="email">
               <input class="form-control btn-w-ghost" value="'. __('GO','MiniMakerFaire').'" type="submit">
             </form>
@@ -720,17 +720,7 @@ function getNewsletterPanel() {
     </div>
 
     <script>
-      jQuery(document).ready(function(){
-        var recaptchaKey = "6Lffo0EUAAAAABhGRLPk751JrmCLqR5bvUR9RYZJ";
-        var recaptchaPanel;
-        onloadCallback = function() {
-          if ( jQuery("#recapcha-panel").length ) {
-            recaptchaPanel = grecaptcha.render("recapcha-panel", {
-              "sitekey" : recaptchaKey
-            });
-          }
-        };
-        
+      jQuery(document).ready(function(){        
         jQuery(".fancybox-thx").fancybox({
           autoSize : false,
           width  : 400,
@@ -749,20 +739,28 @@ function getNewsletterPanel() {
             this.content = this.content.html();
           }
         });
-        jQuery(document).on("submit", ".whatcounts-signup1", function (e) {
-          e.preventDefault();
-          if ( grecaptcha.getResponse(recaptchaPanel) != "" ) {
-            var bla = jQuery("#wc-email").val();
-            globalNewsletterSignup(bla);
-            jQuery.post("https://secure.whatcounts.com/bin/listctrl", jQuery(".whatcounts-signup1").serialize());
-            jQuery(".fancybox-thx").trigger("click");
-            //jQuery(".nl-modal-email-address").text(bla);
-            //jQuery(".whatcounts-signup2 #email").val(bla);
-          } else {
-            jQuery(".nl-modal-error").trigger("click");
-          }
-        });
       });
+      var onSubmitPanel = function(token) {
+        var bla = jQuery("#wc-email").val();
+        globalNewsletterSignup(bla);
+        jQuery.post("https://secure.whatcounts.com/bin/listctrl", jQuery(".whatcounts-signup1").serialize());
+        jQuery(".fancybox-thx").trigger("click");
+        //jQuery(".nl-modal-email-address").text(bla);
+        //jQuery(".whatcounts-signup2 #email").val(bla);
+      }
+      jQuery(document).on("submit", ".whatcounts-signup1", function (e) {
+        e.preventDefault();
+        onSubmitPanel();
+      });
+      var recaptchaKey = "6Lf_-kEUAAAAAHtDfGBAleSvWSynALMcgI1hc_tP";
+      onloadCallback = function() {
+        if ( jQuery("#recapcha-panel").length ) {
+          grecaptcha.render("recapcha-panel", {
+            "sitekey" : recaptchaKey,
+            "callback" : onSubmitPanel
+          });
+        }
+      };
     </script>';
   return $return;
 }
