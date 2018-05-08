@@ -5,7 +5,8 @@
 
 //function to add entry status update section
 add_action( 'gform_entry_detail_sidebar_before', 'mf_entry_info', 10, 2 );
-function mf_entry_info( $form_id, $entry){
+function mf_entry_info( $form, $entry){
+  $form_id=(is_array($form)?$form['id']:$form);
   ?>
   <div class="meta-box-sortables">
     <div id="entryStatus" class="postbox">
