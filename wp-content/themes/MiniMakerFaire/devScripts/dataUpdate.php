@@ -32,7 +32,7 @@ $lockOptVal = array(303, 304);
 $lockOptAll = array(105, 310, 311, 312, 313, 314, 315, 316);
 
 //pull in the master CFM form - master.makerfaire.com (blog id = 6) form 1
-$sql          = 'select display_meta from wp_6_rg_form_meta  where form_id=1';
+$sql          = 'select display_meta from wp_6_gf_form_meta  where form_id=1';
 $masterJSON   = $wpdb->get_var($sql);
 $masterForm   = json_decode($masterJSON);
 $masterFields = (array) $masterForm->fields;
@@ -51,7 +51,7 @@ foreach($blogFormArr as $data){
   $blogID = $data['blogID'];
   $formID = $data['formID'];
 
-  $Blogsql  = 'select display_meta from wp_'.$blogID.'_rg_form_meta  where form_id='.$formID;
+  $Blogsql  = 'select display_meta from wp_'.$blogID.'_gf_form_meta  where form_id='.$formID;
 
   $compJSON   = $wpdb->get_var($Blogsql);
   $compForm   = json_decode($compJSON);
@@ -167,7 +167,7 @@ foreach($blogFormArr as $data){
     $updForm = json_encode($compForm);
 
     //run sql to update form
-    $meta_table_name = 'wp_'.$blogID.'_rg_form_meta';
+    $meta_table_name = 'wp_'.$blogID.'_gf_form_meta';
     $meta_name = 'display_meta';
     $result = $wpdb->query( $wpdb->prepare( "UPDATE $meta_table_name SET $meta_name=%s WHERE form_id=%d", $updForm, $formID ) );
 

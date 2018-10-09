@@ -110,8 +110,8 @@ function get_return_entry_list_url($form) {
 	$lead_details_table_name = RGFormsModel::get_lead_details_table_name();
 	$sql             = $wpdb->prepare(
 			"SELECT count(0) as entries,value as label FROM $lead_details_table_name
-			      join wp_rg_lead lead
-                                    on  lead.id = $lead_details_table_name.lead_id and
+			      join wp_rgf_entry lead
+                                    on  lead.id = $lead_details_table_name.entry_id and
                                         lead.status = 'active'
                         where field_number='303'
 			and $lead_details_table_name.form_id=%d

@@ -27,9 +27,9 @@ foreach($results as $blogrow){
   $blogID = $blogrow['blog_id'];
 
   if($blogID==1){
-    $table  =  'wp_rg_form_meta';
+    $table  =  'wp_gf_form_meta';
   }else{
-    $table  =  'wp_'.$blogID.'_rg_form_meta';
+    $table  =  'wp_'.$blogID.'_gf_form_meta';
   }
 
   $formResults = $wpdb->get_results('select display_meta, form_id from '.$table,ARRAY_A);
@@ -52,33 +52,33 @@ foreach($results as $blogrow){
       //display number of accepted records
       $sql = "SELECT lead.id,
                 (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.lead_id = lead.id and leadDetail.field_number = 303
+                leadDetail.entry_id = lead.id and leadDetail.field_number = 303
                 )as entryStatus,
                 (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.lead_id = lead.id and leadDetail.field_number = 98
+                leadDetail.entry_id = lead.id and leadDetail.field_number = 98
                 )as contactEmail,
                 (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.lead_id = lead.id and leadDetail.field_number = 161
+                leadDetail.entry_id = lead.id and leadDetail.field_number = 161
                 )as maker1Email,
                 (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.lead_id = lead.id and leadDetail.field_number = 162
+                leadDetail.entry_id = lead.id and leadDetail.field_number = 162
                 )as maker2Email,
                 (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.lead_id = lead.id and leadDetail.field_number = 167
+                leadDetail.entry_id = lead.id and leadDetail.field_number = 167
                 )as maker3Email,
                 (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.lead_id = lead.id and leadDetail.field_number = 166
+                leadDetail.entry_id = lead.id and leadDetail.field_number = 166
                 )as maker4Email,
                 (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.lead_id = lead.id and leadDetail.field_number = 165
+                leadDetail.entry_id = lead.id and leadDetail.field_number = 165
                 )as maker5Email,
                 (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.lead_id = lead.id and leadDetail.field_number = 164
+                leadDetail.entry_id = lead.id and leadDetail.field_number = 164
                 )as maker6Email,
                 (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.lead_id = lead.id and leadDetail.field_number = 163
+                leadDetail.entry_id = lead.id and leadDetail.field_number = 163
                 )as maker7Email
-                from wp_".$blogID."_rg_lead lead
+                from wp_".$blogID."_gf_entry lead
 
                 where status = 'active' and lead.form_id = ".$form_id;
       //echo $sql;

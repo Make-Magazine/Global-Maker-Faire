@@ -230,15 +230,15 @@ function getFeatEvPanel($row_layout) {
     $formid = get_sub_field('enter_formid_here');
     $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
               lead_detail.value as entry_status, DAYNAME(schedule.start_dt) as day,location.location,
-              (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '304.3' and value like 'Featured Maker')  as flag,
-              (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '22')  as photo,
-              (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '151') as name,
-              (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '16')  as short_desc
+              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '304.3' and value like 'Featured Maker')  as flag,
+              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '22')  as photo,
+              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '151') as name,
+              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '16')  as short_desc
                FROM {$wpdb->prefix}mf_schedule as schedule
                left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
-               left outer join {$wpdb->prefix}rg_lead as lead on schedule.entry_id = lead.id
+               left outer join {$wpdb->prefix}gf_entry as lead on schedule.entry_id = lead.id
                left outer join {$wpdb->prefix}rg_lead_detail as lead_detail on
-                   schedule.entry_id = lead_detail.lead_id and field_number = 303
+                   schedule.entry_id = lead_detail.entry_id and field_number = 303
                where lead.status = 'active' and lead_detail.value='Accepted'";
 
     foreach($wpdb->get_results($query) as $row){

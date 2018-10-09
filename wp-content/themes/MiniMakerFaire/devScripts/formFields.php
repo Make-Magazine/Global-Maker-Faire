@@ -6,9 +6,9 @@ $lockedFields = explode(',',$gfLockedFields);
 $blogID =  get_current_blog_id();
 
 if($blogID==1){
-  $table  =  'wp_rg_form_meta';
+  $table  =  'wp_gf_form_meta';
 }else{
-  $table  =  'wp_'.$blogID.'_rg_form_meta';
+  $table  =  'wp_'.$blogID.'_gf_form_meta';
 }
 $sql    = 'select display_meta from '.$table;
 if(isset($_GET['formID'])) $sql.= ' where form_id='.$_GET['formID'];

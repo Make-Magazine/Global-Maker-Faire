@@ -27,9 +27,9 @@ $blogArray = array();
 foreach($results as $blogrow){
   $blogID = (int) $blogrow['blog_id'];
   if($blogID==1){
-    $table  =  'wp_rg_form_meta';
+    $table  =  'wp_gf_form_meta';
   }else{
-    $table  =  'wp_'.$blogID.'_rg_form_meta';
+    $table  =  'wp_'.$blogID.'_gf_form_meta';
   }
 
   $formResults = $wpdb->get_results('select display_meta, form_id from '.$table,ARRAY_A);

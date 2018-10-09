@@ -21,7 +21,7 @@ $blogFormArr = array(
 
 
 //pull in the master CFM form - master.makerfaire.com (blog id = 6) form 1
-$sql    = 'select display_meta from wp_6_rg_form_meta where form_id=1';
+$sql    = 'select display_meta from wp_6_gf_form_meta where form_id=1';
 
 //now pull field 376 and 550 and the submit button conditional logic
 $masterJSON   = $wpdb->get_var($sql);
@@ -40,7 +40,7 @@ foreach($blogFormArr as $data){
   $formID = $data['formID'];
   echo 'updating $blogID - '.$blogID.'. $formID - '.$formID.'.<br/>';
 
-  $Blogsql  = 'select display_meta from wp_'.$blogID.'_rg_form_meta  where form_id='.$formID;
+  $Blogsql  = 'select display_meta from wp_'.$blogID.'_gf_form_meta  where form_id='.$formID;
 
   $compJSON   = $wpdb->get_var($Blogsql);
   $compForm   = json_decode($compJSON);
@@ -90,7 +90,7 @@ $updateForm = true;
     $updForm = json_encode($compForm);
 
     //run sql to update form
-    $meta_table_name = 'wp_'.$blogID.'_rg_form_meta';
+    $meta_table_name = 'wp_'.$blogID.'_gf_form_meta';
     $meta_name = 'display_meta';
     $result = $wpdb->query( $wpdb->prepare( "UPDATE $meta_table_name SET $meta_name=%s WHERE form_id=%d", $updForm, $formID ) );
 

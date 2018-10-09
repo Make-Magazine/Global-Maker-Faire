@@ -1,7 +1,7 @@
 <?php
 include 'db_connect.php';
 
-$table = (isset($_GET['blog_id'])?'wp_'.$_GET['blog_id'].'_rg_form_meta':'wp_rg_form_meta');
+$table = (isset($_GET['blog_id'])?'wp_'.$_GET['blog_id'].'_gf_form_meta':'wp_gf_form_meta');
 $sql = 'select display_meta, notifications from '.$table;
 if(isset($_GET['formID'])) $sql.= ' and form_id='.$_GET['formID'];
 

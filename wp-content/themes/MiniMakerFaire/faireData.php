@@ -132,15 +132,15 @@ function FDgetMTMentries($formIDs) {
     $data = array(); global $wpdb;
     $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
               lead_detail.value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
-              (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '22')  as photo,
-              (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '151') as name,
-              (select value from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND field_number like '16')  as short_desc,
-              (select group_concat( value separator ', ') as cat   from {$wpdb->prefix}rg_lead_detail where lead_id = schedule.entry_id AND (field_number like '%320%' OR field_number like '%321%')) as category
+              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '22')  as photo,
+              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '151') as name,
+              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '16')  as short_desc,
+              (select group_concat( value separator ', ') as cat   from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND (field_number like '%320%' OR field_number like '%321%')) as category
                FROM {$wpdb->prefix}mf_schedule as schedule
                left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
-               left outer join {$wpdb->prefix}rg_lead as lead on schedule.entry_id = lead.id
+               left outer join {$wpdb->prefix}gf_entry as lead on schedule.entry_id = lead.id
                left outer join {$wpdb->prefix}rg_lead_detail as lead_detail on
-                   schedule.entry_id = lead_detail.lead_id and field_number = 303
+                   schedule.entry_id = lead_detail.entry_id and field_number = 303
                where lead.status = 'active' and lead_detail.value='Accepted'";
 
     //retrieve project name, img (22), maker list, topics
@@ -192,7 +192,7 @@ function FDgetMTMentries($formIDs) {
     $data = array(); global $wpdb;
     $query = "SELECT *
               FROM {$wpdb->prefix}rg_lead_detail as lead_detail
-              where lead_detail.lead_id = $entryID "
+              where lead_detail.entry_id = $entryID "
            . "and cast(field_number as char) in('160.3', '160.6', '158.3', '158.6', '155.3', '155.6', "
            . "'156.3', '156.6', '157.3', '157.6', '159.3', '159.6', '154.3', '154.6', '109', '105')";
     $entryData = $wpdb->get_results($query);

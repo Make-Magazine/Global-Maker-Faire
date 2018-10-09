@@ -38,9 +38,9 @@ $timer = 1;
     $form_type = (isset($form['form_type'])?$form['form_type']:'');
     if(isset($form_type) && $form_type==='cfm'){
       //display number of accepted records
-      $sql = "SELECT wp_".$blogID."_rg_lead_detail.lead_id,wp_".$blogID."_rg_lead_detail.form_id "
+      $sql = "SELECT wp_".$blogID."_rg_lead_detail.entry_id,wp_".$blogID."_rg_lead_detail.form_id "
               . " FROM `wp_".$blogID."_rg_lead_detail`"
-              . " left outer join wp_".$blogID."_rg_lead on wp_".$blogID."_rg_lead.id = wp_".$blogID."_rg_lead_detail.lead_id"
+              . " left outer join wp_".$blogID."_gf_entry on wp_".$blogID."_rg_lead.id = wp_".$blogID."_rg_lead_detail.entry_id"
               . " where wp_".$blogID."_rg_lead_detail.field_number = 303"
               . "   and wp_".$blogID."_rg_lead_detail.value = 'Accepted'"
               . "   and status = 'active'"
@@ -51,7 +51,7 @@ $timer = 1;
       //display number of makers
       foreach($entries as $entry){
         //echo 'i am here';
-        $entry_id = $entry->lead_id;
+        $entry_id = $entry->entry_id;
         echo 'Adding '.$entry_id. ' from form '.$form_id.' to WhatCounts<br/>';
         $lead = GFAPI::get_entry($entry_id);
         wp_schedule_single_event(time() + $timer,'sidebar_entry_update', array($lead, $form));
