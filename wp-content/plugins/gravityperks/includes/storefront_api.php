@@ -101,7 +101,6 @@ class GWAPI {
 		return ! empty( $perks ) ? $perks : false;
 	}
 
-
 	/**
 	 * Get Dashboard Announcements
 	 */
@@ -129,7 +128,7 @@ class GWAPI {
 		}
 
 		$response = json_decode( wp_remote_retrieve_body( $response ) );
-		if( ! $response ) {
+		if( ! $response || ! is_array( $response ) ) {
 			return false;
 		}
 
@@ -146,6 +145,11 @@ class GWAPI {
 	 * @param mixed $_transient_data
 	 */
 	public function pre_set_site_transient_update_plugins_filter( $_transient_data ) {
+
+		/* Reduce number of requests when installing plugin. */
+		if ( isset( $_GET['action'] ) && $_GET['action'] === 'install-plugin' ) {
+			return $_transient_data;
+		}
 
 		GravityPerks::log_debug( 'pre_set_site_transient_update_plugins_filter() start. Retrieves download package for individual perk auto-updates.' );
 
@@ -269,7 +273,7 @@ class GWAPI {
         remove_all_filters( 'plugins_api' );
 
         // remove all the filters causes an infinite loop so add one dummy function so the loop can break itself
-        add_filter( 'plugins_api', create_function( '$_data', 'return $_data;' ) );
+        add_filter( 'plugins_api', array( new GP_Late_Static_Binding(), 'GWAPI_dummy_func' ) );
 
         // needed for testing on local
         add_filter( 'http_request_args', array( $this, 'allow_unsecure_urls_on_localhost' ) );
@@ -317,7 +321,6 @@ class GWAPI {
 		    'edd_action' => 'check_license',
 		    'license'    => $license,
 		    'item_name'  => urlencode( $this->get_product_name() ),
-		    'url'        => home_url(),
 	    ) );
 
 	    add_filter( 'http_request_args', array( $this, 'log_http_request_args' ) );
@@ -406,7 +409,6 @@ class GWAPI {
             'edd_action' => 'activate_license',
             'license'    => $license,
             'item_name'  => urlencode( $this->get_product_name() ),
-	        'url'        => home_url(),
         ) );
 
 	    add_filter( 'http_request_args', array( $this, 'log_http_request_args' ) );
@@ -440,7 +442,6 @@ class GWAPI {
 		    'edd_action' => 'deactivate_license',
 		    'license'    => $license,
 		    'item_name'  => urlencode( $this->get_product_name() ),
-		    'url'        => home_url(),
 	    ) );
 
 	    add_filter( 'http_request_args', array( $this, 'log_http_request_args' ) );
@@ -510,10 +511,11 @@ class GWAPI {
     }
 
     public static function get_request_args( $args = array() ) {
-        return wp_parse_args( $args, array(
-            'user-agent' => 'Gravity Perks ' . GWPerks::get_version(),
-            'timeout'    => 15
-        ) );
+	    return wp_parse_args( $args, array(
+		    'user-agent' => 'Gravity Perks ' . GWPerks::get_version(),
+		    'timeout'    => 15,
+		    'sslverify'  => (bool) apply_filters( 'edd_sl_api_request_verify_ssl', true ),
+	    ) );
     }
 
     public static function get_site_url() {

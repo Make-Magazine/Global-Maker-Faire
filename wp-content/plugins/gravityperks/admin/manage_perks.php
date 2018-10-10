@@ -245,7 +245,7 @@ class GWPerksPage {
                                 <a href="<?php echo $generic_perk->get_link_for('deregister'); ?>" class="button"><?php _e('Deregister', 'gravityperks'); ?></a>
 							<?php endif; ?>
 
-						<?php elseif( version_compare( GravityPerks::$version, '2.0', '>=' ) || GravityPerks::is_local() ): ?>
+						<?php else: ?>
 
                             <a href="<?php echo GWPerks::get_license_upgrade_url(); ?>" class="button" target="_blank"><?php _e('Upgrade License', 'gravityperks'); ?></a>
 
@@ -504,7 +504,7 @@ class GWPerksPage {
                         <?php if( GWPerks::has_valid_license() ): ?>
                             <?php if (GWPerks::has_available_perks()): ?>
                                 <a class="button button-primary" href="<?php echo esc_html( wp_nonce_url( add_query_arg( array( 'page' => 'gwp_perks', 'gwp_register_perk' => $perk_info->ID ), admin_url('admin.php') ), 'gwp_register_perk' ) ); ?>">Register Perk</a>
-			                <?php elseif( version_compare( GravityPerks::$version, '2.0', '>=' ) || GravityPerks::is_local() ): ?>
+			                <?php else: ?>
                                 <a class="button button-primary" href="<?php echo GWPerks::get_license_upgrade_url(); ?>" target="_blank">Upgrade License to Register</a>
 	                        <?php endif; ?>
                         <?php endif; ?>
@@ -666,7 +666,7 @@ class GWPerksPage {
                     | <a href="<?php echo esc_html( wp_nonce_url( add_query_arg( array( 'page' => 'gwp_perks', 'gwp_deactivate_license' => 1 ), admin_url('admin.php') ), 'gwp_deactivate_license' ) ); ?>"
                             onClick="return confirm('<?php _e('Are you sure you wish to deactivate your Gravity Perks license on this site?'); ?>');">Deactivate</a>
                 <?php endif; ?>
-                <?php if ( $license_data['price_id'] != GW_PRICE_ID_PRO && $license_data['price_id'] != GW_PRICE_ID_LEGACY_UNLIMITED && ( version_compare( GravityPerks::$version, '2.0', '>=' ) || GravityPerks::is_local() ) ): ?>
+                <?php if ( $license_data['price_id'] != GW_PRICE_ID_PRO && $license_data['price_id'] != GW_PRICE_ID_LEGACY_UNLIMITED ): ?>
                 | <a href="<?php echo GWPerks::get_license_upgrade_url(); ?>" target="_blank">Upgrade</a>
                 <?php endif; ?>
 
@@ -718,15 +718,26 @@ class GWPerksPage {
 
 	        update_site_option( 'gwp_settings', $settings );
 
-	        GWPerks::flush_license();
+	        GWPerks::flush_license(true);
 
             if ( ! GWPerks::has_valid_license() ) {
             	if( GravityPerks::get_api_status() != '200' ) {
-            		$message = __( 'Oops! Your site is having some trouble communicating with the our API.', 'gravityperks' );
-            		$message .= sprintf( ' <a href="%s" target="_blank">%s</a>', GW_DOMAIN . '/documentation/', __( 'Let\'s get this fixed.', 'gravityperks' ) );
-		            $GLOBALS['GWP_LICENSE_NOTICE'] = new GWNotice( $message, array( 'class' => 'inline error gwp-message' ) );
+		            $GLOBALS['GWP_LICENSE_NOTICE'] = new GWNotice( GravityPerks::get_api_error_message(), array( 'class' => 'inline error gwp-message' ) );
 	            } else {
-		            $GLOBALS['GWP_LICENSE_NOTICE'] = new GWNotice( __( 'Oops! That doesn\'t appear to be a valid license.', 'gravityperks' ), array( 'class' => 'inline error gwp-message' ) );
+            	    $license_data = GravityPerks::get_license_data();
+            	    $message =  __( 'Oops! That doesn\'t appear to be a valid license.', 'gravityperks' );
+
+		            if ( rgar( $license_data, 'activations_left' ) === 0 ) {
+			            if ( $license_limit = rgar( $license_data, 'license_limit' ) ) {
+				            $message = sprintf( __( 'Oops! You have reached your license\'s site limit of %d site(s).', 'gravityperks' ), $license_limit );
+			            } else {
+				            $message = sprintf( __( 'Oops! You have reached your license\'s site limit.', 'gravityperks' ), $license_limit );
+			            }
+
+                        $message .= sprintf( ' <a href="%s" target="_blank">%s</a>', GravityPerks::get_license_upgrade_url(), __( 'Upgrade Now', 'gravityperks' ) );
+		            }
+
+                    $GLOBALS['GWP_LICENSE_NOTICE'] = new GWNotice( $message, array( 'class' => 'inline error gwp-message' ) );
 	            }
             }
 
@@ -765,7 +776,7 @@ class GWPerksPage {
 
 		    update_site_option( 'gwp_settings', $settings );
 
-		    GWPerks::flush_license();
+		    GWPerks::flush_license(true);
 
 		    $GLOBALS['GWP_LICENSE_NOTICE'] = new GWNotice(__('License successfully deactivated.', 'gravityperks'), array('class' => 'inline notice notice-success gwp-message'));
 
@@ -773,7 +784,7 @@ class GWPerksPage {
 
 		    check_admin_referer( 'gwp_flush_license' );
 
-		    GWPerks::flush_license();
+		    GWPerks::flush_license(true);
 
 		    $GLOBALS['GWP_LICENSE_NOTICE'] = new GWNotice(__('License successfully refreshed.', 'gravityperks'), array('class' => 'inline notice notice-success gwp-message'));
 
