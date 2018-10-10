@@ -1,213 +1,200 @@
 <?php
 
 /**
-* Limit How Many Checkboxes Can Be Checked
-* http://gravitywiz.com/2012/06/11/limiting-how-many-checkboxes-can-be-checked/
-*/
-
+ * Limit How Many Checkboxes Can Be Checked
+ * http://gravitywiz.com/2012/06/11/limiting-how-many-checkboxes-can-be-checked/
+ */
 class GFLimitCheckboxes {
 
-    private $form_id;
-    private $field_limits;
-    private $output_script;
+   private $form_id;
+   private $field_limits;
+   private $output_script;
 
-    function __construct($form_id, $field_limits) {
+   function __construct($form_id, $field_limits) {
 
-        $this->form_id = $form_id;
-        $this->field_limits = $this->set_field_limits($field_limits);
+      $this->form_id = $form_id;
+      $this->field_limits = $this->set_field_limits($field_limits);
 
-        add_filter("gform_pre_render", array(&$this, 'pre_render'));
-        add_filter("gform_validation", array(&$this, 'validate'));
+      add_filter("gform_pre_render", array(&$this, 'pre_render'));
+      add_filter("gform_validation", array(&$this, 'validate'));
+   }
 
-    }
-
-    function pre_render($form) {
-
-        $script = '';
-        $output_script = false;
-
-        foreach($form['fields'] as $field) {
-
-            $field_id = $field['id'];
-            $field_limits = $this->get_field_limits($field['id']);
-
-            if( !$field_limits                                          // if field limits not provided for this field
-                || RGFormsModel::get_input_type($field) != 'checkbox'   // or if this field is not a checkbox
-                || !isset($field_limits['max'])        // or if 'max' is not set for this field
-                )
-                continue;
-
-            $output_script = true;
-            $max = $field_limits['max'];
-            $selectors = array();
-
-            foreach($field_limits['field'] as $checkbox_field) {
-                $selectors[] = "#field_{$form['id']}_{$checkbox_field} .gfield_checkbox input:checkbox";
-            }
-
-            $script .= "jQuery(\"" . implode(', ', $selectors) . "\").checkboxLimit({$max});";
-
-        }
-
-        GFFormDisplay::add_init_script($form['id'], 'limit_checkboxes', GFFormDisplay::ON_PAGE_RENDER, $script);
-
-        if($output_script):
-            ?>
-
-            <script type="text/javascript">
+   function pre_render($form) {
+      $limitScript = "
             jQuery(document).ready(function($) {
-                $.fn.checkboxLimit = function(n) {
-
-                    var checkboxes = this;
-
-                    this.toggleDisable = function() {
+               jQuery.fn.extend({
+                  checkboxLimit: function (n)  {
+                     var checkboxes = this;
+                     this.toggleDisable = function() {
 
                         // if we have reached or exceeded the limit, disable all other checkboxes
-                        if(this.filter(':checked').length >= n) {
-                            var unchecked = this.not(':checked');
-                            unchecked.prop('disabled', true);
+                        if (this.filter(':checked').length >= n) {
+                           var unchecked = this.not(':checked');
+                           unchecked.prop('disabled', true);
                         }
                         // if we are below the limit, make sure all checkboxes are available
                         else {
-                            this.prop('disabled', false);
+                           this.prop('disabled', false);
                         }
+                     };
+                     // when form is rendered, toggle disable
+                     checkboxes.bind('gform_post_render', checkboxes.toggleDisable());
 
-                    }
-
-                    // when form is rendered, toggle disable
-                    checkboxes.bind('gform_post_render', checkboxes.toggleDisable());
-
-                    // when checkbox is clicked, toggle disable
-                    checkboxes.click(function(event) {
-
+                     // when checkbox is clicked, toggle disable
+                     checkboxes.click(function(event) {
                         checkboxes.toggleDisable();
-
                         // if we are equal to or below the limit, the field should be checked
                         return checkboxes.filter(':checked').length <= n;
-                    });
+                     });
+                  }
+               });
 
-                }
-            });
-            </script>
+            });";
+      GFFormDisplay::add_init_script($form['id'], 'limit_checkboxes', GFFormDisplay::ON_PAGE_RENDER, $limitScript);
 
-            <?php
-        endif;
+      $script = '';
+      $output_script = true;
 
-        return $form;
-    }
+      foreach ($form['fields'] as $field) {
 
-    function validate($validation_result) {
+         $field_id = $field['id'];
+         $field_limits = $this->get_field_limits($field['id']);
 
-        $form = $validation_result['form'];
-        $checkbox_counts = array();
+         if (!$field_limits                                          // if field limits not provided for this field
+            || RGFormsModel::get_input_type($field) != 'checkbox'   // or if this field is not a checkbox
+            || !isset($field_limits['max'])        // or if 'max' is not set for this field
+         )
+            continue;
 
-        // loop through and get counts on all checkbox fields (just to keep things simple)
-        foreach($form['fields'] as $field) {
+         $output_script = true;
+         $max = $field_limits['max'];
+         $selectors = array();
 
-            if( RGFormsModel::get_input_type($field) != 'checkbox' )
-                continue;
+         foreach ($field_limits['field'] as $checkbox_field) {
+            $selectors[] = "#field_{$form['id']}_{$checkbox_field} .gfield_checkbox input:checkbox";
+         }
 
-            $field_id = $field['id'];
-            $count = 0;
+         $script .= "jQuery(\"" . implode(', ', $selectors) . "\").checkboxLimit({$max});";
+      }
 
-            foreach($_POST as $key => $value) {
-                if(strpos($key, "input_{$field['id']}_") !== false)
-                    $count++;
-            }
+      GFFormDisplay::add_init_script($form['id'], 'limit_checkboxes', GFFormDisplay::ON_PAGE_RENDER, $script);
 
-            $checkbox_counts[$field_id] = $count;
+      if ($output_script) {
+        //
 
-        }
 
-        // loop through again and actually validate
-        foreach($form['fields'] as &$field) {
+      }
 
-            if(!$this->should_field_be_validated($form, $field))
-                continue;
+      return $form;
+   }
 
-            $field_id = $field['id'];
-            $field_limits = $this->get_field_limits($field_id);
+   function validate($validation_result) {
 
-            $min = isset($field_limits['min']) ? $field_limits['min'] : false;
-            $max = isset($field_limits['max']) ? $field_limits['max'] : false;
+      $form = $validation_result['form'];
+      $checkbox_counts = array();
 
-            $count = 0;
-            foreach($field_limits['field'] as $checkbox_field) {
-                $count += rgar($checkbox_counts, $checkbox_field);
-            }
+      // loop through and get counts on all checkbox fields (just to keep things simple)
+      foreach ($form['fields'] as $field) {
 
-            if($count < $min) {
-                $field['failed_validation'] = true;
-                $field['validation_message'] = sprintf( _n('You must select at least %s item.', 'You must select at least %s items.', $min), $min );
-                $validation_result['is_valid'] = false;
-            }
-            else if($count > $max) {
-                $field['failed_validation'] = true;
-                $field['validation_message'] = sprintf( _n('You may only select %s item.', 'You may only select %s items.', $max), $max );
-                $validation_result['is_valid'] = false;
-            }
+         if (RGFormsModel::get_input_type($field) != 'checkbox')
+            continue;
 
-        }
+         $field_id = $field['id'];
+         $count = 0;
 
-        $validation_result['form'] = $form;
+         foreach ($_POST as $key => $value) {
+            if (strpos($key, "input_{$field['id']}_") !== false)
+               $count++;
+         }
 
-        return $validation_result;
-    }
+         $checkbox_counts[$field_id] = $count;
+      }
 
-    function should_field_be_validated($form, $field) {
+      // loop through again and actually validate
+      foreach ($form['fields'] as &$field) {
 
-        if( $field['pageNumber'] != GFFormDisplay::get_source_page( $form['id'] ) )
-    		return false;
+         if (!$this->should_field_be_validated($form, $field))
+            continue;
 
-        // if no limits provided for this field
-        if( !$this->get_field_limits($field['id']) )
-            return false;
+         $field_id = $field['id'];
+         $field_limits = $this->get_field_limits($field_id);
 
-        // or if this field is not a checkbox
-        if( RGFormsModel::get_input_type($field) != 'checkbox' )
-            return false;
+         $min = isset($field_limits['min']) ? $field_limits['min'] : false;
+         $max = isset($field_limits['max']) ? $field_limits['max'] : false;
 
-        // or if this field is hidden
-        if( RGFormsModel::is_field_hidden($form, $field, array()) )
-            return false;
+         $count = 0;
+         foreach ($field_limits['field'] as $checkbox_field) {
+            $count += rgar($checkbox_counts, $checkbox_field);
+         }
 
-        return true;
-    }
+         if ($count < $min) {
+            $field['failed_validation'] = true;
+            $field['validation_message'] = sprintf(_n('You must select at least %s item.', 'You must select at least %s items.', $min), $min);
+            $validation_result['is_valid'] = false;
+         } else if ($count > $max) {
+            $field['failed_validation'] = true;
+            $field['validation_message'] = sprintf(_n('You may only select %s item.', 'You may only select %s items.', $max), $max);
+            $validation_result['is_valid'] = false;
+         }
+      }
 
-    function get_field_limits($field_id) {
+      $validation_result['form'] = $form;
 
-        foreach($this->field_limits as $key => $options) {
-            if(in_array($field_id, $options['field']))
-                return $options;
-        }
+      return $validation_result;
+   }
 
-        return false;
-    }
+   function should_field_be_validated($form, $field) {
 
-    function set_field_limits($field_limits) {
+      if ($field['pageNumber'] != GFFormDisplay::get_source_page($form['id']))
+         return false;
 
-        foreach($field_limits as $key => &$options) {
+      // if no limits provided for this field
+      if (!$this->get_field_limits($field['id']))
+         return false;
 
-            if(isset($options['field'])) {
-                $ids = is_array($options['field']) ? $options['field'] : array($options['field']);
-            } else {
-                $ids = array($key);
-            }
+      // or if this field is not a checkbox
+      if (RGFormsModel::get_input_type($field) != 'checkbox')
+         return false;
 
-            $options['field'] = $ids;
+      // or if this field is hidden
+      if (RGFormsModel::is_field_hidden($form, $field, array()))
+         return false;
 
-        }
+      return true;
+   }
 
-        return $field_limits;
-    }
+   function get_field_limits($field_id) {
+
+      foreach ($this->field_limits as $key => $options) {
+         if (in_array($field_id, $options['field']))
+            return $options;
+      }
+
+      return false;
+   }
+
+   function set_field_limits($field_limits) {
+
+      foreach ($field_limits as $key => &$options) {
+
+         if (isset($options['field'])) {
+            $ids = is_array($options['field']) ? $options['field'] : array($options['field']);
+         } else {
+            $ids = array($key);
+         }
+
+         $options['field'] = $ids;
+      }
+
+      return $field_limits;
+   }
 
 }
 
+$field = 321;
+$max = 4;
 
-  $field = 321;
-  $max   = 4;
-
-  //limits are for all forms
-  new GFLimitCheckboxes(9, array(
-    $field => array('max' => $max)
-  ));
+//limits are for all forms
+new GFLimitCheckboxes(9, array(
+   $field => array('max' => $max)
+   ));

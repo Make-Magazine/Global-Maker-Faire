@@ -256,6 +256,7 @@ class PLL_Admin_Model extends PLL_Model {
 
 	/**
 	 * Validates data entered when creating or updating a language
+	 *
 	 * @see PLL_Admin_Model::add_language
 	 *
 	 * @since 0.4
@@ -276,8 +277,10 @@ class PLL_Admin_Model extends PLL_Model {
 		}
 
 		// Validate slug is unique
-		if ( $this->get_language( $args['slug'] ) && ( null === $lang || ( isset( $lang ) && $lang->slug != $args['slug'] ) ) ) {
-			add_settings_error( 'general', 'pll_non_unique_slug', __( 'The language code must be unique', 'polylang' ) );
+		foreach ( $this->get_languages_list() as $language ) {
+			if ( $language->slug === $args['slug'] && ( null === $lang || ( isset( $lang ) && $lang->term_id != $language->term_id ) ) ) {
+				add_settings_error( 'general', 'pll_non_unique_slug', __( 'The language code must be unique', 'polylang' ) );
+			}
 		}
 
 		// Validate name
