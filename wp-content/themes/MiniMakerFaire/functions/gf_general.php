@@ -16,16 +16,16 @@
 function findOverride($entry_id, $type){
     global $wpdb;
     if($entry_id!=''){
-        $sql = "select * from {$wpdb->prefix}rg_lead_detail as detail join "
-                . "             (SELECT entry_id,field_number FROM `{$wpdb->prefix}rg_lead_detail` "
-                . "                 WHERE `entry_id` = $entry_id AND `field_number` BETWEEN 334.0 and 338.9 AND `value` = '$type' "
-                . "                 ORDER BY `{$wpdb->prefix}rg_lead_detail`.`field_number` ASC limit 1) "
+        $sql = "select * from {$wpdb->prefix}gf_entry_meta as detail join "
+                . "             (SELECT entry_id,meta_key FROM `{$wpdb->prefix}gf_entry_meta` "
+                . "                 WHERE `entry_id` = $entry_id AND `meta_key` BETWEEN 334.0 and 338.9 AND `meta_value` = '$type' "
+                . "                 ORDER BY `{$wpdb->prefix}gf_entry_meta`.`meta_key` ASC limit 1) "
                 . "             as override on detail.entry_id = override.entry_id "
-                . "         where   (detail.field_number = 331 and override.field_number between 335.0 and 335.9999) or "
-                . "                 (detail.field_number = 332 and override.field_number between 336.0 and 336.9999) or "
-                . "                 (detail.field_number = 333 and override.field_number between 337.0 and 337.9999) or "
-                . "                 (detail.field_number = 330 and override.field_number between 338.0 and 338.9999) or "
-                . "                 (detail.field_number = 329 and override.field_number between 334.0 and 334.9999)";
+                . "         where   (detail.meta_key = 331 and override.meta_key between 335.0 and 335.9999) or "
+                . "                 (detail.meta_key = 332 and override.meta_key between 336.0 and 336.9999) or "
+                . "                 (detail.meta_key = 333 and override.meta_key between 337.0 and 337.9999) or "
+                . "                 (detail.meta_key = 330 and override.meta_key between 338.0 and 338.9999) or "
+                . "                 (detail.meta_key = 329 and override.meta_key between 334.0 and 334.9999)";
         $results = $wpdb->get_results($sql);
         if($wpdb->num_rows > 0){
             return $results[0]->value;

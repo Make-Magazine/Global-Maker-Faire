@@ -38,13 +38,13 @@ $timer = 1;
     $form_type = (isset($form['form_type'])?$form['form_type']:'');
     if(isset($form_type) && $form_type==='cfm'){
       //display number of accepted records
-      $sql = "SELECT wp_".$blogID."_rg_lead_detail.entry_id,wp_".$blogID."_rg_lead_detail.form_id "
-              . " FROM `wp_".$blogID."_rg_lead_detail`"
-              . " left outer join wp_".$blogID."_gf_entry on wp_".$blogID."_rg_lead.id = wp_".$blogID."_rg_lead_detail.entry_id"
-              . " where wp_".$blogID."_rg_lead_detail.field_number = 303"
-              . "   and wp_".$blogID."_rg_lead_detail.value = 'Accepted'"
+      $sql = "SELECT wp_".$blogID."_gf_entry_meta.entry_id,wp_".$blogID."_gf_entry_meta.form_id "
+              . " FROM `wp_".$blogID."_gf_entry_meta`"
+              . " left outer join wp_".$blogID."_gf_entry on wp_".$blogID."_rg_lead.id = wp_".$blogID."_gf_entry_meta.entry_id"
+              . " where wp_".$blogID."_gf_entry_meta.meta_key = 303"
+              . "   and wp_".$blogID."_gf_entry_meta.meta_value = 'Accepted'"
               . "   and status = 'active'"
-              . "   and wp_".$blogID."_rg_lead_detail.form_id = ".$form_id
+              . "   and wp_".$blogID."_gf_entry_meta.form_id = ".$form_id
               . " LIMIT ".$offset.", ".$limit;
       //echo $sql;
       $entries = $wpdb->get_results($sql);

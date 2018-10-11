@@ -43,7 +43,7 @@ function FDgetMTMentries($formIDs) {
   $formIDarr = array_map('intval', explode(",", $formIDs));
 
   $search_criteria['status'] = 'active';
-  $search_criteria['field_filters'][] = array( 'key' => '303', 'value' => 'Accepted');
+  $search_criteria['field_filters'][] = array( 'key' => '303', 'meta_value' => 'Accepted');
 
   $entries = GFAPI::get_entries(0, $search_criteria, null, array('offset' => 0, 'page_size' => 999));
 
@@ -54,26 +54,26 @@ function FDgetMTMentries($formIDs) {
       $leadCategory = array();
       $flag = '';
       //build category array
-      foreach($entry as $leadKey=>$leadValue){
+      foreach($entry as $leadKey=>$leadmeta_value){
         $pos = strpos($leadKey, '321'); //4 additional categories
         if ($pos !== false) {
-          $leadCategory[]=$leadValue;
+          $leadCategory[]=$leadmeta_value;
         }
 
         //main catgory
         $pos = strpos($leadKey, '320');
         if ($pos !== false) {
-          $leadCategory[]=$leadValue;
+          $leadCategory[]=$leadmeta_value;
         }
 
         //flags
         $pos = strpos($leadKey, '304'); // flags
         if ($pos !== false) {
-          //echo $leadValue.'   ';
-          $pos2 = strpos($leadValue, 'Featured');
+          //echo $leadmeta_value.'   ';
+          $pos2 = strpos($leadmeta_value, 'Featured');
           if ($pos2 !== false) {
             //echo 'featured maker ';
-            $flag = $leadValue;
+            $flag = $leadmeta_value;
           }
         }
       }
@@ -114,8 +114,8 @@ function FDgetMTMentries($formIDs) {
         foreach($form['fields'] as $field) {
           if($field->id=='320'){
             foreach($field->choices as $choice) {
-              if($choice['value']!='') {
-                $data['category'][] = array('id'=>absint( $choice['value'] ),'name'=>html_entity_decode( esc_js( $choice['text'] ) ));
+              if($choice['meta_value']!='') {
+                $data['category'][] = array('id'=>absint( $choice['meta_value'] ),'name'=>html_entity_decode( esc_js( $choice['text'] ) ));
               }
             }
           }
@@ -131,17 +131,17 @@ function FDgetMTMentries($formIDs) {
   function FDgetSchedule($formIDs) {
     $data = array(); global $wpdb;
     $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
-              lead_detail.value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
-              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '22')  as photo,
-              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '151') as name,
-              (select value from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND field_number like '16')  as short_desc,
-              (select group_concat( value separator ', ') as cat   from {$wpdb->prefix}rg_lead_detail where entry_id = schedule.entry_id AND (field_number like '%320%' OR field_number like '%321%')) as category
+              lead_detail.meta_value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
+              (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '22')  as photo,
+              (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '151') as name,
+              (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '16')  as short_desc,
+              (select group_concat( meta_value separator ', ') as cat   from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND (meta_key like '%320%' OR meta_key like '%321%')) as category
                FROM {$wpdb->prefix}mf_schedule as schedule
                left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
                left outer join {$wpdb->prefix}gf_entry as lead on schedule.entry_id = lead.id
-               left outer join {$wpdb->prefix}rg_lead_detail as lead_detail on
-                   schedule.entry_id = lead_detail.entry_id and field_number = 303
-               where lead.status = 'active' and lead_detail.value='Accepted'";
+               left outer join {$wpdb->prefix}gf_entry_meta as lead_detail on
+                   schedule.entry_id = lead_detail.entry_id and meta_key = 303
+               where lead.status = 'active' and lead_detail.meta_value='Accepted'";
 
     //retrieve project name, img (22), maker list, topics
 
@@ -191,9 +191,9 @@ function FDgetMTMentries($formIDs) {
     $makerList = '';
     $data = array(); global $wpdb;
     $query = "SELECT *
-              FROM {$wpdb->prefix}rg_lead_detail as lead_detail
+              FROM {$wpdb->prefix}gf_entry_meta as lead_detail
               where lead_detail.entry_id = $entryID "
-           . "and cast(field_number as char) in('160.3', '160.6', '158.3', '158.6', '155.3', '155.6', "
+           . "and cast(meta_key as char) in('160.3', '160.6', '158.3', '158.6', '155.3', '155.6', "
            . "'156.3', '156.6', '157.3', '157.6', '159.3', '159.6', '154.3', '154.6', '109', '105')";
     $entryData = $wpdb->get_results($query);
     //field 105 - who would you like listed
@@ -204,7 +204,7 @@ function FDgetMTMentries($formIDs) {
 
     $fieldData = array();
     foreach($entryData as $field){
-      $fieldData[$field->field_number] = $field->value;
+      $fieldData[$field->meta_key] = $field->meta_meta_value;
     }
 
     if(isset($fieldData[105])){

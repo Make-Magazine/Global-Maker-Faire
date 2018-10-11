@@ -51,32 +51,32 @@ foreach($results as $blogrow){
     if(isset($form_type) && $form_type==='cfm'){
       //display number of accepted records
       $sql = "SELECT lead.id,
-                (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.entry_id = lead.id and leadDetail.field_number = 303
+                (select leadDetail.meta_value from wp_".$blogID."_gf_entry_meta leadDetail where
+                leadDetail.entry_id = lead.id and leadDetail.meta_key = 303
                 )as entryStatus,
-                (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.entry_id = lead.id and leadDetail.field_number = 98
+                (select leadDetail.meta_value from wp_".$blogID."_gf_entry_meta leadDetail where
+                leadDetail.entry_id = lead.id and leadDetail.meta_key = 98
                 )as contactEmail,
-                (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.entry_id = lead.id and leadDetail.field_number = 161
+                (select leadDetail.meta_value from wp_".$blogID."_gf_entry_meta leadDetail where
+                leadDetail.entry_id = lead.id and leadDetail.meta_key = 161
                 )as maker1Email,
-                (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.entry_id = lead.id and leadDetail.field_number = 162
+                (select leadDetail.meta_value from wp_".$blogID."_gf_entry_meta leadDetail where
+                leadDetail.entry_id = lead.id and leadDetail.meta_key = 162
                 )as maker2Email,
-                (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.entry_id = lead.id and leadDetail.field_number = 167
+                (select leadDetail.meta_value from wp_".$blogID."_gf_entry_meta leadDetail where
+                leadDetail.entry_id = lead.id and leadDetail.meta_key = 167
                 )as maker3Email,
-                (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.entry_id = lead.id and leadDetail.field_number = 166
+                (select leadDetail.meta_value from wp_".$blogID."_gf_entry_meta leadDetail where
+                leadDetail.entry_id = lead.id and leadDetail.meta_key = 166
                 )as maker4Email,
-                (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.entry_id = lead.id and leadDetail.field_number = 165
+                (select leadDetail.meta_value from wp_".$blogID."_gf_entry_meta leadDetail where
+                leadDetail.entry_id = lead.id and leadDetail.meta_key = 165
                 )as maker5Email,
-                (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.entry_id = lead.id and leadDetail.field_number = 164
+                (select leadDetail.meta_value from wp_".$blogID."_gf_entry_meta leadDetail where
+                leadDetail.entry_id = lead.id and leadDetail.meta_key = 164
                 )as maker6Email,
-                (select leadDetail.value from wp_".$blogID."_rg_lead_detail leadDetail where
-                leadDetail.entry_id = lead.id and leadDetail.field_number = 163
+                (select leadDetail.meta_value from wp_".$blogID."_gf_entry_meta leadDetail where
+                leadDetail.entry_id = lead.id and leadDetail.meta_key = 163
                 )as maker7Email
                 from wp_".$blogID."_gf_entry lead
 
