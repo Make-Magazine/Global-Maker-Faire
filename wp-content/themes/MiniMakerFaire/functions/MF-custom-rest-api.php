@@ -173,14 +173,14 @@ function getSchedule($formIDs) {
               (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '22')  as photo,
               (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '151') as name,
               (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '16')  as short_desc,
-              (select group_concat( value separator ', ') as cat   from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND (meta_key like '%320%' OR meta_key like '%321%')) as category
+              (select group_concat( meta_value separator ', ') as cat   from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND (meta_key like '%320%' OR meta_key like '%321%')) as category
                FROM {$wpdb->prefix}mf_schedule as schedule
                left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
                left outer join {$wpdb->prefix}gf_entry as lead on schedule.entry_id = lead.id
                left outer join {$wpdb->prefix}gf_entry_meta as lead_detail on
                    lead.id = lead_detail.entry_id and meta_key = 303
                where lead.status = 'active'
-                 and lead_detail.value='Accepted' " . " and lead.form_id in(" . implode(",", $formIDarr) . ") " . "order by schedule.start_dt";
+                 and lead_detail.meta_value='Accepted' " . " and lead.form_id in(" . implode(",", $formIDarr) . ") " . "order by schedule.start_dt";
    
    // retrieve project name, img (22), maker list, topics
    foreach ($wpdb->get_results($query) as $row) {
