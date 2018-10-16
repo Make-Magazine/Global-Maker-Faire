@@ -44,10 +44,10 @@ if ($displayMeta != '' || $entryGridMeta != '' || $confimations != '' || $notifi
    // loop thru blogs
    foreach ($results as $blogrow) {
       $blogID = $blogrow['blog_id'];
-      $table = 'wp_' . $blogID . '_rg_form_meta';
+      $table = 'wp_' . $blogID . '_gf_form_meta';
       // display_meta, confirmations and notifications
       $hasWhere = 0;
-      $sql = "select 1 from " . $table;
+      $sql = "select distinct 1 from " . $table;
       
       if ($displayMeta != '') {
          $sql .= " where display_meta like '%" . $displayMeta . "%'";
