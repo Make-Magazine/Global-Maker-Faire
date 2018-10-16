@@ -80,13 +80,13 @@ if ($displayMeta != '' || $entryGridMeta != '' || $confimations != '' || $notifi
          }
          $sql .= "notifications like '%" . $notifications . "%'";
       }
-      if ($debug) {
-         echo "SQL -> $sql <br>";
-      }
-      $queryResults = $wpdb->get_var($sql);
       
+      $queryResults = $wpdb->get_var($sql);
+      if ($debug) {
+         echo "SQL -> $sql -> $blogID -> Query Results = $queryResults<br>";
+      }
       if ($queryResults != '' && strcmp("1", $queryResults) == 0) {
-         echo "$sql -> $blogID Query Results = $queryResults<br>";
+         
          $blogArray[] = array(
             'blog_id' => $blogID,
             'blog_name' => $blogrow['domain'],
