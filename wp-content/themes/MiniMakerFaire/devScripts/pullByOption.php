@@ -5,8 +5,8 @@ global $wpdb;
 // form submitted to update optoin?
 $parmValue = '';
 if ((isset($_GET['optionValue']) && trim($_GET['optionValue']) != '')) {
-   $parmValue = $_GET['optionValue'];
-   echo 'Parameter Value = ' . $parmValue . '<br>';
+   $parmValue = trim($_GET['optionValue']);
+   // echo 'Parameter Value = ' . $parmValue . '<br>';
 }
 
 $blogSql = "select blog_id, domain from wp_blogs  ORDER BY `wp_blogs`.`blog_id` ASC";
@@ -18,17 +18,19 @@ if ($option != '') {
    foreach ($results as $blogrow) {
       $blogID = $blogrow['blog_id'];
       $table = 'wp_' . $blogID . '_options';
-      $sql = "select option_value from " . $table . " where option_name='" . $option . "'";
-      if ((isset($parmValue) && trim($parmValue) != '')) {
+      $sql = "select option_value from " . $table . " where option_name = '" . $option . "'";
+      if ((isset($parmValue) && $parmValue != '')) {
          $sql .= " and option_value = '" . $parmValue . "'";
       }
-      // echo 'Running Sql -> ' . $sql . ' <br/>';
+      //echo $sql. "<br>";
       $optionValue = $wpdb->get_var($sql);
-      $blogArray[] = array(
-         'blog_id' => $blogID,
-         'blog_name' => $blogrow['domain'],
-         'optionValue' => $optionValue
-      );
+      if (($optionValue != '' && strcmp($parmValue, $optionValue) == 0) || $parmValue == '' )  {
+         $blogArray[] = array(
+            'blog_id' => $blogID,
+            'blog_name' => $blogrow['domain'],
+            'optionValue' => $optionValue
+         );
+      }
    }
 }
 
@@ -113,11 +115,9 @@ table {
       echo 'Please supply the option name that you want to pull data from using the parameter option.';
    } else {
       ?>
-      <div style="float: left; width: 50%">
-        Returning results for Option - <?php echo $option; ?>
-        <?php  if ((isset($parmValue) && trim($parmValue) != '')) { ?>
-        Option Value - <?php echo $parmValue; ?>
-        <?php }?>
+      <div style="float: left; width: 100%">
+        Returning results for Option - <?php echo $option; if ($parmValue != '') { 
+         echo " Option Value - $parmValue";  }?>
       </div>
 		<div style="clear: both">
 			<table width="100%">
@@ -127,15 +127,15 @@ table {
 					<td>Option Value</td>
 				</tr>
         <?php
-    
+      
       foreach ($blogArray as $blogData) {
-        // if (strcmp($parmValue, $blogData['optionValue']) ) {
-            echo '<tr>';
-            echo '<td>' . $blogData['blog_id'] . '</td>';
-            echo '<td>' . $blogData['blog_name'] . '</td>';
-            echo '<td>' . $blogData['optionValue'] . '</td>';
-            echo '</tr>';
-         //}
+         // if (strcmp($parmValue, $blogData['optionValue']) ) {
+         echo '<tr>';
+         echo '<td>' . $blogData['blog_id'] . '</td>';
+         echo '<td>' . $blogData['blog_name'] . '</td>';
+         echo '<td>' . $blogData['optionValue'] . '</td>';
+         echo '</tr>';
+         // }
       }
       ?>
         </table>
