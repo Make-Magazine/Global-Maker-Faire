@@ -44,7 +44,7 @@ if ($displayMeta != '' || $entryGridMeta != '' || $confimations != '' || $notifi
    // loop thru blogs
    foreach ($results as $blogrow) {
       $blogID = $blogrow['blog_id'];
-      $table = 'wp_' . $blogID . '_gf_form_meta';
+      $table = 'wp_' . $blogID . '_rg_form_meta';
       // display_meta, confirmations and notifications
       $hasWhere = 0;
       $sql = "select distinct 1 from " . $table;
@@ -85,8 +85,7 @@ if ($displayMeta != '' || $entryGridMeta != '' || $confimations != '' || $notifi
       if ($debug) {
          echo "SQL -> $sql -> $blogID -> Query Results = $queryResults<br>";
       }
-      if ($queryResults != '' && strcmp("1", $queryResults) == 0) {
-         
+      if ($queryResults != '' && strcmp("1", $queryResults) == 0) {        
          $blogArray[] = array(
             'blog_id' => $blogID,
             'blog_name' => $blogrow['domain'],
