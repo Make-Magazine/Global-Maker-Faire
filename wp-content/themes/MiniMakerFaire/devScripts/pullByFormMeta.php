@@ -7,26 +7,38 @@ $displayMeta = '';
 $entryGridMeta = '';
 $confimations = '';
 $notifications = '';
+$debug = 0;
+if ((isset($_GET['debug']) && trim($_GET['debug']) != '')) {
+   $debug = 1;
+   echo 'Turning on DEBUG mode <br>';
+}
 if ((isset($_GET['displayMeta']) && trim($_GET['displayMeta']) != '')) {
    $displayMeta = trim($_GET['displayMeta']);
-   // echo 'Display Meta = ' . $displayMeta . '<br>';
+   if ($debug) {
+      echo 'Display Meta = ' . $displayMeta . '<br>';
+   }
 }
 if ((isset($_GET['confimations']) && trim($_GET['confimations']) != '')) {
    $confimations = trim($_GET['confimations']);
-   // echo 'Confirmations = ' . $confimations . '<br>';
+   if ($debug) {
+      echo 'Confirmations = ' . $confimations . '<br>';
+   }
 }
 if ((isset($_GET['entryGridMeta']) && trim($_GET['entryGridMeta']) != '')) {
    $entryGridMeta = trim($_GET['entryGridMeta']);
-   // echo 'Entry Grid Meta = ' . $entryGridMeta . '<br>';
+   if ($debug) {
+      echo 'Entry Grid Meta = ' . $entryGridMeta . '<br>';
+   }
 }
 if ((isset($_GET['notifications']) && trim($_GET['notifications']) != '')) {
    $notifications = trim($_GET['notifications']);
-   // echo 'Notifications = ' . $notifications . '<br>';
+   if ($debug) {
+      echo 'Notifications = ' . $notifications . '<br>';
+   }
 }
 
 $blogSql = "select blog_id, domain from wp_blogs  ORDER BY `wp_blogs`.`blog_id` ASC";
 $results = $wpdb->get_results($blogSql, ARRAY_A);
-//$option = (isset($_GET['option']) ? $_GET['option'] : '');
 $blogArray = array();
 if ($displayMeta != '' || $entryGridMeta != '' || $confimations != '' || $notifications != '') {
    // loop thru blogs
@@ -68,14 +80,17 @@ if ($displayMeta != '' || $entryGridMeta != '' || $confimations != '' || $notifi
          }
          $sql .= "notifications like '%" . $notifications . "%'";
       }
-      //echo "SQL -> $sql <br>";
-      $optionValue = $wpdb->get_var($sql);
-      //echo "$sql -> $blogID Option Value = $optionValue<br>";
-      if ($optionValue != '' && strcmp("1", $optionValue) == 0) {
+      if ($debug) {
+         echo "SQL -> $sql <br>";
+      }
+      $queryResults = $wpdb->get_var($sql);
+      
+      if ($queryResults != '' && strcmp("1", $queryResults) == 0) {
+         echo "$sql -> $blogID Query Results = $queryResults<br>";
          $blogArray[] = array(
             'blog_id' => $blogID,
             'blog_name' => $blogrow['domain'],
-            'optionValue' => $optionValue
+            'queryResults' => $queryResults
          );
       }
    }
@@ -157,8 +172,7 @@ table {
 <body>
 	<div class="container" style="width: 100%; line-height: 1.3em">
     <?php
-    //if ($displayMeta != '') { echo "Display Meta - $displayMeta <br>" ; }
-    if ($displayMeta == '' && $entryGridMeta == '' && $confimations == '' && $notifications == '') { 
+   if ($displayMeta == '' && $entryGridMeta == '' && $confimations == '' && $notifications == '') {
       echo 'Please supply one or more of the following: displayMeta, entryGridMeta, confirmations, notifications that you want to pull data from using the form meta.';
    } else {
       ?>
@@ -178,12 +192,10 @@ table {
         <?php
       
       foreach ($blogArray as $blogData) {
-         // if (strcmp($parmValue, $blogData['optionValue']) ) {
          echo '<tr>';
          echo '<td>' . $blogData['blog_id'] . '</td>';
          echo '<td>' . $blogData['blog_name'] . '</td>';
          echo '</tr>';
-         // }
       }
       ?>
         </table>
