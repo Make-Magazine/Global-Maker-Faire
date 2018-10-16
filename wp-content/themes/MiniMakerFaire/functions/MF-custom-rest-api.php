@@ -7,7 +7,8 @@ add_action('rest_api_init', function () {
       'callback' => 'mf_fairedata'
    ));
 });
-//TODO Add some comments
+
+// TODO Add some comments
 function mf_fairedata(WP_REST_Request $request) {
    $type = $request['type'];
    $formIDs = $request['formids'];
@@ -47,19 +48,19 @@ function getMTMentries($formIDs) {
    
    global $wpdb;
    // find all active entries for selected forms
-   $query = "select lead_detail.entry_id, lead_detail.meta_key, lead_detail.meta_value
-            from    {$wpdb->prefix}gf_entry_meta lead_detail
-            left outer join {$wpdb->prefix}gf_entry as lead on lead_detail.entry_id = lead.id
-            where lead.status = 'active'
-              and lead.form_id in(" . implode(",", $formIDarr) . ")
-              and (meta_key like '22' OR
-                   meta_key like '16' OR
-                   meta_key like '151' OR
-                   meta_key like '303' OR
-                   meta_key like '320' OR
-                   meta_key like '321%' OR
-                   meta_key like '304.%')
-            ORDER BY `lead_detail`.`entry_id`  ASC";
+   $query = "SELECT lead_detail.entry_id, lead_detail.meta_key, lead_detail.meta_value
+               FROM {$wpdb->prefix}gf_entry_meta lead_detail
+                    left outer join {$wpdb->prefix}gf_entry as lead on lead_detail.entry_id = lead.id
+              WHERE lead.status = 'active'
+                AND lead.form_id in(" . implode(",", $formIDarr) . ")
+                AND (meta_key like '22' OR
+                    meta_key like '16' OR
+                    meta_key like '151' OR
+                    meta_key like '303' OR
+                    meta_key like '320' OR
+                    meta_key like '321%' OR
+                    meta_key like '304.%')
+           ORDER BY `lead_detail`.`entry_id`  ASC";
    
    $results = $wpdb->get_results($query);
    
@@ -125,7 +126,8 @@ function getMTMentries($formIDs) {
    return $data;
    
 }
- // end getMTMentries
+
+// end getMTMentries
 function getCategories($formIDs) {
    $data = array();
    $formIDarr = array_map('intval', explode("-", $formIDs));
@@ -169,18 +171,22 @@ function getSchedule($formIDs) {
    
    $formIDarr = array_map('intval', explode("-", $formIDs));
    $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
-              lead_detail.meta_value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
-              (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '22')  as photo,
-              (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '151') as name,
-              (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '16')  as short_desc,
-              (select group_concat( meta_value separator ', ') as cat   from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND (meta_key like '%320%' OR meta_key like '%321%')) as category
-               FROM {$wpdb->prefix}mf_schedule as schedule
-               left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
-               left outer join {$wpdb->prefix}gf_entry as lead on schedule.entry_id = lead.id
-               left outer join {$wpdb->prefix}gf_entry_meta as lead_detail on
-                   lead.id = lead_detail.entry_id and meta_key = 303
-               where lead.status = 'active'
-                 and lead_detail.meta_value='Accepted' " . " and lead.form_id in(" . implode(",", $formIDarr) . ") " . "order by schedule.start_dt";
+                    lead_detail.meta_value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
+                    (SELECT meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '22')  as photo,
+                    (SELECT meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '151') as name,
+                    (SELECT meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '16')  as short_desc,
+                    (SELECT group_concat( meta_value separator ', ') as cat
+                       FROM {$wpdb->prefix}gf_entry_meta 
+                      WHERE entry_id = schedule.entry_id 
+                        AND (meta_key like '%320%' OR meta_key like '%321%')) as category
+               FROM {$wpdb->prefix}mf_schedule as schedule       
+                    left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
+                    left outer join {$wpdb->prefix}gf_entry as lead on schedule.entry_id = lead.id
+                    left outer join {$wpdb->prefix}gf_entry_meta as lead_detail on
+                    lead.id = lead_detail.entry_id and meta_key = 303
+              WHERE lead.status = 'active'
+                AND lead_detail.meta_value='Accepted' 
+                AND lead.form_id in(" . implode(",", $formIDarr) . ") " . " ORDER BY schedule.start_dt";
    
    // retrieve project name, img (22), maker list, topics
    foreach ($wpdb->get_results($query) as $row) {
@@ -236,8 +242,10 @@ function getMakerList($entryID) {
    $data = array();
    global $wpdb;
    $query = "SELECT *
-              FROM {$wpdb->prefix}gf_entry_meta as lead_detail
-              where lead_detail.entry_id = $entryID " . "and cast(meta_key as char) in('160.3', '160.6', '158.3', '158.6', '155.3', '155.6', " . "'156.3', '156.6', '157.3', '157.6', '159.3', '159.6', '154.3', '154.6', '109', '105')";
+               FROM {$wpdb->prefix}gf_entry_meta as lead_detail
+              WHERE lead_detail.entry_id = $entryID 
+                AND cast(meta_key as char) in('160.3', '160.6', '158.3', '158.6', '155.3', '155.6', 
+                    '156.3', '156.6', '157.3', '157.6', '159.3', '159.6', '154.3', '154.6', '109', '105')";
    $entryData = $wpdb->get_results($query);
    // field 105 - who would you like listed
    // one maker, a group or association, a list of makers
