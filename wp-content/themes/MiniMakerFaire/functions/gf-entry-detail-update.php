@@ -17,7 +17,8 @@ function MF_update_entry_rating() {
   $wpdb->get_results($sql);
 
   //update the meta with the average rating
-  $sql = "SELECT avg(rating) as rating FROM `{$wpdb->prefix}rg_lead_rating` where entry_id = ".$entry_id;
+  $sql = "SELECT avg(rating) as rating 
+            FROM `{$wpdb->prefix}rg_lead_rating` where entry_id = ".$entry_id;
   $results = $wpdb->get_results($sql);
   $rating = round($results[0]->rating);
 

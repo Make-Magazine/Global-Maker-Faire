@@ -131,17 +131,17 @@ function FDgetMTMentries($formIDs) {
   function FDgetSchedule($formIDs) {
     $data = array(); global $wpdb;
     $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
-              lead_detail.meta_value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
-              (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '22')  as photo,
-              (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '151') as name,
-              (select meta_value from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND meta_key like '16')  as short_desc,
-              (select group_concat( meta_value separator ', ') as cat   from {$wpdb->prefix}gf_entry_meta where entry_id = schedule.entry_id AND (meta_key like '%320%' OR meta_key like '%321%')) as category
-               FROM {$wpdb->prefix}mf_schedule as schedule
-               left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
-               left outer join {$wpdb->prefix}gf_entry as lead on schedule.entry_id = lead.id
-               left outer join {$wpdb->prefix}gf_entry_meta as lead_detail on
-                   schedule.entry_id = lead_detail.entry_id and meta_key = 303
-               where lead.status = 'active' and lead_detail.meta_value='Accepted'";
+                     lead_detail.meta_value as entry_status, DAYOFWEEK(schedule.start_dt) as day,location.location,
+                     (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta WHERE entry_id = schedule.entry_id AND meta_key like '22')  as photo,
+                     (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta WHERE entry_id = schedule.entry_id AND meta_key like '151') as name,
+                     (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta WHERE entry_id = schedule.entry_id AND meta_key like '16')  as short_desc,
+                     (SELECT group_concat( meta_value separator ', ') as cat FROM {$wpdb->prefix}gf_entry_meta WHERE entry_id = schedule.entry_id AND (meta_key like '%320%' OR meta_key like '%321%')) as category
+                        FROM {$wpdb->prefix}mf_schedule as schedule
+                             left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
+                             left outer join {$wpdb->prefix}gf_entry as lead on schedule.entry_id = lead.id
+                             left outer join {$wpdb->prefix}gf_entry_meta as lead_detail on
+                             schedule.entry_id = lead_detail.entry_id AND meta_key = 303
+                       WHERE lead.status = 'active' AND lead_detail.meta_value='Accepted'";
 
     //retrieve project name, img (22), maker list, topics
 
@@ -191,10 +191,10 @@ function FDgetMTMentries($formIDs) {
     $makerList = '';
     $data = array(); global $wpdb;
     $query = "SELECT *
-              FROM {$wpdb->prefix}gf_entry_meta as lead_detail
-              where lead_detail.entry_id = $entryID "
-           . "and cast(meta_key as char) in('160.3', '160.6', '158.3', '158.6', '155.3', '155.6', "
-           . "'156.3', '156.6', '157.3', '157.6', '159.3', '159.6', '154.3', '154.6', '109', '105')";
+                FROM {$wpdb->prefix}gf_entry_meta as lead_detail
+               WHERE lead_detail.entry_id = $entryID 
+                 AND cast(meta_key as char) in('160.3', '160.6', '158.3', '158.6', '155.3', '155.6', 
+                     '156.3', '156.6', '157.3', '157.6', '159.3', '159.6', '154.3', '154.6', '109', '105')";
     $entryData = $wpdb->get_results($query);
     //field 105 - who would you like listed
     //    one maker, a group or association, a list of makers
