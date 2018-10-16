@@ -107,7 +107,7 @@ function disp_ratings($form, $lead){
   global $wpdb;
   // Retrieve any ratings
   $entry_id=$lead['id'];
-  $sql = "SELECT user_id, rating, ratingDate FROM `{$wpdb->prefix}rg_lead_rating` where entry_id = ".$entry_id;
+  $sql = "SELECT user_id, rating, ratingDate FROM `{$wpdb->prefix}gf_entry_rating` where entry_id = ".$entry_id;
   $ratingTotal = 0;
   $ratingNum   = 0;
   $ratingResults = '';

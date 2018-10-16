@@ -40,7 +40,7 @@ $timer = 1;
       //display number of accepted records
       $sql = "SELECT wp_".$blogID."_gf_entry_meta.entry_id,wp_".$blogID."_gf_entry_meta.form_id "
               . " FROM `wp_".$blogID."_gf_entry_meta`"
-              . " left outer join wp_".$blogID."_gf_entry on wp_".$blogID."_rg_lead.id = wp_".$blogID."_gf_entry_meta.entry_id"
+              . " left outer join wp_".$blogID."_gf_entry on wp_".$blogID."_gf_entry.id = wp_".$blogID."_gf_entry_meta.entry_id"
               . " where wp_".$blogID."_gf_entry_meta.meta_key = 303"
               . "   and wp_".$blogID."_gf_entry_meta.meta_value = 'Accepted'"
               . "   and status = 'active'"

@@ -10,7 +10,7 @@ function MF_update_entry_rating() {
 
   //if there is already a record for this user, update it.
   //else add it.
-  $sql = "Insert into {$wpdb->prefix}rg_lead_rating (entry_id, user_id, rating) "
+  $sql = "Insert into {$wpdb->prefix}gf_entry_rating (entry_id, user_id, rating) "
        . " values (".$entry_id.','.$user.','.$rating.")"
        . " on duplicate key update rating=".$rating.", ratingDate=now()";
 
@@ -18,7 +18,7 @@ function MF_update_entry_rating() {
 
   //update the meta with the average rating
   $sql = "SELECT avg(rating) as rating 
-            FROM `{$wpdb->prefix}rg_lead_rating` where entry_id = ".$entry_id;
+            FROM `{$wpdb->prefix}gf_entry_rating` where entry_id = ".$entry_id;
   $results = $wpdb->get_results($sql);
   $rating = round($results[0]->rating);
 
