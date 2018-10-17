@@ -229,6 +229,7 @@ function get_summary_note_section($form, $lead) {
                 echo('<span style="float:left; width:50%"><input type="checkbox"  name="email_notes_to" style="margin: 3px;" value="'.$faireUser->user_email.'" /><strong>'.$faireUser->user_nicename.'</strong> </span>');
               }
             } ?>
+            <div class="clear"></div>Enter Email: <input type="email" placeholder="example@makermedia.com" name="otherEmail" size="40" />
           </div>
         </td>
 
