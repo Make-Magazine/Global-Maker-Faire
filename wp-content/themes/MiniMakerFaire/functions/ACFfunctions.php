@@ -1280,7 +1280,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                            'save_other_choice' => 0,
                            'allow_null' => 0,
                            'return_format' => 'value',
-                           'key' => 'field_579924c93c2cd',
+                           'key' => 'field_579924c93c2ce',
                            'label' => 'Randomly pull Accepted',
                            'name' => 'pull_accepted',
                            'type' => 'radio',
@@ -1616,6 +1616,30 @@ You can find the Form IDs in Forms > Forms > ID column.',
                            ),
                            'readonly' => 0,
                            'disabled' => 0
+                        ),
+                        array(
+                           'layout' => 'horizontal',
+                           'choices' => array(
+                              'Yes' => 'Yes',
+                              'No' => 'No'
+                           ),
+                           'default_value' => 'Yes',
+                           'other_choice' => 0,
+                           'save_other_choice' => 0,
+                           'allow_null' => 0,
+                           'return_format' => 'value',
+                           'key' => 'field_579924c93c2cf',
+                           'label' => 'Randomly pull Accepted',
+                           'name' => 'pull_accepted',
+                           'type' => 'radio',
+                           'instructions' => 'Pull Project images randomly from Accepted entries if no Featured Maker flags are set?',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => 'activeinactive',
+                              'id' => ''
+                           )
                         ),
                         array(
                            'layout' => 'vertical',
@@ -1955,6 +1979,30 @@ You can find the Form IDs in Forms > Forms > ID column.',
                            ),
                            'readonly' => 0,
                            'disabled' => 0
+                        ),
+                        array(
+                           'layout' => 'horizontal',
+                           'choices' => array(
+                              'Yes' => 'Yes',
+                              'No' => 'No'
+                           ),
+                           'default_value' => 'Yes',
+                           'other_choice' => 0,
+                           'save_other_choice' => 0,
+                           'allow_null' => 0,
+                           'return_format' => 'value',
+                           'key' => 'field_579924c93c2cf',
+                           'label' => 'Randomly pull Accepted',
+                           'name' => 'pull_accepted',
+                           'type' => 'radio',
+                           'instructions' => 'Pull Project images randomly from Accepted entries if no Featured Maker flags are set?',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => 'activeinactive',
+                              'id' => ''
+                           )
                         ),
                         array(
                            'default_value' => '',
@@ -3604,6 +3652,30 @@ You can find the Form IDs in Forms > Forms > ID column."',
                            'disabled' => 0
                         ),
                         array(
+                           'layout' => 'horizontal',
+                           'choices' => array(
+                              'Yes' => 'Yes',
+                              'No' => 'No'
+                           ),
+                           'default_value' => 'Yes',
+                           'other_choice' => 0,
+                           'save_other_choice' => 0,
+                           'allow_null' => 0,
+                           'return_format' => 'value',
+                           'key' => 'field_579924c93c2cg',
+                           'label' => 'Randomly pull Accepted',
+                           'name' => 'pull_accepted',
+                           'type' => 'radio',
+                           'instructions' => 'Pull Project images randomly from Accepted entries if no Featured Maker flags are set?',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => 'activeinactive',
+                              'id' => ''
+                           )
+                        ),
+                        array(
                            'layout' => 'vertical',
                            'choices' => array(
                               4 => 4,
@@ -3942,6 +4014,30 @@ You can find the Form IDs in Forms > Forms > ID column."',
                            ),
                            'readonly' => 0,
                            'disabled' => 0
+                        ),
+                        array(
+                           'layout' => 'horizontal',
+                           'choices' => array(
+                              'Yes' => 'Yes',
+                              'No' => 'No'
+                           ),
+                           'default_value' => 'Yes',
+                           'other_choice' => 0,
+                           'save_other_choice' => 0,
+                           'allow_null' => 0,
+                           'return_format' => 'value',
+                           'key' => 'field_579924c93c2ch',
+                           'label' => 'Randomly pull Accepted',
+                           'name' => 'pull_accepted',
+                           'type' => 'radio',
+                           'instructions' => 'Pull Project images randomly from Accepted entries if no Featured Maker flags are set?',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => 'activeinactive',
+                              'id' => ''
+                           )
                         ),
                         array(
                            'layout' => 'vertical',
