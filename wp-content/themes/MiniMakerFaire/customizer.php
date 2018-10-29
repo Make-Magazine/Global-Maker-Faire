@@ -134,21 +134,6 @@ function mmf_customizer_settings( $wp_customize ) {
         'settings' => 'pintrest_link',
         'type'     => 'url',
     ));
-    // GOOGLE+ LINK
-    $wp_customize->add_setting( 'google_plus_link', array(
-        'default'           => '',
-        'sanitize_callback' => 'sanitize_google_plus_link',
-    ));
-    function sanitize_google_plus_link( $input ) {
-        return wp_kses_post( force_balance_tags( $input ) );
-    }
-    $wp_customize->add_control( 'google_plus_link', array(
-        'label'    => __( 'Google+ URL' ),
-        'section'  => 'footer_social_media',
-        'settings' => 'google_plus_link',
-        'type'     => 'url',
-    ));
-
 
 ////////////////////////////////////////////////////////////////////
 // Additional Scripts
