@@ -314,22 +314,6 @@ contact@makermedia.com"',
                )
             ),
             array(
-               'default_value' => '',
-               'placeholder' => '',
-               'key' => 'field_5748e169a79ee',
-               'label' => 'Google+',
-               'name' => 'googleplus',
-               'type' => 'url',
-               'instructions' => '',
-               'required' => 0,
-               'conditional_logic' => 0,
-               'wrapper' => array(
-                  'width' => '',
-                  'class' => '',
-                  'id' => ''
-               )
-            ),
-            array(
                'placement' => 'top',
                'endpoint' => 0,
                'key' => 'field_5748f0bddfd11',
