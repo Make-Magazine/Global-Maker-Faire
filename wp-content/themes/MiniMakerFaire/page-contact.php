@@ -94,13 +94,6 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
                           </a>
                         </li>';
                 endif;
-                if( $googleplus ):
-                  echo '<li>
-                          <a href="' . $googleplus . '" class="icoGoogle-plus" title="Google+" target="_blank">
-                            <i class="fa fa-google-plus"></i>
-                          </a>
-                        </li>';
-                endif;
                 if( $instagram ):
                   echo '<li>
                           <a href="' . $instagram . '" class="icoInstagram" title="Instagram" target="_blank">
@@ -276,13 +269,6 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
                           echo '<li>
                                   <a href="' . $pinterest . '" class="icoPinterest" title="Pinterest" target="_blank">
                                     <i class="fa fa-pinterest-p"></i>
-                                  </a>
-                                </li>';
-                        endif;
-                        if( $googleplus ):
-                          echo '<li>
-                                  <a href="' . $googleplus . '" class="icoGoogle-plus" title="Google+" target="_blank">
-                                    <i class="fa fa-google-plus"></i>
                                   </a>
                                 </li>';
                         endif;
