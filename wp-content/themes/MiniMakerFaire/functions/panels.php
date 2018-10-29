@@ -299,7 +299,7 @@ function getFeatEvPanel($row_layout) {
       }
       
       $pullAccepted = get_sub_field('pull_accepted');
-      if(!$row_found & $pullAccepted == 'Yes') {
+      if(!$row_found & $pullAccepted == 'On') {
          $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
                        lead_detail.value as entry_status, DAYNAME(schedule.start_dt) as day,location.location,
                        (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta

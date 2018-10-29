@@ -1272,10 +1272,10 @@ You can find the Form IDs in Forms > Forms > ID column.',
                         array(
                            'layout' => 'horizontal',
                            'choices' => array(
-                              'Yes' => 'Yes',
-                              'No' => 'No'
+                              'On' => 'On',
+                              'Off' => 'Off'
                            ),
-                           'default_value' => 'Yes',
+                           'default_value' => 'On',
                            'other_choice' => 0,
                            'save_other_choice' => 0,
                            'allow_null' => 0,
@@ -1620,10 +1620,10 @@ You can find the Form IDs in Forms > Forms > ID column.',
                         array(
                            'layout' => 'horizontal',
                            'choices' => array(
-                              'Yes' => 'Yes',
-                              'No' => 'No'
+                              'On' => 'On',
+                              'Off' => 'Off'
                            ),
-                           'default_value' => 'Yes',
+                           'default_value' => 'On',
                            'other_choice' => 0,
                            'save_other_choice' => 0,
                            'allow_null' => 0,
@@ -1983,15 +1983,15 @@ You can find the Form IDs in Forms > Forms > ID column.',
                         array(
                            'layout' => 'horizontal',
                            'choices' => array(
-                              'Yes' => 'Yes',
-                              'No' => 'No'
+                              'On' => 'On',
+                              'Off' => 'Off'
                            ),
-                           'default_value' => 'Yes',
+                           'default_value' => 'On',
                            'other_choice' => 0,
                            'save_other_choice' => 0,
                            'allow_null' => 0,
                            'return_format' => 'value',
-                           'key' => 'field_579924c93c2cf',
+                           'key' => 'field_579924c93c2ci',
                            'label' => 'Randomly pull Accepted',
                            'name' => 'pull_accepted',
                            'type' => 'radio',
@@ -3654,10 +3654,10 @@ You can find the Form IDs in Forms > Forms > ID column."',
                         array(
                            'layout' => 'horizontal',
                            'choices' => array(
-                              'Yes' => 'Yes',
-                              'No' => 'No'
+                              'On' => 'On',
+                              'Off' => 'Off'
                            ),
-                           'default_value' => 'Yes',
+                           'default_value' => 'On',
                            'other_choice' => 0,
                            'save_other_choice' => 0,
                            'allow_null' => 0,
@@ -4018,10 +4018,10 @@ You can find the Form IDs in Forms > Forms > ID column."',
                         array(
                            'layout' => 'horizontal',
                            'choices' => array(
-                              'Yes' => 'Yes',
-                              'No' => 'No'
+                              'On' => 'On',
+                              'Off' => 'Off'
                            ),
-                           'default_value' => 'Yes',
+                           'default_value' => 'On',
                            'other_choice' => 0,
                            'save_other_choice' => 0,
                            'allow_null' => 0,
