@@ -1,13 +1,14 @@
 <?php
 
-/**************************************************/
-/* Determine correct layout */
-/**
- * ***********************************************
- */
+/* **************************************************** */
+/* Determine correct layout                             */
+/* **************************************************** */
 function dispLayout($row_layout) {
    $return = '';
    switch ($row_layout) {
+      case 'buy_tickets_float': // floating buy tickets banner
+         $return = getBuyTixPanel($row_layout);
+         break;
       case 'featured_makers_panel': // FEATURED MAKERS (SQUARE)
       case 'featured_makers_panel_dynamic': // FEATURED MAKERS (SQUARE) - dynamic
       case 'featured_makers_panel_circle': // featured makers (circle)
@@ -30,17 +31,20 @@ function dispLayout($row_layout) {
             $return = getPostFeed();
          }
          break;
+      case '1_column': // 1 COLUMN LAYOUT
+         $activeinactive = get_sub_field('activeinactive');
+         if ($activeinactive == 'Active') {
+            $return = get1ColLayout();
+         }
+         break;
       case '2_column_photo_and_text_panel': // 2 COLUMN LAYOUT
          $activeinactive = get_sub_field('activeinactive');
          if ($activeinactive == 'Active') {
             $return = get2ColLayout();
          }
          break;
-      case '1_column': // 1 COLUMN LAYOUT
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
-            $return = get1ColLayout();
-         }
+      case '3_column': // 3 COLUMN LAYOUT
+         $return = get3ColLayout();
          break;
       case 'what_is_maker_faire': // WHAT IS MAKER FAIRE PANEL
          $return = getWhatisMF();
@@ -87,13 +91,17 @@ function dispLayout($row_layout) {
    
 }
 
-/**
- * ***********************************************
- */
-/* Function to build the featured maker panel */
-/**
- * ***********************************************
- */
+/* **************************************************** */
+/* Function to return Buy Tickets Floating Banner       */
+/* **************************************************** */
+function getBuyTixPanel() {
+   return '<a href="' . get_sub_field('buy_ticket_url') . '" target="_blank"><div class="floatBuyTix">' . get_sub_field('buy_ticket_text') . '</div></a>';
+   
+}
+
+/* **************************************************** */
+/* Function to build the featured maker panel           */
+/* **************************************************** */
 function getFeatMkPanel($row_layout) {
    $return = '';
    $dynamic = ($row_layout == 'featured_makers_panel_dynamic' || $row_layout == 'featured_makers_panel_circle_dynamic' ? true : false);
@@ -225,13 +233,9 @@ function getFeatMkPanel($row_layout) {
    
 }
 
-/**
- * ***********************************************
- */
-/* Function to build the featured event panel */
-/**
- * ***********************************************
- */
+/* **************************************************** */
+/* Function to build the featured event panel           */
+/* **************************************************** */
 function getFeatEvPanel($row_layout) {
    global $wpdb;
    $return = '';
@@ -299,7 +303,7 @@ function getFeatEvPanel($row_layout) {
       }
       
       $pullAccepted = get_sub_field('pull_accepted');
-      if(!$row_found & $pullAccepted == 'On') {
+      if (! $row_found & $pullAccepted == 'On') {
          $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
                        lead_detail.value as entry_status, DAYNAME(schedule.start_dt) as day,location.location,
                        (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta
@@ -403,13 +407,9 @@ function getFeatEvPanel($row_layout) {
    
 }
 
-/**
- * *********************************
- */
-/* Function to return post feed */
-/**
- * *********************************
- */
+/* **************************************************** */
+/* Function to return post feed                         */
+/* **************************************************** */
 function getPostFeed() {
    $return = '';
    $post_feed_quantity = get_sub_field('post_quantity');
@@ -480,13 +480,80 @@ function getPostFeed() {
    
 }
 
-/**
- * ***************************************************
- */
-/* Function to return 2_column_photo_and_text_panel */
-/**
- * ***************************************************
- */
+/* * *************************************************** */
+/*  Function to return 3_column_photo_and_text_panel     */
+/* * *************************************************** */
+function get3ColLayout() {
+   $return = '';
+   
+   $return .= '<section class="content-panel three-column">
+                <div class="flag-banner"></div>
+                <div class="container">';
+   
+   $panelTitle = get_sub_field('panel_title');
+   if ($panelTitle) {
+      $return .= ' <div class="row">
+                    <div class="col-xs-12 text-center padbottom">
+                      <h2 class="title yellow-underline">' . $panelTitle . '</h2>
+                    </div>
+                  </div>';
+   }
+   
+   $return .= '   <div class="row">'; //start row
+   //get requested data for each column
+   $columns = get_sub_field('column');
+   foreach ($columns as $column) {
+      $return .= '   <div class="col-sm-4">'; //start column
+      $data = $column['data'];
+      $columnInfo = '';
+      switch ($column['column_type']) {
+         case 'image':     // Image with optional link
+            $alignment = $data['column_list_alignment'];
+            $image = '<img class="img-responsive" src="' . $data['column_image_field'] . '" />';
+            $cta_link = $data['image_cta'];
+            $ctaText = $data['image_cta_text'];
+            
+            if (!empty($cta_link)) {
+               $columnInfo = '<a href="' . $cta_link . '">' . $image . '</a>';
+               if (!empty($ctaText)) {
+                  $columnInfo .= '<p class="text-' . $alignment . ' sub-caption-dark"><a href="' . $cta_link . '" target="_blank">' . $ctaText . '</a></p>';
+               }
+            } else {
+               $columnInfo = $image;
+            }
+            break;
+         case 'paragraph': // Paragraph text
+            $columnInfo = '<p>' . $data['column_paragraph'] . '</p>';
+            break;
+         case 'list':      // List of items with optional links
+            $columnInfo = '<div class="flagship-faire-wrp">';
+            if (!empty($data['list_title'])) {
+               $columnInfo .= '<p class="line-item list-title">' . $data['list_title'] . '</p>';
+            }
+            //$columnInfo .= '  <ul>';
+            foreach ($data['column_list_fields'] as $list_fields) {
+               $list_text = $list_fields['list_text'];
+               $list_link = $list_fields['list_link'];
+               $columnInfo .= (!empty($list_link) ? '<a class="line-item" href="' . $list_link . '">' . $list_text . '</a>' : $list_text);
+            }
+            //$columnInfo .= '  </ul>';
+            $columnInfo .= '</div>';
+            break;
+      }
+      $return .= $columnInfo;
+      $return .= '</div>'; //end column
+   }
+   
+   $return .= '</div>'; //end row
+   
+   $return .= ' </div>
+              </section>'; // end div.container and section.content-panel
+   return $return;
+}
+
+/* **************************************************** */
+/* Function to return 2_column_photo_and_text_panel     */
+/* **************************************************** */
 function get2ColLayout() {
    $return = '';
    $column_1 = get_sub_field('column_1');
@@ -522,13 +589,9 @@ function get2ColLayout() {
    
 }
 
-/**
- * ***************************************************
- */
-/* Function to return 2_column_photo_and_text_panel */
-/**
- * ***************************************************
- */
+/* **************************************************** */
+/* Function to get1ColLayout                            */
+/* **************************************************** */
 function get1ColLayout() {
    $return = '';
    $column_1 = get_sub_field('column_1');
@@ -562,13 +625,9 @@ function get1ColLayout() {
    
 }
 
-/**
- * ***************************************************
- */
-/* Function to return WHAT IS MAKER FAIRE PANEL */
-/**
- * ***************************************************
- */
+/* **************************************************** */
+/* Function to return WHAT IS MAKER FAIRE PANE          */
+/* **************************************************** */
 function getWhatisMF() {
    $return = '';
    $widget_radio = get_sub_field('show_what_is_maker_faire');
@@ -597,13 +656,9 @@ function getWhatisMF() {
    
 }
 
-/**
- * ******************************************
- */
-/* Function to return Call to Action panel */
-/**
- * ******************************************
- */
+/* **************************************************** */
+/* Function to return Call to Action panel              */
+/* **************************************************** */
 function getCTApanel() {
    $return = '';
    $cta_title = get_sub_field('text');
@@ -623,13 +678,9 @@ function getCTApanel() {
    
 }
 
-/**
- * ************************************************
- */
-/* Function to return IMAGE CAROUSEL (RECTANGLE) */
-/**
- * ************************************************
- */
+/* **************************************************** */
+/* Function to return IMAGE CAROUSEL (RECTANGLE)        */
+/* **************************************************** */
 function getImgCarousel() {
    $return = '';
    // IMAGE CAROUSEL (RECTANGLE)
@@ -704,13 +755,9 @@ function getImgCarousel() {
    
 }
 
-/**
- * ************************************************
- */
-/* Function to return IMAGE CAROUSEL (SQUARE) */
-/**
- * ************************************************
- */
+/* **************************************************** */
+/* Function to return IMAGE CAROUSEL (SQUARE)           */
+/* **************************************************** */
 function getImgCarouselSquare() {
    $return = '';
    // IMAGE CAROUSEL (SQUARE)
@@ -775,6 +822,9 @@ function getImgCarouselSquare() {
    
 }
 
+/* **************************************************** */
+/* Function to return New Letter Panel                  */
+/* **************************************************** */
 function getNewsletterPanel() {
    $return = '
     <section class="newsletter-panel">
@@ -869,6 +919,9 @@ function getNewsletterPanel() {
    
 }
 
+/* **************************************************** */
+/* Function to return Sponser Panel                     */
+/* **************************************************** */
 function getSponsorPanel() {
    $return = '';
    $sponsor_ID = 0;
@@ -981,13 +1034,9 @@ function getSponsorPanel() {
    
 }
 
-/**
- * ************************************************
- */
-/* Function to return Social Media Panel */
-/**
- * ************************************************
- */
+/* **************************************************** */
+/* Function to return Social Media Panel                */
+/* **************************************************** */
 function getSocialPanel() {
    $return = '';
    $panel_title = get_sub_field('panel_title');
