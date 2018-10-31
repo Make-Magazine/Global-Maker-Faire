@@ -536,22 +536,6 @@ contact@makermedia.com"',
                   array(
                      'default_value' => '',
                      'placeholder' => '',
-                     'key' => 'field_5748f4f3a6d37',
-                     'label' => 'Google+',
-                     'name' => 'googleplus',
-                     'type' => 'url',
-                     'instructions' => '',
-                     'required' => 0,
-                     'conditional_logic' => 0,
-                     'wrapper' => array(
-                        'width' => '',
-                        'class' => '',
-                        'id' => ''
-                     )
-                  ),
-                  array(
-                     'default_value' => '',
-                     'placeholder' => '',
                      'key' => 'field_5748f4f3a6d39',
                      'label' => 'LinkedIn',
                      'name' => 'linkedin',
