@@ -1969,7 +1969,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                            'label' => 'Enter formid here',
                            'name' => 'enter_formid_here',
                            'type' => 'number',
-                           'instructions' => 'Enter the form to pull featured individuals from. They must have the \'Featured Maker\' flag set to be pulled in.',
+                           'instructions' => 'Enter the form to pull featured events from.',
                            'required' => 1,
                            'conditional_logic' => '',
                            'wrapper' => array(
@@ -1979,30 +1979,6 @@ You can find the Form IDs in Forms > Forms > ID column.',
                            ),
                            'readonly' => 0,
                            'disabled' => 0
-                        ),
-                        array(
-                           'layout' => 'horizontal',
-                           'choices' => array(
-                              'On' => 'On',
-                              'Off' => 'Off'
-                           ),
-                           'default_value' => 'On',
-                           'other_choice' => 0,
-                           'save_other_choice' => 0,
-                           'allow_null' => 0,
-                           'return_format' => 'value',
-                           'key' => 'field_579924c93c2ci',
-                           'label' => 'Randomly pull Accepted',
-                           'name' => 'pull_accepted',
-                           'type' => 'radio',
-                           'instructions' => 'Pull Project images randomly from Accepted entries if no Featured Maker flags are set?',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => 'activeinactive',
-                              'id' => ''
-                           )
                         ),
                         array(
                            'default_value' => '',
