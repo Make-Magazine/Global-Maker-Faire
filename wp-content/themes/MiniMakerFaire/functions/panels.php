@@ -154,6 +154,23 @@ function getFeatMkPanel($row_layout) {
          'page_size' => 999
       ));
       
+      ## Check for No data allow for pull accepted
+      $pullAccepted = get_sub_field('pull_accepted');
+      if (empty($entries) && $pullAccepted) {
+         ## Reset Criteria
+         $search_criteria['field_filters'] = array();
+         ## Only want the accepted ones
+         $search_criteria['field_filters'][] = array(
+            'key' => '303',
+            'value' => 'Accepted'
+         );
+         ## Re-Run Entries
+         $entries = GFAPI::get_entries($formid, $search_criteria, null, array(
+            'offset' => 0,
+            'page_size' => 999
+         ));
+      }
+      
       // randomly order entries
       shuffle($entries);
       foreach ($entries as $entry) {
@@ -274,9 +291,9 @@ function getFeatEvPanel($row_layout) {
                  WHERE lead.status = 'active' and lead_detail.meta_value = 'Accepted'";
       $row_found = 0;
       foreach ($wpdb->get_results($query) as $row) {
-         $row_found = 1;
          // only write schedule for featured events
          if ($row->flag != NULL) {
+            $row_found = 1;
             $startDate = date_create($row->time_start);
             $startDate = date_format($startDate, 'g:i a');
             
@@ -299,54 +316,6 @@ function getFeatEvPanel($row_layout) {
                'location' => $row->location,
                'maker_url' => '/maker/entry/' . $row->entry_id
             );
-         }
-      }
-      
-      $pullAccepted = get_sub_field('pull_accepted');
-      if (! $row_found && $pullAccepted == 'On') {
-         $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
-                       lead_detail.meta_value as entry_status, DAYNAME(schedule.start_dt) as day,location.location,
-                       (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta
-                         WHERE entry_id = schedule.entry_id AND meta_value like '304.3')  as flag,
-                       (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta
-                         WHERE entry_id = schedule.entry_id AND meta_value like '22')  as photo,
-                       (SELECT meta_value from {$wpdb->prefix}gf_entry_meta
-                         WHERE entry_id = schedule.entry_id AND meta_value like '151') as name,
-                       (SELECT meta_value from {$wpdb->prefix}gf_entry_meta
-                         WHERE entry_id = schedule.entry_id AND meta_value like '16')  as short_desc
-                  FROM {$wpdb->prefix}mf_schedule as schedule
-                       left outer join {$wpdb->prefix}mf_location as location on location_id = location.id
-                       left outer join {$wpdb->prefix}gf_entry as lead on schedule.entry_id = lead.id
-                       left outer join {$wpdb->prefix}gf_entry_meta as lead_detail on
-                       schedule.entry_id = lead_detail.entry_id and meta_value = 303
-                 WHERE lead.status = 'active' and lead_detail.meta_value = 'Accepted'";
-         foreach ($wpdb->get_results($query) as $row) {
-            $row_found = 1;
-            // only write schedule for featured events
-            if ($row->flag != NULL) {
-               $startDate = date_create($row->time_start);
-               $startDate = date_format($startDate, 'g:i a');
-               
-               $endDate = date_create($row->time_end);
-               $endDate = date_format($endDate, 'g:i a');
-               
-               $projPhoto = $row->photo;
-               $args = array(
-                  'resize' => '300,300',
-                  'quality' => '80',
-                  'strip' => 'all'
-               );
-               $photon = jetpack_photon_url($projPhoto, $args);
-               $eventArr[] = array(
-                  'image' => $photon,
-                  'event' => $row->name,
-                  'description' => $row->short_desc,
-                  'day' => $row->day,
-                  'time' => $startDate . ' - ' . $endDate,
-                  'location' => $row->location,
-                  'maker_url' => '/maker/entry/' . $row->entry_id
-               );
-            }
          }
       }
    } else {
