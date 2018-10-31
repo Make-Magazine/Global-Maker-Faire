@@ -257,7 +257,7 @@ function getFeatEvPanel($row_layout) {
    if ($dynamic) {
       $formid = get_sub_field('enter_formid_here');
       $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
-                       lead_detail.value as entry_status, DAYNAME(schedule.start_dt) as day,location.location,
+                       lead_detail.meta_value as entry_status, DAYNAME(schedule.start_dt) as day,location.location,
                        (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta 
                          WHERE entry_id = schedule.entry_id AND meta_key like '304.3' AND meta_value like 'Featured Maker')  as flag,
                        (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta 
