@@ -1,3 +1,13 @@
+.scrolled .customPanels {
+   .floatBuyTix {
+      position: fixed;
+      top: 135px;
+      @media screen and (min-width: 768px) and (max-width: 860px) {
+         top: 195px;
+      }
+   }
+}
+
 .slideshow-panel {
   position: relative;
   .header-logo-div {
@@ -290,6 +300,16 @@
 	}
 }
 
+.three-column {
+	.container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    	@media (max-width:480px) {
+        	padding-top: 20px
+    	}
+   }
+}
+	
 .featured-maker-panel {
   background: @cyan-bg;
   padding-top: 5px;
