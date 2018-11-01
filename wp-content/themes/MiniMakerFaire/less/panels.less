@@ -260,6 +260,35 @@
   }
 }
 
+.floatBuyTix {
+	text-transform: uppercase;
+	background-image: url(../img/get_tix.png);
+	background-repeat: no-repeat;
+	height: 45px;
+	width: 220px;
+	padding-top: 4px;
+	padding-left: 28px;
+	z-index: 909;
+	position: absolute;
+	right: 0;
+	top: 210px;
+	font-size: 24px;
+	color: #D0021B;
+	background-size: 220px 45px;
+	font-family: 'Roboto Condensed';
+	&:hover {
+		text-decoration: underline;
+	}
+
+	@media (max-width: 767px) {
+		position: fixed;
+		top: 70px;
+	}
+
+	@media screen and (min-width: 768px) and (max-width: 860px) {
+		top: 270px;
+	}
+}
 
 .featured-maker-panel {
   background: @cyan-bg;
