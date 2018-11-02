@@ -455,7 +455,7 @@ function getPostFeed() {
 function get3ColLayout() {
    $return = '';
    
-   $return .= '<section class="three-column">
+   $return .= '<section class="content-panel three-column">
                 <div class="flag-banner"></div>
                 <div class="container">';
    
