@@ -495,7 +495,7 @@ function get3ColLayout() {
             $columnInfo = '<p>' . $data['column_paragraph'] . '</p>';
             break;
          case 'list':      // List of items with optional links
-            $columnInfo = '<div class="flagship-faire-wrp">';
+            $columnInfo = '<div class="panel-list">';
             if (!empty($data['list_title'])) {
                $columnInfo .= '<p class="line-item list-title">' . $data['list_title'] . '</p>';
             }
