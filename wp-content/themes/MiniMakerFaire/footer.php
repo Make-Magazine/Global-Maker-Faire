@@ -59,15 +59,7 @@
                         </a>
                       </li>';
               }
-
-              $google_plus_link = esc_url( get_theme_mod( 'google_plus_link' ) );
-              if( $google_plus_link != '' ) {
-                echo '<li>
-                        <a href="' . $google_plus_link . '" class="icoGoogle-plus" title="Google+" target="_blank">
-                          <i class="fa fa-google-plus"></i>
-                        </a>
-                      </li>';
-              } ?>
+              ?>
             </ul>
           </div>
         </div>

@@ -66,7 +66,6 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
       $twitter = get_field('twitter');
       $instagram = get_field('instagram');
       $pinterest = get_field('pinterest');
-      $googleplus = get_field('googleplus');
       $linked = get_field('linked');
 
 
@@ -91,13 +90,6 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
                   echo '<li>
                           <a href="' . $pinterest . '" class="icoPinterest" title="Pinterest" target="_blank">
                             <i class="fa fa-pinterest-p"></i>
-                          </a>
-                        </li>';
-                endif;
-                if( $googleplus ):
-                  echo '<li>
-                          <a href="' . $googleplus . '" class="icoGoogle-plus" title="Google+" target="_blank">
-                            <i class="fa fa-google-plus"></i>
                           </a>
                         </li>';
                 endif;
@@ -244,7 +236,6 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
           $twitter = get_sub_field('twitter');
           $instagram = get_sub_field('instagram');
           $pinterest = get_sub_field('pinterest');
-          $googleplus = get_sub_field('googleplus');
           $linkedin = get_sub_field('linkedin');
           $email_address = get_sub_field('email_address');
           $website = get_sub_field('website');
@@ -276,13 +267,6 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
                           echo '<li>
                                   <a href="' . $pinterest . '" class="icoPinterest" title="Pinterest" target="_blank">
                                     <i class="fa fa-pinterest-p"></i>
-                                  </a>
-                                </li>';
-                        endif;
-                        if( $googleplus ):
-                          echo '<li>
-                                  <a href="' . $googleplus . '" class="icoGoogle-plus" title="Google+" target="_blank">
-                                    <i class="fa fa-google-plus"></i>
                                   </a>
                                 </li>';
                         endif;
