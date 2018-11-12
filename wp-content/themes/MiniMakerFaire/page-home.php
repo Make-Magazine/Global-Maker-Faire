@@ -57,7 +57,7 @@ foreach ($home_pages as $home_page) {
 		</div>
       <?php
       
-$call_to_action_text = get_field('call_to_action_text', $home_ID);
+      $call_to_action_text = get_field('call_to_action_text', $home_ID);
       $call_to_action_text_url = get_field('call_to_action_text_url', $home_ID);
       if ($call_to_action_text) :
          if ($call_to_action_text_url) :
@@ -131,11 +131,10 @@ $call_to_action_text = get_field('call_to_action_text', $home_ID);
 
 <?php
 // check if the flexible content field has rows of data
-// if( have_rows('home_page_panels', $home_ID)) {
-if (have_rows('content_panels')) {
+if( have_rows('home_page_panels', $home_ID)) {
+   echo "Check has Row for Home Id of $home_ID<br>";
    // loop through the rows of data
-   // while ( have_rows('home_page_panels', $home_ID) ) {
-   while (have_rows('content_panels')) {
+   while ( have_rows('home_page_panels', $home_ID) ) {
       the_row();
       $row_layout = get_row_layout();
       echo dispLayout($row_layout);

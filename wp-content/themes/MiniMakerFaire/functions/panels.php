@@ -1,98 +1,68 @@
 <?php
 
 /* **************************************************** */
-/* Determine correct layout                             */
+/* Determine correct layout */
 /* **************************************************** */
 function dispLayout($row_layout) {
    $return = '';
-   switch ($row_layout) {
-      case 'buy_tickets_float': // floating buy tickets banner
-         $return = getBuyTixPanel($row_layout);
-         break;
-      case 'featured_makers_panel': // FEATURED MAKERS (SQUARE)
-      case 'featured_makers_panel_dynamic': // FEATURED MAKERS (SQUARE) - dynamic
-      case 'featured_makers_panel_circle': // featured makers (circle)
-      case 'featured_makers_panel_circle_dynamic': // featured makers (circle) - dynamic
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+   $activeinactive = get_sub_field('activeinactive');
+   // Ensure the Panel is active before showing it
+   if ($activeinactive == 'Active') {
+      switch ($row_layout) {
+         case 'buy_tickets_float': // floating buy tickets banner
+            $return = getBuyTixPanel($row_layout);
+            break;
+         case 'featured_makers_panel': // FEATURED MAKERS (SQUARE)
+         case 'featured_makers_panel_dynamic': // FEATURED MAKERS (SQUARE) - dynamic
+         case 'featured_makers_panel_circle': // featured makers (circle)
+         case 'featured_makers_panel_circle_dynamic': // featured makers (circle) - dynamic
             $return = getFeatMkPanel($row_layout);
-         }
-         break;
-      case 'featured_events': // featured_events
-      case 'featured_events_dynamic': // featured_events - dynamic
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
+         case 'featured_events': // featured_events
+         case 'featured_events_dynamic': // featured_events - dynamic
             $return = getFeatEvPanel($row_layout);
-         }
-         break;
-      case 'post_feed':
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
+         case 'post_feed':
             $return = getPostFeed();
-         }
-         break;
-      case '1_column': // 1 COLUMN LAYOUT
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
+         case '1_column': // 1 COLUMN LAYOUT
             $return = get1ColLayout();
-         }
-         break;
-      case '2_column_photo_and_text_panel': // 2 COLUMN LAYOUT
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
+         case '2_column_photo_and_text_panel': // 2 COLUMN LAYOUT
             $return = get2ColLayout();
-         }
-         break;
-      case '3_column': // 3 COLUMN LAYOUT
-         $return = get3ColLayout();
-         break;
-      case 'what_is_maker_faire': // WHAT IS MAKER FAIRE PANEL
-         $return = getWhatisMF();
-         break;
-      case 'call_to_action_panel': // CTA PANEL
-      case 'call_to_action': // CTA PANEL
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
+         case '3_column': // 3 COLUMN LAYOUT
+            $return = get3ColLayout();
+            break;
+         case 'what_is_maker_faire': // WHAT IS MAKER FAIRE PANEL
+            $return = getWhatisMF();
+            break;
+         case 'call_to_action_panel': // CTA PANEL
+         case 'call_to_action': // CTA PANEL{
             $return = getCTApanel();
-         }
-         break;
-      case 'static_or_carousel': // IMAGE CAROUSEL (RECTANGLE)
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
+         case 'static_or_carousel': // IMAGE CAROUSEL (RECTANGLE)
             $return = getImgCarousel();
-         }
-         break;
-      case 'square_image_carousel': // IMAGE CAROUSEL (SQUARE)
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
+         case 'square_image_carousel': // IMAGE CAROUSEL (SQUARE)
             $return = getImgCarouselSquare();
-         }
-         break;
-      case 'newsletter_panel': // NEWSLETTER PANEL
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
             $return = getNewsletterPanel();
-         }
-         break;
-      case 'sponsors_panel': // SPONSOR PANEL
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
+         case 'sponsors_panel': // SPONSOR PANEL
             $return = getSponsorPanel();
-         }
-         break;
-      case 'social_media': // social media panel
-         $activeinactive = get_sub_field('activeinactive');
-         if ($activeinactive == 'Active') {
+            break;
+         case 'social_media': // social media panel
             $return = getSocialPanel();
-         }
-         break;
+            break;
+      }
    }
    return $return;
    
 }
 
 /* **************************************************** */
-/* Function to return Buy Tickets Floating Banner       */
+/* Function to return Buy Tickets Floating Banner */
 /* **************************************************** */
 function getBuyTixPanel() {
    return '<a href="' . get_sub_field('buy_ticket_url') . '" target="_blank"><div class="floatBuyTix">' . get_sub_field('buy_ticket_text') . '</div></a>';
@@ -100,7 +70,7 @@ function getBuyTixPanel() {
 }
 
 /* **************************************************** */
-/* Function to build the featured maker panel           */
+/* Function to build the featured maker panel */
 /* **************************************************** */
 function getFeatMkPanel($row_layout) {
    $return = '';
@@ -154,17 +124,17 @@ function getFeatMkPanel($row_layout) {
          'page_size' => 999
       ));
       
-      ## Check for No data allow for pull accepted
+      // # Check for No data allow for pull accepted
       $pullAccepted = get_sub_field('pull_accepted');
       if (empty($entries) && $pullAccepted) {
-         ## Reset Criteria
+         // # Reset Criteria
          $search_criteria['field_filters'] = array();
-         ## Only want the accepted ones
+         // # Only want the accepted ones
          $search_criteria['field_filters'][] = array(
             'key' => '303',
             'value' => 'Accepted'
          );
-         ## Re-Run Entries
+         // # Re-Run Entries
          $entries = GFAPI::get_entries($formid, $search_criteria, null, array(
             'offset' => 0,
             'page_size' => 999
@@ -251,7 +221,7 @@ function getFeatMkPanel($row_layout) {
 }
 
 /* **************************************************** */
-/* Function to build the featured event panel           */
+/* Function to build the featured event panel */
 /* **************************************************** */
 function getFeatEvPanel($row_layout) {
    global $wpdb;
@@ -377,7 +347,7 @@ function getFeatEvPanel($row_layout) {
 }
 
 /* **************************************************** */
-/* Function to return post feed                         */
+/* Function to return post feed */
 /* **************************************************** */
 function getPostFeed() {
    $return = '';
@@ -450,7 +420,7 @@ function getPostFeed() {
 }
 
 /* * *************************************************** */
-/*  Function to return 3_column_photo_and_text_panel     */
+/* Function to return 3_column_photo_and_text_panel */
 /* * *************************************************** */
 function get3ColLayout() {
    $return = '';
@@ -468,23 +438,23 @@ function get3ColLayout() {
                   </div>';
    }
    
-   $return .= '   <div class="row">'; //start row
-   //get requested data for each column
+   $return .= '   <div class="row">'; // start row
+                                      // get requested data for each column
    $columns = get_sub_field('column');
    foreach ($columns as $column) {
-      $return .= '   <div class="col-sm-4">'; //start column
+      $return .= '   <div class="col-sm-4">'; // start column
       $data = $column['data'];
       $columnInfo = '';
       switch ($column['column_type']) {
-         case 'image':     // Image with optional link
+         case 'image': // Image with optional link
             $alignment = $data['column_list_alignment'];
             $image = '<img class="img-responsive" src="' . $data['column_image_field'] . '" />';
             $cta_link = $data['image_cta'];
             $ctaText = $data['image_cta_text'];
             
-            if (!empty($cta_link)) {
+            if (! empty($cta_link)) {
                $columnInfo = '<a href="' . $cta_link . '">' . $image . '</a>';
-               if (!empty($ctaText)) {
+               if (! empty($ctaText)) {
                   $columnInfo .= '<p class="text-' . $alignment . ' sub-caption-dark"><a href="' . $cta_link . '" target="_blank">' . $ctaText . '</a></p>';
                }
             } else {
@@ -494,34 +464,35 @@ function get3ColLayout() {
          case 'paragraph': // Paragraph text
             $columnInfo = '<p>' . $data['column_paragraph'] . '</p>';
             break;
-         case 'list':      // List of items with optional links
+         case 'list': // List of items with optional links
             $columnInfo = '<div class="panel-list">';
-            if (!empty($data['list_title'])) {
+            if (! empty($data['list_title'])) {
                $columnInfo .= '<p class="line-item list-title">' . $data['list_title'] . '</p>';
             }
-            //$columnInfo .= '  <ul>';
+            // $columnInfo .= ' <ul>';
             foreach ($data['column_list_fields'] as $list_fields) {
                $list_text = $list_fields['list_text'];
                $list_link = $list_fields['list_link'];
-               $columnInfo .= (!empty($list_link) ? '<a class="line-item" href="' . $list_link . '">' . $list_text . '</a>' : $list_text);
+               $columnInfo .= (! empty($list_link) ? '<a class="line-item" href="' . $list_link . '">' . $list_text . '</a>' : $list_text);
             }
-            //$columnInfo .= '  </ul>';
+            // $columnInfo .= ' </ul>';
             $columnInfo .= '</div>';
             break;
       }
       $return .= $columnInfo;
-      $return .= '</div>'; //end column
+      $return .= '</div>'; // end column
    }
    
-   $return .= '</div>'; //end row
+   $return .= '</div>'; // end row
    
    $return .= ' </div>
               </section>'; // end div.container and section.content-panel
    return $return;
+   
 }
 
 /* **************************************************** */
-/* Function to return 2_column_photo_and_text_panel     */
+/* Function to return 2_column_photo_and_text_panel */
 /* **************************************************** */
 function get2ColLayout() {
    $return = '';
@@ -559,7 +530,7 @@ function get2ColLayout() {
 }
 
 /* **************************************************** */
-/* Function to get1ColLayout                            */
+/* Function to get1ColLayout */
 /* **************************************************** */
 function get1ColLayout() {
    $return = '';
@@ -595,11 +566,11 @@ function get1ColLayout() {
 }
 
 /* **************************************************** */
-/* Function to return WHAT IS MAKER FAIRE PANE          */
+/* Function to return WHAT IS MAKER FAIRE PANE */
 /* **************************************************** */
 function getWhatisMF() {
    $return = '';
-   $widget_radio = get_sub_field('show_what_is_maker_faire');
+   $widget_radio = get_sub_field('activeinactive');
    if ($widget_radio == 'show') {
       $return .= '<section class="what-is-maker-faire">
             <div class="container">
@@ -626,7 +597,7 @@ function getWhatisMF() {
 }
 
 /* **************************************************** */
-/* Function to return Call to Action panel              */
+/* Function to return Call to Action panel */
 /* **************************************************** */
 function getCTApanel() {
    $return = '';
@@ -648,7 +619,7 @@ function getCTApanel() {
 }
 
 /* **************************************************** */
-/* Function to return IMAGE CAROUSEL (RECTANGLE)        */
+/* Function to return IMAGE CAROUSEL (RECTANGLE) */
 /* **************************************************** */
 function getImgCarousel() {
    $return = '';
@@ -725,7 +696,7 @@ function getImgCarousel() {
 }
 
 /* **************************************************** */
-/* Function to return IMAGE CAROUSEL (SQUARE)           */
+/* Function to return IMAGE CAROUSEL (SQUARE) */
 /* **************************************************** */
 function getImgCarouselSquare() {
    $return = '';
@@ -792,7 +763,7 @@ function getImgCarouselSquare() {
 }
 
 /* **************************************************** */
-/* Function to return New Letter Panel                  */
+/* Function to return New Letter Panel */
 /* **************************************************** */
 function getNewsletterPanel() {
    $return = '
@@ -889,7 +860,7 @@ function getNewsletterPanel() {
 }
 
 /* **************************************************** */
-/* Function to return Sponser Panel                     */
+/* Function to return Sponser Panel */
 /* **************************************************** */
 function getSponsorPanel() {
    $return = '';
@@ -1004,7 +975,7 @@ function getSponsorPanel() {
 }
 
 /* **************************************************** */
-/* Function to return Social Media Panel                */
+/* Function to return Social Media Panel */
 /* **************************************************** */
 function getSocialPanel() {
    $return = '';
