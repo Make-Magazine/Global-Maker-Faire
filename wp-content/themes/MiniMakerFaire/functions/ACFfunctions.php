@@ -1,4 +1,4 @@
- <?php
+<?php
 /* This code hides the ACF menu from everyone but super admins. */
 add_filter('acf/settings/show_admin', 'my_acf_show_admin');
 
