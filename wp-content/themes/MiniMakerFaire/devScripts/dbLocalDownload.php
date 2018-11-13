@@ -192,7 +192,7 @@ chmod($filename, 0644);
 //header('Expires: 0');
 //readfile($filename);
 ?>
-<a href="global_db.sql" download>Click to Download the Script</a><br>
+<a href="https://sites.google.com/a/makermedia.com/wiki/engineering/global-makerfaire/setting-up-global-mf-locally" target="_blank">Click for instructions on how to build global locally</a>
 <?php  echo $tableDetails; ?>
 </body>
 </html>
