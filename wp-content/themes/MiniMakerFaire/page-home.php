@@ -117,18 +117,21 @@ get_header();
   <aside class="fom-panel">
     <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-4 text-center">
-          <a href="<?php echo $url1;?>" target="_blank">
-            <img src="<?php echo get_site_option( 'find-out-more-img1' ); ?>" alt="<?php _e('Click here to get subscriptions to Make: Magazine','MiniMakerFaire');?>" class="img-responsive" />
-          </a>
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center dyn-google-ad">
+          <div id='div-gpt-ad-1464723042021-0'>
+            <script type='text/javascript'>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1464723042021-0'); });
+            </script>
+          </div>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-4 text-center">
-          <a href="<?php echo $url2;?>" target="_blank">
-            <img src="<?php echo get_site_option( 'find-out-more-img2' ); ?>" alt="<?php _e('Click here to see our global Maker Faires','MiniMakerFaire');?>" class="img-responsive" />
-          </a>
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center dyn-google-ad">
+          <div id='div-gpt-ad-1464723042021-1'>
+            <script type='text/javascript'>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1464723042021-1'); });
+            </script>
+          </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 text-center house-ad">
-          <!-- /11548178/GlobalMakerFaire -->
+        <div class="col-xs-12 col-sm-12 col-md-4 text-center dyn-google-ad">
           <div id='div-gpt-ad-1464723042021-2'>
             <script type='text/javascript'>
             googletag.cmd.push(function() { googletag.display('div-gpt-ad-1464723042021-2'); });
