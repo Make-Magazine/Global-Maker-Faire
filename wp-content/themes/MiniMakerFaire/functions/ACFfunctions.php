@@ -70,7 +70,6 @@ if (function_exists('acf_add_local_field_group')) {
    ));
    
    acf_add_local_field_group(
-      // Contact Page
       array(
          'key' => 'group_5748da1c25e54',
          'title' => 'Contact Page',
@@ -906,7 +905,8 @@ You can find the Form IDs in Forms > Forms > ID column.',
          'fields' => array(
             array(
                'layouts' => array(
-                  // Panels for Posts
+                  // Panels for Pages & Posts
+                  // What is Maker Faire
                   array(
                      'key' => '57196b4f7c508',
                      'name' => 'what_is_maker_faire',
@@ -940,7 +940,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => 1
-                  ),
+                  ), // End What is Maker Faire
                   // Newsletter Sign Up
                   array(
                      'key' => '572d8358fe8e1',
@@ -975,7 +975,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => ''
-                  ),
+                  ),// End Newsletter Sign Up
                   // Featured Makers (Square images)
                   array(
                      'key' => '56fc6f9fdc4a2',
@@ -1182,7 +1182,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => ''
-                  ),
+                  ), // End Featured Makers (Square images)
                   // Featured Makers (Square images) ===== DYNAMIC PANEL
                   array(
                      'key' => '579924c93c2c0',
@@ -1349,7 +1349,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => ''
-                  ),
+                  ),// End Featured Makers (Square images) ===== DYNAMIC PANEL
                   // Featured Makers (Circle images)
                   array(
                      'key' => '573e3efd8e814',
@@ -1532,7 +1532,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => ''
-                  ),
+                  ), // End Featured Makers (Circle images)
                   // Featured Makers (Circle images) ===== DYNAMIC PANEL
                   array(
                      'key' => '579925053c2d5',
@@ -1675,7 +1675,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => ''
-                  ),
+                  ), // End Featured Makers (Circle images) ===== DYNAMIC PANEL
                   // Featured Events
                   array(
                      'key' => '573e4bc7b6659',
@@ -1897,7 +1897,8 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => ''
-                  ),
+                  ), // End Featured Events
+                  // Featured Events ===== DYNAMIC PANEL
                   array(
                      'key' => '579925163c2df',
                      'name' => 'featured_events_dynamic',
@@ -1991,8 +1992,8 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => ''
-                  ),
-                  // News Feeds 
+                  ), // End Featured Events ===== DYNAMIC PANEL
+                  // News / Post Feed
                   array(
                      'key' => '56fc7521f1668',
                      'name' => 'post_feed',
@@ -2088,8 +2089,8 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => ''
-                  ), // End News Feed
-                  // Sponsors Panel
+                  ), // End News / Post Feed
+                  // Sponsors
                   array(
                      'key' => '571518b722ba0',
                      'name' => 'sponsors_panel',
@@ -2161,7 +2162,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      'min' => '',
                      'max' => ''
                   ), // End Sponsor Panel
-                  // Call To Action
+                  // Call to Action
                   array(
                      'key' => '571e869b082c2',
                      'name' => 'call_to_action_panel',
@@ -2257,6 +2258,673 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      'min' => '',
                      'max' => ''
                   ), // End to Call to Action
+                  // 1 Column
+                  array(
+                     'key' => '572bad2b2d757',
+                     'name' => '1_column',
+                     'label' => '1 Column',
+                     'display' => 'block',
+                     'sub_fields' => array(
+                        array(
+                           'layout' => 'horizontal',
+                           'choices' => array(
+                              'Active' => 'Active',
+                              'Inactive' => 'Inactive'
+                           ),
+                           'default_value' => 'Active',
+                           'other_choice' => 0,
+                           'save_other_choice' => 0,
+                           'allow_null' => 0,
+                           'return_format' => 'value',
+                           'key' => 'field_572bad2b2d758',
+                           'label' => 'Active/Inactive',
+                           'name' => 'activeinactive',
+                           'type' => 'radio',
+                           'instructions' => 'Activate or Inactivate this panel',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => 'activeinactive',
+                              'id' => ''
+                           )
+                        ),
+                        array(
+                           'default_value' => '',
+                           'maxlength' => '',
+                           'placeholder' => '',
+                           'prepend' => '',
+                           'append' => '',
+                           'key' => 'field_572bad2b2d759',
+                           'label' => 'Title',
+                           'name' => 'title',
+                           'type' => 'text',
+                           'instructions' => '',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'readonly' => 0,
+                           'disabled' => 0
+                        ),
+                        array(
+                           'tabs' => 'all',
+                           'toolbar' => 'full',
+                           'media_upload' => 1,
+                           'default_value' => '',
+                           'delay' => 0,
+                           'key' => 'field_572bad2b2d75a',
+                           'label' => 'Column 1',
+                           'name' => 'column_1',
+                           'type' => 'wysiwyg',
+                           'instructions' => 'Use the editor to style this content block however you like.',
+                           'required' => 1,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => 100,
+                              'class' => '',
+                              'id' => ''
+                           )
+                        ),
+                        array(
+                           'default_value' => '',
+                           'maxlength' => '',
+                           'placeholder' => '',
+                           'prepend' => '',
+                           'append' => '',
+                           'key' => 'field_572bad2b2d75c',
+                           'label' => 'CTA Button Text',
+                           'name' => 'cta_button',
+                           'type' => 'text',
+                           'instructions' => 'Optional Call To Action button to add underneath the 2 column content. i.e. "Learn More" or "Buy Now". Centered under both columns. Leave blank to hide.',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'readonly' => 0,
+                           'disabled' => 0
+                        ),
+                        array(
+                           'default_value' => '',
+                           'placeholder' => '',
+                           'key' => 'field_572bad2b2d75d',
+                           'label' => 'CTA Button URL',
+                           'name' => 'cta_button_url',
+                           'type' => 'url',
+                           'instructions' => '',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           )
+                        )
+                     ),
+                     'min' => '',
+                     'max' => ''
+                  ), // End 1 column
+
+                  // 2 Columns
+                  array(
+                     'key' => '56fc69d21b9e7',
+                     'name' => '2_column_photo_and_text_panel',
+                     'label' => '2 Columns',
+                     'display' => 'block',
+                     'sub_fields' => array(
+                        array(
+                           'layout' => 'horizontal',
+                           'choices' => array(
+                              'Active' => 'Active',
+                              'Inactive' => 'Inactive'
+                           ),
+                           'default_value' => 'Active',
+                           'other_choice' => 0,
+                           'save_other_choice' => 0,
+                           'allow_null' => 0,
+                           'return_format' => 'value',
+                           'key' => 'field_5727a8251b207',
+                           'label' => 'Active/Inactive',
+                           'name' => 'activeinactive',
+                           'type' => 'radio',
+                           'instructions' => 'Activate or Inactivate this panel',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => 'activeinactive',
+                              'id' => ''
+                           )
+                        ),
+                        array(
+                           'default_value' => '',
+                           'maxlength' => '',
+                           'placeholder' => '',
+                           'prepend' => '',
+                           'append' => '',
+                           'key' => 'field_5707044778278',
+                           'label' => 'Title',
+                           'name' => 'title',
+                           'type' => 'text',
+                           'instructions' => '',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'readonly' => 0,
+                           'disabled' => 0
+                        ),
+                        array(
+                           'tabs' => 'all',
+                           'toolbar' => 'full',
+                           'media_upload' => 1,
+                           'default_value' => '',
+                           'delay' => 0,
+                           'key' => 'field_56fc6a5b7d756',
+                           'label' => 'Column 1',
+                           'name' => 'column_1',
+                           'type' => 'wysiwyg',
+                           'instructions' => 'Use the editor to style this content block however you like.',
+                           'required' => 1,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => 50,
+                              'class' => '',
+                              'id' => ''
+                           )
+                        ),
+                        array(
+                           'tabs' => 'all',
+                           'toolbar' => 'full',
+                           'media_upload' => 1,
+                           'default_value' => '',
+                           'delay' => 0,
+                           'key' => 'field_56fc6dfc7d757',
+                           'label' => 'Column 2',
+                           'name' => 'column_2',
+                           'type' => 'wysiwyg',
+                           'instructions' => 'Use the editor to style this content block however you like.',
+                           'required' => 1,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => 50,
+                              'class' => '',
+                              'id' => ''
+                           )
+                        ),
+                        array(
+                           'default_value' => '',
+                           'maxlength' => '',
+                           'placeholder' => '',
+                           'prepend' => '',
+                           'append' => '',
+                           'key' => 'field_571e908c47dbe',
+                           'label' => 'CTA Button Text',
+                           'name' => 'cta_button',
+                           'type' => 'text',
+                           'instructions' => 'Optional Call To Action button to add underneath the 2 column content. i.e. "Learn More" or "Buy Now". Centered under both columns. Leave blank to hide.',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'readonly' => 0,
+                           'disabled' => 0
+                        ),
+                        array(
+                           'default_value' => '',
+                           'placeholder' => '',
+                           'key' => 'field_571e915447dbf',
+                           'label' => 'CTA Button URL',
+                           'name' => 'cta_button_url',
+                           'type' => 'url',
+                           'instructions' => '',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           )
+                        )
+                     ),
+                     'min' => '',
+                     'max' => ''
+                  ), // End 2 Columns
+                  // Panel: 3 column - photo and text
+                  array(
+                     'key' => '5b4e51639ab7e',
+                     'name' => '3_column',
+                     'label' => '3 column',
+                     'display' => 'block',
+                     'sub_fields' => array(
+                        array(
+                           'key' => 'field_5b4e70db5d7d7',
+                           'label' => 'Active/Inactive',
+                           'name' => 'activeinactive',
+                           'type' => 'radio',
+                           'instructions' => '',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'choices' => array(
+                              'Active' => 'Active',
+                              'Inactive' => 'Inactive'
+                           ),
+                           'allow_null' => 0,
+                           'other_choice' => 0,
+                           'save_other_choice' => 0,
+                           'default_value' => 'active',
+                           'layout' => 'horizontal',
+                           'return_format' => 'value'
+                        ),
+                        array(
+                           'key' => 'field_5b4e70905d7d6',
+                           'label' => 'Panel Title',
+                           'name' => 'panel_title',
+                           'type' => 'text',
+                           'instructions' => 'Optional: 50 character limit.',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'default_value' => '',
+                           'placeholder' => '',
+                           'prepend' => '',
+                           'append' => '',
+                           'maxlength' => 50
+                        ),
+                        array(
+                           'key' => 'field_5b4e5bec567f5',
+                           'label' => 'Columns',
+                           'name' => 'column',
+                           'type' => 'repeater',
+                           'instructions' => '',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'collapsed' => '',
+                           'min' => 3,
+                           'max' => 3,
+                           'layout' => 'table',
+                           'button_label' => '',
+                           'sub_fields' => array(
+                              array(
+                                 'key' => 'field_5b4e5177fec84',
+                                 'label' => 'Type',
+                                 'name' => 'column_type',
+                                 'type' => 'radio',
+                                 'instructions' => '',
+                                 'required' => 1,
+                                 'conditional_logic' => 0,
+                                 'wrapper' => array(
+                                    'width' => '30',
+                                    'class' => '',
+                                    'id' => ''
+                                 ),
+                                 'choices' => array(
+                                    'image' => 'Image with optional link',
+                                    'paragraph' => 'Paragraph text',
+                                    'list' => 'List of items with optional links'
+                                 ),
+                                 'allow_null' => 0,
+                                 'other_choice' => 0,
+                                 'save_other_choice' => 0,
+                                 'default_value' => 'image',
+                                 'layout' => 'vertical',
+                                 'return_format' => 'value'
+                              ),
+                              array(
+                                 'key' => 'field_5b4e645f30c5e',
+                                 'label' => 'Data',
+                                 'name' => 'data',
+                                 'type' => 'group',
+                                 'instructions' => '',
+                                 'required' => 0,
+                                 'conditional_logic' => 0,
+                                 'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => ''
+                                 ),
+                                 'layout' => 'block',
+                                 'sub_fields' => array(
+                                    array(
+                                       'key' => 'field_5b4e54c9fec85',
+                                       'label' => 'Image',
+                                       'name' => 'column_image_field',
+                                       'type' => 'image',
+                                       'instructions' => 'Upload an image',
+                                       'required' => 1,
+                                       'conditional_logic' => array(
+                                          array(
+                                             array(
+                                                'field' => 'field_5b4e5177fec84',
+                                                'operator' => '==',
+                                                'value' => 'image'
+                                             )
+                                          )
+                                       ),
+                                       'wrapper' => array(
+                                          'width' => '',
+                                          'class' => '',
+                                          'id' => ''
+                                       ),
+                                       'return_format' => 'url',
+                                       'preview_size' => 'thumbnail',
+                                       'library' => 'all',
+                                       'min_width' => '',
+                                       'min_height' => '',
+                                       'min_size' => '',
+                                       'max_width' => '',
+                                       'max_height' => '',
+                                       'max_size' => '',
+                                       'mime_types' => ''
+                                    ),
+                                    array(
+                                       'key' => 'field_5b4e6672c7f98',
+                                       'label' => 'Image Link',
+                                       'name' => 'image_cta',
+                                       'type' => 'url',
+                                       'instructions' => 'Optional - If supplied, this will make the image a clickable link.',
+                                       'required' => 0,
+                                       'conditional_logic' => array(
+                                          array(
+                                             array(
+                                                'field' => 'field_5b4e5177fec84',
+                                                'operator' => '==',
+                                                'value' => 'image'
+                                             )
+                                          )
+                                       ),
+                                       'wrapper' => array(
+                                          'width' => '',
+                                          'class' => '',
+                                          'id' => ''
+                                       ),
+                                       'default_value' => '',
+                                       'placeholder' => ''
+                                    ),
+                                    array(
+                                       'key' => 'field_5b4e66a4c7f99',
+                                       'label' => 'Link Text',
+                                       'name' => 'image_cta_text',
+                                       'type' => 'text',
+                                       'instructions' => 'Optional - If supplied, an additional link is displayed below the image using this text.',
+                                       'required' => 0,
+                                       'conditional_logic' => array(
+                                          array(
+                                             array(
+                                                'field' => 'field_5b4e5177fec84',
+                                                'operator' => '==',
+                                                'value' => 'image'
+                                             )
+                                          )
+                                       ),
+                                       'wrapper' => array(
+                                          'width' => '',
+                                          'class' => '',
+                                          'id' => ''
+                                       ),
+                                       'default_value' => '',
+                                       'placeholder' => '',
+                                       'prepend' => '',
+                                       'append' => '',
+                                       'maxlength' => ''
+                                    ),
+                                    array(
+                                       'key' => 'field_5b4e66a4c7f90',
+                                       'label' => 'Alignment',
+                                       'name' => 'column_list_alignment',
+                                       'type' => 'radio',
+                                       'instructions' => '',
+                                       'required' => 0,
+                                       'conditional_logic' => array(
+                                          array(
+                                             array(
+                                                'field' => 'field_5b4e5177fec84',
+                                                'operator' => '==',
+                                                'value' => 'image'
+                                             )
+                                          )
+                                       ),
+                                       'wrapper' => array(
+                                          'width' => '100',
+                                          'class' => '',
+                                          'id' => ''
+                                       ),
+                                       'choices' => array(
+                                          'left' => 'Left',
+                                          'center' => 'Center',
+                                          'right' => 'Right'
+                                       ),
+                                       'allow_null' => 0,
+                                       'other_choice' => 0,
+                                       'save_other_choice' => 0,
+                                       'default_value' => 'left',
+                                       'layout' => 'vertical',
+                                       'return_format' => 'value'
+                                    ),
+                                    array(
+                                       'key' => 'field_5b4e54fdfec86',
+                                       'label' => 'Paragraph',
+                                       'name' => 'column_paragraph',
+                                       'type' => 'textarea',
+                                       'instructions' => 'Character limit is 350',
+                                       'required' => 1,
+                                       'conditional_logic' => array(
+                                          array(
+                                             array(
+                                                'field' => 'field_5b4e5177fec84',
+                                                'operator' => '==',
+                                                'value' => 'paragraph'
+                                             )
+                                          )
+                                       ),
+                                       'wrapper' => array(
+                                          'width' => '',
+                                          'class' => '',
+                                          'id' => ''
+                                       ),
+                                       'default_value' => '',
+                                       'placeholder' => '',
+                                       'maxlength' => 350,
+                                       'rows' => '',
+                                       'new_lines' => ''
+                                    ),
+                                    array(
+                                       'key' => 'field_5b4e61ffa92ef',
+                                       'label' => 'List Title',
+                                       'name' => 'list_title',
+                                       'type' => 'text',
+                                       'instructions' => '',
+                                       'required' => 0,
+                                       'conditional_logic' => array(
+                                          array(
+                                             array(
+                                                'field' => 'field_5b4e5177fec84',
+                                                'operator' => '==',
+                                                'value' => 'list'
+                                             )
+                                          )
+                                       ),
+                                       'wrapper' => array(
+                                          'width' => '105',
+                                          'class' => '',
+                                          'id' => ''
+                                       ),
+                                       'default_value' => '',
+                                       'placeholder' => 'ie: Helpful Links',
+                                       'prepend' => '',
+                                       'append' => '',
+                                       'maxlength' => 30
+                                    ),
+                                    array(
+                                       'key' => 'field_5b4e55f4fec87',
+                                       'label' => 'List fields',
+                                       'name' => 'column_list_fields',
+                                       'type' => 'repeater',
+                                       'instructions' => 'Enter in your list items and (if appropriate) their urls (maximum of 5)',
+                                       'required' => 0,
+                                       'conditional_logic' => array(
+                                          array(
+                                             array(
+                                                'field' => 'field_5b4e5177fec84',
+                                                'operator' => '==',
+                                                'value' => 'list'
+                                             )
+                                          )
+                                       ),
+                                       'wrapper' => array(
+                                          'width' => '100',
+                                          'class' => '',
+                                          'id' => ''
+                                       ),
+                                       'collapsed' => 'field_5b4e561bfec88',
+                                       'min' => 1,
+                                       'max' => 5,
+                                       'layout' => 'table',
+                                       'button_label' => '',
+                                       'sub_fields' => array(
+                                          array(
+                                             'key' => 'field_5b4e561bfec88',
+                                             'label' => 'Label',
+                                             'name' => 'list_text',
+                                             'type' => 'text',
+                                             'instructions' => '',
+                                             'required' => 1,
+                                             'conditional_logic' => 0,
+                                             'wrapper' => array(
+                                                'width' => '',
+                                                'class' => '',
+                                                'id' => ''
+                                             ),
+                                             'default_value' => '',
+                                             'placeholder' => '',
+                                             'prepend' => '',
+                                             'append' => '',
+                                             'maxlength' => ''
+                                          ),
+                                          array(
+                                             'key' => 'field_5b4e562bfec89',
+                                             'label' => 'Link',
+                                             'name' => 'list_link',
+                                             'type' => 'url',
+                                             'instructions' => '',
+                                             'required' => 0,
+                                             'conditional_logic' => 0,
+                                             'wrapper' => array(
+                                                'width' => '',
+                                                'class' => '',
+                                                'id' => ''
+                                             ),
+                                             'default_value' => '',
+                                             'placeholder' => ''
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     'min' => '',
+                     'max' => ''
+                  ), // End 3 column
+                  // Panel: Buy Tickets floating banner
+                  array(
+                     'key' => '57196b4abc501',
+                     'name' => 'buy_tickets_float',
+                     'label' => 'Get Tickets Floating Banner',
+                     'display' => 'row',
+                     'sub_fields' => array(
+                        array(
+                           'layout' => 'horizontal',
+                           'choices' => array(
+                              'Active' => 'Active',
+                              'Inactive' => 'Inactive'
+                           ),
+                           'default_value' => 'Active',
+                           'other_choice' => 0,
+                           'save_other_choice' => 0,
+                           'allow_null' => 0,
+                           'return_format' => 'value',
+                           'key' => 'field_57196b4abc502',
+                           'label' => 'Active/Inactive',
+                           'name' => 'activeinactive',
+                           'type' => 'radio',
+                           'instructions' => 'This adds a floating banner to buy tickets.',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => 'activeinactive',
+                              'id' => ''
+                           )
+                        ),
+                        array(
+                           'default_value' => '',
+                           'placeholder' => '',
+                           'key' => 'field_57196b4abc503',
+                           'label' => 'Buy Ticket URL',
+                           'name' => 'buy_ticket_url',
+                           'type' => 'url',
+                           'instructions' => 'Required. Enter the URL to the ticket purchasing page for this faire.',
+                           'required' => 1,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           )
+                        ),
+                        array(
+                           'default_value' => '',
+                           'maxlength' => 20,
+                           'placeholder' => '',
+                           'prepend' => '',
+                           'append' => '',
+                           'key' => 'field_57196b4abc504',
+                           'label' => 'Buy Ticket Text',
+                           'name' => 'buy_ticket_text',
+                           'type' => 'text',
+                           'instructions' => 'Please enter the text displayed in the \'Buy Ticket\' Flag.<br/>20 character limit.',
+                           'required' => 1,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'readonly' => 0,
+                           'disabled' => 0
+                        )
+                     ),
+                     'min' => '',
+                     'max' => 1
+                  ), // End Get Tickets Floating Banner
                   // Image Carousel (Rectangle)
                   array(
                      'key' => '572d9f7f52da4',
@@ -2397,7 +3065,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => ''
-                  ), // Image Carousel (Rectangle)
+                  ), // End Image Carousel (Rectangle)
                   // Image Carousel (Square)
                   array(
                      'key' => '573d16220b295',
@@ -2538,673 +3206,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                      ),
                      'min' => '',
                      'max' => 1
-                  ), // End Image Carousel (Square)
-                  // 1 Column
-                  array(
-                     'key' => '572bad2b2d757',
-                     'name' => '1_column',
-                     'label' => '1 Column',
-                     'display' => 'block',
-                     'sub_fields' => array(
-                        array(
-                           'layout' => 'horizontal',
-                           'choices' => array(
-                              'Active' => 'Active',
-                              'Inactive' => 'Inactive'
-                           ),
-                           'default_value' => 'Active',
-                           'other_choice' => 0,
-                           'save_other_choice' => 0,
-                           'allow_null' => 0,
-                           'return_format' => 'value',
-                           'key' => 'field_572bad2b2d758',
-                           'label' => 'Active/Inactive',
-                           'name' => 'activeinactive',
-                           'type' => 'radio',
-                           'instructions' => 'Activate or Inactivate this panel',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => 'activeinactive',
-                              'id' => ''
-                           )
-                        ),
-                        array(
-                           'default_value' => '',
-                           'maxlength' => '',
-                           'placeholder' => '',
-                           'prepend' => '',
-                           'append' => '',
-                           'key' => 'field_572bad2b2d759',
-                           'label' => 'Title',
-                           'name' => 'title',
-                           'type' => 'text',
-                           'instructions' => '',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => ''
-                           ),
-                           'readonly' => 0,
-                           'disabled' => 0
-                        ),
-                        array(
-                           'tabs' => 'all',
-                           'toolbar' => 'full',
-                           'media_upload' => 1,
-                           'default_value' => '',
-                           'delay' => 0,
-                           'key' => 'field_572bad2b2d75a',
-                           'label' => 'Column 1',
-                           'name' => 'column_1',
-                           'type' => 'wysiwyg',
-                           'instructions' => 'Use the editor to style this content block however you like.',
-                           'required' => 1,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => 100,
-                              'class' => '',
-                              'id' => ''
-                           )
-                        ),
-                        array(
-                           'default_value' => '',
-                           'maxlength' => '',
-                           'placeholder' => '',
-                           'prepend' => '',
-                           'append' => '',
-                           'key' => 'field_572bad2b2d75c',
-                           'label' => 'CTA Button Text',
-                           'name' => 'cta_button',
-                           'type' => 'text',
-                           'instructions' => 'Optional Call To Action button to add underneath the 2 column content. i.e. "Learn More" or "Buy Now". Centered under both columns. Leave blank to hide.',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => ''
-                           ),
-                           'readonly' => 0,
-                           'disabled' => 0
-                        ),
-                        array(
-                           'default_value' => '',
-                           'placeholder' => '',
-                           'key' => 'field_572bad2b2d75d',
-                           'label' => 'CTA Button URL',
-                           'name' => 'cta_button_url',
-                           'type' => 'url',
-                           'instructions' => '',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => ''
-                           )
-                        )
-                     ),
-                     'min' => '',
-                     'max' => ''
-                  ), // End 1 Column
-                  // 2 Column
-                  array(
-                     'key' => '56fc69d21b9e7',
-                     'name' => '2_column_photo_and_text_panel',
-                     'label' => '2 Columns',
-                     'display' => 'block',
-                     'sub_fields' => array(
-                        array(
-                           'layout' => 'horizontal',
-                           'choices' => array(
-                              'Active' => 'Active',
-                              'Inactive' => 'Inactive'
-                           ),
-                           'default_value' => 'Active',
-                           'other_choice' => 0,
-                           'save_other_choice' => 0,
-                           'allow_null' => 0,
-                           'return_format' => 'value',
-                           'key' => 'field_5727a8251b207',
-                           'label' => 'Active/Inactive',
-                           'name' => 'activeinactive',
-                           'type' => 'radio',
-                           'instructions' => 'Activate or Inactivate this panel',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => 'activeinactive',
-                              'id' => ''
-                           )
-                        ),
-                        array(
-                           'default_value' => '',
-                           'maxlength' => '',
-                           'placeholder' => '',
-                           'prepend' => '',
-                           'append' => '',
-                           'key' => 'field_5707044778278',
-                           'label' => 'Title',
-                           'name' => 'title',
-                           'type' => 'text',
-                           'instructions' => '',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => ''
-                           ),
-                           'readonly' => 0,
-                           'disabled' => 0
-                        ),
-                        array(
-                           'tabs' => 'all',
-                           'toolbar' => 'full',
-                           'media_upload' => 1,
-                           'default_value' => '',
-                           'delay' => 0,
-                           'key' => 'field_56fc6a5b7d756',
-                           'label' => 'Column 1',
-                           'name' => 'column_1',
-                           'type' => 'wysiwyg',
-                           'instructions' => 'Use the editor to style this content block however you like.',
-                           'required' => 1,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => 50,
-                              'class' => '',
-                              'id' => ''
-                           )
-                        ),
-                        array(
-                           'tabs' => 'all',
-                           'toolbar' => 'full',
-                           'media_upload' => 1,
-                           'default_value' => '',
-                           'delay' => 0,
-                           'key' => 'field_56fc6dfc7d757',
-                           'label' => 'Column 2',
-                           'name' => 'column_2',
-                           'type' => 'wysiwyg',
-                           'instructions' => 'Use the editor to style this content block however you like.',
-                           'required' => 1,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => 50,
-                              'class' => '',
-                              'id' => ''
-                           )
-                        ),
-                        array(
-                           'default_value' => '',
-                           'maxlength' => '',
-                           'placeholder' => '',
-                           'prepend' => '',
-                           'append' => '',
-                           'key' => 'field_571e908c47dbe',
-                           'label' => 'CTA Button Text',
-                           'name' => 'cta_button',
-                           'type' => 'text',
-                           'instructions' => 'Optional Call To Action button to add underneath the 2 column content. i.e. "Learn More" or "Buy Now". Centered under both columns. Leave blank to hide.',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => ''
-                           ),
-                           'readonly' => 0,
-                           'disabled' => 0
-                        ),
-                        array(
-                           'default_value' => '',
-                           'placeholder' => '',
-                           'key' => 'field_571e915447dbf',
-                           'label' => 'CTA Button URL',
-                           'name' => 'cta_button_url',
-                           'type' => 'url',
-                           'instructions' => '',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => ''
-                           )
-                        )
-                     ),
-                     'min' => '',
-                     'max' => ''
-                  ), // End 2 Column
-                  // Panel: 3 column - photo and text
-                  array(
-                     'key' => '5b4e51639ab7e',
-                     'name' => '3_column',
-                     'label' => '3 column',
-                     'display' => 'block',
-                     'sub_fields' => array(
-                        array(
-                           'key' => 'field_5b4e70db5d7d7',
-                           'label' => 'Active/Inactive',
-                           'name' => 'activeinactive',
-                           'type' => 'radio',
-                           'instructions' => '',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                           'choices' => array(
-                              'Active' => 'Active',
-                              'Inactive' => 'Inactive',
-                           ),
-                           'allow_null' => 0,
-                           'other_choice' => 0,
-                           'save_other_choice' => 0,
-                           'default_value' => 'active',
-                           'layout' => 'horizontal',
-                           'return_format' => 'value',
-                        ),
-                        array(
-                           'key' => 'field_5b4e70905d7d6',
-                           'label' => 'Panel Title',
-                           'name' => 'panel_title',
-                           'type' => 'text',
-                           'instructions' => 'Optional: 50 character limit.',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                           'default_value' => '',
-                           'placeholder' => '',
-                           'prepend' => '',
-                           'append' => '',
-                           'maxlength' => 50,
-                        ),
-                        array(
-                           'key' => 'field_5b4e5bec567f5',
-                           'label' => 'Columns',
-                           'name' => 'column',
-                           'type' => 'repeater',
-                           'instructions' => '',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                           'collapsed' => '',
-                           'min' => 3,
-                           'max' => 3,
-                           'layout' => 'table',
-                           'button_label' => '',
-                           'sub_fields' => array(
-                              array(
-                                 'key' => 'field_5b4e5177fec84',
-                                 'label' => 'Type',
-                                 'name' => 'column_type',
-                                 'type' => 'radio',
-                                 'instructions' => '',
-                                 'required' => 1,
-                                 'conditional_logic' => 0,
-                                 'wrapper' => array(
-                                    'width' => '30',
-                                    'class' => '',
-                                    'id' => '',
-                                 ),
-                                 'choices' => array(
-                                    'image' => 'Image with optional link',
-                                    'paragraph' => 'Paragraph text',
-                                    'list' => 'List of items with optional links',
-                                 ),
-                                 'allow_null' => 0,
-                                 'other_choice' => 0,
-                                 'save_other_choice' => 0,
-                                 'default_value' => 'image',
-                                 'layout' => 'vertical',
-                                 'return_format' => 'value',
-                              ),
-                              array(
-                                 'key' => 'field_5b4e645f30c5e',
-                                 'label' => 'Data',
-                                 'name' => 'data',
-                                 'type' => 'group',
-                                 'instructions' => '',
-                                 'required' => 0,
-                                 'conditional_logic' => 0,
-                                 'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                 ),
-                                 'layout' => 'block',
-                                 'sub_fields' => array(
-                                    array(
-                                       'key' => 'field_5b4e54c9fec85',
-                                       'label' => 'Image',
-                                       'name' => 'column_image_field',
-                                       'type' => 'image',
-                                       'instructions' => 'Upload an image',
-                                       'required' => 1,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'image',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'return_format' => 'url',
-                                       'preview_size' => 'thumbnail',
-                                       'library' => 'all',
-                                       'min_width' => '',
-                                       'min_height' => '',
-                                       'min_size' => '',
-                                       'max_width' => '',
-                                       'max_height' => '',
-                                       'max_size' => '',
-                                       'mime_types' => '',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e6672c7f98',
-                                       'label' => 'Image Link',
-                                       'name' => 'image_cta',
-                                       'type' => 'url',
-                                       'instructions' => 'Optional - If supplied, this will make the image a clickable link.',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'image',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'default_value' => '',
-                                       'placeholder' => '',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e66a4c7f99',
-                                       'label' => 'Link Text',
-                                       'name' => 'image_cta_text',
-                                       'type' => 'text',
-                                       'instructions' => 'Optional - If supplied, an additional link is displayed below the image using this text.',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'image',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'default_value' => '',
-                                       'placeholder' => '',
-                                       'prepend' => '',
-                                       'append' => '',
-                                       'maxlength' => '',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e66a4c7f90',
-                                       'label' => 'Alignment',
-                                       'name' => 'column_list_alignment',
-                                       'type' => 'radio',
-                                       'instructions' => '',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'image',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '100',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'choices' => array(
-                                          'left' => 'Left',
-                                          'center' => 'Center',
-                                          'right' => 'Right',
-                                       ),
-                                       'allow_null' => 0,
-                                       'other_choice' => 0,
-                                       'save_other_choice' => 0,
-                                       'default_value' => 'left',
-                                       'layout' => 'vertical',
-                                       'return_format' => 'value',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e54fdfec86',
-                                       'label' => 'Paragraph',
-                                       'name' => 'column_paragraph',
-                                       'type' => 'textarea',
-                                       'instructions' => 'Character limit is 350',
-                                       'required' => 1,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'paragraph',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'default_value' => '',
-                                       'placeholder' => '',
-                                       'maxlength' => 350,
-                                       'rows' => '',
-                                       'new_lines' => '',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e61ffa92ef',
-                                       'label' => 'List Title',
-                                       'name' => 'list_title',
-                                       'type' => 'text',
-                                       'instructions' => '',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'list',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '105',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'default_value' => '',
-                                       'placeholder' => 'ie: Helpful Links',
-                                       'prepend' => '',
-                                       'append' => '',
-                                       'maxlength' => 30,
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e55f4fec87',
-                                       'label' => 'List fields',
-                                       'name' => 'column_list_fields',
-                                       'type' => 'repeater',
-                                       'instructions' => 'Enter in your list items and (if appropriate) their urls (maximum of 5)',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'list',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '100',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'collapsed' => 'field_5b4e561bfec88',
-                                       'min' => 1,
-                                       'max' => 5,
-                                       'layout' => 'table',
-                                       'button_label' => '',
-                                       'sub_fields' => array(
-                                          array(
-                                             'key' => 'field_5b4e561bfec88',
-                                             'label' => 'Label',
-                                             'name' => 'list_text',
-                                             'type' => 'text',
-                                             'instructions' => '',
-                                             'required' => 1,
-                                             'conditional_logic' => 0,
-                                             'wrapper' => array(
-                                                'width' => '',
-                                                'class' => '',
-                                                'id' => '',
-                                             ),
-                                             'default_value' => '',
-                                             'placeholder' => '',
-                                             'prepend' => '',
-                                             'append' => '',
-                                             'maxlength' => '',
-                                          ),
-                                          array(
-                                             'key' => 'field_5b4e562bfec89',
-                                             'label' => 'Link',
-                                             'name' => 'list_link',
-                                             'type' => 'url',
-                                             'instructions' => '',
-                                             'required' => 0,
-                                             'conditional_logic' => 0,
-                                             'wrapper' => array(
-                                                'width' => '',
-                                                'class' => '',
-                                                'id' => '',
-                                             ),
-                                             'default_value' => '',
-                                             'placeholder' => '',
-                                          ),
-                                       ),
-                                    ),
-                                 ),
-                              ),
-                           ),
-                        ),
-                     ),
-                     'min' => '',
-                     'max' => '',
-                  ), //End of 3 Column
-                  // Panel: Buy Tickets floating banner
-                  array(
-                     'key' => '57196b4abc501',
-                     'name' => 'buy_tickets_float',
-                     'label' => 'Get Tickets Floating Banner',
-                     'display' => 'row',
-                     'sub_fields' => array(
-                        array(
-                           'layout' => 'horizontal',
-                           'choices' => array(
-                              'Active' => 'Active',
-                              'Inactive' => 'Inactive',
-                           ),
-                           'default_value' => 'Active',
-                           'other_choice' => 0,
-                           'save_other_choice' => 0,
-                           'allow_null' => 0,
-                           'return_format' => 'value',
-                           'key' => 'field_57196b4abc502',
-                           'label' => 'Active/Inactive',
-                           'name' => 'activeinactive',
-                           'type' => 'radio',
-                           'instructions' => 'This adds a floating banner to buy tickets.',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => 'activeinactive',
-                              'id' => '',
-                           ),
-                        ),
-                        array(
-                           'default_value' => '',
-                           'placeholder' => '',
-                           'key' => 'field_57196b4abc503',
-                           'label' => 'Buy Ticket URL',
-                           'name' => 'buy_ticket_url',
-                           'type' => 'url',
-                           'instructions' => 'Required. Enter the URL to the ticket purchasing page for this faire.',
-                           'required' => 1,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                        ),
-                        array(
-                           'default_value' => '',
-                           'maxlength' => 20,
-                           'placeholder' => '',
-                           'prepend' => '',
-                           'append' => '',
-                           'key' => 'field_57196b4abc504',
-                           'label' => 'Buy Ticket Text',
-                           'name' => 'buy_ticket_text',
-                           'type' => 'text',
-                           'instructions' => 'Please enter the text displayed in the \'Buy Ticket\' Flag.<br/>20 character limit.',
-                           'required' => 1,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                           'readonly' => 0,
-                           'disabled' => 0,
-                        ),
-                     ),
-                     'min' => '',
-                     'max' => 1,
-                  ), // End of Buy Tickets
+                  ) // End Image Carousel (Square)
                ),
                'min' => '',
                'max' => '',
@@ -3223,7 +3225,6 @@ You can find the Form IDs in Forms > Forms > ID column.',
                )
             )
          ),
-         // 
          'location' => array(
             array(
                array(
@@ -3240,7 +3241,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                ),
                array(
                   'param' => 'page_template',
-                  'operator' => '==',
+                  'operator' => '!=',
                   'value' => 'page-home.php'
                ),
                array(
@@ -3416,268 +3417,269 @@ You can find the Form IDs in Forms > Forms > ID column."',
       'description' => ''
    ));
    
-   acf_add_local_field_group(array(
-      'key' => 'group_570ef4c0b8f60',
-      'title' => 'Sponsors Page',
-      'fields' => array(
-         array(
-            'layouts' => array(
-               array(
-                  'key' => '570f0304d2329',
-                  'name' => 'sponsors_with_image',
-                  'label' => 'Sponsors with Image',
-                  'display' => 'block',
-                  'sub_fields' => array(
-                     array(
-                        'default_value' => '',
-                        'maxlength' => '',
-                        'placeholder' => '',
-                        'prepend' => '',
-                        'append' => '',
-                        'key' => 'field_570f03ffd8840',
-                        'label' => 'Sponsor Group Title',
-                        'name' => 'sponsor_group_title',
-                        'type' => 'text',
-                        'instructions' => 'i.e. "Presenting Sponsors" or "Goldsmith Sponsors"',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array(
-                           'width' => '',
-                           'class' => '',
-                           'id' => ''
-                        ),
-                        'readonly' => 0,
-                        'disabled' => 0
-                     ),
-                     array(
-                        'multiple' => 0,
-                        'allow_null' => 0,
-                        'choices' => array(
-                           'sponsors-box-md' => 'Small',
-                           'sponsors-box-lg' => 'Medium',
-                           'sponsors-box-xl' => 'Large'
-                        ),
-                        'default_value' => array(
-                           0 => 'sponsors-box-md'
-                        ),
-                        'ui' => 0,
-                        'ajax' => 0,
-                        'placeholder' => '',
-                        'return_format' => 'value',
-                        'key' => 'field_57101bb219307',
-                        'label' => 'Sponsors Image Size',
-                        'name' => 'sponsors_image_size',
-                        'type' => 'select',
-                        'instructions' => 'Displays the sponsor images at small, medium, or large sizes. Sizes can be used as a way to show importance.',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array(
-                           'width' => '',
-                           'class' => '',
-                           'id' => ''
-                        ),
-                        'disabled' => 0,
-                        'readonly' => 0
-                     ),
-                     array(
-                        'sub_fields' => array(
-                           array(
-                              'return_format' => 'array',
-                              'preview_size' => 'thumbnail',
-                              'library' => 'all',
-                              'min_width' => '',
-                              'min_height' => '',
-                              'min_size' => '',
-                              'max_width' => '',
-                              'max_height' => '',
-                              'max_size' => '',
-                              'mime_types' => '',
-                              'key' => 'field_570f039bd883e',
-                              'label' => 'Image',
-                              'name' => 'image',
-                              'type' => 'image',
-                              'instructions' => '',
-                              'required' => 1,
-                              'conditional_logic' => 0,
-                              'wrapper' => array(
-                                 'width' => '',
-                                 'class' => '',
-                                 'id' => ''
-                              )
-                           ),
-                           array(
-                              'default_value' => '',
-                              'placeholder' => '',
-                              'key' => 'field_570f03c6d883f',
-                              'label' => 'URL',
-                              'name' => 'url',
-                              'type' => 'url',
-                              'instructions' => '',
-                              'required' => 0,
-                              'conditional_logic' => 0,
-                              'wrapper' => array(
-                                 'width' => '',
-                                 'class' => '',
-                                 'id' => ''
-                              )
-                           )
-                        ),
-                        'min' => 0,
-                        'max' => 0,
-                        'layout' => 'table',
-                        'button_label' => 'Add Row',
-                        'collapsed' => '',
-                        'key' => 'field_570f0337d883d',
-                        'label' => 'Sponsors',
-                        'name' => 'sponsors_with_image',
-                        'type' => 'repeater',
-                        'instructions' => 'Add each individual sponsor as a new row.',
-                        'required' => 1,
-                        'conditional_logic' => 0,
-                        'wrapper' => array(
-                           'width' => '',
-                           'class' => '',
-                           'id' => ''
-                        )
-                     )
-                  ),
-                  'min' => '',
-                  'max' => ''
-               ),
-               array(
-                  'key' => '570f05c2c655b',
-                  'name' => 'sponsors_with_text',
-                  'label' => 'Sponsors with Text',
-                  'display' => 'block',
-                  'sub_fields' => array(
-                     array(
-                        'default_value' => '',
-                        'maxlength' => '',
-                        'placeholder' => '',
-                        'prepend' => '',
-                        'append' => '',
-                        'key' => 'field_570f05c2c655c',
-                        'label' => 'Sponsor Group Title',
-                        'name' => 'sponsor_group_title',
-                        'type' => 'text',
-                        'instructions' => 'i.e. "Presenting Sponsors" or "Goldsmith Sponsors"',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array(
-                           'width' => '',
-                           'class' => '',
-                           'id' => ''
-                        ),
-                        'readonly' => 0,
-                        'disabled' => 0
-                     ),
-                     array(
-                        'sub_fields' => array(
-                           array(
-                              'default_value' => '',
-                              'maxlength' => '',
-                              'placeholder' => '',
-                              'prepend' => '',
-                              'append' => '',
-                              'key' => 'field_570f05c2c655e',
-                              'label' => 'Sponsor Name',
-                              'name' => 'sponsor_name',
-                              'type' => 'text',
-                              'instructions' => '',
-                              'required' => 1,
-                              'conditional_logic' => 0,
-                              'wrapper' => array(
-                                 'width' => '',
-                                 'class' => '',
-                                 'id' => ''
-                              ),
-                              'readonly' => 0,
-                              'disabled' => 0
-                           ),
-                           array(
-                              'default_value' => '',
-                              'placeholder' => '',
-                              'key' => 'field_570f05c2c655f',
-                              'label' => 'URL',
-                              'name' => 'url',
-                              'type' => 'url',
-                              'instructions' => '',
-                              'required' => 0,
-                              'conditional_logic' => 0,
-                              'wrapper' => array(
-                                 'width' => '',
-                                 'class' => '',
-                                 'id' => ''
-                              )
-                           )
-                        ),
-                        'min' => 0,
-                        'max' => 0,
-                        'layout' => 'block',
-                        'button_label' => 'Add Row',
-                        'collapsed' => '',
-                        'key' => 'field_570f05c2c655d',
-                        'label' => 'Sponsors',
-                        'name' => 'sponsors_with_text',
-                        'type' => 'repeater',
-                        'instructions' => 'Add each individual sponsor as a new row.',
-                        'required' => 1,
-                        'conditional_logic' => 0,
-                        'wrapper' => array(
-                           'width' => '',
-                           'class' => '',
-                           'id' => ''
-                        )
-                     )
-                  ),
-                  'min' => '',
-                  'max' => ''
-               )
-            ),
-            'min' => '',
-            'max' => '',
-            'button_label' => 'Add Row',
-            'key' => 'field_570f02e7d883c',
-            'label' => 'Sponsors',
-            'name' => 'sponsors',
-            'type' => 'flexible_content',
-            'instructions' => 'Start by clicking "Add Row" to add a new sponsor group.',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-               'width' => '',
-               'class' => 'sponsors-admin',
-               'id' => ''
-            )
-         )
-      ),
-      'location' => array(
-         array(
+   acf_add_local_field_group(
+      array(
+         'key' => 'group_570ef4c0b8f60',
+         'title' => 'Sponsors Page',
+         'fields' => array(
             array(
-               'param' => 'page_template',
-               'operator' => '==',
-               'value' => 'page-sponsors.php'
+               'layouts' => array(
+                  array(
+                     'key' => '570f0304d2329',
+                     'name' => 'sponsors_with_image',
+                     'label' => 'Sponsors with Image',
+                     'display' => 'block',
+                     'sub_fields' => array(
+                        array(
+                           'default_value' => '',
+                           'maxlength' => '',
+                           'placeholder' => '',
+                           'prepend' => '',
+                           'append' => '',
+                           'key' => 'field_570f03ffd8840',
+                           'label' => 'Sponsor Group Title',
+                           'name' => 'sponsor_group_title',
+                           'type' => 'text',
+                           'instructions' => 'i.e. "Presenting Sponsors" or "Goldsmith Sponsors"',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'readonly' => 0,
+                           'disabled' => 0
+                        ),
+                        array(
+                           'multiple' => 0,
+                           'allow_null' => 0,
+                           'choices' => array(
+                              'sponsors-box-md' => 'Small',
+                              'sponsors-box-lg' => 'Medium',
+                              'sponsors-box-xl' => 'Large'
+                           ),
+                           'default_value' => array(
+                              0 => 'sponsors-box-md'
+                           ),
+                           'ui' => 0,
+                           'ajax' => 0,
+                           'placeholder' => '',
+                           'return_format' => 'value',
+                           'key' => 'field_57101bb219307',
+                           'label' => 'Sponsors Image Size',
+                           'name' => 'sponsors_image_size',
+                           'type' => 'select',
+                           'instructions' => 'Displays the sponsor images at small, medium, or large sizes. Sizes can be used as a way to show importance.',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'disabled' => 0,
+                           'readonly' => 0
+                        ),
+                        array(
+                           'sub_fields' => array(
+                              array(
+                                 'return_format' => 'array',
+                                 'preview_size' => 'thumbnail',
+                                 'library' => 'all',
+                                 'min_width' => '',
+                                 'min_height' => '',
+                                 'min_size' => '',
+                                 'max_width' => '',
+                                 'max_height' => '',
+                                 'max_size' => '',
+                                 'mime_types' => '',
+                                 'key' => 'field_570f039bd883e',
+                                 'label' => 'Image',
+                                 'name' => 'image',
+                                 'type' => 'image',
+                                 'instructions' => '',
+                                 'required' => 1,
+                                 'conditional_logic' => 0,
+                                 'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => ''
+                                 )
+                              ),
+                              array(
+                                 'default_value' => '',
+                                 'placeholder' => '',
+                                 'key' => 'field_570f03c6d883f',
+                                 'label' => 'URL',
+                                 'name' => 'url',
+                                 'type' => 'url',
+                                 'instructions' => '',
+                                 'required' => 0,
+                                 'conditional_logic' => 0,
+                                 'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => ''
+                                 )
+                              )
+                           ),
+                           'min' => 0,
+                           'max' => 0,
+                           'layout' => 'table',
+                           'button_label' => 'Add Row',
+                           'collapsed' => '',
+                           'key' => 'field_570f0337d883d',
+                           'label' => 'Sponsors',
+                           'name' => 'sponsors_with_image',
+                           'type' => 'repeater',
+                           'instructions' => 'Add each individual sponsor as a new row.',
+                           'required' => 1,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           )
+                        )
+                     ),
+                     'min' => '',
+                     'max' => ''
+                  ),
+                  array(
+                     'key' => '570f05c2c655b',
+                     'name' => 'sponsors_with_text',
+                     'label' => 'Sponsors with Text',
+                     'display' => 'block',
+                     'sub_fields' => array(
+                        array(
+                           'default_value' => '',
+                           'maxlength' => '',
+                           'placeholder' => '',
+                           'prepend' => '',
+                           'append' => '',
+                           'key' => 'field_570f05c2c655c',
+                           'label' => 'Sponsor Group Title',
+                           'name' => 'sponsor_group_title',
+                           'type' => 'text',
+                           'instructions' => 'i.e. "Presenting Sponsors" or "Goldsmith Sponsors"',
+                           'required' => 0,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           ),
+                           'readonly' => 0,
+                           'disabled' => 0
+                        ),
+                        array(
+                           'sub_fields' => array(
+                              array(
+                                 'default_value' => '',
+                                 'maxlength' => '',
+                                 'placeholder' => '',
+                                 'prepend' => '',
+                                 'append' => '',
+                                 'key' => 'field_570f05c2c655e',
+                                 'label' => 'Sponsor Name',
+                                 'name' => 'sponsor_name',
+                                 'type' => 'text',
+                                 'instructions' => '',
+                                 'required' => 1,
+                                 'conditional_logic' => 0,
+                                 'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => ''
+                                 ),
+                                 'readonly' => 0,
+                                 'disabled' => 0
+                              ),
+                              array(
+                                 'default_value' => '',
+                                 'placeholder' => '',
+                                 'key' => 'field_570f05c2c655f',
+                                 'label' => 'URL',
+                                 'name' => 'url',
+                                 'type' => 'url',
+                                 'instructions' => '',
+                                 'required' => 0,
+                                 'conditional_logic' => 0,
+                                 'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => ''
+                                 )
+                              )
+                           ),
+                           'min' => 0,
+                           'max' => 0,
+                           'layout' => 'block',
+                           'button_label' => 'Add Row',
+                           'collapsed' => '',
+                           'key' => 'field_570f05c2c655d',
+                           'label' => 'Sponsors',
+                           'name' => 'sponsors_with_text',
+                           'type' => 'repeater',
+                           'instructions' => 'Add each individual sponsor as a new row.',
+                           'required' => 1,
+                           'conditional_logic' => 0,
+                           'wrapper' => array(
+                              'width' => '',
+                              'class' => '',
+                              'id' => ''
+                           )
+                        )
+                     ),
+                     'min' => '',
+                     'max' => ''
+                  )
+               ),
+               'min' => '',
+               'max' => '',
+               'button_label' => 'Add Row',
+               'key' => 'field_570f02e7d883c',
+               'label' => 'Sponsors',
+               'name' => 'sponsors',
+               'type' => 'flexible_content',
+               'instructions' => 'Start by clicking "Add Row" to add a new sponsor group.',
+               'required' => 0,
+               'conditional_logic' => 0,
+               'wrapper' => array(
+                  'width' => '',
+                  'class' => 'sponsors-admin',
+                  'id' => ''
+               )
             )
-         )
-      ),
-      'menu_order' => 0,
-      'position' => 'normal',
-      'style' => 'default',
-      'label_placement' => 'top',
-      'instruction_placement' => 'label',
-      'hide_on_screen' => array(
-         0 => 'the_content',
-         1 => 'custom_fields',
-         2 => 'discussion',
-         3 => 'comments',
-         4 => 'categories',
-         5 => 'tags'
-      ),
-      'active' => 1,
-      'description' => '',
-      'local' => 'json',
-      'modified' => 1469037352
-   ));
+         ),
+         'location' => array(
+            array(
+               array(
+                  'param' => 'page_template',
+                  'operator' => '==',
+                  'value' => 'page-sponsors.php'
+               )
+            )
+         ),
+         'menu_order' => 0,
+         'position' => 'normal',
+         'style' => 'default',
+         'label_placement' => 'top',
+         'instruction_placement' => 'label',
+         'hide_on_screen' => array(
+            0 => 'the_content',
+            1 => 'custom_fields',
+            2 => 'discussion',
+            3 => 'comments',
+            4 => 'categories',
+            5 => 'tags'
+         ),
+         'active' => 1,
+         'description' => '',
+         'local' => 'json',
+         'modified' => 1469037352
+      ));
    
    acf_add_local_field_group(
       array(
@@ -3686,7 +3688,6 @@ You can find the Form IDs in Forms > Forms > ID column."',
          'fields' => array(
             array(
                'layouts' => array(
-                  // Page Panels 
                   array(
                      'key' => '57196b4f7c508',
                      'name' => 'what_is_maker_faire',
@@ -3696,8 +3697,8 @@ You can find the Form IDs in Forms > Forms > ID column."',
                         array(
                            'layout' => 'horizontal',
                            'choices' => array(
-                              'Active' => 'Active',
-                              'Inactive' => 'Inactive'
+                              'show' => 'Active',
+                              'hide' => 'Inactive'
                            ),
                            'default_value' => 'show',
                            'other_choice' => 0,
@@ -3721,7 +3722,6 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      'min' => '',
                      'max' => 1
                   ),
-                  // Newsletter Sign Up
                   array(
                      'key' => '572d8358fe8e1',
                      'name' => 'newsletter_panel',
@@ -3756,7 +3756,6 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      'min' => '',
                      'max' => ''
                   ),
-                  // Featured Makers (Square images)
                   array(
                      'key' => '56fc6f9fdc4a2',
                      'name' => 'featured_makers_panel',
@@ -3979,7 +3978,6 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      'min' => '',
                      'max' => ''
                   ),
-                  // Featured Makers (Square images) ===== DYNAMIC PANEL
                   array(
                      'key' => '579924c93b1b9',
                      'name' => 'featured_makers_panel_dynamic',
@@ -4146,7 +4144,6 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      'min' => '',
                      'max' => ''
                   ),
-                  // Featured Makers (Circle images)
                   array(
                      'key' => '573e3efd8e814',
                      'name' => 'featured_makers_panel_circle',
@@ -4345,7 +4342,6 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      'min' => '',
                      'max' => ''
                   ),
-                  // Featured Makers (Circle images) ===== DYNAMIC PANEL
                   array(
                      'key' => '579925053b1c4',
                      'name' => 'featured_makers_panel_circle_dynamic',
@@ -4488,7 +4484,6 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      'min' => '',
                      'max' => ''
                   ),
-                  // Featured Events
                   array(
                      'key' => '573e4bc7b6659',
                      'name' => 'featured_events',
@@ -4710,7 +4705,6 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      'min' => '',
                      'max' => ''
                   ),
-                  // Featured Events ===== DYNAMIC PANEL
                   array(
                      'key' => '579925163b1ce',
                      'name' => 'featured_events_dynamic',
@@ -4804,8 +4798,7 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      ),
                      'min' => '',
                      'max' => ''
-                  ), // End Featured Events ===== DYNAMIC PANEL
-                  // News Feeds Good 
+                  ),
                   array(
                      'key' => '56fc7521f1668',
                      'name' => 'post_feed',
@@ -4901,8 +4894,7 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      ),
                      'min' => '',
                      'max' => ''
-                  ), // End News Feeds 
-                  // Sponsor Panel 
+                  ),
                   array(
                      'key' => '571518b722ba0',
                      'name' => 'sponsors_panel',
@@ -4973,8 +4965,7 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      ),
                      'min' => 1,
                      'max' => ''
-                  ), // End Sponsor
-                  // Call to Action
+                  ),
                   array(
                      'key' => '571e869b082c2',
                      'name' => 'call_to_action_panel',
@@ -5069,8 +5060,7 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      ),
                      'min' => '',
                      'max' => ''
-                  ), // End Call to Action
-                  // 1 Column
+                  ),
                   array(
                      'key' => '572bad2b2d757',
                      'name' => '1_column',
@@ -5181,8 +5171,8 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      ),
                      'min' => '',
                      'max' => ''
-                  ), // End 1 Column
-                  // 2 Column
+                  ), // End 1 Columns 
+                  // 2 Columns
                   array(
                      'key' => '56fc69d21b9e7',
                      'name' => '2_column_photo_and_text_panel',
@@ -5312,7 +5302,7 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      ),
                      'min' => '',
                      'max' => ''
-                  ), // End 2 Column
+                  ), // End 2 Columns
                   // Panel: 3 column - photo and text
                   array(
                      'key' => '5b4e51639ab7e',
@@ -5876,7 +5866,8 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      ),
                      'min' => '',
                      'max' => ''
-                  ),
+                  ), // End Image Carousel (Rectangle)
+                  // Image Carousel (Square)
                   array(
                      'key' => '573d16220b295',
                      'name' => 'square_image_carousel',
@@ -6016,7 +6007,8 @@ You can find the Form IDs in Forms > Forms > ID column."',
                      ),
                      'min' => '',
                      'max' => 1
-                  ),
+                  ), // End Image Carousel (Square)
+                  // Social Media
                   array(
                      'key' => '57b20ae569288',
                      'name' => 'social_media',
@@ -6068,8 +6060,10 @@ You can find the Form IDs in Forms > Forms > ID column."',
                            'readonly' => 0,
                            'disabled' => 0
                         ),
+                        // Social Icons
                         array(
                            'layouts' => array(
+                           // Facebook 
                               array(
                                  'key' => '57b20b62ee5c3',
                                  'name' => 'facebook',
@@ -6114,7 +6108,8 @@ You can find the Form IDs in Forms > Forms > ID column."',
                                  ),
                                  'min' => '',
                                  'max' => ''
-                              ),
+                              ), // End Facebook
+                              // Twitter 
                               array(
                                  'key' => '57b218d7b1f40',
                                  'name' => 'twitter',
@@ -6164,7 +6159,8 @@ You can find the Form IDs in Forms > Forms > ID column."',
                                  ),
                                  'min' => '',
                                  'max' => ''
-                              ),
+                              ), // End Twitter
+                              // Instagram
                               array(
                                  'key' => '57b26f1be766d',
                                  'name' => 'instagram',
@@ -6216,7 +6212,7 @@ Snapwidget will have you login to Instagram to generate the code. Default settin
                                  ),
                                  'min' => '',
                                  'max' => ''
-                              )
+                              ) // End Instagram
                            ),
                            'min' => '',
                            'max' => 3,
@@ -6237,430 +6233,7 @@ Snapwidget will have you login to Instagram to generate the code. Default settin
                      ),
                      'min' => '',
                      'max' => ''
-                  ), // End of Social Array
-                  // Panel: 3 column - photo and text
-                  array(
-                     'key' => '5b4e51639ab7e',
-                     'name' => '3_column',
-                     'label' => '3 column',
-                     'display' => 'block',
-                     'sub_fields' => array(
-                        array(
-                           'key' => 'field_5b4e70db5d7d7',
-                           'label' => 'Active/Inactive',
-                           'name' => 'activeinactive',
-                           'type' => 'radio',
-                           'instructions' => '',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                           'choices' => array(
-                              'Active' => 'Active',
-                              'Inactive' => 'Inactive',
-                           ),
-                           'allow_null' => 0,
-                           'other_choice' => 0,
-                           'save_other_choice' => 0,
-                           'default_value' => 'active',
-                           'layout' => 'horizontal',
-                           'return_format' => 'value',
-                        ),
-                        array(
-                           'key' => 'field_5b4e70905d7d6',
-                           'label' => 'Panel Title',
-                           'name' => 'panel_title',
-                           'type' => 'text',
-                           'instructions' => 'Optional: 50 character limit.',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                           'default_value' => '',
-                           'placeholder' => '',
-                           'prepend' => '',
-                           'append' => '',
-                           'maxlength' => 50,
-                        ),
-                        array(
-                           'key' => 'field_5b4e5bec567f5',
-                           'label' => 'Columns',
-                           'name' => 'column',
-                           'type' => 'repeater',
-                           'instructions' => '',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                           'collapsed' => '',
-                           'min' => 3,
-                           'max' => 3,
-                           'layout' => 'table',
-                           'button_label' => '',
-                           'sub_fields' => array(
-                              array(
-                                 'key' => 'field_5b4e5177fec84',
-                                 'label' => 'Type',
-                                 'name' => 'column_type',
-                                 'type' => 'radio',
-                                 'instructions' => '',
-                                 'required' => 1,
-                                 'conditional_logic' => 0,
-                                 'wrapper' => array(
-                                    'width' => '30',
-                                    'class' => '',
-                                    'id' => '',
-                                 ),
-                                 'choices' => array(
-                                    'image' => 'Image with optional link',
-                                    'paragraph' => 'Paragraph text',
-                                    'list' => 'List of items with optional links',
-                                 ),
-                                 'allow_null' => 0,
-                                 'other_choice' => 0,
-                                 'save_other_choice' => 0,
-                                 'default_value' => 'image',
-                                 'layout' => 'vertical',
-                                 'return_format' => 'value',
-                              ),
-                              array(
-                                 'key' => 'field_5b4e645f30c5e',
-                                 'label' => 'Data',
-                                 'name' => 'data',
-                                 'type' => 'group',
-                                 'instructions' => '',
-                                 'required' => 0,
-                                 'conditional_logic' => 0,
-                                 'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                 ),
-                                 'layout' => 'block',
-                                 'sub_fields' => array(
-                                    array(
-                                       'key' => 'field_5b4e54c9fec85',
-                                       'label' => 'Image',
-                                       'name' => 'column_image_field',
-                                       'type' => 'image',
-                                       'instructions' => 'Upload an image',
-                                       'required' => 1,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'image',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'return_format' => 'url',
-                                       'preview_size' => 'thumbnail',
-                                       'library' => 'all',
-                                       'min_width' => '',
-                                       'min_height' => '',
-                                       'min_size' => '',
-                                       'max_width' => '',
-                                       'max_height' => '',
-                                       'max_size' => '',
-                                       'mime_types' => '',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e6672c7f98',
-                                       'label' => 'Image Link',
-                                       'name' => 'image_cta',
-                                       'type' => 'url',
-                                       'instructions' => 'Optional - If supplied, this will make the image a clickable link.',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'image',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'default_value' => '',
-                                       'placeholder' => '',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e66a4c7f99',
-                                       'label' => 'Link Text',
-                                       'name' => 'image_cta_text',
-                                       'type' => 'text',
-                                       'instructions' => 'Optional - If supplied, an additional link is displayed below the image using this text.',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'image',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'default_value' => '',
-                                       'placeholder' => '',
-                                       'prepend' => '',
-                                       'append' => '',
-                                       'maxlength' => '',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e66a4c7f90',
-                                       'label' => 'Alignment',
-                                       'name' => 'column_list_alignment',
-                                       'type' => 'radio',
-                                       'instructions' => '',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'image',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '100',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'choices' => array(
-                                          'left' => 'Left',
-                                          'center' => 'Center',
-                                          'right' => 'Right',
-                                       ),
-                                       'allow_null' => 0,
-                                       'other_choice' => 0,
-                                       'save_other_choice' => 0,
-                                       'default_value' => 'left',
-                                       'layout' => 'vertical',
-                                       'return_format' => 'value',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e54fdfec86',
-                                       'label' => 'Paragraph',
-                                       'name' => 'column_paragraph',
-                                       'type' => 'textarea',
-                                       'instructions' => 'Character limit is 350',
-                                       'required' => 1,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'paragraph',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'default_value' => '',
-                                       'placeholder' => '',
-                                       'maxlength' => 350,
-                                       'rows' => '',
-                                       'new_lines' => '',
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e61ffa92ef',
-                                       'label' => 'List Title',
-                                       'name' => 'list_title',
-                                       'type' => 'text',
-                                       'instructions' => '',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'list',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '105',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'default_value' => '',
-                                       'placeholder' => 'ie: Helpful Links',
-                                       'prepend' => '',
-                                       'append' => '',
-                                       'maxlength' => 30,
-                                    ),
-                                    array(
-                                       'key' => 'field_5b4e55f4fec87',
-                                       'label' => 'List fields',
-                                       'name' => 'column_list_fields',
-                                       'type' => 'repeater',
-                                       'instructions' => 'Enter in your list items and (if appropriate) their urls (maximum of 5)',
-                                       'required' => 0,
-                                       'conditional_logic' => array(
-                                          array(
-                                             array(
-                                                'field' => 'field_5b4e5177fec84',
-                                                'operator' => '==',
-                                                'value' => 'list',
-                                             ),
-                                          ),
-                                       ),
-                                       'wrapper' => array(
-                                          'width' => '100',
-                                          'class' => '',
-                                          'id' => '',
-                                       ),
-                                       'collapsed' => 'field_5b4e561bfec88',
-                                       'min' => 1,
-                                       'max' => 5,
-                                       'layout' => 'table',
-                                       'button_label' => '',
-                                       'sub_fields' => array(
-                                          array(
-                                             'key' => 'field_5b4e561bfec88',
-                                             'label' => 'Label',
-                                             'name' => 'list_text',
-                                             'type' => 'text',
-                                             'instructions' => '',
-                                             'required' => 1,
-                                             'conditional_logic' => 0,
-                                             'wrapper' => array(
-                                                'width' => '',
-                                                'class' => '',
-                                                'id' => '',
-                                             ),
-                                             'default_value' => '',
-                                             'placeholder' => '',
-                                             'prepend' => '',
-                                             'append' => '',
-                                             'maxlength' => '',
-                                          ),
-                                          array(
-                                             'key' => 'field_5b4e562bfec89',
-                                             'label' => 'Link',
-                                             'name' => 'list_link',
-                                             'type' => 'url',
-                                             'instructions' => '',
-                                             'required' => 0,
-                                             'conditional_logic' => 0,
-                                             'wrapper' => array(
-                                                'width' => '',
-                                                'class' => '',
-                                                'id' => '',
-                                             ),
-                                             'default_value' => '',
-                                             'placeholder' => '',
-                                          ),
-                                       ),
-                                    ),
-                                 ),
-                              ),
-                           ),
-                        ),
-                     ),
-                     'min' => '',
-                     'max' => '',
-                  ), //End of 3 Column 
-                  // Panel: Buy Tickets floating banner
-                  array(
-                     'key' => '57196b4abc501',
-                     'name' => 'buy_tickets_float',
-                     'label' => 'Get Tickets Floating Banner',
-                     'display' => 'row',
-                     'sub_fields' => array(
-                        array(
-                           'layout' => 'horizontal',
-                           'choices' => array(
-                              'Active' => 'Active',
-                              'Inactive' => 'Inactive',
-                           ),
-                           'default_value' => 'Active',
-                           'other_choice' => 0,
-                           'save_other_choice' => 0,
-                           'allow_null' => 0,
-                           'return_format' => 'value',
-                           'key' => 'field_57196b4abc502',
-                           'label' => 'Active/Inactive',
-                           'name' => 'activeinactive',
-                           'type' => 'radio',
-                           'instructions' => 'This adds a floating banner to buy tickets.',
-                           'required' => 0,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => 'activeinactive',
-                              'id' => '',
-                           ),
-                        ),
-                        array(
-                           'default_value' => '',
-                           'placeholder' => '',
-                           'key' => 'field_57196b4abc503',
-                           'label' => 'Buy Ticket URL',
-                           'name' => 'buy_ticket_url',
-                           'type' => 'url',
-                           'instructions' => 'Required. Enter the URL to the ticket purchasing page for this faire.',
-                           'required' => 1,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                        ),
-                        array(
-                           'default_value' => '',
-                           'maxlength' => 20,
-                           'placeholder' => '',
-                           'prepend' => '',
-                           'append' => '',
-                           'key' => 'field_57196b4abc504',
-                           'label' => 'Buy Ticket Text',
-                           'name' => 'buy_ticket_text',
-                           'type' => 'text',
-                           'instructions' => 'Please enter the text displayed in the \'Buy Ticket\' Flag.<br/>20 character limit.',
-                           'required' => 1,
-                           'conditional_logic' => 0,
-                           'wrapper' => array(
-                              'width' => '',
-                              'class' => '',
-                              'id' => '',
-                           ),
-                           'readonly' => 0,
-                           'disabled' => 0,
-                        ),
-                     ),
-                     'min' => '',
-                     'max' => 1,
-                  )// End of Buy Tickets
+                  ) //End Social Icons
                ),
                'min' => '',
                'max' => '',
@@ -6679,7 +6252,7 @@ Snapwidget will have you login to Instagram to generate the code. Default settin
                )
             )
          ),
-         'location' => array(
+        'location' => array(
             array(
                array(
                   'param' => 'page_template',
