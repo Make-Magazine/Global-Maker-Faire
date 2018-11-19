@@ -7,8 +7,7 @@ function my_acf_show_admin($show) {
       return true;
    } else {
       return false;
-   }
-   
+   }   
 }
 
 /*
@@ -916,8 +915,8 @@ You can find the Form IDs in Forms > Forms > ID column.',
                         array(
                            'layout' => 'horizontal',
                            'choices' => array(
-                              'Active' => 'Active',
-                              'Inactive' => 'Inactive'
+                              'show' => 'Active',
+                              'hide' => 'Inactive'
                            ),
                            'default_value' => 'show',
                            'other_choice' => 0,
@@ -926,7 +925,7 @@ You can find the Form IDs in Forms > Forms > ID column.',
                            'return_format' => 'value',
                            'key' => 'field_57196b4f7c509',
                            'label' => 'Active/Inactive',
-                           'name' => 'activeinactive',
+                           'name' => 'show_what_is_maker_faire',
                            'type' => 'radio',
                            'instructions' => 'This adds an uneditable text panel with information about Maker Faires.',
                            'required' => 0,
