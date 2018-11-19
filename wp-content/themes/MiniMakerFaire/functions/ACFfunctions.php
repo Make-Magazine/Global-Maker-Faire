@@ -3245,6 +3245,16 @@ You can find the Form IDs in Forms > Forms > ID column.',
                   'value' => 'page-home.php'
                ),
                array(
+                  'param' => 'post_type',
+                  'operator' => '!=',
+                  'value' => 'page-datarights.php'
+               ),
+               array(
+                  'param' => 'page_template',
+                  'operator' => '!=',
+                  'value' => 'page-datarights.php'
+               ),
+               array(
                   'param' => 'page_template',
                   'operator' => '!=',
                   'value' => 'page-meet-the-makers.php'
