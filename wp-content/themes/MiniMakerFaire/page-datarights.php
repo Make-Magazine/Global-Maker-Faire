@@ -15,6 +15,7 @@ if (trim($contact_form_email_address) === '') {
 
 if ($contact_form_email_address) {
    ?>
+<div class="container">
 <h1 class="page-title"><?php echo get_the_title(); ?></h1>
 <?php
    // response generation function
@@ -67,7 +68,7 @@ if ($contact_form_email_address) {
          } else { // email is valid
             // validate presence of name and message
             if (empty($request) || empty($message)) {
-               echo "Error $missing_content $message and $request<br>";
+               // echo "Error $missing_content $message and $request<br>";
                $missing_content = $missing_content . (empty($message) ? "Missing Message" : "Missing Request");
                my_contact_form_generate_response("error", $missing_content);
             } else { // ready to go!
@@ -89,7 +90,6 @@ if ($contact_form_email_address) {
    } 
    echo $response;
    if ($display_form) { ?>
-<div class="container">
 	<div class="row">
 		<p><?php echo the_content();?></p>
 		<h3>Admin Email: <?php  echo $contact_form_email_address;?></h3>
