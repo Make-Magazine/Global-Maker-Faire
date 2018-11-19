@@ -15,7 +15,11 @@ if (trim($contact_form_email_address) === '') {
 if ($contact_form_email_address) {
    ?>
 <div class="container">
-<h1 class="page-title"><?php echo get_the_title(); ?></h1>
+<div class="row">
+   <div class="col-sm-12">
+      <h1 class="page-title"><?php echo get_the_title(); ?></h1>
+   </div>
+</div>
 <?php
    // response generation function
    $response = "";
@@ -28,7 +32,7 @@ if ($contact_form_email_address) {
       if ($type == "success") {
          $response = "<div class='success'>{$message}</div>";
       } else {
-         $response = "<div class='error'><b>{$message}</div>";
+         $response = "<div class='error'>{$message}</div>";
       }
       unset($_POST['submitted']);
       
@@ -87,45 +91,51 @@ if ($contact_form_email_address) {
    echo $response;
    if ($display_form) { ?>
 	<div class="row">
-		<p><?php echo the_content();?></p>
-		<h3>Admin Email: <?php  echo $contact_form_email_address;?></h3>
-		<h3>Your Data Rights</h3>
-		<p>If you have an account on this site, or submitted entry to our Call
-			for Makers form, you can request to receive an exported file of the
-			personal data we hold about you, including any data you have provide
-			to us. You can also request that we erase any personal data we hold
-			about you. This does not include any data we are obliged to keep for
-			administrative, legal, or security purposes.</p>
-		<h3>Personal Data Request:</h3>
-		<div>Please use this form to request Personal Data export/erasure.</div>
-		<h4>
-			Select Your Request<span>*</span>
-		</h4>
-		<div id="respond">
-			<form action="<?php the_permalink(); ?>" method="post">
-				<!--  <form action="data_rights" method="post">-->
-				<div class="form-group">
-					<input type="radio" name="message_request" value="export" checked>Export
-					Personal Data<br> <input type="radio" name="message_request"
-						value="remove">Remove Personal Data
-				</div>
-				<div class="form-group">
-					<h4>
-						Email Address<span>*</span>
-					</h4>
-					<input type="text" class="form-control" name="message_email">
-				</div>
-				<div class="form-group">
-					<label for="message_human"><?php _e("Human Verification",'MiniMakerFaire')?> <span>*</span>
-						<br> <input type="text" style="width: 60px;" name="message_human">
-						+ 4 = 6</label>
-				</div>
-				<input type="hidden" name="submitted" value="1">
-				<p>
-					<input class="btn btn-primary" type="submit" value="Submit Request">
-				</p>
-			</form>
-		</div>
+      <div class="col-sm-12">
+         <p><?php echo the_content();?></p>
+         <!-- <h3>Admin Email: <?php  echo $contact_form_email_address;?></h3> -->
+         <!-- <h3>Your Data Rights</h3> -->
+         <p>If you have an account on this site, or submitted entry to our Call
+            for Makers form, you can request to receive an exported file of the
+            personal data we hold about you, including any data you have provide
+            to us. You can also request that we erase any personal data we hold
+            about you. This does not include any data we are obliged to keep for
+            administrative, legal, or security purposes.</p>
+         <h3 class="pdr-header">Personal Data Request:</h3>
+         <p>Please use this form to request Personal Data export/erasure.</p>
+         <h4>Select Your Request<span>*</span></h4>
+         <div id="respond">
+            <form action="<?php the_permalink(); ?>" method="post">
+               <!--  <form action="data_rights" method="post">-->
+               <div class="radio">
+                  <label>
+                     <input type="radio" name="message_request" value="export" checked>
+                     Export Personal Data
+                  </label>
+               </div>
+               <div class="radio">
+                  <label>
+                     <input type="radio" name="message_request" value="remove">
+                     Remove Personal Data
+                  </label>
+               </div>
+               <div class="form-group">
+                  <h4>Email Address<span>*</span></h4>
+                  <label class="sr-only sr-only-focusable" for="message_email">Email Address</label>
+                  <input type="email" class="form-control email-input" name="message_email">
+               </div>
+               <div class="form-group">
+                  <label for="message_human" class="message-human"><?php _e("Human Verification",'MiniMakerFaire')?> <span>*</span>
+                     <div><input type="number" class="form-control" name="message_human"> + 4 = 6</div>
+                  </label>
+               </div>
+               <input type="hidden" name="submitted" value="1">
+               <div class="form-group">
+                  <input class="btn btn-primary btn-submit" type="submit" value="Submit Request">
+               </div>
+            </form>
+         </div>
+      </div>
 		
 		<?php } // End Display Form ?>
 	</div>
