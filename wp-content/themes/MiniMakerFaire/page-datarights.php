@@ -9,8 +9,7 @@ get_header();
 $contact_form_email_address = get_field("contact_form_email_address");
 if (trim($contact_form_email_address) === '') {
    // Use my email for testing
-   $contact_form_email_address = 'stephanie@makermedia.com';
-   //$contact_form_email_address = get_option('admin_email');
+   $contact_form_email_address = get_option('admin_email');
 }
 
 if ($contact_form_email_address) {
@@ -68,18 +67,15 @@ if ($contact_form_email_address) {
          } else { // email is valid
             // validate presence of name and message
             if (empty($request) || empty($message)) {
-               // echo "Error $missing_content $message and $request<br>";
                $missing_content = $missing_content . (empty($message) ? "Missing Message" : "Missing Request");
                my_contact_form_generate_response("error", $missing_content);
             } else { // ready to go!
-               // echo "Sending Email to $contact_form_email_address<br>";
                $sent = wp_mail($contact_form_email_address, $subject, strip_tags($message), $headers);
                if ($sent) {
                // echo "Successfully sent email to $contact_form_email_address<br>";
                   my_contact_form_generate_response("success", $message_sent); // message sent!
                   $display_form = 0;
                } else {
-                  // echo "Error sending email to $contact_form_email_address<br>";
                   my_contact_form_generate_response("error", $message_unsent); // message wasn't sent
                }
             }
