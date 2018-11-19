@@ -66,14 +66,8 @@ if ($contact_form_email_address) {
       ?>
 	<div class="row">
 		<p><?php echo the_content();?></p>
-		<h3>Admin Email: <?php  echo $contact_form_email_address;?></h3>
 		<h3>Your Data Rights</h3>
-		<p>If you have an account on this site, or submitted an entry to our Call
-			for Makers form, you can request to receive an exported file of the
-			personal data we hold about you, including any data you have provide
-			to us. You can also request that we erase any personal data we hold
-			about you. This does not include any data we are obliged to keep for
-			administrative, legal, or security purposes.</p>
+		<p>If you have an account on this site, or submitted an entry to our Call for Makers form, you can request to receive an exported file of the personal data we hold about you, including any data you have provide to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p>
 		<h3>Personal Data Request:</h3>
 		<div>Please use this form to request Personal Data export/erasure.</div>
 		<h4>
@@ -99,8 +93,7 @@ if ($contact_form_email_address) {
 					<input class="btn btn-primary" type="submit" value="Submit Request">
 				</p>
 			</form>
-		</div>
-		
+		</div>		
 		<?php } // End Display Form ?>
 	</div>
 
