@@ -6,13 +6,13 @@ get_header();
 ?>
 <?php
 
-$contact_form_email_address = get_field("contact_form_email_address");
-if (trim($contact_form_email_address) === '') {
+$admin_form_email_address = get_field("admin_form_email_address");
+if (trim($admin_form_email_address) === '') {
    // Use my email for testing
-   $contact_form_email_address = get_option('admin_email');
+   $admin_form_email_address = get_option('admin_email');
 }
 
-if ($contact_form_email_address) {
+if ($admin_form_email_address) {
    ?>
 <div class="container">
 	<div class="row">
@@ -52,9 +52,10 @@ if ($contact_form_email_address) {
       } else { // email is valid
          // validate presence of name and message
          if (empty($request) || empty($email)) {
-            my_contact_form_generate_response("error", $missing_content);
+            page_datarights_form_generate_response("error", $missing_content);
          } else { // ready to go!
-            $sent = wp_mail($contact_form_email_address, $subject, strip_tags($message), $headers);
+            // Send the email using the user emails.  If the email is not recieved, the users email is probably not a real email.
+            $sent = wp_mail($admin_form_email_address, $subject, strip_tags($message), $headers);
             if ($sent) {
                page_datarights_form_generate_response("success", $message_sent); // message sent!
                $display_form = 0;
@@ -65,14 +66,17 @@ if ($contact_form_email_address) {
       }
    }
    
-   echo $response;
-   if ($display_form) {
 ?>
 	<div class="row">
 		<div class="col-sm-12">
 			<p><?php echo the_content();?></p>
 			<p>If you have an account on this site, or submitted an entry to our Call for Makers form, you can request to receive an exported file of the personal data we hold about you, including any data you have provide to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p>
 			<h3 class="pdr-header">Personal Data Request:</h3>
+			<?php 
+			   echo $response;
+			   // Only display the form if it has not been successfully sent
+			   if ($display_form) {
+			?>
 			<p>Please use this form to request Personal Data export/erasure.</p>
 			<h4>
 				Select Your Request<span>*</span>
@@ -104,11 +108,11 @@ if ($contact_form_email_address) {
 							value="Submit Request">
 					</div>
 				</form>
-			</div>
+			</div>	
+			<?php }  // End Display Form ?>
 		</div>
 	</div>
-<?php } // End Display Form ?>
 </div>
-
-<?php } else { echo "No Admin email was found.  This should never happen on an active site. <br>"; } ?>
+<?php
+} else { echo "No Admin email was found.  This should never happen on an active site. <br>"; } ?>
 <?php  get_footer(); ?>
