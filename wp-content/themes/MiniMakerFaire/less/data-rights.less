@@ -36,6 +36,9 @@
          height: auto;
          font-size: 16px;
          font-weight: 400;
+         &.email-error {
+            border-color: red;
+         }
       }
       .radio {
          margin-bottom: 16px;
@@ -59,10 +62,25 @@
          text-transform: uppercase;
       }
    }
+   .icon-block {
+      color: #fff;
+      font-family: "Roboto Light", sans-serif;
+      font-size: 22px;
+      font-weight: 300;
+      padding: 12px;
+      margin-bottom: 12px;
+   }
    .error {
       color: red;
+      .icon-block {
+         background-color: red;
+      }
    }
    .success {
-      color: #5CB85C;
+      //color: #5CB85C;
+      margin-bottom: 12px;
+      .icon-block {
+         background-color: #5CB85C;
+      }
    }
 }

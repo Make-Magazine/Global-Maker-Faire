@@ -12,9 +12,9 @@ function page_datarights_form_generate_response($type, $message) {
    global $response;
    
    if ($type == "success") {
-      $response = "<div class='success'>{$message}</div>";
+      $response = "<div class='success'><div class='icon-block'><i class='fa fa-check-circle'></i> Got it!</div>{$message}</div>";
    } else {
-      $response = "<div class='error'><b>{$message}</b></div>";
+      $response = "<div class='error'><div class='icon-block'><i class='fa fa-exclamation-circle'></i> {$message}</div></div>";
    }
    
 }

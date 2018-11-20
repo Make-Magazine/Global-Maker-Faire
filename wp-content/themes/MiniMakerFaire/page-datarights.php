@@ -24,12 +24,13 @@ if ($admin_form_email_address) {
    // response generation function
    $response = "";
    $display_form = 1;
+   $email_error = false;
    
    // response messages
    $missing_content = __("Please supply all information.", 'MiniMakerFaire');
-   $email_invalid = __("Email Address Invalid.", 'MiniMakerFaire');
-   $message_unsent = __("Message was not sent. Try Again.", 'MiniMakerFaire');
-   $message_sent = __("Thanks! Your message has been sent.", 'MiniMakerFaire');
+   $email_invalid = __("Sorry, this email address is invalid.", 'MiniMakerFaire');
+   $message_unsent = __("Sorry, your message could not be sent. Please try again in a few minutes.", 'MiniMakerFaire');
+   $message_sent = __("Thanks for contacting us! We have received your request and will get in touch with you shortly.", 'MiniMakerFaire');
    
    // user posted variables
    $email = (isset($_POST['message_email']) ? $_POST['message_email'] : '');
@@ -41,14 +42,15 @@ if ($admin_form_email_address) {
    $headers = __("From: ", 'MiniMakerFaire') . $email . "\r\n" . __('Reply-To: ', 'MiniMakerFaire') . $email . "\r\n";
    
    if ($request === 'export')
-      $message = "The user with an email of $email has requested an export of their personal saved data in our database.";
+      $message = "The user with an email of ".$email." has requested an export of their personal saved data in our database.";
    else
-      $message = "The user with an email of $email has requested that their personal data be removed from our database.";
+      $message = "The user with an email of ".$email." has requested that their personal data be removed from our database.";
    
    if ($submitted == 1) {
       // validate email
       if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
-         my_contact_form_generate_response("error", $email_invalid);
+         page_datarights_form_generate_response("error", $email_invalid);
+         $email_error = true;
       } else { // email is valid
          // validate presence of name and message
          if (empty($request) || empty($email)) {
@@ -100,7 +102,7 @@ if ($admin_form_email_address) {
 						</h4>
 						<label class="sr-only sr-only-focusable" for="message_email">Email
 							Address</label> <input type="email"
-							class="form-control email-input" name="message_email">
+							class="form-control email-input<?php if($email_error) { echo ' email-error';} ?>" name="message_email" required>
 					</div>
 					<input type="hidden" name="submitted" value="1">
 					<div class="form-group">
