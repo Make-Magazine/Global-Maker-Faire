@@ -31,13 +31,7 @@ if ($admin_form_email_address) {
    $email_invalid = __("Sorry, this email address is invalid.", 'MiniMakerFaire');
    $message_unsent = __("Sorry, your message could not be sent. Please try again in a few minutes.", 'MiniMakerFaire');
    $message_sent = __("Thanks for contacting us! We have received your request and will get in touch with you shortly.", 'MiniMakerFaire');
-   $rights_summary = __("If you have an account on this site, or submitted an entry to our Call for Makers form, you can request to receive an exported file of the personal data we hold about you, including any data you have provide to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.", 'MiniMakerFaire');
-   $request_header = __("Personal Data Request", 'MiniMakerFaire');
-   $form_request = __("Please use this form to request Personal Data export/erasure", 'MiniMakerFaire');
-   $email_address = __("Email Address", 'MiniMakerFaire');
-   $export_data = __("Export Personal Data", 'MiniMakerFaire');
-   $remove_data = __("", 'MiniMakerFaire');
-   
+      
    // user posted variables
    $email = (isset($_POST['message_email']) ? $_POST['message_email'] : '');
    $request = (isset($_POST['message_request']) ? $_POST['message_request'] : '');
@@ -77,32 +71,32 @@ if ($admin_form_email_address) {
 ?>
 	<div class="row">
 		<div class="col-sm-12">
-			<p><?php echo the_content();?></p>
-			<p><?php echo $rights_summary;?></p>
-			<h3 class="pdr-header"><?php echo $request_header;?>:</h3>
+			<p><?php _e(the_content(), 'MiniMakerFaire');?></p>
+			<p><?php _e('If you have an account on this site, or submitted an entry to our Call for Makers form, you can request to receive an exported file of the personal data we hold about you, including any data you have provide to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.', 'MiniMakerFaire');?></p>
+			<h3 class="pdr-header"><?php _e('Personal Data Request', 'MiniMakerFaire');?>:</h3>
 			<?php 
-			echo $response;
+			_e($response, 'MiniMakerFaire');
 			// Only display the form if it has not been successfully sent
 			if ($display_form) {
 			?>
-			<p><?php echo $form_request;?>.</p>
-			<h4>Select Your Request<span>*</span></h4>
+			<p><?php _e('Please use this form to request Personal Data export/erasure', 'MiniMakerFaire');?>.</p>
+			<h4><?php _e('Select Your Request', 'MiniMakerFaire');?><span>*</span></h4>
 			<div id="respond">
 				<form action="<?php the_permalink(); ?>" method="post">
 					<div class="radio">
 						<label> 
-						   <input type="radio" name="message_request" value="export" checked><?php echo $export_data;?>
+						   <input type="radio" name="message_request" value="export" checked><?php echo _e('Export Personal Data','MiniMakerFaire');?>
 						</label>
 					</div>
 					<div class="radio">
 						<label> 
-						   <input type="radio" name="message_request" value="remove"><?php echo $remove_data;?>
+						   <input type="radio" name="message_request" value="remove"><?php _e('Remove Personal Data','MiniMakerFaire');?>
 						</label>
 					</div>
 					<div class="form-group">
-						<h4><?php echo $email_address?><span>*</span></h4>
+						<h4><?php _e('Email Address', 'MiniMakerFaire');?><span>*</span></h4>
 						<label class="sr-only sr-only-focusable" for="message_email"><?php echo $email_address;?></label> 
-						<input type="email" class="form-control email-input<?php echo ($email_error) ? ' email-error': ''; ?>" name="message_email" required>
+						<input type="email" class="form-control email-input<?php echo _e($email_error) ? ' email-error': ''; ?>" name="message_email" required>
 					</div>
 					<input type="hidden" name="submitted" value="1">
 					<div class="form-group">
