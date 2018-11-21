@@ -95,12 +95,12 @@ if ($admin_form_email_address) {
 					</div>
 					<div class="form-group">
 						<h4><?php _e('Email Address', 'MiniMakerFaire');?><span>*</span></h4>
-						<label class="sr-only sr-only-focusable" for="message_email"><?php echo $email_address;?></label> 
-						<input type="email" class="form-control email-input<?php echo _e($email_error) ? ' email-error': ''; ?>" name="message_email" required>
+						<label class="sr-only sr-only-focusable" for="message_email"><?php _e('Email Address', 'MiniMakerFaire');?></label> 
+						<input type="email" class="form-control email-input<?php _e($email_error) ? ' email-error': ''; ?>" name="message_email" required>
 					</div>
 					<input type="hidden" name="submitted" value="1">
 					<div class="form-group">
-						<input class="btn btn-primary btn-submit" type="submit" value="Submit Request">
+						<input class="btn btn-primary btn-submit" type="submit" value="<?php _e('Submit Request', 'MiniMakerFaire');?>">
 					</div>
 				</form>
 			</div>	
