@@ -44,7 +44,7 @@
               <div class="all-posts-btn">
                 <a href="/<?php echo $news_slug; ?>"><i class="fa fa-chevron-left" aria-hidden="true"></i> All News</a>
               </div>
-
+         
               <?php if ( has_post_thumbnail() ) : 
 
               if (get_field('post_featured_image_placement') == 'Top') {
@@ -63,7 +63,15 @@
 
               <p class="post-author">By <?php the_author(); ?>, <span><?php the_date('M j, Y'); ?></span></p>
 
-              <?php the_content(); ?>
+              <?php the_content(); 
+              if(have_rows('content_panels')) {
+                 // loop through the rows of data
+                 while ( have_rows('content_panels') ) {
+                    the_row();
+                    $row_layout = get_row_layout();
+                    echo dispLayout($row_layout);
+                 }
+              } ?>
               <?php wp_link_pages(); ?>
               <?php comments_template(); ?>
 
@@ -82,7 +90,15 @@
                 <div class="clear"></div>
               <?php endif; ?>
 
-              <?php the_content(); ?>
+              <?php the_content(); 
+              if(have_rows('content_panels')) {
+                 // loop through the rows of data
+                 while ( have_rows('content_panels') ) {
+                    the_row();
+                    $row_layout = get_row_layout();
+                    echo dispLayout($row_layout);
+                 }
+              } ?>
               <?php wp_link_pages(); ?>
               <?php  if ( comments_open() ) : ?>
                 <div class="clear"></div>
