@@ -102,7 +102,7 @@ if (!class_exists('WPFront_Base')) {
 
         public function action_links($links, $file) {
             if ($file == $this->plugin_slug . '/' . $this->plugin_slug . '.php') {
-                $settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page=' . $this->options_page_slug . '">' . $this->__('Settings') . '</a>';
+                $settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/options-general.php?page=' . $this->options_page_slug . '">' . $this->__('Settings') . '</a>';
                 array_unshift($links, $settings_link);
             }
             return $links;

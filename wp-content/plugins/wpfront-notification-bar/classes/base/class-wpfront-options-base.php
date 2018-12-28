@@ -65,25 +65,25 @@ if (!class_exists('WPFront_Options_Base')) {
             $this->__data[$name]['validate'] = isset($validate) ? $validate : array(&$this, 'validate_default');
             
             //dynamic function returning option value
-            $this->__data[$name]['func'] = create_function('$self, $data', '
+            $this->__data[$name]['func'] = function($self, $data) {
                 $value = NULL;
                 if(array_key_exists($data["name"], $self->__options))
                     $value = $self->__options[$data["name"]];
                 return $self->get_value($data["type"], $value, $data["default"], $data["validate"]);
-            ');
+            };
             
             $this->__data[$name . '_name'] = $this->__data[$name];
             //dynamic function returning option name for settings page
-            $this->__data[$name . '_name']['func'] = create_function('$self, $data', '
+            $this->__data[$name . '_name']['func'] = function($self, $data) {
                 return $self->__optionName . "[" . $data["name"] . "]";
-            ');
+            };
             
             $this->__data[$name . '_label'] = $this->__data[$name];
             
             //dynamic function returning option label for settings page
-            $this->__data[$name . '_label']['func'] = create_function('$self, $data', '
+            $this->__data[$name . '_label']['func'] = function($self, $data) {
                 return __($data["label"], $self->__localizeSlug);
-            ');
+            };
 
             $this->lastOptionName = $name;
             array_push($this->optionNames, $name);

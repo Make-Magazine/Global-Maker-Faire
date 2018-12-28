@@ -2,9 +2,9 @@
 Contributors: syammohanm
 Donate link: http://wpfront.com/donate/
 Tags: notification bar, wordpress notification bar, top bar, bottom bar, notification, bar, quick bar, fixed bar, sticky bar, message bar, message, floating bar, notice, sticky header, special offer, discount offer, offer, important, attention bar, highlight bar, popup bar, hellobar, heads up, heads up bar, headsup, headsupbar, popup, Toolbar
-Requires at least: 3.0
-Tested up to: 4.7
-Stable tag: 1.7
+Requires at least: 4.0
+Tested up to: 5.0
+Stable tag: 1.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,11 +34,6 @@ Visit [WPFront Notification Bar Ideas](http://wpfront.com/notification-bar-plugi
 
 Visit [WPFront Notification Bar Settings](http://wpfront.com/notification-bar-plugin-settings/) page for detailed option descriptions.
 
-Localization Contributors:
-<li>[Anders Lind](http://erding-mallards.de) (German) </li>
-<li>[Botfai Tibor](http://gidano.hu) (Hungarian) </li>
-<li>[Borisa Djuraskovic](http://webhostinghub.com) (Serbo-Croatian) </li>
-
 == Installation ==
 
 1. Click Plugins/Add New from the WordPress admin panel
@@ -52,6 +47,10 @@ Localization Contributors:
 1. Configure plugin using *settings* link under plugin name or by going to WPFront/Notification Bar
 
 == Frequently Asked Questions ==
+
+= WPFront Notification Bar and GDPR compliance? =
+
+This plugin doesn’t collect any personal information. For more information please visit [GDPR compliance](https://wpfront.com/wpfront-and-gdpr-compliance/).
 
 = I don’t want the plugin to be displayed on “wp-admin”, what should I do? =
 
@@ -68,6 +67,12 @@ The new version(1.3) allows you to filter the bar based on user roles. In this c
 3. Settings page.
 
 == Changelog ==
+
+= 1.7.1 =
+* Processes shortcode in button text.
+* Notification bar menu is now under 'Settings' menu.
+* PHP 7.2 compatibility fixes.
+* Bug fixes.
 
 = 1.7 =
 * Start and End times.
@@ -118,6 +123,9 @@ The new version(1.3) allows you to filter the bar based on user roles. In this c
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.7.1 =
+* Bug fixes.
 
 = 1.7 =
 * Start and End times.
