@@ -36,7 +36,7 @@ if (!class_exists('WPFront_Notification_Bar')) {
     class WPFront_Notification_Bar extends WPFront_Base {
 
         //Constants
-        const VERSION = '1.7';
+        const VERSION = '1.7.1';
         const OPTIONS_GROUP_NAME = 'wpfront-notification-bar-options-group';
         const OPTION_NAME = 'wpfront-notification-bar-options';
         const PLUGIN_SLUG = 'wpfront-notification-bar';
@@ -55,11 +55,6 @@ if (!class_exists('WPFront_Notification_Bar')) {
             parent::__construct(__FILE__, self::PLUGIN_SLUG);
 
             $this->markupLoaded = FALSE;
-
-            add_action('wp_footer', array(&$this, 'write_markup'));
-            add_action('shutdown', array(&$this, 'write_markup'));
-
-            $this->add_menu($this->__('WPFront Notification Bar'), $this->__('Notification Bar'));
         }
 
         public function init() {
@@ -67,6 +62,13 @@ if (!class_exists('WPFront_Notification_Bar')) {
             if (!isset($_COOKIE[self::COOKIE_LANDINGPAGE])) {
                 setcookie(self::COOKIE_LANDINGPAGE, 1);
             }
+        }
+        
+        public function admin_menu() {
+            $page_hook_suffix = add_options_page($this->__('WPFront Notification Bar'), $this->__('Notification Bar'), 'manage_options', self::PLUGIN_SLUG, array($this, 'options_page'));
+
+            add_action('admin_print_scripts-' . $page_hook_suffix, array($this, 'enqueue_options_scripts'));
+            add_action('admin_print_styles-' . $page_hook_suffix, array($this, 'enqueue_options_styles'));
         }
 
         //add scripts
@@ -81,6 +83,9 @@ if (!class_exists('WPFront_Notification_Bar')) {
             wp_enqueue_script('wpfront-notification-bar', $jsRoot . 'wpfront-notification-bar.js', array('jquery'), self::VERSION);
 
             $this->scriptLoaded = TRUE;
+
+            add_action('wp_footer', array(&$this, 'write_markup'));
+            add_action('shutdown', array(&$this, 'write_markup'));
         }
 
         //add styles
@@ -142,10 +147,14 @@ if (!class_exists('WPFront_Notification_Bar')) {
                 return;
             }
 
-            if ($this->scriptLoaded != TRUE) {
+            if (!$this->scriptLoaded) {
                 return;
             }
 
+            if(WPFront_Static::doing_ajax()) {
+                return;
+            }
+            
             if ($this->enabled()) {
                 include($this->pluginDIRRoot . 'templates/notification-bar-template.php');
 
@@ -182,6 +191,16 @@ if (!class_exists('WPFront_Notification_Bar')) {
             }
 
             return $message;
+        }
+        
+        protected function get_button_text() {
+            $text = $this->options->button_text();
+
+            if ($this->options->message_process_shortcode()) {
+                $text = do_shortcode($text);
+            }
+
+            return $text;
         }
 
         protected function get_filter_objects() {

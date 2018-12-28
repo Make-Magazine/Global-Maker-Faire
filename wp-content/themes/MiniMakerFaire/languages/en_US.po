@@ -270,7 +270,7 @@ msgstr ""
 msgid "Human verification incorrect."
 msgstr ""
 
-#: page-contact.php:143
+#: page-contact.php:143 page-datarights.php:30
 msgid "Please supply all information."
 msgstr ""
 
@@ -500,4 +500,73 @@ msgstr ""
 
 #. Template Name of the plugin/theme
 msgid "Sponsors Page"
+msgstr ""
+
+#: page-datarights.php:31
+msgid "Sorry, this email address is invalid."
+msgstr ""
+
+#: page-datarights.php:32
+msgid ""
+"Sorry, your message could not be sent. Please try again in a few minutes."
+msgstr ""
+
+#: page-datarights.php:33
+msgid ""
+"Thanks for contacting us! We have received your request and will get in "
+"touch with you shortly."
+msgstr ""
+
+#: page-datarights.php:41
+msgid "Someone requested GDPR data from "
+msgstr ""
+
+#: page-datarights.php:45 page-datarights.php:47
+msgid "The user with an email of "
+msgstr ""
+
+#: page-datarights.php:45
+msgid " has requested an export of their personal saved data in our database."
+msgstr ""
+
+#: page-datarights.php:47
+msgid " has requested that their personal data be removed from our database."
+msgstr ""
+
+#: page-datarights.php:76
+msgid ""
+"If you have an account on this site, or submitted an entry to our Call for "
+"Makers form, you can request to receive an exported file of the personal "
+"data we hold about you, including any data you have provide to us. You can "
+"also request that we erase any personal data we hold about you. This does "
+"not include any data we are obliged to keep for administrative, legal, or "
+"security purposes."
+msgstr ""
+
+#: page-datarights.php:77
+msgid "Personal Data Request"
+msgstr ""
+
+#: page-datarights.php:83
+msgid "Please use this form to request Personal Data export/erasure."
+msgstr ""
+
+#: page-datarights.php:84
+msgid "Select Your Request"
+msgstr ""
+
+#: page-datarights.php:89
+msgid "Export Personal Data"
+msgstr ""
+
+#: page-datarights.php:94
+msgid "Remove Personal Data"
+msgstr ""
+
+#: page-datarights.php:98 page-datarights.php:99
+msgid "Email Address"
+msgstr ""
+
+#: page-datarights.php:104
+msgid "Submit Request"
 msgstr ""

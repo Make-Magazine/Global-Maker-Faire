@@ -105,13 +105,16 @@
                         <?php echo $this->get_message_text(); ?>
                     </div>
                     <div>
-                        <?php if ($this->options->display_button()) { ?>
-                            <?php if ($this->options->button_action() == 1) { ?>
-                                <a class="wpfront-button" href="<?php echo $this->options->button_action_url(); ?>"  target="<?php echo $this->options->button_action_new_tab() ? '_blank' : '_self'; ?>" <?php echo $this->options->button_action_url_nofollow() ? 'rel="nofollow"' : ''; ?>><?php echo $this->options->button_text(); ?></a>
-                            <?php } ?>
-                            <?php if ($this->options->button_action() == 2) { ?>
-                                <a class="wpfront-button" onclick="javascript:wpfront_notification_bar_button_action_script();"><?php echo $this->options->button_text(); ?></a>
-                            <?php } ?>
+                        <?php 
+                            if ($this->options->display_button()) { 
+                                $button_text = $this->get_button_text();
+                                ?>
+                                <?php if ($this->options->button_action() == 1) { ?>
+                                    <a class="wpfront-button" href="<?php echo $this->options->button_action_url(); ?>"  target="<?php echo $this->options->button_action_new_tab() ? '_blank' : '_self'; ?>" <?php echo $this->options->button_action_url_nofollow() ? 'rel="nofollow"' : ''; ?>><?php echo $button_text; ?></a>
+                                <?php } ?>
+                                <?php if ($this->options->button_action() == 2) { ?>
+                                    <a class="wpfront-button" onclick="javascript:wpfront_notification_bar_button_action_script();"><?php echo $button_text; ?></a>
+                                <?php } ?>
                         <?php } ?>
                     </div>
                 </td>
