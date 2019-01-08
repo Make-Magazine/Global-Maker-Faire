@@ -2,26 +2,39 @@
    "name": "minimakerfaire",
    "description": "WordPress Theme for Global MakerFaire",
    "author": "Maker Media",
-   "version": "5.14.0",
+   "version": "5.13.10",
    "private": true,
    "repository": {
       "type": "git",
       "url": "git@github.com:Make-Magazine/Global-Maker-Faire.git"
    },
    "license": "UNLICENSED",
+   "scripts": {
+      "cachebust:update": "npm version patch",
+      "postcachebust:update": "npm run replace:version",
+      "replace:version": "replace-in-file '/Version\\: [0-9]\\.{0,1}[0-9]*\\.{0,1}[0-9]*/' 'Version: '\"$npm_package_version\" style.css --isRegex",
+      "less:gmf:compile": "lessc --source-map-less-inline --source-map-map-inline --line-numbers=comments less/style.less css/style.css",
+      "postless:gmf:compile": "npm run less:gmf:minify",
+      "less:gmf:minify": "cleancss -o css/style.min.css css/style.css --source-map",
+      "postless:gmf:minify": "rm css/style.css",
+      "js:uglify": "uglifyjs ./js/scripts/owl.carousel.min.js ./js/scripts/scripts.js -o ./js/scripts/min/scripts.min.js -c -m --source-map \"root='../', url='./scripts.min.js.map'\""
+   },
    "devDependencies": {
       "bootstrap": "^3.3.4",
+      "bootstrap-dialog": "^1.34.6",
+      "clean-css-cli": "^4.2.1",
+      "fancybox": "^3.0.0",
       "grunt": "^1.0.1",
       "grunt-contrib-concat": "^1.0.1",
       "grunt-contrib-less": "^1.1.0",
       "grunt-contrib-uglify": "^2.3.0",
       "grunt-contrib-watch": "^1.0.0",
+      "grunt-text-replace": "^0.4.0",
       "hammerjs": "^2.0.6",
       "jquery": "^3.2.1",
       "jquery.cookie": "^1.4.1",
-      "bootstrap-dialog": "^1.34.6",
-      "fancybox": "^3.0.0",
-      "grunt-text-replace": "^0.4.0"
+      "less": "^3.9.0",
+      "replace-in-file": "^3.4.2"
    },
    "dependencies": {
       "angular": "^1.6.4",

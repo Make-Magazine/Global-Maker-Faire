@@ -63,31 +63,35 @@ module.exports = function(grunt) {
             'js/scripts/owl.carousel.min.js',
             'js/scripts/scripts.js'
           ],
-          'js/built.js': [
-            'js/src/misc-libs.js',
-            'js/src/*.js'
-          ],
-          'js/built-libs.js': [
-            'node_modules/bootstrap-dialog/**/bootstrap-dialog.min.js',
-            'node_modules/jquery.cookie/**/jquery-cookie.js',
-            'node_modules/fancybox/**/jquery.fancybox.pack.js',
-            'node_modules/hammerjs/hammer.min.js',
-            'js/libs-src/*.js'
-          ],
+          // this one never gets used... the `/src/` dir doesm't exist
+         //  'js/built.js': [
+         //    'js/src/misc-libs.js',
+         //    'js/src/*.js'
+         //  ],
+          // this one never gets used... the `/libs-src/` dir doesm't exist
+         //  'js/built-libs.js': [
+         //    'node_modules/bootstrap-dialog/**/bootstrap-dialog.min.js',
+         //    'node_modules/jquery.cookie/**/jquery-cookie.js',
+         //    'node_modules/fancybox/**/jquery.fancybox.pack.js',
+         //    'node_modules/hammerjs/hammer.min.js',
+         //    'js/libs-src/*.js'
+         //  ],
           'js/built-angular-libs.js': [
             'node_modules/angular/angular.js',
             'node_modules/angular-filter/dist/angular-filter.js',
             'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
             'node_modules/angular-utils-pagination/dirPagination.js',
             'node_modules/angular-animate/angular-animate.js'
-          ],
-          'js/built-admin-scripts.js': [
-            'js/src-admin-scripts/*.js'
-          ],
-          'js/angular/global-faires-map-app.js': [
-            'js/angular/global-faires-map-app/faireMapsApp.js',
-            'js/angular/global-faires-map-app/*.js'
-          ],
+           ],
+           // this one never gets used... the `/src-admin-scripts/` dir doesm't exist
+         //  'js/built-admin-scripts.js': [
+         //    'js/src-admin-scripts/*.js'
+         //  ],
+           // this one never gets used... the `/angular/global-faires-map-app/` dir doesm't exist
+         //  'js/angular/global-faires-map-app.js': [
+         //    'js/angular/global-faires-map-app/faireMapsApp.js',
+         //    'js/angular/global-faires-map-app/*.js'
+         //  ],
         }
       },
     },
