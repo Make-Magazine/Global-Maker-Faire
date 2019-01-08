@@ -2,7 +2,7 @@
    "name": "minimakerfaire",
    "description": "WordPress Theme for Global MakerFaire",
    "author": "Maker Media",
-   "version": "5.13.10",
+   "version": "5.13.11",
    "private": true,
    "repository": {
       "type": "git",
@@ -17,7 +17,14 @@
       "postless:gmf:compile": "npm run less:gmf:minify",
       "less:gmf:minify": "cleancss -o css/style.min.css css/style.css --source-map",
       "postless:gmf:minify": "rm css/style.css",
-      "js:uglify": "uglifyjs ./js/scripts/owl.carousel.min.js ./js/scripts/scripts.js -o ./js/scripts/min/scripts.min.js -c -m --source-map \"root='../', url='./scripts.min.js.map'\""
+      "js:gmf:uglify": "uglifyjs js/scripts/owl.carousel.min.js js/scripts/scripts.js -o js/scripts/min/scripts.min.js -c -m --source-map \"root='../../../', url='scripts.min.js.map'\"",
+      "js:ng:uglify": "uglifyjs node_modules/angular/angular.js node_modules/angular-filter/dist/angular-filter.js node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js node_modules/angular-utils-pagination/dirPagination.js node_modules/angular-animate/angular-animate.js -o js/built-angular-libs.min.js --source-map \"root='../', url='built-angular-libs.min.js.map'\"",
+      "onchange:less:gmf": "onchange 'less/*.less' -- npm run less:gmf:compile",
+      "onchange:js:gmf": "onchange 'js/scripts/*.js' -- npm run js:gmf:uglify",
+      "onchange:js:ng": "onchange 'node_modules/angular/*.js' -- npm run js:ng:uglify",
+      "build": "npm-run-all js:**:uglify less:**:compile",
+      "build:cachebust": "npm-run-all cachebust:update js:**:uglify less:**:compile",
+      "dev": "npm-run-all build -p onchange:js:** onchange:less:**"
    },
    "devDependencies": {
       "bootstrap": "^3.3.4",
@@ -34,7 +41,10 @@
       "jquery": "^3.2.1",
       "jquery.cookie": "^1.4.1",
       "less": "^3.9.0",
-      "replace-in-file": "^3.4.2"
+      "npm-run-all": "^4.1.5",
+      "onchange": "^5.2.0",
+      "replace-in-file": "^3.4.2",
+      "uglify-js": "^3.4.9"
    },
    "dependencies": {
       "angular": "^1.6.4",

@@ -89,10 +89,12 @@
 ////////////////////////////////////////////////////////////////////
 
   function devdmbootstrap3_theme_js() {
+   $my_theme = wp_get_theme();
+   $my_version = $my_theme->get('Version');
     wp_enqueue_script('modernizr-js', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array('jquery'), false, false);
     wp_enqueue_script('bootstrap-js', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js', array( 'jquery' ),false,true );
     wp_enqueue_script('fancybox-js', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js', array( 'jquery' ),false,true );
-    wp_enqueue_script('misc-scripts', get_stylesheet_directory_uri() . '/js/scripts/min/scripts.min.js', array( 'jquery' ),false,true );
+    wp_enqueue_script('misc-scripts', get_stylesheet_directory_uri() . '/js/scripts/min/scripts.min.js', array( 'jquery' ),$my_version,true );
   }
   add_action('wp_enqueue_scripts', 'devdmbootstrap3_theme_js');
 
@@ -113,12 +115,12 @@
 
   function angular_scripts() {
     if (is_page_template('page-meet-the-makers.php') || is_page_template('page-schedule.php')) {
-      wp_enqueue_script('carousel',      get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array(),false,true);
+      wp_enqueue_script('carousel',      get_stylesheet_directory_uri() . '/js/scripts/owl.carousel.min.js', array(),false,true);
 
       $my_theme = wp_get_theme();
       $my_version = $my_theme->get('Version');
 
-      wp_enqueue_script('angularjs', get_stylesheet_directory_uri() . '/js/built-angular-libs.js', array(),$my_version,true);
+      wp_enqueue_script('angularjs', get_stylesheet_directory_uri() . '/js/built-angular-libs.min.js', array(),$my_version,true);
       if (is_page_template('page-meet-the-makers.php')) {
         wp_enqueue_script('angular-mtm',get_stylesheet_directory_uri() . '/js/angular/controller.js', array( 'angularjs', 'carousel' ),$my_version,true);
       }

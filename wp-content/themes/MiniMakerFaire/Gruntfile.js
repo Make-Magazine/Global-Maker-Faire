@@ -104,9 +104,10 @@ module.exports = function(grunt) {
         },
         files: {
           'js/scripts/min/scripts-min.js': 'js/scripts/min/scripts-min.js',
-          'js/built.js': 'js/built.js',
-          'js/angular/global-faires-map-app.js': 'js/angular/global-faires-map-app.js',
-          'js/built-admin-scripts.js': 'js/built-admin-scripts.js'
+          // the following 3 don't exist anymore
+         //  'js/built.js': 'js/built.js',
+         //  'js/angular/global-faires-map-app.js': 'js/angular/global-faires-map-app.js',
+         //  'js/built-admin-scripts.js': 'js/built-admin-scripts.js'
         }
       },
       libs: {
