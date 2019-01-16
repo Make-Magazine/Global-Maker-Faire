@@ -3,10 +3,13 @@
 * Template name: Schedule
 */
 get_header();
+$schedule_ids = get_field('schedule_ids');
+$schedule_ids_trimmed = preg_replace('/\s+/', '', $schedule_ids);
+
 $noMakerText = get_field('no_makers_found_text');
 ?>
 
-<input type="hidden" id="forms2use" value="<?php echo get_field('schedule_ids'); ?>" />
+<input type="hidden" id="forms2use" value="<?php echo $schedule_ids_trimmed; ?>" />
 <input type="hidden" id="noMakerText" value="<?php echo $noMakerText; ?>" />
 
 <div id="page-schedule" class="container schedule-table" ng-controller="scheduleCtrl" ng-app="scheduleApp">
