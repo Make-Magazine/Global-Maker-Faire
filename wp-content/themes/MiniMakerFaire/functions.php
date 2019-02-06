@@ -261,4 +261,67 @@ function send_smtp_email($phpmailer) {
   $phpmailer->SMTPSecure = "";
 }
 
+
+
+function my_acf_flexible_content_layout_title( $title, $field, $layout, $i ) {
+   
+   $newTitle = '';
+
+   if( $activeInactive = get_sub_field('activeinactive') ) {
+      $style = ($activeInactive === 'Active') ? 'style="color: green"' : 'style="color: red"';
+      $newTitle .= ' <span '. $style .'>(' . $activeInactive . ')</span>';
+   } else if ($activeInactive = get_sub_field('show_what_is_maker_faire') ) {
+      $style = ($activeInactive === 'show') ? 'style="color: green"' : 'style="color: red"';
+      $newTitle .= ' <span '. $style .'>(' . $activeInactive . ')</span>';
+   }
+
+
+   if( $butTixText = get_sub_field('buy_ticket_text') ) {
+      $newTitle .= ' ' . $butTixText . ' ';
+   }
+
+   // 1-col WYSIWYG
+   if( $customTitle = get_sub_field('title') ) {
+      $newTitle .= ' ' . $customTitle . ' ';
+   }
+
+   // 3-col
+   if( $panelTitle = get_sub_field('panel_title') ) {
+      $newTitle .= ' ' . $panelTitle . ' ';
+   }
+
+   // Star Ribbon
+   if( $starRibbonText = get_sub_field('text') ) {
+      $newTitle .= ' ' . $starRibbonText . ' ';
+   }
+
+   // Hero Title
+   if( $columnTitle = get_sub_field('column_title') ) {
+      $newTitle .= ' ' . strip_tags( $columnTitle ) . ' ';
+   }
+
+   // Become a Sponsor Button
+   if( $sponsorsTitle = get_sub_field('title_sponsor_panel') ) {
+      $newTitle .= ' Sponsors: ' . $sponsorsTitle . ' ';
+   }
+
+   // Sponsor URL 
+   if( $sponsorsURL = get_sub_field('sponsors_page_url') ) {
+      $newTitle .= ' Sponsors: ' . $sponsorsURL . ' ';
+   }
+
+   if( $featureFairesTitle = get_sub_field('featured_faires_title') ) {
+      $newTitle .= ' ' . $featureFairesTitle . ' ';
+   }
+
+   $newTitle .= '<div style="font-size: 12px; margin-right: 2em;">' . $title . '</div>';
+
+	return $newTitle;
+	
+}
+
+// name
+add_filter('acf/fields/flexible_content/layout_title', 'my_acf_flexible_content_layout_title', 10, 4);
+
+
 ?>

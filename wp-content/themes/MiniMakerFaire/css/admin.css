@@ -53,9 +53,9 @@
   background-color: #e1e1e1;
   color: #888 !important;
 }
-.acfInactive .acf-fc-layout-handle:after {
+/* .acfInactive .acf-fc-layout-handle:after {
   content: " - Inactive";
-}
+} */
 
 /* MORE TOP PADDING ABOVE TABS */
 .acf-fields > .acf-tab-wrap .acf-tab-group {
