@@ -35,9 +35,10 @@ $phone = get_field( "phone" );
 $email = get_field( "email" );
 
 $contact_form_email_address = get_field( "contact_form_email_address" );
-if(trim($contact_form_email_address)===''){
-  $contact_form_email_address = get_option('admin_email');
-}
+
+// if(trim($contact_form_email_address)===''){
+//   $contact_form_email_address = get_option('admin_email');
+// }
 
 if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
@@ -145,7 +146,7 @@ if( $contact_address || $phone || $email || $contact_form_email_address ) { ?>
 
           //php mailer variables
           //$to = $contact_form_email_address;
-          $subject = __("Someone sent a message from ",'MiniMakerFaire').get_bloginfo('name');
+          $subject = $name . __(" sent a message from ",'MiniMakerFaire').get_bloginfo('name');
           $headers = __("From: ",'MiniMakerFaire'). $email . "\r\n" .
             __('Reply-To: ','MiniMakerFaire') . $email . "\r\n";
 
