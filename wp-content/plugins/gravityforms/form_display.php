@@ -268,18 +268,19 @@ class GFFormDisplay {
 		/* Setup default review page parameters. */
 		$review_page = array(
 			'content'        => '',
+			'cssClass'       => '',
 			'is_enabled'     => false,
 			'nextButton'     => array(
-					'type'     => 'text',
-					'text'     => __( 'Review Form', 'gravityforms' ),
-					'imageUrl' => '',
-					'imageAlt' => '',
+				'type'     => 'text',
+				'text'     => __( 'Review Form', 'gravityforms' ),
+				'imageUrl' => '',
+				'imageAlt' => '',
 			),
 			'previousButton' => array(
-					'type'     => 'text',
-					'text'     => __( 'Previous', 'gravityforms' ),
-					'imageUrl' => '',
-					'imageAlt' => '',
+				'type'     => 'text',
+				'text'     => __( 'Previous', 'gravityforms' ),
+				'imageUrl' => '',
+				'imageAlt' => '',
 			),
 		);
 
@@ -1258,7 +1259,7 @@ class GFFormDisplay {
 				$button_input = "<input type='{$input_type}' id='{$button_input_id}' class='{$class}' value='" . esc_attr( $button_text ) . "' {$tabindex} {$onclick} />";
 			}
 		} else {
-			$imageUrl     = $button['imageUrl'];
+			$imageUrl = esc_url( $button['imageUrl'] );
 			$class .= ' gform_image_button';
 			$button_input = "<input type='image' src='{$imageUrl}' id='{$button_input_id}' class='{$class}' alt='{$alt}' {$tabindex} {$onclick} />";
 		}
@@ -1273,7 +1274,7 @@ class GFFormDisplay {
 		$button_input = self::get_form_button( $form['id'], "gform_submit_button_{$form['id']}", $form['button'], __( 'Submit', 'gravityforms' ), 'gform_button', __( 'Submit', 'gravityforms' ), 0 );
 		$button_input = gf_apply_filters( array( 'gform_submit_button', $form_id ), $button_input, $form );
 
-		$save_button = rgars( $form, 'save/enabled' ) ? self::get_form_button( $form_id, "gform_save_{$form_id}", $form['save']['button'], rgars( $form, 'save/button/text' ), 'gform_save_link', rgars( $form, 'save/button/text' ), 0, "jQuery(\"#gform_save_{$form_id}\").val(1);" ) : '';
+		$save_button = rgars( $form, 'save/enabled' ) ? self::get_form_button( $form_id, "gform_save_{$form_id}_footer", $form['save']['button'], rgars( $form, 'save/button/text' ), 'gform_save_link', rgars( $form, 'save/button/text' ), 0, "jQuery(\"#gform_save_{$form_id}\").val(1);" ) : '';
 
 		/**
 		 * Filters the save and continue link allowing the tag to be customized
@@ -1947,8 +1948,6 @@ class GFFormDisplay {
 		 */
 		gf_do_action( array( 'gform_pre_enqueue_scripts', $form['id'] ), $form, $ajax );
 
-		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['gform_debug'] ) ? '' : '.min';
-
 		if ( ! get_option( 'rg_gforms_disable_css' ) ) {
 
 			wp_enqueue_style( 'gforms_reset_css' );
@@ -2028,6 +2027,10 @@ class GFFormDisplay {
 		// to be available to users even when GF is not using it
 		wp_enqueue_script( 'jquery' );
 
+		if ( wp_script_is( 'gform_gravityforms' ) ) {
+			wp_localize_script( 'gform_gravityforms', 'gf_global', GFCommon::gf_global( false, true ) );
+		}
+
 	}
 
 	private static $printed_scripts = array();
@@ -2106,11 +2109,11 @@ class GFFormDisplay {
 			wp_enqueue_script( $script );
 		}
 
-		wp_print_scripts( $scripts );
-
 		if ( wp_script_is( 'gform_gravityforms' ) ) {
-			echo '<script type="text/javascript"> ' . GFCommon::gf_global( false ) . ' </script>';
+			wp_localize_script( 'gform_gravityforms', 'gf_global', GFCommon::gf_global( false, true ) );
 		}
+
+		wp_print_scripts( $scripts );
 
 	}
 
@@ -2167,6 +2170,7 @@ class GFFormDisplay {
 		$dependents        = '';
 		$fields_with_logic = array();
 		$default_values    = array();
+		$field_dependents  = array();
 
 		foreach ( $form['fields'] as $field ) {
 
@@ -2447,11 +2451,6 @@ class GFFormDisplay {
 
 		$script_string = '';
 
-		// temporary solution for output gf_global obj until wp min version raised to 3.3
-		if ( wp_script_is( 'gform_gravityforms' ) ) {
-			$gf_global_script = "if(typeof gf_global == 'undefined') " . GFCommon::gf_global( false );
-		}
-
 		/* rendering initialization scripts */
 		$init_scripts = rgar( self::$init_scripts, $form['id'] );
 
@@ -2554,7 +2553,8 @@ class GFFormDisplay {
 					"	 'truncate': {$truncate}," .
 					"	 'errorStyle' : '{$error_style}'," .
 					"    'displayFormat' : '#input " . esc_js( __( 'of', 'gravityforms' ) ) . ' #max ' . esc_js( __( 'max characters', 'gravityforms' ) ) . "'" .
-					"    } );";
+					"    } );" .
+					"jQuery('#{$input_id}').next( '.ginput_counter' ).attr( 'aria-live', 'polite' );";
 
 				$script .= gf_apply_filters( array( 'gform_counter_script', $form['id'] ), $field_script, $form['id'], $input_id, $max_length, $field );
 			}
@@ -2943,7 +2943,7 @@ class GFFormDisplay {
 				$next_button     = self::get_form_button( $form['id'], "gform_next_button_{$form['id']}_{$field->id}", $field->nextButton, __( 'Next', 'gravityforms' ), 'gform_next_button', $next_button_alt, $field->pageNumber );
 				$next_button     = gf_apply_filters( array( 'gform_next_button', $form['id'] ), $next_button, $form );
 
-				$save_button = rgars( $form, 'save/enabled' ) ? self::get_form_button( $form['id'], "gform_save_{$form['id']}", $form['save']['button'], rgars( $form, 'save/button/text' ), 'gform_save_link', rgars( $form, 'save/button/text' ), 0, "jQuery(\"#gform_save_{$form['id']}\").val(1);" ) : '';
+				$save_button = rgars( $form, 'save/enabled' ) ? self::get_form_button( $form['id'], "gform_save_{$form['id']}_{$field->pageNumber}", $form['save']['button'], rgars( $form, 'save/button/text' ), 'gform_save_link', rgars( $form, 'save/button/text' ), 0, "jQuery(\"#gform_save_{$form['id']}\").val(1);" ) : '';
 
 				/**
 				 * Filters the save and continue link allowing the tag to be customized
@@ -3529,10 +3529,11 @@ class GFFormDisplay {
 		$page_number  = $page_number == 0 ? 2 : $page_number+1;
 
 		/* Create new Page field for review page. */
-		$review_page_break                 = new GF_Field_Page();
-		$review_page_break->id             = $new_field_id;
-		$review_page_break->pageNumber     = $page_number;
-		$review_page_break->nextButton     = rgar( $review_page, 'nextButton' );
+		$review_page_break             = new GF_Field_Page();
+		$review_page_break->id         = $new_field_id;
+		$review_page_break->pageNumber = $page_number;
+		$review_page_break->nextButton = rgar( $review_page, 'nextButton' );
+		$review_page_break->cssClass   = 'gform_review_page ' . rgar( $review_page, 'cssClass', '' );
 
 		/* Add review page break field to form. */
 		$form['fields'][] = $review_page_break;
@@ -3580,7 +3581,7 @@ class GFFormDisplay {
 
 		return array(
 			'scroll' => $anchor,
-			'tag'    => $anchor !== false ? "<a id='gf_{$form_id}' class='gform_anchor' ></a>" : '',
+			'tag'    => $anchor !== false ? "<div id='gf_{$form_id}' class='gform_anchor' tabindex='-1'></div>" : '',
 			'id'     => $anchor !== false ? "#gf_{$form_id}" : ''
 		);
 	}

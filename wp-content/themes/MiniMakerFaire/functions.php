@@ -8,6 +8,12 @@
   $shortname = "mf";
   $version = '1.0';
 
+// FOR NOW, TURN OFF GUTENBURG
+// disable for posts
+add_filter('use_block_editor_for_post', '__return_false', 10);
+// disable for post types
+add_filter('use_block_editor_for_post_type', '__return_false', 10);
+
 ////////////////////////////////////////////////////////////////////
 // include Theme-options.php for Admin Theme settings
 ////////////////////////////////////////////////////////////////////
