@@ -1,5 +1,10 @@
 var app = angular.module('mtm', []);
 
+var initialCategory = "";
+if (getUrlParam("category")) {
+    initialCategory = getUrlParam("category");
+}
+
 app.controller('mtmMakers', function($scope, $http) {
   $scope.layout = 'grid';
   $scope.category = '';
@@ -10,6 +15,11 @@ app.controller('mtmMakers', function($scope, $http) {
   formIDs = formIDs.replace(",","-");
   //to be added - replace commas with - in form ids
   //call to MF custom rest API
+	
+  if (initialCategory) {
+      $scope.category = initialCategory;
+  }
+	
   $http.get('/wp-json/makerfaire/v2/fairedata/mtm/'+formIDs)
     .then(function successCallback(response) {
       if(response.data.entity.length<=0){
@@ -73,31 +83,39 @@ app.controller('mtmMakers', function($scope, $http) {
         }
       });
     });
+	
   $scope.setTagFilter = function (tag) {
-    $scope.category = tag;
+     $scope.category = tag;
   }
   // Clear category filter on All button click
   $scope.clearFilter = function() {
-    $scope.category = '';
+     $scope.category = '';
   };
 });
 
-app.filter('byCategory', function(){
-  return function(items, maker) {
-    var filtered = [];
-
-    if (!maker || !items.length) {
-      return items;
+app.filter('byCategory', function () {
+    // leaving the param in the url would look awkward once users start selecting different filters so let's get rid of it
+    if (getUrlParam("category")) {
+        window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
     }
-    items.forEach(function(itemElement, itemIndex) {
-      itemElement.category_id_refs.forEach(function(categoryElement, categoryIndex) {
+    return function (items, maker) {
+		if(items){
+        var filtered = [];
 
-        if (categoryElement === maker) {
-          filtered.push(itemElement);
-          return false;
+        if (!maker || !items.length) {
+            return items;
         }
-      });
-    });
-    return filtered;
-  };
+        
+        items.forEach(function (itemElement, itemIndex) {
+            itemElement.category_id_refs.forEach(function (categoryElement, categoryIndex) {
+                if (categoryElement === maker) {
+                    filtered.push(itemElement);
+                    return false;
+                }
+            });
+        });
+		}
+      return filtered;
+    };
+
 });

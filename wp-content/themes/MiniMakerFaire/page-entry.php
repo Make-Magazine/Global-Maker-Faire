@@ -8,6 +8,7 @@
 	global $wp_query;
 	$entryId = $wp_query->query_vars['eid'];
 	$entry = GFAPI::get_entry($entryId);
+
 	//entry not found
 	if(isset($entry->errors)){
 		$entry=array();
@@ -17,9 +18,23 @@
 	}else{
 		//find outwhich faire this entry is for to set the 'look for more makers link'
 		$faire =$slug=$faireID=$show_sched=$faire_end='';
+		$form_id = $entry['form_id'];
+      $form = GFAPI::get_form($form_id);
+      $formType = $form['form_type'];
+		// build an array of the category name/id codes we can use for the tags
+		$categoryArray = [];
+		if (is_array($form['fields'])) {
+         foreach ($form['fields'] as $field) {
+            if ($field->id == '320') {
+					foreach ($field->choices as $choice) {
+						if ($choice['value'] != '') {
+							$categoryArray[absint($choice['value'])] = html_entity_decode(esc_js($choice['text']));
+						}
+					}
+				}
+			}
+		}
 	}
-   //error_log(print_r($entry, TRUE));
-
 
 	$makers = array();
 	if (isset($entry['160.3']))
@@ -97,14 +112,13 @@
 	$mainCategory = '';
 	$categories = array();
 	if (isset($entry['320'])) {
-	  $mainCategory = get_term($entry['320'])->name;
+	  $mainCategory = $categoryArray[$entry['320']];
 	  $categories[] = $mainCategory;
-	  error_log(print_r($mainCategory, TRUE));
 	}
 	foreach ($entry as $key => $value) {
 	  if (strpos($key, '321.') !== false && $value != null) {
 			if (get_term($value)->name != $mainCategory) {
-				 $categories[] = get_term($value)->name;
+				 $categories[] = $categoryArray[$value];
 			}
 	  }
 	}
@@ -411,7 +425,8 @@ function display_categories($catArray) {
     global $url_sub_path;
     $return = '<b>Categories:</b>';
     foreach ($catArray as $value) {
-        $return .= ' <a href="/' . $url_sub_path . '/meet-the-makers/?category=' . str_replace("&amp;", "%26", $value) . '">' . $value . '</a>,';
+		  // currently only would work if there is only the one meet-the-makers page
+        $return .= ' <a href="/meet-the-makers/?category=' . str_replace("&amp;", "%26", $value) . '">' . $value . '</a>,';
     }
     return rtrim($return, ',');
   }

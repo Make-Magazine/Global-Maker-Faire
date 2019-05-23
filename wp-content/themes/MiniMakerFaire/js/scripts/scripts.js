@@ -1,5 +1,15 @@
 // Misc. Scipts here
 
+function getUrlParam(name) {
+  if(window.location.search) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  }
+};
+
+
 // Navigation
 jQuery(document).ready(function () {
 
