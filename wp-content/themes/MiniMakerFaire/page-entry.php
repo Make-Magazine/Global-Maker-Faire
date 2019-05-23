@@ -421,14 +421,34 @@ function display_groupEntries($entryID){
 
 // provide a linked list of the categories
 function display_categories($catArray) {
+  $baseurl = getTplPageURL('page-meet-the-makers.php');
   if(!empty($catArray[0])) {
     global $url_sub_path;
     $return = '<b>Categories:</b>';
     foreach ($catArray as $value) {
 		  // currently only would work if there is only the one meet-the-makers page
-        $return .= ' <a href="/meet-the-makers/?category=' . str_replace("&amp;", "%26", $value) . '">' . $value . '</a>,';
+        $return .= ' <a href="' . $baseurl . '/?category=' . str_replace("&amp;", "%26", $value) . '">' . $value . '</a>,';
     }
     return rtrim($return, ',');
   }
 }
+
+function getTplPageURL($TEMPLATE_NAME){
+     $url;
+     $pages = query_posts(array(
+         'post_type' =>'page',
+		   'post_status' => array('publish'),
+         'meta_key'  =>'_wp_page_template',
+         'meta_value'=> $TEMPLATE_NAME
+     ));
+     // cycle through $pages here and either grab the URL
+     // from the results or do get_page_link($id) with 
+     // the id of the page you want 
+     $url = null;
+	  error_log(print_r($pages[0]->ID, TRUE));
+
+     $url = get_page_link($pages[0]->ID);
+
+     return $url;
+ }
 ?>
