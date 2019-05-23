@@ -61,8 +61,6 @@
     wp_enqueue_style( 'bootstrap-css', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css', array(), null, 'all' );
     wp_enqueue_style( 'theme-css', get_stylesheet_directory_uri() . '/css/style.min.css' );
     wp_enqueue_style( 'font-awesome-css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css', array(), null, 'all' );
-    wp_enqueue_style( 'google-font-body', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Condensed:400', array(), null, 'all' );
-    wp_enqueue_style( 'google-font-heading', 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700', array(), null, 'all' );
     wp_enqueue_style( 'fancybox-css', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css', array(), null, 'all' );
     wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/css/owl.carousel.css', array(), null, 'all' );
   }
@@ -322,6 +320,5 @@ function my_acf_flexible_content_layout_title( $title, $field, $layout, $i ) {
 
 // name
 add_filter('acf/fields/flexible_content/layout_title', 'my_acf_flexible_content_layout_title', 10, 4);
-
 
 ?>

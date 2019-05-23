@@ -1,20 +1,317 @@
+.pad-bottom {
+    padding-bottom: 15px !important;
+}
+
 .entry-page {
-  h1, h2 {
-    margin-bottom: 0;
-  }
-  h3 {
-    margin-top: 0;
-  }
-  .entry-image {
-    margin-bottom: 15px;
-  }
-  .btn-info {
-    margin-bottom: 25px;
-  }
-  .backlink {
-    margin-top: 10px;
-  }
-  .maker-profile-row {
-    margin-bottom: 10px;
-  }
+	background: #F2F2F2;
+   margin-bottom: 30px;
+	@media screen and (max-width: 767px) {
+		margin-top: 70px;
+	}
+	.content { padding: 0px; }
+	
+	.backlink {
+		float: right;
+		padding-top: 20px;
+	}
+	.group-entries, .group-entry {
+		margin-top: 0px;
+		border-top: 0px;
+		font-size: 20px;
+		h4 {
+			margin-top: 5px;
+			margin-bottom: 10px;
+			font-weight: 300;
+		}
+		ul {
+			padding: 0px;
+			margin-bottom: 0px;
+			li { 
+				list-style: none;
+				font-size: 20px;
+				float: left;
+				margin-top: 8px;
+				margin-bottom: 3px;
+			}
+		}
+	}
+	.group-entry ul li {
+		line-height: 24px;
+	}
+	
+	// The Lefthand side
+	#viewEntry {
+		background: #fff;
+		border-top: solid 15px #F2F2F2;
+		border-bottom: solid 15px #F2F2F2;
+		padding-bottom: 15px;
+		#project_short { 
+			margin-bottom: 0px;
+		}
+		.blueMakey {
+			position: relative;
+			right: 0%;
+			top: -8px;
+			float: right;
+		}
+		.entry-header {
+			h1 { 
+				font-size: 38px;
+				margin-top: 10px;
+			}
+			.entry-type {
+				font-family: "Roboto";
+				font-weight: 400;
+				font-size: 18px;
+				color: #9B9B9B;
+				margin-top: 15px;
+			}
+		}
+		.essb_links {
+			@media screen and (max-width: 768px) {
+				display: none;
+			}
+			.essb_item {
+				margin-right: 5px !important;
+				&:last-of-type {
+					margin-right: 0px !important;
+					width: calc(14% - 18px) !important;
+					a { background: #1052BA !important; }
+				}
+				a { 
+					height: 50px;
+					text-align: center;
+					.essb_network_name {
+						margin-top: -10px;
+						margin-bottom: 0px;
+					}
+					.essb_counter_bottom {
+						font-size: 10px;
+					}
+				}
+			}
+		}
+		#proj_img img { width: 100%; }
+		.group-entries { 
+			padding-top: 20px;
+			ul {
+				li {
+					width: 50%;
+					@media screen and (max-width: 768px) {
+						width: 100%;
+					}
+				}
+			}
+		}
+		.entry-categories {
+			b { font-weight: 400; }
+			clear: both;
+			font-size: 20px;
+			padding-top: 20px;
+		}
+      .entry-website {
+         width: 100%
+      }
+	}
+	
+	
+	// The Righthand side
+	#entrySidebar {
+		padding: 0px;
+		border-top: solid 15px #f2f2f2;
+		.entryInfo, .entry-page-maker-info {
+			background: #fff;
+			padding: 15px;
+			border: solid 15px #F2F2F2;
+			@media screen and (max-width: 968px) {
+				border-right: 0px;
+				border-left: 0px;
+			}
+		}
+		.entryInfo {
+			font-size: 16px;
+			line-height: 22px;
+			@media screen and (max-width: 968px) {
+				font-size: 20px;
+				line-height: 24px;
+			}
+			h3, h5, small, .group-entries li {
+				font-size: 16px;
+				color: #151515;
+				margin: 0px;
+				font-weight: 300;
+				@media screen and (max-width: 968px) {
+					font-size: 20px;
+				}
+			}
+			.entry-date-time {
+				h5 {
+					font-weight: bold;
+					margin-top: 15px;
+				} 
+				&:first-of-type {
+					h5 { margin-top: 0px; }
+				}
+			}
+			.hands-on {
+				color: #4A4A4A;
+				padding-bottom: 15px;
+			}
+		}
+		.entry-header {
+			h2 { 
+				padding-left: 15px;
+				font-size: 24px;
+				margin: 0 15px 10px;
+				text-transform: uppercase;
+			}
+
+		}
+		.entry-page-maker-info {
+			border-top: 0px;
+			h3 {
+				margin-top: 0;
+				@media screen and (max-width: 767px) {
+					margin-top: 5px;
+					margin-bottom: 5px;
+				}
+			}
+			p { font-weight: 300; }
+			.entry-page-maker-img { // crop this image to a square
+				width: 100%;
+				padding-bottom: 100%;
+				overflow: hidden;
+				position: relative;
+				background: #ccc;
+				img {
+					position: absolute;
+					width: auto;
+					min-width: 100%;
+					min-height: auto;
+				}
+			}
+		}
+		.btn { width: 100%; }
+	}
+
+   /* Related to the editSection */
+	.makerEditHead {
+		padding: 10px 20px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid #2D7798;
+		padding-bottom: 10px;
+		i { padding-right: 10px; }
+	}
+	.editSection {
+		position: relative;
+		display: block;
+		padding-right: 35px;
+		h1 { margin-right: 50px; }
+		.makerEdit {
+			padding-top: 7px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			display: none;
+			color: #397b98;
+		}
+		.editfield { display: none; }
+		input.editfield { width: 80%; }
+		textarea.editfield {
+			width: 80%;
+			height: 6em;
+		}
+		.makerEdit a { color: #000; }
+	}
+	.editSection:hover .makerEdit { display: block; }
+	.mfEdit button, .mfEdit_area button, .mfEditUpload button {
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+	#editEntry { display: none; }
+	
+	// ye olde social blocke
+	.social-block {
+		a {
+			color: #9b9b9b;
+			font-size: 40px;
+			line-height: 40px;
+			padding-right: 10px;
+			&.other:hover {
+				opacity: .6;
+			}
+			&.facebook-share:hover {
+				color: #3B5998;
+			}
+			&.twitter-share:hover {
+				color: #00acee;
+			}
+			&.instagram-share:hover {
+				color: #c32aa3;
+			}
+			&.youtube-share:hover {
+				color: #ff0000;
+			}
+			&.pinterest-share:hover {
+				color: #bd081c;
+			}
+			&.snapchat-share:hover {
+				color: #fffc00;
+			}
+			&.patreon-share:hover {
+				color: #f96854;
+			}
+		}
+	}
+	
+	// the little blue footer
+	.entry-footer {
+		background: #D0EAFC;
+		height: 111px;
+		.faireActions {
+			display: flex;
+		   justify-content: center;
+			align-items: center;
+			height: 100%;
+			flex-wrap: nowrap;
+			.faireAction-box {
+				width: 25%;
+				justify-content: center;
+			   align-items: center;
+				border-left: solid 1px #979797;
+				padding: 10px 30px;
+				&:first-of-type {
+					border-left: none;
+				}
+				a {
+					width: 100%;
+					h4 {
+						font-size: 14px;
+						//maker/entry/67620/text-transform: capitalize;
+					}
+				}
+			}
+		}
+		@media screen and (min-width: 768px) and (max-width: 987px) {
+			.faireActions {
+				.faireAction-box {
+					padding: 10px 15px;
+					&:first-of-type { padding-left: 0px; }
+					&:last-of-type { padding-right: 0px; }
+				}
+			}
+		}
+		@media screen and (max-width: 767px) {
+			height: 100%;
+			.faireActions {
+				flex-direction: column;
+				.faireAction-box { 
+					width: 100%;
+					border: none; 
+					padding: 20px 0px 0px;
+					&:last-of-type { padding-bottom: 20px; }
+				}
+			}
+		}
+	}
 }
