@@ -8,8 +8,6 @@
 	global $wp_query;
 	$entryId = $wp_query->query_vars['eid'];
 	$entry = GFAPI::get_entry($entryId);
-   // if they don't set the mtm the makers page like we asked, we'll set a default
-	$formMtmUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/" . getTplPageURL('page-meet-the-makers.php');
 
 	//entry not found
 	if(isset($entry->errors)){
@@ -23,7 +21,11 @@
 		$form_id = $entry['form_id'];
       $form = GFAPI::get_form($form_id);
       $formType = $form['form_type'];
-		$formMtmUrl = $form['form_mtm_url'];
+		// if they don't set the mtm the makers page like we asked, we'll set a default
+	   $formMtmUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/" . getTplPageURL('page-meet-the-makers.php');
+		if(!empty($form['form_mtm_url'])){
+			$formMtmUrl = $form['form_mtm_url'];
+		}
 
 		// build an array of the category name/id codes we can use for the tags
 		$categoryArray = [];
