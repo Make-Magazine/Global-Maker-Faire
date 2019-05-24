@@ -22,7 +22,7 @@
       $form = GFAPI::get_form($form_id);
       $formType = $form['form_type'];
 		// if they don't set the mtm the makers page like we asked, we'll set a default
-	   $formMtmUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/" . getTplPageURL('page-meet-the-makers.php');
+	   $formMtmUrl = getTplPageURL('page-meet-the-makers.php');
 		if(!empty($form['form_mtm_url'])){
 			$formMtmUrl = $form['form_mtm_url'];
 		}
