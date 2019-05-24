@@ -8,6 +8,8 @@
 	global $wp_query;
 	$entryId = $wp_query->query_vars['eid'];
 	$entry = GFAPI::get_entry($entryId);
+   // if they don't set the mtm the makers page like we asked, we'll set a default
+	$formMtmUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/" . getTplPageURL('page-meet-the-makers.php');
 
 	//entry not found
 	if(isset($entry->errors)){
@@ -21,6 +23,8 @@
 		$form_id = $entry['form_id'];
       $form = GFAPI::get_form($form_id);
       $formType = $form['form_type'];
+		$formMtmUrl = $form['form_mtm_url'];
+
 		// build an array of the category name/id codes we can use for the tags
 		$categoryArray = [];
 		if (is_array($form['fields'])) {
@@ -122,7 +126,7 @@
 			}
 	  }
 	}
-	$categoryDisplay = display_categories($categories);
+	$categoryDisplay = display_categories($categories, $formMtmUrl);
 
 	//Url
 	global $wp;
@@ -184,8 +188,10 @@
         </div>
 		 
 		  <?php
+			/* This is where the social would go
             $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             echo do_shortcode('[easy-social-share buttons="facebook,pinterest,reddit,twitter,linkedin,love,more"  morebutton_icon="dots" morebutton="2" counters=1 counter_pos="bottom" total_counter_pos="hidden" style="icon" fullwidth="yes" template="metro-retina" postid="' . $entryId . '" url="' . $url . '" text="' . $project_title . '"]');
+				*/
          ?>
         <p id="proj_img">
             <img class="img-responsive dispPhoto lazyload" src="<?php echo $project_photo; ?>" alt="<?php echo $project_title; ?>"/>
@@ -420,14 +426,13 @@ function display_groupEntries($entryID){
 }
 
 // provide a linked list of the categories
-function display_categories($catArray) {
-  $baseurl = getTplPageURL('page-meet-the-makers.php');
+function display_categories($catArray, $mtm) {
   if(!empty($catArray[0])) {
     global $url_sub_path;
     $return = '<b>Categories:</b>';
     foreach ($catArray as $value) {
 		  // currently only would work if there is only the one meet-the-makers page
-        $return .= ' <a href="' . $baseurl . '?category=' . str_replace("&amp;", "%26", $value) . '">' . $value . '</a>,';
+        $return .= ' <a href="' . $mtm . '?category=' . str_replace("&amp;", "%26", $value) . '">' . $value . '</a>,';
     }
     return rtrim($return, ',');
   }
@@ -445,7 +450,6 @@ function getTplPageURL($TEMPLATE_NAME){
      // from the results or do get_page_link($id) with 
      // the id of the page you want 
      $url = null;
-	  error_log(print_r($pages[0]->ID, TRUE));
 
      $url = get_page_link($pages[0]->ID);
 

@@ -327,4 +327,10 @@ function my_acf_flexible_content_layout_title( $title, $field, $layout, $i ) {
 // name
 add_filter('acf/fields/flexible_content/layout_title', 'my_acf_flexible_content_layout_title', 10, 4);
 
+// remove unnecessary items from admin toolbar
+function shapeSpace_remove_toolbar_node($wp_admin_bar) {
+	$wp_admin_bar->remove_node('essb');
+}
+add_action('admin_bar_menu', 'shapeSpace_remove_toolbar_node', 999);
+
 ?>
