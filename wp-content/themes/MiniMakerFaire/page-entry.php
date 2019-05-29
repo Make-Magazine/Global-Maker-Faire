@@ -434,7 +434,7 @@ function getTplPageURL($TEMPLATE_NAME){
 	$url = null;
 	// url should be the last page of the template found (if a page of that template exists)
 	if(!empty($pages)) {
-	   $url = get_page_link(end($pages)->ID);  
+	   $url = get_page_link($pages[0]->ID);  
 	}
 	return $url;
  }
