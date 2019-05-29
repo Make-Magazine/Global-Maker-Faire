@@ -26,6 +26,10 @@
 		if(!empty($form['form_mtm_url'])){
 			$formMtmUrl = $form['form_mtm_url'];
 		}
+		$formScheduleUrl = getTplPageURL('page-schedule.php');
+		if(!empty($form['form_schedule_url'])){
+			$formScheduleUrl = $form['form_schedule_url'];
+		}
 
 		// build an array of the category name/id codes we can use for the tags
 		$categoryArray = [];
@@ -129,6 +133,7 @@
 	  }
 	}
 	$categoryDisplay = display_categories($categories, $formMtmUrl);
+   
 
 	//Url
 	global $wp;
@@ -149,29 +154,7 @@
 <div class="container entry-page">
   <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12" id="viewEntry">
-      <?php //set the 'backlink' text and link (only set on valid entries)
-      $url = parse_url(wp_get_referer()); //getting the referring URL
-      
-      $url['path'] = rtrim($url['path'], "/"); //remove any trailing slashes
-      $path = explode("/", $url['path']); // splitting the path
-      $slug = end($path); // get the value of the last element
-
-      if($slug=='schedule'){
-        $backlink = wp_get_referer();
-        $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> '.__('Back to the Schedule','MiniMakerFaire');
-      }elseif($slug!=''){
-        $backlink = wp_get_referer();
-        $backMsg = '<i class="fa fa-arrow-left" aria-hidden="true"></i> '.__('Look for More Makers','MiniMakerFaire');
-      }else{
-        $backlink = '';
-        $backMsg  = '';
-      }
-
-      if($backlink!=''){
-      ?>
-        <div class="backlink"><a href="<?php echo $backlink;?>"><?php echo $backMsg;?></a></div>
-      <?php
-      }
+      <?php 
 
       if(is_array($entry) && isset($entry['status']) && $entry['status']=='active' && isset($entry[303]) && $entry[303]=='Accepted'){
         //display schedule/location information if there is any
@@ -301,7 +284,7 @@
     </div><!--column-->
   </div><!--row-->
 </div><!--container-->
-			  
+<div class="entry-footer"><?php echo displayEntryFooter($formMtmUrl, $formScheduleUrl); ?></div>
 		 </div>
 	</div>
 </div>
@@ -441,20 +424,36 @@ function display_categories($catArray, $mtm) {
 }
 
 function getTplPageURL($TEMPLATE_NAME){
-     $url;
-     $pages = query_posts(array(
-         'post_type' =>'page',
-		   'post_status' => array('publish'),
-         'meta_key'  =>'_wp_page_template',
-         'meta_value'=> $TEMPLATE_NAME
-     ));
-     // cycle through $pages here and either grab the URL
-     // from the results or do get_page_link($id) with 
-     // the id of the page you want 
-     $url = null;
-
-     $url = get_page_link($pages[0]->ID);
-
-     return $url;
+	$url;
+	$pages = query_posts(array(
+		'post_type' =>'page',
+		'post_status' => array('publish'),
+		'meta_key'  =>'_wp_page_template',
+		'meta_value'=> $TEMPLATE_NAME
+	));
+	$url = null;
+	// url should be the last page of the template found (if a page of that template exists)
+	if(!empty($pages)) {
+	   $url = get_page_link(end($pages)->ID);  
+	}
+	return $url;
  }
+function displayEntryFooter($mtmLink, $scheduleLink) {
+    $return .= '<div class="faireActions container">';
+	 if(getTplPageURL("page-meet-the-makers.php")) {
+		 $return .= '<div class="faireAction-box">
+							 <a class="btn universal-btn" href="' . $mtmLink . '"><h4>Look for More Makers</h4></a>
+					    </div>';
+	 }
+    if(getTplPageURL("page-schedule.php")) {
+		 var_dump(getTplPageURL("page-schedule.php"));
+		 $return .= '<div class="faireAction-box">
+			              <a class="btn universal-btn" href="' . $scheduleLink . '"><h4>View Full Schedule</h4></a>
+		             </div>';
+	 }
+    $return .= '</div>';
+
+    return $return;
+}
+
 ?>
