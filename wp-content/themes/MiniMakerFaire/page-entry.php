@@ -446,7 +446,6 @@ function displayEntryFooter($mtmLink, $scheduleLink) {
 					    </div>';
 	 }
     if(getTplPageURL("page-schedule.php")) {
-		 var_dump(getTplPageURL("page-schedule.php"));
 		 $return .= '<div class="faireAction-box">
 			              <a class="btn universal-btn" href="' . $scheduleLink . '"><h4>View Full Schedule</h4></a>
 		             </div>';
