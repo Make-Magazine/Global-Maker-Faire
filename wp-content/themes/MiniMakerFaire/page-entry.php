@@ -417,7 +417,7 @@ function display_categories($catArray, $mtm) {
     $return = '<b>Categories:</b>';
     foreach ($catArray as $value) {
 		  // currently only would work if there is only the one meet-the-makers page
-        $return .= ' <a href="' . $mtm . '?category=' . str_replace("&amp;", "%26", $value) . '">' . $value . '</a>,';
+        $return .= ' <a href="' . $mtm . '?category=' . urlencode ($value) . '">' . $value . '</a>,';
     }
     return rtrim($return, ',');
   }
