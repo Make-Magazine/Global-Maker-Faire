@@ -153,140 +153,148 @@ get_header();
 <!-- wrapper to keep the different colored background -->
 <div class="container-fluid entry-page">
     <div class="row">
-        <div class="content col-xs-12">
-
-            <div class="container entry-page">
+        <div class="content col-xs-12">            
+            <div class="container entry-page">                
                 <div class="row">
+                    <?php
+                    //if entry is active and accepted display entry information
+                    if (is_array($entry) && isset($entry['status']) && $entry['status'] == 'active' && isset($entry[303]) && $entry[303] == 'Accepted') {
+                            ?>
                     <div class="col-md-8 col-sm-12 col-xs-12" id="viewEntry">
+                        <?php                                                
+                        //display schedule/location information if there is any
+                        /* if (!empty(display_entry_schedule($entryId))) {
+                          display_entry_schedule($entryId);
+                          } */
+                        ?>
+                        <div class="entry-type">
+                            <?php
+                            if ($displayFormType == true) {
+                                echo $formType;
+                            }
+                            ?>
+                        </div> <!-- / .entry-type -->
+
+                        <div class="entry-header">
+                            <h1><?php echo $project_title; ?></h1>
+                        </div> <!-- / . entry-header -->
+
                         <?php
-                        if (is_array($entry) && isset($entry['status']) && $entry['status'] == 'active' && isset($entry[303]) && $entry[303] == 'Accepted') {
-                            //display schedule/location information if there is any
-                            /* if (!empty(display_entry_schedule($entryId))) {
-                              display_entry_schedule($entryId);
-                              } */
-                            ?>
-                            <div class="entry-type">
-                                <?php
-                                if ($displayFormType == true) {
-                                    echo $formType;
-                                }
-                                ?>
-                            </div>
+                        /* This is where the social would go
+                          $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                          echo do_shortcode('[easy-social-share buttons="facebook,pinterest,reddit,twitter,linkedin,love,more"  morebutton_icon="dots" morebutton="2" counters=1 counter_pos="bottom" total_counter_pos="hidden" style="icon" fullwidth="yes" template="metro-retina" postid="' . $entryId . '" url="' . $url . '" text="' . $project_title . '"]');
+                         */
+                        ?>
+                        <p id="proj_img">
+                            <img class="img-responsive dispPhoto lazyload" src="<?php echo $project_photo; ?>" alt="<?php echo $project_title; ?>"/>
+                        </p>
+                        <p class="lead"><?php echo nl2br(make_clickable($project_short)); ?></p>
 
+                        <!-- Button to trigger video modal / should just show video like makerfaire does -->
+                        <?php
+                        if (!empty($project_video)) {
+                            $project_video = str_replace('http://', 'https://', $project_video);
+                            $dispVideo = str_replace('//vimeo.com', '//player.vimeo.com/video', $project_video);
+                            //youtube has two type of url formats we need to look for and change
+                            $videoID = parse_yturl($dispVideo);
+                            if ($videoID != '') {
+                                $dispVideo = 'https://www.youtube.com/embed/' . $videoID;
+                            }
+                            echo '<div class="entry-video">
+                                        <iframe src="' . $dispVideo . '" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                      </div>';
+                        }
+                        ?>
+
+                        <?php
+                        if (!empty($project_website)) {
+                            //$project_website = str_replace( 'http://', 'https://', $project_website );
+                            echo '<a href="' . $project_website . '" class="btn universal-btn entry-website" target="_blank">' . __('Project Website', 'MiniMakerFaire') . '</a>';
+                        }
+                        if ($categoryDisplay) {
+                            ?>
+                            <div class="entry-categories"><?php echo $categoryDisplay; ?></div><?php
+                        }
+                        ?>
+                    </div> <!-- / #viewEntry-->
+                    <div class="col-md-4 col-sm-12 col-xs-12" id="entrySidebar">
+                        <div class="sidebar-type">
                             <div class="entry-header">
-                                <h1><?php echo $project_title; ?></h1>
-                            </div>
-
-                            <?php
-                            /* This is where the social would go
-                              $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                              echo do_shortcode('[easy-social-share buttons="facebook,pinterest,reddit,twitter,linkedin,love,more"  morebutton_icon="dots" morebutton="2" counters=1 counter_pos="bottom" total_counter_pos="hidden" style="icon" fullwidth="yes" template="metro-retina" postid="' . $entryId . '" url="' . $url . '" text="' . $project_title . '"]');
-                             */
-                            ?>
-                            <p id="proj_img">
-                                <img class="img-responsive dispPhoto lazyload" src="<?php echo $project_photo; ?>" alt="<?php echo $project_title; ?>"/>
-                            </p>
-                            <p class="lead"><?php echo nl2br(make_clickable($project_short)); ?></p>
-
-                            <!-- Button to trigger video modal / should just show video like makerfaire does -->
-                            <?php
-                            if (!empty($project_video)) {
-                                $project_video = str_replace('http://', 'https://', $project_video);
-                                $dispVideo = str_replace('//vimeo.com', '//player.vimeo.com/video', $project_video);
-                                //youtube has two type of url formats we need to look for and change
-                                $videoID = parse_yturl($dispVideo);
-                                if ($videoID != '') {
-                                    $dispVideo = 'https://www.youtube.com/embed/' . $videoID;
-                                }
-                                echo '<div class="entry-video">
-                  <iframe src="' . $dispVideo . '" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>';
-                            }
-                            ?>
-
-                            <?php
-                            if (!empty($project_website)) {
-                                //$project_website = str_replace( 'http://', 'https://', $project_website );
-                                echo '<a href="' . $project_website . '" class="btn universal-btn entry-website" target="_blank">' . __('Project Website', 'MiniMakerFaire') . '</a>';
-                            }
-                            if ($categoryDisplay) {
-                                ?><div class="entry-categories"><?php echo $categoryDisplay; ?></div><?php }
-                            ?>
-
-
-                        </div>
-                        <div class="col-md-4 col-sm-12 col-xs-12" id="entrySidebar">
-                            <div class="sidebar-type">
-                                <div class="entry-header">
-                                    <h2>
-                                        <?php
-                                        if ($isGroup)
-                                            _e('Group', 'MiniMakerFaire');
-                                        elseif ($isList)
-                                            _e('Makers', 'MiniMakerFaire');
-                                        else
-                                            _e('Maker', 'MiniMakerFaire');
-                                        ?>
-                                    </h2>
-                                </div>
-
-                                <?php
-                                if ($isGroup) {
-                                    echo '<div class="entry-page-maker-info">
-			          <div class="row pad-bottom">
-							 <div class="col-xs-12">
-							    <h3>' . $groupname . '</h3>
-							 </div>
-							 <div class="col-xs-6">
-                         <div class="entry-page-maker-img">
-                  ', (!empty($groupphoto) ? '<img class="img-responsive lazyload" src="' . legacy_get_fit_remote_image_url($groupphoto, 200, 250) . '" alt="' . $groupname . '"></div></div></div>' : '<img class="img-responsive lazyload" src="' . get_stylesheet_directory_uri() . '/img/maker-placeholder.jpg" alt="Group Image">
-						       </div>
-							 </div>
-						</div>');
-                                    echo '<div class="row">
-				          <div class="col-xs-12">
-                         <p>' . make_clickable($groupbio) . '</p>
-							 </div>
-                  </div>
-                </div>';
-                                } else {
-                                    foreach ($makers as $maker) {
-                                        if ($maker['firstname'] != '' && $maker['lastname'] != '') {
-                                            echo '<div class="entry-page-maker-info">
-				          <div class="row pad-bottom">
-							   <div class="col-xs-12">
-								  <h3>' . $maker['firstname'] . ' ' . $maker['lastname'] . '</h3>
-								</div>
-								<div class="col-xs-6">
-                           <div class="entry-page-maker-img">
-                      ', (!empty($maker['photo']) ? '<img class="img-responsive lazyload" src="' . legacy_get_fit_remote_image_url($maker['photo'], 200, 250) . '" alt="' . $maker['firstname'] . ' ' . $maker['lastname'] . '"></div></div></div>' : '<img class="img-responsive lazyload" src="' . get_stylesheet_directory_uri() . '/img/maker-placeholder.jpg" alt="Maker Image">
-							      </div>
-								</div>
-							 </div>');
-                                            echo '<div class="row">
-				              <div class="col-xs-12">
-                             <p>' . make_clickable($maker['bio']) . '</p>
-								  </div>
-                       </div>
-                    </div>';
-                                        }
+                                <h2>
+                                    <?php
+                                    if ($isGroup) {
+                                        _e('Group', 'MiniMakerFaire');
+                                    } elseif ($isList) {
+                                        _e('Makers', 'MiniMakerFaire');
+                                    } else {
+                                        _e('Maker', 'MiniMakerFaire');
                                     }
-                                }
-                                ?>
-                                <br />
-                                <?php
-                                if (display_groupEntries($entryId)) {
-                                    echo display_groupEntries($entryId);
-                                }
-                            } else { //entry is not active
-                                echo '<h2>' . _e('Invalid entry', 'MiniMakerFaire') . '</h2>';
+                                    ?>
+                                </h2>
+                            </div> <!-- close .entry-header -->
+
+                            <?php
+                            if ($isGroup) {
+                                echo '<div class="entry-page-maker-info">
+                                             <div class="row pad-bottom">
+                                                 <div class="col-xs-12">
+                                                     <h3>' . $groupname . '</h3>
+						</div>
+						<div class="col-xs-6">
+                                                     <div class="entry-page-maker-img">' .
+                                (!empty($groupphoto) ? '<img class="img-responsive lazyload" src="' . legacy_get_fit_remote_image_url($groupphoto, 200, 250) . '" alt="' . $groupname . '">' : '<img class="img-responsive lazyload" src="' . get_stylesheet_directory_uri() . '/img/maker-placeholder.jpg" alt="Group Image">')
+                                . '  </div>
+                                                 </div>
+                                             </div>
+                                             <div class="row">
+                                                 <div class="col-xs-12">
+                                                     <p>' . make_clickable($groupbio) . '</p>
+                                                 </div>
+                                             </div>
+                                         </div><!-- /.entry-page-maker-info -->';
+                            } else {
+                                foreach ($makers as $maker) {
+                                    if ($maker['firstname'] != '' && $maker['lastname'] != '') {
+                                        echo '<div class="entry-page-maker-info">
+                                                     <div class="row pad-bottom">
+							<div class="col-xs-12">
+                                                             <h3>' . $maker['firstname'] . ' ' . $maker['lastname'] . '</h3>
+							</div>
+							<div class="col-xs-6">
+                                                             <div class="entry-page-maker-img">' .
+                                        (!empty($maker['photo']) ? '<img class="img-responsive lazyload" src="' . legacy_get_fit_remote_image_url($maker['photo'], 200, 250) . '" alt="' . $maker['firstname'] . ' ' . $maker['lastname'] . '">' : '<img class="img-responsive lazyload" src="' . get_stylesheet_directory_uri() . '/img/maker-placeholder.jpg" alt="Maker Image">') .
+                                        '</div>
+							</div>
+                                                     </div>
+                                                     <div class="row">
+                                                         <div class="col-xs-12">
+                                                             <p>' . make_clickable($maker['bio']) . '</p>
+							</div>
+                                                     </div>
+                                                 </div>';
+                                    }
+                                } //end foreach makers
+                            } //end else $isGroup
+                            ?>
+                            <br />
+                            <?php
+                            if (display_groupEntries($entryId)) {
+                                echo display_groupEntries($entryId);
+                            }
+                            
+                            ?>
+                            
+                        </div><!-- .sidebar-type -->
+                    </div><!--#entrySidebar-->
+                    <?php
+                    } else { //entry is not active
+                                echo '<h2>';
+                                _e('Invalid entry', 'MiniMakerFaire');
+                                echo '</h2>';
                             }
                             ?>
-                        </div>
-
-                    </div><!--column-->
-                </div><!--row-->
-            </div><!--container-->
+                </div><!--row-->                
+            </div><!--entry-page-->
             <div class="entry-footer"><?php echo displayEntryFooter($formMtmUrl, $formScheduleUrl); ?></div>
         </div>
     </div>
@@ -323,12 +331,12 @@ function display_entry_schedule($entry_id) {
         ?>
         <div id="entry-schedule">
             <span class="faireBadge pull-left">
-                <?php
-                if ($faire_logo != '') {
-                    $faire_logo = legacy_get_fit_remote_image_url($faire_logo, 51, 51);
-                    echo '<a href="' . $faire_url . '"><img src="' . $faire_logo . '" alt="' . $faire . ' - badge" /></a>';
-                }
-                ?>
+        <?php
+        if ($faire_logo != '') {
+            $faire_logo = legacy_get_fit_remote_image_url($faire_logo, 51, 51);
+            echo '<a href="' . $faire_url . '"><img src="' . $faire_logo . '" alt="' . $faire . ' - badge" /></a>';
+        }
+        ?>
             </span>
             <span class="faireTitle pull-left">
                 <a href="<?= $faire_url ?>">
@@ -336,12 +344,12 @@ function display_entry_schedule($entry_id) {
                     <div class="faireName"><?php echo ucwords(str_replace('-', ' ', $faire)); ?></div>
                 </a>
             </span>
-            <?php // TBD - dynamically set these links and images  ?>
+        <?php // TBD - dynamically set these links and images   ?>
             <div class="faireActions">
                 <span class="pull-right">
                     <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-Map_2016__8.5x11_Pg-2.pdf">
                         <img class="actionIcon" src="https://makerfaire.com/wp-content/uploads/2016/01/icon-map.png" alt="Map Icon" width="40px" scale="0">
-                        <?php __('Event Map', 'MiniMakerFaire') ?>
+        <?php __('Event Map', 'MiniMakerFaire') ?>
                     </a>
                 </span>
                 <span class="pull-right">
@@ -356,28 +364,28 @@ function display_entry_schedule($entry_id) {
             <div class="clear"></div>
 
             <table>
-                <?php
-                foreach ($results as $row) {
-                    echo '<tr>';
-                    if (!is_null($row->start_dt)) {
-                        $start_dt = strtotime($row->start_dt);
-                        $end_dt = strtotime($row->end_dt);
-                        echo '<td><b>' . date("l, F j", $start_dt) . '<b></td>'
-                        . ' <td>' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</td>';
-                    } else {
-                        global $faire_start;
-                        global $faire_end;
+        <?php
+        foreach ($results as $row) {
+            echo '<tr>';
+            if (!is_null($row->start_dt)) {
+                $start_dt = strtotime($row->start_dt);
+                $end_dt = strtotime($row->end_dt);
+                echo '<td><b>' . date("l, F j", $start_dt) . '<b></td>'
+                . ' <td>' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</td>';
+            } else {
+                global $faire_start;
+                global $faire_end;
 
-                        $faire_start = strtotime($faire_start);
-                        $faire_end = strtotime($faire_end);
+                $faire_start = strtotime($faire_start);
+                $faire_end = strtotime($faire_end);
 
-                        //tbd change this to be dynamically populated
-                        echo '<td>' . __('Friday, Saturday and Sunday', 'MiniMakerFaire') . ': ' . date("F j", $faire_start) . '-' . date("j", $faire_end) . '</td>';
-                    }
-                    echo '<td>' . $row->area . '</td><td>' . ($row->nicename != '' ? $row->nicename : $row->subarea) . '</td>';
-                    echo '</tr>';
-                }
-                ?>
+                //tbd change this to be dynamically populated
+                echo '<td>' . __('Friday, Saturday and Sunday', 'MiniMakerFaire') . ': ' . date("F j", $faire_start) . '-' . date("j", $faire_end) . '</td>';
+            }
+            echo '<td>' . $row->area . '</td><td>' . ($row->nicename != '' ? $row->nicename : $row->subarea) . '</td>';
+            echo '</tr>';
+        }
+        ?>
             </table>
         </div>
         <?php
@@ -410,7 +418,7 @@ function display_groupEntries($entryID) {
                 $link_entryID = ($type == 'parent' ? $row->childID : $row->parentID);
                 $entry = GFAPI::get_entry($link_entryID);
                 //Title
-                $project_title = (string) $entry['151'];
+                $project_title = (isset($entry['151']) ? (string) $entry['151'] : '');
                 $project_title = preg_replace('/\v+|\\\[rn]/', '<br/>', $project_title);
                 $return .= '<div class="col-md-4 col-sm-6">';
                 $return .= '<a href="/maker/entry/' . $link_entryID . '">' . $project_title . '</a></div>';
@@ -435,7 +443,6 @@ function display_categories($catArray, $mtm) {
 }
 
 function getTplPageURL($TEMPLATE_NAME) {
-    $url;
     $pages = query_posts(array(
         'post_type' => 'page',
         'post_status' => array('publish'),
