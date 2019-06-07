@@ -22,19 +22,6 @@ function my_custom_form_setting( $settings, $form ) {
       <td>&nbsp;</td>
       <td><b>Note: The form Type must be set to "Call for Makers" for the Meet the Makers page, individual maker pages, and schedule page to work properly.</b></td>
     </tr>';
-  $settings['Form Basics']['form_urls'] = '
-    <tr>
-      <th>Meet Makers URL</th>
-      <td><input type="text" id="form_mtm_url" name="form_mtm_url" value="' . rgar($form, 'form_mtm_url') . '" /></td>
-    </tr>
-	 <tr>
-      <th>Schedule Page URL</th>
-      <td><input type="text" id="form_schedule_url" name="form_schedule_url" value="' . rgar($form, 'form_schedule_url') . '" /></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td><b>Note: You must set the url specific for the meet the makers and schedule page associated with this form for category tags to function correctly.</b></td>
-    </tr>';
 
   $start_hour_dd         = '';
   $start_minute_dd       = '';
@@ -118,15 +105,42 @@ function my_custom_form_setting( $settings, $form ) {
         </select>
       </td>
     </tr>';
+    
+    //entry page settings
+  $settings['Form Basics']['form_urls'] = '
+    <tr>
+            <td colspan="2">
+                    <h4 class="gf_settings_subgroup_title">Entry Page</h4>
+            </td>
+    </tr>  
+    <tr>
+      <th>Meet the Makers URL</th>
+      <td><input type="text" id="form_mtm_url" name="form_mtm_url" value="' . rgar($form, 'form_mtm_url') . '" /> &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="checkbox" name="form_disp_mtm_button" value="hide" '.(rgar($form, 'form_disp_mtm_button')==='hide'?'checked':'').'> Hide \'Look for More Makers\' button
+        </td>
+    </tr>
+	 <tr>
+      <th>Schedule Page URL</th>
+      <td><input type="text" id="form_schedule_url" name="form_schedule_url" value="' . rgar($form, 'form_schedule_url') . '" />
+           &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="checkbox" name="form_disp_schedule_button" value="hide" '.(rgar($form, 'form_disp_schedule_button')==='hide'?'checked':'').'> Hide \'View Full Schedule\' button
+       </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><b>Note: You must set the url specific for the meet the makers and schedule page associated with this form for category tags to function correctly.</b></td>
+    </tr>';    
   return $settings;
 }
 
 /* This will save the form type selected by admin users */
 add_filter( 'gform_pre_form_settings_save', 'save_form_type_form_setting' );
 function save_form_type_form_setting($form) {
-  $form['form_type']            = rgpost('form_type');
-  $form['form_mtm_url']         = rgpost('form_mtm_url');
-  $form['form_schedule_url']    = rgpost('form_schedule_url');
+  $form['form_type']                    = rgpost('form_type');
+  $form['form_mtm_url']                 = rgpost('form_mtm_url');
+  $form['form_schedule_url']            = rgpost('form_schedule_url');
+  $form['form_disp_mtm_button']         = rgpost('form_disp_mtm_button');
+  $form['form_disp_schedule_button']    = rgpost('form_disp_schedule_button');
 
   //faire open date/time
   $form['mf_faire_open']        = rgpost('mf_faire_open');
