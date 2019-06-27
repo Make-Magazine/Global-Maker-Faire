@@ -232,6 +232,10 @@ class GWAPI {
 
 		GravityPerks::log_debug( 'pre_set_site_transient_update_plugins_filter() start. Retrieves download package for individual prodyct auto-updates.' );
 
+		if ( ! is_object( $_transient_data ) ) {
+			$_transient_data = new stdClass;
+		}
+
 		if ( empty( $_transient_data->response ) ) {
 			$_transient_data->response = array();
 		}

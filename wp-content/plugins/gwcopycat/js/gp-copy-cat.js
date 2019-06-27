@@ -161,13 +161,17 @@
 						sourceValues = sourceValues.filter( function( item, pos ) {
 							return item != '';
 						} );
-						value = gform.applyFilters( 'gppc_copied_value', self.cleanValueByInputType( sourceValues.join( ' ' ), $targetElem.attr( 'type' ) ), $targetElem, field );
+						value = gform.applyFilters( 'gppc_copied_value', self.cleanValueByInputType( sourceValues.join( ' ' ), $targetElem.attr( 'type' ) ), $targetElem, field, sourceValues );
 
 						// If we're targeting a choice-based Pricing field - and - the source value does not contain a
 						// pipe (value|price), find the price-excluded value match in the target.
 						if( $targetElem.parents( '.gfield_price' ).length > 0 && $targetElem.is( 'select, input[type="radio"], input[type="checkbox"]' ) && value.indexOf( '|' ) === -1 ) {
 							$targetElem.val( $targetElem.find( 'option[value^="' + value + '|"]' ).attr( 'value' ) );
 						} else {
+							// If copying to a select, make sure the value we are copying exists. If not, select the first option.
+							if( $targetElem.is( 'select' ) && $targetElem.find( 'option[value="' + value + '"]' ).length === 0 ) {
+								value = $targetElem.find( 'option:first' ).val();
+							}
 							$targetElem.val( value );
 						}
 					}

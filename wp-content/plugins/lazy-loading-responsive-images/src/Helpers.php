@@ -19,6 +19,13 @@ use FlorianBrinkmann\LazyLoadResponsiveImages\Settings as Settings;
 class Helpers {
 
 	/**
+	 * Hint if the plugin is disabled for this post.
+	 *
+	 * @var null|int
+	 */
+	private $disabled_for_current_post = null;
+
+	/**
 	 * Checks if this is a request at the backend.
 	 *
 	 * @return bool true if is admin request, otherwise false.
@@ -83,6 +90,29 @@ class Helpers {
 	}
 
 	/**
+	 * Check if plugin is disabled for current post.
+	 *
+	 * @return bool true if disabled, false otherwise.
+	 */
+	public function is_disabled_for_post() {
+		// Check if the plugin is disabled.
+		if ( null === $this->disabled_for_current_post ) {
+			$this->disabled_for_current_post = absint( get_post_meta( get_the_ID(), 'lazy_load_responsive_images_disabled', true ) );
+		}
+
+		/**
+		 * Filter for disabling Lazy Loader on specific pages/posts/….
+		 *
+		 * @param boolean True if lazy loader should be disabled, false if not.
+		 */
+		if ( 1 === $this->disabled_for_current_post || true === apply_filters( 'lazy_loader_disabled', false ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Sanitize comma separated list of class names.
 	 *
 	 * @param string $class_names Comma separated list of HTML class names.
@@ -114,7 +144,7 @@ class Helpers {
 	}
 
 	/**
-	 * Sanitize comma separated list of class names.
+	 * Sanitize checkbox.
 	 *
 	 * @link https://github.com/WPTRT/code-examples/blob/master/customizer/sanitization-callbacks.php
 	 *
@@ -124,6 +154,17 @@ class Helpers {
 	 */
 	public function sanitize_checkbox( $checked ) {
 		return ( ( isset( $checked ) && true == $checked ) ? true : false );
+	}
+
+	/**
+	 * Sanitize textarea input.
+	 *
+	 * @param bool $checked Whether the checkbox is checked.
+	 *
+	 * @return bool Whether the checkbox is checked.
+	 */
+	public function sanitize_textarea( $value ) {
+		return strip_tags( $value );
 	}
 
 	/**

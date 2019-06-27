@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 'zu_ZA' (Zulu)
  * 'zz_TR' (Zazaki)
  */
-$languages = array(
+return array(
 	'af' => array(
 		'code'     => 'af',
 		'locale'   => 'af',
@@ -624,6 +624,11 @@ $languages = array(
 		'facebook' => 'km_KH',
 	),
 	'kn' => array(
+		'code'     => 'kn',
+		'locale'   => 'kn',
+		'name'     => 'ಕನ್ನಡ',
+		'dir'      => 'ltr',
+		'flag'     => 'in',
 		'facebook' => 'kn_IN',
 	),
 	'ko_KR' => array(

@@ -58,13 +58,6 @@ class Plugin {
 	private $src_placeholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
 	/**
-	 * Hint if the plugin is disabled for this page.
-	 *
-	 * @var null|int
-	 */
-	private $disabled_for_current_post = null;
-
-	/**
 	 * Plugin constructor.
 	 */
 	public function __construct() {
@@ -152,39 +145,29 @@ class Plugin {
 	 * @return string Modified HTML.
 	 */
 	public function filter_markup( $content ) {
-		// Check if the plugin is disabled.
-		if ( null === $this->disabled_for_current_post ) {
-			$this->disabled_for_current_post = absint( get_post_meta( get_the_ID(), 'lazy_load_responsive_images_disabled', true ) );
-		}
-
-		/**
-		 * Filter for disabling Lazy Loader on specific pages/posts/….
-		 *
-		 * @param boolean True if lazy loader should be disabled, false if not.
-		 */
-		if ( 1 === $this->disabled_for_current_post || true === apply_filters( 'lazy_loader_disabled', false ) ) {
+		if ( $this->helpers->is_disabled_for_post() ) {
 			return $content;
 		}
 
 		// Check if we have no content.
 		if ( empty( $content ) ) {
 			return $content;
-		} // End if().
+		}
 
 		// Check if we are on a feed page.
 		if ( is_feed() ) {
 			return $content;
-		} // End if().
+		}
 
 		// Check if this is a request in the backend.
 		if ( $this->helpers->is_admin_request() ) {
 			return $content;
-		} // End if().
+		}
 
 		// Check for AMP page.
 		if ( true === $this->helpers->is_amp_page() ) {
 			return $content;
-		} // End if().
+		}
 
 		// Disable libxml errors.
 		libxml_use_internal_errors( true );
@@ -192,8 +175,16 @@ class Plugin {
 		// Create new \DOMDocument object.
 		$dom = new \DOMDocument();
 
+		// Preserve html entities and script tags.
+		// @link https://github.com/ivopetkov/html5-dom-document-php.
+		$content = preg_replace( '/&([a-zA-Z]*);/', 'lazy-loading-responsive-images-entity1-$1-end', $content );
+		$content = preg_replace( '/&#([0-9]*);/', 'lazy-loading-responsive-images-entity2-$1-end', $content );
+		$content = str_replace( '<script>', '<!--<script>', $content );
+		$content = str_replace( '<script ', '<!--<script ', $content );
+		$content = str_replace( '</script>', '</script>-->', $content );
+
 		// Load the HTML.
-		// Trick with <?xml endocing="utf-8" loadHTML() method of https://github.com/ivopetkov/html5-dom-document-php
+		// Trick with <?xml endocing="utf-8" loadHTML() method from https://github.com/ivopetkov/html5-dom-document-php.
 		$dom->loadHTML( '<?xml encoding="utf-8" ?>' . $content, 0 | LIBXML_NOENT );
 
 		$xpath = new \DOMXPath( $dom );
@@ -224,37 +215,47 @@ class Plugin {
 			 */
 			if ( ! empty( $result ) || $node->hasAttribute( 'data-no-lazyload' ) || in_array( 'lazyload', $node_classes, true ) ) {
 				continue;
-			} // End if().
+			}
 
 			// Check if it is one of the supported elements and support for it is enabled.
 			if ( 'img' === $node->tagName && 'source' !== $node->parentNode->tagName && 'picture' !== $node->parentNode->tagName ) {
 				$dom = $this->modify_img_markup( $node, $dom );
 				$is_modified = true;
-			} // End if().
+			}
 
 			if ( 'picture' === $node->tagName ) {
 				$dom = $this->modify_picture_markup( $node, $dom );
 				$is_modified = true;
-			} // End if().
+			}
 
 			if ( '1' === $this->settings->enable_for_iframes && 'iframe' === $node->tagName ) {
 				$dom = $this->modify_iframe_markup( $node, $dom );
 				$is_modified = true;
-			} // End if().
+			}
 
 			if ( '1' === $this->settings->enable_for_videos && 'video' === $node->tagName ) {
 				$dom = $this->modify_video_markup( $node, $dom );
 				$is_modified = true;
-			} // End if().
+			}
 
 			if ( '1' === $this->settings->enable_for_audios && 'audio' === $node->tagName ) {
 				$dom = $this->modify_audio_markup( $node, $dom );
 				$is_modified = true;
-			} // End if().
-		} // End foreach().
+			}
+		}
 
 		if ( true === $is_modified ) {
 			$content = $this->helpers->save_html( $dom );
+		}
+
+		// Restore the entities and script tags.
+		// @link https://github.com/ivopetkov/html5-dom-document-php/blob/9560a96f63a7cf236aa18b4f2fbd5aab4d756f68/src/HTML5DOMDocument.php#L343.
+		if ( strpos( $content, 'lazy-loading-responsive-images-entity') !== false || strpos( $content, '<!--<script' ) !== false ) {
+			$content = preg_replace('/lazy-loading-responsive-images-entity1-(.*?)-end/', '&$1;', $content );
+			$content = preg_replace('/lazy-loading-responsive-images-entity2-(.*?)-end/', '&#$1;', $content );
+			$content = str_replace( '<!--<script>', '<script>', $content );
+			$content = str_replace( '<!--<script ', '<script ', $content );
+			$content = str_replace( '</script>-->', '</script>', $content );
 		}
 
 		return $content;
@@ -272,6 +273,12 @@ class Plugin {
 	public function modify_img_markup( $img, $dom, $create_noscript = true ) {
 		// Save the image original attributes.
 		$img_attributes = $img->attributes;
+
+		// Check if the element already has a data-src attribute (might be the case for
+		// plugins that bring their own lazy load functionality) and skip it to prevent conflicts.
+		if ( $img->hasAttribute( 'data-src' ) ) {
+			return $dom;
+		}
 
 		// Add noscript element.
 		if ( true === $create_noscript ) {
@@ -316,7 +323,7 @@ class Plugin {
 				// Remove srcset attribute.
 				$img->removeAttribute( 'srcset' );
 			}
-		} // End if().
+		}
 
 		// Get src value.
 		$src = $img->getAttribute( 'src' );
@@ -331,8 +338,12 @@ class Plugin {
 
 			if ( '' !== $img_width && '' !== $img_height ) {
 				$img->setAttribute( 'data-aspectratio', "$img_width/$img_height" );
-			} // End if().
-		} // End if().
+			}
+		}
+
+		if ( '1' === $this->settings->load_native_loading_plugin ) {
+			$img->setAttribute( 'loading', 'lazy' );
+		}
 
 		// Get the classes.
 		$classes = $img->getAttribute( 'class' );
@@ -384,8 +395,8 @@ class Plugin {
 
 						// Remove sizes attribute.
 						$source_element->removeAttribute( 'sizes' );
-					} // End if().
-				} // End if().
+					}
+				}
 
 				// Check for srcset.
 				if ( $source_element->hasAttribute( 'srcset' ) ) {
@@ -407,7 +418,7 @@ class Plugin {
 						// Remove srcset attribute.
 						$source_element->removeAttribute( 'srcset' );
 					}
-				} // End if().
+				}
 
 				if ( $source_element->hasAttribute( 'src' ) ) {
 					// Get src value.
@@ -418,14 +429,14 @@ class Plugin {
 
 					// Set data URI for src attribute.
 					$source_element->setAttribute( 'src', $this->src_placeholder );
-				} // End if().
+				}
 			}
-		} // End if().
+		}
 
 		// Loop the img element.
 		foreach ( $img_element as $img ) {
 			$this->modify_img_markup( $img, $dom, false );
-		} // End foreach().
+		}
 
 		return $dom;
 	}
@@ -454,7 +465,11 @@ class Plugin {
 			$iframe->setAttribute( 'data-src', $src );
 		} else {
 			return $dom;
-		} // End if().
+		}
+
+		if ( '1' === $this->settings->load_native_loading_plugin ) {
+			$iframe->setAttribute( 'loading', 'lazy' );
+		}
 
 		// Get the classes.
 		$classes = $iframe->getAttribute( 'class' );
@@ -496,7 +511,7 @@ class Plugin {
 
 			// Set data-poster value.
 			$video->setAttribute( 'data-poster', $poster );
-		} // End if().
+		}
 
 		// Set preload to none.
 		$video->setAttribute( 'preload', 'none' );
@@ -595,6 +610,10 @@ class Plugin {
 	 * Enqueues scripts and styles.
 	 */
 	public function enqueue_script() {
+		if ( $this->helpers->is_disabled_for_post() ) {
+			return;
+		}
+
 		// Enqueue lazysizes.
 		wp_enqueue_script( 'lazysizes', plugins_url( '/lazy-loading-responsive-images/js/lazysizes.min.js' ), '', false, true );
 
@@ -602,13 +621,23 @@ class Plugin {
 		if ( '1' === $this->settings->load_unveilhooks_plugin || '1' === $this->settings->enable_for_audios || '1' === $this->settings->enable_for_videos ) {
 			// Enqueue unveilhooks plugin.
 			wp_enqueue_script( 'lazysizes-unveilhooks', plugins_url( '/lazy-loading-responsive-images/js/ls.unveilhooks.min.js' ), 'lazysizes', false, true );
-		} // End if().
+		}
 
 		// Check if unveilhooks plugin should be loaded.
 		if ( '1' === $this->settings->load_aspectratio_plugin ) {
 			// Enqueue unveilhooks plugin.
 			wp_enqueue_script( 'lazysizes-aspectratio', plugins_url( '/lazy-loading-responsive-images/js/ls.aspectratio.min.js' ), 'lazysizes', false, true );
-		} // End if().
+		}
+
+		// Check if native loading plugin should be loaded.
+		if ( '1' === $this->settings->load_native_loading_plugin ) {
+			wp_enqueue_script( 'lazysizes-native-loading', plugins_url( '/lazy-loading-responsive-images/js/ls.native-loading.min.js' ), 'lazysizes', false, true );
+		}
+
+		// Include custom lazysizes config if not empty.
+		if ( '' !== $this->settings->lazysizes_config ) {
+			wp_add_inline_script( 'lazysizes', $this->settings->lazysizes_config, 'before' );
+		}
 	}
 
 	/**
@@ -619,6 +648,10 @@ class Plugin {
 	 * echo it.
 	 */
 	public function add_inline_style() {
+		if ( $this->helpers->is_disabled_for_post() ) {
+			return;
+		}
+
 		// Create loading spinner style if needed.
 		$spinner_styles = '';
 		$spinner_color  = $this->settings->loading_spinner_color;
@@ -629,23 +662,41 @@ class Plugin {
 		if ( '1' === $this->settings->loading_spinner ) {
 			$spinner_styles = sprintf(
 				'.lazyloading {
-  color: transparent;
-  opacity: 1;
-  transition: opacity 300ms;
-  background: url("data:image/svg+xml,%s") no-repeat;
-  background-size: 2em 2em;
-  background-position: center center;
+	color: transparent;
+	opacity: 1;
+	transition: opacity 300ms;
+	transition: opacity var(--lazy-loader-animation-duration);
+	background: url("data:image/svg+xml,%s") no-repeat;
+	background-size: 2em 2em;
+	background-position: center center;
 }
 
 .lazyloaded {
-  transition: none;
+	animation-name: loaded;
+	animation-duration: 300ms;
+	animation-duration: var(--lazy-loader-animation-duration);
+	transition: none;
+}
+
+@keyframes loaded {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }',
 				rawurlencode( $spinner_markup )
 			);
-		} // End if().
+		}
 
 		// Display the default styles.
-		$default_styles = "<style>.lazyload {
+		$default_styles = "<style>:root {
+			--lazy-loader-animation-duration: 300ms;
+		}
+		  
+		.lazyload {
 	display: block;
 }
 
@@ -658,6 +709,7 @@ class Plugin {
 		.lazyloaded {
 			opacity: 1;
 			transition: opacity 300ms;
+			transition: opacity var(--lazy-loader-animation-duration);
 		}$spinner_styles</style>";
 
 		/**
@@ -712,6 +764,8 @@ class Plugin {
 			'lazy_load_responsive_images_loading_spinner',
 			'lazy_load_responsive_images_loading_spinner_color',
 			'lazy_load_responsive_images_granular_disable_option',
+			'lazy_load_responsive_images_native_loading_plugin',
+			'lazy_load_responsive_images_lazysizes_config',
 		);
 
 		// Delete options.
