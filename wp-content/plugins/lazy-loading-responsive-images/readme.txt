@@ -2,8 +2,8 @@
 Contributors: FlorianBrinkmann, MarcDK
 Tags: lazysizes, lazy loading, performance, images
 Requires at least: 4.9.8
-Tested up to: 5.2.1
-Stable tag: 4.1.0
+Tested up to: 5.2.2
+Stable tag: 5.0.0
 Requires PHP: 5.3
 
 == Description ==
@@ -101,6 +101,16 @@ The CSS from the example are the default styles that are used by the plugin (wit
 There is a textarea in the plugin settings where you can insert custom settings for the lazysizes config.
 
 == Changelog ==
+
+= 5.0.0 – 28.06.2019 =
+
+**Changed**
+
+* Increased priority for the calls of `the_content` and `post_thumbnail_html` filters from `500` to `10001` to fix issues with the ShortPixel Image Optimizer. So if you use those filters and they need to run after the Lazy Loader, you need to increase the priority, too. This is the change that makes it a major version change. 
+
+**Fixed**
+
+* Audio shortcode stripped from frontend with all following content.
 
 = 4.1.0 – 31.05.2019 =
 

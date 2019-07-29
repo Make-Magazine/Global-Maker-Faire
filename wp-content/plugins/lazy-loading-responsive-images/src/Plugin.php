@@ -84,7 +84,7 @@ class Plugin {
 		), 10, 2 );
 
 		// Filter markup of the_content() calls to modify media markup for lazy loading.
-		add_filter( 'the_content', array( $this, 'filter_markup' ), 500 );
+		add_filter( 'the_content', array( $this, 'filter_markup' ), 10001 );
 
 		// Filter markup of Text widget to modify media markup for lazy loading.
 		add_filter( 'widget_text', array( $this, 'filter_markup' ) );
@@ -96,7 +96,7 @@ class Plugin {
 		add_filter( 'post_thumbnail_html', array(
 			$this,
 			'filter_markup',
-		), 500, 1 );
+		), 10001, 1 );
 
 		// Enqueues scripts and styles.
 		add_action( 'wp_enqueue_scripts', array(
@@ -175,10 +175,12 @@ class Plugin {
 		// Create new \DOMDocument object.
 		$dom = new \DOMDocument();
 
-		// Preserve html entities and script tags.
+		// Preserve html entities, script tags and conditional IE comments.
 		// @link https://github.com/ivopetkov/html5-dom-document-php.
 		$content = preg_replace( '/&([a-zA-Z]*);/', 'lazy-loading-responsive-images-entity1-$1-end', $content );
 		$content = preg_replace( '/&#([0-9]*);/', 'lazy-loading-responsive-images-entity2-$1-end', $content );
+		$content = preg_replace( '/<!--\[([\w ]*)\]>/', '<!--[$1]>-->', $content );
+		$content = str_replace( '<![endif]-->', '<!--<![endif]-->', $content );
 		$content = str_replace( '<script>', '<!--<script>', $content );
 		$content = str_replace( '<script ', '<!--<script ', $content );
 		$content = str_replace( '</script>', '</script>-->', $content );
@@ -253,6 +255,8 @@ class Plugin {
 		if ( strpos( $content, 'lazy-loading-responsive-images-entity') !== false || strpos( $content, '<!--<script' ) !== false ) {
 			$content = preg_replace('/lazy-loading-responsive-images-entity1-(.*?)-end/', '&$1;', $content );
 			$content = preg_replace('/lazy-loading-responsive-images-entity2-(.*?)-end/', '&#$1;', $content );
+			$content = preg_replace( '/<!--\[([\w ]*)\]>-->/', '<!--[$1]>', $content );
+			$content = str_replace( '<!--<![endif]-->', '<![endif]-->', $content );
 			$content = str_replace( '<!--<script>', '<script>', $content );
 			$content = str_replace( '<!--<script ', '<script ', $content );
 			$content = str_replace( '</script>-->', '</script>', $content );
