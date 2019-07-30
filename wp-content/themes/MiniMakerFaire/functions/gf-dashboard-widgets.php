@@ -20,11 +20,11 @@
 // Add new dashboard widget
 ////////////////////////////////////////////////////////////////////
   function add_dashboard_widgets() {
-    add_meta_box( 'dashboard_welcome', 'Welcome! Let’s get started:', 'add_welcome_widget', 'dashboard', 'normal', 'high' );
+    //add_meta_box( 'dashboard_welcome', 'Welcome! Let’s get started:', 'add_welcome_widget', 'dashboard', 'normal', 'high' );
     add_meta_box('rg_forms_dashboard','Forms',array( 'RGForms', 'dashboard' ),'dashboard','side' );
   }
 
-  function add_welcome_widget(){ ?>
+  /*function add_welcome_widget(){ ?>
 
 <img style="float:right;" src="https://makerfaire.com/wp-content/uploads/2015/03/MF-Relations_Icon_SetUp.jpg" alt="MF-Relations_Icon_SetUp" width="75" height="75" align="left" hspace="10" />
 
@@ -129,5 +129,5 @@ The left navigation bar is your control center for your site.
   Get started!</p>
   <img style="width:100%;height:auto;" src="/wp-content/themes/MiniMakerFaire/img/makey_panel-br.png" />
 
-  <?php }
+  <?php }*/
   add_action( 'wp_dashboard_setup', 'add_dashboard_widgets' );
