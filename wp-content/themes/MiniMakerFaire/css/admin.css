@@ -1,3 +1,6 @@
+.gf_entries .gv-approve-column {
+    display: none;
+}
 .appearance_page_custom-header #headimg {
   background-repeat: no-repeat;
   border: none;
