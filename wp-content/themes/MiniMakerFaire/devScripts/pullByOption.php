@@ -6,7 +6,6 @@ global $wpdb;
 $parmValue = '';
 if ((isset($_GET['optionValue']) && trim($_GET['optionValue']) != '')) {
     $parmValue = trim($_GET['optionValue']);
-// echo 'Parameter Value = ' . $parmValue . '<br>';
 }
 
 $blogSql = "select blog_id, domain from wp_blogs  ORDER BY `wp_blogs`.`blog_id` ASC";
@@ -40,12 +39,12 @@ if ($option != '') {
                             array('option_id' => $option_id)
                     );
                 }
+                $blogArray[] = array(
+                    'blog_id' => $blogID,
+                    'blog_name' => $blogrow['domain'],
+                    'optionValue' => $optionValue
+                );
             }
-            $blogArray[] = array(
-                'blog_id' => $blogID,
-                'blog_name' => $blogrow['domain'],
-                'optionValue' => $optionValue
-            );
         }
     }
 }
@@ -130,12 +129,11 @@ if ($option != '') {
             } else {
                 ?>
                 <div style="float: left; width: 100%">
-                    Returning results for Option - <?php
-            echo $option;
-            if ($parmValue != '') {
-                echo " Option Value - $parmValue";
-            }
-                ?>
+                    Returning results for Option - <?php echo $option;
+                    if ($findValue != '') {
+                        echo " Option Value - $parmValue";
+                    } ?>
+                    
                 </div>
                 <div style="clear: both">
                     <table width="100%">
