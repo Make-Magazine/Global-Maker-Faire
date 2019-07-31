@@ -131,7 +131,7 @@ if ($option != '') {
                 <div style="float: left; width: 100%">
                     Returning results for Option - <?php echo $option;
                     if ($findValue != '') {
-                        echo " Option Value - $parmValue";
+                        echo " Option Value - $findValue";
                     } ?>
                     
                 </div>
