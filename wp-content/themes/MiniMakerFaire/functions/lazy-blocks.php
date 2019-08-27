@@ -8,13 +8,12 @@ add_filter( 'lazyblock/featured-makers/editor_callback', 'featured_makers', 10, 
 
 if ( ! function_exists( 'featured_makers' ) ) {
     function featured_makers( $output, $attributes ) {
-		error_log(print_r($attributes, TRUE));
 	   if($attributes['activeinactive'] == "show") {
         ob_start();
         ?>
 
         <section class="featured-maker-panel<?php echo($attributes["background_color"] == "Red" ? ' red-back' : ''); ?>">
-				<div class="container">
+				<div class="container-fluid">
 				  <?php if ( $attributes["title"]) { ?>
 						<div class="row text-center">
 						  <div class="title-w-border-y">
