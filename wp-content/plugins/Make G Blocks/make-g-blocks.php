@@ -15,8 +15,10 @@
 
 //Turn On Gutenburg - disabled in the Make: themes
 // only for posts of type page
+
+error_log(print_r(get_post_type($_GET['post']), TRUE));
 global $pagenow;
-if($_GET['post_type'] == 'page' || $_GET['post_type'] == 'lazyblocks' || 'post.php' === $pagenow && isset($_GET['post']) && 'page' === get_post_type( $_GET['post'] )){
+if($_GET['post_type'] === 'page' || $_GET['post_type'] === 'lazyblocks' || get_post_type($_GET['post']) === 'lazyblocks' || 'post.php' === $pagenow && isset($_GET['post']) && 'page' === get_post_type( $_GET['post'] )){
 	  add_filter('use_block_editor_for_post', '__return_true', 999);
 }
 // disable for post types
