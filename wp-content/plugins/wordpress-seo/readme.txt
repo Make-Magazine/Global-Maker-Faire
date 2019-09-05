@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: SEO, XML sitemap, Content analysis, Readability
 Requires at least: 4.9
 Tested up to: 5.2.2
-Stable tag: 11.7
+Stable tag: 12.0
 Requires PHP: 5.2.4
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
@@ -105,40 +105,39 @@ You'll find answers to many of your questions on [kb.yoast.com](https://yoa.st/1
 
 == Changelog ==
 
-= 11.7.0 =
-Release Date: July 23rd, 2019
+= 12.0.0 =
+Release Date: September 3rd, 2019
 
-By now you probably know the 11.x releases of Yoast SEO are all about Schema. In this release, we’ve enabled the possibility to use to use a subset of HTML tags in the FAQ and HowTo blocks! Find out all about Yoast SEO 11.7 in [our 11.7 release post](https://yoa.st/release-11-7)!
-
-Enhancements:
-
-* Allows a subset of HTML tags in FAQ answer, HowTo description and HowToStep description schema output: `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`, `<br>`, `<ol>`, `<ul>`, `<li>`, `<a>`, `<p>`, `<b>`, `<strong>`, `<i>`, `<em>`, and their closing counterparts.
-* Remove the `noindex` from feeds as this causes issues for podcasts and other feeds.
-* Improves the accessibility of the horizontal tabs in the metabox by implementing an ARIA tabbed user interface.
-
-Bugfixes:
-
-* Fixes a bug where the avatar in the knowledge graph settings would incorrectly overwrite the default user profile picture.
-
-= 11.6.0 =
-Release Date: July 9th, 2019
-
-Yoast SEO 11.6 is out today. Of course, we did the regular round of bug fixing, but the focus of this release is two-fold: a new, much easier to use tabbed interface for the meta box and an updated HowTo structured data content block for WordPress. Find out all about Yoast SEO 11.6 in [our 11.6 release post](https://yoa.st/release-11-6)!
+Contrary to what the version number might suggest, Yoast SEO 12.0 isn’t a huge release. It’s simply the next release in our current release schedule, but after hitting 11.9 a couple of weeks ago we had no choice but to go for 12.0. That’s how it goes! But don’t worry, there’s enough interesting stuff in this release, including two new checks for the Portuguese language. Read more about Yoast SEO 12.0 in [our 12.0 release post](https://yoa.st/release-12-0)!
 
 Enhancements:
 
-* Changes the tabs in the metabox to horizontal tabs.
-* Splits the content optimization tab in the metabox into two separate tabs: an SEO and a Readability tab.
-* Updates HowTo schema output to reflect Google's new guidelines.
-* Makes sure the media modal that is triggered for image uploads only displays images.
+* Adds a filter `wpseo_exclude_from_sitemap_by_term_ids` that allows excluding a term from the XML sitemap.
+* Adds a filter `wpseo_xml_sitemap_include_images` that allows excluding images from the XML sitemap.
+* Adds a maximum width to the metabox, props to [@justemoilouise](https://github.com/justemoilouise).
+* Adds support for the assessment that checks whether multiple sentences begin with the same word for Portuguese, props to [amesdigital](https://github.com/amesdigital).
+* Improves the wording in the configuration wizard notification, props to [@emilyatmobtown](https://github.com/emilyatmobtown).
+* Improves user input validation for URLs.
+* Improves the sentence length assessment for Portuguese by increasing the recommended sentence length limit, props to [amesdigital](https://github.com/amesdigital).
+* Updates the document title with a message to communicate form submission errors have occurred.
 
 Bugfixes:
 
-* Fixes a bug where the Schema `@id` for `Person` would be incorrect on posts when author archives where disabled. 
-* Fixes a bug where the Schema would contain `WebPage` instead of `CollectionPage` for a latest posts homepage and the static posts page type.
-* Fixes a bug where the Organization and Article Schema nodes would incorrectly be output when a website had not set their organization's name and/or logo.
-* Fixes a bug where the eye marker tooltips would break out of the metabox, which would hide the last part of the tooltip text.
-* Fixes a bug where instances of unfiltered HTML would be allowed in term descriptions where they shouldn't be.
+* Fixes a bug where a 404 error would be shown for the second sitemap (and up) of the author sitemaps in case of multiple author sitemaps.
+
+= 11.9.0 =
+Release Date: August 20th, 2019
+
+Are you ready for another exciting release to round up the Yoast SEO 11 cycle? Because we are! In Yoast SEO 11.9 we have improvements for security and accessibility. Read more about Yoast SEO 11.9 in [our 11.9 release post](https://yoa.st/release-11-9)!
+
+Enhancements:
+
+* Improves security by adding output escaping.
+
+Bugfixes:
+
+* Fixes a bug where the image from the configuration wizard notification was missing an empty alt attribute.
+* Fixes a bug where some translations would be missing in the metabox, sidebar, configuration wizard and the help center.
 
 = Earlier versions =
 For the changelog of earlier versions, please refer to [the changelog on yoast.com](https://yoa.st/yoast-seo-changelog).
