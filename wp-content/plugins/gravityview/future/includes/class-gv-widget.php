@@ -209,13 +209,14 @@ abstract class Widget {
 
 		/**
 		 * @filter `gravityview_widget_active_areas` Array of zones available for widgets to be dropped into
-		 * @deprecated Use gravityview/widget/active_areas
+		 * @deprecated 2.0: Use gravityview/widget/active_areas instead
 		 * @param array $default_areas Definition for default widget areas
 		 */
 		$default_areas = apply_filters( 'gravityview_widget_active_areas', $default_areas );
 
 		/**
 		 * @filter `gravityview/widget/active_areas` Array of zones available for widgets to be dropped into
+		 * @since 2.0
 		 * @param array $default_areas Definition for default widget areas
 		 */
 		return apply_filters( 'gravityview/widget/active_areas', $default_areas );
@@ -266,7 +267,7 @@ abstract class Widget {
 	 * Do shortcode if the Widget's shortcode exists.
 	 *
 	 * @param  string $text   Widget text to check
-	 * @param  null|WP_Widget Empty if not called by WP_Widget, or a WP_Widget instance
+	 * @param  null|\WP_Widget Empty if not called by WP_Widget, or a WP_Widget instance
 	 *
 	 * @return string         Widget text
 	 */
@@ -284,6 +285,10 @@ abstract class Widget {
 	 */
 	public function add_shortcode() {
 		if ( empty( $this->shortcode_name ) ) {
+			return;
+		}
+
+		if ( ! gravityview()->plugin->is_compatible() ) {
 			return;
 		}
 
@@ -355,9 +360,9 @@ abstract class Widget {
 		 * @param boolean $hide_until_searched Hide until search?
 		 * @param \GV\Widget $this Widget instance
 		 */
-		$hide_until_search = apply_filters( 'gravityview/widget/hide_until_searched', $hide_until_searched, $this );
+		$hide_until_searched = apply_filters( 'gravityview/widget/hide_until_searched', $hide_until_searched, $this );
 
-		if ( $hide_until_search ) {
+		if ( $hide_until_searched && ! gravityview()->request->is_search() ) {
 			gravityview()->log->debug( 'Hide View data until search is performed' );
 			return false;
 		}
@@ -464,6 +469,6 @@ abstract class Widget {
 			gravityview()->log->warning( 'Widget ID not set before calling Widget::is_registered', array( 'data' => $this ) );
 			return false;
 		}
-		return in_array( $widget_id, array_keys( self::registered() ) );
+		return in_array( $widget_id, array_keys( self::registered() ), true );
 	}
 }

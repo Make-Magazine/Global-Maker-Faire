@@ -111,12 +111,28 @@ class View_Settings extends Settings {
 				'value'             => 1,
 				'show_in_shortcode' => false,
 			),
-			'user_edit' => array(
-				'label'             => __( 'Allow User Edit', 'gravityview' ),
+			'edit_feeds' => array(
+				'label'             => __( 'Feeds', 'gravityview' ),
 				'group'             => 'default',
+				'type'              => 'checkbox',
+				'value'             => array(),
+				'show_in_shortcode' => false,
+			),
+			'user_edit' => array(
+				'label'             => __( 'Allow User Edit', 'gravityview' ), 'group'             => 'default',
 				'desc'              => __( 'Allow logged-in users to edit entries they created.', 'gravityview' ),
 				'value'             => 0,
 				'tooltip'           => __( 'Display "Edit Entry" fields to non-administrator users if they created the entry. Edit Entry fields will always be displayed to site administrators.', 'gravityview' ),
+				'type'              => 'checkbox',
+				'show_in_shortcode' => true,
+			),
+			'unapprove_edit' => array(
+				'label'             => __( 'Unapprove Entries After Edit', 'gravityview' ),
+				'group'             => 'default',
+				'requires'          => 'user_edit',
+				'desc'              => __( 'When an entry is edited by a non-administrator, reset the approval status to "Unapproved".', 'gravityview' ),
+				'tooltip'           => __( 'If the "Show only approved entries" setting is enabled, the entry will need to be re-approved by an administrator before it is shown in the View.', 'gravityview' ),
+				'value'             => 0,
 				'type'              => 'checkbox',
 				'show_in_shortcode' => true,
 			),
@@ -132,6 +148,7 @@ class View_Settings extends Settings {
 			'sort_field' => array(
 				'label'             => __( 'Sort by field', 'gravityview' ),
 				'type'              => 'select',
+				'desc'              => __( 'By default, entries are sorted by Entry ID.', 'gravityview' ),
 				'value'             => '',
 				'group'             => 'sort',
 				'options'           => array(
@@ -149,6 +166,30 @@ class View_Settings extends Settings {
 										'ASC'  => __( 'ASC', 'gravityview' ),
 										'DESC' => __( 'DESC', 'gravityview' ),
 				),
+				'show_in_shortcode' => true,
+			),
+			'sort_field_2' => array(
+				'label'             => __( 'Sort by secondary field', 'gravityview' ),
+				'type'              => 'select',
+				'value'             => '',
+				'group'             => 'sort',
+				'options'           => array(
+					''             => __( 'Default', 'gravityview' ),
+					'date_created' => __( 'Date Created', 'gravityview' ),
+				),
+				'requires_not'          => 'sort_direction][=RAND', // ][ is for toggleRequired, so it ends in []
+				'show_in_shortcode' => true,
+			),
+			'sort_direction_2' => array(
+				'label'             => __( 'Secondary sort direction', 'gravityview' ),
+				'type'              => 'select',
+				'value'             => 'ASC',
+				'group'             => 'sort',
+				'options'           => array(
+					'ASC'  => __( 'ASC', 'gravityview' ),
+					'DESC' => __( 'DESC', 'gravityview' ),
+				),
+				'requires_not'      => 'sort_direction][=RAND', // ][ is for toggleRequired, so it ends in []
 				'show_in_shortcode' => true,
 			),
 			'sort_columns' => array(
@@ -203,6 +244,13 @@ class View_Settings extends Settings {
 				'group'             => 'filter',
 				'show_in_shortcode' => false,
 			),
+			'search_operator' => array(
+				'label'             => __( 'Search Operator', 'gravityview' ),
+				'type'              => 'operator',
+				'value'             => 'contains',
+				'group'             => 'filter',
+				'show_in_shortcode' => false,
+			),
 			'single_title' => array(
 				'label'             => __( 'Single Entry Title', 'gravityview' ),
 				'type'              => 'text',
@@ -220,6 +268,31 @@ class View_Settings extends Settings {
 				'value'             => '',
 				'show_in_shortcode' => false,
 				'full_width'        => true,
+			),
+			'edit_redirect' => array(
+				'label'             => __( 'Redirect After Editing', 'gravityview' ),
+				'group'             => 'default',
+				'desc'              => __( 'The page to redirect to after editing an entry.', 'gravityview' ),
+				'type'              => 'select',
+				'value'             => '',
+				'options'           => array(
+					'' => __( 'Stay on Edit Entry', 'gravityview' ),
+					'0'  => __( 'Redirect to Single Entry', 'gravityview' ),
+					'1' => __( 'Redirect to Multiple Entries', 'gravityview' ),
+					'2' => __( 'Redirect to URL', 'gravityview' ),
+				),
+				'show_in_shortcode' => false,
+				'full_width'        => true,
+			),
+			'edit_redirect_url' => array(
+				'label'             => __( 'Edit Entry Redirect URL', 'gravityview' ),
+				'group'             => 'default',
+				'desc'              => __( 'After editing an entry, the user will be taken to this URL.', 'gravityview' ),
+				'type'              => 'text',
+				'class'             => 'code widefat',
+				'value'             => '',
+				'requires'          => 'edit_redirect=2',
+				'merge_tags'        => 'force',
 			),
 			'embed_only' => array(
 				'label'             => __( 'Prevent Direct Access', 'gravityview' ),
@@ -249,7 +322,7 @@ class View_Settings extends Settings {
 				'rest_enable'           => array(
 					'label'             => __( 'Allow REST Access', 'gravityview' ),
 					'group'             => 'default',
-					'desc'              => __( 'Enable  REST access to this View.', 'gravityview' ),
+					'desc'              => __( 'Enable REST access to this View.', 'gravityview' ),
 					'type'              => 'checkbox',
 					'value'             => '',
 					'tooltip'           => false,
@@ -257,6 +330,30 @@ class View_Settings extends Settings {
 					'full_width'        => true,
 				),
 			) : array(),
+		array(
+			'csv_enable'            => array(
+				'label'             => __( 'Allow CSV Access', 'gravityview' ),
+				'group'             => 'default',
+				'desc'              => __( 'Enable CSV access to this View.', 'gravityview' ),
+				'type'              => 'checkbox',
+				'value'             => '',
+				'tooltip'           => false,
+				'show_in_shortcode' => false,
+				'full_width'        => true,
+			),
+		),
+		array(
+			'csv_nolimit'           => array(
+				'label'             => __( 'Show all in CSV', 'gravityview' ),
+				'group'             => 'default',
+				'desc'              => __( 'Do not limit the number of entries output in the CSV.', 'gravityview' ),
+				'type'              => 'checkbox',
+				'value'             => '',
+				'tooltip'           => false,
+				'show_in_shortcode' => false,
+				'full_width'        => true,
+			),
+		),
 		array(
 			'post_id' => array(
 				'type'              => 'number',

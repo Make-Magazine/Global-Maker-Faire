@@ -250,9 +250,10 @@ abstract class Field_Template extends Template {
 	 * @return void
 	 */
 	public function render() {
+		$entry = $this->entry->from_field( $this->field );
 
 		/** Retrieve the value. */
-		$display_value = $value = $this->field->get_value( $this->view, $this->source, $this->entry );
+		$display_value = $value = $this->field->get_value( $this->view, $this->source, $entry );
 
 		$source = $this->source;
 		$source_backend = $source ? $source::$backend : null;
@@ -266,18 +267,25 @@ abstract class Field_Template extends Template {
 			/** Prevent any PHP warnings that may be generated. */
 			ob_start();
 
-			$display_value = \GFCommon::get_lead_field_display( $this->field->field, $value, $this->entry['currency'], false, 'html' );
+			$display_value = \GFCommon::get_lead_field_display( $this->field->field, $value, $entry['currency'], false, 'html' );
 
 			if ( $errors = ob_get_clean() ) {
 				gravityview()->log->error( 'Errors when calling GFCommon::get_lead_field_display()', array( 'data' => $errors ) );
 			}
 
+			// `gform_entry_field_value` expects a GF_Field, but $this->field->field can be NULL
+			if ( ! $this->field->field instanceof GF_Field ) {
+				$gf_field = \GF_Fields::create( $this->field->field );
+			}
+
 			/** Call the Gravity Forms field value filter. */
-			$display_value = apply_filters( 'gform_entry_field_value', $display_value, $this->field->field, $this->entry->as_entry(), $this->source->form );
+			$display_value = apply_filters( 'gform_entry_field_value', $display_value, $gf_field, $entry->as_entry(), $this->source->form );
+
+			unset( $gf_field );
 
 			/** Replace merge tags for admin-only fields. */
 			if ( ! empty( $this->field->field->adminOnly ) ) {
-				$display_value = \GravityView_API::replace_variables( $display_value, $this->form->form, $this->entry->as_entry(), false, false );
+				$display_value = \GravityView_API::replace_variables( $display_value, $this->form->form, $entry->as_entry(), false, false );
 			}
 		}
 
@@ -329,7 +337,7 @@ abstract class Field_Template extends Template {
 			'value' => $value,
 			'display_value' => $display_value,
 			'format' => 'html',
-			'entry' => $this->entry->as_entry(),
+			'entry' => $entry->as_entry(),
 			'field_type' => $this->field->type,
 			'field_path' => $this->located_template,
 		);
@@ -466,3 +474,4 @@ abstract class Field_Template extends Template {
 
 /** Load implementations. */
 require gravityview()->plugin->dir( 'future/includes/class-gv-template-field-html.php' );
+require gravityview()->plugin->dir( 'future/includes/class-gv-template-field-csv.php' );
