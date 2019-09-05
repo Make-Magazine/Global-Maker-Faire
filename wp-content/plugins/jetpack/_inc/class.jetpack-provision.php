@@ -1,6 +1,7 @@
 <?php //phpcs:ignore
 
 use Automattic\Jetpack\Connection\Client;
+use Automattic\Jetpack\Roles;
 use Automattic\Jetpack\Sync\Actions;
 
 class Jetpack_Provision { //phpcs:ignore
@@ -50,10 +51,8 @@ class Jetpack_Provision { //phpcs:ignore
 			);
 		}
 
-		$blog_id    = Jetpack_Options::get_option( 'id' );
-		$blog_token = Jetpack_Data::get_access_token();
 
-		if ( ! $blog_id || ! $blog_token || ( isset( $named_args['force_register'] ) && intval( $named_args['force_register'] ) ) ) {
+		if ( ! Jetpack::connection()->is_registered() || ( isset( $named_args['force_register'] ) && intval( $named_args['force_register'] ) ) ) {
 			// This code mostly copied from Jetpack::admin_page_load.
 			Jetpack::maybe_set_version_option();
 			$registered = Jetpack::try_registration();
@@ -62,9 +61,6 @@ class Jetpack_Provision { //phpcs:ignore
 			} elseif ( ! $registered ) {
 				return new WP_Error( 'registration_error', __( 'There was an unspecified error registering the site', 'jetpack' ) );
 			}
-
-			$blog_id    = Jetpack_Options::get_option( 'id' );
-			$blog_token = Jetpack_Data::get_access_token();
 		}
 
 		// If the user isn't specified, but we have a current master user, then set that to current user.
@@ -103,8 +99,9 @@ class Jetpack_Provision { //phpcs:ignore
 			$user = wp_get_current_user();
 
 			// Role.
-			$role        = Jetpack::translate_current_user_to_role();
-			$signed_role = Jetpack::sign_role( $role );
+			$roles       = new Roles();
+			$role        = $roles->translate_current_user_to_role();
+			$signed_role = Jetpack::connection()->sign_role( $role );
 
 			$secrets = Jetpack::init()->generate_secrets( 'authorize' );
 

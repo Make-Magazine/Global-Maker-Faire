@@ -81,8 +81,10 @@ if ( ! function_exists( __NAMESPACE__ . '\autoloader' ) ) {
 						'Automattic\Jetpack\Connection\Manager',
 						'Automattic\Jetpack\Connection\Manager_Interface',
 						'Automattic\Jetpack\Connection\XMLRPC_Connector',
+						'Jetpack_IXR_Client',
 						'Jetpack_Options',
 						'Jetpack_Signature',
+						'Jetpack_XMLRPC_Server',
 						'Automattic\Jetpack\Sync\Main',
 						'Automattic\Jetpack\Constants',
 						'Automattic\Jetpack\Tracking',
@@ -120,7 +122,7 @@ if ( ! function_exists( __NAMESPACE__ . '\autoloader' ) ) {
 /**
  * Prepare all the classes for autoloading.
  */
-function enqueue_packages_57bf3aeb7375245730b8520e94c8d1e2() {
+function enqueue_packages_36436ae72e7dcfe43996206c2126d99d() {
 	$class_map = require_once dirname( __FILE__ ) . '/composer/autoload_classmap_package.php';
 	foreach ( $class_map as $class_name => $class_info ) {
 		enqueue_package_class( $class_name, $class_info['version'], $class_info['path'] );
@@ -136,4 +138,4 @@ function enqueue_packages_57bf3aeb7375245730b8520e94c8d1e2() {
 		}
 	}
 }
-enqueue_packages_57bf3aeb7375245730b8520e94c8d1e2();
+enqueue_packages_36436ae72e7dcfe43996206c2126d99d();
