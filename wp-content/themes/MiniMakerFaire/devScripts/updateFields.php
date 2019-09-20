@@ -12,8 +12,6 @@ include '../../../../wp-load.php';
     </head>
     <body>
         <?php
-        $lockedValues = array("Disable Notification", "Make: Magazine Review", "Featured Maker", "Disable Autoresponder", "Reprint Sign");
-
         /* update field 376 in CFM forms
          * replace 'Makermedia' with Make: Community'
          * 
