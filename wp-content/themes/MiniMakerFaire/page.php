@@ -1,15 +1,13 @@
 <?php get_header();
+//go full width on page if using gutenburg, otherwise use the container class 
+$divClass = (is_block_editor_active() ? "" : "container");
 
-/*if(get_current_blog_id()==211 && !is_user_logged_in()){
-  //if not logged in
-  echo '<h2 class="text-center">You must be logged in to view this site.</h2><p class="text-center">Please log in to your ___.makerfaire.com site and find resources.makerfaire.com under My Sites.</p>';
-}else{*/
 ?>
 
 <div class="page-body">
   <?php // theloop
-  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <div class="container">
+  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>    
+    <div class="<?php echo $divClass;?>">
       <?php the_content(); ?>
     </div>
     <?php

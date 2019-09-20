@@ -549,14 +549,15 @@ function get2ColLayout() {
     $column_1 = ($acf_blocks ? get_field('column_1'):get_sub_field('column_1'));
     $column_2 = ($acf_blocks ? get_field('column_2'):get_sub_field('column_2'));
     $cta_button = ($acf_blocks ? get_field('cta_button'):get_sub_field('cta_button'));
-    $cta_button_url = ($acf_blocks ? get_field('cta_button_url'):get_sub_field('cta_button_url'));
+    $title =  ($acf_blocks ? get_field('title'):get_sub_field('title'));
+    
     $return .= '<section class="content-panel">
           <div class="container">';
 
-    if (get_sub_field('title')) {
+    if ($title) {
         $return .= '  <div class="row">
               <div class="col-xs-12 text-center padbottom">
-                <h2>' . ($acf_blocks ? get_field('title'):get_sub_field('title')) . '</h2>
+                <h2>' . $title . '</h2>
               </div>
             </div>';
     }
