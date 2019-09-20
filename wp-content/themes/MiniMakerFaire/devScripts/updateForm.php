@@ -3,87 +3,70 @@ include '../../../../wp-load.php';
 /*
  * This script is used to mass update a field across all Mini Makerfaire sites
  */
-
+$findme='makermedia';
 ?>
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-  </head>
-  <body>
-<?php
-$lockedValues = array("Disable Notification", "Make: Magazine Review", "Featured Maker","Disable Autoresponder","Reprint Sign");
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <?php
+        /* update notifications - replace 'Disable Autoresponder' with 'Disable Notification' */
+        global $wpdb;
+        $blogSql = "select blog_id, domain from wp_blogs  ORDER BY `wp_blogs`.`blog_id` ASC";
+        $results = $wpdb->get_results($blogSql, ARRAY_A);
+        foreach ($results as $blogrow) { 
+            $blogID = $blogrow['blog_id'];
+            if($blogID==1){
+              $table  =  'wp_gf_form_meta';
+            }else{
+              $table  =  'wp_'.$blogID.'_gf_form_meta';
+            }
 
-/* update notifications - replace 'Disable Autoresponder' with 'Disable Notification' */
-global $wpdb;
-$blogSql = 'SELECT blog_id,domain FROM `wp_blogs`';
-$results = $wpdb->get_results($blogSql,ARRAY_A);
-foreach($results as $blogrow){
-  echo $blogrow['blog_id'].' - '.$blogrow['domain'].'<br/>';
-
-  $blogID = $blogrow['blog_id'];
-  $wpdb->blogid = $blogID;
-	$wpdb->set_prefix( $wpdb->base_prefix );
-
-  $forms = GFAPI::get_forms();
-  foreach($forms as $form){
-    echo 'Form ='.$form['title'].'<br/>';
-    $updForm = false;
-    foreach ( $form['fields'] as &$field ) {
-      if($field["id"] == 304){
-        //set field inputs
-        $lockedInputs = array(
-            array("label" => "Disable Notification",  "id" => "304.1"),
-            array("label" => "Make: Magazine Review", "id" => "304.2"),
-            array("label" => "Featured Maker",        "id" => "304.3"),
-        );
-        //set field choices
-        $lockedChoices = array(
-          array("text" => "Disable Notification",  "value" => "Disable Notification"),
-          array("text" => "Make: Magazine Review", "value" => "Make: Magazine Review"),
-          array("text" => "Featured Maker",        "value" => "Featured Maker")
-        );
-        $input_id = 304.4;
-        //now let's loop thru the inputs and add to the bottom if they aren't already one of the locked fields
-        foreach($field['inputs'] as $input){
-          //do not add back in the locked values if they are already there
-          if(!in_array($input['label'],$lockedValues)){
-            echo 'adding '.$input['label'].'<br/>';
-            $lockedInputs[] = array( 'label' => $input['label'], 'id' => "{$field_id}.$input_id" );
-            $input_id++;
-          }
+            $formResults = $wpdb->get_results('select display_meta, form_id from '.$table,ARRAY_A);            
+            $updArray = array();
+            foreach($formResults as $formrow){
+                $form_id = $formrow['form_id'];
+                $fieldData='';
+                $output=true;
+                $json = json_decode($formrow['display_meta']);
+                $form_type = (isset($json->form_type)?$json->form_type:'');
+                if($form_type=='cfm'){                    
+                    $updForm = false;
+                    foreach($json->fields as &$field){
+                        //if($field->id=='513'){                                                 
+                            //update label                            
+                            
+                            $labelpos = strpos((isset($field->label)?$field->label:''), 'Please know that Make:, Maker Faire, and Make: respect ');                            
+                            if($labelpos !== false){
+                                $field->label = str_replace("Please know that Make:, Maker Faire, and Make: respect ","Please know that Make:, Maker Faire, and Make Community ",$field->label);
+                                $updForm = true;
+                            }
+                            
+                            //update description
+                            $descpos  = strpos((isset($field->description)?$field->description:''), 'http://makermedia.com/privacy/');     
+                            if ($descpos !== false) {
+                                $field->description = str_replace('http://makermedia.com/privacy/','https://make.co/terms-and-privacy-policy/#privacy-policy',$field->description);
+                                $updForm = true;
+                                break;
+                            }                                                        
+                        //}
+                    }
+                    //check if we need to update form
+                    if ($updForm) {  
+                        $updateMeta = json_encode($json);
+                        $updArray[] = array('form_id'=> $form_id, 'display_meta'=>$updateMeta);                                                        
+                    }                    
+                }
+            } //end loop thru forms
+            if(!empty($updArray)){
+                foreach($updArray as $update){
+                    echo 'Updating Blog '.$blogID.' form ID = '.$update['form_id'].'<br/>';
+                    $wpdb->update( $table, array('display_meta'=>$update['display_meta']), array('form_id' => $update['form_id']));                 
+                }
+            }
         }
-        $field['inputs'] = $lockedInputs;
-        $updForm=true;
-
-        foreach($field['choices'] as $choice){
-          if(!in_array($choice['text'],$lockedValues)){
-            $lockedChoices[] = $choice;
-          }
-        }
-        $field['choices'] = $lockedChoices;
-        $updForm=true;
-      } //end 304 field check
-    } //end form field loop
-
-    //check if we need to update form
-    if($updForm){
-      echo 'begin update<br/>';
-      //update notification
-      $updresult = GFAPI::update_form( $form );
-      if(!$updresult){
-        echo 'error updating Form - '.$copyForm.'<br/>';
-        var_dump($updresult);
-      }else{
-        echo 'Form - '.$copyForm.' Updated<br/>';
-      }
-    }else{
-      echo 'no update<br/>';
-    }
-    echo '<br/><br/>';
-  } //end loop thru forms
-}
-?>
-  </body>
+        ?>
+    </body>
 </html>
