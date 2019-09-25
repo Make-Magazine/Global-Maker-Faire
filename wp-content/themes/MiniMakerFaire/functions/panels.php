@@ -1135,15 +1135,15 @@ function get_faire_backlink() {
 
 /* Pulling logic from home page and pasting it into a function so it can be used in multiple places if desired */
 
-function home_page_image_carousel($home_ID) {
+function home_page_image_carousel() {
     $return = '';
     $return = '
         <section class="slideshow-panel">
             <div class="header-logo-div text-center" itemprop="event" itemscope itemtype="http://schema.org/Event">';
 
-    $faire_location = get_field('faire_location', $home_ID);
-    $faire_location_url = get_field('faire_location_url', $home_ID);
-    $open_faire_location = get_field('open_faire_location', $home_ID);
+    $faire_location = get_field('faire_location');
+    $faire_location_url = get_field('faire_location_url');
+    $open_faire_location = get_field('open_faire_location');
     if ($faire_location_url) {
         $return .= '<a class="event-location-url" href="' . $faire_location_url . '"' . ($open_faire_location ? ' target="_blank"' : '') . '>';
     }
@@ -1154,7 +1154,7 @@ function home_page_image_carousel($home_ID) {
         $return .= '</a>';
     }
 
-    $faire_date = get_field('faire_date', $home_ID);
+    $faire_date = get_field('faire_date');
     if ($faire_date) {
         $return .= '<h2 class="event-date" itemprop="startDate"><i class="fa fa-calendar-o" aria-hidden="true"></i>' . $faire_date . '</h2>';
     }
@@ -1163,8 +1163,8 @@ function home_page_image_carousel($home_ID) {
     $return .= '<div class="header-logo-cont">
                     <img class="img-responsive header-logo" src="' . legacy_get_fit_remote_image_url($header_logo, 750, 750) . '" alt="' . get_bloginfo('name') . ' logo" />
                 </div>';
-    $call_to_action_text = get_field('call_to_action_text', $home_ID);
-    $call_to_action_text_url = get_field('call_to_action_text_url', $home_ID);
+    $call_to_action_text = get_field('call_to_action_text');
+    $call_to_action_text_url = get_field('call_to_action_text_url');
     if ($call_to_action_text) {
         if ($call_to_action_text_url) {
             $return .= '<a href="' . $call_to_action_text_url . '">';
@@ -1176,7 +1176,7 @@ function home_page_image_carousel($home_ID) {
     }
     $return .= '</div>'; // end header-logo-div
 
-    $images = get_field('image_carousel', $home_ID);
+    $images = get_field('image_carousel');
     if ($images) {
 
         $return .= '<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -1218,5 +1218,5 @@ function home_page_image_carousel($home_ID) {
     }
 
     $return .= '</section>';
-    return $return;
+    echo $return;
 }

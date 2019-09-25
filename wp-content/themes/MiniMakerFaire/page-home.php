@@ -15,7 +15,7 @@ get_header();
   }
 
   // Slideshow panel here
-  echo home_page_image_carousel($home_ID);
+  home_page_image_carousel();
   
   // check if the flexible content field has rows of data
   if( have_rows('home_page_panels', $home_ID)) {

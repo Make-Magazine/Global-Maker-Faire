@@ -191,6 +191,15 @@ function make_add_acf_blocks() {
             'mode' => 'auto',
             'keywords' => array('social', 'media', 'panel'),
         ));
+        acf_register_block(array(
+            'name' => 'home_page_image_carousel',
+            'title' => __('Home Page Image Carousel'),
+            'render_callback' => 'home_page_image_carousel',
+            'category' => 'make-panels',
+            'icon' => 'admin-comments',
+            'mode' => 'auto',
+            'keywords' => array('image', 'carousel', 'home', 'panel'),
+        ));
     }
 }
 
