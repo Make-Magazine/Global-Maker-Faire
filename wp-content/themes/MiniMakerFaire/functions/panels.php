@@ -548,6 +548,7 @@ function get2ColLayout() {
     $column_1 = ($acf_blocks ? get_field('column_1') : get_sub_field('column_1'));
     $column_2 = ($acf_blocks ? get_field('column_2') : get_sub_field('column_2'));
     $cta_button = ($acf_blocks ? get_field('cta_button') : get_sub_field('cta_button'));
+    $cta_button_url = ($acf_blocks ? get_field('cta_button_url') : get_sub_field('cta_button_url'));
     $title = ($acf_blocks ? get_field('title') : get_sub_field('title'));
 
     $return .= '<section class="content-panel">
@@ -584,8 +585,8 @@ function get2ColLayout() {
 
 function get1ColLayout() {
     $return = '';
-    $column_1 = get_sub_field('column_1');
-    $cta_button = get_sub_field('cta_button');
+    $column_1       = get_sub_field('column_1');
+    $cta_button     = get_sub_field('cta_button');
     $cta_button_url = get_sub_field('cta_button_url');
     $return .= '<section class="content-panel">
           <div class="container">';
@@ -1134,9 +1135,9 @@ function get_faire_backlink() {
 }
 
 /* Pulling logic from home page and pasting it into a function so it can be used in multiple places if desired */
-
 function home_page_image_carousel() {
-    $return = '';
+    $return = 'home page image carousel';
+    
     $return = '
         <section class="slideshow-panel">
             <div class="header-logo-div text-center" itemprop="event" itemscope itemtype="http://schema.org/Event">';

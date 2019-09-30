@@ -1,18 +1,20 @@
 <?php
+
 // Create new categories for our blocks
 
-function make_panels( $categories, $post ) {
-	return array_merge(
-		$categories,
-		array(
-			array(
-				'slug' => 'make-panels',
-				'title' => __( 'Make Panels', 'make-panels' ),
-			),
-		)
-	);
+function make_panels($categories, $post) {
+    return array_merge(
+            $categories,
+            array(
+                array(
+                    'slug' => 'make-panels',
+                    'title' => __('Make Panels', 'make-panels'),
+                ),
+            )
+    );
 }
-add_filter( 'block_categories', 'make_panels', 10, 2);
+
+add_filter('block_categories', 'make_panels', 10, 2);
 
 add_action('acf/init', 'make_add_acf_blocks');
 
@@ -137,7 +139,7 @@ function make_add_acf_blocks() {
             'mode' => 'auto',
             'keywords' => array('call', 'action', 'panel'),
         ));
-        acf_register_block(array(
+        /*acf_register_block(array(
             'name' => 'call_to_action',
             'title' => __('Call to Action Text'),
             'render_callback' => 'call_ACF_block_panels',
@@ -145,7 +147,7 @@ function make_add_acf_blocks() {
             'icon' => 'admin-comments',
             'mode' => 'auto',
             'keywords' => array('call', 'action', 'panel'),
-        ));
+        ));*/
         acf_register_block(array(
             'name' => 'static_or_carousel',
             'title' => __('Image Carousel (Rectangle)'),
@@ -182,6 +184,7 @@ function make_add_acf_blocks() {
             'mode' => 'auto',
             'keywords' => array('sponsors', 'panel'),
         ));
+        /*
         acf_register_block(array(
             'name' => 'social_media',
             'title' => __('Social Media'),
@@ -190,7 +193,7 @@ function make_add_acf_blocks() {
             'icon' => 'admin-comments',
             'mode' => 'auto',
             'keywords' => array('social', 'media', 'panel'),
-        ));
+        ));*/
         acf_register_block(array(
             'name' => 'home_page_image_carousel',
             'title' => __('Home Page Image Carousel'),
@@ -198,7 +201,7 @@ function make_add_acf_blocks() {
             'category' => 'make-panels',
             'icon' => 'admin-comments',
             'mode' => 'auto',
-            'keywords' => array('image', 'carousel', 'home', 'panel'),
+            'keywords' => array('image', 'carousel'),
         ));
     }
 }
@@ -206,7 +209,7 @@ function make_add_acf_blocks() {
 function call_ACF_block_panels($block) {
     GLOBAL $acf_blocks;
     $acf_blocks = TRUE;
-    $name =  str_replace("acf/","",$block['name']);
-    $name =  str_replace("-","_",$name);
-    echo ($name !=''?dispLayout($name):'');
-} 
+    $name = str_replace("acf/", "", $block['name']);
+    $name = str_replace("-", "_", $name);
+    echo ($name != '' ? dispLayout($name) : '');
+}

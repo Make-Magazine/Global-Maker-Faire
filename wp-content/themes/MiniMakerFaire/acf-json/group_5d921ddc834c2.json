@@ -1,9 +1,9 @@
 {
-    "key": "group_5717cb72bbe00",
-    "title": "Home page Image Carousel",
+    "key": "group_5d921ddc834c2",
+    "title": "Panel - Image carousel",
     "fields": [
         {
-            "key": "field_5717cbc5ab83c",
+            "key": "field_5d921df399faa",
             "label": "Faire Location Text",
             "name": "faire_location",
             "type": "text",
@@ -11,20 +11,18 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 40,
+                "width": "40",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "maxlength": 40,
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "readonly": 0,
-            "disabled": 0
+            "maxlength": 40
         },
         {
-            "key": "field_59e4ad89ad717",
+            "key": "field_5d921e1399fab",
             "label": "Faire Location URL",
             "name": "faire_location_url",
             "type": "url",
@@ -32,20 +30,15 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 40,
+                "width": "40",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "readonly": 0,
-            "disabled": 0
+            "placeholder": ""
         },
         {
-            "key": "field_59f07df43e1a3",
+            "key": "field_5d921e71b33e2",
             "label": "Open Faire Location URL In New Tab?",
             "name": "open_faire_location",
             "type": "true_false",
@@ -53,40 +46,37 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 20,
+                "width": "20",
                 "class": "",
                 "id": ""
             },
-            "default_value": 0,
-            "placeholder": "",
             "message": "",
+            "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
         },
         {
-            "key": "field_5717d315ab83d",
+            "key": "field_5d921ee223a2a",
             "label": "Faire Date",
             "name": "faire_date",
             "type": "text",
-            "instructions": "Enter the faire date here in this format: \"Saturday, May 7, 2016\" or \"Sat - Sun, May 7 & 8, 2016\". 30 character limit.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "maxlength": 30,
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "readonly": 0,
-            "disabled": 0
+            "maxlength": ""
         },
         {
-            "key": "field_577461b6d0275",
+            "key": "field_5d921eff8c2e1",
             "label": "Logo",
             "name": "",
             "type": "message",
@@ -94,16 +84,16 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "60",
                 "class": "",
                 "id": ""
             },
             "message": "To update logo go to Appearance > Customize > Logo & CTA Button",
-            "esc_html": 0,
-            "new_lines": "wpautop"
+            "new_lines": "wpautop",
+            "esc_html": 0
         },
         {
-            "key": "field_5717d3a5ab83e",
+            "key": "field_5d921fb60c464",
             "label": "Call to Action Text",
             "name": "call_to_action_text",
             "type": "text",
@@ -111,20 +101,18 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "maxlength": 30,
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "readonly": 0,
-            "disabled": 0
+            "maxlength": 30
         },
         {
-            "key": "field_5727a1fa9442b",
+            "key": "field_5d921fe90c465",
             "label": "Call to Action Text URL",
             "name": "call_to_action_text_url",
             "type": "url",
@@ -140,16 +128,16 @@
             "placeholder": ""
         },
         {
-            "key": "field_5717d4a1aa89a",
+            "key": "field_5d9222d87c323",
             "label": "Image Carousel",
             "name": "image_carousel",
             "type": "gallery",
-            "instructions": "Up to 3 images can be added. Carousel images will be centered and sized at 850px wide by 318px height.",
+            "instructions": "Up to 3 images can be added. Carousel images will be centered and sized at 850px wide by 318px hieght.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
-                "class": "home-image-carousel-admin",
+                "class": "",
                 "id": ""
             },
             "return_format": "array",
@@ -170,19 +158,19 @@
     "location": [
         [
             {
-                "param": "page_template",
+                "param": "block",
                 "operator": "==",
-                "value": "page-home.php"
+                "value": "acf\/home-page-image-carousel"
             }
         ]
     ],
     "menu_order": 0,
-    "position": "acf_after_title",
+    "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1569866603
+    "modified": 1569866954
 }

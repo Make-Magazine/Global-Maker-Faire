@@ -1,6 +1,6 @@
 {
     "key": "group_5d6feb159d46b",
-    "title": "featured_makers_panel_circle_dynamic",
+    "title": "Panel - Featured Makers: Circle (Dynamic)",
     "fields": [
         {
             "key": "field_mk579925053c2d6",
@@ -152,5 +152,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567615777
+    "modified": 1569866915
 }

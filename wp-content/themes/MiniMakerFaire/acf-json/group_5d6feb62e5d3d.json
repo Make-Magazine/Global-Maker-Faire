@@ -1,6 +1,6 @@
 {
     "key": "group_5d6feb62e5d3d",
-    "title": "post_feed",
+    "title": "Panel - Post Feed",
     "fields": [
         {
             "key": "field_mk5727a9551b20a",
@@ -106,5 +106,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567615890
+    "modified": 1569867020
 }

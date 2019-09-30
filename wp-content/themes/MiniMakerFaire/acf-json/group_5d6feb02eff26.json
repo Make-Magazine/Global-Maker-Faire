@@ -1,6 +1,6 @@
 {
     "key": "group_5d6feb02eff26",
-    "title": "featured_makers_panel_circle",
+    "title": "Panel - Featured Makers: Circle",
     "fields": [
         {
             "key": "field_mk573e3efd8e815",
@@ -192,5 +192,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567615758
+    "modified": 1569866890
 }

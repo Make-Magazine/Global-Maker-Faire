@@ -1,6 +1,6 @@
 {
     "key": "group_5d6fead675ce0",
-    "title": "featured_makers_panel",
+    "title": "Panel - Featured Makers",
     "fields": [
         {
             "key": "field_mk5727a9191b209",
@@ -216,5 +216,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567615738
+    "modified": 1569866870
 }

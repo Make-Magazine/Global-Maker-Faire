@@ -1,6 +1,6 @@
 {
     "key": "group_5d6feb28158a3",
-    "title": "featured_makers_panel_dynamic",
+    "title": "Panel - Featured Makers (Dynamic)",
     "fields": [
         {
             "key": "field_mk579924c93c2cb",
@@ -176,5 +176,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567615794
+    "modified": 1569866934
 }

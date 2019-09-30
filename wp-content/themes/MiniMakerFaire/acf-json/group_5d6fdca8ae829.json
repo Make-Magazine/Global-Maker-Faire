@@ -1,6 +1,6 @@
 {
     "key": "group_5d6fdca8ae829",
-    "title": "call_to_action_panel",
+    "title": "Panel - Call to Action",
     "fields": [
         {
             "key": "field_mk5727aa011b20c",
@@ -105,5 +105,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567613873
+    "modified": 1569866765
 }

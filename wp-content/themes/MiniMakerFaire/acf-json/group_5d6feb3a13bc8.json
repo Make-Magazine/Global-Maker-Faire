@@ -1,6 +1,6 @@
 {
     "key": "group_5d6feb3a13bc8",
-    "title": "newsletter_panel",
+    "title": "Panel - Newsletter",
     "fields": [
         {
             "key": "field_mk572d8358fe8e2",
@@ -44,5 +44,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567615909
+    "modified": 1569866973
 }

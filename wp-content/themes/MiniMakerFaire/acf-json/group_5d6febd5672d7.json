@@ -1,6 +1,6 @@
 {
     "key": "group_5d6febd5672d7",
-    "title": "static_or_carousel",
+    "title": "Panel - Image Carousel: Rectangle",
     "fields": [
         {
             "key": "field_mk572daf4770904",
@@ -150,5 +150,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567615974
+    "modified": 1569867082
 }

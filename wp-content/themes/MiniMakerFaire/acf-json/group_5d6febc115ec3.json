@@ -1,6 +1,6 @@
 {
     "key": "group_5d6febc115ec3",
-    "title": "square_image_carousel",
+    "title": "Panel - Image Carousel: Square",
     "fields": [
         {
             "key": "field_mk573d16220b296",
@@ -150,5 +150,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567615947
+    "modified": 1569866998
 }

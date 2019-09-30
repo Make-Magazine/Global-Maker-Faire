@@ -1,6 +1,6 @@
 {
     "key": "group_5d6feab113dc6",
-    "title": "featured_events",
+    "title": "Panel - Featured Events",
     "fields": [
         {
             "key": "field_mk573e4bc7b665a",
@@ -231,5 +231,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567615677
+    "modified": 1569866823
 }
