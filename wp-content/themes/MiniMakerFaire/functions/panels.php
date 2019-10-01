@@ -288,7 +288,7 @@ function getFeatEvPanel($row_layout) {
 // build event array
     $eventArr = array();
     if ($dynamic) {
-        $formid = get_sub_field('enter_formid_here');
+        $formid = ($acf_blocks ? get_field('enter_formid_here') : get_sub_field('enter_formid_here'));
         $query = "SELECT schedule.entry_id, schedule.start_dt as time_start, schedule.end_dt as time_end, schedule.type,
                        lead_detail.meta_value as entry_status, DAYNAME(schedule.start_dt) as day,location.location,
                        (SELECT meta_value FROM {$wpdb->prefix}gf_entry_meta 
@@ -953,9 +953,9 @@ function getSponsorPanel() {
     foreach ($sponsor_pages as $sponsor_page) {
         $sponsor_ID = $sponsor_page->ID;
     }
-
-    $sponsor_panel_field_1 = get_sub_field('title_sponsor_panel');
-    $sponsor_panel_field_3 = get_sub_field('become_a_sponsor_button');
+    GLOBAL $acf_blocks;
+    $sponsor_panel_field_1 = ($acf_blocks ? get_field('title_sponsor_panel') : get_sub_field('title_sponsor_panel'));    
+    $sponsor_panel_field_3 = ($acf_blocks ? get_field('become_a_sponsor_button') : get_sub_field('become_a_sponsor_button'));    
 
 // check if the nested repeater field has rows of data
     if (have_rows('sponsors', $sponsor_ID)) {
@@ -1058,7 +1058,9 @@ function getSponsorPanel() {
 
 function getSocialPanel() {
     $return = '';
-    $panel_title = get_sub_field('panel_title');
+    GLOBAL $acf_blocks;
+    $panel_title = ($acf_blocks ? get_field('panel_title') : get_sub_field('panel_title'));    
+    
     if (have_rows('active_feeds')) {
         $return .= '
     <section class="social-feeds-panel">
