@@ -96,31 +96,7 @@ function make_add_acf_blocks() {
             'mode' => 'auto',
             'keywords' => array('featured', 'events', 'dynamic', 'panel'),
         ));
-        /*
-          acf_register_block(array(
-          'name'				=> '1_column',
-          'title'				=> __('1 Column'),
-          'render_callback'                => 'call_ACF_block_panels',
-          'category'			=> 'formatting',
-          'icon'				=> 'admin-comments',
-          'keywords'			=> array( '1', 'column', 'panel'),
-          ));
-          acf_register_block(array(
-          'name'				=> '3_column',
-          'title'				=> __('3 Columns'),
-          'render_callback'                => 'call_ACF_block_panels',
-          'category'			=> 'formatting',
-          'icon'				=> 'admin-comments',
-          'keywords'			=> array( '3', 'column', 'panel'),
-          ));
-          acf_register_block(array(
-          'name'				=> '2_column_photo_and_text_panel',
-          'title'				=> __('2 Columns - Photo and Text'),
-          'render_callback'                => 'call_ACF_block_panels',
-          'category'			=> 'formatting',
-          'icon'				=> 'admin-comments',
-          'keywords'			=> array( '2', 'column','photo','text', 'panel'),
-          )); */
+
         acf_register_block(array(
             'name' => 'what_is_maker_faire',
             'title' => __('What is Maker Faire'),
@@ -139,15 +115,7 @@ function make_add_acf_blocks() {
             'mode' => 'auto',
             'keywords' => array('call', 'action', 'panel'),
         ));
-        /*acf_register_block(array(
-            'name' => 'call_to_action',
-            'title' => __('Call to Action Text'),
-            'render_callback' => 'call_ACF_block_panels',
-            'category' => 'make-panels',
-            'icon' => 'admin-comments',
-            'mode' => 'auto',
-            'keywords' => array('call', 'action', 'panel'),
-        ));*/
+
         acf_register_block(array(
             'name' => 'static_or_carousel',
             'title' => __('Image Carousel (Rectangle)'),
@@ -184,7 +152,7 @@ function make_add_acf_blocks() {
             'mode' => 'auto',
             'keywords' => array('sponsors', 'panel'),
         ));
-        /*
+
         acf_register_block(array(
             'name' => 'social_media',
             'title' => __('Social Media'),
@@ -193,7 +161,7 @@ function make_add_acf_blocks() {
             'icon' => 'admin-comments',
             'mode' => 'auto',
             'keywords' => array('social', 'media', 'panel'),
-        ));*/
+        ));
         acf_register_block(array(
             'name' => 'home_page_image_carousel',
             'title' => __('Home Page Image Carousel'),
@@ -203,6 +171,26 @@ function make_add_acf_blocks() {
             'mode' => 'auto',
             'keywords' => array('image', 'carousel'),
         ));
+        //2 column video and text panel
+        acf_register_block(array(
+            'name' => 'two_column_video',
+            'title' => __('2 Column Video Panel'),
+            'render_callback' => 'call_ACF_block_panels',
+            'category' => 'make-panels',
+            'icon' => 'admin-comments',
+            'mode' => 'auto',
+            'keywords' => array('video', 'panel'),
+        ));
+        // Image Panels in the same style as the Video Panels
+        acf_register_block(array(
+            'name' => 'two_column_image',
+            'title' => __('2 column Image and text Panel'),
+            'render_callback' => 'call_ACF_block_panels',            
+            'category' => 'make-panels',
+            'icon' => 'admin-comments',
+            'mode' => 'auto',
+            'keywords' => array('image', 'panel'),
+        ));        
     }
 }
 

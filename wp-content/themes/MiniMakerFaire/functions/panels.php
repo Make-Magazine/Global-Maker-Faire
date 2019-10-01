@@ -83,6 +83,16 @@ function dispLayout($row_layout) {
                 $return = getSocialPanel();
             }
             break;
+        case 'two_column_video':
+            if ($activeinactive == 'Active') {
+                $return = getVideoPanel();
+            }
+            break;
+        case 'two_column_image':
+            if ($activeinactive == 'Active') {
+                $return = getImagePanel();
+            }
+            break;
     }
     return $return;
 }
@@ -198,7 +208,7 @@ function getFeatMkPanel($row_layout) {
 // loop through the rows of data
             while (have_rows('featured_makers')) {
                 the_row();
-                $url = ($acf_blocks ? get_field('maker_image') : get_sub_field('maker_image'));
+                $url = get_sub_field('maker_image');
                 $args = array(
                     'resize' => '300,300',
                     'quality' => '80',
@@ -207,9 +217,9 @@ function getFeatMkPanel($row_layout) {
                 $photon = jetpack_photon_url($url['url'], $args);
                 $makerArr[] = array(
                     'image' => $photon,
-                    'name' => ($acf_blocks ? get_field('maker_name') : get_sub_field('maker_name')),
-                    'desc' => ($acf_blocks ? get_field('maker_short_description') : get_sub_field('maker_short_description')),
-                    'maker_url' => ($acf_blocks ? get_field('maker_url') : get_sub_field('maker_url'))
+                    'name' => get_sub_field('maker_name'),
+                    'desc' => get_sub_field('maker_short_description'),
+                    'maker_url' => get_sub_field('maker_url')
                 );
             }
         }
@@ -330,7 +340,7 @@ function getFeatEvPanel($row_layout) {
             while (have_rows('featured_events')) {
                 the_row();
 
-                $url = ($acf_blocks ? get_field('event_image') : get_sub_field('event_image'));
+                $url = get_sub_field('event_image');
                 $args = array(
                     'resize' => '300,300',
                     'quality' => '80',
@@ -339,11 +349,11 @@ function getFeatEvPanel($row_layout) {
                 $photon = jetpack_photon_url($url['url'], $args);
                 $eventArr[] = array(
                     'image' => $photon,
-                    'event' => ($acf_blocks ? get_field('event_name') : get_sub_field('event_name')),
-                    'description' => ($acf_blocks ? get_field('event_short_description') : get_sub_field('event_short_description')),
-                    'day' => ($acf_blocks ? get_field('day') : get_sub_field('day')),
-                    'time' => ($acf_blocks ? get_field('time') : get_sub_field('time')),
-                    'location' => ($acf_blocks ? get_field('location') : get_sub_field('location')),
+                    'event' => get_sub_field('event_name'),
+                    'description' => get_sub_field('event_short_description'),
+                    'day' => get_sub_field('day'),
+                    'time' => get_sub_field('time'),
+                    'location' => get_sub_field('location'),
                     'maker_url' => ''
                 );
             }
@@ -585,8 +595,8 @@ function get2ColLayout() {
 
 function get1ColLayout() {
     $return = '';
-    $column_1       = get_sub_field('column_1');
-    $cta_button     = get_sub_field('cta_button');
+    $column_1 = get_sub_field('column_1');
+    $cta_button = get_sub_field('cta_button');
     $cta_button_url = get_sub_field('cta_button_url');
     $return .= '<section class="content-panel">
           <div class="container">';
@@ -664,10 +674,12 @@ function getWhatisMF() {
 /* * ****************************************** */
 
 function getCTApanel() {
+    GLOBAL $acf_blocks;
+
     $return = '';
-    $cta_title = get_sub_field('text');
-    $cta_url = get_sub_field('url');
-    $background_color = get_sub_field('background_color');
+    $cta_title = ($acf_blocks ? get_field('text') : get_sub_field('text'));
+    $cta_url = ($acf_blocks ? get_field('url') : get_sub_field('url'));
+    $background_color = ($acf_blocks ? get_field('background_color') : get_sub_field('background_color'));
 
     $return .= '<section class="cta-panel' . ($background_color == "Red" ? ' red-back' : '') . '">';
     $return .= '<div class="container">
@@ -688,7 +700,8 @@ function getCTApanel() {
 function getImgCarousel() {
     $return = '';
 // IMAGE CAROUSEL (RECTANGLE)
-    $width = get_sub_field('width');
+    GLOBAL $acf_blocks;
+    $width = ($acf_blocks ? get_field('width') : get_sub_field('width'));
 // check if the nested repeater field has rows of data
     if (have_rows('images')) {
 
@@ -765,18 +778,21 @@ function getImgCarousel() {
 function getImgCarouselSquare() {
     $return = '';
 // IMAGE CAROUSEL (SQUARE)
-    $width = get_sub_field('width');
+    GLOBAL $acf_blocks;
+    $width = ($acf_blocks ? get_field('width') : get_sub_field('width'));    
 
     if (have_rows('images')) {
         $return .= '<section class="square-image-carousel ' . ($width == 'Content Width' ? 'container nopad' : '') . '">';
         $return .= '<div class="mtm-carousel owl-carousel">';
         while (have_rows('images')) {
             the_row();
-
-            $text = get_sub_field('text');
+            
+            $text = get_sub_field('text');            
             $url = get_sub_field('url');
             $image = get_sub_field('image');
-            $return .= '<div class="mtm-car-image" style="background: url(\'' . $image["url"] . '\') no-repeat center center;background-size: cover;"></div>';
+            if($url!='')    $return .= '<a href="'.$url.'" target="_none">';
+            $return .= '<div title="'.$text.'" class="mtm-car-image" style="background: url(\'' . $image["url"] . '\') no-repeat center center;background-size: cover;"></div>';
+            if($url!='')    $return .= '</a>';
         }
         $return .= '
     </div>
@@ -1135,9 +1151,10 @@ function get_faire_backlink() {
 }
 
 /* Pulling logic from home page and pasting it into a function so it can be used in multiple places if desired */
+
 function home_page_image_carousel() {
     $return = 'home page image carousel';
-    
+
     $return = '
         <section class="slideshow-panel">
             <div class="header-logo-div text-center" itemprop="event" itemscope itemtype="http://schema.org/Event">';
@@ -1220,4 +1237,132 @@ function home_page_image_carousel() {
 
     $return .= '</section>';
     echo $return;
+}
+
+/* * *************************************************** */
+/*   Function to return 2_column_video panel             */
+/* * *************************************************** */
+
+function getVideoPanel() {
+    //get data submitted on admin page
+    GLOBAL $acf_blocks;
+
+    $return = '';
+    $return .= '<section class="video-panel container-fluid">';    // create content-panel section
+    //get requested data for each column    
+    $video_rows = ($acf_blocks ? get_field('video_row') : get_sub_field('video_row'));
+
+    $videoRowNum = 0;
+    foreach ($video_rows as $video) {
+        $videoRowNum += 1;
+        if ($videoRowNum % 2 != 0) {
+            $return .= '<div class="row">';
+            $return .= '  <div class="col-sm-4 col-xs-12">
+			                <h4>' . $video['video_title'] . '</h4>
+								 <p>' . $video['video_text'] . '</p>';
+            if ($video['video_button_link']) {
+                $return .= '  <a href="' . $video['video_button_link'] . '">' . $video['video_button_text'] . '</a>';
+            }
+            $return .= '  </div>';
+            $return .= '  <div class="col-sm-8 col-xs-12">
+			                 <div class="embed-youtube">
+									 <iframe class="lazyload" src="https://www.youtube.com/embed/' . $video['video_code'] . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+								  </div>
+			              </div>';
+            $return .= '</div>';
+        } else {
+            $return .= '<div class="row">';
+            $return .= '  <div class="col-sm-8 col-xs-12">
+								  <div class="embed-youtube">
+									 <iframe class="lazyload" src="https://www.youtube.com/embed/' . $video['video_code'] . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+								  </div>
+							  </div>';
+            $return .= '  <div class="col-sm-4 col-xs-12">
+								 <h4>' . $video['video_title'] . '</h4>
+								 <p>' . $video['video_text'] . '</p>';
+            if ($video['video_button_link']) {
+                $return .= '  <a href="' . $video['video_button_link'] . '">' . $video['video_button_text'] . '</a>';
+            }
+            $return .= '  </div>';
+            $return .= '</div>';
+        }
+    }
+    $return .= '</section>'; // end section/container
+    return $return;
+}
+
+/* * *************************************************** */
+/*   Function to return 2_column_image panel            */
+/* * *************************************************** */
+
+function getImagePanel() {
+    //get data submitted on admin page
+    GLOBAL $acf_blocks;
+    $return = '';
+    $return .= '<section class="image-panel container-fluid">';    // create content-panel section
+    //get requested data for each column    
+    $image_rows = ($acf_blocks ? get_field('image_row') : get_sub_field('image_row'));
+    $imageRowNum = 0;
+    foreach ($image_rows as $image) {
+        $imageRowNum += 1;
+        $imageObj = $image['image'];
+
+        if ($imageRowNum % 2 != 0) {
+            $return .= '<div class="row ' . $image['background_color'] . '">';
+            $return .= '  <div class="col-sm-4 col-xs-12">
+								 <h4>' . $image['image_title'] . '</h4>
+								 <p>' . $image['image_text'] . '</p>';
+            if ($image['image_links']) {
+                foreach ($image['image_links'] as $image_link) {
+                    $return .= '  	    <a href="' . $image_link['image_link_url'] . '">' . $image_link['image_link_text'] . '</a>';
+                }
+            }
+            $return .= '  </div>';
+            $return .= '  <div class="col-sm-8 col-xs-12">
+			                 <div class="image-display">';
+            if (isset($image['image_overlay']['image_overlay_link'])) {
+                $return .= ' 		  <a href="' . $image['image_overlay']['image_overlay_link'] . '">';
+            }
+            $return .= '			 <img class="img-responsive lazyload" src="' . $imageObj['url'] . '" alt="' . $imageObj['alt'] . '" />';
+            if (isset($image['image_overlay']['image_overlay_text'])) {
+                $return .= '  <div class="image-overlay-text">' . $image['image_overlay']['image_overlay_text'] . '</div>';
+                ;
+            }
+            if (isset($image['image_overlay']['image_overlay_link'])) {
+                $return .= '        </a>';
+            }
+            $return .= '		</div>
+			              </div>';
+            $return .= '</div>';
+        } else {
+            $return .= '<div class="row ' . $image['background_color'] . '">';
+            $return .= '  <div class="col-sm-8 col-xs-12">
+			                 <div class="image-display">';
+            if ($image['image_overlay']['image_overlay_link']) {
+                $return .= ' 		  <a href="' . $image['image_overlay']['image_overlay_link'] . '">';
+            }
+            $return .= '			 <img class="img-responsive lazyload" src="' . $imageObj['url'] . '" alt="' . $imageObj['alt'] . '" />';
+            if ($image['image_overlay']['image_overlay_text']) {
+                $return .= '  <div class="image-overlay-text">' . $image['image_overlay']['image_overlay_text'] . '</div>';
+                ;
+            }
+            if ($image['image_overlay']['image_overlay_link']) {
+                $return .= '        </a>';
+            }
+            $return .= '  </div>';
+            $return .= '</div>';
+            $return .= '  <div class="col-sm-4 col-xs-12">
+								 <h4>' . $image['image_title'] . '</h4>
+								 <p>' . $image['image_text'] . '</p>';
+            if ($image['image_links']) {
+                foreach ($image['image_links'] as $image_link) {
+                    $return .= '  	    <a href="' . $image_link['image_link_url'] . '">' . $image_link['image_link_text'] . '</a>';
+                }
+            }
+            $return .= '  </div>';
+            $return .= '</div>';
+        }
+    }
+    $return .= '</section>'; // end section/container
+    return $return;
 }
