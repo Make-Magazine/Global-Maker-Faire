@@ -3,7 +3,6 @@
 $divClass = (is_block_editor_active() ? "" : "container");
 
 ?>
-
 <div class="page-body">
   <?php // theloop
   if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>    
@@ -18,6 +17,7 @@ $divClass = (is_block_editor_active() ? "" : "container");
         the_row();
         $row_layout = get_row_layout();
         echo dispLayout($row_layout);
+			error_log(print_r($row_layout, TRUE));
       }
     }
     ?>
