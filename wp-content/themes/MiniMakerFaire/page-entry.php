@@ -163,9 +163,9 @@ get_header();
                         <div class="col-md-8 col-sm-12 col-xs-12" id="viewEntry">
                             <?php
                             //display schedule/location information if there is any
-                            /* if (!empty(display_entry_schedule($entryId))) {
+                            if (!empty(display_entry_schedule($entryId))) {
                               display_entry_schedule($entryId);
-                              } */
+                            } 
                             ?>
                             <div class="entry-type">
                                 <?php
