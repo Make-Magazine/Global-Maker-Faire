@@ -16,7 +16,7 @@ if (isset($entry->errors)) {
     $form_id = '';
 } else {
     //find outwhich faire this entry is for to set the 'look for more makers link'
-    $faire = $slug = $faireID = $show_sched = $faire_end = '';
+    $faire = $slug = $faireID = $faire_end = '';
     $form_id = $entry['form_id'];
     $form = GFAPI::get_form($form_id);
     $formType = $form['form_type'];
@@ -304,14 +304,12 @@ get_header();
 get_footer();
 
 function display_entry_schedule($entry_id) {
+
     global $wpdb;
     global $faireID;
     global $faire;
-    global $show_sched;
     global $faire_logo;
-    if (!$show_sched) {
-        return;
-    }
+
     $faire_url = "/$faire";
 
     $sql = "SELECT location.entry_id, area.area, subarea.subarea, subarea.nicename, location.location, schedule.start_dt, schedule.end_dt
