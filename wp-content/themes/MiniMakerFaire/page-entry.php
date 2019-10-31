@@ -315,12 +315,12 @@ function display_entry_schedule($entry_id) {
     $faire_url = "/$faire";
 
     $sql = "SELECT location.entry_id, area.area, subarea.subarea, subarea.nicename, location.location, schedule.start_dt, schedule.end_dt
-            FROM  wp_mf_location location
-            join  wp_mf_faire_subarea subarea
+            FROM  {$wpdb->prefix}mf_location location
+            join  {$wpdb->prefix}mf_faire_subarea subarea
                   ON  location.subarea_id = subarea.ID
-            join  wp_mf_faire_area area
+            join  {$wpdb->prefix}mf_faire_area area
                   ON subarea.area_id = area.ID and area.faire_id = $faireID
-            left  join wp_mf_schedule schedule
+            left  join {$wpdb->prefix}mf_schedule schedule
                   ON location.ID = schedule.location_id
             WHERE location.entry_id=$entry_id
             GROUP BY area, subarea, location";
@@ -398,10 +398,10 @@ function display_groupEntries($entryID) {
     global $faireID;
     global $faire;
     $return = '';
-    $table_name = $wpdb->prefix . 'wp_gf_entry_rel';
+    $table_name = $wpdb->prefix . 'gf_entry_rel';
 
     if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")) {
-        $sql = "SELECT * from wp_gf_entry_rel where parentID = " . $entryID . " or childID = " . $entryID;
+        $sql = "SELECT * from {$wpdb->prefix}gf_entry_rel where parentID = " . $entryID . " or childID = " . $entryID;
         $results = $wpdb->get_results($sql);
         if ($wpdb->num_rows > 0) {
             if ($results[0]->parentID == $entryID) {

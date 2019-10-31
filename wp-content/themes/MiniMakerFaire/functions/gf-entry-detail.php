@@ -113,21 +113,16 @@ function get_return_entry_list_url($form) {
 }
 
 function get_makerfaire_status_counts($form_id) {
-   global $wpdb;
-   ## Removing this because it pulls the legacy table name
-   //$lead_details_table_name = RGFormsModel::get_lead_details_table_name();
-   $lead_details_table_name = 'gf_lead_detail';
-   $sql = $wpdb->prepare(
-      "SELECT count(0) as entries, value as label 
-         FROM $lead_details_table_name
-              join wp_rgf_entry lead
-              on  lead.id = $lead_details_table_name.entry_id and
-                  lead.status = 'active'
-        where field_number = '303'
-          and $lead_details_table_name.form_id=%d
-    group by value", $form_id);
-   
-   $results = $wpdb->get_results($sql, ARRAY_A);
-   return $results;
-   
+  global $wpdb;
+  $sql = $wpdb->prepare(
+     “SELECT count(0) as entries, meta_value as label
+        FROM {$wpd->prefix}gf_entry_meta
+             join {$wpd->prefix}gf_entry lead
+             on  lead.id = {$wpd->prefix}gf_entry_meta.entry_id and
+                 lead.status = ‘active’
+       where meta_key = ‘303’
+         and {$wpd->prefix}gf_entry_meta.form_id=%d
+   group by meta_value”, $form_id);
+  $results = $wpdb->get_results($sql, ARRAY_A);
+  return $results;
 }
