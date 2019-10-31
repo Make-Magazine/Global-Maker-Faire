@@ -115,14 +115,14 @@ function get_return_entry_list_url($form) {
 function get_makerfaire_status_counts($form_id) {
   global $wpdb;
   $sql = $wpdb->prepare(
-     “SELECT count(0) as entries, meta_value as label
+     "SELECT count(0) as entries, meta_value as label
         FROM {$wpd->prefix}gf_entry_meta
              join {$wpd->prefix}gf_entry lead
              on  lead.id = {$wpd->prefix}gf_entry_meta.entry_id and
-                 lead.status = ‘active’
-       where meta_key = ‘303’
+                 lead.status = 'active'
+       where meta_key = '303'
          and {$wpd->prefix}gf_entry_meta.form_id=%d
-   group by meta_value”, $form_id);
+   group by meta_value", $form_id);
   $results = $wpdb->get_results($sql, ARRAY_A);
   return $results;
 }
