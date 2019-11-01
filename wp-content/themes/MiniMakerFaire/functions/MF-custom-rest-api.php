@@ -25,7 +25,7 @@ function mf_fairedata(WP_REST_Request $request) {
             break;
          case 'schedule':
             $schedule = getSchedule($formIDs);
-            $category = getCategories($formIDs);
+            $category = getCategories($formIDs);           
             $data = array_merge($schedule, $category);
             break;
       }
@@ -159,8 +159,9 @@ function getCategories($formIDs) {
 function getSchedule($formIDs) {
    $data = array();
    global $wpdb;
-   // setlocale(LC_ALL, get_locale());
-   
+    //get date format 
+   $date_format = get_option('date_format'); 
+  
    $wp_locale = get_locale();
    switch_to_locale(get_locale());
    // create type translate array
@@ -221,6 +222,7 @@ function getSchedule($formIDs) {
          'id' => $row->entry_id,
          'time_start' => $startDate,
          'time_end' => $endDate,
+         'date_formatted' => date($date_format,strtotime($startDate)),
          'name' => $row->name,
          'thumb_img_url' => $fitPhoto,
          'maker_list' => $makerList,

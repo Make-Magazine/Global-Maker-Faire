@@ -36,14 +36,14 @@
         var typeArr = {};
         var addType = '';
         $scope.dateFilter = '';
-
+        
         /* input categories are a comma sepated list of category id's
             the below will split these into an array,
             compare them to the catJson to get the category name,
             and output an array of category names */
         angular.forEach($scope.schedules, function(schedule, scheduleKey){
-          if($scope.dateFilter=='') $scope.dateFilter = schedule.dayOfWeek;
-          $scope.days[schedule.dayOfWeek] = $filter('date')(schedule.time_start, "d/MMM/yy");
+          if($scope.dateFilter=='') $scope.dateFilter = schedule.dayOfWeek;          
+          $scope.days[schedule.dayOfWeek] = schedule.date_formatted;
 
             //check if there is more than one type
             addType = schedule.type;
