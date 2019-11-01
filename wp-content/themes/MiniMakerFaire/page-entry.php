@@ -160,13 +160,7 @@ get_header();
                     //if entry is active and accepted display entry information
                     if (is_array($entry) && isset($entry['status']) && $entry['status'] == 'active' && isset($entry[303]) && $entry[303] == 'Accepted') {
                         ?>
-                        <div class="col-md-8 col-sm-12 col-xs-12" id="viewEntry">
-                            <?php
-                            //display schedule/location information if there is any
-                            if (!empty(display_entry_schedule($entryId))) {
-                              display_entry_schedule($entryId);
-                            } 
-                            ?>
+                        <div class="col-md-8 col-sm-12 col-xs-12" id="viewEntry">                            
                             <div class="entry-type">
                                 <?php
                                 if ($displayFormType == true) {
@@ -219,6 +213,14 @@ get_header();
                         </div> <!-- / #viewEntry-->
                         <div class="col-md-4 col-sm-12 col-xs-12" id="entrySidebar">
                             <div class="sidebar-type">
+                                <div class="entryInfo">
+                                <?php
+                                //display schedule/location information if there is any
+                                if (!empty(display_entry_schedule($entryId))) {
+                                  display_entry_schedule($entryId);
+                                } 
+                                ?>
+                                </div>
                                 <div class="entry-header">
                                     <h2>
                                         <?php
@@ -309,64 +311,59 @@ function display_entry_schedule($entry_id) {
     global $faireID;
     global $faire;
     global $faire_logo;
-
-    $faire_url = "/$faire";
+    $return = "";
+    
 
     $sql = "SELECT location.entry_id, location.location, schedule.start_dt, schedule.end_dt
             FROM  {$wpdb->prefix}mf_location location           
             left  join {$wpdb->prefix}mf_schedule schedule
                   ON location.ID = schedule.location_id
-            WHERE location.entry_id=$entry_id
-            GROUP BY area, subarea, location";
+            WHERE location.entry_id=$entry_id";
     $results = $wpdb->get_results($sql);
 
     if ($wpdb->num_rows > 0) {
-        ?>
-        <div id="entry-schedule">
-            <span class="faireBadge pull-left">
-                <?php
-                if ($faire_logo != '') {
-                    $faire_logo = legacy_get_fit_remote_image_url($faire_logo, 51, 51);
-                    echo '<a href="' . $faire_url . '"><img src="' . $faire_logo . '" alt="' . $faire . ' - badge" /></a>';
-                }
-                ?>
-            </span>
-            <span class="faireTitle pull-left">
-                <a href="<?= $faire_url ?>">
-                    <span class="faireLabel">Live at</span><br/>
-                    <div class="faireName"><?php echo ucwords(str_replace('-', ' ', $faire)); ?></div>
-                </a>
-            </span>            
-            
-            <div class="clear"></div>
+        $return .= '<div id="entry-schedule">
+                   <div class="row padbottom">';
 
-            <table>
-                <?php
                 foreach ($results as $row) {
-                    echo '<tr>';
                     if (!is_null($row->start_dt)) {
                         $start_dt = strtotime($row->start_dt);
                         $end_dt = strtotime($row->end_dt);
-                        echo '<td><b>' . date("l, F j", $start_dt) . '<b></td>'
-                        . ' <td>' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</td>';
-                    } else {
-                        global $faire_start;
-                        global $faire_end;
+                        $current_start_dt = date("l, F j", $start_dt);
+                        $current_location = $row->location;
 
-                        $faire_start = strtotime($faire_start);
-                        $faire_end = strtotime($faire_end);
+                        if ($prev_start_dt == NULL) {
+                            $return .= '<div class="entry-date-time col-xs-12">';
+                        }
 
-                        //tbd change this to be dynamically populated
-                        //echo '<td>' . __('Friday, Saturday and Sunday', 'MiniMakerFaire') . ': ' . date("F j", $faire_start) . '-' . date("j", $faire_end) . '</td>';
+                        if ($prev_start_dt != $current_start_dt) {
+                            //This is not the first new date
+                            if ($prev_start_dt != NULL) {
+                                $return .= '</div><div class="entry-date-time col-xs-12">';
+                            }
+                            $return .= '<h5>' . $current_start_dt . '</h5>';
+                            $prev_start_dt = $current_start_dt;
+                            $prev_location = null;
+                            $multipleLocations = TRUE;
+                        }
+                        // this is a new location
+                        if ($prev_location != $current_location) {
+                            $prev_location = $current_location;
+                            $return .= '<small class="text-muted">LOCATION: ' . $current_location . '</small><br />';
+                        }
+
+
+                        $return .= '<small class="text-muted">TIME:</small> ' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</small><br />';
                     }
-                    echo '<td>' . $row->location . '</td>';
-                    echo '</tr>';
+                    
                 }
-                ?>
-            </table>
-        </div>
-        <?php
+                $return .= '</div>
+              </div>';
+        if ($multipleLocations == TRUE) { // this is kind of a mess to require this
+            $return .= "</div>";
+        }
     }
+    echo $return;
 }
 
 /* This function is used to display grouped entries and links */
