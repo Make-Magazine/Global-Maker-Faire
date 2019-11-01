@@ -312,12 +312,8 @@ function display_entry_schedule($entry_id) {
 
     $faire_url = "/$faire";
 
-    $sql = "SELECT location.entry_id, area.area, subarea.subarea, subarea.nicename, location.location, schedule.start_dt, schedule.end_dt
-            FROM  {$wpdb->prefix}mf_location location
-            join  {$wpdb->prefix}mf_faire_subarea subarea
-                  ON  location.subarea_id = subarea.ID
-            join  {$wpdb->prefix}mf_faire_area area
-                  ON subarea.area_id = area.ID and area.faire_id = $faireID
+    $sql = "SELECT location.entry_id, location.location, schedule.start_dt, schedule.end_dt
+            FROM  {$wpdb->prefix}mf_location location           
             left  join {$wpdb->prefix}mf_schedule schedule
                   ON location.ID = schedule.location_id
             WHERE location.entry_id=$entry_id
@@ -340,24 +336,8 @@ function display_entry_schedule($entry_id) {
                     <span class="faireLabel">Live at</span><br/>
                     <div class="faireName"><?php echo ucwords(str_replace('-', ' ', $faire)); ?></div>
                 </a>
-            </span>
-            <?php // TBD - dynamically set these links and images    ?>
-            <div class="faireActions">
-                <span class="pull-right">
-                    <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-Map_2016__8.5x11_Pg-2.pdf">
-                        <img class="actionIcon" src="https://makerfaire.com/wp-content/uploads/2016/01/icon-map.png" alt="Map Icon" width="40px" scale="0">
-                        <?php __('Event Map', 'MiniMakerFaire') ?>
-                    </a>
-                </span>
-                <span class="pull-right">
-                    <a class="flagship-icon-link" href="http://makerfaire.com/national-2016/schedule/">
-                        <img class="actionIcon" src="https://makerfaire.com/wp-content/uploads/2016/01/icon-schedule.png" alt="Schedule Icon" width="40px" scale="0">
-                    </a>
-                    <span class="pull-right "><a href="http://makerfaire.com/national-2016/schedule/"><?php __('View full schedule', 'MiniMakerFaire') ?></a><br/>
-                        <a class="flagship-icon-link" href="/wp-content/uploads/2016/06/NMF-ProgramGuide_2016_v2.pdf"><?php __('Download the program guide', 'MiniMakerFaire') ?></a>
-                    </span>
-                </span>
-            </div>
+            </span>            
+            
             <div class="clear"></div>
 
             <table>
@@ -377,9 +357,9 @@ function display_entry_schedule($entry_id) {
                         $faire_end = strtotime($faire_end);
 
                         //tbd change this to be dynamically populated
-                        echo '<td>' . __('Friday, Saturday and Sunday', 'MiniMakerFaire') . ': ' . date("F j", $faire_start) . '-' . date("j", $faire_end) . '</td>';
+                        //echo '<td>' . __('Friday, Saturday and Sunday', 'MiniMakerFaire') . ': ' . date("F j", $faire_start) . '-' . date("j", $faire_end) . '</td>';
                     }
-                    echo '<td>' . $row->area . '</td><td>' . ($row->nicename != '' ? $row->nicename : $row->subarea) . '</td>';
+                    echo '<td>' . $row->location . '</td>';
                     echo '</tr>';
                 }
                 ?>
