@@ -223,7 +223,7 @@ get_header();
                                   display_entry_schedule($entryId);
                                   ?>
                                     </div>
-                                    ?>
+                                   <?php
                                 } 
                                 ?>
                                 
