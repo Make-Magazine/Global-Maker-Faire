@@ -213,14 +213,20 @@ get_header();
                         </div> <!-- / #viewEntry-->
                         <div class="col-md-4 col-sm-12 col-xs-12" id="entrySidebar">
                             <div class="sidebar-type">
-                                <div class="entryInfo">
+                                
                                 <?php
                                 //display schedule/location information if there is any
                                 if (!empty(display_entry_schedule($entryId))) {
+                                    ?>
+                                    <div class="entryInfo">
+                                    ?>
                                   display_entry_schedule($entryId);
+                                  ?>
+                                    </div>
+                                    ?>
                                 } 
                                 ?>
-                                </div>
+                                
                                 <div class="entry-header">
                                     <h2>
                                         <?php
