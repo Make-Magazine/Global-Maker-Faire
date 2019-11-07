@@ -213,20 +213,9 @@ get_header();
                         </div> <!-- / #viewEntry-->
                         <div class="col-md-4 col-sm-12 col-xs-12" id="entrySidebar">
                             <div class="sidebar-type">
-                                
                                 <?php
-                                //display schedule/location information if there is any
-                                if (!empty(display_entry_schedule($entryId))) {
-                                    ?>
-                                    <div class="entryInfo">
-                                    ?>
-                                  display_entry_schedule($entryId);
-                                  ?>
-                                    </div>
-                                   <?php
-                                } 
+                                display_entry_schedule($entryId);                                                                
                                 ?>
-                                
                                 <div class="entry-header">
                                     <h2>
                                         <?php
@@ -318,7 +307,7 @@ function display_entry_schedule($entry_id) {
     global $faire;
     global $faire_logo;
     $return = "";
-    
+
 
     $sql = "SELECT location.entry_id, location.location, schedule.start_dt, schedule.end_dt
             FROM  {$wpdb->prefix}mf_location location           
@@ -328,43 +317,45 @@ function display_entry_schedule($entry_id) {
     $results = $wpdb->get_results($sql);
 
     if ($wpdb->num_rows > 0) {
-        $return .= '<div id="entry-schedule">
-                   <div class="row padbottom">';
+        //display schedule/location information if there is any
+        $return .= '<div class="entryInfo">
+                        <div id="entry-schedule">
+                            <div class="row padbottom">';
 
-                foreach ($results as $row) {
-                    if (!is_null($row->start_dt)) {
-                        $start_dt = strtotime($row->start_dt);
-                        $end_dt = strtotime($row->end_dt);
-                        $current_start_dt = date("l, F j", $start_dt);
-                        $current_location = $row->location;
+        foreach ($results as $row) {
+            if (!is_null($row->start_dt)) {
+                $start_dt = strtotime($row->start_dt);
+                $end_dt = strtotime($row->end_dt);
+                $current_start_dt = date("l, F j", $start_dt);
+                $current_location = $row->location;
 
-                        if ($prev_start_dt == NULL) {
-                            $return .= '<div class="entry-date-time col-xs-12">';
-                        }
-
-                        if ($prev_start_dt != $current_start_dt) {
-                            //This is not the first new date
-                            if ($prev_start_dt != NULL) {
-                                $return .= '</div><div class="entry-date-time col-xs-12">';
-                            }
-                            $return .= '<h5>' . $current_start_dt . '</h5>';
-                            $prev_start_dt = $current_start_dt;
-                            $prev_location = null;
-                            $multipleLocations = TRUE;
-                        }
-                        // this is a new location
-                        if ($prev_location != $current_location) {
-                            $prev_location = $current_location;
-                            $return .= '<small class="text-muted">LOCATION: ' . $current_location . '</small><br />';
-                        }
-
-
-                        $return .= '<small class="text-muted">TIME:</small> ' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</small><br />';
-                    }
-                    
+                if ($prev_start_dt == NULL) {
+                    $return .= '<div class="entry-date-time col-xs-12">';
                 }
-                $return .= '</div>
-              </div>';
+
+                if ($prev_start_dt != $current_start_dt) {
+                    //This is not the first new date
+                    if ($prev_start_dt != NULL) {
+                        $return .= '</div><div class="entry-date-time col-xs-12">';
+                    }
+                    $return .= '<h5>' . $current_start_dt . '</h5>';
+                    $prev_start_dt = $current_start_dt;
+                    $prev_location = null;
+                    $multipleLocations = TRUE;
+                }
+                // this is a new location
+                if ($prev_location != $current_location) {
+                    $prev_location = $current_location;
+                    $return .= '<small class="text-muted">LOCATION: ' . $current_location . '</small><br />';
+                }
+
+
+                $return .= '<small class="text-muted">TIME:</small> ' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</small><br />';
+            }
+        }
+        $return .= '        </div>
+                        </div>
+                    </div>';
         if ($multipleLocations == TRUE) { // this is kind of a mess to require this
             $return .= "</div>";
         }
@@ -440,16 +431,16 @@ function getTplPageURL($TEMPLATE_NAME) {
 function displayEntryFooter($mtmLink, $scheduleLink) {
     $return .= '<div class="faireActions container">';
     global $form;
-    
-    $dispMTMButton   = (isset($form['form_disp_mtm_button'])?$form['form_disp_mtm_button']:'');
-    $dispSchedButton = (isset($form['form_disp_schedule_button'])?$form['form_disp_schedule_button']:'');
-    
-    if (getTplPageURL("page-meet-the-makers.php") && $dispMTMButton!='hide') {
+
+    $dispMTMButton = (isset($form['form_disp_mtm_button']) ? $form['form_disp_mtm_button'] : '');
+    $dispSchedButton = (isset($form['form_disp_schedule_button']) ? $form['form_disp_schedule_button'] : '');
+
+    if (getTplPageURL("page-meet-the-makers.php") && $dispMTMButton != 'hide') {
         $return .= '<div class="faireAction-box">
 		<a class="btn universal-btn" href="' . $mtmLink . '"><h4>Look for More Makers</h4></a>
 	</div>';
     }
-    if (getTplPageURL("page-schedule.php") && $dispSchedButton!='hide') {
+    if (getTplPageURL("page-schedule.php") && $dispSchedButton != 'hide') {
         $return .= '<div class="faireAction-box">
 			              <a class="btn universal-btn" href="' . $scheduleLink . '"><h4>View Full Schedule</h4></a>
 		             </div>';
