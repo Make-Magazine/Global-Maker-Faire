@@ -93,6 +93,7 @@ $displayType = (isset($entry['105']) ? $entry['105'] : '');
 
 $isGroup = $isList = $isSingle = false;
 $isGroup = (strpos($displayType, 'group') !== false);
+$isGroup = ($groupname == '' ? false : true);
 $isList = (strpos($displayType, 'list') !== false);
 $isSingle = (strpos($displayType, 'One') !== false);
 $sharing_cards = new mf_sharing_cards();
