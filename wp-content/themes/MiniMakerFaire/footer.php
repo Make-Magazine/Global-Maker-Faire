@@ -70,7 +70,7 @@
       </div>
       <div class="row padtop">
         <div class="col-xs-12">
-          <p class="copyright-footer text-center"><?php bloginfo( 'name' ); ?> is independently organized and operated under license from Maker Media, Inc.</p>
+          <p class="copyright-footer text-center"><?php bloginfo( 'name' ); ?> is independently organized and operated under license from Make: Community, LLC</p>
         </div>
       </div>
     </div>

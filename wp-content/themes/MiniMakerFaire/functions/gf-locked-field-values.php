@@ -99,7 +99,7 @@ function populate_checkbox( $form) {
       //Producers are not allowed to change the text of field 376
       /*
       if($field["id"] == 376){
-        $field['label'] = "Please know that Make:, Maker Faire, and Maker Media respect your privacy and will not share or sell your information.";
+        $field['label'] = "Please know that Make:, Maker Faire, and Make: Community respect your privacy and will not share or sell your information.";
         $field['description'] = 'Complete Make: privacy policy is located at: <a href="http://makermedia.com/privacy/">http://makermedia.com/privacy/</a>';
         $field['choices'] = array(
           array(
