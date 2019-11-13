@@ -61,7 +61,7 @@
   <div class="flag-banner header-flag"></div>
  
   <nav class="navbar navbar-default <?php if(!is_page_template( 'page-home.php' )) : ?>nav-not-home<?php endif; ?>" role="navigation" id="slide-nav">
-    <div class="container text-center nav-flex">
+    <div class="container-fluid text-center nav-flex">
       <div class="navbar-header">
         <a class="navbar-toggle"> 
           <span class="sr-only">Toggle navigation</span>
