@@ -70,7 +70,9 @@
           <span class="icon-bar"></span>
         </a>
         <?php $header_logo = get_theme_mod( 'header_logo' ); ?>
-        <img class="header-logo" src="<?php echo legacy_get_fit_remote_image_url( $header_logo, 360, 360); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
+		  <a href="/">
+        		<img class="header-logo" src="<?php echo legacy_get_fit_remote_image_url( $header_logo, 360, 360); ?>" alt="<?php bloginfo( 'name' ); ?> logo" />
+		  </a>
       </div>
 
       <div id="nav-not-home-logo">
