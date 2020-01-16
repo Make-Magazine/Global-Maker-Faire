@@ -700,13 +700,43 @@ contact@makermedia.com"',
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
-               'width' => '',
+               'width' => 50,
                'class' => '',
                'id' => ''
             ),
             'readonly' => 0,
             'disabled' => 0
          ),
+			array(
+				'multiple' => 0,
+				'allow_null' => 0,
+				'choices' => array(
+					'16px' => 'Small - 16px',
+					'20px' => 'Medium - 20px',
+					'24px' => 'Large - 24px'
+				),
+				'default_value' => array(
+					0 => '16px'
+				),
+				'ui' => 0,
+				'ajax' => 0,
+				'placeholder' => '',
+				'return_format' => 'value',
+				'key' => 'field_57101bb2193a97',
+				'label' => 'Faire Info Font Size',
+				'name' => 'faire_info_font_size',
+				'type' => 'select',
+				'instructions' => 'Choose the size of the Faire date and location text',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => 50,
+					'class' => '',
+					'id' => ''
+				),
+				'disabled' => 0,
+				'readonly' => 0
+			),
          array(
             'message' => 'To update logo go to Appearance > Customize > Logo & CTA Button',
             'esc_html' => 0,

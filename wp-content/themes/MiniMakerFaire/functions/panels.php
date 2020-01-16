@@ -1168,7 +1168,7 @@ function home_page_image_carousel() {
         $return .= '<a class="event-location-url" href="' . $faire_location_url . '"' . ($open_faire_location ? ' target="_blank"' : '') . '>';
     }
     if ($faire_location) {
-        $return .= '<h2 class="event-location" itemprop="location"><i class="fa fa-map-marker" aria-hidden="true"></i>' . $faire_location . '</h2>';
+        $return .= '<h2 class="event-location" itemprop="location" style="font-size:'.get_field('faire_info_font_size').';"><i class="fa fa-map-marker" aria-hidden="true"></i>' . $faire_location . '</h2>';
     }
     if ($faire_location_url) {
         $return .= '</a>';
@@ -1176,7 +1176,7 @@ function home_page_image_carousel() {
 
     $faire_date = get_field('faire_date');
     if ($faire_date) {
-        $return .= '<h2 class="event-date" itemprop="startDate"><i class="fa fa-calendar-o" aria-hidden="true"></i>' . $faire_date . '</h2>';
+        $return .= '<h2 class="event-date" itemprop="startDate" style="font-size:'.get_field('faire_info_font_size').';"><i class="fa fa-calendar-o" aria-hidden="true"></i>' . $faire_date . '</h2>';
     }
 
     $header_logo = get_theme_mod('header_logo');
