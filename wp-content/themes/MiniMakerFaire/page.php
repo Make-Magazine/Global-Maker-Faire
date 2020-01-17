@@ -1,12 +1,10 @@
 <?php get_header();
-//go full width on page if using gutenburg, otherwise use the container class 
-$divClass = (is_block_editor_active() ? "" : "container");
 
 ?>
 <div class="page-body">
   <?php // theloop
   if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>    
-    <div class="<?php echo $divClass;?>">
+    <div class="container">
       <?php the_content(); ?>
     </div>
     <?php
