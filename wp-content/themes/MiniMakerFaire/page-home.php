@@ -42,7 +42,7 @@ get_header();
 					while ( have_rows('ad_list', 'option') ) {
 						the_row();
 						$image = get_sub_field('ad_image');
-						$return .= '<div class="col-xs-12 col-sm-6 col-md-4 text-center house-ad">
+						$return .= '<div class="col-xs-12 col-sm-6 col-md-4 text-center house-add">
 											<a href="'.get_sub_field('ad_url').'" target="_blank">
 												<img src="'.$image['url'].'" />
 											</a>
