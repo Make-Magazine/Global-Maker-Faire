@@ -28,36 +28,32 @@ get_header();
   }
   ?>
 
-  <?php // FIND OUT MORE PANEL
-  $url1 = str_replace( "SITE_URL", esc_url( network_home_url() ), get_site_option( 'find-out-more-url1' ) );
-  $url2 = str_replace( "SITE_URL", esc_url( network_home_url() ), get_site_option( 'find-out-more-url2' ) );
-  ?>
-  <aside class="fom-panel">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4 text-center dyn-google-ad">
-          <div id='div-gpt-ad-1464723042021-0'>
-            <script type='text/javascript'>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1464723042021-0'); });
-            </script>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 text-center dyn-google-ad">
-          <div id='div-gpt-ad-1464723042021-1'>
-            <script type='text/javascript'>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1464723042021-1'); });
-            </script>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 text-center dyn-google-ad">
-          <div id='div-gpt-ad-1464723042021-2'>
-            <script type='text/javascript'>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1464723042021-2'); });
-            </script>
-          </div>
-        </div>
-      </div>
-    </div>
-  </aside>
+	<?php // FIND OUT MORE PANEL
+	$url1 = str_replace( "SITE_URL", esc_url( network_home_url() ), get_site_option( 'find-out-more-url1' ) );
+	$url2 = str_replace( "SITE_URL", esc_url( network_home_url() ), get_site_option( 'find-out-more-url2' ) );
+	?>
+  
+   <?php // We pull from the site options Ad List fields set in global.makerfaire.com
+	switch_to_blog(1); 
+	if( have_rows('ad_list', 'option')) {
+		$return = '<aside class="fom-panel">
+						 <div class="container">
+							<div class="row">';
+					while ( have_rows('ad_list', 'option') ) {
+						the_row();
+						$image = get_sub_field('ad_image');
+						$return .= '<div class="col-xs-12 col-sm-6 col-md-4 text-center house-ad">
+											<a href="'.get_sub_field('ad_url').'" target="_blank">
+												<img src="'.$image['url'].'" />
+											</a>
+									  </div>';
+					}
+		$return . = '</div>
+    				</div>
+  				</aside>';
+		echo($return);
+	}
+	restore_current_blog();
+   ?>
 
 <?php get_footer(); ?>

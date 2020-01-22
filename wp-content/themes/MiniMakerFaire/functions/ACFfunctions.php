@@ -10,11 +10,113 @@ function my_acf_show_admin($show) {
    }   
 }
 
+// There's gonna be some settings that can only be set by super admin on the main domain that apply to all subdomains
+if( function_exists('acf_add_options_page') && is_super_admin() && get_current_blog_id() == 1) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Multisite Settings',
+		'menu_title'	=> 'Multisite Settings',
+		'menu_slug' 	=> 'multisite-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+}
+
 /*
  * Please paste PHP code below this that is generated using Custom Fields-> Tools -> Export Field Groups
  * Toggle all field groups and click 'Generate Export Code'
  */
 if (function_exists('acf_add_local_field_group')) {
+	
+	//**************** Site Settings *******************//
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_5e288edd51b07',
+		'title' => 'Footer Ads',
+		'fields' => array(
+			array(
+				'key' => 'field_5e288ef456deb',
+				'label' => 'Ad List',
+				'name' => 'ad_list',
+				'type' => 'repeater',
+				'instructions' => 'Each Ad that will show up for all sites in the homepage footer',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'collapsed' => '',
+				'min' => 3,
+				'max' => 3,
+				'layout' => 'table',
+				'button_label' => '',
+				'sub_fields' => array(
+					array(
+						'key' => 'field_5e288f5656dec',
+						'label' => 'Ad Image',
+						'name' => 'ad_image',
+						'type' => 'image',
+						'instructions' => 'Image must be 300px by 250px',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'return_format' => 'array',
+						'preview_size' => 'medium',
+						'library' => 'all',
+						'min_width' => 300,
+						'min_height' => 250,
+						'min_size' => '',
+						'max_width' => 300,
+						'max_height' => 250,
+						'max_size' => '',
+						'mime_types' => '',
+					),
+					array(
+						'key' => 'field_5e288fc656ded',
+						'label' => 'Ad URL',
+						'name' => 'ad_url',
+						'type' => 'url',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+					),
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'options_page',
+					'operator' => '==',
+					'value' => 'multisite-settings',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	//**************** Panels *******************//
    
    acf_add_local_field_group(array(
       'key' => 'group_571002e8e1ecf',
