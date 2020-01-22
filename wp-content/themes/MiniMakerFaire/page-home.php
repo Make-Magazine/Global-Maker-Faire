@@ -48,7 +48,7 @@ get_header();
 											</a>
 									  </div>';
 					}
-		$return . = '</div>
+		$return .= '</div>
     				</div>
   				</aside>';
 		echo($return);
