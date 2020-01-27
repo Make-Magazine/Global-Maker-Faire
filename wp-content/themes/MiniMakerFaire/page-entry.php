@@ -347,11 +347,11 @@ function display_entry_schedule($entry_id) {
                 // this is a new location
                 if ($prev_location != $current_location) {
                     $prev_location = $current_location;
-                    $return .= '<small class="text-muted">LOCATION: ' . $current_location . '</small><br />';
+                    $return .= '<small class="text-muted">'.__('LOCATION', 'MiniMakerFaire').': ' . $current_location . '</small><br />';
                 }
 
 
-                $return .= '<small class="text-muted">TIME:</small> ' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</small><br />';
+                $return .= '<small class="text-muted">'.__('TIME', 'MiniMakerFaire').':</small> ' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</small><br />';
             }
         }
         $return .= '        </div>
@@ -405,7 +405,7 @@ function display_groupEntries($entryID) {
 function display_categories($catArray, $mtm) {
     if (!empty($catArray[0])) {
         global $url_sub_path;
-        $return = '<b>Categories:</b>';
+        $return = '<b>'. __('Categories','MiniMakerFaire').':</b>';
         foreach ($catArray as $value) {
             // currently only would work if there is only the one meet-the-makers page
             $return .= ' <a href="' . $mtm . '?category=' . urlencode($value) . '">' . $value . '</a>,';
@@ -438,12 +438,12 @@ function displayEntryFooter($mtmLink, $scheduleLink) {
 
     if (getTplPageURL("page-meet-the-makers.php") && $dispMTMButton != 'hide') {
         $return .= '<div class="faireAction-box">
-		<a class="btn universal-btn" href="' . $mtmLink . '"><h4>Look for More Makers</h4></a>
+		<a class="btn universal-btn" href="' . $mtmLink . '"><h4>'. __('Look for More Makers','MiniMakerFaire').'</h4></a>
 	</div>';
     }
     if (getTplPageURL("page-schedule.php") && $dispSchedButton != 'hide') {
         $return .= '<div class="faireAction-box">
-			              <a class="btn universal-btn" href="' . $scheduleLink . '"><h4>View Full Schedule</h4></a>
+			              <a class="btn universal-btn" href="' . $scheduleLink . '"><h4>'. __('View Full Schedule','MiniMakerFaire').'</h4></a>
 		             </div>';
     }
     $return .= '</div>';
