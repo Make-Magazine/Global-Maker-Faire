@@ -214,10 +214,10 @@ function add_entry_note() {
         $body = stripslashes($notetext) . '<br /><br />Please reply in entry:<a href="' . $entry_url . '">' . $entry_url . '</a>';
         $headers = "From: \"$email_from\" <$email_from> \r\n";
         //Enable HTML Email Formatting in the body
-        add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
+        add_filter('wp_mail_content_type', 'wpdocs_set_html_mail_content_type');
         $result = wp_mail($email_to, $email_subject, $body, $headers);
         //Remove HTML Email Formatting
-        remove_filter('wp_mail_content_type', 'wpse27856_set_content_type');
+        remove_filter('wp_mail_content_type', 'wpdocs_set_html_mail_content_type');
         $email_note_info = '<br /><br />:SENT TO:[' . implode(",", $email_to) . ']';
     }
 
@@ -227,8 +227,11 @@ function add_entry_note() {
 }
 
 add_action('wp_ajax_add_entry_note', 'add_entry_note');
-
 add_filter('gform_notification_events', 'mf_custom_notification_event');
+
+function wpdocs_set_html_mail_content_type() {
+    return 'text/html';
+}
 
 function mf_custom_notification_event($events) {
     $events['mf_acceptance_status_changed'] = __('Acceptance Status Changed');
