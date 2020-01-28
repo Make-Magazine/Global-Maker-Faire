@@ -209,7 +209,7 @@ function add_entry_note() {
     if (!empty($email_to)) {
         GFCommon::log_debug('GFEntryDetail::lead_detail_page(): Preparing to email entry notes.');
         $email_from = $user_data->user_email;
-        $email_subject = stripslashes('Response Required Maker Application: ' . $entry_id . ' ' . $project_name);
+        $email_subject = stripslashes('Note made in Maker Application: ' . $entry_id . ' ' . $project_name);
         $entry_url = get_bloginfo('wpurl') . '/wp-admin/admin.php?page=mf_entries&view=mfentry&id=' . $form_id . '&lid=' . $entry_id;
         $body = stripslashes($notetext) . '<br /><br />Please reply in entry:<a href="' . $entry_url . '">' . $entry_url . '</a>';
         $headers = "From: \"$email_from\" <$email_from> \r\n";
