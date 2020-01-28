@@ -996,6 +996,25 @@ You can find the Form IDs in Forms > Forms > ID column.',
             'prepend' => '',
             'append' => '',
             'maxlength' => ''
+         ),
+			array(
+            'key' => 'field_59b1a8e73002d',
+            'label' => 'CTA Text',
+            'name' => 'mtm_cta_text',
+            'type' => 'text',
+            'instructions' => 'Text that appears under the Meet the Makers header',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+               'width' => '',
+               'class' => '',
+               'id' => ''
+            ),
+            'default_value' => 'Explore our Maker Exhibits!',
+            'placeholder' => '',
+            'prepend' => '',
+            'append' => '',
+            'maxlength' => ''
          )
       ),
       'location' => array(

@@ -9,6 +9,7 @@ $form_id = get_field('form_id');
 $form_id_trimmed = preg_replace('/\s+/', '', $form_id);
 
 $noMakerText = get_field('no_makers_found_text');
+$mtmCtaText = (null !== get_field('mtm_cta_text') ? get_field('mtm_cta_text') : 'Explore our Maker Exhibits!');
 if($noMakerText =='') $noMakerText = 'No makers found';
 ?>
 
@@ -32,11 +33,14 @@ if($noMakerText =='') $noMakerText = 'No makers found';
       </a>
     </div>
     <!--//end old-->
+	 <?php if($mtmCtaText != "") { ?>
     <div class="container">
-      <h2 class="text-center"><?php _e("Explore our Maker Exhibits!",'MiniMakerFaire')?></h2>
+      <h2 class="text-center"><?php _e($mtmCtaText,'MiniMakerFaire')?></h2>
     </div>
+	 <?php } ?>
+	  
     <div class="flag-banner"></div>
-
+	  
     <div class="mtm-search">
       <form class="form-inline">
         <label for="mtm-search-input"><?php _e("Search:",'MiniMakerFaire')?></label>
