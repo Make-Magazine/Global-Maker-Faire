@@ -17,6 +17,7 @@
   <meta name="theme-color" content="#ffffff">
 	
   <script type='text/javascript'>
+	  // can this be removed now that the google ads are gone from the homepage?
     var googletag = googletag || {};
     googletag.cmd = googletag.cmd || [];
     (function() {
@@ -31,15 +32,6 @@
     })();
   </script>
 
-  <script type='text/javascript'>
-    googletag.cmd.push(function() {
-      googletag.defineSlot('/11548178/GlobalMakerFaire', [300, 250], 'div-gpt-ad-1464723042021-0').setTargeting('adPos', ['left']).addService(googletag.pubads());
-      googletag.defineSlot('/11548178/GlobalMakerFaire', [300, 250], 'div-gpt-ad-1464723042021-1').setTargeting('adPos', ['center']).addService(googletag.pubads());
-      googletag.defineSlot('/11548178/GlobalMakerFaire', [300, 250], 'div-gpt-ad-1464723042021-2').setTargeting('adPos', ['right']).addService(googletag.pubads());
-      googletag.pubads().setTargeting('Location', []);
-      googletag.enableServices();
-    });
-  </script>
 
   <?php $header_scripts = get_theme_mod( 'header_scripts' );
   if( $header_scripts != '' ) {
