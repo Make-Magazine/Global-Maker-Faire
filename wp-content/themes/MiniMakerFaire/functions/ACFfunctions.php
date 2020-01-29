@@ -999,10 +999,10 @@ You can find the Form IDs in Forms > Forms > ID column.',
          ),
 			array(
             'key' => 'field_59b1a8e73002d',
-            'label' => 'CTA Text',
+            'label' => 'Header Text',
             'name' => 'mtm_cta_text',
             'type' => 'text',
-            'instructions' => 'Text that appears under the Meet the Makers header',
+            'instructions' => 'Text that appears under the Meet the Makers featured makers slider.',
             'required' => 1,
             'conditional_logic' => 0,
             'wrapper' => array(
