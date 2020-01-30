@@ -204,7 +204,7 @@ get_header();
                             <?php
                             if (!empty($project_website)) {
                                 //$project_website = str_replace( 'http://', 'https://', $project_website );
-                                echo '<a href="' . $project_website . '" class="btn universal-btn entry-website" target="_blank">' . __('Project Website', 'MiniMakerFaire') . '</a>';
+                                echo '<a href="' . $project_website . '" class="btn universal-btn entry-website" target="_blank">' . pl__('Project Website', 'MiniMakerFaire') . '</a>';
                             }
                             if ($categoryDisplay) {
                                 ?>
@@ -221,11 +221,11 @@ get_header();
                                     <h2>
                                         <?php
                                         if ($isGroup) {
-                                            _e('Group', 'MiniMakerFaire');
+                                            pl_e('Group', 'MiniMakerFaire');
                                         } elseif ($isList) {
-                                            _e('Makers', 'MiniMakerFaire');
+                                            pl_e('Makers', 'MiniMakerFaire');
                                         } else {
-                                            _e('Maker', 'MiniMakerFaire');
+                                            pl_e('Maker', 'MiniMakerFaire');
                                         }
                                         ?>
                                     </h2>
@@ -286,7 +286,7 @@ get_header();
                         <?php
                     } else { //entry is not active
                         echo '<h2>';
-                        _e('Invalid entry', 'MiniMakerFaire');
+                        pl_e('Invalid entry', 'MiniMakerFaire');
                         echo '</h2>';
                     }
                     ?>
@@ -347,11 +347,11 @@ function display_entry_schedule($entry_id) {
                 // this is a new location
                 if ($prev_location != $current_location) {
                     $prev_location = $current_location;
-                    $return .= '<small class="text-muted">'.__('LOCATION', 'MiniMakerFaire').': ' . $current_location . '</small><br />';
+                    $return .= '<small class="text-muted">'.pl__('LOCATION', 'MiniMakerFaire').': ' . $current_location . '</small><br />';
                 }
 
 
-                $return .= '<small class="text-muted">'.__('TIME', 'MiniMakerFaire').':</small> ' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</small><br />';
+                $return .= '<small class="text-muted">'.pl__('TIME', 'MiniMakerFaire').':</small> ' . date("g:i a", $start_dt) . ' - ' . date("g:i a", $end_dt) . '</small><br />';
             }
         }
         $return .= '        </div>
@@ -378,10 +378,10 @@ function display_groupEntries($entryID) {
         $results = $wpdb->get_results($sql);
         if ($wpdb->num_rows > 0) {
             if ($results[0]->parentID == $entryID) {
-                $title = __('Exhibits in this group:', 'MiniMakerFaire');
+                $title = pl__('Exhibits in this group:', 'MiniMakerFaire');
                 $type = 'parent';
             } else {
-                $title = __('Part of a group:', 'MiniMakerFaire');
+                $title = pl__('Part of a group:', 'MiniMakerFaire');
                 $type = 'child';
             }
             $return .= $title . '<br/>';
@@ -405,7 +405,7 @@ function display_groupEntries($entryID) {
 function display_categories($catArray, $mtm) {
     if (!empty($catArray[0])) {
         global $url_sub_path;
-        $return = '<b>'. __('Categories','MiniMakerFaire').':</b>';
+        $return = '<b>'. pl__('Categories','MiniMakerFaire').':</b>';
         foreach ($catArray as $value) {
             // currently only would work if there is only the one meet-the-makers page
             $return .= ' <a href="' . $mtm . '?category=' . urlencode($value) . '">' . $value . '</a>,';
@@ -438,12 +438,12 @@ function displayEntryFooter($mtmLink, $scheduleLink) {
 
     if (getTplPageURL("page-meet-the-makers.php") && $dispMTMButton != 'hide') {
         $return .= '<div class="faireAction-box">
-		<a class="btn universal-btn" href="' . $mtmLink . '"><h4>'. __('Look for More Makers','MiniMakerFaire').'</h4></a>
+		<a class="btn universal-btn" href="' . $mtmLink . '"><h4>'. pl__('Look for More Makers','MiniMakerFaire').'</h4></a>
 	</div>';
     }
     if (getTplPageURL("page-schedule.php") && $dispSchedButton != 'hide') {
         $return .= '<div class="faireAction-box">
-			              <a class="btn universal-btn" href="' . $scheduleLink . '"><h4>'. __('View Full Schedule','MiniMakerFaire').'</h4></a>
+			              <a class="btn universal-btn" href="' . $scheduleLink . '"><h4>'. pl__('View Full Schedule','MiniMakerFaire').'</h4></a>
 		             </div>';
     }
     $return .= '</div>';
