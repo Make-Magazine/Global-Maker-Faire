@@ -81,6 +81,19 @@
       </div>
 
       <?php
+		$header_cta = "";
+		$header_cta_radio = get_theme_mod( 'header_cta_radio' );
+      $header_cta_text = get_theme_mod( 'header_cta_text' );
+      $header_cta_link = esc_url( get_theme_mod( 'header_cta_link' ) );
+      if( $header_cta_radio != '' ) {
+        switch ( $header_cta_radio ) {
+          case 'value1':
+              $header_cta = '<div id="header-cta-button"><a class="btn btn-primary" href="'.$header_cta_link.'">'.$header_cta_text.'</a></div>';
+              break;
+          case 'value2':
+              break;
+        }
+      }
       wp_nav_menu( array(
         'theme_location'    => 'main_menu',
         'depth'             => 2,
@@ -89,25 +102,11 @@
         'container_class'   => '',
         'menu_class'        => 'nav navbar-nav',
         'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+		  'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s'.$header_cta.'</ul>',
         'walker'            => new wp_bootstrap_navwalker())
       );
 
-      $header_cta_radio = get_theme_mod( 'header_cta_radio' );
-      $header_cta_text = get_theme_mod( 'header_cta_text' );
-      $header_cta_link = esc_url( get_theme_mod( 'header_cta_link' ) );
-      if( $header_cta_radio != '' ) {
-        switch ( $header_cta_radio ) {
-          case 'value1':
-              echo '<div id="header-cta-button"><a class="btn btn-primary" href="';
-              echo $header_cta_link;
-              echo '">';
-              echo $header_cta_text;
-              echo '</a></div>';
-              break;
-          case 'value2':
-              break;
-        }
-      } ?>
+      ?>
 
     </div>
   </nav>

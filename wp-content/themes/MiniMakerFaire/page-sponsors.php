@@ -27,7 +27,7 @@ get_header(); ?>
 
         if( get_row_layout() == 'sponsors_with_image' ):
 
-          echo '<div class="row spnosors-row"><div class="col-xs-12">';
+          echo '<div class="row sponsors-row"><div class="col-xs-12">';
 
           if(get_sub_field('sponsor_group_title')){
             echo '<h2 class="text-center sponsors-type">' . get_sub_field('sponsor_group_title') . '</h2>';

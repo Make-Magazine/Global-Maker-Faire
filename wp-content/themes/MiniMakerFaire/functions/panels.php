@@ -985,7 +985,7 @@ function getSponsorPanel() {
                 if (have_rows('sponsors_with_image')) {
                     $return .= '
                       <div class="item">
-                        <div class="row spnosors-row">
+                        <div class="row sponsors-row">
                           <div class="col-xs-12">';
                     if (!empty($sponsor_group_title)) {
                         $return .= '<h5 class="text-center sponsors-type">' . $sponsor_group_title . '</h5>';
