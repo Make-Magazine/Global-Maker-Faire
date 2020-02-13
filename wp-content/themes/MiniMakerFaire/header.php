@@ -84,7 +84,7 @@
 		$header_cta = "";
 		$header_cta_radio = get_theme_mod( 'header_cta_radio' );
       $header_cta_text = get_theme_mod( 'header_cta_text' );
-      $header_cta_link = esc_url( get_theme_mod( 'header_cta_link' ) );
+      $header_cta_link = get_theme_mod( 'header_cta_link' );
       if( $header_cta_radio != '' ) {
         switch ( $header_cta_radio ) {
           case 'value1':
